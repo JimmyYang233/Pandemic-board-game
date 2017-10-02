@@ -1,5 +1,3 @@
-# f2017-group3
-
-## Pandemic 
+# Pandemic 
 
 _To be edited later._
