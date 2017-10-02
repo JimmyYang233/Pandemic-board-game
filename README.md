@@ -1,3 +1,6 @@
 # Pandemic 
 
-_To be edited later._
+**********************
+
+##Game Rule
+
