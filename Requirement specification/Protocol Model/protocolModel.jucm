@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="Jimmy" created="November 20, 2017 9:33:56 PM EST" modified="November 26, 2017 1:19:12 PM EST" specVersion="21" urnVersion="1.27" nextGlobalID="10405">
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="Jimmy" created="November 20, 2017 9:33:56 PM EST" modified="November 26, 2017 1:19:45 PM EST" specVersion="22" urnVersion="1.27" nextGlobalID="10405">
   <ucmspec>
     <scenarioGroups name="ScenarioGroup5" id="5">
       <scenarios name="ScenarioDef6" id="6"/>
@@ -627,12 +627,12 @@
       <nodes xsi:type="ucm.map:RespRef" name="RespRef4351" id="4351" x="2388" y="563" succ="//@urndef/@specDiagrams.0/@connections.203" pred="//@urndef/@specDiagrams.0/@connections.498" respDef="2882">
         <label deltaX="-12" deltaY="-47"/>
       </nodes>
-      <nodes xsi:type="ucm.map:EndPoint" name="end Game" id="4671" x="2720" y="421" pred="//@urndef/@specDiagrams.0/@connections.205">
+      <nodes xsi:type="ucm.map:EndPoint" name="end Game" id="4671" x="2777" y="534" pred="//@urndef/@specDiagrams.0/@connections.205">
         <label/>
         <postcondition deltaX="-40" deltaY="-20" label="" expression="true"/>
       </nodes>
-      <nodes xsi:type="ucm.map:RespRef" name="RespRef4699" id="4699" x="2622" y="442" succ="//@urndef/@specDiagrams.0/@connections.205" pred="//@urndef/@specDiagrams.0/@connections.288" respDef="1798">
-        <label deltaX="10" deltaY="24"/>
+      <nodes xsi:type="ucm.map:RespRef" name="RespRef4699" id="4699" x="2696" y="534" succ="//@urndef/@specDiagrams.0/@connections.205" pred="//@urndef/@specDiagrams.0/@connections.288" respDef="1798">
+        <label deltaX="-64" deltaY="-37"/>
       </nodes>
       <nodes xsi:type="ucm.map:EndPoint" name="end Game" id="4727" x="2203" y="859" pred="//@urndef/@specDiagrams.0/@connections.206">
         <label deltaX="-3" deltaY="-39"/>
@@ -817,10 +817,10 @@
       <nodes xsi:type="ucm.map:OrFork" name="OrFork4725" id="4725" x="2229" y="727" succ="//@urndef/@specDiagrams.0/@connections.282 //@urndef/@specDiagrams.0/@connections.284" pred="//@urndef/@specDiagrams.0/@connections.198"/>
       <nodes xsi:type="ucm.map:OrFork" name="OrFork8290" id="8290" x="2484" y="558" succ="//@urndef/@specDiagrams.0/@connections.285 //@urndef/@specDiagrams.0/@connections.204" pred="//@urndef/@specDiagrams.0/@connections.493"/>
       <nodes xsi:type="ucm.map:RespRef" name="RespRef8296" id="8296" x="2526" y="530" succ="//@urndef/@specDiagrams.0/@connections.286" pred="//@urndef/@specDiagrams.0/@connections.285" respDef="8295">
-        <label/>
+        <label deltaX="-4" deltaY="1"/>
       </nodes>
       <nodes xsi:type="ucm.map:RespRef" name="RespRef8370" id="8370" x="2615" y="544" succ="//@urndef/@specDiagrams.0/@connections.287" pred="//@urndef/@specDiagrams.0/@connections.286" respDef="8369">
-        <label deltaX="-52" deltaY="-5"/>
+        <label deltaX="-76" deltaY="-54"/>
       </nodes>
       <nodes xsi:type="ucm.map:OrFork" name="OrFork8378" id="8378" x="2649" y="542" succ="//@urndef/@specDiagrams.0/@connections.288 //@urndef/@specDiagrams.0/@connections.289" pred="//@urndef/@specDiagrams.0/@connections.287"/>
       <nodes xsi:type="ucm.map:OrJoin" name="OrJoin8414" id="8414" x="2674" y="628" succ="//@urndef/@specDiagrams.0/@connections.290" pred="//@urndef/@specDiagrams.0/@connections.204 //@urndef/@specDiagrams.0/@connections.289"/>
@@ -1627,7 +1627,7 @@
       <connections xsi:type="ucm.map:NodeConnection" source="8296" target="8370"/>
       <connections xsi:type="ucm.map:NodeConnection" source="8370" target="8378"/>
       <connections xsi:type="ucm.map:NodeConnection" source="8378" target="4699">
-        <condition deltaX="56" deltaY="41" label="outbreakatmax" expression="true"/>
+        <condition deltaX="57" deltaY="32" label="outbreakatmax" expression="true"/>
       </connections>
       <connections xsi:type="ucm.map:NodeConnection" source="8378" target="8414">
         <condition label="" expression="true"/>
