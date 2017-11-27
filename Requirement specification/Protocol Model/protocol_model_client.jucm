@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="Jimmy" created="November 20, 2017 9:33:56 PM EST" modified="November 26, 2017 7:15:34 PM EST" specVersion="35" urnVersion="1.27" nextGlobalID="13045">
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="Jimmy" created="November 20, 2017 9:33:56 PM EST" modified="November 26, 2017 7:39:15 PM EST" specVersion="36" urnVersion="1.27" nextGlobalID="13052">
   <ucmspec>
     <scenarioGroups name="ScenarioGroup5" id="5">
       <scenarios name="ScenarioDef6" id="6"/>
@@ -328,6 +328,7 @@
     <responsibilities name="playEventCardSpecialOrders&lt;&lt;in>>" id="12749" respRefs="12750"/>
     <responsibilities name="same as move" id="12755" respRefs="12756"/>
     <responsibilities name="informInfectionCardDrawn&lt;&lt;in>>" id="13042" respRefs="13043"/>
+    <responsibilities name="noInfectionTonight&lt;&lt;out>>" id="13047" respRefs="13048"/>
     <specDiagrams xsi:type="ucm.map:UCMmap" name="UCMmap2" id="2">
       <nodes xsi:type="ucm.map:StartPoint" name="Start Game Setup" id="11" x="692" y="184" succ="//@urndef/@specDiagrams.0/@connections.0">
         <label deltaX="7" deltaY="35"/>
@@ -1291,7 +1292,7 @@
       <nodes xsi:type="ucm.map:OrFork" name="OrFork10770" id="10770" x="3920" y="687" succ="//@urndef/@specDiagrams.0/@connections.481 //@urndef/@specDiagrams.0/@connections.482" pred="//@urndef/@specDiagrams.0/@connections.455"/>
       <nodes xsi:type="ucm.map:OrJoin" name="OrJoin10788" id="10788" x="4656" y="806" succ="//@urndef/@specDiagrams.0/@connections.483" pred="//@urndef/@specDiagrams.0/@connections.453 //@urndef/@specDiagrams.0/@connections.484"/>
       <nodes xsi:type="ucm.map:EmptyPoint" name="EmptyPoint10789" id="10789" x="4582" y="822" succ="//@urndef/@specDiagrams.0/@connections.484" pred="//@urndef/@specDiagrams.0/@connections.485"/>
-      <nodes xsi:type="ucm.map:DirectionArrow" name="DirectionArrow10797" id="10797" x="4286" y="805" succ="//@urndef/@specDiagrams.0/@connections.485" pred="//@urndef/@specDiagrams.0/@connections.482"/>
+      <nodes xsi:type="ucm.map:DirectionArrow" name="DirectionArrow10797" id="10797" x="4286" y="805" succ="//@urndef/@specDiagrams.0/@connections.485" pred="//@urndef/@specDiagrams.0/@connections.679"/>
       <nodes xsi:type="ucm.map:RespRef" name="RespRef10801" id="10801" x="-1471" y="1292" succ="//@urndef/@specDiagrams.0/@connections.486" pred="//@urndef/@specDiagrams.0/@connections.477" respDef="10800">
         <label/>
       </nodes>
@@ -1654,6 +1655,9 @@
       <nodes xsi:type="ucm.map:OrJoin" name="OrJoin13036" id="13036" x="-1304" y="720" succ="//@urndef/@specDiagrams.0/@connections.676" pred="//@urndef/@specDiagrams.0/@connections.466 //@urndef/@specDiagrams.0/@connections.677"/>
       <nodes xsi:type="ucm.map:EmptyPoint" name="EmptyPoint13041" id="13041" x="-1424" y="723" succ="//@urndef/@specDiagrams.0/@connections.677" pred="//@urndef/@specDiagrams.0/@connections.675"/>
       <nodes xsi:type="ucm.map:RespRef" name="RespRef13043" id="13043" x="4062" y="648" succ="//@urndef/@specDiagrams.0/@connections.678" pred="//@urndef/@specDiagrams.0/@connections.498" respDef="13042">
+        <label/>
+      </nodes>
+      <nodes xsi:type="ucm.map:RespRef" name="RespRef13048" id="13048" x="4218" y="788" succ="//@urndef/@specDiagrams.0/@connections.679" pred="//@urndef/@specDiagrams.0/@connections.482" respDef="13047">
         <label/>
       </nodes>
       <connections xsi:type="ucm.map:NodeConnection" source="11" target="18"/>
@@ -2322,7 +2326,7 @@
       <connections xsi:type="ucm.map:NodeConnection" source="10770" target="10173">
         <condition label="" expression="true"/>
       </connections>
-      <connections xsi:type="ucm.map:NodeConnection" source="10770" target="10797">
+      <connections xsi:type="ucm.map:NodeConnection" source="10770" target="13048">
         <condition label="OneQuietNight event card used" expression="true"/>
       </connections>
       <connections xsi:type="ucm.map:NodeConnection" source="10788" target="2037"/>
@@ -2579,6 +2583,7 @@
       <connections xsi:type="ucm.map:NodeConnection" source="13036" target="10634"/>
       <connections xsi:type="ucm.map:NodeConnection" source="13041" target="13036"/>
       <connections xsi:type="ucm.map:NodeConnection" source="13043" target="10879"/>
+      <connections xsi:type="ucm.map:NodeConnection" source="13048" target="10797"/>
     </specDiagrams>
   </urndef>
   <metadata name="_Use0to100EvaluationRange" value="false"/>
