@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="Jimmy" created="November 20, 2017 9:33:56 PM EST" modified="November 26, 2017 5:12:33 PM EST" specVersion="34" urnVersion="1.27" nextGlobalID="13041">
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="Jimmy" created="November 20, 2017 9:33:56 PM EST" modified="November 26, 2017 7:15:34 PM EST" specVersion="35" urnVersion="1.27" nextGlobalID="13045">
   <ucmspec>
     <scenarioGroups name="ScenarioGroup5" id="5">
       <scenarios name="ScenarioDef6" id="6"/>
@@ -222,7 +222,7 @@
     <responsibilities name="Responsibility10382" id="10382"/>
     <responsibilities name="informTotalCubeNumber&lt;&lt;in>>" id="10390" description="" expression="" respRefs="10391 10397"/>
     <responsibilities name="Responsibility10396" id="10396"/>
-    <responsibilities name="informPlayerCardDrawn&lt;&lt;in>>" id="10410" description="" expression="" respRefs="10411"/>
+    <responsibilities name="informCityOrEventCardDrawn&lt;&lt;in>>" id="10410" description="" expression="" respRefs="10411"/>
     <responsibilities name="Responsibility10416" id="10416"/>
     <responsibilities name="PromptCardsToDiscard&lt;&lt;out>>" id="10422" description="" expression="" respRefs="10423"/>
     <responsibilities name="Responsibility10448" id="10448"/>
@@ -327,6 +327,7 @@
     <responsibilities name="Responsibility12618" id="12618"/>
     <responsibilities name="playEventCardSpecialOrders&lt;&lt;in>>" id="12749" respRefs="12750"/>
     <responsibilities name="same as move" id="12755" respRefs="12756"/>
+    <responsibilities name="informInfectionCardDrawn&lt;&lt;in>>" id="13042" respRefs="13043"/>
     <specDiagrams xsi:type="ucm.map:UCMmap" name="UCMmap2" id="2">
       <nodes xsi:type="ucm.map:StartPoint" name="Start Game Setup" id="11" x="692" y="184" succ="//@urndef/@specDiagrams.0/@connections.0">
         <label deltaX="7" deltaY="35"/>
@@ -1217,8 +1218,8 @@
       <nodes xsi:type="ucm.map:EmptyPoint" name="EmptyPoint10029" id="10029" x="3604" y="962" succ="//@urndef/@specDiagrams.0/@connections.441" pred="//@urndef/@specDiagrams.0/@connections.440"/>
       <nodes xsi:type="ucm.map:OrJoin" name="OrJoin10064" id="10064" x="2516" y="674" succ="//@urndef/@specDiagrams.0/@connections.442" pred="//@urndef/@specDiagrams.0/@connections.384 //@urndef/@specDiagrams.0/@connections.443"/>
       <nodes xsi:type="ucm.map:EmptyPoint" name="EmptyPoint10083" id="10083" x="2643" y="778" succ="//@urndef/@specDiagrams.0/@connections.443" pred="//@urndef/@specDiagrams.0/@connections.457"/>
-      <nodes xsi:type="ucm.map:RespRef" name="RespRef10173" id="10173" x="4024" y="658" succ="//@urndef/@specDiagrams.0/@connections.444" pred="//@urndef/@specDiagrams.0/@connections.481" respDef="10172">
-        <label deltaX="31" deltaY="-46"/>
+      <nodes xsi:type="ucm.map:RespRef" name="RespRef10173" id="10173" x="3960" y="673" succ="//@urndef/@specDiagrams.0/@connections.444" pred="//@urndef/@specDiagrams.0/@connections.481" respDef="10172">
+        <label deltaX="53" deltaY="-4"/>
       </nodes>
       <nodes xsi:type="ucm.map:OrFork" name="OrFork10195" id="10195" x="4358" y="643" succ="//@urndef/@specDiagrams.0/@connections.445 //@urndef/@specDiagrams.0/@connections.446" pred="//@urndef/@specDiagrams.0/@connections.199"/>
       <nodes xsi:type="ucm.map:EndPoint" name="EndGame" id="10197" x="4643" y="679" pred="//@urndef/@specDiagrams.0/@connections.452">
@@ -1291,7 +1292,7 @@
       <nodes xsi:type="ucm.map:OrJoin" name="OrJoin10788" id="10788" x="4656" y="806" succ="//@urndef/@specDiagrams.0/@connections.483" pred="//@urndef/@specDiagrams.0/@connections.453 //@urndef/@specDiagrams.0/@connections.484"/>
       <nodes xsi:type="ucm.map:EmptyPoint" name="EmptyPoint10789" id="10789" x="4582" y="822" succ="//@urndef/@specDiagrams.0/@connections.484" pred="//@urndef/@specDiagrams.0/@connections.485"/>
       <nodes xsi:type="ucm.map:DirectionArrow" name="DirectionArrow10797" id="10797" x="4286" y="805" succ="//@urndef/@specDiagrams.0/@connections.485" pred="//@urndef/@specDiagrams.0/@connections.482"/>
-      <nodes xsi:type="ucm.map:RespRef" name="RespRef10801" id="10801" x="-1479" y="1162" succ="//@urndef/@specDiagrams.0/@connections.486" pred="//@urndef/@specDiagrams.0/@connections.477" respDef="10800">
+      <nodes xsi:type="ucm.map:RespRef" name="RespRef10801" id="10801" x="-1471" y="1292" succ="//@urndef/@specDiagrams.0/@connections.486" pred="//@urndef/@specDiagrams.0/@connections.477" respDef="10800">
         <label/>
       </nodes>
       <nodes xsi:type="ucm.map:RespRef" name="RespRef10811" id="10811" x="2633" y="680" succ="//@urndef/@specDiagrams.0/@connections.487" pred="//@urndef/@specDiagrams.0/@connections.188" respDef="10810">
@@ -1315,13 +1316,13 @@
       <nodes xsi:type="ucm.map:DirectionArrow" name="DirectionArrow10870" id="10870" x="3370" y="591" succ="//@urndef/@specDiagrams.0/@connections.493" pred="//@urndef/@specDiagrams.0/@connections.195"/>
       <nodes xsi:type="ucm.map:DirectionArrow" name="DirectionArrow10873" id="10873" x="3479" y="569" succ="//@urndef/@specDiagrams.0/@connections.494" pred="//@urndef/@specDiagrams.0/@connections.265"/>
       <nodes xsi:type="ucm.map:DirectionArrow" name="DirectionArrow10875" id="10875" x="3557" y="635" succ="//@urndef/@specDiagrams.0/@connections.495" pred="//@urndef/@specDiagrams.0/@connections.266"/>
-      <nodes xsi:type="ucm.map:RespRef" name="RespRef10879" id="10879" x="4113" y="637" succ="//@urndef/@specDiagrams.0/@connections.496" pred="//@urndef/@specDiagrams.0/@connections.498" respDef="7726">
+      <nodes xsi:type="ucm.map:RespRef" name="RespRef10879" id="10879" x="4113" y="637" succ="//@urndef/@specDiagrams.0/@connections.496" pred="//@urndef/@specDiagrams.0/@connections.678" respDef="7726">
         <label deltaX="8" deltaY="41"/>
       </nodes>
       <nodes xsi:type="ucm.map:RespRef" name="RespRef10883" id="10883" x="4531" y="688" succ="//@urndef/@specDiagrams.0/@connections.497" pred="//@urndef/@specDiagrams.0/@connections.449" respDef="10820">
         <label/>
       </nodes>
-      <nodes xsi:type="ucm.map:RespRef" name="RespRef10887" id="10887" x="4053" y="651" succ="//@urndef/@specDiagrams.0/@connections.498" pred="//@urndef/@specDiagrams.0/@connections.444" respDef="10886">
+      <nodes xsi:type="ucm.map:RespRef" name="RespRef10887" id="10887" x="4005" y="662" succ="//@urndef/@specDiagrams.0/@connections.498" pred="//@urndef/@specDiagrams.0/@connections.444" respDef="10886">
         <label/>
       </nodes>
       <nodes xsi:type="ucm.map:RespRef" name="RespRef10891" id="10891" x="58" y="2678" succ="//@urndef/@specDiagrams.0/@connections.499" pred="//@urndef/@specDiagrams.0/@connections.356" respDef="8481">
@@ -1652,6 +1653,9 @@
       <nodes xsi:type="ucm.map:EmptyPoint" name="EmptyPoint13027" id="13027" x="-1543" y="767" succ="//@urndef/@specDiagrams.0/@connections.675" pred="//@urndef/@specDiagrams.0/@connections.674"/>
       <nodes xsi:type="ucm.map:OrJoin" name="OrJoin13036" id="13036" x="-1304" y="720" succ="//@urndef/@specDiagrams.0/@connections.676" pred="//@urndef/@specDiagrams.0/@connections.466 //@urndef/@specDiagrams.0/@connections.677"/>
       <nodes xsi:type="ucm.map:EmptyPoint" name="EmptyPoint13041" id="13041" x="-1424" y="723" succ="//@urndef/@specDiagrams.0/@connections.677" pred="//@urndef/@specDiagrams.0/@connections.675"/>
+      <nodes xsi:type="ucm.map:RespRef" name="RespRef13043" id="13043" x="4062" y="648" succ="//@urndef/@specDiagrams.0/@connections.678" pred="//@urndef/@specDiagrams.0/@connections.498" respDef="13042">
+        <label/>
+      </nodes>
       <connections xsi:type="ucm.map:NodeConnection" source="11" target="18"/>
       <connections xsi:type="ucm.map:NodeConnection" source="18" target="332"/>
       <connections xsi:type="ucm.map:NodeConnection" source="39" target="192">
@@ -2336,7 +2340,7 @@
       <connections xsi:type="ucm.map:NodeConnection" source="10875" target="4381"/>
       <connections xsi:type="ucm.map:NodeConnection" source="10879" target="4750"/>
       <connections xsi:type="ucm.map:NodeConnection" source="10883" target="10316"/>
-      <connections xsi:type="ucm.map:NodeConnection" source="10887" target="10879"/>
+      <connections xsi:type="ucm.map:NodeConnection" source="10887" target="13043"/>
       <connections xsi:type="ucm.map:NodeConnection" source="10891" target="9182"/>
       <connections xsi:type="ucm.map:NodeConnection" source="10897" target="9234"/>
       <connections xsi:type="ucm.map:NodeConnection" source="11036" target="7701"/>
@@ -2574,6 +2578,7 @@
       <connections xsi:type="ucm.map:NodeConnection" source="13027" target="13041"/>
       <connections xsi:type="ucm.map:NodeConnection" source="13036" target="10634"/>
       <connections xsi:type="ucm.map:NodeConnection" source="13041" target="13036"/>
+      <connections xsi:type="ucm.map:NodeConnection" source="13043" target="10879"/>
     </specDiagrams>
   </urndef>
   <metadata name="_Use0to100EvaluationRange" value="false"/>
