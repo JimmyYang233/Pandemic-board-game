@@ -8,7 +8,7 @@ public class Enums : MonoBehaviour {
     public enum DiseaseColor { Red,Blue,Yellow,Black,Purple};
     public enum RoleColor {Red, Blue, Gray };
     public enum GamePhase { ReadyToJoin,SetupGame,PlayerTakeTurn,InfectCities,PlayerDrawCard,Completed};
-    public enum RoleKind { ContingencyPlanner, Dispatcher, Medic, OperationsExpert, QuarantineSpecialist, Researcher, Scientist,Archivist};
+    public enum RoleKind { ContingencyPlanner, Dispatcher, Medic, OperationsExpert, QuarantineSpecialist, Researcher, Scientist,Archivist,ContenmentSpecialist,Epidemiologist,FieldOperative,Generalist,Troubleshooter};
     public enum EventKind{ResilientPopulation, Airlift, OneQuietNight, Forecast, GovernmentGrant };
     public enum CityName {
         Algiers,
