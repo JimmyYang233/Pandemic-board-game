@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CityCard : MonoBehaviour {
+    private Enums.CardType cardType= Enums.CardType.CityCard;
+    private City city;
+    private Enums.DiseaseColor color;
+        
+    public CityCard(City c)
+    {
+        city = c;
+        color = c.getColor();
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Enums.DiseaseColor getColor()
+    {
+        return color;
+    }
+
+    public City getCity()
+    {
+        return city;
+    }
+
+
 }
