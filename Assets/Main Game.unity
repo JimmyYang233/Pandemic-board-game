@@ -330,7 +330,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1198934729
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 18
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.02303203, g: 0.70610344, b: 1, a: 1}
   m_FlipX: 0
@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1325774424}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0
+  m_Size: 0.5
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9227,8 +9227,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1691081154}
   m_HandleRect: {fileID: 1691081153}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0
+  m_Value: 0.99999964
+  m_Size: 0.5
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

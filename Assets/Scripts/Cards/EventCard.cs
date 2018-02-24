@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventCard : MonoBehaviour {
+public class EventCard : PlayerCard {
     private Enums.EventKind eventKind;
 
     public EventCard(Enums.EventKind kind): base(Enums.CardType.EventCard)
