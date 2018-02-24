@@ -3,25 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CityCard : PlayerCard {
-    private City city;
-    private Enums.DiseaseColor color;
-        
-    public CityCard(City c): base(Enums.CardType.CityCard)
+public class CityCard : PlayerCard
+{
+    public Enums.CardType getType()
     {
-        city = c;
-        color = c.getColor();
+        throw new NotImplementedException();
     }
-
-    public Enums.DiseaseColor getColor()
-    {
-        return color;
-    }
-
-    public City getCity()
-    {
-        return city;
-    }
-
-    
 }

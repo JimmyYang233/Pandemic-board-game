@@ -28,6 +28,7 @@ public class Role : MonoBehaviour {
 
     public Pawn getPawn()
     {
+		//test
         return pawn;
     }
 
