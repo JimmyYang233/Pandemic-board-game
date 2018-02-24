@@ -293,12 +293,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
-  cityName: 10
+  cityName: 47
   neighbors:
   - {fileID: 804670665}
   - {fileID: 744740194}
   - {fileID: 259723224}
+  - {fileID: 1064063786}
 --- !u!212 &23677954
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -442,9 +442,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -11, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &70692145
 MonoBehaviour:
@@ -607,7 +607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 43
   neighbors:
   - {fileID: 1366648467}
@@ -698,12 +697,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
-  cityName: 13
+  cityName: 35
   neighbors:
-  - {fileID: 23677953}
-  - {fileID: 917524080}
-  - {fileID: 259723224}
+  - {fileID: 883519824}
+  - {fileID: 836964260}
+  - {fileID: 1735748659}
+  - {fileID: 1584692079}
+  - {fileID: 556288761}
 --- !u!212 &136304505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1352,13 +1352,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 39
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
   - {fileID: 816914951}
+  - {fileID: 1285781701}
+  - {fileID: 1754564481}
+  - {fileID: 836964260}
 --- !u!212 &192281352
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1511,13 +1510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 38
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 816914951}
+  - {fileID: 1200758460}
 --- !u!212 &200394706
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1804,7 +1799,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 2
   neighbors:
   - {fileID: 1366648467}
@@ -1895,8 +1889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
-  cityName: 11
+  cityName: 28
   neighbors:
   - {fileID: 1366648467}
   - {fileID: 804670665}
@@ -2318,13 +2311,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 16
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 816914951}
+  - {fileID: 567069630}
+  - {fileID: 617380670}
 --- !u!212 &316550047
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2397,8 +2387,8 @@ RectTransform:
   m_Father: {fileID: 1169284204}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.4999999}
+  m_AnchorMax: {x: 1, y: 0.9999999}
   m_AnchoredPosition: {x: -0.000020980835, y: -0.0014953613}
   m_SizeDelta: {x: -0.000016212, y: -0.003006}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2536,9 +2526,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -11, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &363868096
 MonoBehaviour:
@@ -3538,12 +3528,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
   cityName: 11
   neighbors:
-  - {fileID: 23677953}
-  - {fileID: 917524080}
-  - {fileID: 259723224}
+  - {fileID: 883519824}
+  - {fileID: 136304504}
+  - {fileID: 1584692079}
+  - {fileID: 1725147381}
 --- !u!212 &556288762
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3628,13 +3618,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 19
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 816914951}
+  - {fileID: 1754564481}
+  - {fileID: 617380670}
+  - {fileID: 316550046}
 --- !u!212 &567069631
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3765,9 +3753,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -11, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &580914828
 MonoBehaviour:
@@ -3924,13 +3912,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 18
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 816914951}
+  - {fileID: 1754564481}
+  - {fileID: 567069630}
+  - {fileID: 316550046}
+  - {fileID: 1562714942}
 --- !u!212 &617380671
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4015,7 +4002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 10
   neighbors:
   - {fileID: 1366648467}
@@ -4313,7 +4299,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 15
   neighbors:
   - {fileID: 1366648467}
@@ -4500,12 +4485,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
-  cityName: 13
+  cityName: 33
   neighbors:
   - {fileID: 23677953}
-  - {fileID: 917524080}
-  - {fileID: 259723224}
+  - {fileID: 1064063786}
+  - {fileID: 883519824}
+  - {fileID: 836964260}
 --- !u!212 &744740195
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4713,7 +4698,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
   cityName: 1
   neighbors:
   - {fileID: 23677953}
@@ -4748,14 +4732,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 5
   neighbors:
   - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 259723224}
+  - {fileID: 192281351}
+  - {fileID: 1285781701}
+  - {fileID: 1200758460}
 --- !u!212 &816914953
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5003,12 +4986,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
   cityName: 25
   neighbors:
-  - {fileID: 23677953}
-  - {fileID: 917524080}
-  - {fileID: 259723224}
+  - {fileID: 744740194}
+  - {fileID: 136304504}
+  - {fileID: 883519824}
+  - {fileID: 1735748659}
+  - {fileID: 192281351}
 --- !u!212 &836964261
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5508,12 +5492,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
   cityName: 23
   neighbors:
-  - {fileID: 23677953}
-  - {fileID: 917524080}
-  - {fileID: 259723224}
+  - {fileID: 744740194}
+  - {fileID: 836964260}
+  - {fileID: 136304504}
+  - {fileID: 556288761}
 --- !u!212 &883519825
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5796,12 +5780,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
   cityName: 9
   neighbors:
   - {fileID: 1064063786}
   - {fileID: 804670665}
   - {fileID: 1911299595}
+  - {fileID: 1671131287}
+  - {fileID: 1366648467}
 --- !u!212 &917524081
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6158,7 +6143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 46
   neighbors:
   - {fileID: 1366648467}
@@ -6587,8 +6571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
-  cityName: 12
+  cityName: 30
   neighbors:
   - {fileID: 23677953}
   - {fileID: 917524080}
@@ -6690,7 +6673,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 40
   neighbors:
   - {fileID: 1366648467}
@@ -6883,7 +6865,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 45
   neighbors:
   - {fileID: 1366648467}
@@ -7116,7 +7097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 8
   neighbors:
   - {fileID: 1366648467}
@@ -7195,8 +7175,8 @@ RectTransform:
   m_Father: {fileID: 821517050}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.49999985}
+  m_AnchorMax: {x: 1, y: 0.9999999}
   m_AnchoredPosition: {x: -0.000020742416, y: -0.0014953613}
   m_SizeDelta: {x: -0.000016212, y: -0.003006}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7343,7 +7323,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 26
   neighbors:
   - {fileID: 1366648467}
@@ -7409,7 +7388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1163441871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7603,13 +7582,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 22
   neighbors:
   - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
   - {fileID: 816914951}
+  - {fileID: 200394705}
 --- !u!212 &1200758461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8040,13 +8017,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 6
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
   - {fileID: 816914951}
+  - {fileID: 192281351}
 --- !u!212 &1285781702
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8422,8 +8396,8 @@ RectTransform:
   m_Father: {fileID: 1554751813}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000020980835, y: -0.0014953613}
   m_SizeDelta: {x: -0.000016212, y: -0.003006}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8570,7 +8544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 34
   neighbors:
   - {fileID: 1366648467}
@@ -8729,7 +8702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 32
   neighbors:
   - {fileID: 1366648467}
@@ -8820,12 +8792,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
-  cityName: 11
+  cityName: 27
   neighbors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1671131287}
+  - {fileID: 917524080}
+  - {fileID: 259723224}
+  - {fileID: 816914951}
+  - {fileID: 1200758460}
 --- !u!212 &1366648468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8910,7 +8883,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 20
   neighbors:
   - {fileID: 1366648467}
@@ -9001,7 +8973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 4
   neighbors:
   - {fileID: 1366648467}
@@ -9310,7 +9281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 13
   neighbors:
   - {fileID: 1366648467}
@@ -9613,7 +9583,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 7
   neighbors:
   - {fileID: 1366648467}
@@ -9773,12 +9742,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
   cityName: 29
   neighbors:
-  - {fileID: 23677953}
-  - {fileID: 917524080}
-  - {fileID: 259723224}
+  - {fileID: 556288761}
+  - {fileID: 136304504}
+  - {fileID: 1787687179}
 --- !u!212 &1584692080
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10129,13 +10097,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 24
   neighbors:
+  - {fileID: 917524080}
   - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 816914951}
+  - {fileID: 1911299595}
+  - {fileID: 90783689}
 --- !u!212 &1671131288
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10343,7 +10310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 44
   neighbors:
   - {fileID: 1366648467}
@@ -10533,8 +10499,8 @@ RectTransform:
   m_Father: {fileID: 1095967907}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.4999999}
+  m_AnchorMax: {x: 1, y: 0.9999998}
   m_AnchoredPosition: {x: -0.000020980835, y: -0.0014953613}
   m_SizeDelta: {x: -0.000016212, y: -0.003006}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10654,12 +10620,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
   cityName: 42
   neighbors:
-  - {fileID: 23677953}
-  - {fileID: 917524080}
-  - {fileID: 259723224}
+  - {fileID: 556288761}
+  - {fileID: 1787687179}
+  - {fileID: 1911588291}
 --- !u!212 &1725147382
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11034,13 +10999,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 0
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 816914951}
+  - {fileID: 836964260}
+  - {fileID: 136304504}
+  - {fileID: 1787687179}
+  - {fileID: 1562714942}
 --- !u!212 &1735748660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11116,9 +11080,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -11, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1740913289
 MonoBehaviour:
@@ -11281,13 +11245,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  hasResearch: 1
   cityName: 21
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 816914951}
+  - {fileID: 192281351}
+  - {fileID: 567069630}
+  - {fileID: 617380670}
 --- !u!212 &1754564482
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11633,13 +11595,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 0
   cityName: 14
   neighbors:
-  - {fileID: 1366648467}
-  - {fileID: 804670665}
-  - {fileID: 23677953}
-  - {fileID: 816914951}
+  - {fileID: 1725147381}
+  - {fileID: 1911588291}
+  - {fileID: 238331192}
+  - {fileID: 1562714942}
+  - {fileID: 1735748659}
+  - {fileID: 1584692079}
 --- !u!212 &1787687180
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11777,7 +11740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 3
   neighbors:
   - {fileID: 1366648467}
@@ -12010,7 +11972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 12
   neighbors:
   - {fileID: 1366648467}
@@ -12306,13 +12267,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  hasResearch: 1
-  cityName: 14
+  cityName: 37
   neighbors:
   - {fileID: 917524080}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 956131304}
+  - {fileID: 1137010557}
+  - {fileID: 1671131287}
 --- !u!212 &1911299596
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12397,7 +12357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 31
   neighbors:
   - {fileID: 1366648467}
@@ -12615,13 +12574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 36
   neighbors:
-  - {fileID: 1366648467}
+  - {fileID: 1562714942}
   - {fileID: 804670665}
   - {fileID: 23677953}
-  - {fileID: 816914951}
 --- !u!212 &1933054764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13291,7 +13248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  hasResearch: 1
   cityName: 41
   neighbors:
   - {fileID: 1366648467}
@@ -13592,7 +13548,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  hasResearch: 1
   cityName: 17
   neighbors:
   - {fileID: 1366648467}

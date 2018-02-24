@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Enums : MonoBehaviour {
 
-    public enum Difficulty { Introductory, Standard, Heroic};
-    public enum DiseaseColor { Red,Blue,Yellow,Black,Purple};
-    public enum RoleColor {Red, Blue, Gray };
-    public enum GamePhase { ReadyToJoin,SetupGame,PlayerTakeTurn,InfectCities,PlayerDrawCard,Completed};
-    public enum RoleKind { ContingencyPlanner, Dispatcher, Medic, OperationsExpert, QuarantineSpecialist, Researcher, Scientist,Archivist,ContenmentSpecialist,Epidemiologist,FieldOperative,Generalist,Troubleshooter};
-    public enum EventKind{ResilientPopulation, Airlift, OneQuietNight, Forecast, GovernmentGrant };
+    public enum Difficulty { Introductory, Standard, Heroic, Legendary};	//done
+    public enum DiseaseColor { Red,Blue,Yellow,Black,Purple}; 	//done
+    public enum RoleColor {Red, Blue, Gray };   //to do
+    public enum GamePhase { ReadyToJoin,SetupGame,PlayerTakeTurn,InfectCities,PlayerDrawCard,Completed}; 	//done?
+    public enum RoleKind { ContingencyPlanner, Dispatcher, Medic, OperationsExpert, QuarantineSpecialist, Researcher, Scientist, Archivist, BioTerrorist, 
+		ContainmentSpecialist, Epidemiologist, FieldOperative, Generalist, Troubleshooter};    //done
+    public enum EventKind{ResilientPopulation, Airlift, OneQuietNight, Forecast, GovernmentGrant, BorrowedTime, CommercialTravelBan, MobileHospital, NewAssignment, RapidVaccineDeployment,
+	ReExaminedResearch, RemoteTreatment, SpecialOrders}; //13 in total, done
     public enum CityName {
         Algiers,
 Atlanta,
@@ -59,7 +61,7 @@ Taipei,
 Tehran,
 Tokyo,
 Washington
-    };
-    public enum Challenge { Nochallenge, Mutation, BioTerroist,VirulentStrain, MutationAddVirulentStrain,VirulentStrainAddBioTerroist};
-    public enum CardType {CityCard, EpidemicCard, EventCard, InfectionCard };
+    };	//done
+    public enum Challenge { Nochallenge, Mutation, BioTerroist,VirulentStrain};	//done
+    public enum CardType {CityCard, EpidemicCard, EventCard, InfectionCard };	//done
 }

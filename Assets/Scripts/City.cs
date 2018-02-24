@@ -5,9 +5,9 @@ using UnityEngine;
 public class City : MonoBehaviour {
 
     public Enums.DiseaseColor color;
-    public bool hasResearch = false;
     public Enums.CityName cityName;
     public List<City> neighbors = new List<City>();
+    private bool hasResearch = false;
     private List<Disease> diseases = null; //Maybe unnecessary
     private List<Pawn> pawns = new List<Pawn>();
     private Dictionary<Enums.DiseaseColor, int> numberOfCubes = new Dictionary<Enums.DiseaseColor, int>();

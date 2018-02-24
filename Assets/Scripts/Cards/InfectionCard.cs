@@ -2,15 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InfectionCard : MonoBehaviour {
+public class InfectionCard : Card 
+{
+	private Enums.CardType cardType;
+	private City city;
+    private Enums.DiseaseColor color;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public InfectionCard(City c): base(Enums.CardType.InfectionCard)
+    {
+        city = c;
+        color = c.getColor();
+    }
+
+	public Enums.DiseaseColor getColor()
+    {
+        return color;
+    }
+
+    public City getCity()
+    {
+        return city;
+    }
+
+	public Enums.CardType getType()
+    {
+        return cardType;
+    }
 }
