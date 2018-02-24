@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EventCard : MonoBehaviour {
+    private Enums.EventKind eventKind;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public EventCard(Enums.EventKind kind): base(Enums.CardType.EventCard)
+    {
+        eventKind = kind;
+    }
+
+    public Enums.EventKind getEventKind()
+    {
+        return eventKind;
+    }
 }

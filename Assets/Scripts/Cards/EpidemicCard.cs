@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EpidemicCard : MonoBehaviour {
-    
+public class EpidemicCard : PlayerCard {
+    public EpidemicCard() : base(Enums.CardType.EpidemicCard)
+    {
+    }
 }
