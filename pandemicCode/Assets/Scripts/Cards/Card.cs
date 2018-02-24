@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface card
-{
+public interface Card {
     Enums.CardType getType();
 }
-
