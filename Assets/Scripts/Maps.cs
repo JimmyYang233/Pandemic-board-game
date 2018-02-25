@@ -30,7 +30,7 @@ public class Maps : MonoBehaviour {
 
         
         //TO-DO
-
+// blue
         cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, 
         new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami })));
 
@@ -48,37 +48,60 @@ public class Maps : MonoBehaviour {
 
         cityInformations.Add(Enums.CityName.Washington, new CityInformation(Enums.CityName.Washington, Enums.DiseaseColor.Blue, 
         new List<Enums.CityName>({ Enums.CityName.Montreal, Enums.CityName.Atlanta, Enums.CityName.Miami, Enums.CityName.NewYork })));
-// until here
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, 
-        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami })));
 
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, 
-        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami })));
+        cityInformations.Add(Enums.CityName.London, new CityInformation(Enums.CityName.London, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.NewYork, Enums.CityName.Madrid, Enums.CityName.Paris, Enums.CityName.Essen })));
 
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+        cityInformations.Add(Enums.CityName.Essen, new CityInformation(Enums.CityName.Essen, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.London, Enums.CityName.Paris, Enums.CityName.Milan, Enums.CityName.StPetersburg })));
 
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+        cityInformations.Add(Enums.CityName.Madrid, new CityInformation(Enums.CityName.Madrid, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.London, Enums.CityName.NewYork, Enums.CityName.SaoPaulo, Enums.CityName.Paris, Enums.CityName.Algiers })));
 
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+        cityInformations.Add(Enums.CityName.Paris, new CityInformation(Enums.CityName.Paris, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.London, Enums.CityName.Madrid, Enums.CityName.Algiers, Enums.CityName.Milan, Enums.CityName.Essen })));
 
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+        cityInformations.Add(Enums.CityName.Milan, new CityInformation(Enums.CityName.Milan, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Essen, Enums.CityName.Paris, Enums.CityName.Istanbul })));
 
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+        cityInformations.Add(Enums.CityName.StPetersburg, new CityInformation(Enums.CityName.StPetersburg, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Essen, Enums.CityName.Istanbul, Enums.CityName.Moscow })));
+// black
+        cityInformations.Add(Enums.CityName.Algiers, new CityInformation(Enums.CityName.Algiers, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Paris, Enums.CityName.Madrid, Enums.CityName.Cairo, Enums.CityName.Istanbul })));
 
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+        cityInformations.Add(Enums.CityName.Istanbul, new CityInformation(Enums.CityName.Istanbul, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Istanbul, Enums.CityName.Milan, Enums.CityName.Algiers, Enums.CityName.Cairo, Enums.CityName.Baghdad, Enums.CityName.Moscow })));
 
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+        cityInformations.Add(Enums.CityName.Moscow, new CityInformation(Enums.CityName.Moscow, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.StPetersburg, Enums.CityName.Istanbul, Enums.CityName.Tehran })));
 
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
-        //TO-DO
+        cityInformations.Add(Enums.CityName.Cairo, new CityInformation(Enums.CityName.Cairo, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Istanbul, Enums.CityName.Algiers, Enums.CityName.Khartoum, Enums.CityName.Riyadh, Enums.CityName.Baghdad })));
+
+        cityInformations.Add(Enums.CityName.Baghdad, new CityInformation(Enums.CityName.Baghdad, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Istanbul, Enums.CityName.Cairo, Enums.CityName.Riyadh, Enums.CityName.Karachi, Enums.CityName.Tehran })));
+
+        cityInformations.Add(Enums.CityName.Tehran, new CityInformation(Enums.CityName.Tehran, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Moscow, Enums.CityName.Baghdad, Enums.CityName.Karachi, Enums.CityName.Delhi })));
+
+        cityInformations.Add(Enums.CityName.Riyadh, new CityInformation(Enums.CityName.Riyadh, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Cairo, Enums.CityName.Baghdad, Enums.CityName.Karachi })));
+
+        cityInformations.Add(Enums.CityName.Karachi, new CityInformation(Enums.CityName.Karachi, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Tehran, Enums.CityName.Baghdad, Enums.CityName.Riyadh, Enums.CityName.Mumbai, Enums.CityName.Delhi })));
+
+        cityInformations.Add(Enums.CityName.Delhi, new CityInformation(Enums.CityName.Delhi, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Tehran, Enums.CityName.Karachi, Enums.CityName.Mumbai, Enums.CityName.Chennai, Enums.CityName.Kolkata })));
+
+        cityInformations.Add(Enums.CityName.Mumbai, new CityInformation(Enums.CityName.Mumbai, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Karachi, Enums.CityName.Delhi, Enums.CityName.Chennai })));
+
+        cityInformations.Add(Enums.CityName.Chennai, new CityInformation(Enums.CityName.Chennai, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Mumbai, Enums.CityName.Delhi, Enums.CityName.Kolkata, Enums.CityName.Bangkok, Enums.CityName.Jakarta })));
+
+        cityInformations.Add(Enums.CityName.Kolkata, new CityInformation(Enums.CityName.Kolkata, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Delhi, Enums.CityName.Chennai, Enums.CityName.Bangkok, Enums.CityName.HongKong })));
     }
 
     public static Maps getInstance()
