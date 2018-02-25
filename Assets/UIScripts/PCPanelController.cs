@@ -37,11 +37,11 @@ public class PCPanelController : MonoBehaviour {
         for(int i = 0; i < CardNumber; i++)
         {
             float turnDegree = i * partDegree + initialDegree;
-            turnDegree = (turnDegree / 360) * 2 * Mathf.PI; 
-            float x = Mathf.Sin(turnDegree)*radius;
-            float y = Mathf.Cos(turnDegree)*radius;
-            Debug.Log(x + " " + y);
+            float turnDegreef = (turnDegree / 360) * 2 * Mathf.PI; 
+            float x = Mathf.Sin(turnDegreef)*radius;
+            float y = Mathf.Cos(turnDegreef)*radius;
             this.transform.GetChild(i + 1).transform.position = circleCenter.transform.position + new Vector3(x, y, 0);
+            this.transform.GetChild(i + 1).transform.rotation = Quaternion.Euler(0,0,-turnDegree);
         }
     }
 }
