@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
-	private Enums.Challenge challenge;
+
+
+
+    private Enums.Challenge challenge;
 	private Enums.GamePhase currentPhase;
 	private bool hasDLC;
 	private int infectionRate;
@@ -35,5 +39,31 @@ public class Game : MonoBehaviour {
 		
 	}
 
+
+
+    /// <summary>
+    /// All below values and operations are only used in the client system. 
+    /// </summary>
+    public Button drive;
+    public Button directFlight;
+    public Button shuttleFlight;
+    public Button charterFlight;
+    public Button cancel;
+
+    public void moveButtonClicked()
+    {
+        drive.GetComponent<Button>().interactable = true;
+        directFlight.GetComponent<Button>().interactable = false;
+        shuttleFlight.GetComponent<Button>().interactable = false;
+        charterFlight.GetComponent<Button>().interactable = false;
+        cancel.GetComponent<Button>().interactable = true;
+
+
+    }
+    public City currentCity;
+    public void driveButtonClicked()
+    {
+        currentCity.setButtonActive();
+    }
 
 }

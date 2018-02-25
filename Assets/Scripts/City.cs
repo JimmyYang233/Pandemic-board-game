@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class City : MonoBehaviour {
 
     public Enums.DiseaseColor color;
-    public Enums.CityName cityName;
+    public static Enums.CityName cityName;
     public List<City> neighbors = new List<City>();
     private bool hasResearch = false;
     private List<Disease> diseases = null; //Maybe unnecessary
@@ -128,4 +128,14 @@ public class City : MonoBehaviour {
     {
         hasResearch = b;
     }
+
+    /// <summary>
+    /// All below values and operations are only used in the client system. 
+    /// </summary>
+    public void setButtonActive()
+    {
+        Button theButton = gameObject.GetComponent<Button>();
+        theButton.GetComponent<Button>().interactable = false;
+    }
+    
 }
