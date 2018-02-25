@@ -21,19 +21,55 @@ public class Game : MonoBehaviour {
 	private List<InfectionCard> infectionDiscardPile = new List<InfectionCard>();
 	private List<City> outbreakedCities = new List<City>();
 	private List<City> cities = new List<City>();
+    private List<PlayerCard> playerCardDeck = new List<PlayerCard>();
 
-	private Dictionary<Enums.DiseaseColor, Disease> disease = new Dictionary<Enums.DiseaseColor, Disease> ();
+
+    private Dictionary<Enums.DiseaseColor, Disease> disease = new Dictionary<Enums.DiseaseColor, Disease> ();
 
 	public Game(int numOfPlayer, int nEpidemicCard, List<User> users){
-		players = new List<Player>(numOfPlayer);
+        Maps mapInstance = Maps.getInstance();
+
+        players = new List<Player>(numOfPlayer);
 		numOfEpidemicCard = nEpidemicCard;
 		foreach (User u in users)
 		{
 			players.Add(new Player(u));
 		}
 
+        List<Enums.CityName> cityNames = Maps.getInstance().getCityNames();
+
+        foreach (Enums.CityName name in cityNames)
+        {
+            City c = new City(name);
+            c.setCityColor(mapInstance.getCityColor(name));
+            cities.Add(c);
+            playerCardDeck.Add(new CityCard(c));
+            infectionDeck.Add(new InfectionCard(c));
+        }
+
+        foreach (City c in cities)
+        {
+            List<Enums.CityName> neighborNames = mapInstance.getNeighbors(c.getCityName());
+            foreach (Enums.CityName name in neighborNames)
+            {
+                c.addNeighbor(findCity(name));
+            }
+        }
 		
 	}
+
+    private City findCity(Enums.CityName cityname)
+    {
+        foreach(City c in cities)
+        {
+            if(c.getCityName() == cityname)
+            {
+                return c;
+            }
+        }
+
+        return null;
+    }
 
 
 }
