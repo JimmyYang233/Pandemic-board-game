@@ -60,6 +60,7 @@ public class Maps : MonoBehaviour {
 
     public List<Enums.CityName> getCityNames()
     {
-        return cityInformations.Keys;
+        List<Enums.CityName> tmp = new List<Enums.CityName>(cityInformations.Keys);
+        return tmp;
     }
 }

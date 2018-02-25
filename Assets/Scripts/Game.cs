@@ -96,10 +96,5 @@ public class Game : MonoBehaviour {
 
 
     }
-    public City currentCity;
-    public void driveButtonClicked()
-    {
-        currentCity.setButtonActive();
-    }
 
 }
