@@ -140,7 +140,7 @@ public class City : MonoBehaviour {
     public void setButtonActive()
     {
         Button theButton = gameObject.GetComponent<Button>();
-        theButton.GetComponent<Button>().interactable = true;
+        theButton.interactable = true;
     }
     
 }
