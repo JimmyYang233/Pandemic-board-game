@@ -34,5 +34,5 @@ sysinfo.txt
 *.apk
 
 thumbs.db.meta
-ProjectVersion.txt
 manifest.json
+ProjectSettings/ProjectVersion.txt
