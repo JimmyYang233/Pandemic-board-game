@@ -14,8 +14,6 @@ public class City : MonoBehaviour {
     private List<Pawn> pawns = new List<Pawn>();
     private Dictionary<Enums.DiseaseColor, int> numberOfCubes = new Dictionary<Enums.DiseaseColor, int>();
 
-    public Sprite test;
-
     public City(Enums.CityName name)
     {
         cityName = name;
@@ -32,15 +30,6 @@ public class City : MonoBehaviour {
 
     private void Start()
     {
-        gameObject.AddComponent(typeof(Button));
-        Image i=gameObject.AddComponent(typeof(Image)) as Image;
-        Color c = this.GetComponent<SpriteRenderer>().color;
-        i.sprite = this.GetComponent<SpriteRenderer>().sprite;
-        i.color = c;
-
-        SpriteRenderer r = this.GetComponent<SpriteRenderer>();
-        Destroy(r);
-
 
     }
     public void addNeighbor(City city)
