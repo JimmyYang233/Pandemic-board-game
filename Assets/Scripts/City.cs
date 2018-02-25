@@ -28,6 +28,11 @@ public class City : MonoBehaviour {
     
     }
 
+    public void setCityColor(Enums.DiseaseColor color)
+    {
+        this.color = color;
+    }
+
     private void Start()
     {
 

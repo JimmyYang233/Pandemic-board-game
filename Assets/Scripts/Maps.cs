@@ -57,4 +57,9 @@ public class Maps : MonoBehaviour {
     {
         return cityInformations[cityName].getColor();
     }
+
+    public List<Enums.CityName> getCityNames()
+    {
+        return cityInformations.Keys;
+    }
 }
