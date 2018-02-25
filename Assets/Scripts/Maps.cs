@@ -27,7 +27,55 @@ public class Maps : MonoBehaviour {
 
         //TO-DO
         roleColors.Add(Enums.RoleKind.Scientist, Enums.RoleColor.Gray);
+
+        
         //TO-DO
+
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami })));
+
+        cityInformations.Add(Enums.CityName.SanFrancisco, new CityInformation(Enums.CityName.SanFrancisco, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.LosAngeles, Enums.CityName.Tokyo, Enums.CityName.Manila})));
+
+        cityInformations.Add(Enums.CityName.Chicago, new CityInformation(Enums.CityName.Chicago, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.SanFrancisco, Enums.CityName.LosAngeles, Enums.CityName.MexicoCity, Enums.CityName.Atlanta, Enums.CityName.Montreal })));
+
+        cityInformations.Add(Enums.CityName.Montreal, new CityInformation(Enums.CityName.Montreal, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.NewYork })));
+
+        cityInformations.Add(Enums.CityName.NewYork, new CityInformation(Enums.CityName.NewYork, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Montreal, Enums.CityName.Washington, Enums.CityName.London, Enums.CityName.Madrid })));
+
+        cityInformations.Add(Enums.CityName.Washington, new CityInformation(Enums.CityName.Washington, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Montreal, Enums.CityName.Atlanta, Enums.CityName.Miami, Enums.CityName.NewYork })));
+// until here
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami })));
+
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami })));
+
+        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+
+        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+
+        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+
+        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+
+        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+
+        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+
+        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
+
         Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
         cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
         //TO-DO
