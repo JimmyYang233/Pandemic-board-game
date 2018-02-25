@@ -76,5 +76,12 @@ public class Player : MonoBehaviour {
 	public void setOncePerturnAction(bool toggle){
 		oncePerTurnAction = toggle;
 	}
-
+    public void setRole(Role r)
+    {
+        this.curRole = r;
+    }
+    public Role getRole()
+    {
+        return curRole;
+    }
 }

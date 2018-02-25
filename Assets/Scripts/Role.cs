@@ -32,6 +32,12 @@ public class Role : MonoBehaviour {
         return pawn;
     }
 
+    public void setPawn(Pawn p)
+    {
+        //test
+        this.pawn=p;
+    }
+
     public Enums.RoleKind getRoleKind()
     {
         return rolekind;

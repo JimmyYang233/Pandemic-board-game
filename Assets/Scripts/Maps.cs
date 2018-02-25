@@ -5,10 +5,13 @@ using UnityEngine;
 public class Maps : MonoBehaviour {
 
     private static Maps Instance = new Maps();
+    
     private Dictionary<Enums.RoleKind, string> playerDescriptions = new Dictionary<Enums.RoleKind, string>();
     private Dictionary<Enums.RoleKind, Enums.RoleColor> roleColors = new Dictionary<Enums.RoleKind, Enums.RoleColor>();
     private Dictionary<Enums.CityName, CityInformation> cityInformations = new Dictionary<Enums.CityName, CityInformation>();
-
+    //add event card description by shuran zheng
+    private Dictionary<Enums.EventKind, string> eventCardDescription = new Dictionary<Enums.EventKind, string>();
+    private List<Enums.DiseaseColor> dc =new List<Enums.DiseaseColor>();
     private Maps(){
         playerDescriptions.Add(Enums.RoleKind.ContingencyPlanner, "The Contingency Planner may, as an action, take an Event card from anywhere in the Player Discard Pile and place it on his Role card. Only 1 Event card can be on his role card at a time. It does not count against his hand limit. When the Contingency Planner plays the Event card on his role card, remove this Event card from the game (instead of discarding it).");
         playerDescriptions.Add(Enums.RoleKind.Dispatcher, "The Dispatcher may, as an action, either: 1.move any pawn, if its owner agrees, to any city containing another pawn, or 2. move another player’s pawn, if its owner agrees, as if it were his own.");
@@ -24,11 +27,15 @@ public class Maps : MonoBehaviour {
         playerDescriptions.Add(Enums.RoleKind.Generalist, "The Generalist may do up to 5 actions each turn.");
         playerDescriptions.Add(Enums.RoleKind.Troubleshooter, "The Troubleshooter, at the start of her turn, looks at as many Infection cards as the current infection rate (by taking them from the top of the Infection Deck, looking at them, and putting them back in the same order).");
 
+        //TO-DO
+        dc.Add(Enums.DiseaseColor.Black);
 
         //TO-DO
         roleColors.Add(Enums.RoleKind.Scientist, Enums.RoleColor.Gray);
 
-        
+        //To-DO 
+        eventCardDescription.Add(Enums.EventKind.Airlift, "dksljfjfdlkjfdskjfkl");
+
         //TO-DO
 // blue
         cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, 
@@ -205,5 +212,18 @@ public class Maps : MonoBehaviour {
     {
         List<Enums.CityName> tmp = new List<Enums.CityName>(cityInformations.Keys);
         return tmp;
+    }
+
+    public List<Enums.EventKind> getEventNames()
+    {
+        List<Enums.EventKind> tmp = new List<Enums.EventKind>(eventCardDescription.Keys);
+        return tmp;
+    }
+
+
+    public List<Enums.DiseaseColor> getDiseaseColor()
+    {
+        
+        return dc;
     }
 }
