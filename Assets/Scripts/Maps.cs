@@ -27,10 +27,153 @@ public class Maps : MonoBehaviour {
 
         //TO-DO
         roleColors.Add(Enums.RoleKind.Scientist, Enums.RoleColor.Gray);
+
+        
         //TO-DO
-        Enums.CityName[] neighbors = { Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami };
-        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, new List<Enums.CityName>(neighbors)));
-        //TO-DO
+// blue
+        cityInformations.Add(Enums.CityName.Atlanta, new CityInformation(Enums.CityName.Atlanta, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.Miami })));
+
+        cityInformations.Add(Enums.CityName.SanFrancisco, new CityInformation(Enums.CityName.SanFrancisco, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.LosAngeles, Enums.CityName.Tokyo, Enums.CityName.Manila})));
+
+        cityInformations.Add(Enums.CityName.Chicago, new CityInformation(Enums.CityName.Chicago, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.SanFrancisco, Enums.CityName.LosAngeles, Enums.CityName.MexicoCity, Enums.CityName.Atlanta, Enums.CityName.Montreal })));
+
+        cityInformations.Add(Enums.CityName.Montreal, new CityInformation(Enums.CityName.Montreal, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.Washington, Enums.CityName.NewYork })));
+
+        cityInformations.Add(Enums.CityName.NewYork, new CityInformation(Enums.CityName.NewYork, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Montreal, Enums.CityName.Washington, Enums.CityName.London, Enums.CityName.Madrid })));
+
+        cityInformations.Add(Enums.CityName.Washington, new CityInformation(Enums.CityName.Washington, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Montreal, Enums.CityName.Atlanta, Enums.CityName.Miami, Enums.CityName.NewYork })));
+
+        cityInformations.Add(Enums.CityName.London, new CityInformation(Enums.CityName.London, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.NewYork, Enums.CityName.Madrid, Enums.CityName.Paris, Enums.CityName.Essen })));
+
+        cityInformations.Add(Enums.CityName.Essen, new CityInformation(Enums.CityName.Essen, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.London, Enums.CityName.Paris, Enums.CityName.Milan, Enums.CityName.StPetersburg })));
+
+        cityInformations.Add(Enums.CityName.Madrid, new CityInformation(Enums.CityName.Madrid, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.London, Enums.CityName.NewYork, Enums.CityName.SaoPaulo, Enums.CityName.Paris, Enums.CityName.Algiers })));
+
+        cityInformations.Add(Enums.CityName.Paris, new CityInformation(Enums.CityName.Paris, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.London, Enums.CityName.Madrid, Enums.CityName.Algiers, Enums.CityName.Milan, Enums.CityName.Essen })));
+
+        cityInformations.Add(Enums.CityName.Milan, new CityInformation(Enums.CityName.Milan, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Essen, Enums.CityName.Paris, Enums.CityName.Istanbul })));
+
+        cityInformations.Add(Enums.CityName.StPetersburg, new CityInformation(Enums.CityName.StPetersburg, Enums.DiseaseColor.Blue, 
+        new List<Enums.CityName>({ Enums.CityName.Essen, Enums.CityName.Istanbul, Enums.CityName.Moscow })));
+// black
+        cityInformations.Add(Enums.CityName.Algiers, new CityInformation(Enums.CityName.Algiers, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Paris, Enums.CityName.Madrid, Enums.CityName.Cairo, Enums.CityName.Istanbul })));
+
+        cityInformations.Add(Enums.CityName.Istanbul, new CityInformation(Enums.CityName.Istanbul, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Istanbul, Enums.CityName.Milan, Enums.CityName.Algiers, Enums.CityName.Cairo, Enums.CityName.Baghdad, Enums.CityName.Moscow })));
+
+        cityInformations.Add(Enums.CityName.Moscow, new CityInformation(Enums.CityName.Moscow, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.StPetersburg, Enums.CityName.Istanbul, Enums.CityName.Tehran })));
+
+        cityInformations.Add(Enums.CityName.Cairo, new CityInformation(Enums.CityName.Cairo, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Istanbul, Enums.CityName.Algiers, Enums.CityName.Khartoum, Enums.CityName.Riyadh, Enums.CityName.Baghdad })));
+
+        cityInformations.Add(Enums.CityName.Baghdad, new CityInformation(Enums.CityName.Baghdad, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Istanbul, Enums.CityName.Cairo, Enums.CityName.Riyadh, Enums.CityName.Karachi, Enums.CityName.Tehran })));
+
+        cityInformations.Add(Enums.CityName.Tehran, new CityInformation(Enums.CityName.Tehran, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Moscow, Enums.CityName.Baghdad, Enums.CityName.Karachi, Enums.CityName.Delhi })));
+
+        cityInformations.Add(Enums.CityName.Riyadh, new CityInformation(Enums.CityName.Riyadh, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Cairo, Enums.CityName.Baghdad, Enums.CityName.Karachi })));
+
+        cityInformations.Add(Enums.CityName.Karachi, new CityInformation(Enums.CityName.Karachi, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Tehran, Enums.CityName.Baghdad, Enums.CityName.Riyadh, Enums.CityName.Mumbai, Enums.CityName.Delhi })));
+
+        cityInformations.Add(Enums.CityName.Delhi, new CityInformation(Enums.CityName.Delhi, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Tehran, Enums.CityName.Karachi, Enums.CityName.Mumbai, Enums.CityName.Chennai, Enums.CityName.Kolkata })));
+
+        cityInformations.Add(Enums.CityName.Mumbai, new CityInformation(Enums.CityName.Mumbai, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Karachi, Enums.CityName.Delhi, Enums.CityName.Chennai })));
+
+        cityInformations.Add(Enums.CityName.Chennai, new CityInformation(Enums.CityName.Chennai, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Mumbai, Enums.CityName.Delhi, Enums.CityName.Kolkata, Enums.CityName.Bangkok, Enums.CityName.Jakarta })));
+
+        cityInformations.Add(Enums.CityName.Kolkata, new CityInformation(Enums.CityName.Kolkata, Enums.DiseaseColor.Black, 
+        new List<Enums.CityName>({ Enums.CityName.Delhi, Enums.CityName.Chennai, Enums.CityName.Bangkok, Enums.CityName.HongKong })));
+// red
+        cityInformations.Add(Enums.CityName.Beijing, new CityInformation(Enums.CityName.Beijing, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Shanghai, Enums.CityName.Seoul })));
+
+        cityInformations.Add(Enums.CityName.Seoul, new CityInformation(Enums.CityName.Seoul, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Beijing, Enums.CityName.Shanghai, Enums.CityName.Tokyo })));
+
+        cityInformations.Add(Enums.CityName.Shanghai, new CityInformation(Enums.CityName.Shanghai, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Beijing, Enums.CityName.HongKong, Enums.CityName.Taipei, Enums.CityName.Tokyo, Enums.CityName.Seoul })));
+
+        cityInformations.Add(Enums.CityName.Tokyo, new CityInformation(Enums.CityName.Tokyo, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Seoul, Enums.CityName.Shanghai, Enums.CityName.Dsaka, Enums.CityName.SanFrancisco })));
+
+        cityInformations.Add(Enums.CityName.Dsaka, new CityInformation(Enums.CityName.Dsaka, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Tokyo, Enums.CityName.Taipei })));
+
+        cityInformations.Add(Enums.CityName.Taipei, new CityInformation(Enums.CityName.Taipei, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Shanghai, Enums.CityName.HongKong, Enums.CityName.Manila, Enums.CityName.Dsaka })));
+
+        cityInformations.Add(Enums.CityName.HongKong, new CityInformation(Enums.CityName.HongKong, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Shanghai, Enums.CityName.Kolkata, Enums.CityName.Bangkok, Enums.CityName.HoChiMinhCity, Enums.CityName.Manila, Enums.CityName.Taipei })));
+
+        cityInformations.Add(Enums.CityName.Bangkok, new CityInformation(Enums.CityName.Bangkok, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Kolkata, Enums.CityName.Chennai, Enums.CityName.Jakarta, Enums.CityName.HoChiMinhCity, Enums.CityName.HongKong })));
+
+        cityInformations.Add(Enums.CityName.Jakarta, new CityInformation(Enums.CityName.Jakarta, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Chennai, Enums.CityName.Bangkok, Enums.CityName.HoChiMinhCity, Enums.CityName.Sydney })));
+
+        cityInformations.Add(Enums.CityName.HoChiMinhCity, new CityInformation(Enums.CityName.HoChiMinhCity, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Bangkok, Enums.CityName.Jakarta, Enums.CityName.Manila, Enums.CityName.HongKong })));
+
+        cityInformations.Add(Enums.CityName.Manila, new CityInformation(Enums.CityName.Manila, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Taipei, Enums.CityName.HongKong, Enums.CityName.HoChiMinhCity, Enums.CityName.Sydney, Enums.CityName.SanFrancisco })));
+
+        cityInformations.Add(Enums.CityName.Sydney, new CityInformation(Enums.CityName.Sydney, Enums.DiseaseColor.Red, 
+        new List<Enums.CityName>({ Enums.CityName.Jakarta, Enums.CityName.Manila, Enums.CityName.LosAngeles })));
+    // yellow
+        cityInformations.Add(Enums.CityName.LosAngeles, new CityInformation(Enums.CityName.LosAngeles, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.SanFrancisco, Enums.CityName.Sydney, Enums.CityName.MexicoCity, Enums.CityName.Chicago })));
+
+        cityInformations.Add(Enums.CityName.MexicoCity, new CityInformation(Enums.CityName.MexicoCity, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.Chicago, Enums.CityName.LosAngeles, Enums.CityName.Lima, Enums.CityName.Bogota })));
+
+        cityInformations.Add(Enums.CityName.Miami, new CityInformation(Enums.CityName.Miami, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.Atlanta, Enums.CityName.MexicoCity, Enums.CityName.Bogota, Enums.CityName.Washington })));
+
+        cityInformations.Add(Enums.CityName.Bogota, new CityInformation(Enums.CityName.Bogota, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.MexicoCity, Enums.CityName.Miami, Enums.CityName.Lima, Enums.CityName.SaoPaulo, Enums.CityName.BuenosAries })));
+
+        cityInformations.Add(Enums.CityName.Lima, new CityInformation(Enums.CityName.Lima, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.MexicoCity, Enums.CityName.Santiago, Enums.CityName.Bogota })));
+
+        cityInformations.Add(Enums.CityName.Santiago, new CityInformation(Enums.CityName.Santiago, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.Lima })));
+
+        cityInformations.Add(Enums.CityName.SaoPaulo, new CityInformation(Enums.CityName.SaoPaulo, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.Bogota, Enums.CityName.BuenosAries, Enums.CityName.Lagos, Enums.CityName.Madrid })));
+
+        cityInformations.Add(Enums.CityName.BuenosAries, new CityInformation(Enums.CityName.BuenosAries, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.Bogota, Enums.CityName.SaoPaulo })));
+
+        cityInformations.Add(Enums.CityName.Lagos, new CityInformation(Enums.CityName.Lagos, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.SaoPaulo, Enums.CityName.Kinshasa, Enums.CityName.Khartoum })));
+
+        cityInformations.Add(Enums.CityName.Khartoum, new CityInformation(Enums.CityName.Khartoum, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.Lagos, Enums.CityName.Kinshasa, Enums.CityName.Johannesburg, Enums.CityName.Cairo })));
+
+        cityInformations.Add(Enums.CityName.Kinshasa, new CityInformation(Enums.CityName.Kinshasa, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.Lagos, Enums.CityName.Khartoum, Enums.CityName.Johannesburg })));
+
+        cityInformations.Add(Enums.CityName.Johannesburg, new CityInformation(Enums.CityName.Johannesburg, Enums.DiseaseColor.Yellow, 
+        new List<Enums.CityName>({ Enums.CityName.Kinshasa, Enums.CityName.Khartoum })));
     }
 
     public static Maps getInstance()
