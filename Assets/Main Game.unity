@@ -555,7 +555,7 @@ MonoBehaviour:
   shuttleFlight: {fileID: 597376514}
   charterFlight: {fileID: 914999443}
   cancel: {fileID: 708000213}
-  currentCity: {fileID: 1024837862}
+  tmpCity: {fileID: 1024837862}
 --- !u!224 &73084185
 RectTransform:
   m_ObjectHideFlags: 0
