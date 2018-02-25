@@ -5,11 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 	private int maximumAction;
 	private int remainingAction;
-	private boolean oncePerTurnAction;
+	private bool oncePerTurnAction;
 	private Role curRole;
 	private List<PlayerCard> handCard = new List<PlayerCard>();
 
-	public Player(User: user)
+	public Player(User user)
 	{
 		curRole = user.getRole();
 		if(compareRole(Enums.RoleKind.Generalist)){
@@ -32,12 +32,12 @@ public class Player : MonoBehaviour {
 		
 	// }
 
-	private boolean compareRole(Enums.RoleKind role){
-		return curRole == role;
+	private bool compareRole(Enums.RoleKind role){
+        return curRole.getRoleKind() == role;
 	}
 
 	public int getHandLimit(){
-		if(curRole == Enums.RoleKind.Archivist){
+		if(curRole.getRoleKind() == Enums.RoleKind.Archivist){
 			return 8;
 		}
 		else{
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	public int getHandCardNumber(){
-		return handCard.size();
+		return handCard.Count;
 	}
 
 	public Pawn getPlayerPawn(){
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void addCard(PlayerCard card){
-		handCard.add(card);
+		handCard.Add(card);
 	}
 
 	public void decreaseRemainingAction(){
@@ -66,14 +66,14 @@ public class Player : MonoBehaviour {
 	}
 
 	public void removeCard(PlayerCard card){
-		handCard.remove(card);
+		handCard.Remove(card);
 	}
 
 	public void removeOneAction(){
 		oncePerTurnAction = false;
 	}
 
-	public void setOncePerturnAction(boolean toggle){
+	public void setOncePerturnAction(bool toggle){
 		oncePerTurnAction = toggle;
 	}
 

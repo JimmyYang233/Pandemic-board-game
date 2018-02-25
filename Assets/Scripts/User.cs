@@ -5,7 +5,7 @@ using UnityEngine;
 public class User : MonoBehaviour {
 	private string username;
 	private string password;
-	private Enums.RoleStatus status;
+	private Enums.PlayerStatus status;
 	private string profile;
 	private Role curRole;
 
@@ -14,7 +14,7 @@ public class User : MonoBehaviour {
 		password = pw;
 	}
 
-	public setRole(Role role){
+	public void setRole(Role role){
 		curRole = role;
 	}
 
