@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+// PlayerScript requires the GameObject to have a Rigidbody component
 public class City : MonoBehaviour {
 
     public Enums.DiseaseColor color;
-    public Enums.CityName cityName;
+    public static Enums.CityName cityName;
     public List<City> neighbors = new List<City>();
     private bool hasResearch = false;
     private List<Disease> diseases = null; //Maybe unnecessary
@@ -21,8 +23,20 @@ public class City : MonoBehaviour {
         numberOfCubes.Add(Enums.DiseaseColor.Purple, 0);
         numberOfCubes.Add(Enums.DiseaseColor.Yellow, 0);
         numberOfCubes.Add(Enums.DiseaseColor.Red, 0);
+
+        //UI only
+    
     }
 
+    public void setCityColor(Enums.DiseaseColor color)
+    {
+        this.color = color;
+    }
+
+    private void Start()
+    {
+
+    }
     public void addNeighbor(City city)
     {
         neighbors.Add(city);
@@ -119,4 +133,14 @@ public class City : MonoBehaviour {
     {
         hasResearch = b;
     }
+
+    /// <summary>
+    /// All below values and operations are only used in the client system. 
+    /// </summary>
+    public void setButtonActive()
+    {
+        Button theButton = gameObject.GetComponent<Button>();
+        theButton.GetComponent<Button>().interactable = false;
+    }
+    
 }

@@ -8,8 +8,9 @@ public class InfectionCard : Card
 	private City city;
     private Enums.DiseaseColor color;
 
-	public InfectionCard(City c): base(Enums.CardType.InfectionCard)
+	public InfectionCard(City c)
     {
+        cardType = Enums.CardType.InfectionCard;
         city = c;
         color = c.getColor();
     }

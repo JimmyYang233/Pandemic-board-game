@@ -64,4 +64,5 @@ Washington
     };	//done
     public enum Challenge { Nochallenge, Mutation, BioTerroist,VirulentStrain};	//done
     public enum CardType {CityCard, EpidemicCard, EventCard, InfectionCard };	//done
+	public enum PlayerStatus {Offline, Available, Ready, InGame};				//done
 }

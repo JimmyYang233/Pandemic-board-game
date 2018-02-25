@@ -41,4 +41,13 @@ public class Role : MonoBehaviour {
     {
         return description;
     }
+
+    public bool equal(Role role)
+    {
+        if (this.getRoleKind() == role.getRoleKind())
+        {
+            return true;
+        }
+        return false;
+    }
 }

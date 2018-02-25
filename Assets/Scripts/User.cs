@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class User : MonoBehaviour {
+	private string username;
+	private string password;
+	private Enums.PlayerStatus status;
+	private string profile;
+	private Role curRole;
 
-	// Use this for initialization
-	void Start () {
-		
+	public User(string name, string pw){
+		username = name;
+		password = pw;
+	}
+
+	public void setRole(Role role){
+		curRole = role;
+	}
+
+	public Role getRole(){
+		return curRole;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -18,7 +18,7 @@ public class Maps : MonoBehaviour {
         playerDescriptions.Add(Enums.RoleKind.Researcher, "When doing the Share Knowledge action, the Researcher may give any City card from her hand to another player in the same city as her, without this card having to match her city. The transfer must be from her hand to the other player’s hand, but it can occur on either player’s turn.");
         playerDescriptions.Add(Enums.RoleKind.Scientist, "The Scientist needs only 4 (not 5) City cards of the same disease color to Discover a Cure for that disease.");
         playerDescriptions.Add(Enums.RoleKind.Archivist, "The Archivist’s hand limit is 8 cards. He may, once per turn, as an action, draw the City card that matches the city he is in from the Player Discard Pile into his hand.");
-        playerDescriptions.Add(Enums.RoleKind.ContenmentSpecialist, "When the Containment Specialist enters a city, if 2 or more disease cubes of the same color are present, he removes 1 of them.");
+        playerDescriptions.Add(Enums.RoleKind.ContainmentSpecialist, "When the Containment Specialist enters a city, if 2 or more disease cubes of the same color are present, he removes 1 of them.");
         playerDescriptions.Add(Enums.RoleKind.Epidemiologist, "The Epidemiologist, once per turn and on her turn (only), may take any City card from a player in the same city. The other player must agree. Doing this is not an action.");
         playerDescriptions.Add(Enums.RoleKind.FieldOperative, "The Field Operative may, once per turn as an action, move 1 disease cube from the city he is in and place it as a sample on his role card. When he Discovers a Cure, he may replace exactly 2 of the needed City cards by returning 3 cubes of the cure color from his Role card to the supply.");
         playerDescriptions.Add(Enums.RoleKind.Generalist, "The Generalist may do up to 5 actions each turn.");
@@ -199,5 +199,10 @@ public class Maps : MonoBehaviour {
     public Enums.DiseaseColor getCityColor(Enums.CityName cityName)
     {
         return cityInformations[cityName].getColor();
+    }
+
+    public List<Enums.CityName> getCityNames()
+    {
+        return cityInformations.Keys;
     }
 }
