@@ -101,6 +101,8 @@ public class City : MonoBehaviour {
         return copy;
     }
 
+	//note: we have removed cubes when adding cubes, don't remvoe twice!
+	//to be discussed 
     public void addCubes(Disease disease, int num)
     {
         Enums.DiseaseColor pColor = disease.getColor();
