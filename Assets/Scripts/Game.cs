@@ -15,7 +15,6 @@ public class Game : MonoBehaviour {
     private int researchStationRemain;
     private bool resolvingEpidemic;
     private int numOfEpidemicCard;
-
     private Player currentPlayer;
     private List<Player> players;
     private List<InfectionCard> infectionDeck = new List<InfectionCard>();
@@ -190,11 +189,34 @@ public class Game : MonoBehaviour {
 			return;
 		}
 
-
-
+		//Question: what if the cards exceed the player's hand limit?
 
 	}
 
+	/*
+		infect specified city with specified disease
+		@city the city to be infected
+		@color the color of the specified diesase
+		@number the number of cubes to be put in this city
+	*/
+	private void infect(City city, Enums.DiseaseColor color,int number ){
+		Disease disease = diseases [color];
+		bool hasMedic = city.contains (Enums.RoleKind.Medic);
+		bool hasQS = city.contains(Enums.RoleKind.QuarantineSpecialist);
+		bool isEradicated = disease.isEradicated ();
+
+		List<City> neighbors = city.getNeighbors ();
+		foreach (City neighbor in neighbors) {
+			if ( neighbor.contains(Enums.RoleKind.QuarantineSpecialist) ){
+				hasQS = true;
+				break;
+			}
+		}
+
+		if (!hasQS && !hasMedic && !isEradicated) {
+			
+		}
+	}
 	/*
 		draw two cards from the top of the player card deck
 	*/
@@ -220,5 +242,10 @@ public class Game : MonoBehaviour {
 
 	// to do: inform the player that they win the game
 	private void notifyGameWin(){
+	}
+
+	//to do: inform the player that 
+	private void notifyExceedLimit(){
+		
 	}
 }
