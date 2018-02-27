@@ -168,4 +168,57 @@ public class Game : MonoBehaviour {
 
     }
 
+	//since i am familiar with end turn method I am going to do this first, might be buggy --zhening
+
+	/*
+		endTurn
+	*/
+	public void endTurn(){	
+		if (currentPhase != Enums.GamePhase.PlayerTakeTurn)
+			return;
+		currentPhase = Enums.GamePhase.Completed;
+
+		currentPlayer.refillAction ();
+		currentPlayer.setOncePerturnAction (false);
+
+		int playerCardDeckSize = playerCardDeck.Count;
+
+		//if there is no enough player cards in the deck, players lose the game
+		if (playerCardDeckSize < 2) {
+			currentPhase = Enums.GamePhase.Completed;
+			notifyGameLost();
+			return;
+		}
+
+
+
+
+	}
+
+	/*
+		draw two cards from the top of the player card deck
+	*/
+	private List<PlayerCard> draw(){
+		if (playerCardDeck.Count < 2) {
+			Debug.Log ("there is no enough cards in the deck");
+			return null;
+		}
+
+		List<PlayerCard> cards = new List<PlayerCard>();
+		for (int i = 0; i < 1; i++) {
+			cards.Add(playerCardDeck [0]);
+			playerCardDeck.RemoveAt [0];
+		}
+
+		return cards;	
+	}
+	//my part ends here
+
+	// to do: inform the player that they lose the game
+	private void notifyGameLost(){
+	}
+
+	// to do: inform the player that they win the game
+	private void notifyGameWin(){
+	}
 }
