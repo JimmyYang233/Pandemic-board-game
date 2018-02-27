@@ -15,6 +15,7 @@ public class Game : MonoBehaviour {
     private int researchStationRemain;
     private bool resolvingEpidemic;
     private int numOfEpidemicCard;
+	private readonly int maxOutbreaksValue = 8;
     private Player currentPlayer;
     private List<Player> players;
     private List<InfectionCard> infectionDeck = new List<InfectionCard>();
@@ -184,8 +185,8 @@ public class Game : MonoBehaviour {
 
 		//if there is no enough player cards in the deck, players lose the game
 		if (playerCardDeckSize < 2) {
-			currentPhase = Enums.GamePhase.Completed;
 			notifyGameLost();
+			//setGamePhase (Enums.GamePhase.Completed);
 			return;
 		}
 
@@ -213,8 +214,39 @@ public class Game : MonoBehaviour {
 			}
 		}
 
-		if (!hasQS && !hasMedic && !isEradicated) {
-			
+		if ( hasQS || hasMedic || isEradicated ) return;
+
+		outbreakedCities.Add (city);
+		int cubeNumber = city.getCubeNumber (color);
+		int remainingCubes = disease.getNumOfDiseaseCubeLeft;
+		//if not exceeding 3 cubes, put cubes to that city
+		if (cubeNumber + remainingCubes <= 3) {
+			//check if there is enough cubes left 
+			if (remainingCubes - number < 0) {
+				notifyGameLost ();
+				//setGamePhase (Enums.GamePhase.Completed);
+				return;
+			}
+			city.addCubes (disease, number);
+			//disease.removeCubes (number);
+		}
+		//else there will be an outbreak
+		else {
+			outbreaksValue ++;
+			if (outbreaksValue == maxOutbreaksValue) {
+				notifyGameLost ();
+				//setGamePhase (Enums.GamePhase.Completed);
+				return;
+			}
+
+			if (remainingCubes - (3 - cubeNumber) < 0) {
+				notifyGameLost ();
+				//setGamePhase (Enums.GamePhase.Completed);
+				return;
+			}
+
+			city.addCubes (disease, 3 - cubeNumber);
+			//stoped here, please see issue #3
 		}
 	}
 	/*
@@ -234,17 +266,23 @@ public class Game : MonoBehaviour {
 
 		return cards;	
 	}
+
+	private void setGamePhase(Enums.GamePhase gamePhase){
+		currentPhase = gamePhase;
+	}
+
 	//my part ends here
 
 	// to do: inform the player that they lose the game
 	private void notifyGameLost(){
+		setGamePhase (Enums.GamePhase.Completed);
 	}
 
 	// to do: inform the player that they win the game
 	private void notifyGameWin(){
 	}
 
-	//to do: inform the player that 
+	//to do: inform the player that handcards exceed the limit
 	private void notifyExceedLimit(){
 		
 	}
