@@ -11,6 +11,7 @@ public class City : MonoBehaviour {
     public List<City> neighbors = new List<City>();
     private bool hasResearch = false;
     private List<Disease> diseases = null; //Maybe unnecessary
+	private List<Enums.DiseaseColor> colors = new List<Enums.DiseaseColor>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future
     private List<Pawn> pawns = new List<Pawn>();
     private Dictionary<Enums.DiseaseColor, int> numberOfCubes = new Dictionary<Enums.DiseaseColor, int>();
 
@@ -74,6 +75,10 @@ public class City : MonoBehaviour {
         return numberOfCubes[disease.getColor()];
     }
 
+	public int getCubeNumber(Enums.DiseaseColor color)
+	{
+		return numberOfCubes [color];
+	}
     public List<Color> getColors()
     {
         return null; //TO-DO
