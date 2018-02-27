@@ -246,7 +246,7 @@ public class Game : MonoBehaviour {
 			}
 
 			city.addCubes (disease, 3 - cubeNumber);
-			//stoped here, please see issue #3
+			//stoped here, please see issue #4
 		}
 	}
 	/*
