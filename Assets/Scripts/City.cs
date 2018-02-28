@@ -108,7 +108,6 @@ public class City : MonoBehaviour {
         Enums.DiseaseColor pColor = disease.getColor();
         int current = numberOfCubes[pColor];
         numberOfCubes.Add(pColor, num+current);
-        disease.removeCubes(num);
     }
 
     public void addPawn(Pawn p)
@@ -127,7 +126,6 @@ public class City : MonoBehaviour {
         Enums.DiseaseColor pColor = disease.getColor();
         int current = numberOfCubes[pColor];
         numberOfCubes.Add(pColor, current - num);
-        disease.addCubes(num);
     }
 
     public void removePawn(Pawn p)
