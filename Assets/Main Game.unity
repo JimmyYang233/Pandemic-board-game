@@ -3971,6 +3971,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114005403042353354, guid: 44a61c41d6c8abd45b494bf6de81db98,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224396975287213056, guid: 44a61c41d6c8abd45b494bf6de81db98,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -5382,6 +5387,36 @@ Prefab:
       propertyPath: cityName
       value: 47
       objectReference: {fileID: 0}
+    - target: {fileID: 114005403042353354, guid: 44a61c41d6c8abd45b494bf6de81db98,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005403042353354, guid: 44a61c41d6c8abd45b494bf6de81db98,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005403042353354, guid: 44a61c41d6c8abd45b494bf6de81db98,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 73084184}
+    - target: {fileID: 114005403042353354, guid: 44a61c41d6c8abd45b494bf6de81db98,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: testMovePawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005403042353354, guid: 44a61c41d6c8abd45b494bf6de81db98,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: City, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005403042353354, guid: 44a61c41d6c8abd45b494bf6de81db98,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 635151403}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44a61c41d6c8abd45b494bf6de81db98, type: 2}
   m_IsPrefabParent: 0
