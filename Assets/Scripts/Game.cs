@@ -285,6 +285,22 @@ public class Game : MonoBehaviour {
 
     }
 
+    public void move(Player player, City finalCity)
+    {
+        Pawn pawn = player.getPlayerPawn();
+        City initialCity = pawn.getCity();
+        initialCity.removePawn(pawn);
+        finalCity.addPawn(pawn);
+        pawn.setCity(finalCity);
+
+        //This part are only for the GUI, when Server side use this code, don't forget to remove this
+
+        Vector3 position = finalCity.transform.position;
+        position.y = position.y + 10;
+        pawn.transform.position = position;
+    }
+
+
     /// <summary>
     /// All below values and operations are only used in the client system. 
     /// </summary>
@@ -305,6 +321,24 @@ public class Game : MonoBehaviour {
 
     }
 
+    public City currentCity;
 
-	
+    public void driveButtonClicked()
+    {
+        foreach(City neighbor in currentCity.getNeighbors())
+        {
+            neighbor.setButtonActive();
+        }
+    }
+
+    public Pawn testPawn; 
+
+    public void testMovePawn(City destinationCity)
+    {
+        Vector3 position = destinationCity.transform.position;
+        position.y = position.y + 10; 
+        testPawn.transform.position = position;
+    }
+
+    
 }
