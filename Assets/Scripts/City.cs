@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class City : MonoBehaviour {
 
     public Color color;
-    public static CityName cityName;
+    public CityName cityName;
     public List<City> neighbors = new List<City>();
     private bool hasResearch = false;
     private List<Disease> diseases = null; //Maybe unnecessary
