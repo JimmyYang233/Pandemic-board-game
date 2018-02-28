@@ -148,7 +148,11 @@ public class Game : MonoBehaviour {
           }
       }
       */
+    //since i am familiar with end turn method I am going to do this first, might be buggy --zhening
 
+    /*
+		endTurn
+	*/
 
     public void endTurn()
     {
@@ -301,10 +305,6 @@ public class Game : MonoBehaviour {
 
     }
 
-	//since i am familiar with end turn method I am going to do this first, might be buggy --zhening
 
-	/*
-		endTurn
-	*/
 	
 }
