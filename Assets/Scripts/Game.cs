@@ -216,7 +216,7 @@ public class Game : MonoBehaviour {
                 return;
             }
             city.addCubes(disease, number);
-            //disease.removeCubes (number);
+            disease.removeCubes (number);
         }
         //else there will be an outbreak
         else
@@ -237,7 +237,15 @@ public class Game : MonoBehaviour {
             }
 
             city.addCubes(disease, 3 - cubeNumber);
-            //stoped here, please see issue #4
+			disease.removeCubes ( 3 - cubeNumber);
+
+			foreach (City neighbor in neighbors) {
+				if (outbreakedCities.Contains (neighbor))
+					continue;
+				infect (neighbor, disease, 1);
+			}
+
+			return;
         }
     }
     /*
