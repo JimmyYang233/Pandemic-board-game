@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
-    private Enums.Challenge challenge;
-    private Enums.GamePhase currentPhase;
+    private Challenge challenge;
+    private GamePhase currentPhase;
     private bool hasDLC;
     private int infectionRate;
     private int[] infectionArray;
@@ -23,7 +23,7 @@ public class Game : MonoBehaviour {
     private List<City> outbreakedCities = new List<City>();
     private List<City> cities = new List<City>();
     private List<PlayerCard> playerCardDeck = new List<PlayerCard>();
-    private Dictionary<Enums.DiseaseColor, Disease> diseases = new Dictionary<Enums.DiseaseColor, Disease>();
+    private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
 
 
     public Game(int numOfPlayer, int nEpidemicCard, List<User> users) {
@@ -36,9 +36,9 @@ public class Game : MonoBehaviour {
             players.Add(new Player(u));
         }
 
-        List<Enums.CityName> cityNames = Maps.getInstance().getCityNames();
+        List<CityName> cityNames = Maps.getInstance().getCityNames();
 
-        foreach (Enums.CityName name in cityNames)
+        foreach (CityName name in cityNames)
         {
             City c = new City(name);
             c.setCityColor(mapInstance.getCityColor(name));
@@ -49,15 +49,15 @@ public class Game : MonoBehaviour {
 
         foreach (City c in cities)
         {
-            List<Enums.CityName> neighborNames = mapInstance.getNeighbors(c.getCityName());
-            foreach (Enums.CityName name in neighborNames)
+            List<CityName> neighborNames = mapInstance.getNeighbors(c.getCityName());
+            foreach (CityName name in neighborNames)
             {
                 c.addNeighbor(findCity(name));
             }
         }
 
-        List<Enums.EventKind> eventKinds = mapInstance.getEventNames();
-        foreach (Enums.EventKind k in eventKinds)
+        List<EventKind> eventKinds = mapInstance.getEventNames();
+        foreach (EventKind k in eventKinds)
         {
             playerCardDeck.Add(new EventCard(k));
         }
@@ -66,14 +66,14 @@ public class Game : MonoBehaviour {
 
         foreach(Player p in players)
         {
-            Enums.RoleKind rk = selectRole();
+            RoleKind rk = selectRole();
             Role r = new Role(rk);
             p.setRole(r);
             Pawn pawn = new Pawn(rk);
             r.setPawn(pawn);
         }
-        List<Enums.DiseaseColor> dc = mapInstance.getDiseaseColor();
-        foreach (Enums.DiseaseColor c in dc)
+        List<Color> dc = mapInstance.getDiseaseColor();
+        foreach (Color c in dc)
         {
             Disease d = new Disease(c);
             diseases.Add(c, d);
@@ -83,14 +83,14 @@ public class Game : MonoBehaviour {
         setUp();
     }
     //TO-DO here
-    public Enums.RoleKind selectRole()
+    public RoleKind selectRole()
     {
-        return Enums.RoleKind.Archivist;
+        return RoleKind.Archivist;
     }
 
     private void setUp()
     {
-        City Atlanta = findCity(Enums.CityName.Atlanta);
+        City Atlanta = findCity(CityName.Atlanta);
         Atlanta.setHasResearch(true);
         foreach(Player p in players)
         {
@@ -109,7 +109,7 @@ public class Game : MonoBehaviour {
 
         }
     }
-    private City findCity(Enums.CityName cityname)
+    private City findCity(CityName cityname)
     {
         foreach (City c in cities)
         {
@@ -135,19 +135,152 @@ public class Game : MonoBehaviour {
 
     }*/
     //need correction, may be errors
-  /*  public void Shuffle<T>(this IList<T> ts)
+    /*  public void Shuffle<T>(this IList<T> ts)
+      {
+          var count = ts.Count;
+          var last = count - 1;
+          for (var i = 0; i < last; ++i)
+          {
+              var r = UnityEngine.Random.Range(i, count);
+              var tmp = ts[i];
+              ts[i] = ts[r];
+              ts[r] = tmp;
+          }
+      }
+      */
+
+
+    public void endTurn()
     {
-        var count = ts.Count;
-        var last = count - 1;
-        for (var i = 0; i < last; ++i)
+        if (currentPhase != GamePhase.PlayerTakeTurn)
+            return;
+        currentPhase = GamePhase.Completed;
+
+        currentPlayer.refillAction();
+        currentPlayer.setOncePerturnAction(false);
+
+        int playerCardDeckSize = playerCardDeck.Count;
+
+        //if there is no enough player cards in the deck, players lose the game
+        if (playerCardDeckSize < 2)
         {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = ts[i];
-            ts[i] = ts[r];
-            ts[r] = tmp;
+            notifyGameLost();
+            //setGamePhase (GamePhase.Completed);
+            return;
+        }
+
+        //Question: what if the cards exceed the player's hand limit?
+
+    }
+
+    /*
+		infect specified city with specified disease
+		@city the city to be infected
+		@color the color of the specified diesase
+		@number the number of cubes to be put in this city
+	*/
+    private void infect(City city, Color color, int number)
+    {
+        Disease disease = diseases[color];
+        bool hasMedic = city.contains(RoleKind.Medic);
+        bool hasQS = city.contains(RoleKind.QuarantineSpecialist);
+        bool isEradicated = disease.isEradicated();
+
+        List<City> neighbors = city.getNeighbors();
+        foreach (City neighbor in neighbors)
+        {
+            if (neighbor.contains(RoleKind.QuarantineSpecialist))
+            {
+                hasQS = true;
+                break;
+            }
+        }
+
+        if (hasQS || hasMedic || isEradicated) return;
+
+        outbreakedCities.Add(city);
+        int cubeNumber = city.getCubeNumber(color);
+        int remainingCubes = disease.getNumOfDiseaseCubeLeft();
+        //if not exceeding 3 cubes, put cubes to that city
+        if (cubeNumber + remainingCubes <= 3)
+        {
+            //check if there is enough cubes left 
+            if (remainingCubes - number < 0)
+            {
+                notifyGameLost();
+                //setGamePhase (GamePhase.Completed);
+                return;
+            }
+            city.addCubes(disease, number);
+            //disease.removeCubes (number);
+        }
+        //else there will be an outbreak
+        else
+        {
+            outbreaksValue++;
+            if (outbreaksValue == maxOutbreaksValue)
+            {
+                notifyGameLost();
+                //setGamePhase (GamePhase.Completed);
+                return;
+            }
+
+            if (remainingCubes - (3 - cubeNumber) < 0)
+            {
+                notifyGameLost();
+                //setGamePhase (GamePhase.Completed);
+                return;
+            }
+
+            city.addCubes(disease, 3 - cubeNumber);
+            //stoped here, please see issue #4
         }
     }
-    */
+    /*
+		draw two cards from the top of the player card deck
+	*/
+    private List<PlayerCard> draw()
+    {
+        if (playerCardDeck.Count < 2)
+        {
+            Debug.Log("there is no enough cards in the deck");
+            return null;
+        }
+
+        List<PlayerCard> cards = new List<PlayerCard>();
+        for (int i = 0; i < 1; i++)
+        {
+            cards.Add(playerCardDeck[0]);
+            playerCardDeck.RemoveAt(0);
+        }
+
+        return cards;
+    }
+
+    private void setGamePhase(GamePhase gamePhase)
+    {
+        currentPhase = gamePhase;
+    }
+
+    //my part ends here
+
+    // to do: inform the player that they lose the game
+    private void notifyGameLost()
+    {
+        setGamePhase(GamePhase.Completed);
+    }
+
+    // to do: inform the player that they win the game
+    private void notifyGameWin()
+    {
+    }
+
+    //to do: inform the player that handcards exceed the limit
+    private void notifyExceedLimit()
+    {
+
+    }
+
     /// <summary>
     /// All below values and operations are only used in the client system. 
     /// </summary>
@@ -173,117 +306,5 @@ public class Game : MonoBehaviour {
 	/*
 		endTurn
 	*/
-	public void endTurn(){	
-		if (currentPhase != Enums.GamePhase.PlayerTakeTurn)
-			return;
-		currentPhase = Enums.GamePhase.Completed;
-
-		currentPlayer.refillAction ();
-		currentPlayer.setOncePerturnAction (false);
-
-		int playerCardDeckSize = playerCardDeck.Count;
-
-		//if there is no enough player cards in the deck, players lose the game
-		if (playerCardDeckSize < 2) {
-			notifyGameLost();
-			//setGamePhase (Enums.GamePhase.Completed);
-			return;
-		}
-
-		//Question: what if the cards exceed the player's hand limit?
-
-	}
-
-	/*
-		infect specified city with specified disease
-		@city the city to be infected
-		@color the color of the specified diesase
-		@number the number of cubes to be put in this city
-	*/
-	private void infect(City city, Enums.DiseaseColor color,int number ){
-		Disease disease = diseases [color];
-		bool hasMedic = city.contains (Enums.RoleKind.Medic);
-		bool hasQS = city.contains(Enums.RoleKind.QuarantineSpecialist);
-		bool isEradicated = disease.isEradicated ();
-
-		List<City> neighbors = city.getNeighbors ();
-		foreach (City neighbor in neighbors) {
-			if ( neighbor.contains(Enums.RoleKind.QuarantineSpecialist) ){
-				hasQS = true;
-				break;
-			}
-		}
-
-		if ( hasQS || hasMedic || isEradicated ) return;
-
-		outbreakedCities.Add (city);
-		int cubeNumber = city.getCubeNumber (color);
-		int remainingCubes = disease.getNumOfDiseaseCubeLeft;
-		//if not exceeding 3 cubes, put cubes to that city
-		if (cubeNumber + remainingCubes <= 3) {
-			//check if there is enough cubes left 
-			if (remainingCubes - number < 0) {
-				notifyGameLost ();
-				//setGamePhase (Enums.GamePhase.Completed);
-				return;
-			}
-			city.addCubes (disease, number);
-			//disease.removeCubes (number);
-		}
-		//else there will be an outbreak
-		else {
-			outbreaksValue ++;
-			if (outbreaksValue == maxOutbreaksValue) {
-				notifyGameLost ();
-				//setGamePhase (Enums.GamePhase.Completed);
-				return;
-			}
-
-			if (remainingCubes - (3 - cubeNumber) < 0) {
-				notifyGameLost ();
-				//setGamePhase (Enums.GamePhase.Completed);
-				return;
-			}
-
-			city.addCubes (disease, 3 - cubeNumber);
-			//stoped here, please see issue #4
-		}
-	}
-	/*
-		draw two cards from the top of the player card deck
-	*/
-	private List<PlayerCard> draw(){
-		if (playerCardDeck.Count < 2) {
-			Debug.Log ("there is no enough cards in the deck");
-			return null;
-		}
-
-		List<PlayerCard> cards = new List<PlayerCard>();
-		for (int i = 0; i < 1; i++) {
-			cards.Add(playerCardDeck [0]);
-			playerCardDeck.RemoveAt [0];
-		}
-
-		return cards;	
-	}
-
-	private void setGamePhase(Enums.GamePhase gamePhase){
-		currentPhase = gamePhase;
-	}
-
-	//my part ends here
-
-	// to do: inform the player that they lose the game
-	private void notifyGameLost(){
-		setGamePhase (Enums.GamePhase.Completed);
-	}
-
-	// to do: inform the player that they win the game
-	private void notifyGameWin(){
-	}
-
-	//to do: inform the player that handcards exceed the limit
-	private void notifyExceedLimit(){
-		
-	}
+	
 }

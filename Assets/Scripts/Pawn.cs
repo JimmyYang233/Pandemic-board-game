@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour {
 
-    private Enums.RoleColor color;
-    private Enums.RoleKind rolekind;
+    private Color color;
+    private RoleKind rolekind;
     private City currentCity = null;
     
-    public Pawn(Enums.RoleKind aRolekind)
+    public Pawn(RoleKind aRolekind)
     {
         rolekind = aRolekind;
         color = Maps.getInstance().getRoleColor(aRolekind);
@@ -24,12 +24,12 @@ public class Pawn : MonoBehaviour {
         return currentCity;
     }
 
-    public Enums.RoleKind getRoleKind()
+    public RoleKind getRoleKind()
     {
         return rolekind;
     }
 
-    public Enums.RoleColor getColor()
+    public Color getColor()
     {
         return color;
     }

@@ -5,14 +5,14 @@ using UnityEngine;
 
 public abstract class PlayerCard : Card
 {
-    private Enums.CardType cardType;
+    private CardType cardType;
 
-    public PlayerCard(Enums.CardType c)
+    public PlayerCard(CardType c)
     {
         cardType = c;
     }
 
-    public Enums.CardType getType()
+    public CardType getType()
     {
         return cardType;
     }

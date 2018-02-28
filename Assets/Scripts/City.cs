@@ -6,30 +6,30 @@ using UnityEngine.UI;
 // PlayerScript requires the GameObject to have a Rigidbody component
 public class City : MonoBehaviour {
 
-    public Enums.DiseaseColor color;
-    public static Enums.CityName cityName;
+    public Color color;
+    public static CityName cityName;
     public List<City> neighbors = new List<City>();
     private bool hasResearch = false;
     private List<Disease> diseases = null; //Maybe unnecessary
-	private List<Enums.DiseaseColor> colors = new List<Enums.DiseaseColor>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future
+	private List<Color> colors = new List<Color>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future
     private List<Pawn> pawns = new List<Pawn>();
-    private Dictionary<Enums.DiseaseColor, int> numberOfCubes = new Dictionary<Enums.DiseaseColor, int>();
+    private Dictionary<Color, int> numberOfCubes = new Dictionary<Color, int>();
 
-    public City(Enums.CityName name)
+    public City(CityName name)
     {
         cityName = name;
         color = Maps.getInstance().getCityColor(name);
-        numberOfCubes.Add(Enums.DiseaseColor.Black, 0);
-        numberOfCubes.Add(Enums.DiseaseColor.Blue, 0);
-        numberOfCubes.Add(Enums.DiseaseColor.Purple, 0);
-        numberOfCubes.Add(Enums.DiseaseColor.Yellow, 0);
-        numberOfCubes.Add(Enums.DiseaseColor.Red, 0);
+        numberOfCubes.Add(Color.black, 0);
+        numberOfCubes.Add(Color.blue, 0);
+        numberOfCubes.Add(Color.magenta, 0);
+        numberOfCubes.Add(Color.yellow, 0);
+        numberOfCubes.Add(Color.red, 0);
 
         //UI only
     
     }
 
-    public void setCityColor(Enums.DiseaseColor color)
+    public void setCityColor(Color color)
     {
         this.color = color;
     }
@@ -43,7 +43,7 @@ public class City : MonoBehaviour {
         neighbors.Add(city);
     }
 
-    public bool contains(Enums.RoleKind roleKind)
+    public bool contains(RoleKind roleKind)
     {
         foreach(Pawn pawn in pawns)
         {
@@ -60,12 +60,12 @@ public class City : MonoBehaviour {
         return hasResearch;
     }
 
-    public Enums.CityName getCityName()
+    public CityName getCityName()
     {
         return cityName;
     }
 
-    public Enums.DiseaseColor getColor()
+    public Color getColor()
     {
         return color;
     }
@@ -75,7 +75,7 @@ public class City : MonoBehaviour {
         return numberOfCubes[disease.getColor()];
     }
 
-	public int getCubeNumber(Enums.DiseaseColor color)
+	public int getCubeNumber(Color color)
 	{
 		return numberOfCubes [color];
 	}
@@ -105,7 +105,7 @@ public class City : MonoBehaviour {
 	//to be discussed 
     public void addCubes(Disease disease, int num)
     {
-        Enums.DiseaseColor pColor = disease.getColor();
+        Color pColor = disease.getColor();
         int current = numberOfCubes[pColor];
         numberOfCubes.Add(pColor, num+current);
     }
@@ -123,7 +123,7 @@ public class City : MonoBehaviour {
 
     public void removeCubes(Disease disease, int num)
     {
-        Enums.DiseaseColor pColor = disease.getColor();
+        Color pColor = disease.getColor();
         int current = numberOfCubes[pColor];
         numberOfCubes.Add(pColor, current - num);
     }

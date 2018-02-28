@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EventCard : PlayerCard {
-    private Enums.EventKind eventKind;
+    private EventKind eventKind;
 
-    public EventCard(Enums.EventKind kind): base(Enums.CardType.EventCard)
+    public EventCard(EventKind kind): base(CardType.EventCard)
     {
         eventKind = kind;
     }
 
-    public Enums.EventKind getEventKind()
+    public EventKind getEventKind()
     {
         return eventKind;
     }

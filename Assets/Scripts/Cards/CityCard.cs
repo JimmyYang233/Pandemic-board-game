@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class CityCard : PlayerCard {
     private City city;
-    private Enums.DiseaseColor color;
+    private Color color;
         
-    public CityCard(City c): base(Enums.CardType.CityCard)
+    public CityCard(City c): base(CardType.CityCard)
     {
         city = c;
         color = c.getColor();
     }
 
-    public Enums.DiseaseColor getColor()
+    public Color getColor()
     {
         return color;
     }

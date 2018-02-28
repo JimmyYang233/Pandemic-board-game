@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Card
-{
-    CardType getType();
+public enum Difficulty {
+
+    Introductory, Standard, Heroic, Legendary
+
 }

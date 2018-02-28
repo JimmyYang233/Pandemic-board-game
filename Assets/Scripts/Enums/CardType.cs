@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Card
+public enum CardType
 {
-    CardType getType();
+    CityCard, EpidemicCard, EventCard, InfectionCard
 }

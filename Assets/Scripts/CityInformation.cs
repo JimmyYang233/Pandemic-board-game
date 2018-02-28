@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CityInformation : MonoBehaviour {
-    private Enums.CityName cityName;
-    private Enums.DiseaseColor color;
-    private List<Enums.CityName> neighbors;
+    private CityName cityName;
+    private Color color;
+    private List<CityName> neighbors;
 
-    public CityInformation(Enums.CityName aCityName, Enums.DiseaseColor aColor, List<Enums.CityName> aNeighbors)
+    public CityInformation(CityName aCityName, Color aColor, List<CityName> aNeighbors)
     {
         cityName = aCityName;
         color = aColor;
         neighbors = aNeighbors;
     }
 
-    public Enums.DiseaseColor getColor()
+    public Color getColor()
     {
         return color;
     }
 
-    public List<Enums.CityName> getNeighbors()
+    public List<CityName> getNeighbors()
     {
         return neighbors;
     }
 
-    public Enums.CityName getCityName()
+    public CityName getCityName()
     {
         return cityName;
     }

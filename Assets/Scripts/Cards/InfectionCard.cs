@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class InfectionCard : Card 
 {
-	private Enums.CardType cardType;
+	private CardType cardType;
 	private City city;
-    private Enums.DiseaseColor color;
+    private Color color;
 
 	public InfectionCard(City c)
     {
-        cardType = Enums.CardType.InfectionCard;
+        cardType = CardType.InfectionCard;
         city = c;
         color = c.getColor();
     }
 
-	public Enums.DiseaseColor getColor()
+	public Color getColor()
     {
         return color;
     }
@@ -25,7 +25,7 @@ public class InfectionCard : Card
         return city;
     }
 
-	public Enums.CardType getType()
+	public CardType getType()
     {
         return cardType;
     }

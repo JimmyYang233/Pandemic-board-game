@@ -5,15 +5,15 @@ using UnityEngine;
 public class Role : MonoBehaviour {
 
     private string description;
-    private Enums.RoleKind rolekind;
+    private RoleKind rolekind;
     private int handlimit;
     private Pawn pawn;
 
-    public Role(Enums.RoleKind r)
+    public Role(RoleKind r)
     {
         rolekind = r;
         handlimit = 7;
-        if (r == Enums.RoleKind.Archivist)
+        if (r == RoleKind.Archivist)
         {
             handlimit = 8;
         }
@@ -38,7 +38,7 @@ public class Role : MonoBehaviour {
         this.pawn=p;
     }
 
-    public Enums.RoleKind getRoleKind()
+    public RoleKind getRoleKind()
     {
         return rolekind;
     }

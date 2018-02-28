@@ -6,10 +6,10 @@ public class Disease : MonoBehaviour {
 
     private bool cured = false;
     private bool eradicated = false;
-    private Enums.DiseaseColor color;
+    private Color color;
     private int numberOfDiseaseCubesLeft = 24;
 
-    public Disease(Enums.DiseaseColor aColor)
+    public Disease(Color aColor)
     {
         color = aColor;
     }
@@ -24,7 +24,7 @@ public class Disease : MonoBehaviour {
         return eradicated;
     }
 
-    public Enums.DiseaseColor getColor()
+    public Color getColor()
     {
         return color;
     }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Card
+public enum Challenge
 {
-    CardType getType();
+    Nochallenge, Mutation, BioTerroist, VirulentStrain
+
 }

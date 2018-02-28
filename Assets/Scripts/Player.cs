@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 	public Player(User user)
 	{
 		curRole = user.getRole();
-		if(compareRole(Enums.RoleKind.Generalist)){
+		if(compareRole(RoleKind.Generalist)){
 			maximumAction = 5;
 		}
 		else{
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 		}
 
 		refillAction();
-		if(compareRole(Enums.RoleKind.FieldOperative) || compareRole(Enums.RoleKind.Archivist) || compareRole(Enums.RoleKind.Epidemiologist) || compareRole(Enums.RoleKind.OperationsExpert)){
+		if(compareRole(RoleKind.FieldOperative) || compareRole(RoleKind.Archivist) || compareRole(RoleKind.Epidemiologist) || compareRole(RoleKind.OperationsExpert)){
 			oncePerTurnAction = true;
 		}
 		else{
@@ -32,12 +32,12 @@ public class Player : MonoBehaviour {
 		
 	// }
 
-	private bool compareRole(Enums.RoleKind role){
+	private bool compareRole(RoleKind role){
         return curRole.getRoleKind() == role;
 	}
 
 	public int getHandLimit(){
-		if(curRole.getRoleKind() == Enums.RoleKind.Archivist){
+		if(curRole.getRoleKind() == RoleKind.Archivist){
 			return 8;
 		}
 		else{

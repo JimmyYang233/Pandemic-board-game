@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Card
+public enum PlayerStatus
 {
-    CardType getType();
+    Offline, Available, Ready, InGame
 }
