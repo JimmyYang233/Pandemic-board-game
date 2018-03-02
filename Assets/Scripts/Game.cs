@@ -242,7 +242,7 @@ public class Game : MonoBehaviour {
 			foreach (City neighbor in neighbors) {
 				if (outbreakedCities.Contains (neighbor))
 					continue;
-				infect (neighbor, disease, 1);
+				infect (neighbor, color, 1);
 			}
 
 			return;
