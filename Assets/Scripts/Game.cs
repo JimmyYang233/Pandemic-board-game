@@ -334,15 +334,7 @@ public class Game : MonoBehaviour {
     public void cancelButtonClicked()
     {
         //This part is suppose to be in the game constructor, but it conflict with the current game onstructor
-         GameObject[] tmp = GameObject.FindGameObjectsWithTag("City");
-         foreach(GameObject aObject in tmp)
-         {
-            Button button = aObject.GetComponent<Button>();
-            if (button.interactable)
-            {
-                button.interactable = false;
-            }
-         }
+        disableAllCities();
     }
     public City currentCity;
     public void driveButtonClicked()
@@ -360,6 +352,11 @@ public class Game : MonoBehaviour {
         Vector3 position = destinationCity.transform.position;
         position.y = position.y + 10; 
         testPawn.transform.position = position;
+        disableAllCities();
+    }
+
+    public static void disableAllCities()
+    {
         GameObject[] tmp = GameObject.FindGameObjectsWithTag("City");
         foreach (GameObject aObject in tmp)
         {
