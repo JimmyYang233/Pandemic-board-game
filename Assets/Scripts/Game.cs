@@ -183,7 +183,7 @@ public class Game : MonoBehaviour {
 		@color the color of the specified diesase
 		@number the number of cubes to be put in this city
 	*/
-    private void infect(City city, Color color, int number)
+    private bool infect(City city, Color color, int number)
     {
         Disease disease = diseases[color];
         bool hasMedic = city.contains(RoleKind.Medic);
@@ -200,7 +200,7 @@ public class Game : MonoBehaviour {
             }
         }
 
-        if (hasQS || hasMedic || isEradicated) return;
+        if (hasQS || hasMedic || isEradicated) return true;
 
         outbreakedCities.Add(city);
         int cubeNumber = city.getCubeNumber(color);
@@ -213,10 +213,11 @@ public class Game : MonoBehaviour {
             {
                 notifyGameLost();
                 //setGamePhase (GamePhase.Completed);
-                return;
+                return false;
             }
             city.addCubes(disease, number);
             disease.removeCubes (number);
+            return true;
         }
         //else there will be an outbreak
         else
@@ -226,14 +227,14 @@ public class Game : MonoBehaviour {
             {
                 notifyGameLost();
                 //setGamePhase (GamePhase.Completed);
-                return;
+                return false;
             }
 
             if (remainingCubes - (3 - cubeNumber) < 0)
             {
                 notifyGameLost();
                 //setGamePhase (GamePhase.Completed);
-                return;
+                return false;
             }
 
             city.addCubes(disease, 3 - cubeNumber);
@@ -242,10 +243,12 @@ public class Game : MonoBehaviour {
 			foreach (City neighbor in neighbors) {
 				if (outbreakedCities.Contains (neighbor))
 					continue;
-				infect (neighbor, color, 1);
+                if (!infect(neighbor, color, 1)) {
+                    return false;
+                };
 			}
 
-			return;
+			return true;
         }
     }
     /*
@@ -276,6 +279,32 @@ public class Game : MonoBehaviour {
 
     //my part ends here
 
+    public void infectNextCity()
+    {
+        InfectionCard card = infectionDeck[0];
+        infectionDeck.Remove(card);
+        infectionDiscardPile.Add(card);
+        infectionCardDrawn++;
+        City city = card.getCity();
+        Color color = card.getColor();
+        Disease disease = diseases[color];
+        outbreakedCities.Clear();
+        if (!infect(city, color, 1))
+        {
+            return;
+        }
+        if (infectionCardDrawn == infectionRate)
+        {
+            nextPlayer();
+            infectionCardDrawn = 0;
+        }
+        
+    }
+
+    public void nextPlayer()
+    {
+        currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
+    }
     // to do: inform the player that they lose the game
     private void notifyGameLost()
     {
