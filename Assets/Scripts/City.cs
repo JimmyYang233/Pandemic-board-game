@@ -142,10 +142,21 @@ public class City : MonoBehaviour {
     /// <summary>
     /// All below values and operations are only used in the client system. 
     /// </summary>
-    public void setButtonActive()
+    public void displayButton()
     {
         Button theButton = gameObject.GetComponent<Button>();
         theButton.interactable = true;
     }
     
+    public void undisplayButton()
+    {
+        Button theButton = gameObject.GetComponent<Button>();
+        theButton.interactable = false;
+    }
+
+    public bool interactable()
+    {
+        Button theButton = gameObject.GetComponent<Button>();
+        return theButton.interactable;
+    }
 }

@@ -6,7 +6,7 @@ public class Pawn : MonoBehaviour {
 
     private Color color;
     private RoleKind rolekind;
-    private City currentCity = null;
+    public City currentCity ;
     
     public Pawn(RoleKind aRolekind)
     {

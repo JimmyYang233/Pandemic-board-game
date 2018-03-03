@@ -293,7 +293,7 @@ public class Game : MonoBehaviour {
 
     }
 
-    public void move(Player player, City finalCity)
+    public void moveTo(Player player, City finalCity)
     {
         Pawn pawn = player.getPlayerPawn();
         City initialCity = pawn.getCity();
@@ -318,6 +318,8 @@ public class Game : MonoBehaviour {
     public Button charterFlight;
     public Button cancel;
 
+
+
     public void moveButtonClicked()
     {
         drive.GetComponent<Button>().interactable = true;
@@ -328,24 +330,45 @@ public class Game : MonoBehaviour {
 
 
     }
-
+    //public City tempCity;
+    public void cancelButtonClicked()
+    {
+        //This part is suppose to be in the game constructor, but it conflict with the current game onstructor
+         GameObject[] tmp = GameObject.FindGameObjectsWithTag("City");
+         foreach(GameObject aObject in tmp)
+         {
+            Button button = aObject.GetComponent<Button>();
+            if (button.interactable)
+            {
+                button.interactable = false;
+            }
+         }
+    }
     public City currentCity;
-
     public void driveButtonClicked()
     {
         foreach(City neighbor in currentCity.getNeighbors())
         {
-            neighbor.setButtonActive();
+            neighbor.displayButton();
         }
     }
 
     public Pawn testPawn; 
-
     public void testMovePawn(City destinationCity)
     {
+        currentCity = destinationCity;
         Vector3 position = destinationCity.transform.position;
         position.y = position.y + 10; 
         testPawn.transform.position = position;
+        GameObject[] tmp = GameObject.FindGameObjectsWithTag("City");
+        foreach (GameObject aObject in tmp)
+        {
+            Button button = aObject.GetComponent<Button>();
+            if (button.interactable)
+            {
+                button.interactable = false;
+            }
+        }
     }
 
     
