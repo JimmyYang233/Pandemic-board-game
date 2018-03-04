@@ -57,6 +57,34 @@ public class Player : MonoBehaviour {
 		handCard.Add(card);
 	}
 
+    public void removeCard(PlayerCard card){
+		handCard.Remove(card);
+	}
+
+    public bool containsCityCard()
+    {
+        foreach(PlayerCard card in handCard)
+        {
+            if(card.getType() == CardType.CityCard)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool containsSpecificCityCard(City c)
+    {
+        foreach(CityCard card in handCard)
+        {
+            if (card.getCity() == c)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 	public void decreaseRemainingAction(){
 		remainingAction--;
 	}
@@ -65,9 +93,7 @@ public class Player : MonoBehaviour {
 		remainingAction = maximumAction;
 	}
 
-	public void removeCard(PlayerCard card){
-		handCard.Remove(card);
-	}
+	
 
 	public void removeOneAction(){
 		oncePerTurnAction = false;

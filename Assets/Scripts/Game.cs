@@ -322,14 +322,14 @@ public class Game : MonoBehaviour {
 
     }
 
-    public void moveTo(Player player, City finalCity)
+    public void drive(Player player, City finalCity)
     {
         Pawn pawn = player.getPlayerPawn();
         City initialCity = pawn.getCity();
         initialCity.removePawn(pawn);
         finalCity.addPawn(pawn);
         pawn.setCity(finalCity);
-
+        player.removeOneAction();
         //This part are only for the GUI, when Server side use this code, don't forget to remove this
 
         Vector3 position = finalCity.transform.position;
@@ -341,21 +341,39 @@ public class Game : MonoBehaviour {
     /// <summary>
     /// All below values and operations are only used in the client system. 
     /// </summary>
-    public Button drive;
-    public Button directFlight;
-    public Button shuttleFlight;
-    public Button charterFlight;
-    public Button cancel;
+    public Button driveButton;
+    public Button directFlightButton;
+    public Button shuttleFlightButton;
+    public Button charterFlightButton;
+    public Button cancelButton;
+    public static City currentCity;
+    public static City destinationCity;
+    public static Pawn testPawn;
+    public static User testUser = new User("Jimmy", "123456");
+    public static Role testRole = new Role(RoleKind.Archivist);
+    public static Player testPlayer = new Player(testUser);
 
 
+    //This part for test only
+    public void Start()
+    {
+        testRole.setPawn(testPawn);
+        currentPlayer = testPlayer;
+        testPlayer.setRole(testRole);
+        currentPlayer.addCard(new CityCard(currentCity));
+        currentPlayer.addCard(new CityCard(destinationCity));
+    }
 
+
+    //All below may stay here forever
     public void moveButtonClicked()
     {
-        drive.GetComponent<Button>().interactable = true;
-        directFlight.GetComponent<Button>().interactable = false;
-        shuttleFlight.GetComponent<Button>().interactable = false;
-        charterFlight.GetComponent<Button>().interactable = false;
-        cancel.GetComponent<Button>().interactable = true;
+        driveButton.GetComponent<Button>().interactable = true;
+        if(currentPlayer.containsCityCard())
+        directFlightButton.GetComponent<Button>().interactable = false;
+        shuttleFlightButton.GetComponent<Button>().interactable = false;
+        charterFlightButton.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = true;
 
 
     }
@@ -365,7 +383,7 @@ public class Game : MonoBehaviour {
         //This part is suppose to be in the game constructor, but it conflict with the current game onstructor
         disableAllCities();
     }
-    public City currentCity;
+
     public void driveButtonClicked()
     {
         foreach(City neighbor in currentCity.getNeighbors())
@@ -374,7 +392,7 @@ public class Game : MonoBehaviour {
         }
     }
 
-    public Pawn testPawn; 
+    
     public void testMovePawn(City destinationCity)
     {
         currentCity = destinationCity;
@@ -397,5 +415,6 @@ public class Game : MonoBehaviour {
         }
     }
 
+    
     
 }
