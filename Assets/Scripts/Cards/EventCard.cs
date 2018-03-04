@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class EventCard : PlayerCard {
     private EventKind eventKind;
+    private static Dictionary<EventKind, EventCard> eventCards = new Dictionary<EventKind, EventCard>();
 
-    public EventCard(EventKind kind): base(CardType.EventCard)
+    
+
+    private EventCard(EventKind kind): base(CardType.EventCard)
     {
         eventKind = kind;
     }
@@ -13,5 +16,15 @@ public class EventCard : PlayerCard {
     public EventKind getEventKind()
     {
         return eventKind;
+    }
+
+    public static EventCard getEventCard(EventKind kind)
+    {
+        if (!eventCards.ContainsKey(kind))
+        {
+            eventCards.Add(kind, new EventCard(kind));
+        }
+
+        return eventCards[kind];
     }
 }
