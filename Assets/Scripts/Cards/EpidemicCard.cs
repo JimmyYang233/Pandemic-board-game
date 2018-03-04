@@ -9,7 +9,7 @@ public class EpidemicCard : PlayerCard {
     {
     }
     
-    public EpidemicCard getEpidemicCard()
+    public static EpidemicCard getEpidemicCard()
     {
         return INSTANCE;
     }
