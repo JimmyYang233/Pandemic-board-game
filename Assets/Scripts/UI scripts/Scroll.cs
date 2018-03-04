@@ -14,11 +14,10 @@ public class Scroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 offset = new Vector2(Time.time * speed, 0);
         transform.Translate(new Vector3(-1, 0, 0) * speed * Time.time);
-        if(transform.position.x == startPos.x)
+        if(transform.position.x < -557)
         {
-            Instantiate(gameObject, new Vector3(startPos.x+1920, startPos.y, startPos.z), gameObject.transform.rotation);
+            transform.position = startPos;
         }
         
 	}
