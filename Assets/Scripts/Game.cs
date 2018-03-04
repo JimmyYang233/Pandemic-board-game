@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -346,47 +347,58 @@ public class Game : MonoBehaviour {
     public Button shuttleFlightButton;
     public Button charterFlightButton;
     public Button cancelButton;
-    public static City currentCity;
-    public static City destinationCity;
-    public static Pawn testPawn;
-    public static User testUser = new User("Jimmy", "123456");
-    public static Role testRole = new Role(RoleKind.Archivist);
-    public static Player testPlayer = new Player(testUser);
+    public City testCity;
+    public City destinationCity;
+    public Pawn testPawn;
+    private User testUser = new User("Jimmy", "123456");
+    private Role testRole = new Role(RoleKind.Archivist);
+    private Player testPlayer;
 
 
     //This part for test only
-    public void Start()
-    {
-        testRole.setPawn(testPawn);
-        currentPlayer = testPlayer;
-        testPlayer.setRole(testRole);
-        currentPlayer.addCard(new CityCard(currentCity));
-        currentPlayer.addCard(new CityCard(destinationCity));
+    public void startEverything() {
+        
     }
 
 
     //All below may stay here forever
     public void moveButtonClicked()
     {
+        testPlayer = new Player(testUser);
+       // testRole.setPawn(testPawn);
+        //testCity.addPawn(testPawn);
+        //testPlayer.setRole(testRole);
+        //testPlayer.addCard(new CityCard(testCity));
+       // testPlayer.addCard(new CityCard(destinationCity));
+        //currentPlayer = testPlayer;
         driveButton.GetComponent<Button>().interactable = true;
-        if(currentPlayer.containsCityCard())
-        directFlightButton.GetComponent<Button>().interactable = false;
-        shuttleFlightButton.GetComponent<Button>().interactable = false;
-        charterFlightButton.GetComponent<Button>().interactable = false;
-        cancelButton.GetComponent<Button>().interactable = true;
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        
+        if (currentPlayer.containsCityCard())
+        {
+            directFlightButton.GetComponent<Button>().interactable = true;
+        }
+        if (currentPlayer.containsSpecificCityCard(currentCity))
+        {
+            charterFlightButton.GetComponent<Button>().interactable = true;
+        }
+        if (currentCity.getHasResearch())
+        {
+            shuttleFlightButton.GetComponent<Button>().interactable = true;
+        }
 
 
     }
     //public City tempCity;
     public void cancelButtonClicked()
     {
-        //This part is suppose to be in the game constructor, but it conflict with the current game onstructor
         disableAllCities();
     }
 
     public void driveButtonClicked()
     {
-        foreach(City neighbor in currentCity.getNeighbors())
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        foreach (City neighbor in currentCity.getNeighbors())
         {
             neighbor.displayButton();
         }
@@ -395,7 +407,7 @@ public class Game : MonoBehaviour {
     
     public void testMovePawn(City destinationCity)
     {
-        currentCity = destinationCity;
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
         Vector3 position = destinationCity.transform.position;
         position.y = position.y + 10; 
         testPawn.transform.position = position;
