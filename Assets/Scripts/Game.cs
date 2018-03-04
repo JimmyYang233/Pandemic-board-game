@@ -59,7 +59,7 @@ public class Game : MonoBehaviour {
         List<EventKind> eventKinds = mapInstance.getEventNames();
         foreach (EventKind k in eventKinds)
         {
-            playerCardDeck.Add(new EventCard(k));
+            playerCardDeck.Add(EventCard.getEventCard(k));
         }
         //TO-DO implement shuffle well
        // shuffleAndAddEpidemic(numOfEpidemicCard);
