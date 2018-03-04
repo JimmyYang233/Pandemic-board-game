@@ -167,10 +167,8 @@ public class Game : MonoBehaviour {
         int playerCardDeckSize = playerCardDeck.Count;
 
         //if there is no enough player cards in the deck, players lose the game
-        if (playerCardDeckSize < 2)
+        if (!draw(currentPlayer, 2))
         {
-            notifyGameLost();
-            //setGamePhase (GamePhase.Completed);
             return;
         }
 
@@ -212,7 +210,7 @@ public class Game : MonoBehaviour {
             //check if there is enough cubes left 
             if (remainingCubes - number < 0)
             {
-                notifyGameLost();
+                notifyGameLost(GameLostKind.RunOutOfDiseaseCube);
                 //setGamePhase (GamePhase.Completed);
                 return false;
             }
@@ -226,14 +224,14 @@ public class Game : MonoBehaviour {
             outbreaksValue++;
             if (outbreaksValue == maxOutbreaksValue)
             {
-                notifyGameLost();
+                notifyGameLost(GameLostKind.MaxOutbreakAmountReached);
                 //setGamePhase (GamePhase.Completed);
                 return false;
             }
 
             if (remainingCubes - (3 - cubeNumber) < 0)
             {
-                notifyGameLost();
+                notifyGameLost(GameLostKind.RunOutOfDiseaseCube);
                 //setGamePhase (GamePhase.Completed);
                 return false;
             }
@@ -255,22 +253,22 @@ public class Game : MonoBehaviour {
     /*
 		draw two cards from the top of the player card deck
 	*/
-    private List<PlayerCard> draw()
+    private bool draw(Player player, int count)
     {
-        if (playerCardDeck.Count < 2)
+        if (playerCardDeck.Count < count)
         {
-            Debug.Log("there is no enough cards in the deck");
-            return null;
+            notifyGameLost(GameLostKind.RunOutOfPlayerCard);
+            setGamePhase(GamePhase.Completed);
+            return false;
         }
-
-        List<PlayerCard> cards = new List<PlayerCard>();
-        for (int i = 0; i < 1; i++)
+        
+        for (int i = 0; i < count; i++)
         {
-            cards.Add(playerCardDeck[0]);
+            player.addCard(playerCardDeck[0]);
             playerCardDeck.RemoveAt(0);
         }
 
-        return cards;
+        return true;
     }
 
     private void setGamePhase(GamePhase gamePhase)
@@ -307,7 +305,7 @@ public class Game : MonoBehaviour {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
     }
     // to do: inform the player that they lose the game
-    private void notifyGameLost()
+    private void notifyGameLost(GameLostKind lostKind)
     {
         setGamePhase(GamePhase.Completed);
     }
