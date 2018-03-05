@@ -40,16 +40,31 @@ public class MoveOperation : MonoBehaviour {
     {
         disableAllCities();
     }
-    public City tmpCity;
+   // public City tmpCity;
     public void driveButtonClicked()
     {
         currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         Debug.Log(currentCity.getCityName());
-        foreach (City neighbor in tmpCity.getNeighbors())
+        foreach (City neighbor in currentCity.getNeighbors())
         {
             Debug.Log(neighbor.getCityName());
             neighbor.displayButton();
+        }
+    }
+
+    public void directFlightButtonClicked()
+    {
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        List<PlayerCard> cards = currentPlayer.getHand();
+        foreach(CityCard card in cards)
+        {
+            City city = card.getCity();
+            if (city != currentCity)
+            {
+                city.displayButton();
+            }
         }
     }
 
@@ -65,16 +80,22 @@ public class MoveOperation : MonoBehaviour {
             }
         }
     }
-    /**
-        public void testMovePawn(City destinationCity)
-        {
-            City currentCity = currentPlayer.getPlayerPawn().getCity();
-            Vector3 position = destinationCity.transform.position;
-            position.y = position.y + 10;
-            testPawn.transform.position = position;
-            disableAllCities();
-        }
+    
 
-        
-        **/
+    // for testing only
+    public void testMovePawn(City destinationCity)
+    {
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        Pawn testPawn = currentPlayer.getPlayerPawn();
+        City initialCity = testPawn.getCity();
+        initialCity.removePawn(testPawn);
+        destinationCity.addPawn(testPawn);
+        Vector3 position = destinationCity.transform.position;
+        position.y = position.y + 10;
+        testPawn.transform.position = position;
+        disableAllCities();
+    }
+
+
 }
