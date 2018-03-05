@@ -7,7 +7,7 @@ public class Pawn : MonoBehaviour {
     private Color color;
     public RoleKind rolekind;
     private City currentCity;
-
+    /*
     void Awake()
     {
 		/*
@@ -22,7 +22,7 @@ public class Pawn : MonoBehaviour {
             }
         }
         Debug.Log(currentCity.getCityName().ToString());
-        */
+        
 		Transform g = this.transform.parent;
 		//Debug.Log (g.name);
 		foreach (Transform child in g) {
@@ -36,7 +36,7 @@ public class Pawn : MonoBehaviour {
 		}
 		//Debug.Log(currentCity.getCityName().ToString());
     }
-
+    */
     public Pawn(RoleKind aRolekind)
     {
         rolekind = aRolekind;

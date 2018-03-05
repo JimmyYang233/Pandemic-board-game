@@ -14,11 +14,6 @@ public class MoveOperation : MonoBehaviour {
 
     Player currentPlayer;
 
-    void Start()
-    {
-        
-
-    }
 
     public void moveButtonClicked()
     {
@@ -40,48 +35,22 @@ public class MoveOperation : MonoBehaviour {
         }
         cancelButton.GetComponent<Button>().interactable = true;
     }
-        
-    /**
-        /// <summary>
-        /// All below values and operations are only used in the client system. 
-        /// </summary>
-   
 
-
-    //This part for test only
-    void Start()
-    {
-
-        Debug.Log("Start");
-
-    }
-
-
-    //All below may stay here forever
-
-//public City tempCity;
     public void cancelButtonClicked()
     {
         disableAllCities();
     }
-
+    public City tmpCity;
     public void driveButtonClicked()
     {
+        currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
-        foreach (City neighbor in currentCity.getNeighbors())
+        Debug.Log(currentCity.getCityName());
+        foreach (City neighbor in tmpCity.getNeighbors())
         {
+            Debug.Log(neighbor.getCityName());
             neighbor.displayButton();
         }
-    }
-
-
-    public void testMovePawn(City destinationCity)
-    {
-        City currentCity = currentPlayer.getPlayerPawn().getCity();
-        Vector3 position = destinationCity.transform.position;
-        position.y = position.y + 10;
-        testPawn.transform.position = position;
-        disableAllCities();
     }
 
     public static void disableAllCities()
@@ -96,5 +65,16 @@ public class MoveOperation : MonoBehaviour {
             }
         }
     }
-   **/
+    /**
+        public void testMovePawn(City destinationCity)
+        {
+            City currentCity = currentPlayer.getPlayerPawn().getCity();
+            Vector3 position = destinationCity.transform.position;
+            position.y = position.y + 10;
+            testPawn.transform.position = position;
+            disableAllCities();
+        }
+
+        
+        **/
 }

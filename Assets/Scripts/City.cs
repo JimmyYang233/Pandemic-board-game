@@ -90,8 +90,7 @@ public class City : MonoBehaviour {
 
     public List<City> getNeighbors()
     {
-        List<City> copy = new List<City>(neighbors);
-        return copy;
+        return neighbors;
     }
 
     public void addDiseases(List<Disease> aDiseases)
