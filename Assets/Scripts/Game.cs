@@ -435,6 +435,8 @@ public class Game : MonoBehaviour {
     private static Role testRole = new Role(RoleKind.Archivist);
     private static Player testPlayer = new Player(testUser);
 
+
+    //for testing only
     private void Start()
     {
         testRole.setPawn(testPawn);

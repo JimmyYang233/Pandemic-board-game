@@ -80,16 +80,22 @@ public class MoveOperation : MonoBehaviour {
             }
         }
     }
-    /**
-        public void testMovePawn(City destinationCity)
-        {
-            City currentCity = currentPlayer.getPlayerPawn().getCity();
-            Vector3 position = destinationCity.transform.position;
-            position.y = position.y + 10;
-            testPawn.transform.position = position;
-            disableAllCities();
-        }
+    
 
-        
-        **/
+    // for testing only
+    public void testMovePawn(City destinationCity)
+    {
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        Pawn testPawn = currentPlayer.getPlayerPawn();
+        City initialCity = testPawn.getCity();
+        initialCity.removePawn(testPawn);
+        destinationCity.addPawn(testPawn);
+        Vector3 position = destinationCity.transform.position;
+        position.y = position.y + 10;
+        testPawn.transform.position = position;
+        disableAllCities();
+    }
+
+
 }

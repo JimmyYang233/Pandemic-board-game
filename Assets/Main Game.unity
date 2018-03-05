@@ -514,11 +514,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 784909839}
           m_ObjectArgumentAssemblyTypeName: City, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -1272,7 +1272,6 @@ MonoBehaviour:
   charterFlightButton: {fileID: 914999443}
   cancelButton: {fileID: 708000213}
   game: {fileID: 73084184}
-  tmpCity: {fileID: 1024837862}
 --- !u!224 &125200432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1359,7 +1358,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -2090,7 +2089,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -2311,7 +2310,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -2444,7 +2443,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -2730,7 +2729,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -3346,7 +3345,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -3621,7 +3620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -4001,7 +4000,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -4202,7 +4201,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -4877,7 +4876,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -5010,7 +5009,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -5404,7 +5403,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -5691,7 +5690,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -5898,7 +5897,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -6031,7 +6030,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -6417,7 +6416,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -6550,7 +6549,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -6683,7 +6682,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -6884,7 +6883,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -10012,7 +10011,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -10638,7 +10637,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -10813,7 +10812,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -10946,7 +10945,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -11086,7 +11085,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1077415817}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 125200431}
+        m_MethodName: directFlightButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1077415817
@@ -11360,7 +11370,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -11850,7 +11860,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -12024,7 +12034,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -12523,7 +12533,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -13095,7 +13105,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -13838,7 +13848,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -13991,7 +14001,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -14124,7 +14134,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -14817,7 +14827,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -15690,7 +15700,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -16273,7 +16283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -16475,7 +16485,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -16698,7 +16708,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -17279,7 +17289,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -17880,7 +17890,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -18227,7 +18237,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -18894,7 +18904,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -19027,7 +19037,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -19180,7 +19190,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -19313,7 +19323,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
@@ -19728,7 +19738,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
+      - m_Target: {fileID: 125200431}
         m_MethodName: testMovePawn
         m_Mode: 2
         m_Arguments:
