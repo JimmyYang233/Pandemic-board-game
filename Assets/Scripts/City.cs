@@ -15,6 +15,13 @@ public class City : MonoBehaviour {
     private List<Pawn> pawns = new List<Pawn>();
     private Dictionary<Color, int> numberOfCubes = new Dictionary<Color, int>();
 
+	private void Awake()
+	{
+		neighbors = new List<City>();
+		colors = new List<Color>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future
+		pawns = new List<Pawn>();
+		numberOfCubes = new Dictionary<Color, int>();
+	}
     public City(CityName name)
     {
         cityName = name;
@@ -34,10 +41,7 @@ public class City : MonoBehaviour {
         this.color = color;
     }
 
-    private void Start()
-    {
-
-    }
+   
     public void addNeighbor(City city)
     {
         neighbors.Add(city);
@@ -112,7 +116,8 @@ public class City : MonoBehaviour {
 
     public void addPawn(Pawn p)
     {
-        pawns.Add(p);
+		Debug.Log (pawns.ToString ());
+        this.pawns.Add(p);
         p.setCity(this);
     }
 
@@ -131,6 +136,7 @@ public class City : MonoBehaviour {
     public void removePawn(Pawn p)
     {
         pawns.Remove(p);
+		Debug.Log (pawns.ToString());
         p.setCity(null);
     }
 

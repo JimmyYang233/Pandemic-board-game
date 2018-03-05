@@ -23,11 +23,11 @@ public class Pawn : MonoBehaviour {
         }
         Debug.Log(currentCity.getCityName().ToString());
         */
-		Transform g = this.transform.parent.GetChild(0);
+		Transform g = this.transform.parent;
 		Debug.Log (g.name);
 		foreach (Transform child in g) {
 			City city = child.gameObject.GetComponent<City> ();
-			if (city.getCityName() == CityName.Atlanta)
+			if (city!=null && city.getCityName() == CityName.Atlanta)
 			{
 
 				currentCity = city;
