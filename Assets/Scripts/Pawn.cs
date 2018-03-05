@@ -10,15 +10,31 @@ public class Pawn : MonoBehaviour {
 
     void Awake()
     {
+		/*
         City[] cities = GetComponentsInParent<City>();
         foreach (City city in cities)
         {
             if (city.getCityName() == CityName.Atlanta)
             {
+				Debug.Log (city.cityName);
                 currentCity = city;
+				Debug.Log ("find");
             }
         }
         Debug.Log(currentCity.getCityName().ToString());
+        */
+		Transform g = this.transform.parent.GetChild(0);
+		Debug.Log (g.name);
+		foreach (Transform child in g) {
+			City city = child.gameObject.GetComponent<City> ();
+			if (city.getCityName() == CityName.Atlanta)
+			{
+
+				currentCity = city;
+
+			}
+		}
+		Debug.Log(currentCity.getCityName().ToString());
     }
 
     public Pawn(RoleKind aRolekind)

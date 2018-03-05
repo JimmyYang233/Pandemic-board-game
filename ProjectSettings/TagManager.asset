@@ -3,14 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - City
-  - background
-<<<<<<< HEAD
-  - Pawn
-=======
-  - Game
->>>>>>> eb454d6bb37a8de5044c776053922d98fe256274
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -47,10 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 3096032567
-    locked: 0
-  - name: Front
-    uniqueID: 2671559409
     locked: 0
