@@ -40,16 +40,31 @@ public class MoveOperation : MonoBehaviour {
     {
         disableAllCities();
     }
-    public City tmpCity;
+   // public City tmpCity;
     public void driveButtonClicked()
     {
         currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         Debug.Log(currentCity.getCityName());
-        foreach (City neighbor in tmpCity.getNeighbors())
+        foreach (City neighbor in currentCity.getNeighbors())
         {
             Debug.Log(neighbor.getCityName());
             neighbor.displayButton();
+        }
+    }
+
+    public void directFlightButtonClicked()
+    {
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        List<PlayerCard> cards = currentPlayer.getHand();
+        foreach(CityCard card in cards)
+        {
+            City city = card.getCity();
+            if (city != currentCity)
+            {
+                city.displayButton();
+            }
         }
     }
 

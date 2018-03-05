@@ -28,9 +28,14 @@ public class Player {
 		}
 	}
 
-	// public boolean consentRequest(){
-		
-	// }
+    // public boolean consentRequest(){
+
+    // }
+
+    public RoleKind getRoleKind()
+    {
+        return curRole.getRoleKind();
+    }
 
 	private bool compareRole(RoleKind role)
     {
@@ -65,6 +70,12 @@ public class Player {
     public void removeCard(PlayerCard card){
 		handCard.Remove(card);
 	}
+
+    public List<PlayerCard> getHand()
+    {
+        List<PlayerCard> tmp = new List<PlayerCard>(handCard);
+        return tmp;
+    }
 
     public bool containsCityCard()
     {

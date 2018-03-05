@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
+    private readonly int MAX = 24;
     private Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
@@ -24,6 +25,7 @@ public class Game : MonoBehaviour {
     private List<City> outbreakedCities = new List<City>();
     private List<City> cities = new List<City>();
     private List<PlayerCard> playerCardDeck = new List<PlayerCard>();
+    private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
 
 
@@ -326,18 +328,102 @@ public class Game : MonoBehaviour {
 
     }
 
-    public void drive(Player player, City finalCity)
+    public void drive(Player player, City destinationCity)
     {
-        Pawn pawn = player.getPlayerPawn();
-        City initialCity = pawn.getCity();
-        initialCity.removePawn(pawn);
-        finalCity.addPawn(pawn);
-        pawn.setCity(finalCity);
-        player.removeOneAction();
-        //This part are only for the GUI, when Server side use this code, don't forget to remove this
+        Pawn p = player.getPlayerPawn();
+        City initialCity = p.getCity();
+        p.setCity(destinationCity);
+        initialCity.removePawn(p);
+        destinationCity.addPawn(p);
+        RoleKind rolekind = player.getRoleKind();
 
-        pawn.display();
+        if (rolekind == RoleKind.Medic)
+        {
+            foreach (Disease disease in diseases.Values)
+            {
+                if (disease.isCured())
+                {
+                    int cubeNumber = destinationCity.getCubeNumber(disease);
+                    destinationCity.removeCubes(disease, cubeNumber);
+                    disease.addCubes(cubeNumber);
+                    int num = disease.getNumOfDiseaseCubeLeft();
+                    if (num == MAX)
+                    {
+                        disease.eradicate();
+                    }
+                }
 
+            }
+        }
+
+        else if (rolekind == RoleKind.ContainmentSpecialist)
+        {
+            foreach (Disease disease in diseases.Values)
+            {
+                int cubeNumber = destinationCity.getCubeNumber(disease);
+                if (cubeNumber > 1)
+                {
+                    destinationCity.removeCubes(disease, 1);
+                    disease.addCubes(1);
+                }
+            }
+        }
+        player.decreaseRemainingAction();
+
+        //UI only
+        p.display();
+
+    }
+
+    public void takeDirectFlight(Player player, CityCard card)
+    {
+        Pawn p = player.getPlayerPawn();
+        City initialCity = p.getCity();
+        City destinationCity = card.getCity();
+        p.setCity(destinationCity);
+        initialCity.removePawn(p);
+        destinationCity.addPawn(p);
+        RoleKind rolekind = player.getRoleKind();
+        if(rolekind != RoleKind.Troubleshooter)
+        {
+            player.removeCard(card);
+            playerDiscardPile.Add(card);
+            
+        }
+        if(rolekind == RoleKind.Medic)
+        {
+            foreach (Disease disease in diseases.Values)
+            {
+                if (disease.isCured())
+                {
+                    int cubeNumber = destinationCity.getCubeNumber(disease);
+                    destinationCity.removeCubes(disease, cubeNumber);
+                    disease.addCubes(cubeNumber);
+                    int num = disease.getNumOfDiseaseCubeLeft();
+                    if(num == MAX)
+                    {
+                        disease.eradicate();
+                    }
+                }
+                
+            }
+        }
+        else if(rolekind == RoleKind.ContainmentSpecialist)
+        {
+            foreach(Disease disease in diseases.Values)
+            {
+                int cubeNumber = destinationCity.getCubeNumber(disease);
+                if(cubeNumber > 1)
+                {
+                    destinationCity.removeCubes(disease, 1);
+                    disease.addCubes(1);
+                }
+            }
+        }
+        player.decreaseRemainingAction();
+
+        //UI only
+        p.display();
     }
 
     //All below are for testing;

@@ -17,7 +17,6 @@ public class City : MonoBehaviour {
 
 	private void Awake()
 	{
-		neighbors = new List<City>();
 		colors = new List<Color>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future
 		pawns = new List<Pawn>();
 		numberOfCubes = new Dictionary<Color, int>();
@@ -113,6 +112,18 @@ public class City : MonoBehaviour {
         numberOfCubes.Add(pColor, num+current);
     }
 
+    public void removeCubes(Disease disease, int num)
+    {
+        Color pColor = disease.getColor();
+        int current = numberOfCubes[pColor];
+        numberOfCubes.Add(pColor, current - num);
+    }
+
+    public void removeNormalCubes(int num)
+    {
+
+    }
+
     public void addPawn(Pawn p)
     {
 		//Debug.Log (pawns.ToString ());
@@ -125,12 +136,7 @@ public class City : MonoBehaviour {
         //TO-DO
     }
 
-    public void removeCubes(Disease disease, int num)
-    {
-        Color pColor = disease.getColor();
-        int current = numberOfCubes[pColor];
-        numberOfCubes.Add(pColor, current - num);
-    }
+    
 
     public void removePawn(Pawn p)
     {
