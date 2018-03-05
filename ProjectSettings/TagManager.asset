@@ -6,6 +6,7 @@ TagManager:
   tags:
   - City
   - background
+  - Game
   layers:
   - Default
   - TransparentFX
