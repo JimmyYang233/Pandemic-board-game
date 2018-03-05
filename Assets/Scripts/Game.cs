@@ -129,7 +129,7 @@ public class Game : MonoBehaviour {
 
     private void shuffleAndAddEpidemic()
     {
-        Shuffle(playerCardDeck);
+        Collection.Shuffle(playerCardDeck);
         int subDeckSize = playerCardDeck.Count / difficulty;
         int lastSubDeckSize = playerCardDeck.Count - (difficulty - 1) * subDeckSize;
 
@@ -145,7 +145,7 @@ public class Game : MonoBehaviour {
             List<PlayerCard> temp = new List<PlayerCard>();
             temp = playerCardDeck.GetRange(start, subDeckSize);
             temp.Add(EpidemicCard.getEpidemicCard());
-            Shuffle<PlayerCard>(temp);
+            Collection.Shuffle<PlayerCard>(temp);
             tempList.AddRange(temp);
             start += subDeckSize;
         }
@@ -153,19 +153,8 @@ public class Game : MonoBehaviour {
         playerCardDeck = tempList;
     }
 
-    //need correction, may be errors
-    public void Shuffle<T>(this IList<T> ts)
-    {
-        var count = ts.Count;
-        var last = count - 1;
-        for (var i = 0; i < last; ++i)
-        {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = ts[i];
-            ts[i] = ts[r];
-            ts[r] = tmp;
-        }
-    }
+    
+    
     //since i am familiar with end turn method I am going to do this first, might be buggy --zhening
 
     /*
@@ -220,7 +209,7 @@ public class Game : MonoBehaviour {
             return false;
         }
 
-        Shuffle<InfectionCard>(infectionDiscardPile);
+        Collection.Shuffle<InfectionCard>(infectionDiscardPile);
         placeInfectionDiscardPileOnTop();
 
         resolvingEpidemic = false;
