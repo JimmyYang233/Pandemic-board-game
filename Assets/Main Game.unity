@@ -1266,12 +1266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393ac91195f49a84ab35830e187cfa6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  driveButton: {fileID: 0}
-  directFlightButton: {fileID: 0}
-  shuttleFlightButton: {fileID: 0}
-  charterFlightButton: {fileID: 0}
-  cancelButton: {fileID: 0}
-  game: {fileID: 0}
+  driveButton: {fileID: 21281695}
+  directFlightButton: {fileID: 1077415816}
+  shuttleFlightButton: {fileID: 597376514}
+  charterFlightButton: {fileID: 914999443}
+  cancelButton: {fileID: 708000213}
+  game: {fileID: 73084184}
 --- !u!224 &125200432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11706,7 +11706,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1623407887
+  m_SortingLayerID: 1939262603
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1163441874
@@ -16896,8 +16896,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1198934729
-  m_SortingLayer: 0
+  m_SortingLayerID: -2043302533
+  m_SortingLayer: 1
   m_SortingOrder: 20
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -19517,7 +19517,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1198934729
+  m_SortingLayerID: -2043302533
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &2120688879

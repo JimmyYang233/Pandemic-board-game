@@ -300,6 +300,11 @@ public class Game : MonoBehaviour {
         
     }
 
+    public Player getCurrentPlayer()
+    {
+        return currentPlayer;
+    }
+
     public void nextPlayer()
     {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];

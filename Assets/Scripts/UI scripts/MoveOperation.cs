@@ -11,7 +11,15 @@ public class MoveOperation : MonoBehaviour {
     public Button cancelButton;
     
     public Game game;
-    /**
+
+    Player currentPlayer;
+
+    void Start()
+    {
+        currentPlayer = game.getCurrentPlayer();
+
+    }
+
     public void moveButtonClicked()
     {
         driveButton.GetComponent<Button>().interactable = true;
@@ -31,7 +39,7 @@ public class MoveOperation : MonoBehaviour {
         }
     }
         
-
+    /**
         /// <summary>
         /// All below values and operations are only used in the client system. 
         /// </summary>
