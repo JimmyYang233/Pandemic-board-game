@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Role : MonoBehaviour {
+public class Role {
 
     private string description;
     private RoleKind rolekind;

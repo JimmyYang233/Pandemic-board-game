@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player {
 	private int maximumAction;
-	private int remainingAction;
-	private bool oncePerTurnAction;
-	private Role curRole;
+	private int remainingAction = 0;
+	private bool oncePerTurnAction = false;
+    private Role curRole = null;
 	private List<PlayerCard> handCard = new List<PlayerCard>();
 
 	public Player(User user)
@@ -32,7 +32,12 @@ public class Player : MonoBehaviour {
 		
 	// }
 
-	private bool compareRole(RoleKind role){
+	private bool compareRole(RoleKind role)
+    {
+        if (curRole == null)
+        {
+            return false;
+        }
         return curRole.getRoleKind() == role;
 	}
 

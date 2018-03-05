@@ -5,9 +5,22 @@ using UnityEngine;
 public class Pawn : MonoBehaviour {
 
     private Color color;
-    private RoleKind rolekind;
-    public City currentCity ;
-    
+    public RoleKind rolekind;
+    private City currentCity;
+
+    void Awake()
+    {
+        City[] cities = GetComponentsInParent<City>();
+        foreach (City city in cities)
+        {
+            if (city.getCityName() == CityName.Atlanta)
+            {
+                currentCity = city;
+            }
+        }
+        Debug.Log(currentCity.getCityName().ToString());
+    }
+
     public Pawn(RoleKind aRolekind)
     {
         rolekind = aRolekind;
@@ -34,4 +47,10 @@ public class Pawn : MonoBehaviour {
         return color;
     }
 
+    public void display()
+    {
+        Vector3 position = currentCity.transform.position;
+        position.y = position.y + 10;
+        transform.position = position;
+    }
 }

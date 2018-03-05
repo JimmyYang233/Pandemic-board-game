@@ -327,7 +327,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 21281696}
   m_OnClick:
     m_PersistentCalls:
@@ -688,13 +688,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c19e995e1a8c6946bdebb1af746b83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  driveButton: {fileID: 0}
-  directFlightButton: {fileID: 0}
-  shuttleFlightButton: {fileID: 0}
-  charterFlightButton: {fileID: 0}
-  cancelButton: {fileID: 0}
-  testCity: {fileID: 0}
-  destinationCity: {fileID: 0}
+  driveButton: {fileID: 21281695}
+  directFlightButton: {fileID: 1077415816}
+  shuttleFlightButton: {fileID: 597376514}
+  charterFlightButton: {fileID: 914999443}
+  cancelButton: {fileID: 708000213}
+  testCity: {fileID: 1024837862}
+  destinationCity: {fileID: 784909839}
   testPawn: {fileID: 1933722364}
 --- !u!224 &73084185
 RectTransform:
@@ -5249,7 +5249,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 597376515}
   m_OnClick:
     m_PersistentCalls:
@@ -6188,7 +6188,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 708000214}
   m_OnClick:
     m_PersistentCalls:
@@ -9653,7 +9653,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 914999444}
   m_OnClick:
     m_PersistentCalls:
@@ -11035,7 +11035,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1077415817}
   m_OnClick:
     m_PersistentCalls:
@@ -16786,7 +16786,7 @@ GameObject:
   - component: {fileID: 1933722366}
   m_Layer: 5
   m_Name: Test Pawn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16817,7 +16817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ba308a9c19baa489492e8328b134fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCity: {fileID: 0}
+  rolekind: 7
 --- !u!212 &1933722365
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -5,13 +5,12 @@ using UnityEngine;
 public class Maps : MonoBehaviour {
 
     private static Maps Instance = new Maps();
-    
     private Dictionary<RoleKind, string> playerDescriptions = new Dictionary<RoleKind, string>();
     private Dictionary<RoleKind, Color> roleColors = new Dictionary<RoleKind, Color>();
     private Dictionary<CityName, CityInformation> cityInformations = new Dictionary<CityName, CityInformation>();
     //add event card description by shuran zheng
     private Dictionary<EventKind, string> eventCardDescription = new Dictionary<EventKind, string>();
-    private List<Color> dc =new List<Color>();
+    private List<Color> diseaseColor =new List<Color>();
     private Maps(){
         playerDescriptions.Add(RoleKind.ContingencyPlanner, "The Contingency Planner may, as an action, take an Event card from anywhere in the Player Discard Pile and place it on his Role card. Only 1 Event card can be on his role card at a time. It does not count against his hand limit. When the Contingency Planner plays the Event card on his role card, remove this Event card from the game (instead of discarding it).");
         playerDescriptions.Add(RoleKind.Dispatcher, "The Dispatcher may, as an action, either: 1.move any pawn, if its owner agrees, to any city containing another pawn, or 2. move another player’s pawn, if its owner agrees, as if it were his own.");
@@ -28,10 +27,11 @@ public class Maps : MonoBehaviour {
         playerDescriptions.Add(RoleKind.Troubleshooter, "The Troubleshooter, at the start of her turn, looks at as many Infection cards as the current infection rate (by taking them from the top of the Infection Deck, looking at them, and putting them back in the same order).");
 
         //TO-DO
-        dc.Add(Color.black);
+        diseaseColor.Add(Color.black);
 
         //TO-DO
         roleColors.Add(RoleKind.Scientist, Color.gray);
+        roleColors.Add(RoleKind.Archivist, Color.blue);
 
         //To-DO 
         eventCardDescription.Add(EventKind.Airlift, "dksljfjfdlkjfdskjfkl");
@@ -224,6 +224,6 @@ public class Maps : MonoBehaviour {
     public List<Color> getDiseaseColor()
     {
         
-        return dc;
+        return diseaseColor;
     }
 }

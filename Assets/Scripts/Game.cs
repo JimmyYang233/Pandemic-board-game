@@ -331,9 +331,8 @@ public class Game : MonoBehaviour {
         player.removeOneAction();
         //This part are only for the GUI, when Server side use this code, don't forget to remove this
 
-        Vector3 position = finalCity.transform.position;
-        position.y = position.y + 10;
-        pawn.transform.position = position;
+        pawn.display();
+
     }
 
 
@@ -348,26 +347,27 @@ public class Game : MonoBehaviour {
     public City testCity;
     public City destinationCity;
     public Pawn testPawn;
-    private User testUser = new User("Jimmy", "123456");
-    private Role testRole = new Role(RoleKind.Archivist);
-    private Player testPlayer;
+    private static User testUser = new User("Jimmy", "123456");
+    private static Role testRole = new Role(RoleKind.Archivist);
+    private static Player testPlayer = new Player(testUser);
 
 
     //This part for test only
-    public void startEverything() {
+    void Start() {  
         
+        Debug.Log("Start");
+
     }
 
 
     //All below may stay here forever
     public void moveButtonClicked()
     {
-        testPlayer = new Player(testUser);
-       // testRole.setPawn(testPawn);
-        //testCity.addPawn(testPawn);
+        testRole.setPawn(testPawn);
+        testCity.addPawn(testPawn);
         //testPlayer.setRole(testRole);
         //testPlayer.addCard(new CityCard(testCity));
-       // testPlayer.addCard(new CityCard(destinationCity));
+        // testPlayer.addCard(new CityCard(destinationCity));
         //currentPlayer = testPlayer;
         driveButton.GetComponent<Button>().interactable = true;
         City currentCity = currentPlayer.getPlayerPawn().getCity();

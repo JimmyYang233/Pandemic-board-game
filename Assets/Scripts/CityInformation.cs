@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CityInformation : MonoBehaviour {
+public class CityInformation {
     private CityName cityName;
     private Color color;
     private List<CityName> neighbors;
