@@ -24,7 +24,7 @@ public class Pawn : MonoBehaviour {
         Debug.Log(currentCity.getCityName().ToString());
         */
 		Transform g = this.transform.parent;
-		Debug.Log (g.name);
+		//Debug.Log (g.name);
 		foreach (Transform child in g) {
 			City city = child.gameObject.GetComponent<City> ();
 			if (city!=null && city.getCityName() == CityName.Atlanta)
@@ -34,7 +34,7 @@ public class Pawn : MonoBehaviour {
 
 			}
 		}
-		Debug.Log(currentCity.getCityName().ToString());
+		//Debug.Log(currentCity.getCityName().ToString());
     }
 
     public Pawn(RoleKind aRolekind)

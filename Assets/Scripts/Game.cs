@@ -354,6 +354,12 @@ public class Game : MonoBehaviour {
         testRole.setPawn(testPawn);
         testPlayer.setRole(testRole);
         testCity.addPawn(testPawn);
+        PlayerCard initialCard = new CityCard(testCity);
+        PlayerCard destinationCard = new CityCard(destinationCity);
+        testPlayer.addCard(initialCard);
+        testPlayer.addCard(destinationCard);
+        currentPlayer = testPlayer;
+        Debug.Log(testPawn.getCity());
         Debug.Log("Everything Complete");
     }
 

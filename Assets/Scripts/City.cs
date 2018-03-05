@@ -116,7 +116,7 @@ public class City : MonoBehaviour {
 
     public void addPawn(Pawn p)
     {
-		Debug.Log (pawns.ToString ());
+		//Debug.Log (pawns.ToString ());
         this.pawns.Add(p);
         p.setCity(this);
     }

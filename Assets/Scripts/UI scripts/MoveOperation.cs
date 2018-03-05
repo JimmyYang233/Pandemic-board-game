@@ -16,12 +16,13 @@ public class MoveOperation : MonoBehaviour {
 
     void Start()
     {
-        currentPlayer = game.getCurrentPlayer();
+        
 
     }
 
     public void moveButtonClicked()
     {
+        currentPlayer = game.getCurrentPlayer();
         driveButton.GetComponent<Button>().interactable = true;
         City currentCity = currentPlayer.getPlayerPawn().getCity();
 
@@ -37,6 +38,7 @@ public class MoveOperation : MonoBehaviour {
         {
             shuttleFlightButton.GetComponent<Button>().interactable = true;
         }
+        cancelButton.GetComponent<Button>().interactable = true;
     }
         
     /**
