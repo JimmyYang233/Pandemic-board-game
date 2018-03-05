@@ -335,6 +335,7 @@ public class Game : MonoBehaviour {
 
     }
 
+    //All below are for testing;
 
     public City testCity;
     public City destinationCity;
@@ -342,6 +343,14 @@ public class Game : MonoBehaviour {
     private static User testUser = new User("Jimmy", "123456");
     private static Role testRole = new Role(RoleKind.Archivist);
     private static Player testPlayer = new Player(testUser);
+
+    private void Start()
+    {
+        testRole.setPawn(testPawn);
+        testPlayer.setRole(testRole);
+        testCity.addPawn(testPawn);
+        Debug.Log("Everything Complete");
+    }
 
 
 

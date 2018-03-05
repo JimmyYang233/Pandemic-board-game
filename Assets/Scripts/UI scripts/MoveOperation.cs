@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveOperation : MonoBehaviour {
     public Button driveButton;
@@ -10,7 +11,7 @@ public class MoveOperation : MonoBehaviour {
     public Button cancelButton;
     
     public Game game;
-
+    /**
     public void moveButtonClicked()
     {
         driveButton.GetComponent<Button>().interactable = true;
@@ -85,5 +86,5 @@ public class MoveOperation : MonoBehaviour {
             }
         }
     }
-   
+   **/
 }
