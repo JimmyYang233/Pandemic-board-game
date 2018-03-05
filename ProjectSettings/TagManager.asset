@@ -6,7 +6,11 @@ TagManager:
   tags:
   - City
   - background
+<<<<<<< HEAD
   - Pawn
+=======
+  - Game
+>>>>>>> eb454d6bb37a8de5044c776053922d98fe256274
   layers:
   - Default
   - TransparentFX
