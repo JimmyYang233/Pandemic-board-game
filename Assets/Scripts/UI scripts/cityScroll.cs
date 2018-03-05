@@ -19,6 +19,10 @@ public class cityScroll : MonoBehaviour {
             //Debug.Log(gameObject.name + "" + transform.position.x);
             transform.position = new Vector3(transform.position.x + 557, transform.position.y, transform.position.z);
         }
+        else if (transform.position.x > 278.5)
+        {
+            transform.position = new Vector3(transform.position.x - 557, transform.position.y, transform.position.z);
+        }
         else if (transform.parent.transform.position.x == 0)
         {
             Debug.Log(transform.parent.transform.position.x);
