@@ -65,151 +65,152 @@ public class Maps : MonoBehaviour {
         eventCardDescription.Add(EventKind.SpecialOrders, "As when moving other pawns with the Dispatcher, the current player must discard (or reveal) any cards used to move that pawn by Direct or Charter  ights. Powers that are part of movement (such as the Medic’s power to remove cured disease cubes or the Containment Specialist’s power) do occur.");
 
 // blue
-        CityName[] neighbors;
-        neighbors = { CityName.Chicago, CityName.Washington, CityName.Miami };
-        cityInformations.Add(CityName.Atlanta, new CityInformation(CityName.Atlanta, Color.blue, new List<CityName>(neighbors)));
+        
 
-        neighbors = { CityName.Chicago, CityName.LosAngeles, CityName.Tokyo, CityName.Manila};
-        cityInformations.Add(CityName.SanFrancisco, new CityInformation(CityName.SanFrancisco, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors1 = { CityName.Chicago, CityName.Washington, CityName.Miami };
+        cityInformations.Add(CityName.Atlanta, new CityInformation(CityName.Atlanta, Color.blue, new List<CityName>(neighbors1)));
 
-        neighbors = { CityName.SanFrancisco, CityName.LosAngeles, CityName.MexicoCity, CityName.Atlanta, CityName.Montreal };
-        cityInformations.Add(CityName.Chicago, new CityInformation(CityName.Chicago, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors2 = { CityName.Chicago, CityName.LosAngeles, CityName.Tokyo, CityName.Manila};
+        cityInformations.Add(CityName.SanFrancisco, new CityInformation(CityName.SanFrancisco, Color.blue, new List<CityName>(neighbors2)));
 
-        neighbors = { CityName.Chicago, CityName.Washington, CityName.NewYork };
-        cityInformations.Add(CityName.Montreal, new CityInformation(CityName.Montreal, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors3 = { CityName.SanFrancisco, CityName.LosAngeles, CityName.MexicoCity, CityName.Atlanta, CityName.Montreal };
+        cityInformations.Add(CityName.Chicago, new CityInformation(CityName.Chicago, Color.blue, new List<CityName>(neighbors3)));
 
-        neighbors = { CityName.Montreal, CityName.Washington, CityName.London, CityName.Madrid };
-        cityInformations.Add(CityName.NewYork, new CityInformation(CityName.NewYork, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors4 = { CityName.Chicago, CityName.Washington, CityName.NewYork };
+        cityInformations.Add(CityName.Montreal, new CityInformation(CityName.Montreal, Color.blue, new List<CityName>(neighbors4)));
 
-        neighbors = { CityName.Montreal, CityName.Atlanta, CityName.Miami, CityName.NewYork };
-        cityInformations.Add(CityName.Washington, new CityInformation(CityName.Washington, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors5 = { CityName.Montreal, CityName.Washington, CityName.London, CityName.Madrid };
+        cityInformations.Add(CityName.NewYork, new CityInformation(CityName.NewYork, Color.blue, new List<CityName>(neighbors5)));
+
+        CityName[] neighbors6 = { CityName.Montreal, CityName.Atlanta, CityName.Miami, CityName.NewYork };
+        cityInformations.Add(CityName.Washington, new CityInformation(CityName.Washington, Color.blue, new List<CityName>(neighbors6)));
 
 
-        neighbors = { CityName.NewYork, CityName.Madrid, CityName.Paris, CityName.Essen };
-        cityInformations.Add(CityName.London, new CityInformation(CityName.London, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors7 = { CityName.NewYork, CityName.Madrid, CityName.Paris, CityName.Essen };
+        cityInformations.Add(CityName.London, new CityInformation(CityName.London, Color.blue, new List<CityName>(neighbors7)));
 
-        neighbors = { CityName.London, CityName.Paris, CityName.Milan, CityName.StPetersburg }
-        cityInformations.Add(CityName.Essen, new CityInformation(CityName.Essen, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors8 = { CityName.London, CityName.Paris, CityName.Milan, CityName.StPetersburg };
+        cityInformations.Add(CityName.Essen, new CityInformation(CityName.Essen, Color.blue, new List<CityName>(neighbors8)));
 
-        neighbors = { CityName.London, CityName.NewYork, CityName.SaoPaulo, CityName.Paris, CityName.Algiers }
-        cityInformations.Add(CityName.Madrid, new CityInformation(CityName.Madrid, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors9 = { CityName.London, CityName.NewYork, CityName.SaoPaulo, CityName.Paris, CityName.Algiers };
+        cityInformations.Add(CityName.Madrid, new CityInformation(CityName.Madrid, Color.blue, new List<CityName>(neighbors9)));
 
-        neighbors = { CityName.London, CityName.Madrid, CityName.Algiers, CityName.Milan, CityName.Essen }
-        cityInformations.Add(CityName.Paris, new CityInformation(CityName.Paris, Color.blue, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Essen, CityName.Paris, CityName.Istanbul }
-        cityInformations.Add(CityName.Milan, new CityInformation(CityName.Milan, Color.blue, new List<CityName>(neighbors)));
+        CityName[] neighbors10 = { CityName.London, CityName.Madrid, CityName.Algiers, CityName.Milan, CityName.Essen };
+        cityInformations.Add(CityName.Paris, new CityInformation(CityName.Paris, Color.blue, new List<CityName>(neighbors10)));
 
-        neighbors = { CityName.Essen, CityName.Istanbul, CityName.Moscow }
-        cityInformations.Add(CityName.StPetersburg, new CityInformation(CityName.StPetersburg, Color.blue, new List<CityName>(neighbors)));
-// black
-        neighbors = { CityName.Paris, CityName.Madrid, CityName.Cairo, CityName.Istanbul }
-        cityInformations.Add(CityName.Algiers, new CityInformation(CityName.Algiers, Color.black, new List<CityName>(neighbors)));
+        CityName[] neighbors11 = { CityName.Essen, CityName.Paris, CityName.Istanbul };
+        cityInformations.Add(CityName.Milan, new CityInformation(CityName.Milan, Color.blue, new List<CityName>(neighbors11)));
 
-        neighbors = { CityName.Istanbul, CityName.Milan, CityName.Algiers, CityName.Cairo, CityName.Baghdad, CityName.Moscow }
-        cityInformations.Add(CityName.Istanbul, new CityInformation(CityName.Istanbul, Color.black, new List<CityName>(neighbors)));
+        CityName[] neighbors12 = { CityName.Essen, CityName.Istanbul, CityName.Moscow };
+        cityInformations.Add(CityName.StPetersburg, new CityInformation(CityName.StPetersburg, Color.blue, new List<CityName>(neighbors12)));
+        // black
+        CityName[] neighbors13 = { CityName.Paris, CityName.Madrid, CityName.Cairo, CityName.Istanbul };
+        cityInformations.Add(CityName.Algiers, new CityInformation(CityName.Algiers, Color.black, new List<CityName>(neighbors13)));
 
-        neighbors = { CityName.StPetersburg, CityName.Istanbul, CityName.Tehran }
-        cityInformations.Add(CityName.Moscow, new CityInformation(CityName.Moscow, Color.black, new List<CityName>(neighbors)));
+        CityName[] neighbors14 = { CityName.Istanbul, CityName.Milan, CityName.Algiers, CityName.Cairo, CityName.Baghdad, CityName.Moscow };
+        cityInformations.Add(CityName.Istanbul, new CityInformation(CityName.Istanbul, Color.black, new List<CityName>(neighbors14)));
 
-        neighbors = { CityName.Istanbul, CityName.Algiers, CityName.Khartoum, CityName.Riyadh, CityName.Baghdad }
-        cityInformations.Add(CityName.Cairo, new CityInformation(CityName.Cairo, Color.black, new List<CityName>(neighbors)));
+        CityName[] neighbors15 = { CityName.StPetersburg, CityName.Istanbul, CityName.Tehran };
+        cityInformations.Add(CityName.Moscow, new CityInformation(CityName.Moscow, Color.black, new List<CityName>(neighbors15)));
 
-        neighbors = { CityName.Istanbul, CityName.Cairo, CityName.Riyadh, CityName.Karachi, CityName.Tehran }
-        cityInformations.Add(CityName.Baghdad, new CityInformation(CityName.Baghdad, Color.black, new List<CityName>(neighbors)));
+        CityName[] neighbors16 = { CityName.Istanbul, CityName.Algiers, CityName.Khartoum, CityName.Riyadh, CityName.Baghdad };
+        cityInformations.Add(CityName.Cairo, new CityInformation(CityName.Cairo, Color.black, new List<CityName>(neighbors16)));
 
-        neighbors = { CityName.Moscow, CityName.Baghdad, CityName.Karachi, CityName.Delhi }
-        cityInformations.Add(CityName.Tehran, new CityInformation(CityName.Tehran, Color.black, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Cairo, CityName.Baghdad, CityName.Karachi }
-        cityInformations.Add(CityName.Riyadh, new CityInformation(CityName.Riyadh, Color.black, new List<CityName>(neighbors)));
+        CityName[] neighbors17 = { CityName.Istanbul, CityName.Cairo, CityName.Riyadh, CityName.Karachi, CityName.Tehran };
+        cityInformations.Add(CityName.Baghdad, new CityInformation(CityName.Baghdad, Color.black, new List<CityName>(neighbors17)));
 
-        neighbors = { CityName.Tehran, CityName.Baghdad, CityName.Riyadh, CityName.Mumbai, CityName.Delhi }
-        cityInformations.Add(CityName.Karachi, new CityInformation(CityName.Karachi, Color.black, new List<CityName>(neighbors)));
+        CityName[] neighbors18 = { CityName.Moscow, CityName.Baghdad, CityName.Karachi, CityName.Delhi };
+        cityInformations.Add(CityName.Tehran, new CityInformation(CityName.Tehran, Color.black, new List<CityName>(neighbors18)));
 
-        neighbors = { CityName.Tehran, CityName.Karachi, CityName.Mumbai, CityName.Chennai, CityName.Kolkata }
-        cityInformations.Add(CityName.Delhi, new CityInformation(CityName.Delhi, Color.black, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Karachi, CityName.Delhi, CityName.Chennai }
-        cityInformations.Add(CityName.Mumbai, new CityInformation(CityName.Mumbai, Color.black, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Mumbai, CityName.Delhi, CityName.Kolkata, CityName.Bangkok, CityName.Jakarta }
-        cityInformations.Add(CityName.Chennai, new CityInformation(CityName.Chennai, Color.black, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Delhi, CityName.Chennai, CityName.Bangkok, CityName.HongKong }
-        cityInformations.Add(CityName.Kolkata, new CityInformation(CityName.Kolkata, Color.black, new List<CityName>(neighbors)));
-// red
-        neighbors = { CityName.Shanghai, CityName.Seoul }
-        cityInformations.Add(CityName.Beijing, new CityInformation(CityName.Beijing, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Beijing, CityName.Shanghai, CityName.Tokyo }
-        cityInformations.Add(CityName.Seoul, new CityInformation(CityName.Seoul, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Beijing, CityName.HongKong, CityName.Taipei, CityName.Tokyo, CityName.Seoul }
-        cityInformations.Add(CityName.Shanghai, new CityInformation(CityName.Shanghai, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Seoul, CityName.Shanghai, CityName.Osaka, CityName.SanFrancisco }
-        cityInformations.Add(CityName.Tokyo, new CityInformation(CityName.Tokyo, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Tokyo, CityName.Taipei }
-        cityInformations.Add(CityName.Osaka, new CityInformation(CityName.Osaka, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Shanghai, CityName.HongKong, CityName.Manila, CityName.Osaka }
-        cityInformations.Add(CityName.Taipei, new CityInformation(CityName.Taipei, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Shanghai, CityName.Kolkata, CityName.Bangkok, CityName.HoChiMinhCity, CityName.Manila, CityName.Taipei }
-        cityInformations.Add(CityName.HongKong, new CityInformation(CityName.HongKong, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Kolkata, CityName.Chennai, CityName.Jakarta, CityName.HoChiMinhCity, CityName.HongKong }
-        cityInformations.Add(CityName.Bangkok, new CityInformation(CityName.Bangkok, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Chennai, CityName.Bangkok, CityName.HoChiMinhCity, CityName.Sydney }
-        cityInformations.Add(CityName.Jakarta, new CityInformation(CityName.Jakarta, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Bangkok, CityName.Jakarta, CityName.Manila, CityName.HongKong }
-        cityInformations.Add(CityName.HoChiMinhCity, new CityInformation(CityName.HoChiMinhCity, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Taipei, CityName.HongKong, CityName.HoChiMinhCity, CityName.Sydney, CityName.SanFrancisco }
-        cityInformations.Add(CityName.Manila, new CityInformation(CityName.Manila, Color.red, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Jakarta, CityName.Manila, CityName.LosAngeles }
-        cityInformations.Add(CityName.Sydney, new CityInformation(CityName.Sydney, Color.red, new List<CityName>(neighbors)));
-    // yellow
-        neighbors = { CityName.SanFrancisco, CityName.Sydney, CityName.MexicoCity, CityName.Chicago }
-        cityInformations.Add(CityName.LosAngeles, new CityInformation(CityName.LosAngeles, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Chicago, CityName.LosAngeles, CityName.Lima, CityName.Bogota }
-        cityInformations.Add(CityName.MexicoCity, new CityInformation(CityName.MexicoCity, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Atlanta, CityName.MexicoCity, CityName.Bogota, CityName.Washington }
-        cityInformations.Add(CityName.Miami, new CityInformation(CityName.Miami, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.MexicoCity, CityName.Miami, CityName.Lima, CityName.SaoPaulo, CityName.BuenosAries }
-        cityInformations.Add(CityName.Bogota, new CityInformation(CityName.Bogota, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.MexicoCity, CityName.Santiago, CityName.Bogota }
-        cityInformations.Add(CityName.Lima, new CityInformation(CityName.Lima, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Lima }
-        cityInformations.Add(CityName.Santiago, new CityInformation(CityName.Santiago, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Bogota, CityName.BuenosAries, CityName.Lagos, CityName.Madrid }
-        cityInformations.Add(CityName.SaoPaulo, new CityInformation(CityName.SaoPaulo, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Bogota, CityName.SaoPaulo }
-        cityInformations.Add(CityName.BuenosAries, new CityInformation(CityName.BuenosAries, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.SaoPaulo, CityName.Kinshasa, CityName.Khartoum }
-        cityInformations.Add(CityName.Lagos, new CityInformation(CityName.Lagos, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Lagos, CityName.Kinshasa, CityName.Johannesburg, CityName.Cairo }
-        cityInformations.Add(CityName.Khartoum, new CityInformation(CityName.Khartoum, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Lagos, CityName.Khartoum, CityName.Johannesburg }
-        cityInformations.Add(CityName.Kinshasa, new CityInformation(CityName.Kinshasa, Color.yellow, new List<CityName>(neighbors)));
-        
-        neighbors = { CityName.Kinshasa, CityName.Khartoum }
-        cityInformations.Add(CityName.Johannesburg, new CityInformation(CityName.Johannesburg, Color.yellow, new List<CityName>(neighbors)));
+        CityName[] neighbors19 = { CityName.Cairo, CityName.Baghdad, CityName.Karachi };
+        cityInformations.Add(CityName.Riyadh, new CityInformation(CityName.Riyadh, Color.black, new List<CityName>(neighbors19)));
+
+        CityName[] neighbors20 = { CityName.Tehran, CityName.Baghdad, CityName.Riyadh, CityName.Mumbai, CityName.Delhi };
+        cityInformations.Add(CityName.Karachi, new CityInformation(CityName.Karachi, Color.black, new List<CityName>(neighbors20)));
+
+        CityName[] neighbors21 = { CityName.Tehran, CityName.Karachi, CityName.Mumbai, CityName.Chennai, CityName.Kolkata };
+        cityInformations.Add(CityName.Delhi, new CityInformation(CityName.Delhi, Color.black, new List<CityName>(neighbors21)));
+
+        CityName[] neighbors22 = { CityName.Karachi, CityName.Delhi, CityName.Chennai };
+        cityInformations.Add(CityName.Mumbai, new CityInformation(CityName.Mumbai, Color.black, new List<CityName>(neighbors22)));
+
+        CityName[] neighbors23 = { CityName.Mumbai, CityName.Delhi, CityName.Kolkata, CityName.Bangkok, CityName.Jakarta };
+        cityInformations.Add(CityName.Chennai, new CityInformation(CityName.Chennai, Color.black, new List<CityName>(neighbors23)));
+
+        CityName[] neighbors24 = { CityName.Delhi, CityName.Chennai, CityName.Bangkok, CityName.HongKong };
+        cityInformations.Add(CityName.Kolkata, new CityInformation(CityName.Kolkata, Color.black, new List<CityName>(neighbors24)));
+        // red
+        CityName[] neighbors25 = { CityName.Shanghai, CityName.Seoul };
+        cityInformations.Add(CityName.Beijing, new CityInformation(CityName.Beijing, Color.red, new List<CityName>(neighbors25)));
+
+        CityName[] neighbors26 = { CityName.Beijing, CityName.Shanghai, CityName.Tokyo };
+        cityInformations.Add(CityName.Seoul, new CityInformation(CityName.Seoul, Color.red, new List<CityName>(neighbors26)));
+
+        CityName[] neighbors27 = { CityName.Beijing, CityName.HongKong, CityName.Taipei, CityName.Tokyo, CityName.Seoul };
+        cityInformations.Add(CityName.Shanghai, new CityInformation(CityName.Shanghai, Color.red, new List<CityName>(neighbors27)));
+
+        CityName[] neighbors28 = { CityName.Seoul, CityName.Shanghai, CityName.Osaka, CityName.SanFrancisco };
+        cityInformations.Add(CityName.Tokyo, new CityInformation(CityName.Tokyo, Color.red, new List<CityName>(neighbors28)));
+
+        CityName[] neighbors29 = { CityName.Tokyo, CityName.Taipei };
+        cityInformations.Add(CityName.Osaka, new CityInformation(CityName.Osaka, Color.red, new List<CityName>(neighbors29)));
+
+        CityName[] neighbors30 = { CityName.Shanghai, CityName.HongKong, CityName.Manila, CityName.Osaka };
+        cityInformations.Add(CityName.Taipei, new CityInformation(CityName.Taipei, Color.red, new List<CityName>(neighbors30)));
+
+        CityName[] neighbors31 = { CityName.Shanghai, CityName.Kolkata, CityName.Bangkok, CityName.HoChiMinhCity, CityName.Manila, CityName.Taipei };
+        cityInformations.Add(CityName.HongKong, new CityInformation(CityName.HongKong, Color.red, new List<CityName>(neighbors31)));
+
+        CityName[] neighbors32 = { CityName.Kolkata, CityName.Chennai, CityName.Jakarta, CityName.HoChiMinhCity, CityName.HongKong };
+        cityInformations.Add(CityName.Bangkok, new CityInformation(CityName.Bangkok, Color.red, new List<CityName>(neighbors32)));
+
+        CityName[] neighbors33 = { CityName.Chennai, CityName.Bangkok, CityName.HoChiMinhCity, CityName.Sydney };
+        cityInformations.Add(CityName.Jakarta, new CityInformation(CityName.Jakarta, Color.red, new List<CityName>(neighbors33)));
+
+        CityName[] neighbors34 = { CityName.Bangkok, CityName.Jakarta, CityName.Manila, CityName.HongKong };
+        cityInformations.Add(CityName.HoChiMinhCity, new CityInformation(CityName.HoChiMinhCity, Color.red, new List<CityName>(neighbors34)));
+
+        CityName[] neighbors35 = { CityName.Taipei, CityName.HongKong, CityName.HoChiMinhCity, CityName.Sydney, CityName.SanFrancisco };
+        cityInformations.Add(CityName.Manila, new CityInformation(CityName.Manila, Color.red, new List<CityName>(neighbors35)));
+
+        CityName[] neighbors36 = { CityName.Jakarta, CityName.Manila, CityName.LosAngeles };
+        cityInformations.Add(CityName.Sydney, new CityInformation(CityName.Sydney, Color.red, new List<CityName>(neighbors36)));
+        // yellow
+        CityName[] neighbors37 = { CityName.SanFrancisco, CityName.Sydney, CityName.MexicoCity, CityName.Chicago };
+        cityInformations.Add(CityName.LosAngeles, new CityInformation(CityName.LosAngeles, Color.yellow, new List<CityName>(neighbors37)));
+
+        CityName[] neighbors38 = { CityName.Chicago, CityName.LosAngeles, CityName.Lima, CityName.Bogota };
+        cityInformations.Add(CityName.MexicoCity, new CityInformation(CityName.MexicoCity, Color.yellow, new List<CityName>(neighbors38)));
+
+        CityName[] neighbors39 = { CityName.Atlanta, CityName.MexicoCity, CityName.Bogota, CityName.Washington };
+        cityInformations.Add(CityName.Miami, new CityInformation(CityName.Miami, Color.yellow, new List<CityName>(neighbors39)));
+
+        CityName[] neighbors40 = { CityName.MexicoCity, CityName.Miami, CityName.Lima, CityName.SaoPaulo, CityName.BuenosAries };
+        cityInformations.Add(CityName.Bogota, new CityInformation(CityName.Bogota, Color.yellow, new List<CityName>(neighbors40)));
+
+        CityName[] neighbors41 = { CityName.MexicoCity, CityName.Santiago, CityName.Bogota };
+        cityInformations.Add(CityName.Lima, new CityInformation(CityName.Lima, Color.yellow, new List<CityName>(neighbors41)));
+
+        CityName[] neighbors42 = { CityName.Lima };
+        cityInformations.Add(CityName.Santiago, new CityInformation(CityName.Santiago, Color.yellow, new List<CityName>(neighbors42)));
+
+        CityName[] neighbors43 = { CityName.Bogota, CityName.BuenosAries, CityName.Lagos, CityName.Madrid };
+        cityInformations.Add(CityName.SaoPaulo, new CityInformation(CityName.SaoPaulo, Color.yellow, new List<CityName>(neighbors43)));
+
+        CityName[] neighbors44 = { CityName.Bogota, CityName.SaoPaulo };
+        cityInformations.Add(CityName.BuenosAries, new CityInformation(CityName.BuenosAries, Color.yellow, new List<CityName>(neighbors44)));
+
+        CityName[] neighbors45 = { CityName.SaoPaulo, CityName.Kinshasa, CityName.Khartoum };
+        cityInformations.Add(CityName.Lagos, new CityInformation(CityName.Lagos, Color.yellow, new List<CityName>(neighbors45)));
+
+        CityName[] neighbors46 = { CityName.Lagos, CityName.Kinshasa, CityName.Johannesburg, CityName.Cairo };
+        cityInformations.Add(CityName.Khartoum, new CityInformation(CityName.Khartoum, Color.yellow, new List<CityName>(neighbors46)));
+
+        CityName[] neighbors47 = { CityName.Lagos, CityName.Khartoum, CityName.Johannesburg };
+        cityInformations.Add(CityName.Kinshasa, new CityInformation(CityName.Kinshasa, Color.yellow, new List<CityName>(neighbors47)));
+
+        CityName[] neighbors48 = { CityName.Kinshasa, CityName.Khartoum };
+        cityInformations.Add(CityName.Johannesburg, new CityInformation(CityName.Johannesburg, Color.yellow, new List<CityName>(neighbors48)));
     }
 
     public static Maps getInstance()
