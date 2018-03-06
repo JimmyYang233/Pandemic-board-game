@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PCPanelController : MonoBehaviour {
     public int CardNumber;
@@ -8,9 +9,22 @@ public class PCPanelController : MonoBehaviour {
     public GameObject circleCenter;
     public float radius;
     public float totalDegree;
+    
+    public void addCityCard(CityCard c)
+    {
+        GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0,0,0), Quaternion.identity);
+        g.transform.parent = this.gameObject.transform;
+        Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
+        t.text = c.getCity().cityName.ToString();
+        g.transform.position = circleCenter.transform.position;
+        circleCenter.transform.position += new Vector3(20, 0, 0);
+        Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+        // apply it on current object's material
+        g.GetComponent<Image>().color = newColor;
+    }
 	// Use this for initialization
-	void Start () {
-		for(int i = 0; i < CardNumber; i++)
+	/*void Start () {
+	    for(int i = 0; i < CardNumber; i++)
         {
             addCard();
         }
@@ -43,5 +57,6 @@ public class PCPanelController : MonoBehaviour {
             this.transform.GetChild(i + 1).transform.position = circleCenter.transform.position + new Vector3(x, y, 0);
             this.transform.GetChild(i + 1).transform.rotation = Quaternion.Euler(0,0,-turnDegree);
         }
-    }
+    }*/
+
 }

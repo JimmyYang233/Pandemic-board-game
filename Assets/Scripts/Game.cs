@@ -519,7 +519,7 @@ public class Game : MonoBehaviour {
     private static Player testPlayer = new Player(testUser);
 
 
-    //for testing only
+    //for testing only, contain UI test
     private void Start()
     {
         players = new List<Player>();
@@ -529,6 +529,11 @@ public class Game : MonoBehaviour {
         testCity.addPawn(testPawn);
         PlayerCard initialCard = new CityCard(testCity);
         PlayerCard destinationCard = new CityCard(destinationCity);
+        //GUI PART
+        PCPanelController pc = GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
+        pc.addCityCard((CityCard)initialCard);
+        pc.addCityCard((CityCard)destinationCard);
+
         testPlayer.addCard(initialCard);
         testPlayer.addCard(destinationCard);
         testPlayer.refillAction();

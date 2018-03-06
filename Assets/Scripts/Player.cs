@@ -64,6 +64,7 @@ public class Player {
 	}
 
 	public void addCard(PlayerCard card){
+
 		handCard.Add(card);
 	}
 

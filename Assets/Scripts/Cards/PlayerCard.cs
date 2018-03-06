@@ -10,6 +10,7 @@ public abstract class PlayerCard : Card
     public PlayerCard(CardType c)
     {
         cardType = c;
+
     }
 
     public CardType getType()
