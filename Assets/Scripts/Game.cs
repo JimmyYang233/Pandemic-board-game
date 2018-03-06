@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
+	#region private variables
     private readonly int MAX = 24;
     private Challenge challenge;
     private GamePhase currentPhase;
@@ -29,7 +30,7 @@ public class Game : MonoBehaviour {
     private List<PlayerCard> playerCardDeck = new List<PlayerCard>();
     private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
-    
+    #endregion
 
     public Game(int numOfPlayer, int nEpidemicCard, List<User> users) {
         Maps mapInstance = Maps.getInstance();
@@ -152,11 +153,7 @@ public class Game : MonoBehaviour {
 
         playerCardDeck = tempList;
     }
-
-    
-    
-    //since i am familiar with end turn method I am going to do this first, might be buggy --zhening
-
+		
     /*
 		endTurn
 	*/
@@ -169,16 +166,16 @@ public class Game : MonoBehaviour {
 
         currentPlayer.refillAction();
         currentPlayer.setOncePerturnAction(false);
-
         int playerCardDeckSize = playerCardDeck.Count;
-/**
-*   Note that epidemic card is resolved in "draw" method
-**/
+		//Note that epidemic card is resolved in "draw" method
         //if there is no enough player cards in the deck, players lose the game
         if (!draw(currentPlayer, 2))
         {
             return;
         }
+
+		setGamePhase (GamePhase.InfectCities);
+
 
         //Question: what if the cards exceed the player's hand limit?
 
@@ -310,6 +307,10 @@ public class Game : MonoBehaviour {
     }
     /*
 		draw two cards from the top of the player card deck
+		if there is a epidemic card, it will be resolved
+		else it will be added to player's hand
+		@player the player who draws card
+		@count the number of card the player is drawing
 	*/
     private bool draw(Player player, int count)
     {
@@ -390,6 +391,8 @@ public class Game : MonoBehaviour {
     {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
     }
+
+	#region notify methods
     // to do: inform the player that they lose the game
     private void notifyGameLost(GameLostKind lostKind)
     {
@@ -406,6 +409,7 @@ public class Game : MonoBehaviour {
     {
 
     }
+	#endregion
 
     public void drive(Player player, City destinationCity)
     {
