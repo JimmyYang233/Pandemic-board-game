@@ -518,8 +518,13 @@ public class Game : MonoBehaviour {
     private static Role testRole = new Role(RoleKind.Archivist);
     private static Player testPlayer = new Player(testUser);
 
+    public Pawn testPawn2;
+    private static User testUser2 = new User("Jimmy", "123456");
+    private static Role testRole2 = new Role(RoleKind.Archivist);
+    private static Player testPlayer2 = new Player(testUser2);
 
-    //for testing only, contain UI test
+
+    //for testing only, contain UI test, now we didn't consider details for duplicate problem(two players can have same card now)
     private void Start()
     {
         int totalPlayer = 2;
@@ -536,11 +541,21 @@ public class Game : MonoBehaviour {
         testPlayer.addCard(destinationCard);
         testPlayer.refillAction();
 
-
+        //another player for test
+        players.Add(testPlayer2);
+        testRole2.setPawn(testPawn2);
+        testPlayer2.setRole(testRole2);
+        testCity.addPawn(testPawn2);
+        PlayerCard initialCard2 = new CityCard(testCity);
+        PlayerCard destinationCard2 = new CityCard(destinationCity);
+        testPlayer2.addCard(initialCard2);
+        testPlayer2.addCard(destinationCard2);
+        testPlayer2.refillAction();
+        
         //GUI for playerCard Part
         PCPanelController pc = GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
-        pc.addCityCard((CityCard)initialCard);
-        pc.addCityCard((CityCard)destinationCard);
+        pc.addCityCard(((CityCard)initialCard).getCity().getCityName());
+        pc.addCityCard(((CityCard)destinationCard).getCity().getCityName());
         //GUI for player panel
         PlayerPanelController ppc = GameObject.FindGameObjectWithTag("PlayerPanelController").GetComponent<PlayerPanelController>();
         for(int i = 0; i < totalPlayer-1; i++)

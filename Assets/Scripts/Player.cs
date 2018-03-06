@@ -9,6 +9,7 @@ public class Player {
     private Role curRole = null;
 	private List<PlayerCard> handCard = new List<PlayerCard>();
 
+
 	public Player(User user)
 	{
 		curRole = user.getRole();

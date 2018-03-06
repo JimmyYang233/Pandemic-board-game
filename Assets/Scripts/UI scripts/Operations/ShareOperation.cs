@@ -12,13 +12,23 @@ public class ShareOperation : MonoBehaviour {
     Player currentPlayer;
     City currentCity;
     bool isTake;
+    PCPanelController pc;
+    void Start()
+    {
+        pc= GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
 
+        isTake = true;
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+        currentPlayer = game.getCurrentPlayer();
+        currentCity = currentPlayer.getPlayerPawn().getCity();
+    }
     public void give()
     {
         agreePanel.SetActive(false);
         playerCardPanel.SetActive(false);
         showCardPanel.SetActive(true);
         basicOperationPanel.SetActive(false);
+        //load card for the current city
         showCardPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = currentCity.getCityName().ToString();
         isTake = false;
     }
@@ -28,37 +38,29 @@ public class ShareOperation : MonoBehaviour {
         playerCardPanel.SetActive(false);
         showCardPanel.SetActive(true);
         basicOperationPanel.SetActive(false);
+        //load card for the current city.just now
         showCardPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = currentCity.getCityName().ToString();
         isTake = true;
     }
+    //player confirm to take the card
     public void check()
     {
         if (isTake)
         {
-
+            pc.addCityCard(currentCity.cityName);
         }
         else
         {
-          
+            pc.deleteCityCard(currentCity.cityName);
         }
         cancel();
     }
+    //player cancel the operation
     public void cancel()
     {
         playerCardPanel.SetActive(true);
         showCardPanel.SetActive(false);
         basicOperationPanel.SetActive(true);
     }
-	// Use this for initialization
-	void Start () {
-        isTake = true;
-        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
-        currentPlayer = game.getCurrentPlayer();
-        currentCity = currentPlayer.getPlayerPawn().getCity();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

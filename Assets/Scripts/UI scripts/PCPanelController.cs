@@ -10,17 +10,32 @@ public class PCPanelController : MonoBehaviour {
     public float radius;
     public float totalDegree;
     
-    public void addCityCard(CityCard c)
+    public void addCityCard(CityName c)
     {
         GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0,0,0), Quaternion.identity);
         g.transform.parent = this.gameObject.transform;
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
-        t.text = c.getCity().cityName.ToString();
+        t.text = c.ToString();
         g.transform.position = circleCenter.transform.position;
         circleCenter.transform.position += new Vector3(40, 0, 0);
         Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
         // apply it on current object's material
         g.GetComponent<Image>().color = newColor;
+    }
+
+    public void deleteCityCard(CityName c)
+    {
+        foreach (Transform child in transform)
+        {
+           
+            if (child.childCount!=0 && child.GetChild(0).GetComponent<Text>().text.Equals(c.ToString()))
+            {
+
+                Destroy(child.gameObject);
+                break;
+
+            }
+        }
     }
 	// Use for shape, no need for demo
 	/*void Start () {
