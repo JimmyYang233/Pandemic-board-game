@@ -522,21 +522,33 @@ public class Game : MonoBehaviour {
     //for testing only, contain UI test
     private void Start()
     {
+        int totalPlayer = 2;
         players = new List<Player>();
+
+        //Add Player to Player List
         players.Add(testPlayer);
         testRole.setPawn(testPawn);
         testPlayer.setRole(testRole);
         testCity.addPawn(testPawn);
         PlayerCard initialCard = new CityCard(testCity);
         PlayerCard destinationCard = new CityCard(destinationCity);
-        //GUI PART
-        PCPanelController pc = GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
-        pc.addCityCard((CityCard)initialCard);
-        pc.addCityCard((CityCard)destinationCard);
-
         testPlayer.addCard(initialCard);
         testPlayer.addCard(destinationCard);
         testPlayer.refillAction();
+
+
+        //GUI for playerCard Part
+        PCPanelController pc = GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
+        pc.addCityCard((CityCard)initialCard);
+        pc.addCityCard((CityCard)destinationCard);
+        //GUI for player panel
+        PlayerPanelController ppc = GameObject.FindGameObjectWithTag("PlayerPanelController").GetComponent<PlayerPanelController>();
+        for(int i = 0; i < totalPlayer-1; i++)
+        {
+            ppc.addPlayer(testPlayer);
+        }
+
+       
         currentPlayer = testPlayer;
         Debug.Log(testPawn.getCity());
         Debug.Log("Everything Complete");

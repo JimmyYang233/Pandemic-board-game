@@ -17,12 +17,12 @@ public class PCPanelController : MonoBehaviour {
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
         t.text = c.getCity().cityName.ToString();
         g.transform.position = circleCenter.transform.position;
-        circleCenter.transform.position += new Vector3(20, 0, 0);
+        circleCenter.transform.position += new Vector3(40, 0, 0);
         Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
         // apply it on current object's material
         g.GetComponent<Image>().color = newColor;
     }
-	// Use this for initialization
+	// Use for shape, no need for demo
 	/*void Start () {
 	    for(int i = 0; i < CardNumber; i++)
         {
