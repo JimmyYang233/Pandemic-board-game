@@ -14,10 +14,10 @@ public class BasicOperation : MonoBehaviour {
     public Button passButton;
 
     Game game;
-    Player me; 
-
-	// Use this for initialization
-	void Start () {
+    Player me;
+    City currentCity;
+    // Use this for initialization
+    void Start () {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
 
         //for test only
@@ -27,7 +27,7 @@ public class BasicOperation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         me = game.getCurrentPlayer();
-        City currentCity = me.getPlayerPawn().getCity();
+        currentCity = me.getPlayerPawn().getCity();
         if (game.getCurrentPlayer() == me)
         {
             if (me.getRemainingAction() != 0)

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - City
   - background
+  - PlayerCardController
+  - PlayerPanelController
   layers:
   - Default
   - TransparentFX
