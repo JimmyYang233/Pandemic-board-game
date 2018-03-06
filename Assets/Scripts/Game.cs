@@ -380,6 +380,12 @@ public class Game : MonoBehaviour {
         return currentPlayer;
     }
 
+    public List<Player> getPlayers()
+    {
+        List<Player> copy = new List<Player>(players);
+        return copy;
+    }
+
     public void nextPlayer()
     {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
@@ -512,6 +518,8 @@ public class Game : MonoBehaviour {
     //for testing only
     private void Start()
     {
+        players = new List<Player>();
+        players.Add(testPlayer);
         testRole.setPawn(testPawn);
         testPlayer.setRole(testRole);
         testCity.addPawn(testPawn);
@@ -519,6 +527,7 @@ public class Game : MonoBehaviour {
         PlayerCard destinationCard = new CityCard(destinationCity);
         testPlayer.addCard(initialCard);
         testPlayer.addCard(destinationCard);
+        testPlayer.refillAction();
         currentPlayer = testPlayer;
         Debug.Log(testPawn.getCity());
         Debug.Log("Everything Complete");

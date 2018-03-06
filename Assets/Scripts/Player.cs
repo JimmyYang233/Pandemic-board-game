@@ -109,7 +109,10 @@ public class Player {
 		remainingAction = maximumAction;
 	}
 
-	
+	public int getRemainingAction()
+    {
+        return remainingAction;
+    }
 
 	public void removeOneAction(){
 		oncePerTurnAction = false;

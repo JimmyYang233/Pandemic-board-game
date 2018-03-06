@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class User : MonoBehaviour {
+public class User{
 	private string username;
 	private string password;
 	private PlayerStatus status;

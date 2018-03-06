@@ -10,10 +10,14 @@ public class MoveOperation : MonoBehaviour {
     public Button charterFlightButton;
     public Button cancelButton;
     
-    public Game game;
+    Game game;
 
     Player currentPlayer;
 
+    void Start()
+    {
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+    }
 
     public void moveButtonClicked()
     {
@@ -94,6 +98,7 @@ public class MoveOperation : MonoBehaviour {
         Vector3 position = destinationCity.transform.position;
         position.y = position.y + 10;
         testPawn.transform.position = position;
+        currentPlayer.decreaseRemainingAction();
         disableAllCities();
     }
 

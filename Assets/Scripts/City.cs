@@ -124,19 +124,24 @@ public class City : MonoBehaviour {
 
     }
 
+    public bool hasCubes()
+    {
+        foreach(int i in numberOfCubes.Values)
+        {
+            if (i > 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addPawn(Pawn p)
     {
 		//Debug.Log (pawns.ToString ());
         this.pawns.Add(p);
         p.setCity(this);
     }
-
-    public void decrementNumOfDiseaseCubeLeft(int ColorIndex)
-    {
-        //TO-DO
-    }
-
-    
 
     public void removePawn(Pawn p)
     {
@@ -145,6 +150,16 @@ public class City : MonoBehaviour {
         p.setCity(null);
     }
 
+    public List<Pawn> getPawns()
+    {
+        List<Pawn> copy = new List<Pawn>(pawns);
+        return copy;
+    }
+
+    public void decrementNumOfDiseaseCubeLeft(int ColorIndex)
+    {
+        //TO-DO
+    }
     public void setHasResearch(bool b)
     {
         hasResearch = b;
