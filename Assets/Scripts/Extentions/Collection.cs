@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collection{
+public static class Collection{
 
     public static void Shuffle<T>(this IList<T> ts)
     {
