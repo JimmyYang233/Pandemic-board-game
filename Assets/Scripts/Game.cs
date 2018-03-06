@@ -17,6 +17,8 @@ public class Game : MonoBehaviour {
     private int researchStationRemain;
     private bool resolvingEpidemic;
     private int numOfEpidemicCard;
+    private int index = 0;
+    private int difficulty;
 	private readonly int maxOutbreaksValue = 8;
     private Player currentPlayer;
     private List<Player> players;
@@ -27,7 +29,7 @@ public class Game : MonoBehaviour {
     private List<PlayerCard> playerCardDeck = new List<PlayerCard>();
     private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
-
+    
 
     public Game(int numOfPlayer, int nEpidemicCard, List<User> users) {
         Maps mapInstance = Maps.getInstance();
@@ -125,32 +127,34 @@ public class Game : MonoBehaviour {
         return null;
     }
 
-    //need correction, may be errors, so sorry I forgot to write on sequence diagram, need shuffle into here.
-    /*private void shuffleAndAddEpidemic(int numOfEpidemicCard)
+    private void shuffleAndAddEpidemic()
     {
-        Shuffle(playerCardDeck);
-        
+        Collection.Shuffle(playerCardDeck);
+        int subDeckSize = playerCardDeck.Count / difficulty;
+        int lastSubDeckSize = playerCardDeck.Count - (difficulty - 1) * subDeckSize;
 
-        for (int i = 0; i < numOfEpidemicCard; i++)
+        List<PlayerCard> tempList = new List<PlayerCard>();
+
+        int start = 0;
+        for (int i=0; i<difficulty; i++)
         {
-            playerCardDeck.Add(new EpidemicCard());
+            if(i == difficulty - 1)
+            {
+                subDeckSize = lastSubDeckSize;
+            }
+            List<PlayerCard> temp = new List<PlayerCard>();
+            temp = playerCardDeck.GetRange(start, subDeckSize);
+            temp.Add(EpidemicCard.getEpidemicCard());
+            Collection.Shuffle<PlayerCard>(temp);
+            tempList.AddRange(temp);
+            start += subDeckSize;
         }
 
-    }*/
-    //need correction, may be errors
-    /*  public void Shuffle<T>(this IList<T> ts)
-      {
-          var count = ts.Count;
-          var last = count - 1;
-          for (var i = 0; i < last; ++i)
-          {
-              var r = UnityEngine.Random.Range(i, count);
-              var tmp = ts[i];
-              ts[i] = ts[r];
-              ts[r] = tmp;
-          }
-      }
-      */
+        playerCardDeck = tempList;
+    }
+
+    
+    
     //since i am familiar with end turn method I am going to do this first, might be buggy --zhening
 
     /*
@@ -167,7 +171,9 @@ public class Game : MonoBehaviour {
         currentPlayer.setOncePerturnAction(false);
 
         int playerCardDeckSize = playerCardDeck.Count;
-
+/**
+*   Note that epidemic card is resolved in "draw" method
+**/
         //if there is no enough player cards in the deck, players lose the game
         if (!draw(currentPlayer, 2))
         {
@@ -176,6 +182,56 @@ public class Game : MonoBehaviour {
 
         //Question: what if the cards exceed the player's hand limit?
 
+    }
+
+    private bool resolveEpidemic()
+    {
+        resolvingEpidemic = true;
+        if(infectionRate < 4)
+        {
+            infectionRate = infectionArray[++index];
+        }
+
+        InfectionCard infectionCard = drawBottomInfectionDeck();
+
+        City city = infectionCard.getCity();
+
+        Color color = infectionCard.getColor();
+
+        Disease disease = diseases[color];
+
+        infectionDiscardPile.Add(infectionCard);
+
+        outbreakedCities.Clear();
+
+        if (!infect(city, color, 3))
+        {
+            return false;
+        }
+
+        Collection.Shuffle<InfectionCard>(infectionDiscardPile);
+        placeInfectionDiscardPileOnTop();
+
+        resolvingEpidemic = false;
+
+        return true;
+    }
+
+    private void placeInfectionDiscardPileOnTop()
+    {
+        foreach(InfectionCard card in infectionDiscardPile)
+        {
+            infectionDeck.Insert(0, card);
+        }
+
+        infectionDiscardPile.Clear();
+    }
+
+    private InfectionCard drawBottomInfectionDeck()
+    {
+        InfectionCard card = infectionDeck[infectionDeck.Count - 1];
+        infectionDeck.Remove(card);
+        return card;
     }
 
     /*
@@ -266,8 +322,17 @@ public class Game : MonoBehaviour {
         
         for (int i = 0; i < count; i++)
         {
-            player.addCard(playerCardDeck[0]);
+            PlayerCard card = playerCardDeck[0];
             playerCardDeck.RemoveAt(0);
+            if (card.getType() == CardType.EpidemicCard)
+            {
+                resolveEpidemic();
+            }
+            else
+            {
+                player.addCard(card);
+            }
+            
         }
 
         return true;
@@ -300,6 +365,14 @@ public class Game : MonoBehaviour {
             infectionCardDrawn = 0;
         }
         
+    }
+
+    public void infectCity()
+    {
+        for(int i=0; i<infectionRate; i++)
+        {
+            infectNextCity();
+        }
     }
 
     public Player getCurrentPlayer()
