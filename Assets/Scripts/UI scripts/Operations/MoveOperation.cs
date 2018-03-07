@@ -47,6 +47,10 @@ public class MoveOperation : MonoBehaviour {
    // public City tmpCity;
     public void driveButtonClicked()
     {
+        driveButton.GetComponent<Button>().interactable = false;
+        directFlightButton.GetComponent<Button>().interactable = false;
+        charterFlightButton.GetComponent<Button>().interactable = false;
+        shuttleFlightButton.GetComponent<Button>().interactable = false;
         currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         Debug.Log(currentCity.getCityName());
@@ -59,6 +63,10 @@ public class MoveOperation : MonoBehaviour {
 
     public void directFlightButtonClicked()
     {
+        driveButton.GetComponent<Button>().interactable = false;
+        directFlightButton.GetComponent<Button>().interactable = false;
+        charterFlightButton.GetComponent<Button>().interactable = false;
+        shuttleFlightButton.GetComponent<Button>().interactable = false;
         currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         List<PlayerCard> cards = currentPlayer.getHand();
