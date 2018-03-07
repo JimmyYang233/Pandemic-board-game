@@ -540,6 +540,7 @@ public class Game : MonoBehaviour {
         testPlayer.addCard(initialCard);
         testPlayer.addCard(destinationCard);
         testPlayer.refillAction();
+        currentPlayer = testPlayer;
 
         //another player for test
         players.Add(testPlayer2);
