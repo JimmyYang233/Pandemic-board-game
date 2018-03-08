@@ -32,19 +32,17 @@ public class Maps{
         diseaseColor.Add(Color.blue);
         diseaseColor.Add(Color.yellow);
 
-        // Colors are compared and chosen from http://www.99colors.net/dot-net-colors
-        /** roleColors.Add(RoleKind.ContingencyPlanner, Color.mediumturquoise);
-          roleColors.Add(RoleKind.Dispatcher, Color.orchid);
-          roleColors.Add(RoleKind.Medic, Color.orange);
-          roleColors.Add(RoleKind.OperationsExpert, Color.springgreen);
-          roleColors.Add(RoleKind.QuarantineSpecialist, Color.limegreen);
-          roleColors.Add(RoleKind.Researcher, Color.sienna);
-          roleColors.Add(RoleKind.Scientist, Color.ghostwhite);
-          roleColors.Add(RoleKind.Archivist, Color.blue);
-          roleColors.Add(RoleKind.ContainmentSpecialist, Color.wheat);
-          roleColors.Add(RoleKind.Epidemiologist, Color.pink);
-      **/
+
+        roleColors.Add(RoleKind.ContingencyPlanner, new Color32(72, 209, 204,255));
+        roleColors.Add(RoleKind.Dispatcher, new Color32(218, 112, 214,255));
+        roleColors.Add(RoleKind.Medic, new Color32(255, 127, 0,255));
+        roleColors.Add(RoleKind.OperationsExpert, new Color32(50, 205, 50,255));
+        roleColors.Add(RoleKind.QuarantineSpecialist, new Color32(23, 114, 69,255));
+        roleColors.Add(RoleKind.Researcher, new Color32(112, 66, 20,255));
+        roleColors.Add(RoleKind.Scientist, new Color32(248, 248, 255,255));
         roleColors.Add(RoleKind.Archivist, Color.blue);
+        roleColors.Add(RoleKind.ContainmentSpecialist, new Color32(245, 222, 179,255));
+        roleColors.Add(RoleKind.Epidemiologist, new Color32(255, 203, 164,255));
         roleColors.Add(RoleKind.FieldOperative, Color.yellow);
         roleColors.Add(RoleKind.Generalist, Color.gray);
         roleColors.Add(RoleKind.Troubleshooter, Color.red);
