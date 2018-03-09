@@ -531,16 +531,19 @@ public class Game : MonoBehaviour {
     }
 
 
-    public void build(Player currentPlayer, CityCard card){
+    public void build(CityCard card)
+    {
         RoleKind rolekind = currentPlayer.getRoleKind();
         Pawn p = currentPlayer.getPlayerPawn();
         City currentCity = p.getCity();
 
-        if(researchStationRemain==0){
+        if(researchStationRemain == 0)
+        {
             //Todo: ask player to remove one Research Station   
         }
 
-        if(rolekind !=RoleKind.OperationsExpert){
+        if(rolekind != RoleKind.OperationsExpert)
+        {
             currentPlayer.removeCard(card);
             playerDiscardPile.Add(card);
         }
@@ -552,8 +555,31 @@ public class Game : MonoBehaviour {
     }
 
 
-    // public void share(){}
-    // public void cure(){}
+    // public void share(Player targetPlayer, CityCard card){
+    //     bool permission = 1; //TODO: ask targetPlayer for permission
+    // }
+
+    public void cure(Disease d)
+    {
+        List<CityCard> cardsToRemove = new List<CityCard>(); //TODO: ask player to choose 5 cards of same color
+
+        foreach (CityCard card in cardsToRemove)
+        {
+            currentPlayer.removeCard(card);
+            playerDiscardPile.Add(card);
+        }
+
+        d.cure();
+        int num = d.getNumOfDiseaseCubeLeft();
+        if(num == MAX)
+        {
+            d.isEradicated();
+        }
+
+        //UI TODO: set disease’s cure marker
+
+        currentPlayer.decreaseRemainingAction();
+    }
 
     //All below are for testing;
 
