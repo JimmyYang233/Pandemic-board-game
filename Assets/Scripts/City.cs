@@ -185,4 +185,38 @@ public class City : MonoBehaviour {
         Button theButton = gameObject.GetComponent<Button>();
         return theButton.interactable;
     }
+
+    public Transform redCube;
+    public Transform blackCube;
+    public Transform blueCube;
+    public Transform yellowCube;
+
+    public void displayCube()
+    {
+        Transform currentCube;
+        foreach(Color color in numberOfCubes.Keys)
+        {
+            if(color == Color.black)
+            {
+                currentCube = blackCube;
+            }
+            else if(color == Color.red)
+            {
+                currentCube = redCube;
+            }
+            else if(color == Color.blue)
+            {
+                currentCube = blueCube;
+            }
+            else
+            {
+                currentCube = yellowCube;
+            }
+            if(numberOfCubes[color] == 1)
+            {
+                var cube = Instantiate(currentCube, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                cube.transform.parent = gameObject.transform;
+            }
+        }
+    }
 }

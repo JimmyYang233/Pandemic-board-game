@@ -5,7 +5,13 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - redCube: {fileID: 4746226725479242, guid: d18a0aae685f42040a81a19acb1cd8a9, type: 2}
+  - blackCube: {fileID: 4903469975590682, guid: dde5b1e4629d6dd4cb28e82a6c9f6841,
+      type: 2}
+  - blueCube: {fileID: 4510930856727248, guid: cea65feb67f47584a8b766ef31316157, type: 2}
+  - yellowCube: {fileID: 4560692058789768, guid: dc895509e347aee4c9f8d6730a7fa73c,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

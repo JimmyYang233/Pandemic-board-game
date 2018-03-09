@@ -525,8 +525,20 @@ public class Game : MonoBehaviour {
 
 
     //for testing only, contain UI test, now we didn't consider details for duplicate problem(two players can have same card now)
+    private void Awake()
+    {
+        diseases = new Dictionary<Color, Disease>();
+        diseases.Add(Color.blue, new Disease(Color.blue));
+        diseases.Add(Color.red, new Disease(Color.red));
+        diseases.Add(Color.black, new Disease(Color.black));
+        diseases.Add(Color.yellow, new Disease(Color.yellow));
+    }
     private void Start()
     {
+       
+        Debug.Log(diseases[Color.yellow].getColor());
+        testCity.addCubes(diseases[Color.blue], 1);
+        testCity.displayCube();
         int totalPlayer = 2;
         players = new List<Player>();
 
