@@ -509,6 +509,27 @@ public class Game : MonoBehaviour {
         p.display();
     }
 
+    public void treatDisease(Disease d, City currentCity)
+    {
+        RoleKind rolekind = currentPlayer.getRoleKind();
+        bool isCured = d.isCured();
+        int treatNumber = 1;
+        if(rolekind == RoleKind.Medic||isCured == true)
+        {
+            int n = currentCity.getCubeNumber(d);
+            treatNumber = n;
+        }
+        currentCity.removeCubes(d, treatNumber);
+        d.addCubes(treatNumber);
+        int num = d.getNumOfDiseaseCubeLeft();
+        if(num == MAX && isCured == true)
+        {
+            d.isEradicated();
+        }
+
+        currentPlayer.decreaseRemainingAction();
+    }
+
     //All below are for testing;
 
     public City testCity;
@@ -537,7 +558,7 @@ public class Game : MonoBehaviour {
     {
        
         Debug.Log(diseases[Color.yellow].getColor());
-        testCity.addCubes(diseases[Color.blue], 1);
+        testCity.addCubes(new Disease(Color.blue), 3);
         testCity.displayCube();
         int totalPlayer = 2;
         players = new List<Player>();

@@ -8,6 +8,11 @@ TagManager:
   - background
   - PlayerCardController
   - PlayerPanelController
+  - blue Cube
+  - red Cube
+  - black Cube
+  - yellow Cube
+  - purple Cube
   layers:
   - Default
   - TransparentFX

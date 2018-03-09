@@ -14,13 +14,26 @@ public class City : MonoBehaviour {
 	private List<Color> colors = new List<Color>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future
     private List<Pawn> pawns = new List<Pawn>();
     private Dictionary<Color, int> numberOfCubes = new Dictionary<Color, int>();
-
+    private string redCube;
+    private string blackCube;
+    private string blueCube;
+    private string yellowCube;
 	private void Awake()
 	{
 		colors = new List<Color>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future
 		pawns = new List<Pawn>();
 		numberOfCubes = new Dictionary<Color, int>();
-	}
+        numberOfCubes.Add(Color.black, 0);
+        numberOfCubes.Add(Color.blue, 0);
+        numberOfCubes.Add(Color.magenta, 0);
+        numberOfCubes.Add(Color.yellow, 0);
+        numberOfCubes.Add(Color.red, 0);
+        redCube = "Cubes/redCube";
+        blackCube = "Cubes/blackCube";
+        blueCube = "Cubes/blueCube";
+        yellowCube = "Cubes/yellowCube";
+
+    }
     public City(CityName name)
     {
         cityName = name;
@@ -109,6 +122,7 @@ public class City : MonoBehaviour {
     {
         Color pColor = disease.getColor();
         int current = numberOfCubes[pColor];
+        numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, num+current);
     }
 
@@ -116,6 +130,7 @@ public class City : MonoBehaviour {
     {
         Color pColor = disease.getColor();
         int current = numberOfCubes[pColor];
+        numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, current - num);
     }
 
@@ -186,37 +201,58 @@ public class City : MonoBehaviour {
         return theButton.interactable;
     }
 
-    public Transform redCube;
-    public Transform blackCube;
-    public Transform blueCube;
-    public Transform yellowCube;
 
     public void displayCube()
     {
-        Transform currentCube;
+        foreach (Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        string currentCube;
         foreach(Color color in numberOfCubes.Keys)
         {
             if(color == Color.black)
             {
                 currentCube = blackCube;
+                Debug.Log(currentCube);
             }
             else if(color == Color.red)
             {
                 currentCube = redCube;
+                Debug.Log(currentCube);
             }
             else if(color == Color.blue)
             {
                 currentCube = blueCube;
+                Debug.Log(currentCube);
             }
             else
             {
                 currentCube = yellowCube;
+                Debug.Log(currentCube);
             }
-            if(numberOfCubes[color] == 1)
+            if(numberOfCubes[color] >= 1)
             {
-                var cube = Instantiate(currentCube, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                Debug.Log(Resources.Load(currentCube));
+                GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x - 8, transform.position.y + 7, transform.position.z), gameObject.transform.rotation);
+                //cube.transform.localScale = new Vector3(1, 1, 1);
                 cube.transform.parent = gameObject.transform;
             }
+            if (numberOfCubes[color] >= 2)
+            {
+                Debug.Log(Resources.Load(currentCube));
+                GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x + 8, transform.position.y + 7, transform.position.z), gameObject.transform.rotation);
+                //cube.transform.localScale = new Vector3(1, 1, 1);
+                cube.transform.parent = gameObject.transform;
+            }
+            if (numberOfCubes[color] >= 3)
+            {
+                Debug.Log(Resources.Load(currentCube));
+                GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x, transform.position.y - 7, transform.position.z), gameObject.transform.rotation);
+                //cube.transform.localScale = new Vector3(1, 1, 1);
+                cube.transform.parent = gameObject.transform;
+            }
+
         }
     }
 }

@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4510930856727248}
   - component: {fileID: 212902706901459114}
   m_Layer: 5
-  m_Name: blue Cube
-  m_TagString: Untagged
+  m_Name: blueCube
+  m_TagString: blue Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,8 +34,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1895759086858294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.484, y: 0.577, z: 0}
-  m_LocalScale: {x: 0.8900835, y: 0.86455, z: 1.0000145}
+  m_LocalPosition: {x: -195.84048, y: 35.73906, z: 0}
+  m_LocalScale: {x: 80, y: 80, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2043302533
   m_SortingLayer: 1
-  m_SortingOrder: 20
+  m_SortingOrder: 19
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.33793116, b: 1, a: 1}
   m_FlipX: 0
