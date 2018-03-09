@@ -530,6 +530,31 @@ public class Game : MonoBehaviour {
         currentPlayer.decreaseRemainingAction();
     }
 
+
+    public void build(Player currentPlayer, CityCard card){
+        RoleKind rolekind = currentPlayer.getRoleKind();
+        Pawn p = currentPlayer.getPlayerPawn();
+        City currentCity = p.getCity();
+
+        if(researchStationRemain==0){
+            //Todo: ask player to remove one Research Station   
+        }
+
+        if(rolekind !=RoleKind.OperationsExpert){
+            currentPlayer.removeCard(card);
+            playerDiscardPile.Add(card);
+        }
+        
+        currentCity.setHasResearch(true);
+        researchStationRemain--;
+
+        currentPlayer.decreaseRemainingAction();
+    }
+
+
+    // public void share(){}
+    // public void cure(){}
+
     //All below are for testing;
 
     public City testCity;
