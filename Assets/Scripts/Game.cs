@@ -26,12 +26,77 @@ public class Game : MonoBehaviour {
     private List<InfectionCard> infectionDeck = new List<InfectionCard>();
     private List<InfectionCard> infectionDiscardPile = new List<InfectionCard>();
     private List<City> outbreakedCities = new List<City>();
-    private List<City> cities = new List<City>();
+    
     private List<PlayerCard> playerCardDeck = new List<PlayerCard>();
     private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
     #endregion
 
+    public List<City> cities;
+    public int numOfPlayer;
+    public int nEpidemicCard;
+
+    private void Start()
+    {
+
+        Maps mapInstance = Maps.getInstance();
+
+        players = new List<Player>(numOfPlayer);
+        numOfEpidemicCard = nEpidemicCard;
+        foreach (User u in users)
+        {
+            players.Add(new Player(u));
+        }
+
+        List<CityName> cityNames = Maps.getInstance().getCityNames();
+
+        foreach (CityName name in cityNames)
+        {
+            City c = new City(name);
+            c.setCityColor(mapInstance.getCityColor(name));
+            cities.Add(c);
+            playerCardDeck.Add(new CityCard(c));
+            infectionDeck.Add(new InfectionCard(c));
+        }
+
+        foreach (City c in cities)
+        {
+            List<CityName> neighborNames = mapInstance.getNeighbors(c.getCityName());
+            foreach (CityName name in neighborNames)
+            {
+                c.addNeighbor(findCity(name));
+            }
+        }
+
+        List<EventKind> eventKinds = mapInstance.getEventNames();
+        foreach (EventKind k in eventKinds)
+        {
+            playerCardDeck.Add(EventCard.getEventCard(k));
+        }
+        //TO-DO implement shuffle well
+        // shuffleAndAddEpidemic(numOfEpidemicCard);
+
+        foreach (Player p in players)
+        {
+            RoleKind rk = selectRole();
+            Role r = new Role(rk);
+            p.setRole(r);
+            Pawn pawn = new Pawn(rk);
+            r.setPawn(pawn);
+        }
+        List<Color> dc = mapInstance.getDiseaseColor();
+        foreach (Color c in dc)
+        {
+            Disease d = new Disease(c);
+            diseases.Add(c, d);
+
+        }
+
+        setUp();
+        Debug.Log("Everything Complete");
+    }
+
+    /**
     public Game(int numOfPlayer, int nEpidemicCard, List<User> users) {
         Maps mapInstance = Maps.getInstance();
 
@@ -88,6 +153,8 @@ public class Game : MonoBehaviour {
 
         setUp();
     }
+
+    **/
     //TO-DO here
     public RoleKind selectRole()
     {
@@ -597,7 +664,7 @@ public class Game : MonoBehaviour {
 
 
     //for testing only, contain UI test, now we didn't consider details for duplicate problem(two players can have same card now)
-    private void Awake()
+    /**private void Awake()
     {
         diseases = new Dictionary<Color, Disease>();
         diseases.Add(Color.blue, new Disease(Color.blue));
@@ -605,54 +672,8 @@ public class Game : MonoBehaviour {
         diseases.Add(Color.black, new Disease(Color.black));
         diseases.Add(Color.yellow, new Disease(Color.yellow));
     }
-    private void Start()
-    {
-       
-        Debug.Log(diseases[Color.yellow].getColor());
-        testCity.addCubes(new Disease(Color.blue), 3);
-        testCity.displayCube();
-        int totalPlayer = 2;
-        players = new List<Player>();
-
-        //Add Player to Player List
-        players.Add(testPlayer);
-        testRole.setPawn(testPawn);
-        testPlayer.setRole(testRole);
-        testCity.addPawn(testPawn);
-        PlayerCard initialCard = new CityCard(testCity);
-        PlayerCard destinationCard = new CityCard(destinationCity);
-        testPlayer.addCard(initialCard);
-        testPlayer.addCard(destinationCard);
-        testPlayer.refillAction();
-        currentPlayer = testPlayer;
-
-        //another player for test
-        players.Add(testPlayer2);
-        testRole2.setPawn(testPawn2);
-        testPlayer2.setRole(testRole2);
-        testCity.addPawn(testPawn2);
-        PlayerCard initialCard2 = new CityCard(testCity);
-        PlayerCard destinationCard2 = new CityCard(destinationCity);
-        testPlayer2.addCard(initialCard2);
-        testPlayer2.addCard(destinationCard2);
-        testPlayer2.refillAction();
-        
-        //GUI for playerCard Part
-        PCPanelController pc = GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
-        pc.addCityCard(((CityCard)initialCard).getCity().getCityName());
-        pc.addCityCard(((CityCard)destinationCard).getCity().getCityName());
-        //GUI for player panel
-        PlayerPanelController ppc = GameObject.FindGameObjectWithTag("PlayerPanelController").GetComponent<PlayerPanelController>();
-        for(int i = 0; i < totalPlayer-1; i++)
-        {
-            ppc.addPlayer(testPlayer);
-        }
-
-       
-        currentPlayer = testPlayer;
-        Debug.Log(testPawn.getCity());
-        Debug.Log("Everything Complete");
-    }
+    **/
+    
 
 
 

@@ -124,6 +124,7 @@ public class City : MonoBehaviour {
         int current = numberOfCubes[pColor];
         numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, num+current);
+        displayCube();
     }
 
     public void removeCubes(Disease disease, int num)
@@ -132,6 +133,7 @@ public class City : MonoBehaviour {
         int current = numberOfCubes[pColor];
         numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, current - num);
+        displayCube();
     }
 
     public void removeNormalCubes(int num)
