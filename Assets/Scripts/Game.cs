@@ -82,6 +82,9 @@ public class Game : MonoBehaviour {
             diseases.Add(c, d);
         }
 
+
+        setInitialHand();
+        shuffleAndAddEpidemic();
         setUp();
         Debug.Log("Everything Complete");
     }
@@ -167,12 +170,21 @@ public class Game : MonoBehaviour {
             infectionDiscardPile.Add(ic);
             infectionCardDrawn++;
             City c2=ic.getCity();
-            //TO-DO HERE has some difference compared to original design
+            Disease d1 = diseases[c2.getColor()];
+            c2.addCubes(d1, i);
+            d1.removeCubes(i);
+            //done;
         }
 
 
 
     }
+
+    public void setInitialHand()
+    {
+        //TO-DO
+    }
+
     private City findCity(CityName cityname)
     {
         foreach (City c in cities)
