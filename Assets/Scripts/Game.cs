@@ -172,8 +172,9 @@ public class Game : MonoBehaviour {
             infectionCardDrawn++;
             City c2=ic.getCity();
             Disease d1 = diseases[c2.getColor()];
-            c2.addCubes(d1, i);
-            d1.removeCubes(i);
+            infect(c2, c2.getColor(), i);
+            //c2.addCubes(d1, i);
+            //d1.removeCubes(i);
             //done;
         }
 
