@@ -182,7 +182,16 @@ public class Game : MonoBehaviour {
 
     public void setInitialHand()
     {
-        //TO-DO
+        int numOfPlayers = players.Count;
+        int cardNeeded = numOfPlayers;
+        if (numOfPlayers != 3)
+        {
+            cardNeeded = (numOfPlayers == 2) ? 4 : 2;
+        }
+        foreach (Player p in players)
+        {
+            draw(p, cardNeeded);
+        }
     }
 
     private City findCity(CityName cityname)
