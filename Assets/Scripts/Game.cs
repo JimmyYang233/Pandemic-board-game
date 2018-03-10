@@ -436,7 +436,6 @@ public class Game : MonoBehaviour {
         InfectionCard card = infectionDeck[0];
         infectionDeck.Remove(card);
         infectionDiscardPile.Add(card);
-        infectionCardDrawn++;
         City city = card.getCity();
         Color color = card.getColor();
         Disease disease = diseases[color];
@@ -445,12 +444,6 @@ public class Game : MonoBehaviour {
         {
             return;
         }
-        if (infectionCardDrawn == infectionRate)
-        {
-            nextPlayer();
-            infectionCardDrawn = 0;
-        }
-        
     }
 
     public void infectCity()
@@ -459,6 +452,7 @@ public class Game : MonoBehaviour {
         {
             infectNextCity();
         }
+        nextPlayer();
     }
 
     public Player getCurrentPlayer()
