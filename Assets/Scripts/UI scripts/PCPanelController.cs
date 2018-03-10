@@ -42,8 +42,18 @@ public class PCPanelController : MonoBehaviour {
             }
         }
     }
-	// Use for shape, no need for demo
-	/*void Start () {
+
+    public void addEventCard(EventKind e)
+    {
+
+    }
+
+    public void deleteEventCard(EventKind e)
+    {
+
+    }
+    // Use for shape, no need for demo
+    /*void Start () {
 	    for(int i = 0; i < CardNumber; i++)
         {
             addCard();
