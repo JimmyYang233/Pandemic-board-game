@@ -149,7 +149,6 @@ public class Game : MonoBehaviour {
     }
 
     **/
-    //TO-DO here
     public RoleKind selectRole()
     {
         return (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
@@ -309,6 +308,11 @@ public class Game : MonoBehaviour {
         InfectionCard card = infectionDeck[infectionDeck.Count - 1];
         infectionDeck.Remove(card);
         return card;
+    }
+
+    public Disease getDisease(Color color)
+    {
+        return diseases[color];
     }
 
     /*

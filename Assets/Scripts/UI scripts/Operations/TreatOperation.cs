@@ -46,7 +46,7 @@ public class TreatOperation : MonoBehaviour {
 
     }
 
-    public void testTreatBlue()
+    public void TreatBlueClicked()
     {
         currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
@@ -55,8 +55,42 @@ public class TreatOperation : MonoBehaviour {
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
-        currentCity.removeCubes(new Disease(Color.blue), 1);
-        currentPlayer.decreaseRemainingAction();
-        currentCity.displayCube();
+        game.treatDisease(game.getDisease(Color.blue), currentCity);
+    }
+
+    public void TreatYellowClicked()
+    {
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        redButton.GetComponent<Button>().interactable = false;
+        blueButton.GetComponent<Button>().interactable = false;
+        blackButton.GetComponent<Button>().interactable = false;
+        yellowButton.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = true;
+        game.treatDisease(game.getDisease(Color.yellow), currentCity);
+    }
+
+    public void TreatBlackClicked()
+    {
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        redButton.GetComponent<Button>().interactable = false;
+        blueButton.GetComponent<Button>().interactable = false;
+        blackButton.GetComponent<Button>().interactable = false;
+        yellowButton.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = true;
+        game.treatDisease(game.getDisease(Color.black), currentCity);
+    }
+
+    public void TreatRedClicked()
+    {
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        redButton.GetComponent<Button>().interactable = false;
+        blueButton.GetComponent<Button>().interactable = false;
+        blackButton.GetComponent<Button>().interactable = false;
+        yellowButton.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = true;
+        game.treatDisease(game.getDisease(Color.red), currentCity);
     }
 }
