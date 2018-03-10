@@ -255,7 +255,7 @@ public class Game : MonoBehaviour {
         }
 
 		setGamePhase (GamePhase.InfectCities);
-
+        infectCity();
 
         //Question: what if the cards exceed the player's hand limit?
 
