@@ -14,6 +14,10 @@ public class MoveOperation : MonoBehaviour {
 
     Player currentPlayer;
 
+    private enum Status {DRIVE, DIRECTFLIGHT, SHUTTLEFLIGHT, CHARTERFLIGHT};
+
+    private Status moveStatus = Status.DRIVE; 
+
     void Start()
     {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
@@ -59,6 +63,7 @@ public class MoveOperation : MonoBehaviour {
             Debug.Log(neighbor.getCityName());
             neighbor.displayButton();
         }
+        moveStatus = Status.DRIVE;
     }
 
     public void directFlightButtonClicked()
@@ -78,6 +83,8 @@ public class MoveOperation : MonoBehaviour {
                 city.displayButton();
             }
         }
+
+        moveStatus = Status.DIRECTFLIGHT;
     }
 
     public static void disableAllCities()
@@ -95,18 +102,17 @@ public class MoveOperation : MonoBehaviour {
     
 
     // for testing only
-    public void testMovePawn(City destinationCity)
+    public void cityButtonClicked(City destinationCity)
     {
         currentPlayer = game.getCurrentPlayer();
-        City currentCity = currentPlayer.getPlayerPawn().getCity();
-        Pawn testPawn = currentPlayer.getPlayerPawn();
-        City initialCity = testPawn.getCity();
-        initialCity.removePawn(testPawn);
-        destinationCity.addPawn(testPawn);
-        Vector3 position = destinationCity.transform.position;
-        position.y = position.y + 10;
-        testPawn.transform.position = position;
-        currentPlayer.decreaseRemainingAction();
+        if(moveStatus == Status.DRIVE)
+        {
+            game.drive(currentPlayer, destinationCity);
+        }
+        else if(moveStatus == Status.DIRECTFLIGHT)
+        {
+            game.takeDirectFlight(currentPlayer, currentPlayer.getCard(destinationCity));
+        }
         disableAllCities();
     }
 

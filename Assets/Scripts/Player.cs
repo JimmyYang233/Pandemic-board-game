@@ -103,6 +103,18 @@ public class Player {
         return false;
     }
 
+    public CityCard getCard(City c)
+    {
+        foreach(CityCard card in handCard)
+        {
+            if (card.getCity() == c)
+            {
+                return card;
+            }
+        }
+        return null;
+    }
+
 	public void decreaseRemainingAction(){
 		remainingAction--;
 	}
