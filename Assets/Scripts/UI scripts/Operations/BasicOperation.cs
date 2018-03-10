@@ -19,17 +19,23 @@ public class BasicOperation : MonoBehaviour {
     // Use this for initialization
     void Start () {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
-
         //for test only
         
     }
 	
 	// Update is called once per frame
 	void Update () {
-        me = game.getCurrentPlayer();
-        currentCity = me.getPlayerPawn().getCity();
+        List<Player> players = game.getPlayers();
+        foreach(Player player in players)
+        {
+            if (player.getUsername() == "Jack")
+            {
+                me = player;
+            }
+        }
         if (game.getCurrentPlayer() == me)
         {
+            currentCity = me.getPlayerPawn().getCity();
             if (me.getRemainingAction() != 0)
             {
                 moveButton.GetComponent<Button>().interactable = true;

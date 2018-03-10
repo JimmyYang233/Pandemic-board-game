@@ -22,4 +22,8 @@ public class User{
 		return curRole;
 	}
 	
+    public string getUsername()
+    {
+        return username;
+    }
 }

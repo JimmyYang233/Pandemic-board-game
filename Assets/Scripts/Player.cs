@@ -8,10 +8,11 @@ public class Player {
 	private bool oncePerTurnAction = false;
     private Role curRole = null;
 	private List<PlayerCard> handCard = new List<PlayerCard>();
-
+    private string username;
 
 	public Player(User user)
 	{
+        username = user.getUsername();
 		curRole = user.getRole();
 		if(compareRole(RoleKind.Generalist)){
 			maximumAction = 5;
@@ -115,6 +116,10 @@ public class Player {
         return null;
     }
 
+    public string getUsername()
+    {
+        return username;
+    }
 	public void decreaseRemainingAction(){
 		remainingAction--;
 	}
