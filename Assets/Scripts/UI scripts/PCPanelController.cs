@@ -9,6 +9,13 @@ public class PCPanelController : MonoBehaviour {
     public GameObject circleCenter;
     public float radius;
     public float totalDegree;
+    //only for test use, plase don't delete it
+    /*
+    private void Start()
+    {
+        addCityCard(CityName.Atlanta);
+    }
+    */
     //add city card to gui
     public void addCityCard(CityName c)
     {
