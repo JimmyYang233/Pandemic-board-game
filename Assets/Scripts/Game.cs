@@ -148,7 +148,7 @@ public class Game : MonoBehaviour {
     //TO-DO here
     public RoleKind selectRole()
     {
-        return RoleKind.Archivist;
+        return (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
     }
 
     private void setUp()
