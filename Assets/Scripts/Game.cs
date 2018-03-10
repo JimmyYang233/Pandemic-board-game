@@ -35,6 +35,7 @@ public class Game : MonoBehaviour {
     public List<City> cities;
     public int numOfPlayer;
     public int nEpidemicCard;
+    public Pawn prefab;
 
     private void Start()
     {
@@ -68,8 +69,9 @@ public class Game : MonoBehaviour {
         {
             RoleKind rk = selectRole();
             Role r = new Role(rk);
-
-            Pawn pawn = (Pawn)Instantiate(Resources.Load("Pawn"), new Vector3(0, 0, 100), gameObject.transform.rotation);
+            Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
+            pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
+            
             r.setPawn(pawn);
             p.setRole(r);
         }
@@ -510,7 +512,6 @@ public class Game : MonoBehaviour {
         player.decreaseRemainingAction();
 
         //UI only
-        p.display();
 
     }
 
@@ -562,7 +563,6 @@ public class Game : MonoBehaviour {
         player.decreaseRemainingAction();
 
         //UI only
-        p.display();
     }
 
     public void treatDisease(Disease d, City currentCity)
@@ -638,18 +638,6 @@ public class Game : MonoBehaviour {
     }
 
     //All below are for testing;
-
-    public City testCity;
-    public City destinationCity;
-    public Pawn testPawn;
-    private static User testUser = new User("Jimmy", "123456");
-    private static Role testRole = new Role(RoleKind.Archivist);
-    private static Player testPlayer = new Player(testUser);
-
-    public Pawn testPawn2;
-    private static User testUser2 = new User("Jimmy", "123456");
-    private static Role testRole2 = new Role(RoleKind.Archivist);
-    private static Player testPlayer2 = new Player(testUser2);
 
 
     //for testing only, contain UI test, now we didn't consider details for duplicate problem(two players can have same card now)
