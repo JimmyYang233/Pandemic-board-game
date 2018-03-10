@@ -67,8 +67,8 @@ public class Game : MonoBehaviour {
         {
             playerCardDeck.Add(EventCard.getEventCard(k));
         }
-        //TO-DO implement shuffle well
-       // shuffleAndAddEpidemic(numOfEpidemicCard);
+        
+        shuffleAndAddEpidemic();
 
         foreach(Player p in players)
         {
@@ -111,9 +111,10 @@ public class Game : MonoBehaviour {
             infectionCardDrawn++;
             City c2=ic.getCity();
             //TO-DO HERE has some difference compared to original design
-
-
         }
+
+
+
     }
     private City findCity(CityName cityname)
     {
