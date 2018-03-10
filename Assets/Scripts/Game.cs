@@ -87,6 +87,7 @@ public class Game : MonoBehaviour {
         setInitialHand();
         shuffleAndAddEpidemic();
         setUp();
+        currentPhase = GamePhase.PlayerTakeTurn;
         Debug.Log("Everything Complete");
     }
 
