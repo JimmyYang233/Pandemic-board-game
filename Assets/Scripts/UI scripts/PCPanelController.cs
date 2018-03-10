@@ -9,7 +9,7 @@ public class PCPanelController : MonoBehaviour {
     public GameObject circleCenter;
     public float radius;
     public float totalDegree;
-    
+    //add city card to gui
     public void addCityCard(CityName c)
     {
         GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0,0,0), Quaternion.identity);
@@ -18,11 +18,16 @@ public class PCPanelController : MonoBehaviour {
         t.text = c.ToString();
         g.transform.position = circleCenter.transform.position;
         circleCenter.transform.position += new Vector3(40, 0, 0);
-        Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+
+
+        //set color of the card
+        Maps mapInstance = Maps.getInstance();
+      
+        Color newColor = mapInstance.getCityColor(c);
         // apply it on current object's material
         g.GetComponent<Image>().color = newColor;
     }
-
+    //delete city card from gui
     public void deleteCityCard(CityName c)
     {
         foreach (Transform child in transform)
