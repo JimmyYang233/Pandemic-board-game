@@ -44,6 +44,7 @@ public class Game : MonoBehaviour {
 
         players = new List<Player>(numOfPlayer);
         numOfEpidemicCard = nEpidemicCard;
+        difficulty = nEpidemicCard;
         Player me = new Player(new User("Jack", "111"));
         players.Add(me);
         currentPlayer = me;
@@ -162,7 +163,7 @@ public class Game : MonoBehaviour {
         {
             Atlanta.addPawn(p.getRole().getPawn());
         }
-        
+        Collection.Shuffle<InfectionCard>(infectionDeck);
         for(int i = 3; i > 0; i--)
         {
             InfectionCard ic=infectionDeck[0];
