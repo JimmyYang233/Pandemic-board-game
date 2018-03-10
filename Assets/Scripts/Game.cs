@@ -43,31 +43,19 @@ public class Game : MonoBehaviour {
 
         players = new List<Player>(numOfPlayer);
         numOfEpidemicCard = nEpidemicCard;
-        foreach (User u in users)
+        Player me = new Player(new User("Jack", "111"));
+        players.Add(me);
+        currentPlayer = me;
+        for(int i = 0; i< numOfPlayer-1; i++)
         {
-            players.Add(new Player(u));
+            players.Add(new Player(new User("others", "2222")));
         }
 
-        List<CityName> cityNames = Maps.getInstance().getCityNames();
-
-        foreach (CityName name in cityNames)
+        foreach(City c in cities)
         {
-            City c = new City(name);
-            c.setCityColor(mapInstance.getCityColor(name));
-            cities.Add(c);
             playerCardDeck.Add(new CityCard(c));
             infectionDeck.Add(new InfectionCard(c));
         }
-
-        foreach (City c in cities)
-        {
-            List<CityName> neighborNames = mapInstance.getNeighbors(c.getCityName());
-            foreach (CityName name in neighborNames)
-            {
-                c.addNeighbor(findCity(name));
-            }
-        }
-
         List<EventKind> eventKinds = mapInstance.getEventNames();
         foreach (EventKind k in eventKinds)
         {
@@ -80,16 +68,16 @@ public class Game : MonoBehaviour {
         {
             RoleKind rk = selectRole();
             Role r = new Role(rk);
-            p.setRole(r);
-            Pawn pawn = new Pawn(rk);
+
+            Pawn pawn = (Pawn)Instantiate(Resources.Load("Pawn"), new Vector3(0, 0, 100), gameObject.transform.rotation);
             r.setPawn(pawn);
+            p.setRole(r);
         }
         List<Color> dc = mapInstance.getDiseaseColor();
         foreach (Color c in dc)
         {
             Disease d = new Disease(c);
             diseases.Add(c, d);
-
         }
 
         setUp();
