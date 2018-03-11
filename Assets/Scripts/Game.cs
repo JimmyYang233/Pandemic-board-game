@@ -633,9 +633,23 @@ public class Game : MonoBehaviour {
     }
 
 
-    // public void share(Player targetPlayer, CityCard card){
-    //     bool permission = 1; //TODO: ask targetPlayer for permission
-    // }
+    public void share(Player targetPlayer, CityCard card, bool giveOrTake){
+        
+        bool permission = true; //TODO: ask targetPlayer for permission
+        
+        if(permission){
+            if (giveOrTake){
+                currentPlayer.removeCard(card);
+                targetPlayer.addCard(card);
+            }
+            else{
+                targetPlayer.removeCard(card);
+                currentPlayer.addCard(card);
+            }
+        }
+
+        currentPlayer.decreaseRemainingAction();
+    }
 
     public void cure(Disease d)
     {
