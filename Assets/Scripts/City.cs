@@ -181,6 +181,14 @@ public class City : MonoBehaviour {
     public void setHasResearch(bool b)
     {
         hasResearch = b;
+        if(b == true)
+        {
+            displayResearch();
+        }
+        else
+        {
+            undisplayResearch();
+        }
     }
 
     /// <summary>
@@ -209,7 +217,11 @@ public class City : MonoBehaviour {
     {
         foreach (Transform child in transform)
         {
-            GameObject.Destroy(child.gameObject);
+            if (child.tag != "researchStation")
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+            
         }
         string currentCube;
         foreach(Color color in numberOfCubes.Keys)
@@ -256,6 +268,34 @@ public class City : MonoBehaviour {
                 cube.transform.parent = gameObject.transform;
             }
 
+        }
+    }
+
+    public void displayResearch()
+    {
+        if(hasResearch == true)
+        {
+            GameObject station = (GameObject)Instantiate(Resources.Load("researchStation"), new Vector3(0, 0, 0), gameObject.transform.rotation);
+            station.transform.parent = gameObject.transform;
+            Vector3 aPosition = transform.position;
+            aPosition.y = aPosition.y - 5;
+            station.transform.position = aPosition;
+            Debug.Log(station.transform.position);
+        }
+    }
+
+    public void undisplayResearch()
+    {
+        if(hasResearch == false)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.tag == "researchStation")
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+
+            }
         }
     }
 }

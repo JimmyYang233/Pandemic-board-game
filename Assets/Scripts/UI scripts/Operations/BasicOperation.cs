@@ -25,7 +25,7 @@ public class BasicOperation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(game.getCurrentPlayer().getUsername());
+        //Debug.Log(game.getCurrentPlayer().getUsername());
         List<Player> players = game.getPlayers();
         foreach(Player player in players)
         {

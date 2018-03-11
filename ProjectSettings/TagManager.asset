@@ -13,6 +13,7 @@ TagManager:
   - black Cube
   - yellow Cube
   - purple Cube
+  - researchStation
   layers:
   - Default
   - TransparentFX
