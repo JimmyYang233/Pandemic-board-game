@@ -166,16 +166,16 @@ public class Game : MonoBehaviour {
         Collection.Shuffle<InfectionCard>(infectionDeck);
         for(int i = 3; i > 0; i--)
         {
-            InfectionCard ic=infectionDeck[0];
-            infectionDeck.Remove(infectionDeck[0]);
-            infectionDiscardPile.Add(ic);
-            infectionCardDrawn++;
-            City c2=ic.getCity();
-            Disease d1 = diseases[c2.getColor()];
-            infect(c2, c2.getColor(), i);
-            //c2.addCubes(d1, i);
-            //d1.removeCubes(i);
-            //done;
+            for (int j = 3; j > 0; j--)
+            {
+                InfectionCard ic = infectionDeck[0];
+                infectionDeck.Remove(infectionDeck[0]);
+                infectionDiscardPile.Add(ic);
+                infectionCardDrawn++;
+                City c2 = ic.getCity();
+                Disease d1 = diseases[c2.getColor()];
+                infect(c2, c2.getColor(), i);
+            }
         }
 
 
