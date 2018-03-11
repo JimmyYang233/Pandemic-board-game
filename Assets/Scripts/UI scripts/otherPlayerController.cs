@@ -117,7 +117,7 @@ public class otherPlayerController : MonoBehaviour
         content.GetChild(cityCardNum + eventCardNum).gameObject.SetActive(true);
         content.GetChild(cityCardNum + eventCardNum).GetChild(0).GetComponent<Text>().text = e.ToString();
 
-        content.GetChild(cityCardNum + eventCardNum).GetComponent<Image>().color = Color.yellow;
+        content.GetChild(cityCardNum + eventCardNum).GetComponent<Image>().color = Color.green;
         content.GetChild(cityCardNum + eventCardNum).GetChild(0).GetComponent<Text>().color = Color.black;
 
         eventCardNum++;
