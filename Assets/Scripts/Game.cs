@@ -47,7 +47,8 @@ public class Game : MonoBehaviour {
     {
         
         Maps mapInstance = Maps.getInstance();
-
+		//initialize infectionArray
+		infectionArray = new int[]{2,2,2,3,3,4,4};
         players = new List<Player>(numOfPlayer);
         numOfEpidemicCard = nEpidemicCard;
         difficulty = nEpidemicCard;
