@@ -47,7 +47,7 @@ public class Maps{
         roleColors.Add(RoleKind.FieldOperative, Color.yellow);
         roleColors.Add(RoleKind.Generalist, Color.gray);
         roleColors.Add(RoleKind.Troubleshooter, Color.red);
-        roleColors.Add(RoleKind.Troubleshooter, Color.black);
+        roleColors.Add(RoleKind.BioTerrorist, Color.black);
     
 
 // origin 5 eventcard
