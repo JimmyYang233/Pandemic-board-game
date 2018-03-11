@@ -31,22 +31,23 @@ public class Game : MonoBehaviour {
     private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
     #endregion
-
+    public PlayerPanelController playerPanel;
     public List<City> cities;
     public int numOfPlayer;
+    Player me;
     public int nEpidemicCard;
     public Pawn prefab;
     public GameInfoDisplay gameInfoController;
 
     private void Start()
     {
-
+        
         Maps mapInstance = Maps.getInstance();
 
         players = new List<Player>(numOfPlayer);
         numOfEpidemicCard = nEpidemicCard;
         difficulty = nEpidemicCard;
-        Player me = new Player(new User("Jack", "111"));
+        me = new Player(new User("Jack", "111"));
         players.Add(me);
         currentPlayer = me;
         for(int i = 0; i< numOfPlayer-1; i++)
@@ -86,13 +87,23 @@ public class Game : MonoBehaviour {
 
         gameInfoController.displayOutbreak();
         gameInfoController.displayInfectionRate();
+
+        //FOR GUI
+        foreach (Player p in players)
+        {
+            if (p.getRoleKind() != me.getRoleKind())
+            {
+                playerPanel.addOtherPlayer(p.getRoleKind());
+            }
+        }
+
         setInitialHand();
         shuffleAndAddEpidemic();
         setUp();
         currentPhase = GamePhase.PlayerTakeTurn;
         Debug.Log("Everything Complete");
     }
-
+    
     public RoleKind selectRole()
     {
         return (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
@@ -358,6 +369,11 @@ public class Game : MonoBehaviour {
             else
             {
                 player.addCard(card);
+                //FOR GUI
+                if (!player.Equals(me))
+                {
+                    playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), card);
+                }
             }
             
         }
