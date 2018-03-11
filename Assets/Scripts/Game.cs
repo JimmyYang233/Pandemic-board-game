@@ -14,7 +14,7 @@ public class Game : MonoBehaviour {
     private int[] infectionArray;
     private int infectionCardDrawn;
     private bool isnewGame;
-    private int outbreaksValue;
+    private int outbreaksValue = 0;
     private int researchStationRemain;
     private bool resolvingEpidemic;
     private int numOfEpidemicCard;
@@ -36,6 +36,7 @@ public class Game : MonoBehaviour {
     public int numOfPlayer;
     public int nEpidemicCard;
     public Pawn prefab;
+    public GameInfoDisplay gameInfoController;
 
     private void Start()
     {
@@ -83,7 +84,8 @@ public class Game : MonoBehaviour {
             diseases.Add(c, d);
         }
 
-
+        gameInfoController.displayOutbreak();
+        gameInfoController.displayInfectionRate();
         setInitialHand();
         shuffleAndAddEpidemic();
         setUp();
@@ -91,65 +93,6 @@ public class Game : MonoBehaviour {
         Debug.Log("Everything Complete");
     }
 
-    /**
-    public Game(int numOfPlayer, int nEpidemicCard, List<User> users) {
-        Maps mapInstance = Maps.getInstance();
-
-        players = new List<Player>(numOfPlayer);
-        numOfEpidemicCard = nEpidemicCard;
-        foreach (User u in users)
-        {
-            players.Add(new Player(u));
-        }
-
-        List<CityName> cityNames = Maps.getInstance().getCityNames();
-
-        foreach (CityName name in cityNames)
-        {
-            City c = new City(name);
-            c.setCityColor(mapInstance.getCityColor(name));
-            cities.Add(c);
-            playerCardDeck.Add(new CityCard(c));
-            infectionDeck.Add(new InfectionCard(c));
-        }
-
-        foreach (City c in cities)
-        {
-            List<CityName> neighborNames = mapInstance.getNeighbors(c.getCityName());
-            foreach (CityName name in neighborNames)
-            {
-                c.addNeighbor(findCity(name));
-            }
-        }
-
-        List<EventKind> eventKinds = mapInstance.getEventNames();
-        foreach (EventKind k in eventKinds)
-        {
-            playerCardDeck.Add(EventCard.getEventCard(k));
-        }
-        
-        shuffleAndAddEpidemic();
-
-        foreach(Player p in players)
-        {
-            RoleKind rk = selectRole();
-            Role r = new Role(rk);
-            p.setRole(r);
-            Pawn pawn = new Pawn(rk);
-            r.setPawn(pawn);
-        }
-        List<Color> dc = mapInstance.getDiseaseColor();
-        foreach (Color c in dc)
-        {
-            Disease d = new Disease(c);
-            diseases.Add(c, d);
-            
-        }
-
-        setUp();
-    }
-
-    **/
     public RoleKind selectRole()
     {
         return (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
@@ -173,13 +116,9 @@ public class Game : MonoBehaviour {
                 infectionDiscardPile.Add(ic);
                 infectionCardDrawn++;
                 City c2 = ic.getCity();
-                Disease d1 = diseases[c2.getColor()];
                 infect(c2, c2.getColor(), i);
             }
         }
-
-
-
     }
 
     public void setInitialHand()
@@ -363,6 +302,7 @@ public class Game : MonoBehaviour {
         else
         {
             outbreaksValue++;
+            gameInfoController.displayOutbreak();
             if (outbreaksValue == maxOutbreaksValue)
             {
                 notifyGameLost(GameLostKind.MaxOutbreakAmountReached);
@@ -489,7 +429,17 @@ public class Game : MonoBehaviour {
     {
 
     }
-	#endregion
+    #endregion
+
+    public int getOutbreakRate()
+    {
+        return outbreaksValue;
+    }
+
+    public int getInfectionRate()
+    {
+        return infectionRate;
+    }
 
     public void drive(Player player, City destinationCity)
     {
@@ -672,20 +622,7 @@ public class Game : MonoBehaviour {
 
         currentPlayer.decreaseRemainingAction();
     }
-
-    //All below are for testing;
-
-
-    //for testing only, contain UI test, now we didn't consider details for duplicate problem(two players can have same card now)
-    /**private void Awake()
-    {
-        diseases = new Dictionary<Color, Disease>();
-        diseases.Add(Color.blue, new Disease(Color.blue));
-        diseases.Add(Color.red, new Disease(Color.red));
-        diseases.Add(Color.black, new Disease(Color.black));
-        diseases.Add(Color.yellow, new Disease(Color.yellow));
-    }
-    **/
+    
     
 
 

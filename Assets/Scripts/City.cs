@@ -229,40 +229,40 @@ public class City : MonoBehaviour {
             if(color == Color.black)
             {
                 currentCube = blackCube;
-                Debug.Log(currentCube);
+                //Debug.Log(currentCube);
             }
             else if(color == Color.red)
             {
                 currentCube = redCube;
-                Debug.Log(currentCube);
+                //Debug.Log(currentCube);
             }
             else if(color == Color.blue)
             {
                 currentCube = blueCube;
-                Debug.Log(currentCube);
+                //Debug.Log(currentCube);
             }
             else
             {
                 currentCube = yellowCube;
-                Debug.Log(currentCube);
+                //Debug.Log(currentCube);
             }
             if(numberOfCubes[color] >= 1)
             {
-                Debug.Log(Resources.Load(currentCube));
+                //Debug.Log(Resources.Load(currentCube));
                 GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x - 8, transform.position.y + 7, transform.position.z), gameObject.transform.rotation);
                 //cube.transform.localScale = new Vector3(1, 1, 1);
                 cube.transform.parent = gameObject.transform;
             }
             if (numberOfCubes[color] >= 2)
             {
-                Debug.Log(Resources.Load(currentCube));
+                //Debug.Log(Resources.Load(currentCube));
                 GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x + 8, transform.position.y + 7, transform.position.z), gameObject.transform.rotation);
                 //cube.transform.localScale = new Vector3(1, 1, 1);
                 cube.transform.parent = gameObject.transform;
             }
             if (numberOfCubes[color] >= 3)
             {
-                Debug.Log(Resources.Load(currentCube));
+                //Debug.Log(Resources.Load(currentCube));
                 GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x, transform.position.y - 7, transform.position.z), gameObject.transform.rotation);
                 //cube.transform.localScale = new Vector3(1, 1, 1);
                 cube.transform.parent = gameObject.transform;
@@ -280,7 +280,7 @@ public class City : MonoBehaviour {
             Vector3 aPosition = transform.position;
             aPosition.y = aPosition.y - 5;
             station.transform.position = aPosition;
-            Debug.Log(station.transform.position);
+            //Debug.Log(station.transform.position);
         }
     }
 
