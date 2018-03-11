@@ -49,6 +49,34 @@ public class PlayerPanelController : MonoBehaviour
             }
         }
     }
+
+    public void deletePlayerCardFromOtherPlayer(RoleKind k,Card c)
+    {
+        if (c is EventCard)
+        {
+            foreach (Transform t in this.transform)
+            {
+                if (t.gameObject.active && t.GetChild(2).GetComponent<Text>().text.Equals(k.ToString()))
+                {
+                    t.GetComponent<otherPlayerController>().deleteEventCard(((EventCard)c).getEventKind());
+                    break;
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform t in this.transform)
+            {
+
+                if (t.gameObject.active && t.GetChild(2).GetComponent<Text>().text.Equals(k.ToString()))
+                {
+                    t.GetComponent<otherPlayerController>().deleteCityCard(((CityCard)c).getCity().getCityName());
+                    break;
+                }
+
+            }
+        }
+    }
     // Use this for initialization
     void Start()
     {

@@ -28,6 +28,10 @@ public class ShareOperation : MonoBehaviour {
         playerCardPanel.SetActive(false);
         showCardPanel.SetActive(true);
         basicOperationPanel.SetActive(false);
+        //load all players current in the city
+
+
+
         //load card for the current city
         showCardPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = currentCity.getCityName().ToString();
         isTake = false;

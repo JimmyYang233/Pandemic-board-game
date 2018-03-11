@@ -17,6 +17,30 @@ public class PCPanelController : MonoBehaviour {
     }
     */
     //add city card to gui
+
+    public void addPlayerCard(Card c)
+    {
+        if(c is EventCard)
+        {
+            addEventCard(((EventCard)c).getEventKind());
+        }
+        else
+        {
+            addCityCard(((CityCard)c).getCity().getCityName());
+        }
+    }
+
+    public void deletePlayerCard(Card c)
+    {
+        if (c is EventCard)
+        {
+            deleteEventCard(((EventCard)c).getEventKind());
+        }
+        else
+        {
+            deleteCityCard(((CityCard)c).getCity().getCityName());
+        }
+    }
     public void addCityCard(CityName c)
     {
         GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0,0,0), Quaternion.identity);

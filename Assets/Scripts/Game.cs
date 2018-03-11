@@ -31,7 +31,11 @@ public class Game : MonoBehaviour {
     private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
     #endregion
+    //FOR GUI
     public PlayerPanelController playerPanel;
+    public PCPanelController mainPlayerPanel;
+
+
     public List<City> cities;
     public int numOfPlayer;
     Player me;
@@ -373,6 +377,10 @@ public class Game : MonoBehaviour {
                 if (!player.Equals(me))
                 {
                     playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), card);
+                }
+                else
+                {
+                    mainPlayerPanel.addPlayerCard(card);
                 }
             }
             
