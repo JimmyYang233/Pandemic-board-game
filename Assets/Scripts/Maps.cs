@@ -25,7 +25,8 @@ public class Maps{
         playerDescriptions.Add(RoleKind.FieldOperative, "The Field Operative may, once per turn as an action, move 1 disease cube from the city he is in and place it as a sample on his role card. When he Discovers a Cure, he may replace exactly 2 of the needed City cards by returning 3 cubes of the cure color from his Role card to the supply.");
         playerDescriptions.Add(RoleKind.Generalist, "The Generalist may do up to 5 actions each turn.");
         playerDescriptions.Add(RoleKind.Troubleshooter, "The Troubleshooter, at the start of her turn, looks at as many Infection cards as the current infection rate (by taking them from the top of the Infection Deck, looking at them, and putting them back in the same order).");
-
+        playerDescriptions.Add(RoleKind.BioTerrorist, "The Bio-Terrorist wins if the other players lose and there is at least 1 purple disease cube on the board. On his turn, the Bio-Terrorist may take up to 2 actions, plus 1 Drive/Ferry action.");
+        
 
         diseaseColor.Add(Color.black);
         diseaseColor.Add(Color.red);
@@ -46,6 +47,7 @@ public class Maps{
         roleColors.Add(RoleKind.FieldOperative, Color.yellow);
         roleColors.Add(RoleKind.Generalist, Color.gray);
         roleColors.Add(RoleKind.Troubleshooter, Color.red);
+        roleColors.Add(RoleKind.Troubleshooter, Color.black);
     
 
 // origin 5 eventcard
