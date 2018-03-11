@@ -10,7 +10,7 @@ public class Game : MonoBehaviour {
     private Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
-    private int infectionRate;
+    private int infectionRate=2;
     private int[] infectionArray;
     private int infectionCardDrawn;
     private bool isnewGame;
