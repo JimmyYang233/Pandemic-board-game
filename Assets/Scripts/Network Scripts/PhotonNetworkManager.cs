@@ -27,7 +27,9 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 	void Start(){
 		PhotonNetwork.ConnectUsingSettings (_gameVersion);
+		PhotonNetwork.playerName = "Player #" + Random.Range (10000, 99999);
 	}
+
 
 	void RefreshRoomList(){
 		//destroy old rooms
@@ -57,6 +59,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 	}
 
 	void JoinRoom(string roomName){
+		SceneManager.LoadScene ("Room");
 		PhotonNetwork.JoinRoom (roomName);
 	}
 
