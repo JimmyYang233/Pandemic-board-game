@@ -346,7 +346,7 @@ public class Game : MonoBehaviour {
         int cubeNumber = city.getCubeNumber(color);
         int remainingCubes = disease.getNumOfDiseaseCubeLeft();
         //if not exceeding 3 cubes, put cubes to that city
-        if (cubeNumber + remainingCubes <= 3)
+        if (cubeNumber <= 3)
         {
             //check if there is enough cubes left 
             if (remainingCubes - number < 0)
