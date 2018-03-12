@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 222860830277422864}
   - component: {fileID: 114885514779638292}
   - component: {fileID: 114188052412684936}
+  - component: {fileID: 114977672061044258}
   m_Layer: 8
-  m_Name: Atlantic
+  m_Name: playerCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,8 +138,8 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 3
+    m_BestFit: 1
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -147,6 +148,17 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Atlantic
+--- !u!114 &114977672061044258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1365530616001778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0699a80c73c9be64294758e9cbf0ae0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222860830277422864
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -185,7 +197,7 @@ RectTransform:
   m_GameObject: {fileID: 1365530616001778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 224090775279719100}
   m_Father: {fileID: 0}

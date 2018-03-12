@@ -4,20 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PCPanelController : MonoBehaviour {
-    public int CardNumber;
+    int cityCardNum;
     public GameObject PlayerCardPrefab;
     public GameObject circleCenter;
     public float radius;
     public float totalDegree;
+    public float maxSpace;
+
+    Maps mapInstance;
     //only for test use, plase don't delete it
     /*
     private void Start()
     {
         addCityCard(CityName.Atlanta);
+        addCityCard(CityName.Beijing);
+        addCityCard(CityName.SanFrancisco);
+        addCityCard(CityName.Riyadh);
     }
     */
     //add city card to gui
-
+    private void Awake()
+    {
+        mapInstance = Maps.getInstance();
+    }
     public void addPlayerCard(Card c)
     {
         if(c is EventCard)
@@ -41,22 +50,40 @@ public class PCPanelController : MonoBehaviour {
             deleteCityCard(((CityCard)c).getCity().getCityName());
         }
     }
+    //for test use only
+    public void addAtalantic()
+    {
+        addCityCard(CityName.Atlanta);
+    }
+
     public void addCityCard(CityName c)
     {
+        cityCardNum++;
         GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0,0,0), Quaternion.identity);
-        g.transform.parent = this.gameObject.transform;
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
+
         t.text = c.ToString();
+        g.GetComponent<Image>().color = mapInstance.getCityColor(c);
+
+        if (cityCardNum != 1)
+        {
+
+            foreach (Transform child in transform.GetChild(1))
+            {
+                child.position = child.position - new Vector3(maxSpace / 2, 0, 0);
+            }
+        }
+
+        g.transform.parent = this.gameObject.transform;
         g.transform.position = circleCenter.transform.position;
-        circleCenter.transform.position += new Vector3(40, 0, 0);
+        circleCenter.transform.position += new Vector3(maxSpace/2, 0, 0);
+
+        
+
+        g.transform.parent = transform.GetChild(1);
 
 
-        //set color of the card
-        Maps mapInstance = Maps.getInstance();
-      
-        Color newColor = mapInstance.getCityColor(c);
-        // apply it on current object's material
-        g.GetComponent<Image>().color = newColor;
+
     }
     //delete city card from gui
     public void deleteCityCard(CityName c)
@@ -83,6 +110,7 @@ public class PCPanelController : MonoBehaviour {
     {
 
     }
+
     // Use for shape, no need for demo
     /*void Start () {
 	    for(int i = 0; i < CardNumber; i++)
