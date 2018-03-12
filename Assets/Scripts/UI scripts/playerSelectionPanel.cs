@@ -10,8 +10,11 @@ public class playerSelectionPanel : MonoBehaviour {
 	private enum Status {SHARE,OTHER};
 	public ShareOperation share;
 	private Status selectStatus = Status.SHARE; 
-	void Start () {
+	void Awake(){
 		map = Maps.getInstance ();
+	}
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame
