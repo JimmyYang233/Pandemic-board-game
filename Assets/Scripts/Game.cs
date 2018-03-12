@@ -23,6 +23,7 @@ public class Game : MonoBehaviour {
 	private readonly int maxOutbreaksValue = 8;
     private Player currentPlayer;
     private List<Player> players;
+    private List<RoleKind> roleKindTaken = new List<RoleKind>();
     private List<InfectionCard> infectionDeck = new List<InfectionCard>();
     private List<InfectionCard> infectionDiscardPile = new List<InfectionCard>();
     private List<City> outbreakedCities = new List<City>();
@@ -111,7 +112,14 @@ public class Game : MonoBehaviour {
     
     public RoleKind selectRole()
     {
-        return (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
+        RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
+
+        while(roleKindTaken.Contains(rkRandom))
+        {
+            rkRandom =  (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
+        }
+        roleKindTaken.Add(rkRandom);
+        return rkRandom;
     }
 
     private void setUp()
