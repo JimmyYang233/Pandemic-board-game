@@ -12,11 +12,11 @@ public class Game : MonoBehaviour {
     private bool hasDLC;
     private int infectionRate=2;
     private int[] infectionArray;
-    private int infectionCardDrawn;
-    private bool isnewGame;
+    private int infectionCardDrawn= 0 ;
+    private bool isnewGame = true;
     private int outbreaksValue = 0;
-    private int researchStationRemain;
-    private bool resolvingEpidemic;
+    private int researchStationRemain = 6;
+    private bool resolvingEpidemic = false;
     private int numOfEpidemicCard;
     private int index = 0;
     private int difficulty;
