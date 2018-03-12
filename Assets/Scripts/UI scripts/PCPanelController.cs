@@ -55,6 +55,11 @@ public class PCPanelController : MonoBehaviour {
     {
         addCityCard(CityName.Atlanta);
     }
+    //for test use only 
+    public void deleteAtlanta()
+    {
+        deleteCityCard(CityName.Atlanta);
+    }
 
     public void addCityCard(CityName c)
     {
@@ -88,17 +93,26 @@ public class PCPanelController : MonoBehaviour {
     //delete city card from gui
     public void deleteCityCard(CityName c)
     {
-        foreach (Transform child in transform)
+        bool find = false;
+        foreach (Transform child in transform.GetChild(1))
         {
            
-            if (child.childCount!=0 && child.GetChild(0).GetComponent<Text>().text.Equals(c.ToString()))
+            if (!find && child.GetChild(0).GetComponent<Text>().text.Equals(c.ToString()))
             {
-
+                find = true;
                 Destroy(child.gameObject);
-                break;
 
             }
+            else if (!find)
+            {
+                child.position = child.position + new Vector3(maxSpace / 2, 0, 0);
+            }
+            else
+            {
+                child.position = child.position -new Vector3(maxSpace / 2, 0, 0);
+            }
         }
+        circleCenter.transform.position -= new Vector3(maxSpace / 2, 0, 0);
     }
 
     public void addEventCard(EventKind e)
