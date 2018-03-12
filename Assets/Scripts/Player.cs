@@ -3,22 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player {
-
-	public readonly PhotonPlayer PhotonPlayer;
-
-	private int maximumAction = -1;
+	private int maximumAction;
 	private int remainingAction = 0;
 	private bool oncePerTurnAction = false;
     private Role curRole = null;
 	private List<PlayerCard> handCard = new List<PlayerCard>();
     private string username;
 
-	//connect this player with the PhotonPlayer
-	//not: in the future, we need to add argument"role" to constructor
-	public Player(PhotonPlayer photonPlayer)
+	public Player(User user)
 	{
-		this.PhotonPlayer = photonPlayer;
+        username = user.getUsername();
+		curRole = user.getRole();
+		if(compareRole(RoleKind.Generalist)){
+			maximumAction = 5;
+		}
+		else{
+			maximumAction = 4;
+		}
 
+		refillAction();
+		if(compareRole(RoleKind.FieldOperative) || compareRole(RoleKind.Archivist) || compareRole(RoleKind.Epidemiologist) || compareRole(RoleKind.OperationsExpert)){
+			oncePerTurnAction = true;
+		}
+		else{
+			oncePerTurnAction = false;
+		}
 	}
 
     // public boolean consentRequest(){
@@ -27,7 +36,7 @@ public class Player {
 
     public RoleKind getRoleKind()
     {
-        return this.curRole.getRoleKind();
+        return curRole.getRoleKind();
     }
 
 	private bool compareRole(RoleKind role)
@@ -36,7 +45,7 @@ public class Player {
         {
             return false;
         }
-        return this.curRole.getRoleKind() == role;
+        return curRole.getRoleKind() == role;
 	}
 
 	public int getHandLimit(){
@@ -49,20 +58,20 @@ public class Player {
 	}
 	
 	public int getHandCardNumber(){
-		return this.handCard.Count;
+		return handCard.Count;
 	}
 
 	public Pawn getPlayerPawn(){
-		return this.curRole.getPawn();
+		return curRole.getPawn();
 	}
 
 	public void addCard(PlayerCard card){
 
-		this.handCard.Add(card);
+		handCard.Add(card);
 	}
 
     public void removeCard(PlayerCard card){
-		this.handCard.Remove(card);
+		handCard.Remove(card);
 	}
 
     public List<PlayerCard> getHand()
@@ -120,11 +129,11 @@ public class Player {
         return username;
     }
 	public void decreaseRemainingAction(){
-		this.remainingAction--;
+		remainingAction--;
 	}
 
 	public void refillAction(){
-		this.remainingAction = maximumAction;
+		remainingAction = maximumAction;
 	}
 
 	public int getRemainingAction()
@@ -139,28 +148,12 @@ public class Player {
 	public void setOncePerturnAction(bool toggle){
 		oncePerTurnAction = toggle;
 	}
-
     public void setRole(Role r)
     {
         this.curRole = r;
-		if(compareRole(RoleKind.Generalist)){
-			this.maximumAction = 5;
-		}
-		else{
-			this.maximumAction = 4;
-		}
-		refillAction();
-
-		if(compareRole(RoleKind.FieldOperative) || compareRole(RoleKind.Archivist) || compareRole(RoleKind.Epidemiologist) || compareRole(RoleKind.OperationsExpert)){
-			oncePerTurnAction = true;
-		}
-		else{
-			oncePerTurnAction = false;
-		}
     }
-
     public Role getRole()
     {
-        return this.curRole;
+        return curRole;
     }
 }
