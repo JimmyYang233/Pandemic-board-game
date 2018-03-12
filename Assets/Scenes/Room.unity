@@ -522,7 +522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Room State
+  m_Text: Hide Room
 --- !u!222 &820783640
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -647,7 +647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -193.55, y: 200.00002}
+  m_AnchoredPosition: {x: -193.55002, y: 200.00002}
   m_SizeDelta: {x: 358.82, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &929997819

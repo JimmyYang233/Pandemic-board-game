@@ -10,7 +10,6 @@ public class PlayerNetwork : MonoBehaviour {
 	private void Awake(){
 		if (Instance == null) {
 			Instance = this;
-			Instance = this;
 			PhotonView = GetComponent<PhotonView>();
 			SceneManager.sceneLoaded += OnSceneFinishedLoading;
 		}
@@ -29,7 +28,7 @@ public class PlayerNetwork : MonoBehaviour {
 		
 	private void MasterLoadedGame()
 	{
-		PlayersInGame = 1;
+		PhotonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient);
 		PhotonView.RPC("RPC_LoadGameOthers", PhotonTargets.Others);
 	}
 
