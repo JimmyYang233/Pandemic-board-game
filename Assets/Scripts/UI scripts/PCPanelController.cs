@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class PCPanelController : MonoBehaviour {
     int cityCardNum;
+    int eventCardNum;
     public GameObject PlayerCardPrefab;
-    public GameObject circleCenter;
+    public GameObject playerCardStart;
+    public Transform eventCardStart;
+
     public float radius;
     public float totalDegree;
     public float maxSpace;
@@ -54,11 +57,13 @@ public class PCPanelController : MonoBehaviour {
     public void addAtalantic()
     {
         addCityCard(CityName.Atlanta);
+        addEventCard(EventKind.Airlift);
     }
     //for test use only 
     public void deleteAtlanta()
     {
         deleteCityCard(CityName.Atlanta);
+        deleteEventCard(EventKind.Airlift);
     }
 
     public void addCityCard(CityName c)
@@ -80,8 +85,8 @@ public class PCPanelController : MonoBehaviour {
         }
 
         g.transform.parent = this.gameObject.transform;
-        g.transform.position = circleCenter.transform.position;
-        circleCenter.transform.position += new Vector3(maxSpace/2, 0, 0);
+        g.transform.position = playerCardStart.transform.position;
+        playerCardStart.transform.position += new Vector3(maxSpace/2, 0, 0);
 
         
 
@@ -112,17 +117,62 @@ public class PCPanelController : MonoBehaviour {
                 child.position = child.position -new Vector3(maxSpace / 2, 0, 0);
             }
         }
-        circleCenter.transform.position -= new Vector3(maxSpace / 2, 0, 0);
+        playerCardStart.transform.position -= new Vector3(maxSpace / 2, 0, 0);
+        cityCardNum--;
     }
 
     public void addEventCard(EventKind e)
     {
+        eventCardNum++;
+
+        GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
+
+        t.text = e.ToString();
+        g.GetComponent<Image>().color = Color.green;
+
+        if (eventCardNum != 1)
+        {
+
+            foreach (Transform child in transform.GetChild(3))
+            {
+                child.position = child.position - new Vector3(maxSpace / 2, 0, 0);
+            }
+        }
+
+        g.transform.parent = this.gameObject.transform;
+        g.transform.position = eventCardStart.transform.position;
+        eventCardStart.transform.position += new Vector3(maxSpace / 2, 0, 0);
+
+
+
+        g.transform.parent = transform.GetChild(1);
 
     }
 
     public void deleteEventCard(EventKind e)
     {
+        bool find = false;
+        foreach (Transform child in transform.GetChild(3))
+        {
 
+            if (!find && child.GetChild(0).GetComponent<Text>().text.Equals(e.ToString()))
+            {
+                find = true;
+                Destroy(child.gameObject);
+
+            }
+            else if (!find)
+            {
+                child.position = child.position + new Vector3(maxSpace / 2, 0, 0);
+            }
+            else
+            {
+                child.position = child.position - new Vector3(maxSpace / 2, 0, 0);
+            }
+        }
+        eventCardStart.transform.position -= new Vector3(maxSpace / 2, 0, 0);
+        eventCardNum--;
     }
 
     // Use for shape, no need for demo
@@ -157,7 +207,7 @@ public class PCPanelController : MonoBehaviour {
             float turnDegreef = (turnDegree / 360) * 2 * Mathf.PI; 
             float x = Mathf.Sin(turnDegreef)*radius;
             float y = Mathf.Cos(turnDegreef)*radius;
-            this.transform.GetChild(i + 1).transform.position = circleCenter.transform.position + new Vector3(x, y, 0);
+            this.transform.GetChild(i + 1).transform.position = playerCardStart.transform.position + new Vector3(x, y, 0);
             this.transform.GetChild(i + 1).transform.rotation = Quaternion.Euler(0,0,-turnDegree);
         }
     }*/

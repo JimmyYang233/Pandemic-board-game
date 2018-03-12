@@ -384,6 +384,7 @@ public class Game : MonoBehaviour {
                 }
                 else
                 {
+                    Debug.Log("add card to main player" + card.ToString());
                     mainPlayerPanel.addPlayerCard(card);
                 }
             }
