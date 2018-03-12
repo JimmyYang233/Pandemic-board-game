@@ -34,6 +34,7 @@ public class Game : MonoBehaviour {
     //FOR GUI
     public PlayerPanelController playerPanel;
     public PCPanelController mainPlayerPanel;
+	public playerSelectionPanel playerSelect;
 
 
     public List<City> cities;
@@ -101,6 +102,7 @@ public class Game : MonoBehaviour {
                 playerPanel.addOtherPlayer(p.getRoleKind());
             }
         }
+		playerSelect.gameObject.SetActive (false);
 
         setInitialHand();
         shuffleAndAddEpidemic();

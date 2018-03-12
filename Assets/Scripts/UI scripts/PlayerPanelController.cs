@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerPanelController : MonoBehaviour
 {
-
+	public playerSelectionPanel playerSelect;
 
 
     public void addOtherPlayer(RoleKind k)
@@ -18,6 +18,8 @@ public class PlayerPanelController : MonoBehaviour
                 break;
             }
         }
+
+		playerSelect.addOtherPlayer (k);
 
         // apply it on current object's material
     }

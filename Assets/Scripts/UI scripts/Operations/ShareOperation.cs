@@ -8,11 +8,18 @@ public class ShareOperation : MonoBehaviour {
     public GameObject playerCardPanel;
     public GameObject showCardPanel;
     public GameObject basicOperationPanel;
+	public playerSelectionPanel playerSelect;
+	public GameObject otherPlayers;
+
+
     Game game;
     Player currentPlayer;
     City currentCity;
     bool isTake;
     PCPanelController pc;
+	string roleSlected;
+
+
     void Start()
     {
         pc= GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
@@ -24,10 +31,14 @@ public class ShareOperation : MonoBehaviour {
     }
     public void give()
     {
+		
         agreePanel.SetActive(false);
         playerCardPanel.SetActive(false);
         showCardPanel.SetActive(true);
+
+
         basicOperationPanel.SetActive(false);
+		otherPlayers.SetActive (false);
         //load all players current in the city
 
 
@@ -48,23 +59,36 @@ public class ShareOperation : MonoBehaviour {
     }
     //player confirm to take the card
     public void check()
-    {
+	{
+		playerSelect.setShareStatus ();
         if (isTake)
         {
+			
             pc.addCityCard(currentCity.cityName);
+			cancel();
         }
         else
         {
-            pc.deleteCityCard(currentCity.cityName);
+			showCardPanel.SetActive (false);
+			playerSelect.gameObject.SetActive (true);
+            
+
         }
-        cancel();
+       
     }
     //player cancel the operation
+	public void selectRole(string name){
+		roleSlected=name;
+		pc.deleteCityCard(currentCity.cityName);
+		cancel ();
+	}
     public void cancel()
     {
+		playerSelect.gameObject.SetActive (false);
         playerCardPanel.SetActive(true);
         showCardPanel.SetActive(false);
         basicOperationPanel.SetActive(true);
+		otherPlayers.SetActive (true);
     }
 
 }
