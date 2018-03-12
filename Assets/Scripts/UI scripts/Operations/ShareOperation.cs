@@ -7,6 +7,7 @@ public class ShareOperation : MonoBehaviour {
     public GameObject agreePanel;
     public GameObject playerCardPanel;
     public GameObject showCardPanel;
+	public GameObject shareAskPanel;
     public GameObject basicOperationPanel;
 	public playerSelectionPanel playerSelect;
 	public GameObject otherPlayers;
@@ -57,6 +58,9 @@ public class ShareOperation : MonoBehaviour {
         showCardPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = currentCity.getCityName().ToString();
         isTake = true;
     }
+
+
+
     //player confirm to take the card
     public void check()
 	{
@@ -80,8 +84,12 @@ public class ShareOperation : MonoBehaviour {
 	public void selectRole(string name){
 		roleSlected=name;
 		pc.deleteCityCard(currentCity.cityName);
+
 		cancel ();
 	}
+
+
+
     public void cancel()
     {
 		playerSelect.gameObject.SetActive (false);
@@ -90,5 +98,25 @@ public class ShareOperation : MonoBehaviour {
         basicOperationPanel.SetActive(true);
 		otherPlayers.SetActive (true);
     }
+
+
+
+
+
+
+
+
+	public void acceptTake(){
+		
+	}
+
+	public void acceptReceive(){
+		
+	}
+
+	public void reject(){
+		
+	}
+
 
 }
