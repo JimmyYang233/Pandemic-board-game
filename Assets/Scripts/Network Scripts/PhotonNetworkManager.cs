@@ -5,9 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PhotonNetworkManager : MonoBehaviour {
-
-	public static PhotonNetworkManager instance = null;
-
 	public InputField roomName;
 	public InputField maxCount;
 	public GameObject roomPrefab;
@@ -17,12 +14,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 	#region private methods
 	void Awake(){
-		if (instance == null) {
-			instance = this;
-			DontDestroyOnLoad (gameObject.transform);
-		} else if (instance != this) {
-			Destroy (gameObject);
-		}
+		
 	}
 
 	void Start(){
