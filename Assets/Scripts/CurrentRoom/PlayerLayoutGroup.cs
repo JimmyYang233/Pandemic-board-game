@@ -25,7 +25,6 @@ public class PlayerLayoutGroup : MonoBehaviour
 	//	PhotonNetwork.LeaveRoom();
 	//}
 
-
 	//Called by photon whenever you join a room.
 	private void OnJoinedRoom()
 	{

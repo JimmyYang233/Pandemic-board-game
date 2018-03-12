@@ -62,10 +62,10 @@ public class PhotonNetworkManager : MonoBehaviour {
 	}
 
 	void OnJoinedLobby(){
-		Debug.Log ("Lobby");
+		PhotonNetwork.automaticallySyncScene = true;
 		Invoke ("RefreshRoomList",0.1f);
 	}
-
+		
 	void OnPhotonJoinRoomFailed(){
 		Debug.Log ("Join room failed");
 	} 
@@ -77,6 +77,8 @@ public class PhotonNetworkManager : MonoBehaviour {
 	void OnCreatedRoom(){
 		Debug.Log ("Created Room");
 	}
+
+
 	#endregion
 
 	#region public methods
