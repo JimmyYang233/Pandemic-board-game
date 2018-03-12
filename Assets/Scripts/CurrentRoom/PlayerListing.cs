@@ -25,21 +25,6 @@ public class PlayerListing : MonoBehaviour
 	{
 		PhotonPlayer = photonPlayer;
 		PlayerName.text = photonPlayer.NickName;
-
-		StartCoroutine(C_ShowPing());
-	}
-
-
-	private IEnumerator C_ShowPing()
-	{
-		while (PhotonNetwork.connected)
-		{
-			int ping = (int)PhotonPlayer.CustomProperties["Ping"];
-			m_playerPing.text = ping.ToString();
-			yield return new WaitForSeconds(1f);
-		}
-
-		yield break;
 	}
 
 }

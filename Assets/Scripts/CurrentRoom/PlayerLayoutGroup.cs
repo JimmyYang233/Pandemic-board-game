@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerLayoutGroup : MonoBehaviour
 {
@@ -93,5 +94,6 @@ public class PlayerLayoutGroup : MonoBehaviour
 	public void OnClickLeaveRoom()
 	{
 		PhotonNetwork.LeaveRoom();
+		SceneManager.LoadScene ("Lobby");
 	}
 }
