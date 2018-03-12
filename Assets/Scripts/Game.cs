@@ -96,7 +96,7 @@ public class Game : MonoBehaviour {
         //FOR GUI
         foreach (Player p in players)
         {
-            if (p.getRoleKind() != me.getRoleKind())
+            if (!p.Equals(me))
             {
                 playerPanel.addOtherPlayer(p.getRoleKind());
             }
@@ -375,8 +375,10 @@ public class Game : MonoBehaviour {
             {
                 player.addCard(card);
                 //FOR GUI
+                Debug.Log(me.getRoleKind());
                 if (!player.Equals(me))
                 {
+
                     playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), card);
                 }
                 else

@@ -28,7 +28,7 @@ public class PlayerPanelController : MonoBehaviour
         {
             foreach (Transform t in this.transform)
             {
-                if (t.gameObject.active && t.GetChild(2).GetComponent<Text>().text.Equals(k.ToString()))
+                if (t.gameObject.active && t.childCount>=3 && t.GetChild(2).GetComponent<Text>().text.Equals(k.ToString()))
                 {
                     t.GetComponent<otherPlayerController>().addEventCard(((EventCard)c).getEventKind());
                     break;
@@ -37,16 +37,27 @@ public class PlayerPanelController : MonoBehaviour
         }
         else
         {
+            //for test use
+            bool find = false;
+
             foreach (Transform t in this.transform)
             {
-
-                if (t.gameObject.active && t.GetChild(2).GetComponent<Text>().text.Equals(k.ToString()))
+                
+                
+                if (t.gameObject.activeSelf && t.childCount>=3 && t.GetChild(2).GetComponent<Text>().text.Equals(k.ToString()))
                 {
                     t.GetComponent<otherPlayerController>().addCityCard(((CityCard)c).getCity().getCityName());
+                    //Debug.Log("find"+k.ToString()+" "+ ((CityCard)c).getCity().getCityName().ToString());
+                    find = true;
                     break;
                 }
 
             }
+            /*
+            if (!find)
+            {
+                Debug.Log("notfind" + k.ToString() + " " + ((CityCard)c).getCity().getCityName().ToString());
+            }*/
         }
     }
 

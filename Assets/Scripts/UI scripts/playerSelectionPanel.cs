@@ -21,7 +21,7 @@ public class playerSelectionPanel : MonoBehaviour {
             if (!t.gameObject.active)
             {
                 t.gameObject.SetActive(true);
-                t.GetComponent<otherPlayerController>().setRole(k);
+
                 break;
             }
         }
