@@ -18,8 +18,10 @@ public class PhotonNetworkManager : MonoBehaviour {
 	}
 
 	void Start(){
-		PhotonNetwork.ConnectUsingSettings (_gameVersion);
-		PhotonNetwork.playerName = "Player #" + Random.Range (10000, 99999);
+		if (!PhotonNetwork.connected) {
+			PhotonNetwork.ConnectUsingSettings (_gameVersion);
+			PhotonNetwork.playerName = "Player #" + Random.Range (10000, 99999);
+		}
 	}
 
 

@@ -20,10 +20,10 @@ public class PlayerLayoutGroup : MonoBehaviour
 	}
 
 	//Called by photon whenever the master client is swithced.
-	private void OnMasterClientSwitched(PhotonPlayer newMasterClient)
-	{
-		PhotonNetwork.LeaveRoom();
-	}
+	//private void OnMasterClientSwitched(PhotonPlayer newMasterClient)
+	//{
+	//	PhotonNetwork.LeaveRoom();
+	//}
 
 
 	//Called by photon whenever you join a room.
