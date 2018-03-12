@@ -75,8 +75,9 @@ public class Game : MonoBehaviour {
         }
         
         foreach (PlayerCard p in playerCardDeck){
-            AllHandCards.add(p);
+            AllHandCards.Add(p);
         }
+        AllHandCards.Add(EpidemicCard.getEpidemicCard());
         //TO-DO implement shuffle well
         // shuffleAndAddEpidemic(numOfEpidemicCard);
 
@@ -455,45 +456,62 @@ public class Game : MonoBehaviour {
     {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
     }
+    public PlayerCard getPlayerCard(String cardName)
+    {
 
-	#region notify methods
+        foreach (PlayerCard card in AllHandCards)
+        {
+            CardType type = card.getType();
+            String universalName;
+            if (type == CardType.EventCard)
+            {
+                universalName = ((EventCard)card).getEventKind().ToString();
+            }
+            else if (type == CardType.CityCard)
+            {
+                universalName = ((CityCard)card).getCity().getCityName().ToString();
+      
+            }
+            else if (type == CardType.EpidemicCard)
+            {
+                universalName = ((EpidemicCard)card).getType().ToString();
+            }
+            else
+            {
+                Debug.Log("Invalid card type exists in AllHandCards. Class: Game.cs : getPlayerCard");
+                return null;
+            }
+
+            if (universalName.Equals(cardName))
+            {
+                return card;
+            }
+            
+        }
+        Debug.Log("Corresponding PlayerCard Not found. Class: Game.cs : getPlayerCard");
+        return null; 
+    }
+
+    public Player getPlayer(String roleKind)
+    {
+        foreach (Player p in players)
+        {
+            if (p.getRoleKind().ToString().Equals(roleKind))
+            {
+                return p;
+            }
+        }
+        Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : getPlayer");
+        return null;
+    }
+    #region notify methods
     // to do: inform the player that they lose the game
     private void notifyGameLost(GameLostKind lostKind)
     {
         setGamePhase(GamePhase.Completed);
     }
 
-    public PlayerCard getPlayerCard(String cardType){
-        foreach(Player p in players){
-            foreach(PlayerCard card in p.getHand()){
-                
-                
-            }
-        }
-
-        foreach(PlayerCard card in AllHandCards){
-            type = card.getType();
-            if(type == CardType.EventCard){
-
-            }
-            else if(type == CardType.CityCard){
-                
-            }
-            if(card.getType.ToString() == cardName){
-                    return card;
-            }
-        }
-    }
-
-    public Player getPlayer(String roleKind){
-        foreach(Player p in players){
-            if(p.getRoleKind().ToString().equals(roleKind)){
-                return p;
-            }
-        }
-        Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : getPlayerCard");
-        return null;
-    }
+    
 
     // to do: inform the player that they win the game
     private void notifyGameWin()
