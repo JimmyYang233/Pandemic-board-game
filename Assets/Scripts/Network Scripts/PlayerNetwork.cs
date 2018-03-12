@@ -45,7 +45,7 @@ public class PlayerNetwork : MonoBehaviour {
 	}
 
 	[PunRPC]
-	private void RPC_LoadedGameScene(PhotonPlayer photonPlayer)
+	private void RPC_LoadedGameScene()
 	{
 		PlayersInGame++;
 		if (PlayersInGame == PhotonNetwork.playerList.Length)
