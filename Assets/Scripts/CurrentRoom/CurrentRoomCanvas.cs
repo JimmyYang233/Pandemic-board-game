@@ -2,16 +2,7 @@
 
 public class CurrentRoomCanvas : MonoBehaviour
 {
-
-	public void OnClickStartSync()
-	{
-		if (!PhotonNetwork.isMasterClient)
-			return;
-
-		PhotonNetwork.LoadLevel(2);
-	}
-
-	public void OnClickStartDelayed()
+	public void OnClickStartGame()
 	{
 		if (!PhotonNetwork.isMasterClient)
 			return;

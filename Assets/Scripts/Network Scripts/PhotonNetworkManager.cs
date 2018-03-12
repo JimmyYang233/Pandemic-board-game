@@ -62,7 +62,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 	}
 
 	void OnJoinedLobby(){
-		PhotonNetwork.automaticallySyncScene = true;
+		PhotonNetwork.automaticallySyncScene = false;
 		Invoke ("RefreshRoomList",0.1f);
 	}
 		
