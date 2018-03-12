@@ -94,11 +94,15 @@ public class Player {
 
     public bool containsSpecificCityCard(City c)
     {
-        foreach(CityCard card in handCard)
+        foreach(PlayerCard card in handCard)
         {
-            if (card.getCity() == c)
+            if (card.getType() == CardType.CityCard)
             {
-                return true;
+                CityCard aCityCard = (CityCard)card;
+                if (aCityCard.getCity() == c)
+                {
+                    return true;
+                }
             }
         }
         return false;
@@ -106,11 +110,15 @@ public class Player {
 
     public CityCard getCard(City c)
     {
-        foreach(CityCard card in handCard)
+        foreach(PlayerCard card in handCard)
         {
-            if (card.getCity() == c)
+            if (card.getType() == CardType.CityCard)
             {
-                return card;
+                CityCard aCard = (CityCard)card;
+                if (aCard.getCity() == c)
+                {
+                    return aCard;
+                }
             }
         }
         return null;

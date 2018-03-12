@@ -75,13 +75,18 @@ public class MoveOperation : MonoBehaviour {
         currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         List<PlayerCard> cards = currentPlayer.getHand();
-        foreach(CityCard card in cards)
+        foreach(PlayerCard card in cards)
         {
-            City city = card.getCity();
-            if (city != currentCity)
+            if(card.getType() == CardType.CityCard)
             {
-                city.displayButton();
+                CityCard aCard = (CityCard)card;
+                City city = aCard.getCity();
+                if (city != currentCity)
+                {
+                    city.displayButton();
+                }
             }
+            
         }
 
         moveStatus = Status.DIRECTFLIGHT;

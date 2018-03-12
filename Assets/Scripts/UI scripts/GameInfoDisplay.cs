@@ -29,10 +29,10 @@ public class GameInfoDisplay : MonoBehaviour
 
     public void displayInfectionRate()
     {
-        int infectionRate = game.getInfectionRate();
+        int infectionIndex = game.getInfectionIndex();
         for(int i = 0; i < 7; i++)
         {
-            if (i + 1 == infectionRate)
+            if (i == infectionIndex)
             {
                 infectionrates[i].SetActive(true);
             }

@@ -139,6 +139,7 @@ public class Game : MonoBehaviour {
 
     public void setInitialHand()
     {
+        Collection.Shuffle<PlayerCard>(playerCardDeck);
         int numOfPlayers = players.Count;
         int cardNeeded = numOfPlayers;
         if (numOfPlayers != 3)
@@ -468,6 +469,11 @@ public class Game : MonoBehaviour {
         return infectionRate;
     }
 
+    public int getInfectionIndex()
+    {
+        return index;
+    }
+
     public void drive(Player player, City destinationCity)
     {
         Pawn p = player.getPlayerPawn();
@@ -526,6 +532,15 @@ public class Game : MonoBehaviour {
         if(rolekind != RoleKind.Troubleshooter)
         {
             player.removeCard(card);
+            if (!player.Equals(me))
+            {
+
+                playerPanel.deletePlayerCardFromOtherPlayer(player.getRoleKind(), card);
+            }
+            else
+            {
+                mainPlayerPanel.deletePlayerCard(card);
+            }
             playerDiscardPile.Add(card);
             
         }
