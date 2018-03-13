@@ -56,7 +56,7 @@ public class Game : MonoBehaviour {
         numOfEpidemicCard = nEpidemicCard;
         difficulty = nEpidemicCard;
 		me = new Player(PhotonNetwork.player);
-        players.Add(me);
+        //players.Add(me);
         currentPlayer = me;
         //for(int i = 0; i< numOfPlayer-1; i++)
         //{
