@@ -12,12 +12,12 @@ public class GameManagement : MonoBehaviour {
 		Instance = this;
 		game = Game.Instance;
 		PhotonView = PhotonView = GetComponent<PhotonView>();
-		if (PhotonNetwork.isMasterClient)
-			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
+
 	}
 	// Use this for initialization
 	void Start () {
-		
+		if (PhotonNetwork.isMasterClient)
+			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
 	}
 	
 	// Update is called once per frame

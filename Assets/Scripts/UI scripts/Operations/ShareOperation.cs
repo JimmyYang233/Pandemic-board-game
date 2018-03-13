@@ -26,9 +26,14 @@ public class ShareOperation : MonoBehaviour {
 
         isTake = true;
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
-        currentPlayer = game.getCurrentPlayer();
-        currentCity = currentPlayer.getPlayerPawn().getCity();
+        
     }
+
+	void Update (){
+		currentPlayer = game.getCurrentPlayer();
+		currentCity = currentPlayer.getPlayerPawn().getCity();
+	}
+
     public void give()
     {
 		
