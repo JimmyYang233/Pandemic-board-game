@@ -79,7 +79,7 @@ public class Game : MonoBehaviour {
 		difficulty = nEpidemicCard;
 		me = FindLocalPlayer();
 		//players.Add(me);
-		currentPlayer = me;
+		currentPlayer = players[0];
 		//for(int i = 0; i< numOfPlayer-1; i++)
 		//{
 		//    players.Add(new Player(new User("others", "2222")));
