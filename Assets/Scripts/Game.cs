@@ -118,7 +118,7 @@ public class Game : MonoBehaviour {
         Debug.Log("Everything Complete");
     }
     
-	private Player FindLocalPlayer(){
+	public Player FindLocalPlayer(){
 		return PlayerManagement.Instance.FindLocalPlayer (PhotonNetwork.player);
 	}
 

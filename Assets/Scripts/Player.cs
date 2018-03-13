@@ -10,7 +10,6 @@ public class Player {
 	private bool oncePerTurnAction = false;
     private Role curRole = null;
 	private List<PlayerCard> handCard = new List<PlayerCard>();
-    private string username;
 
 	//connect this player with the PhotonPlayer
 	//not: in the future, we need to add argument"role" to constructor
@@ -114,10 +113,6 @@ public class Player {
         return null;
     }
 
-    public string getUsername()
-    {
-        return username;
-    }
 	public void decreaseRemainingAction(){
 		remainingAction--;
 	}

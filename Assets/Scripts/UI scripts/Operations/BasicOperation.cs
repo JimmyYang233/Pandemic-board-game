@@ -19,21 +19,12 @@ public class BasicOperation : MonoBehaviour {
     // Use this for initialization
     void Start () {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
-        //for test only
         
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //Debug.Log(game.getCurrentPlayer().getUsername());
-        List<Player> players = game.getPlayers();
-        foreach(Player player in players)
-        {
-            if (player.getUsername() == "Jack")
-            {
-                me = player;
-            }
-        }
+        me = game.FindLocalPlayer();
         if (game.getCurrentPlayer() == me)
         {
             currentCity = me.getPlayerPawn().getCity();
