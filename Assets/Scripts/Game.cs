@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
+	public static Game Instance;
 	#region private variables
     private readonly int MAX = 24;
     private Challenge challenge;
@@ -40,97 +41,104 @@ public class Game : MonoBehaviour {
 
     GameObject backGround;
 
-    public List<City> cities;
+    private List<City> cities;
     public int numOfPlayer;
     Player me;
     public int nEpidemicCard;
     public Pawn prefab;
     public GameInfoDisplay gameInfoController;
 
+	private void Awake(){
+		Instance = this;
+	}
+
     private void Start()
     {
-        //load city
-        backGround = GameObject.FindGameObjectWithTag("background");
-        foreach(Transform t in backGround.transform)
-        {
-            if (t.GetComponent<City>() != null)
-            {
-                cities.Add(t.GetComponent<City>());
-            }
-        
-        }
-        Debug.Log(cities.Count);
+    }
+		
+	public void InitializeGame(){
+		//load city
+		cities = new List<City>();
+		backGround = GameObject.FindGameObjectWithTag("background");
+		foreach(Transform t in backGround.transform)
+		{
+			if (t.GetComponent<City>() != null)
+			{
+				cities.Add(t.GetComponent<City>());
+			}
+
+		}
+		Debug.Log(cities.Count);
 
 
-        Maps mapInstance = Maps.getInstance();
+		Maps mapInstance = Maps.getInstance();
 		//initialize infectionArray
 		infectionArray = new int[]{2,2,2,3,3,4,4};
 		players = PlayerManagement.Instance.Players;
-        numOfEpidemicCard = nEpidemicCard;
-        difficulty = nEpidemicCard;
+		numOfEpidemicCard = nEpidemicCard;
+		difficulty = nEpidemicCard;
 		me = FindLocalPlayer();
-        //players.Add(me);
-        currentPlayer = me;
-        //for(int i = 0; i< numOfPlayer-1; i++)
-        //{
-        //    players.Add(new Player(new User("others", "2222")));
-        //}
+		//players.Add(me);
+		currentPlayer = me;
+		//for(int i = 0; i< numOfPlayer-1; i++)
+		//{
+		//    players.Add(new Player(new User("others", "2222")));
+		//}
 
-        foreach(City c in cities)
-        {
-            playerCardDeck.Add(new CityCard(c));
-            infectionDeck.Add(new InfectionCard(c));
-        }
-        List<EventKind> eventKinds = mapInstance.getEventNames();
-        foreach (EventKind k in eventKinds)
-        {
-            playerCardDeck.Add(EventCard.getEventCard(k));
-        }
-        
-        foreach (PlayerCard p in playerCardDeck){
-            AllHandCards.Add(p);
-        }
-        AllHandCards.Add(EpidemicCard.getEpidemicCard());
-        //TO-DO implement shuffle well
-        // shuffleAndAddEpidemic(numOfEpidemicCard);
+		foreach(City c in cities)
+		{
+			playerCardDeck.Add(new CityCard(c));
+			infectionDeck.Add(new InfectionCard(c));
+		}
+		List<EventKind> eventKinds = mapInstance.getEventNames();
+		foreach (EventKind k in eventKinds)
+		{
+			playerCardDeck.Add(EventCard.getEventCard(k));
+		}
 
-        foreach (Player p in players)
-        {
-            RoleKind rk = selectRole();
-            Role r = new Role(rk);
-            Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
-            pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
-            
-            r.setPawn(pawn);
-            p.setRole(r);
-        }
-        List<Color> dc = mapInstance.getDiseaseColor();
-        foreach (Color c in dc)
-        {
-            Disease d = new Disease(c);
-            diseases.Add(c, d);
-        }
+		foreach (PlayerCard p in playerCardDeck){
+			AllHandCards.Add(p);
+		}
+		AllHandCards.Add(EpidemicCard.getEpidemicCard());
+		//TO-DO implement shuffle well
+		// shuffleAndAddEpidemic(numOfEpidemicCard);
 
-        gameInfoController.displayOutbreak();
-        gameInfoController.displayInfectionRate();
+		foreach (Player p in players)
+		{
+			RoleKind rk = selectRole();
+			Role r = new Role(rk);
+			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
 
-        //FOR GUI
-        foreach (Player p in players)
-        {
-            if (!p.Equals(me))
-            {
-                playerPanel.addOtherPlayer(p.getRoleKind());
-            }
-        }
+			r.setPawn(pawn);
+			p.setRole(r);
+		}
+		List<Color> dc = mapInstance.getDiseaseColor();
+		foreach (Color c in dc)
+		{
+			Disease d = new Disease(c);
+			diseases.Add(c, d);
+		}
+
+		gameInfoController.displayOutbreak();
+		gameInfoController.displayInfectionRate();
+
+		//FOR GUI
+		foreach (Player p in players)
+		{
+			if (!p.Equals(me))
+			{
+				playerPanel.addOtherPlayer(p.getRoleKind());
+			}
+		}
 		playerSelect.gameObject.SetActive (false);
 
-        setInitialHand();
-        shuffleAndAddEpidemic();
-        setUp();
-        currentPhase = GamePhase.PlayerTakeTurn;
-        Debug.Log("Everything Complete");
-    }
-    
+		setInitialHand();
+		shuffleAndAddEpidemic();
+		setUp();
+		currentPhase = GamePhase.PlayerTakeTurn;
+		Debug.Log("Everything Complete");
+	}
 	public Player FindLocalPlayer(){
 		return PlayerManagement.Instance.FindLocalPlayer (PhotonNetwork.player);
 	}
