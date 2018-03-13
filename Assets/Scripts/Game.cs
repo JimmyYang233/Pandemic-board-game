@@ -118,6 +118,10 @@ public class Game : MonoBehaviour {
         Debug.Log("Everything Complete");
     }
     
+	private Player FindLocalPlayer(){
+		return PlayerManagement.Instance.FindLocalPlayer (PhotonNetwork.player);
+	}
+
     public RoleKind selectRole()
     {
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
