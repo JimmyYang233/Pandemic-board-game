@@ -23,7 +23,7 @@ public class Game : MonoBehaviour {
     private int difficulty;
 	private readonly int maxOutbreaksValue = 8;
     private Player currentPlayer;
-    private List<Player> players;
+	private List<Player> players = new List<Player>();
     private List<RoleKind> roleKindTaken = new List<RoleKind>();
     private List<InfectionCard> infectionDeck = new List<InfectionCard>();
     private List<InfectionCard> infectionDiscardPile = new List<InfectionCard>();
@@ -74,10 +74,14 @@ public class Game : MonoBehaviour {
 		Maps mapInstance = Maps.getInstance();
 		//initialize infectionArray
 		infectionArray = new int[]{2,2,2,3,3,4,4};
-		players = PlayerManagement.Instance.Players;
+
+		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
+		foreach (PhotonPlayer player in photonplayers){
+			players.Add (new Player (player));
+		}
 		numOfEpidemicCard = nEpidemicCard;
 		difficulty = nEpidemicCard;
-		me = FindLocalPlayer();
+		me = FindLocalPlayer(PhotonNetwork.player);
 		//players.Add(me);
 		currentPlayer = players[0];
 		//for(int i = 0; i< numOfPlayer-1; i++)
@@ -139,8 +143,11 @@ public class Game : MonoBehaviour {
 		currentPhase = GamePhase.PlayerTakeTurn;
 		Debug.Log("Everything Complete");
 	}
-	public Player FindLocalPlayer(){
-		return PlayerManagement.Instance.FindLocalPlayer (PhotonNetwork.player);
+
+	public Player FindLocalPlayer(PhotonPlayer photonPlayer){
+		int index = players.FindIndex (x => x.PhotonPlayer == photonPlayer);
+		return players [index];
+		Debug.Log (index);
 	}
 
     public RoleKind selectRole()
