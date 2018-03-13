@@ -52,10 +52,10 @@ public class Game : MonoBehaviour {
         Maps mapInstance = Maps.getInstance();
 		//initialize infectionArray
 		infectionArray = new int[]{2,2,2,3,3,4,4};
-        players = new List<Player>(numOfPlayer);
+		players = PlayerManagement.Instance.Players;
         numOfEpidemicCard = nEpidemicCard;
         difficulty = nEpidemicCard;
-		me = new Player(PhotonNetwork.player);
+		me = FindLocalPlayer();
         //players.Add(me);
         currentPlayer = me;
         //for(int i = 0; i< numOfPlayer-1; i++)

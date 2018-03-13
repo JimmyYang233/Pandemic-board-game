@@ -6,7 +6,7 @@ public class PlayerManagement : MonoBehaviour {
 
 	public static PlayerManagement Instance;
 	private PhotonView PhotonView;
-	private List<Player> Players = new List<Player> ();
+	public List<Player> Players = new List<Player> ();
 	// Use this for initialization
 	private void Awake(){
 		Instance = this;
