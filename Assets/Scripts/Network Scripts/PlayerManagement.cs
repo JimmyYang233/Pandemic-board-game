@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerManagement : MonoBehaviour {
 
 	public static PlayerManagement Instance;
-	private PhotonView PhotonView;
 	public List<Player> Players = new List<Player> ();
+	private PhotonView PhotonView;
+
 	// Use this for initialization
 	private void Awake(){
 		Instance = this;
