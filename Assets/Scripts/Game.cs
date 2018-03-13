@@ -226,12 +226,8 @@ public class Game : MonoBehaviour {
         {
             return;
         }
-
 		setGamePhase (GamePhase.InfectCities);
         infectCity();
-
-        //Question: what if the cards exceed the player's hand limit?
-
     }
 
     private bool resolveEpidemic()
@@ -391,6 +387,10 @@ public class Game : MonoBehaviour {
             else
             {
                 player.addCard(card);
+                if (currentPlayer.getHandCardNumber() > currentPlayer.getHandLimit())
+                {
+                    player.removeCard(AckCardToDrop(player.getHand()));
+                }
                 //FOR GUI
                 Debug.Log(me.getRoleKind());
                 if (!player.Equals(me))
@@ -408,6 +408,13 @@ public class Game : MonoBehaviour {
         }
 
         return true;
+    }
+
+    public PlayerCard AckCardToDrop(List<PlayerCard> cards)
+    {
+        //TODO Handle hand limit here
+        //Input the list of PlayerCards he has output the card he want to drop
+        return null; 
     }
 
     private void setGamePhase(GamePhase gamePhase)
