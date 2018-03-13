@@ -76,8 +76,11 @@ public class Game : MonoBehaviour {
 		infectionArray = new int[]{2,2,2,3,3,4,4};
 
 		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
+		Array.Sort (photonplayers, delegate(PhotonPlayer x, PhotonPlayer y) {
+			return x.ID.CompareTo(y.ID);
+		});
 		foreach (PhotonPlayer player in photonplayers){
-			players.Add (new Player(player));
+				players.Add (new Player(player),player.ID);
 		}
 		numOfEpidemicCard = nEpidemicCard;
 		difficulty = nEpidemicCard;
@@ -147,8 +150,9 @@ public class Game : MonoBehaviour {
 
 	public Player FindLocalPlayer(PhotonPlayer photonPlayer){
 		int index = players.FindIndex (x => x.PhotonPlayer == photonPlayer);
+		Debug.Log (photonPlayer.ID);
 		return players [index];
-		Debug.Log (index);
+
 	}
 
     public RoleKind selectRole()
