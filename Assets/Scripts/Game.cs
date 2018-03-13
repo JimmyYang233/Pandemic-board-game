@@ -55,13 +55,13 @@ public class Game : MonoBehaviour {
         players = new List<Player>(numOfPlayer);
         numOfEpidemicCard = nEpidemicCard;
         difficulty = nEpidemicCard;
-        me = new Player(new User("Jack", "111"));
+		me = new Player(PhotonNetwork.player);
         players.Add(me);
         currentPlayer = me;
-        for(int i = 0; i< numOfPlayer-1; i++)
-        {
-            players.Add(new Player(new User("others", "2222")));
-        }
+        //for(int i = 0; i< numOfPlayer-1; i++)
+        //{
+        //    players.Add(new Player(new User("others", "2222")));
+        //}
 
         foreach(City c in cities)
         {
