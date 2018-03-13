@@ -42,7 +42,7 @@ public class Game : MonoBehaviour {
     GameObject backGround;
 
     private List<City> cities;
-    public int numOfPlayer;
+	private int numOfPlayer;
     Player me;
     public int nEpidemicCard;
     public Pawn prefab;
@@ -77,11 +77,12 @@ public class Game : MonoBehaviour {
 
 		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
 		foreach (PhotonPlayer player in photonplayers){
-			players.Add (new Player (player));
+			players.Add (new Player(player));
 		}
 		numOfEpidemicCard = nEpidemicCard;
 		difficulty = nEpidemicCard;
 		me = FindLocalPlayer(PhotonNetwork.player);
+
 		//players.Add(me);
 		currentPlayer = players[0];
 		//for(int i = 0; i< numOfPlayer-1; i++)
