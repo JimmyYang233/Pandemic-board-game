@@ -38,6 +38,7 @@ public class Game : MonoBehaviour {
     public PCPanelController mainPlayerPanel;
 	public playerSelectionPanel playerSelect;
 
+    GameObject backGround;
 
     public List<City> cities;
     public int numOfPlayer;
@@ -48,7 +49,19 @@ public class Game : MonoBehaviour {
 
     private void Start()
     {
+        //load city
+        backGround = GameObject.FindGameObjectWithTag("background");
+        foreach(Transform t in backGround.transform)
+        {
+            if (t.GetComponent<City>() != null)
+            {
+                cities.Add(t.GetComponent<City>());
+            }
         
+        }
+        Debug.Log(cities.Count);
+
+
         Maps mapInstance = Maps.getInstance();
 		//initialize infectionArray
 		infectionArray = new int[]{2,2,2,3,3,4,4};
