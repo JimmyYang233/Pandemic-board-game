@@ -67,6 +67,8 @@ public class Game : MonoBehaviour {
 		if (Instance == null && PhotonNetwork.isMasterClient) {
 			Instance = this;
 			PhotonView = GetComponent<PhotonView> ();
+			InitializePlayer ();
+			InitializeGame ();
 		} else if (Instance == null && !PhotonNetwork.isMasterClient) {
 			Instance = PhotonView.Find (3).gameObject.GetComponent<Game>();
 			Debug.Log ("test: num of player:" + Instance.players.Count);
@@ -76,10 +78,6 @@ public class Game : MonoBehaviour {
 
     private void Start()
     {
-		if (PhotonNetwork.isMasterClient) {
-			InitializePlayer ();
-			InitializeGame ();
-		}
 
 		/*if (PhotonNetwork.isMasterClient) {
 			PhotonView.RPC ("RPC_InitializePlayer",PhotonTargets.All);
