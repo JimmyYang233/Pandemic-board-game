@@ -12,6 +12,8 @@ public class BasicOperation : MonoBehaviour {
     public Button shareButton;
     public Button RoleOnlyButton;
     public Button passButton;
+	public Button giveButton;
+	public Button takeButton;
 
     Game game;
     Player me;
@@ -42,7 +44,11 @@ public class BasicOperation : MonoBehaviour {
 						if (p.getPlayerPawn () == pawn && p.containsSpecificCityCard (currentCity)) {
 							shareButton.GetComponent<Button> ().interactable = true;
 							if (me.Equals (p)) {
-								
+								takeButton.GetComponent<Button> ().interactable = false;
+								giveButton.GetComponent<Button> ().interactable = true;
+							} else {
+								takeButton.GetComponent<Button> ().interactable = true;
+								giveButton.GetComponent<Button> ().interactable = false;
 							}
 						}
 
