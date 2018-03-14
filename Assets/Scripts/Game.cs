@@ -66,6 +66,12 @@ public class Game : MonoBehaviour {
 	public void RPC_drive(string roleKind,string name){
 		drive(getPlayer(roleKind),findCity(name));
 	}
+
+	[PunRPC]
+	public void RPC_takeDirectFlight(string roleKind,string name){
+		takeDirectFlight(getPlayer(roleKind),findCity(name));
+	}
+
 	#endregion
 
 	public void drive(Player player, City destinationCity)
@@ -136,6 +142,11 @@ public class Game : MonoBehaviour {
 	public void Drive(string roleKind,string name){
 		PhotonView.RPC ("RPC_drive",PhotonTargets.Others,roleKind,name);
 		drive (getPlayer(roleKind), findCity(name));
+	}
+
+	public void TakeDirectFlight(string roleKind,string name){
+		PhotonView.RPC ("RPC_takeDirectFlight",PhotonTargets.Others,roleKind,name);
+		takeDirectFlight (getPlayer(roleKind), findCity(name));
 	}
 
 	//initialize player in the network, set the first player as current player
