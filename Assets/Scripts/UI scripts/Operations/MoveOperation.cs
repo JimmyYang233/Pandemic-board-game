@@ -58,10 +58,10 @@ public class MoveOperation : MonoBehaviour {
         shuttleFlightButton.GetComponent<Button>().interactable = false;
         currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
-        Debug.Log(currentCity.getCityName());
+        //Debug.Log(currentCity.getCityName());
         foreach (City neighbor in currentCity.getNeighbors())
         {
-            Debug.Log(neighbor.getCityName());
+            //Debug.Log(neighbor.getCityName());
             neighbor.displayButton();
         }
         moveStatus = Status.DRIVE;
@@ -113,7 +113,7 @@ public class MoveOperation : MonoBehaviour {
         currentPlayer = game.getCurrentPlayer();
         if(moveStatus == Status.DRIVE)
         {
-            game.drive(currentPlayer, destinationCity);
+            game.Drive(currentPlayer, destinationCity);
         }
         else if(moveStatus == Status.DIRECTFLIGHT)
         {
