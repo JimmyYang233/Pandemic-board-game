@@ -198,10 +198,11 @@ public class Game : MonoBehaviour {
 			RoleKind rk = selectRole();
 			Role r = new Role(rk);
 			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
-			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
-
 			r.setPawn(pawn);
 			p.setRole(r);
+			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
+
+
 		}
 		List<Color> dc = mapInstance.getDiseaseColor();
 		foreach (Color c in dc)
