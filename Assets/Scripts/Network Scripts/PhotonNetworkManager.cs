@@ -10,6 +10,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 	public GameObject roomPrefab;
 
 	private string _gameVersion = "0.1";
+	private System.Random _rnd = new System.Random();
 	private List<GameObject> roomPrefabs = new List<GameObject> ();
 
 	#region private methods
@@ -20,7 +21,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 	void Start(){
 		if (!PhotonNetwork.connected) {
 			PhotonNetwork.ConnectUsingSettings (_gameVersion);
-			PhotonNetwork.playerName = "Player #" + Random.Range (10000, 99999);
+			PhotonNetwork.playerName = "Player #" + _rnd.Next(10000, 99999);;
 		}
 	}
 
