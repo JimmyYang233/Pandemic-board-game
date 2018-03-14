@@ -70,7 +70,7 @@ public class ShareOperation : MonoBehaviour {
         {
 			
             //pc.addCityCard(currentCity.cityName);
-			game.take();
+			game.take(currentCity.getCityName().ToString());
 			cancel();
         }
         else
@@ -97,15 +97,20 @@ public class ShareOperation : MonoBehaviour {
 		otherPlayers.SetActive (true);
     }
 	//pop permission panel TODO
-	public void askPermission(){
+	public void askPermission(string name){
+		agreePanel.SetActive (true);
+	}
+	public void acceptRequest(){
 		
+	}
+	public void declineRequest(){
 	}
 	//receive response TODO
 	public void sentResponse(){
 		
 	}
 	//pop agree or disagree message TODO
-	public void showResponse(bool response){
+	public void showResponse(bool response,string name){
 		
 	}
 
