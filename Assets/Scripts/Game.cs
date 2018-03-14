@@ -741,7 +741,7 @@ public class Game : MonoBehaviour {
             }
         }
         player.decreaseRemainingAction();
-
+		Debug.Log ("Flight succeed");
         //UI only
     }
 
