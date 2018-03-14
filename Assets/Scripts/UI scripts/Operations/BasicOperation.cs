@@ -39,10 +39,12 @@ public class BasicOperation : MonoBehaviour {
                 {
                     foreach(Player p in game.getPlayers())
                     {
-                        if(p.getPlayerPawn() == pawn&& p.containsSpecificCityCard(currentCity))
-                        {
-                            shareButton.GetComponent<Button>().interactable = true;
-                        }
+						if (p.getPlayerPawn () == pawn && p.containsSpecificCityCard (currentCity)) {
+							shareButton.GetComponent<Button> ().interactable = true;
+							if (me.Equals (p)) {
+								
+							}
+						}
 
                     }
                 }
