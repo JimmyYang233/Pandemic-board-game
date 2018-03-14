@@ -49,28 +49,56 @@ public class Game : MonoBehaviour {
     public Pawn prefab;
     public GameInfoDisplay gameInfoController;
 
-	#region RPC method
+	#region RPC method		
+	[PunRPC]
+	private void RPC_InitializePlayer(){
+		Instance.InitializePlayer ();
+	}
+
 	[PunRPC]
 	private void RPC_InitializeGame(){
 		Instance.InitializeGame ();
 	}
+
 	#endregion
 
 	private void Awake(){
-		if (Instance == null) {
+		if (Instance == null && PhotonNetwork.isMasterClient) {
 			Instance = this;
-			PhotonView = PhotonView = GetComponent<PhotonView>();
+			PhotonView = GetComponent<PhotonView> ();
+		} else if (Instance == null && !PhotonNetwork.isMasterClient) {
+			Instance = PhotonView.Find (3).gameObject.GetComponent<Game>();
+			Debug.Log ("test: num of player:" + Instance.players.Count);
 		}
 
 	}
 
     private void Start()
     {
-		if (PhotonNetwork.isMasterClient)
+		if (PhotonNetwork.isMasterClient) {
+			InitializePlayer ();
+			InitializeGame ();
+		}
+
+		/*if (PhotonNetwork.isMasterClient) {
+			PhotonView.RPC ("RPC_InitializePlayer",PhotonTargets.All);
 			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
+		}*/
+			
     }
+
+	//initialize player in the network, set the first player as current player
+	private void InitializePlayer(){
+		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
+		Array.Sort (photonplayers, delegate(PhotonPlayer x, PhotonPlayer y) {
+			return x.ID.CompareTo(y.ID);
+		});
+		foreach (PhotonPlayer player in photonplayers){
+			players.Add (new Player(player));
+		}
+	}
 		
-	public void InitializeGame(){
+	private void InitializeGame(){
 		//load city
 		cities = new List<City>();
 		backGround = GameObject.FindGameObjectWithTag("background");
@@ -84,18 +112,11 @@ public class Game : MonoBehaviour {
 		}
 		Debug.Log(cities.Count);
 
-
 		Maps mapInstance = Maps.getInstance();
 		//initialize infectionArray
 		infectionArray = new int[]{2,2,2,3,3,4,4};
 
-		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
-		Array.Sort (photonplayers, delegate(PhotonPlayer x, PhotonPlayer y) {
-			return x.ID.CompareTo(y.ID);
-		});
-		foreach (PhotonPlayer player in photonplayers){
-				players.Add (new Player(player));
-		}
+
 		numOfEpidemicCard = nEpidemicCard;
 		difficulty = nEpidemicCard;
 		me = FindLocalPlayer(PhotonNetwork.player);
@@ -415,7 +436,7 @@ public class Game : MonoBehaviour {
         }
     }
     /*
-		draw two cards from the top of the player card deck
+		draw card from the top of the player card deck
 		if there is a epidemic card, it will be resolved
 		else it will be added to player's hand
 		@player the player who draws card

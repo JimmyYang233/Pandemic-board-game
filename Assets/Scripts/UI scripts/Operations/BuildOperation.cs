@@ -10,7 +10,8 @@ public class BuildOperation : MonoBehaviour {
 	Button build;
 	// Use this for initialization
 	void Start () {
-		g =GameObject.FindGameObjectWithTag ("GameController").GetComponent<Game>();
+		//g =GameObject.FindGameObjectWithTag ("GameController").GetComponent<Game>();
+		g = Game.Instance;
 		currentPlayer = g.getCurrentPlayer();
 		currentCity = currentPlayer.getRole ().getPawn ().getCity ();
 		build = this.GetComponent<Button> ();
