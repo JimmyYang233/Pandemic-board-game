@@ -80,7 +80,7 @@ public class Game : MonoBehaviour {
 			return x.ID.CompareTo(y.ID);
 		});
 		foreach (PhotonPlayer player in photonplayers){
-				players.Add (new Player(player),player.ID);
+				players.Add (new Player(player));
 		}
 		numOfEpidemicCard = nEpidemicCard;
 		difficulty = nEpidemicCard;

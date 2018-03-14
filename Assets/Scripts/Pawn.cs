@@ -62,11 +62,4 @@ public class Pawn : MonoBehaviour {
     {
         return color;
     }
-
-    public void display()
-    {
-        Vector3 position = currentCity.transform.position;
-        position.y = position.y + 10;
-        transform.position = position;
-    }
 }

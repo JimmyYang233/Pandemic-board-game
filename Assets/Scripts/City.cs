@@ -158,7 +158,7 @@ public class City : MonoBehaviour {
 		//Debug.Log (pawns.ToString ());
         this.pawns.Add(p);
         p.setCity(this);
-        p.display();
+		displayPawn ();
     }
 
     public void removePawn(Pawn p)
@@ -283,6 +283,42 @@ public class City : MonoBehaviour {
             //Debug.Log(station.transform.position);
         }
     }
+	public void displayPawn(){
+		int num = 0;
+		foreach (Pawn pawn in pawns) {
+			num++;
+			if (num == 1) {
+				Vector3 position = transform.position;
+				position.y = position.y + 10;
+				pawn.transform.position = position;
+			} 
+			else if (num == 2) {
+				Vector3 position = transform.position;
+				position.y = position.y + 10;
+				position.x = position.x - 5;
+				pawn.transform.position = position;
+			}
+			else if (num == 3) {
+				Vector3 position = transform.position;
+				position.y = position.y + 10;
+				position.x = position.x + 5;
+				pawn.transform.position = position;
+			}
+			else if (num == 4) {
+				Vector3 position = transform.position;
+				position.y = position.y + 10;
+				position.x = position.x - 10;
+				pawn.transform.position = position;
+			}
+			else if (num == 5) {
+				Vector3 position = transform.position;
+				position.y = position.y + 10;
+				position.x = position.x + 10;
+				pawn.transform.position = position;
+			}
+		}
+	}
+
 
     public void undisplayResearch()
     {
