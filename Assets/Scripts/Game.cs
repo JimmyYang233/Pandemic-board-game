@@ -63,6 +63,49 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
+	public void drive(Player player, City destinationCity)
+	{
+		Pawn p = player.getPlayerPawn();
+		City initialCity = p.getCity();
+		p.setCity(destinationCity);
+		initialCity.removePawn(p);
+		destinationCity.addPawn(p);
+		RoleKind rolekind = player.getRoleKind();
+
+		if (rolekind == RoleKind.Medic)
+		{
+			foreach (Disease disease in diseases.Values)
+			{
+				if (disease.isCured())
+				{
+					int cubeNumber = destinationCity.getCubeNumber(disease);
+					destinationCity.removeCubes(disease, cubeNumber);
+					disease.addCubes(cubeNumber);
+					int num = disease.getNumOfDiseaseCubeLeft();
+					if (num == MAX)
+					{
+						disease.eradicate();
+					}
+				}
+
+			}
+		}
+
+		else if (rolekind == RoleKind.ContainmentSpecialist)
+		{
+			foreach (Disease disease in diseases.Values)
+			{
+				int cubeNumber = destinationCity.getCubeNumber(disease);
+				if (cubeNumber > 1)
+				{
+					destinationCity.removeCubes(disease, 1);
+					disease.addCubes(1);
+				}
+			}
+		}
+		player.decreaseRemainingAction();
+
+	}
 
 	#endregion
 
@@ -84,6 +127,11 @@ public class Game : MonoBehaviour {
 		}
 			
     }
+
+	public void Drive(Player player,City Citydestination){
+		PhotonView.RPC ("drive",PhotonTargets.Others,player,Citydestination);
+		drive (player, Citydestination);
+	}
 
 	//initialize player in the network, set the first player as current player
 	private void InitializePlayer(){
@@ -618,51 +666,7 @@ public class Game : MonoBehaviour {
         return index;
     }
 
-    public void drive(Player player, City destinationCity)
-    {
-        Pawn p = player.getPlayerPawn();
-        City initialCity = p.getCity();
-        p.setCity(destinationCity);
-        initialCity.removePawn(p);
-        destinationCity.addPawn(p);
-        RoleKind rolekind = player.getRoleKind();
 
-        if (rolekind == RoleKind.Medic)
-        {
-            foreach (Disease disease in diseases.Values)
-            {
-                if (disease.isCured())
-                {
-                    int cubeNumber = destinationCity.getCubeNumber(disease);
-                    destinationCity.removeCubes(disease, cubeNumber);
-                    disease.addCubes(cubeNumber);
-                    int num = disease.getNumOfDiseaseCubeLeft();
-                    if (num == MAX)
-                    {
-                        disease.eradicate();
-                    }
-                }
-
-            }
-        }
-
-        else if (rolekind == RoleKind.ContainmentSpecialist)
-        {
-            foreach (Disease disease in diseases.Values)
-            {
-                int cubeNumber = destinationCity.getCubeNumber(disease);
-                if (cubeNumber > 1)
-                {
-                    destinationCity.removeCubes(disease, 1);
-                    disease.addCubes(1);
-                }
-            }
-        }
-        player.decreaseRemainingAction();
-
-        //UI only
-
-    }
 
     public void takeDirectFlight(Player player, CityCard card)
     {
