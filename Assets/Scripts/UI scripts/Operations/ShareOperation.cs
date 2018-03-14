@@ -110,7 +110,7 @@ public class ShareOperation : MonoBehaviour {
 		
 	}
 	//pop agree or disagree message TODO
-	public void showResponse(bool response,string name){
+	public void showResponse(bool response){
 		
 	}
 
