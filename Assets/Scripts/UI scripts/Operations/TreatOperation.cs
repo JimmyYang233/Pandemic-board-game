@@ -14,7 +14,8 @@ public class TreatOperation : MonoBehaviour {
 
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+        //game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+		game = Game.Instance;
     }
 
     // Update is called once per frame

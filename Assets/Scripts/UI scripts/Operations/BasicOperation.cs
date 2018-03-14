@@ -18,8 +18,8 @@ public class BasicOperation : MonoBehaviour {
     City currentCity;
     // Use this for initialization
     void Start () {
-        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
-        
+       // game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+		game = Game.Instance;
     }
 	
 	// Update is called once per frame

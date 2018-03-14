@@ -25,8 +25,8 @@ public class ShareOperation : MonoBehaviour {
         pc= GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
 
         isTake = true;
-        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
-        
+        //game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+		game = Game.Instance;
     }
 
 	void Update (){

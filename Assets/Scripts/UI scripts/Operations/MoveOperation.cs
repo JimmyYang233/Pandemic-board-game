@@ -20,7 +20,8 @@ public class MoveOperation : MonoBehaviour {
 
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+        //game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+		game = Game.Instance;
     }
 
     public void moveButtonClicked()
