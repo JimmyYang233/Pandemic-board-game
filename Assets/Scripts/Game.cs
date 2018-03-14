@@ -108,7 +108,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 		player.decreaseRemainingAction();
-
+		Debug.Log ("move succeed");
 	}
 
 	#endregion
