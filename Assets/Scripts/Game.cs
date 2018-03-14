@@ -68,22 +68,18 @@ public class Game : MonoBehaviour {
 		if (Instance == null && PhotonNetwork.isMasterClient) {
 			Instance = this;
 			PhotonView = GetComponent<PhotonView> ();
-			InitializePlayer ();
-			InitializeGame ();
 		} else if (Instance == null && !PhotonNetwork.isMasterClient) {
 			Instance = PhotonView.Find (3).gameObject.GetComponent<Game>();
-			Debug.Log ("test: num of player:" + Instance.players.Count);
-		}
 
+		}
 	}
 
     private void Start()
-    {
-
-		/*if (PhotonNetwork.isMasterClient) {
+    {	
+		if (PhotonNetwork.isMasterClient) {
 			PhotonView.RPC ("RPC_InitializePlayer",PhotonTargets.All);
 			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
-		}*/
+		}
 			
     }
 

@@ -832,6 +832,7 @@ MonoBehaviour:
   playerPanel: {fileID: 1923207385}
   mainPlayerPanel: {fileID: 177066089}
   playerSelect: {fileID: 346002627}
+  gameInfo: {fileID: 1779426929}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
