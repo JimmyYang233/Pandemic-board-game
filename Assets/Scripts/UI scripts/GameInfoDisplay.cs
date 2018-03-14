@@ -9,9 +9,29 @@ public class GameInfoDisplay : MonoBehaviour
     public Game game;
     public GameObject outbreak;
     public GameObject infection;
+	public GameObject cubeLeft;
+	public GameObject researchLabLeft;
+	public GameObject cardLeft;
     public List<GameObject> outbreakrates;
     public List<GameObject> infectionrates;
 
+	public void changeDiseaseNumber(Color c, int num){
+		Transform t = cubeLeft.transform.GetChild (0);
+		if (c == Color.black) {
+			t = cubeLeft.transform.GetChild (1);
+		} else if (c == Color.blue) {
+			t = cubeLeft.transform.GetChild (2);
+		} else if(c==Color.red){
+			t = cubeLeft.transform.GetChild (3);
+		}
+		t.GetChild (0).GetComponent<Text> ().text=(System.Int32.Parse (t.GetChild (0).GetComponent<Text> ().text) + num).ToString();
+
+
+	}
+
+	public void changeCardNumber(int num){
+		
+	}
     public void displayOutbreak()
     {
         int outbreakRate = game.getOutbreakRate();
@@ -42,5 +62,7 @@ public class GameInfoDisplay : MonoBehaviour
             }
         }
     }
+
+
     
 }

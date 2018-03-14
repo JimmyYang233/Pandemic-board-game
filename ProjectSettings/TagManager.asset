@@ -14,6 +14,7 @@ TagManager:
   - yellow Cube
   - purple Cube
   - researchStation
+  - gameInfoDisplay
   layers:
   - Default
   - TransparentFX

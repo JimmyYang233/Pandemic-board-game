@@ -40,6 +40,7 @@ public class Game : MonoBehaviour {
     public PCPanelController mainPlayerPanel;
 	public playerSelectionPanel playerSelect;
 
+
     GameObject backGround;
 
     private List<City> cities;
@@ -59,7 +60,7 @@ public class Game : MonoBehaviour {
 	private void Awake(){
 		if (Instance == null) {
 			Instance = this;
-			PhotonView = PhotonView = GetComponent<PhotonView>();
+			PhotonView = GetComponent<PhotonView>();
 		}
 
 	}
@@ -164,7 +165,7 @@ public class Game : MonoBehaviour {
 
 	public Player FindLocalPlayer(PhotonPlayer photonPlayer){
 		int index = players.FindIndex (x => x.PhotonPlayer == photonPlayer);
-		Debug.Log (photonPlayer.ID);
+		//Debug.Log (photonPlayer.ID);
 		return players [index];
 	}
 

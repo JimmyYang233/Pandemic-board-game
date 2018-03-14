@@ -6,6 +6,8 @@ using UnityEngine.UI;
 // PlayerScript requires the GameObject to have a Rigidbody component
 public class City : MonoBehaviour {
 
+
+	GameInfoDisplay gameInfo;
     public Color color;
     public CityName cityName;
     public List<City> neighbors = new List<City>();
@@ -32,6 +34,7 @@ public class City : MonoBehaviour {
         blackCube = "Cubes/blackCube";
         blueCube = "Cubes/blueCube";
         yellowCube = "Cubes/yellowCube";
+		gameInfo = GameObject.FindGameObjectWithTag ("gameInfoDisplay").GetComponent<GameInfoDisplay> ();
 
     }
     public City(CityName name)
@@ -120,10 +123,12 @@ public class City : MonoBehaviour {
 	//to be discussed 
     public void addCubes(Disease disease, int num)
     {
+		
         Color pColor = disease.getColor();
         int current = numberOfCubes[pColor];
         numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, num+current);
+		gameInfo.changeDiseaseNumber(pColor, -num);
         displayCube();
     }
 
@@ -133,6 +138,7 @@ public class City : MonoBehaviour {
         int current = numberOfCubes[pColor];
         numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, current - num);
+		gameInfo.changeDiseaseNumber(pColor, num);
         displayCube();
     }
 
