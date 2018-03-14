@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -833,6 +833,7 @@ MonoBehaviour:
   mainPlayerPanel: {fileID: 177066089}
   playerSelect: {fileID: 346002627}
   gameInfo: {fileID: 1779426929}
+  shareOperation: {fileID: 1340808470}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}

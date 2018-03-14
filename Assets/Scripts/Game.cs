@@ -40,6 +40,7 @@ public class Game : MonoBehaviour {
     public PCPanelController mainPlayerPanel;
 	public playerSelectionPanel playerSelect;
 	public GameInfoDisplay gameInfo;
+	public ShareOperation shareOperation;
 
 
     GameObject backGround;
@@ -798,7 +799,7 @@ public class Game : MonoBehaviour {
         currentPlayer.decreaseRemainingAction();
     }
 
-
+	//we need to split this method to two methods: take and give, pls do this asap!
     public void share(Player targetPlayer, CityCard card, bool giveOrTake){
         
         bool permission = true; //TODO: ask targetPlayer for permission
@@ -816,6 +817,15 @@ public class Game : MonoBehaviour {
 
         currentPlayer.decreaseRemainingAction();
     }
+
+	// zhening's work! written at 5.04am!
+	public void take(){
+		//AskforPermisson ();
+	}
+
+	private void askForPermisson(){
+		//shareOperation.askPermission ();
+	}
 
     public void cure(Disease d)
     {
