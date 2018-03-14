@@ -125,6 +125,7 @@ public class Game : MonoBehaviour {
 
 
 	private void Awake(){
+		
 		if (Instance == null && PhotonNetwork.isMasterClient) {
 			Instance = this;
 			PhotonView = GetComponent<PhotonView> ();
@@ -255,13 +256,15 @@ public class Game : MonoBehaviour {
 	}
 
     public RoleKind selectRole()
-    {
+    {	
+		UnityEngine.Random.seed = 34;
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
 
         while(roleKindTaken.Contains(rkRandom))
         {
             rkRandom =  (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
         }
+
         roleKindTaken.Add(rkRandom);
         return rkRandom;
     }
