@@ -347,7 +347,7 @@ public class Game : MonoBehaviour {
 		endTurn
 	*/
 
-    public void selfEndTurn()
+    public void endTurn()
     {
         if (currentPhase != GamePhase.PlayerTakeTurn)
             return;
@@ -366,9 +366,6 @@ public class Game : MonoBehaviour {
         infectCity();
     }
 
-	public void OtherEndTurn(List<Card> cards){
-		
-	}
 
     private bool resolveEpidemic()
     {
