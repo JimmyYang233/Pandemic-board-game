@@ -11,22 +11,17 @@ public class GameManagement : MonoBehaviour {
 	private void Awake(){
 		Instance = this;
 		game = Game.Instance;
-		PhotonView = PhotonView = GetComponent<PhotonView>();
+		PhotonView = GetComponent<PhotonView>();
 
 	}
 	// Use this for initialization
 	void Start () {
-		if (PhotonNetwork.isMasterClient)
-			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 		
-	[PunRPC]
-	private void RPC_InitializeGame(){
-		game.InitializeGame ();
-	}
+
 }

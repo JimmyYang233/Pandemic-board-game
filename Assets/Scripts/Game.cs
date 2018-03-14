@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
 	public static Game Instance;
+	public PhotonView PhotonView;
 	#region private variables
     private readonly int MAX = 24;
     private Challenge challenge;
@@ -48,12 +49,25 @@ public class Game : MonoBehaviour {
     public Pawn prefab;
     public GameInfoDisplay gameInfoController;
 
+	#region RPC method
+	[PunRPC]
+	private void RPC_InitializeGame(){
+		Instance.InitializeGame ();
+	}
+	#endregion
+
 	private void Awake(){
-		Instance = this;
+		if (Instance == null) {
+			Instance = this;
+			PhotonView = PhotonView = GetComponent<PhotonView>();
+		}
+
 	}
 
     private void Start()
     {
+		if (PhotonNetwork.isMasterClient)
+			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
     }
 		
 	public void InitializeGame(){
@@ -145,14 +159,13 @@ public class Game : MonoBehaviour {
 		shuffleAndAddEpidemic();
 		setUp();
 		currentPhase = GamePhase.PlayerTakeTurn;
-		Debug.Log("Everything Complete");
+		//Debug.Log("Everything Complete");
 	}
 
 	public Player FindLocalPlayer(PhotonPlayer photonPlayer){
 		int index = players.FindIndex (x => x.PhotonPlayer == photonPlayer);
 		Debug.Log (photonPlayer.ID);
 		return players [index];
-
 	}
 
     public RoleKind selectRole()
@@ -248,7 +261,7 @@ public class Game : MonoBehaviour {
 		endTurn
 	*/
 
-    public void endTurn()
+    public void selfEndTurn()
     {
         if (currentPhase != GamePhase.PlayerTakeTurn)
             return;
@@ -266,6 +279,10 @@ public class Game : MonoBehaviour {
 		setGamePhase (GamePhase.InfectCities);
         infectCity();
     }
+
+	public void OtherEndTurn(List<Card> cards){
+		
+	}
 
     private bool resolveEpidemic()
     {
