@@ -66,6 +66,7 @@ public class Game : MonoBehaviour {
 	public void RPC_drive(string roleKind,string name){
 		drive(getPlayer(roleKind),findCity(name));
 	}
+	#endregion
 
 	public void drive(Player player, City destinationCity)
 	{
@@ -111,7 +112,7 @@ public class Game : MonoBehaviour {
 		Debug.Log ("move succeed");
 	}
 
-	#endregion
+
 
 	private void Awake(){
 		if (Instance == null && PhotonNetwork.isMasterClient) {
