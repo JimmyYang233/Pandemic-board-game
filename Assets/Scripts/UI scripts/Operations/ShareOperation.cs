@@ -69,7 +69,8 @@ public class ShareOperation : MonoBehaviour {
         if (isTake)
         {
 			
-            pc.addCityCard(currentCity.cityName);
+            //pc.addCityCard(currentCity.cityName);
+			game.take();
 			cancel();
         }
         else
@@ -84,7 +85,7 @@ public class ShareOperation : MonoBehaviour {
     //player cancel the operation
 	public void selectRole(string name){
 		roleSlected=name;
-		pc.deleteCityCard(currentCity.cityName);
+		//pc.deleteCityCard(currentCity.cityName);
 		cancel ();
 	}
     public void cancel()
@@ -95,5 +96,9 @@ public class ShareOperation : MonoBehaviour {
         basicOperationPanel.SetActive(true);
 		otherPlayers.SetActive (true);
     }
+	//pop permission panel TODO
+	public void askPermission(){
+		
+	}
 
 }
