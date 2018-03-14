@@ -26,7 +26,7 @@ public class BasicOperation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		me = game.FindLocalPlayer(PhotonNetwork.player);
+		me = game.FindPlayer(PhotonNetwork.player);
         if (game.getCurrentPlayer() == me)
         {
             currentCity = me.getPlayerPawn().getCity();

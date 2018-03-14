@@ -63,6 +63,10 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
+	public void RPC_drive(string roleKind,string name){
+		drive(getPlayer(roleKind),findCity(name));
+	}
+
 	public void drive(Player player, City destinationCity)
 	{
 		Pawn p = player.getPlayerPawn();
@@ -128,9 +132,9 @@ public class Game : MonoBehaviour {
 			
     }
 
-	public void Drive(Player player,City Citydestination){
-		PhotonView.RPC ("drive",PhotonTargets.Others,player,Citydestination);
-		drive (player, Citydestination);
+	public void Drive(string roleKind,string name){
+		PhotonView.RPC ("RPC_drive",PhotonTargets.Others,roleKind,name);
+		drive (getPlayer(roleKind), findCity(name));
 	}
 
 	//initialize player in the network, set the first player as current player
@@ -164,7 +168,7 @@ public class Game : MonoBehaviour {
 
 		numOfEpidemicCard = nEpidemicCard;
 		difficulty = nEpidemicCard;
-		me = FindLocalPlayer(PhotonNetwork.player);
+		me = FindPlayer(PhotonNetwork.player);
 
 		//players.Add(me);
 		currentPlayer = players[0];
@@ -224,9 +228,10 @@ public class Game : MonoBehaviour {
 		setUp();
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log("Everything Complete");
+		Debug.Log("the role is" + me.getRoleKind().ToString());
 	}
 
-	public Player FindLocalPlayer(PhotonPlayer photonPlayer){
+	public Player FindPlayer(PhotonPlayer photonPlayer){
 		int index = players.FindIndex (x => x.PhotonPlayer == photonPlayer);
 		//Debug.Log (photonPlayer.ID);
 		return players [index];
@@ -812,6 +817,16 @@ public class Game : MonoBehaviour {
 
         currentPlayer.decreaseRemainingAction();
     }
+
+	public City findCity(string name){
+
+		foreach (City c in cities) {
+			if (c.cityName.ToString ().Equals (name))
+				return c;
+		}
+
+		return null;
+	}
     
     
 

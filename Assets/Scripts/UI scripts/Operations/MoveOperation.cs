@@ -113,7 +113,7 @@ public class MoveOperation : MonoBehaviour {
         currentPlayer = game.getCurrentPlayer();
         if(moveStatus == Status.DRIVE)
         {
-            game.Drive(currentPlayer, destinationCity);
+			game.Drive(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
         }
         else if(moveStatus == Status.DIRECTFLIGHT)
         {
