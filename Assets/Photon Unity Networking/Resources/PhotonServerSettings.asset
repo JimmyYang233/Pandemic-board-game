@@ -48,4 +48,5 @@ MonoBehaviour:
   - Awake
   - RPC_InitializePlayer
   - RPC_drive
+  - RPC_takeDirectFlight
   DisableAutoOpenWizard: 1
