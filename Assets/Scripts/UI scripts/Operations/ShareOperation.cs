@@ -100,5 +100,13 @@ public class ShareOperation : MonoBehaviour {
 	public void askPermission(){
 		
 	}
+	//receive response TODO
+	public void sentResponse(){
+		
+	}
+	//pop agree or disagree message TODO
+	public void showResponse(bool response){
+		
+	}
 
 }
