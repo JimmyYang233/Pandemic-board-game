@@ -66,14 +66,10 @@ public class Game : MonoBehaviour {
 	private void Awake(){
 		if (Instance == null && PhotonNetwork.isMasterClient) {
 			Instance = this;
-<<<<<<< HEAD
-			PhotonView = GetComponent<PhotonView>();
-=======
 			PhotonView = GetComponent<PhotonView> ();
 		} else if (Instance == null && !PhotonNetwork.isMasterClient) {
 			Instance = PhotonView.Find (3).gameObject.GetComponent<Game>();
 			Debug.Log ("test: num of player:" + Instance.players.Count);
->>>>>>> d213e799d66473ec1598331444ea052eb56c3669
 		}
 
 	}
