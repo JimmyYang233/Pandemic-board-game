@@ -56,7 +56,7 @@ public class TreatOperation : MonoBehaviour {
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
-        game.treatDisease(game.getDisease(Color.blue), currentCity);
+		game.TreatDisease("blue", currentCity.getCityName().ToString());
     }
 
     public void TreatYellowClicked()
@@ -68,7 +68,7 @@ public class TreatOperation : MonoBehaviour {
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
-        game.treatDisease(game.getDisease(Color.yellow), currentCity);
+		game.TreatDisease("yellow", currentCity.getCityName().ToString());
     }
 
     public void TreatBlackClicked()
@@ -80,7 +80,7 @@ public class TreatOperation : MonoBehaviour {
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
-        game.treatDisease(game.getDisease(Color.black), currentCity);
+		game.TreatDisease("black", currentCity.getCityName().ToString());
     }
 
     public void TreatRedClicked()
@@ -92,6 +92,6 @@ public class TreatOperation : MonoBehaviour {
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
-        game.treatDisease(game.getDisease(Color.red), currentCity);
+		game.TreatDisease("red", currentCity.getCityName().ToString());
     }
 }

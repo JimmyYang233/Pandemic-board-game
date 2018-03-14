@@ -72,6 +72,10 @@ public class Game : MonoBehaviour {
 		takeDirectFlight(getPlayer(roleKind),(CityCard)getPlayerCard(name));
 	}
 
+	[PunRPC]
+	public void RPC_treatDisease(string color,string cityName){
+		treatDisease(diseases[findColor(color)], findCity(cityName));
+	}
 	#endregion
 
 	public void drive(Player player, City destinationCity)
@@ -766,6 +770,10 @@ public class Game : MonoBehaviour {
         currentPlayer.decreaseRemainingAction();
     }
 
+	public void TreatDisease(string color, string name){
+		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.Others,color,name );
+		treatDisease (diseases[findColor(color)],findCity(name));
+	}
 
     public void build(CityCard card)
     {
@@ -842,7 +850,19 @@ public class Game : MonoBehaviour {
 	}
     
     
-
+	public Color findColor(string color){
+		switch (color) {
+		case "red":
+			return Color.red;
+		case "blue":
+			return Color.blue;
+		case "black":
+			return Color.black;
+		case "yellow":
+			return Color.yellow;
+		}
+		return Color.yellow;
+	}
 
 
 
