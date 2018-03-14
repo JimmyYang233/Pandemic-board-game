@@ -30,7 +30,8 @@ public class GameInfoDisplay : MonoBehaviour
 	}
 
 	public void changeCardNumber(int num){
-		
+		cardLeft.transform.GetChild (0).GetComponent<Text> ().text=(System.Int32.Parse (cardLeft.transform.GetChild (0).GetComponent<Text> ().text) + num).ToString();
+
 	}
     public void displayOutbreak()
     {

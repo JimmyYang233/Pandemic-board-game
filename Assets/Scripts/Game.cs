@@ -39,6 +39,7 @@ public class Game : MonoBehaviour {
     public PlayerPanelController playerPanel;
     public PCPanelController mainPlayerPanel;
 	public playerSelectionPanel playerSelect;
+	public GameInfoDisplay gameInfo;
 
 
     GameObject backGround;
@@ -478,6 +479,7 @@ public class Game : MonoBehaviour {
                     mainPlayerPanel.addPlayerCard(card);
                 }
             }
+			gameInfo.changeCardNumber (-1);
             
         }
 

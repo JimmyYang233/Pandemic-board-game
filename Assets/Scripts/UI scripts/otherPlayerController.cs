@@ -60,7 +60,6 @@ public class otherPlayerController : MonoBehaviour
     }
     public void addCityCard(CityName c)
     {
-        Debug.Log(cityCardNum + eventCardNum);
         content.GetChild(cityCardNum + eventCardNum).gameObject.SetActive(true);
         cityCardNum++;
 
