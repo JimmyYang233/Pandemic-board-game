@@ -47,4 +47,5 @@ MonoBehaviour:
   - RPC_InitializeGame
   - Awake
   - RPC_InitializePlayer
+  - RPC_drive
   DisableAutoOpenWizard: 1
