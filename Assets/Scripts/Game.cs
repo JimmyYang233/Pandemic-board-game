@@ -77,6 +77,16 @@ public class Game : MonoBehaviour {
 	public void RPC_treatDisease(string color,string cityName){
 		treatDisease(diseases[findColor(color)], findCity(cityName));
 	}
+
+	[PunRPC] 
+	public void RPC_askForPermission(string name){
+		askForPermisson (name);
+	}
+
+	[PunRPC]
+	public void RPC_sendConsentResult(bool consentResult){
+		informResponse (consentResult);
+	}
 	#endregion
 
 	public void drive(Player player, City destinationCity)
@@ -819,12 +829,22 @@ public class Game : MonoBehaviour {
     }
 
 	// zhening's work! written at 5.04am!
-	public void take(){
+	public void take(string name){
+		Player target = findPlayerWithCard (name);
+		PhotonView.RPC ("RPC_askForPermission",target,name);
 		//AskforPermisson ();
 	}
 
-	private void askForPermisson(){
-		//shareOperation.askPermission ();
+	private void askForPermisson(string name){
+		shareOperation.askPermission (name);
+	}
+
+	public void sendResponse(bool consentResult){
+		PhotonView.RPC ("RPC_sendConsentResult",currentPlayer.PhotonPlayer, consentResult);
+	}
+
+	private void informResponse(bool consentResult){
+		shareOperation.showResponse(consentResult);
 	}
 
     public void cure(Disease d)
@@ -859,7 +879,7 @@ public class Game : MonoBehaviour {
 		return null;
 	}
     
-    
+    //convert a string color to Color
 	public Color findColor(string color){
 		switch (color) {
 		case "red":
@@ -874,6 +894,20 @@ public class Game : MonoBehaviour {
 		return Color.yellow;
 	}
 
+	/* this method is used to find a player with specific card
+	 * @cardNmae the name of the card
+	 */
 
+	private Player findPlayerWithCard(string cardName){
+		foreach (Player player in players) {
+			foreach (PlayerCard card in player.getHand()) {
+				if (card.getType == CardType.CityCard 
+					&& ((CityCard)card).getCity().getCityName().ToString().Equals(cardName)) {
+					return player;
+				}
+			}
+		}
+		return null;
+	}
 
 }
