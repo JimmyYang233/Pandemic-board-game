@@ -4,8 +4,9 @@ using UnityEngine;
 
 public static class Collection{
 
-    public static void Shuffle<T>(this IList<T> ts)
+	public static void Shuffle<T>(this IList<T> ts)
     {
+		Random.seed = 32;
         var count = ts.Count;
         var last = count - 1;
         for (var i = 0; i < last; ++i)

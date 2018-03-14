@@ -62,6 +62,8 @@ public class Game : MonoBehaviour {
 		Instance.InitializeGame ();
 	}
 
+	[PunRPC]
+
 	#endregion
 
 	private void Awake(){
@@ -106,7 +108,6 @@ public class Game : MonoBehaviour {
 			}
 
 		}
-		Debug.Log(cities.Count);
 
 		Maps mapInstance = Maps.getInstance();
 		//initialize infectionArray
@@ -139,8 +140,6 @@ public class Game : MonoBehaviour {
 			AllHandCards.Add(p);
 		}
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
-		//TO-DO implement shuffle well
-		// shuffleAndAddEpidemic(numOfEpidemicCard);
 
 		foreach (Player p in players)
 		{
