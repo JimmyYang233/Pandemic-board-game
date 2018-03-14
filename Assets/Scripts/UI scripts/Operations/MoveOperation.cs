@@ -117,7 +117,7 @@ public class MoveOperation : MonoBehaviour {
         }
         else if(moveStatus == Status.DIRECTFLIGHT)
         {
-			game.TakeDirectFlight(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
+			game.TakeDirectFlight(currentPlayer.getRoleKind().ToString(), currentPlayer.getCard(destinationCity).getCity().getCityName().ToString());
         }
         disableAllCities();
     }
