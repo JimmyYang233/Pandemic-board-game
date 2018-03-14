@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pawn : MonoBehaviour {
-
-    private Color color;
-    public RoleKind rolekind;
+	public RoleKind rolekind;
     private City currentCity;
     /*
     void Awake()
@@ -37,12 +36,16 @@ public class Pawn : MonoBehaviour {
 		//Debug.Log(currentCity.getCityName().ToString());
     }
     */
+
     public Pawn(RoleKind aRolekind)
     {
         rolekind = aRolekind;
-        color = Maps.getInstance().getRoleColor(aRolekind);
-    }
 
+    }
+	public void setRole(RoleKind r){
+		rolekind = r;
+		this.gameObject.GetComponent<SpriteRenderer>().color=Maps.getInstance().getRoleColor(r);
+	}
     public void setCity(City c)
     {
         currentCity = c;
@@ -58,8 +61,5 @@ public class Pawn : MonoBehaviour {
         return rolekind;
     }
 
-    public Color getColor()
-    {
-        return color;
-    }
+    
 }

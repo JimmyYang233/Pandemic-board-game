@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -830,56 +830,6 @@ MonoBehaviour:
   playerPanel: {fileID: 1923207385}
   mainPlayerPanel: {fileID: 177066089}
   playerSelect: {fileID: 346002627}
-  cities:
-  - {fileID: 784909824}
-  - {fileID: 1024837862}
-  - {fileID: 1277945684}
-  - {fileID: 784909813}
-  - {fileID: 784909839}
-  - {fileID: 784909821}
-  - {fileID: 784909836}
-  - {fileID: 2109818244}
-  - {fileID: 784909844}
-  - {fileID: 635151403}
-  - {fileID: 214404735}
-  - {fileID: 784909830}
-  - {fileID: 784909842}
-  - {fileID: 784909814}
-  - {fileID: 784909832}
-  - {fileID: 784909843}
-  - {fileID: 784909826}
-  - {fileID: 1521600202}
-  - {fileID: 784909825}
-  - {fileID: 784909827}
-  - {fileID: 784909845}
-  - {fileID: 784909835}
-  - {fileID: 784909819}
-  - {fileID: 784909834}
-  - {fileID: 784909809}
-  - {fileID: 784909823}
-  - {fileID: 784909841}
-  - {fileID: 784909810}
-  - {fileID: 1917851605}
-  - {fileID: 784909831}
-  - {fileID: 1972338544}
-  - {fileID: 784909828}
-  - {fileID: 195733777}
-  - {fileID: 784909811}
-  - {fileID: 784909837}
-  - {fileID: 784909833}
-  - {fileID: 2143648673}
-  - {fileID: 784909817}
-  - {fileID: 784909820}
-  - {fileID: 784909822}
-  - {fileID: 784909838}
-  - {fileID: 784909815}
-  - {fileID: 784909829}
-  - {fileID: 784909818}
-  - {fileID: 784909840}
-  - {fileID: 784909816}
-  - {fileID: 1201592486}
-  - {fileID: 1018759369}
-  numOfPlayer: 4
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
@@ -5074,7 +5024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfdea19f5ed74373af1b739c029cd7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
   PhotonView: {fileID: 0}
 --- !u!1 &346002625
 GameObject:
@@ -21151,7 +21100,7 @@ GameObject:
   - component: {fileID: 1581777953}
   - component: {fileID: 1581777952}
   m_Layer: 5
-  m_Name: disease1
+  m_Name: yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21188,7 +21137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_Color: {r: 0.8117648, g: 0.7960785, b: 0.32941177, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

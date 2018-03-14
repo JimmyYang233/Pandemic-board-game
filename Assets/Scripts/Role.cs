@@ -36,6 +36,7 @@ public class Role {
     {
         //test
         this.pawn=p;
+		p.setRole (this.rolekind);
     }
 
     public RoleKind getRoleKind()
