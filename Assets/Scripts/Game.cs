@@ -89,7 +89,7 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_endturn(){
+	public void RPC_endTurn(){
 		endTurn ();
 	}
 	#endregion
