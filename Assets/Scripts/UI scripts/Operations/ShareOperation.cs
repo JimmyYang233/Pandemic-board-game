@@ -90,7 +90,15 @@ public class ShareOperation : MonoBehaviour {
 	{
 		playerSelect.setShareStatus ();
 		playerSelect.gameObject.SetActive (true);
-       
+        int num = playerCardPanel.transform.GetChild(1).childCount;
+        for (int i = 0; i < num; i++)
+        {
+            Debug.Log(i);
+            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
+            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
+            child.GetComponent<Button>().interactable = false;
+        }
+
     }
     //player cancel the operation
 	public void selectRole(string name){
