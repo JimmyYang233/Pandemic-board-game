@@ -563,6 +563,7 @@ public class Game : MonoBehaviour {
                 }
             }
 			gameInfo.changeCardNumber (-1);
+
             
         }
 
@@ -979,7 +980,7 @@ public class Game : MonoBehaviour {
 	 * @cardNmae the name of the card
 	 */
 
-	private Player findPlayerWithCard(string cardName){
+	public Player findPlayerWithCard(string cardName){
 		foreach (Player player in players) {
 			foreach (PlayerCard card in player.getHand()) {
 				if (card.getType() == CardType.CityCard 

@@ -5,8 +5,20 @@ using UnityEngine.UI;
 public class PlayerPanelController : MonoBehaviour
 {
 	public playerSelectionPanel playerSelect;
-
-
+	/*
+	public string findPlayerWithSpecificCity(string cName){
+		foreach (Transform t in this.transform) {
+			if (t.gameObject.active == true) {
+				foreach (Transform tr in t.GetChild(3).GetChild(1)) {
+					if (tr.GetChild (0).GetComponent<Text> ().text.Equals (cName)) {
+						return 
+					}
+				}
+				
+			}
+		}
+	}
+	*/
     public void addOtherPlayer(RoleKind k)
     {
         foreach (Transform t in this.transform)
