@@ -123,8 +123,6 @@ public class Game : MonoBehaviour {
             Debug.Log("Player does not have corresponding card.");
             return;
         }
-
-
     }
 
     public void move(Player pl1, City destinationCity){
