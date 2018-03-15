@@ -94,4 +94,13 @@ public class TreatOperation : MonoBehaviour {
         cancelButton.GetComponent<Button>().interactable = true;
 		game.TreatDisease("red", currentCity.getCityName().ToString());
     }
+
+    public void cancelButtonClicked()
+    {
+        redButton.GetComponent<Button>().interactable = false;
+        blueButton.GetComponent<Button>().interactable = false;
+        blackButton.GetComponent<Button>().interactable = false;
+        yellowButton.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = false;
+    }
 }

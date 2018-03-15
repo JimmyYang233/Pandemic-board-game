@@ -48,6 +48,11 @@ public class MoveOperation : MonoBehaviour {
     public void cancelButtonClicked()
     {
         disableAllCities();
+        driveButton.GetComponent<Button>().interactable = false;
+        directFlightButton.GetComponent<Button>().interactable = false;
+        shuttleFlightButton.GetComponent<Button>().interactable = false;
+        charterFlightButton.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = false;
     }
    // public City tmpCity;
     public void driveButtonClicked()
