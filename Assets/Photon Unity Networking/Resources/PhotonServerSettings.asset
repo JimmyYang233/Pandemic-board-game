@@ -54,4 +54,5 @@ MonoBehaviour:
   - RPC_sendConsentResult
   - RPC_endturn
   - RPC_endTurn
+  - RPC_exchangeCard
   DisableAutoOpenWizard: 1
