@@ -10,7 +10,9 @@ public class ShareOperation : MonoBehaviour {
     public GameObject basicOperationPanel;
 	public playerSelectionPanel playerSelect;
 	public GameObject otherPlayers;
-
+    public Button giveButton;
+    public Button takeButton;
+    public Button cancelButton;
 
     Game game;
     Player currentPlayer;
@@ -86,7 +88,7 @@ public class ShareOperation : MonoBehaviour {
 	public void selectRole(string name){
 		roleSlected=name;
 		//pc.deleteCityCard(currentCity.cityName);
-		cancel ();
+		cancel();
 	}
     public void cancel()
     {
@@ -114,4 +116,12 @@ public class ShareOperation : MonoBehaviour {
 		
 	}
 
+    public void shareButtonClicked()
+    {
+        if(currentPlayer.getRoleKind() == RoleKind.Researcher || currentPlayer.containsSpecificCityCard(currentCity))
+        {
+            giveButton.GetComponent<Button>().interactable = true;
+        }
+        List<Player> players = currentCity.getPlayers();
+    }
 }

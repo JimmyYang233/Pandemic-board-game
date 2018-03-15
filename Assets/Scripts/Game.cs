@@ -603,6 +603,15 @@ public class Game : MonoBehaviour {
     {
         return currentPlayer;
     }
+    public List<Player> getPlayers(City city)
+    {
+        List<Player> pInCity = new List<Player>();
+        foreach (Pawn p in city.getPawns())
+        {
+            pInCity.Add(getPlayer(p.getRoleKind()));
+        }
+        return pInCity;
+    }
 
     public List<Player> getPlayers()
     {
