@@ -135,7 +135,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 		player.decreaseRemainingAction();
-		Debug.Log ("move succeed");
+		//Debug.Log ("move succeed");
 	}
 
 
@@ -260,7 +260,7 @@ public class Game : MonoBehaviour {
 		setUp();
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log("Everything Complete");
-		Debug.Log("the role is" + me.getRoleKind().ToString());
+		//Debug.Log("the role is" + me.getRoleKind().ToString());
 	}
 
 	public Player FindPlayer(PhotonPlayer photonPlayer){
@@ -377,6 +377,7 @@ public class Game : MonoBehaviour {
         }
 		setGamePhase (GamePhase.InfectCities);
         infectCity();
+		currentPhase = GamePhase.PlayerTakeTurn;
 		Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
     }
 
@@ -546,7 +547,7 @@ public class Game : MonoBehaviour {
                     player.removeCard(AckCardToDrop(player.getHand()));
                 }
                 //FOR GUI
-                Debug.Log(me.getRoleKind());
+                //Debug.Log(me.getRoleKind());
                 if (!player.Equals(me))
                 {
 
@@ -554,7 +555,7 @@ public class Game : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("add card to main player" + card.ToString());
+                    //Debug.Log("add card to main player" + card.ToString());
                     mainPlayerPanel.addPlayerCard(card);
                 }
             }
@@ -633,7 +634,9 @@ public class Game : MonoBehaviour {
     public void nextPlayer()
     {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
+		Debug.Log (players.IndexOf(currentPlayer));
     }
+
     public PlayerCard getPlayerCard(String cardName)
     {
 
@@ -831,7 +834,7 @@ public class Game : MonoBehaviour {
             }
         }
         player.decreaseRemainingAction();
-		Debug.Log ("Flight succeed");
+		//Debug.Log ("Flight succeed");
         //UI only
     }
 
