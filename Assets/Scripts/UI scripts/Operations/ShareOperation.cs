@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ShareOperation : MonoBehaviour {
     public GameObject agreePanel;
     public GameObject playerCardPanel;
-    public GameObject showCardPanel;
 	public GameObject informResultPanel;
     public GameObject shareOperationPanel;
 
@@ -17,6 +16,7 @@ public class ShareOperation : MonoBehaviour {
     public Button giveButton;
     public Button takeButton;
     public Button cancelButton;
+    public BasicOperation basicOperation;
 
     Game game;
     Player currentPlayer;
@@ -68,7 +68,6 @@ public class ShareOperation : MonoBehaviour {
 
 
         //load card for the current city
-        showCardPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = currentCity.getCityName().ToString();
         isTake = false;
     }
 
@@ -103,10 +102,7 @@ public class ShareOperation : MonoBehaviour {
     {
 		playerSelect.gameObject.SetActive (false);
         playerCardPanel.SetActive(true);
-        showCardPanel.SetActive(false);
-        basicOperationPanel.SetActive(true);
 		otherPlayers.SetActive (true);
-        shareOperationPanel.SetActive(false);
         giveButton.GetComponent<Button>().interactable = false;
         takeButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = false;
@@ -140,7 +136,10 @@ public class ShareOperation : MonoBehaviour {
             informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Reject";
         }
         cancel();
-	}
+        basicOperationPanel.SetActive(true);
+        basicOperation.resetAll();
+        shareOperationPanel.SetActive(false);
+    }
 	public string findCityCardPlayer(string cardname){
 		Player target = game.findPlayerWithCard (cardname);
 		return target.getRoleKind ().ToString ();

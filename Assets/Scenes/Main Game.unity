@@ -19555,7 +19555,7 @@ MonoBehaviour:
   giveButton: {fileID: 148751997}
   takeButton: {fileID: 383723591}
   cancelButton: {fileID: 1217991699}
-  basicOperation: {fileID: 0}
+  basicOperation: {fileID: 660150423}
 --- !u!224 &1340808471
 RectTransform:
   m_ObjectHideFlags: 0
