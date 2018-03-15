@@ -128,6 +128,7 @@ public class ShareOperation : MonoBehaviour {
     }
 	//pop permission panel TODO
 	public void askPermission(string name){
+		agreePanel.transform.GetChild (0).GetComponent<Text> ().text="Accept chages to card"+name;
 		agreePanel.SetActive (true);
 	}
 	public void acceptRequest(){
