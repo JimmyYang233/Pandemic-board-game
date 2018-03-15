@@ -1090,6 +1090,9 @@ public class Game : MonoBehaviour {
 	}
 
 	#region findMethod
+	/* this method is used to find a player with specific card
+	 * @cardNmae the name of the card
+	 */
 	public Player findPlayerWithCard(string cardName){
 		foreach (Player player in players) {
 			foreach (PlayerCard card in player.getHand()) {
@@ -1188,9 +1191,7 @@ public class Game : MonoBehaviour {
 		return (RoleKind)Enum.Parse (typeof(RoleKind), roleKind);
 	}
 	#endregion
-	/* this method is used to find a player with specific card
-	 * @cardNmae the name of the card
-	 */
+
 
 
 
