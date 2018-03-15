@@ -102,8 +102,6 @@ public class ShareOperation : MonoBehaviour {
         {
 			showCardPanel.SetActive (false);
 			playerSelect.gameObject.SetActive (true);
-            
-
         }
        
     }
@@ -128,7 +126,7 @@ public class ShareOperation : MonoBehaviour {
     }
 	//pop permission panel TODO
 	public void askPermission(string name){
-		agreePanel.transform.GetChild (0).GetComponent<Text> ().text="Accept chages to card"+name;
+		agreePanel.transform.GetChild (0).GetComponent<Text> ().text="Accept changes to card"+name;
 		agreePanel.SetActive (true);
 	}
 	public void acceptRequest(){
