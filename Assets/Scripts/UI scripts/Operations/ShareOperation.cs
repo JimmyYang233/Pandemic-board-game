@@ -95,7 +95,7 @@ public class ShareOperation : MonoBehaviour {
 			
             //pc.addCityCard(currentCity.cityName);
 			//game.take(currentCity.getCityName().ToString());
-			game.share(findCityCardPlayer(currentCity.getCityName()),currentCity.getCityName());
+			game.share(findCityCardPlayer(currentCity.getCityName().ToString()),currentCity.cityName.ToString());
 			cancel();
         }
         else
@@ -111,7 +111,7 @@ public class ShareOperation : MonoBehaviour {
 	public void selectRole(string name){
 		roleSlected=name;
 		//pc.deleteCityCard(currentCity.cityName);
-		game.share(name,currentCity.getCityName());
+		game.share(name,currentCity.getCityName().ToString());
 		cancel();
 	}
     public void cancel()

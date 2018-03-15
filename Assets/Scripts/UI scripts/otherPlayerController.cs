@@ -113,7 +113,6 @@ public class otherPlayerController : MonoBehaviour
     // add event card to gui of other player
     public void addEventCard(EventKind e)
     {
-		Debug.Log (e.ToString);
         content.GetChild(cityCardNum + eventCardNum).gameObject.SetActive(true);
         content.GetChild(cityCardNum + eventCardNum).GetChild(0).GetComponent<Text>().text = e.ToString();
 
