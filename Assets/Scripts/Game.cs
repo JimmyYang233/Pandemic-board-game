@@ -810,20 +810,34 @@ public class Game : MonoBehaviour {
     }
 
 	//we need to split this method to two methods: take and give, pls do this asap!
-    public void share(Player targetPlayer, CityCard card, bool giveOrTake){
+    // public void share(Player targetPlayer, CityCard card, bool giveOrTake){
         
-        bool permission = true; //TODO: ask targetPlayer for permission
+    //     bool permission = true; //TODO: ask targetPlayer for permission
         
-        if(permission){
-            if (giveOrTake){
-                currentPlayer.removeCard(card);
-                targetPlayer.addCard(card);
-            }
-            else{
-                targetPlayer.removeCard(card);
-                currentPlayer.addCard(card);
-            }
-        }
+    //     if(permission){
+    //         if (giveOrTake){
+    //             currentPlayer.removeCard(card);
+    //             targetPlayer.addCard(card);
+    //         }
+    //         else{
+    //             currentPlayer.removeCard(card);
+    //             targetPlayer.addCard(card);
+    //         }
+    //     }
+
+    //     currentPlayer.decreaseRemainingAction();
+    // }
+
+    public void takeCard(Player targetPlayer, CityCard card){
+        targetPlayer.removeCard(card);
+        currentPlayer.addCard(card);
+
+        currentPlayer.decreaseRemainingAction();
+    }
+
+    public void giveCard(Player targetPlayer, CityCard card){
+        currentPlayer.removeCard(card);
+        targetPlayer.addCard(card);
 
         currentPlayer.decreaseRemainingAction();
     }
