@@ -52,4 +52,5 @@ MonoBehaviour:
   - RPC_treatDisease
   - RPC_askForPermission
   - RPC_sendConsentResult
+  - RPC_endturn
   DisableAutoOpenWizard: 1
