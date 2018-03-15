@@ -1026,7 +1026,10 @@ public class Game : MonoBehaviour {
         return cities;
     }
     
-
+    public List<PlayerCard> getPlayerDiscardPile()
+    {
+        return playerDiscardPile;
+    }
 
 
     public void build(CityCard card)
