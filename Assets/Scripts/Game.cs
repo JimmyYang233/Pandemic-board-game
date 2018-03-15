@@ -158,16 +158,20 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_takeShuttleFlight", PhotonTargets.All,playerRoleKindName, cityName);
 	}
 
-	public void EndTurn(){
-		PhotonView.RPC ("RPC_endTurn",PhotonTargets.All);
-	}
-
 	//this method will be called by shareOperation to ask the target for permission
 	public void share(string targetPlayerRoleKind, string cardName){   
 		PhotonPlayer target = findPlayer (targetPlayerRoleKind).PhotonPlayer;
 		PhotonView.RPC ("RPC_askForPermission", target, cardName);
 		cardToShare = (CityCard)findPlayerCard (cardName);
 		playerToShare = findPlayer (targetPlayerRoleKind);
+	}
+
+	public void TreatDisease(string color, string name){
+		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.All,color,name );
+	}
+
+	public void EndTurn(){
+		PhotonView.RPC ("RPC_endTurn",PhotonTargets.All);
 	}
 	#endregion
 
@@ -374,7 +378,7 @@ public class Game : MonoBehaviour {
 	}
 
 	//take charter flight
-	public void takeCharterFlight(Player pl1, City destination){
+	private void takeCharterFlight(Player pl1, City destination){
 		CityCard card = null;
 		City curCity = pl1.getPlayerPawn ().getCity ();
 		foreach(PlayerCard p in pl1.getHand()){
@@ -406,7 +410,7 @@ public class Game : MonoBehaviour {
 	}
 
 	//share
-	public void exchangeCard(RoleKind roleKind, CityCard cityCard)
+	private void exchangeCard(RoleKind roleKind, CityCard cityCard)
 	{
 		Player cardHolder = null;
 		Player target = findPlayer(roleKind);
@@ -443,6 +447,27 @@ public class Game : MonoBehaviour {
 		currentPlayer.decreaseRemainingAction ();
 	}
 
+	//treat
+	private void treatDisease(Disease d, City currentCity)
+	{
+		RoleKind rolekind = currentPlayer.getRoleKind();
+		bool isCured = d.isCured();
+		int treatNumber = 1;
+		if(rolekind == RoleKind.Medic||isCured == true)
+		{
+			int n = currentCity.getCubeNumber(d);
+			treatNumber = n;
+		}
+		currentCity.removeCubes(d, treatNumber);
+		d.addCubes(treatNumber);
+		int num = d.getNumOfDiseaseCubeLeft();
+		if(num == MAX && isCured == true)
+		{
+			d.isEradicated();
+		}
+
+		currentPlayer.decreaseRemainingAction();
+	}
 	//pass
 	private void endTurn()
 	{
@@ -463,6 +488,29 @@ public class Game : MonoBehaviour {
 		infectCity();
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
+	}
+
+	//cure
+	private void cure(Disease d)
+	{
+		List<CityCard> cardsToRemove = new List<CityCard>(); //TODO: ask player to choose 5 cards of same color
+
+		foreach (CityCard card in cardsToRemove)
+		{
+			currentPlayer.removeCard(card);
+			playerDiscardPile.Add(card);
+		}
+
+		d.cure();
+		int num = d.getNumOfDiseaseCubeLeft();
+		if(num == MAX)
+		{
+			d.isEradicated();
+		}
+
+		//UI TODO: set disease’s cure marker
+
+		currentPlayer.decreaseRemainingAction();
 	}
 	#endregion
 
@@ -534,11 +582,7 @@ public class Game : MonoBehaviour {
 
 
 
-	public Player FindPlayer(PhotonPlayer photonPlayer){
-		int index = players.FindIndex (x => x.PhotonPlayer == photonPlayer);
-		//Debug.Log (photonPlayer.ID);
-		return players [index];
-	}
+
 
     public RoleKind selectRole()
     {	
@@ -573,7 +617,7 @@ public class Game : MonoBehaviour {
         }
     }
 
-    public void setInitialHand()
+    private void setInitialHand()
     {
         Collection.Shuffle<PlayerCard>(playerCardDeck);
         int numOfPlayers = players.Count;
@@ -588,18 +632,7 @@ public class Game : MonoBehaviour {
         }
     }
 
-    private City findCity(CityName cityname)
-    {
-        foreach (City c in cities)
-        {
-            if (c.getCityName() == cityname)
-            {
-                return c;
-            }
-        }
-
-        return null;
-    }
+    
 
     private void shuffleAndAddEpidemic()
     {
@@ -828,7 +861,7 @@ public class Game : MonoBehaviour {
 
     //my part ends here
 
-    public void infectNextCity()
+    private void infectNextCity()
     {
         InfectionCard card = getInfectionCard();
         City city = card.getCity();
@@ -841,7 +874,7 @@ public class Game : MonoBehaviour {
         }
     }
 
-    public InfectionCard getInfectionCard()
+    private InfectionCard getInfectionCard()
     {
         InfectionCard card = infectionDeck[0];
         infectionDeck.Remove(card);
@@ -850,7 +883,7 @@ public class Game : MonoBehaviour {
         return card;
     }
 
-    public void infectCity()
+    private void infectCity()
     {
         for(int i=0; i<infectionRate; i++)
         {
@@ -885,42 +918,7 @@ public class Game : MonoBehaviour {
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
-	//used to find playerCard with name @cardName
-    public PlayerCard findPlayerCard(String cardName)
-    {
 
-        foreach (PlayerCard card in AllHandCards)
-        {
-            CardType type = card.getType();
-            String universalName;
-            if (type == CardType.EventCard)
-            {
-                universalName = ((EventCard)card).getEventKind().ToString();
-            }
-            else if (type == CardType.CityCard)
-            {
-                universalName = ((CityCard)card).getCity().getCityName().ToString();
-      
-            }
-            else if (type == CardType.EpidemicCard)
-            {
-                universalName = ((EpidemicCard)card).getType().ToString();
-            }
-            else
-            {
-                Debug.Log("Invalid card type exists in AllHandCards. Class: Game.cs : findPlayerCard");
-                return null;
-            }
-
-            if (universalName.Equals(cardName))
-            {
-                return card;
-            }
-            
-        }
-		Debug.Log("Corresponding PlayerCard Not found. Class: Game.cs : findPlayerCard");
-        return null; 
-    }
 
     
 
@@ -950,35 +948,7 @@ public class Game : MonoBehaviour {
 
     }
 
-    public Player findPlayer(RoleKind roleKind)
-    {
-        foreach (Player p in players)
-        {
-            if (p.getRoleKind()== roleKind)
-            {
-                return p;
-            }
-        }
-		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(RoleKind)");
-        return null;
-    }
-
-	public Player findPlayer(string roleKind)
-    {
-        foreach (Player p in players)
-        {
-            if (p.getRoleKind().ToString().Equals(roleKind))
-            {
-                return p;
-            }
-        }
-		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(String)");
-        return null;
-    }
-
-	public RoleKind findRoleKind(string roleKind){
-		return (RoleKind)Enum.Parse (typeof(RoleKind), roleKind);
-	}
+    
 
     #region notify methods
     // to do: inform the player that they lose the game
@@ -1019,30 +989,9 @@ public class Game : MonoBehaviour {
 
 
     
-    public void treatDisease(Disease d, City currentCity)
-    {
-        RoleKind rolekind = currentPlayer.getRoleKind();
-        bool isCured = d.isCured();
-        int treatNumber = 1;
-        if(rolekind == RoleKind.Medic||isCured == true)
-        {
-            int n = currentCity.getCubeNumber(d);
-            treatNumber = n;
-        }
-        currentCity.removeCubes(d, treatNumber);
-        d.addCubes(treatNumber);
-        int num = d.getNumOfDiseaseCubeLeft();
-        if(num == MAX && isCured == true)
-        {
-            d.isEradicated();
-        }
+    
 
-        currentPlayer.decreaseRemainingAction();
-    }
 
-	public void TreatDisease(string color, string name){
-		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.All,color,name );
-	}
 
     public void build(CityCard card)
     {
@@ -1113,27 +1062,7 @@ public class Game : MonoBehaviour {
 		//TO DO: maybe we need to inform the player the current player the response result;
 	}
 
-    public void cure(Disease d)
-    {
-        List<CityCard> cardsToRemove = new List<CityCard>(); //TODO: ask player to choose 5 cards of same color
-
-        foreach (CityCard card in cardsToRemove)
-        {
-            currentPlayer.removeCard(card);
-            playerDiscardPile.Add(card);
-        }
-
-        d.cure();
-        int num = d.getNumOfDiseaseCubeLeft();
-        if(num == MAX)
-        {
-            d.isEradicated();
-        }
-
-        //UI TODO: set disease’s cure marker
-
-        currentPlayer.decreaseRemainingAction();
-    }
+    
 
 	public City findCity(string name){
 
@@ -1160,10 +1089,7 @@ public class Game : MonoBehaviour {
 		return Color.yellow;
 	}
 
-	/* this method is used to find a player with specific card
-	 * @cardNmae the name of the card
-	 */
-
+	#region findMethod
 	public Player findPlayerWithCard(string cardName){
 		foreach (Player player in players) {
 			foreach (PlayerCard card in player.getHand()) {
@@ -1175,5 +1101,97 @@ public class Game : MonoBehaviour {
 		}
 		return null;
 	}
+
+	public Player FindPlayer(PhotonPlayer photonPlayer){
+		int index = players.FindIndex (x => x.PhotonPlayer == photonPlayer);
+		//Debug.Log (photonPlayer.ID);
+		return players [index];
+	}
+
+	private City findCity(CityName cityname)
+	{
+		foreach (City c in cities)
+		{
+			if (c.getCityName() == cityname)
+			{
+				return c;
+			}
+		}
+
+		return null;
+	}
+
+	//used to find playerCard with name @cardName
+	public PlayerCard findPlayerCard(String cardName)
+	{
+
+		foreach (PlayerCard card in AllHandCards)
+		{
+			CardType type = card.getType();
+			String universalName;
+			if (type == CardType.EventCard)
+			{
+				universalName = ((EventCard)card).getEventKind().ToString();
+			}
+			else if (type == CardType.CityCard)
+			{
+				universalName = ((CityCard)card).getCity().getCityName().ToString();
+
+			}
+			else if (type == CardType.EpidemicCard)
+			{
+				universalName = ((EpidemicCard)card).getType().ToString();
+			}
+			else
+			{
+				Debug.Log("Invalid card type exists in AllHandCards. Class: Game.cs : findPlayerCard");
+				return null;
+			}
+
+			if (universalName.Equals(cardName))
+			{
+				return card;
+			}
+
+		}
+		Debug.Log("Corresponding PlayerCard Not found. Class: Game.cs : findPlayerCard");
+		return null; 
+	}
+
+	public Player findPlayer(RoleKind roleKind)
+	{
+		foreach (Player p in players)
+		{
+			if (p.getRoleKind()== roleKind)
+			{
+				return p;
+			}
+		}
+		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(RoleKind)");
+		return null;
+	}
+
+	public Player findPlayer(string roleKind)
+	{
+		foreach (Player p in players)
+		{
+			if (p.getRoleKind().ToString().Equals(roleKind))
+			{
+				return p;
+			}
+		}
+		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(String)");
+		return null;
+	}
+
+	public RoleKind findRoleKind(string roleKind){
+		return (RoleKind)Enum.Parse (typeof(RoleKind), roleKind);
+	}
+	#endregion
+	/* this method is used to find a player with specific card
+	 * @cardNmae the name of the card
+	 */
+
+
 
 }
