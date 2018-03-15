@@ -12,12 +12,11 @@ public class BasicOperation : MonoBehaviour {
     public Button shareButton;
     public Button RoleOnlyButton;
     public Button passButton;
-	public Button giveButton;
-	public Button takeButton;
 
     Game game;
     Player me;
     City currentCity;
+    Player currentPlayer;
     // Use this for initialization
     void Start () {
        // game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
@@ -27,7 +26,8 @@ public class BasicOperation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
-        if (game.getCurrentPlayer() == me)
+        currentPlayer = game.getCurrentPlayer();
+        if (currentPlayer == me)
         {
             currentCity = me.getPlayerPawn().getCity();
             if (me.getRemainingAction() != 0)
@@ -37,21 +37,11 @@ public class BasicOperation : MonoBehaviour {
                 {
                     treatButton.GetComponent<Button>().interactable = true;
                 }
-                foreach(Pawn pawn in me.getPlayerPawn().getCity().getPawns())
+                List<Player> players = game.getPlayers(currentCity);
+                foreach(Player p in players)
                 {
-                    foreach(Player p in game.getPlayers())
-                    {
-						if (p.getPlayerPawn () == pawn && p.containsSpecificCityCard (currentCity)) {
-							shareButton.GetComponent<Button> ().interactable = true;
-							if (me.Equals (p)) {
-								takeButton.GetComponent<Button> ().interactable = false;
-								giveButton.GetComponent<Button> ().interactable = true;
-							} else {
-								takeButton.GetComponent<Button> ().interactable = true;
-								giveButton.GetComponent<Button> ().interactable = false;
-							}
-						}
-
+					if ((currentPlayer.getRoleKind() == RoleKind.Researcher && currentPlayer.containsCityCard())|| p.containsSpecificCityCard (currentCity)) {
+						shareButton.GetComponent<Button> ().interactable = true;
                     }
                 }
                 passButton.GetComponent<Button>().interactable = true;

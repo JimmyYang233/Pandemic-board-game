@@ -2299,8 +2299,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125200431}
-        m_MethodName: driveButtonClicked
+      - m_Target: {fileID: 1340808470}
+        m_MethodName: giveButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5540,7 +5540,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 383723592}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1340808470}
+        m_MethodName: takeButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &383723592
@@ -9149,8 +9160,6 @@ MonoBehaviour:
   shareButton: {fileID: 1727023487}
   RoleOnlyButton: {fileID: 1933850050}
   passButton: {fileID: 1690017431}
-  giveButton: {fileID: 0}
-  takeButton: {fileID: 0}
 --- !u!224 &660150424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18391,7 +18400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1304906789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19113,6 +19122,9 @@ MonoBehaviour:
   basicOperationPanel: {fileID: 182712636}
   playerSelect: {fileID: 346002627}
   otherPlayers: {fileID: 1923207381}
+  giveButton: {fileID: 148751997}
+  takeButton: {fileID: 383723591}
+  cancelButton: {fileID: 1217991699}
 --- !u!224 &1340808471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23083,8 +23095,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1340808469}
-        m_MethodName: 
+      - m_Target: {fileID: 182712636}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1304906788}
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23094,9 +23117,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1304906788}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1340808470}
+        m_MethodName: shareButtonClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

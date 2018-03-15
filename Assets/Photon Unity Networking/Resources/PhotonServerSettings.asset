@@ -50,4 +50,6 @@ MonoBehaviour:
   - RPC_drive
   - RPC_takeDirectFlight
   - RPC_treatDisease
+  - RPC_askForPermission
+  - RPC_sendConsentResult
   DisableAutoOpenWizard: 1

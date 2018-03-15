@@ -36,7 +36,7 @@ public class ShareOperation : MonoBehaviour {
 		currentCity = currentPlayer.getPlayerPawn().getCity();
 	}
 
-    public void give()
+    public void giveButtonClicked()
     {
 		
         agreePanel.SetActive(false);
@@ -54,7 +54,7 @@ public class ShareOperation : MonoBehaviour {
         showCardPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = currentCity.getCityName().ToString();
         isTake = false;
     }
-    public void take()
+    public void takeButtonClicked()
     {
         agreePanel.SetActive(false);
         playerCardPanel.SetActive(false);
@@ -72,7 +72,7 @@ public class ShareOperation : MonoBehaviour {
         {
 			
             //pc.addCityCard(currentCity.cityName);
-			game.take(currentCity.getCityName().ToString());
+			//game.take(currentCity.getCityName().ToString());
 			cancel();
         }
         else
@@ -122,6 +122,14 @@ public class ShareOperation : MonoBehaviour {
         {
             giveButton.GetComponent<Button>().interactable = true;
         }
-        List<Player> players = currentCity.getPlayers();
+        List<Player> players = game.getPlayers(currentCity);
+        foreach(Player player in players)
+        {
+            if (player.containsSpecificCityCard(currentCity)&&player!=currentPlayer)
+            {
+                takeButton.GetComponent<Button>().interactable = true;
+            }
+        }
+        cancelButton.GetComponent<Button>().interactable = true;
     }
 }
