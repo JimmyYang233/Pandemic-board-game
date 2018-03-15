@@ -380,7 +380,7 @@ public class Game : MonoBehaviour {
 		setGamePhase (GamePhase.InfectCities);
         infectCity();
 		currentPhase = GamePhase.PlayerTakeTurn;
-		Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
+		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
     }
 
 	public void EndTurn(){
@@ -637,7 +637,7 @@ public class Game : MonoBehaviour {
     public void nextPlayer()
     {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
-		Debug.Log (players.IndexOf(currentPlayer));
+		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
     public PlayerCard getPlayerCard(String cardName)

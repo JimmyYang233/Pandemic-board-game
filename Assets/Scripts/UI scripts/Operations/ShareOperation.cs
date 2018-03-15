@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,10 +42,22 @@ public class ShareOperation : MonoBehaviour {
 
         //agreePanel.SetActive(false);
         giveButton.GetComponent<Button>().interactable = false;
-        playerCardPanel.SetActive(false);
-        showCardPanel.SetActive(true);
-
-
+        int num = playerCardPanel.transform.GetChild(1).childCount;
+        for(int i = 0; i< num; i++)
+        {
+            Debug.Log(i);
+            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
+            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
+            if (name == currentCity.getCityName().ToString())
+            {
+                child.GetComponent<Button>().interactable = true;
+                child.GetComponent<Button>().onClick.AddListener(check);
+            }
+            else
+            {
+                child.GetComponent<Button>().interactable = false;
+            }
+        }
         basicOperationPanel.SetActive(false);
 		otherPlayers.SetActive (false);
         //load all players current in the city
@@ -54,6 +67,11 @@ public class ShareOperation : MonoBehaviour {
         //load card for the current city
         showCardPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = currentCity.getCityName().ToString();
         isTake = false;
+    }
+
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        check();
     }
     public void takeButtonClicked()
     {

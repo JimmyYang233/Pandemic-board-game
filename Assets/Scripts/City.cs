@@ -176,7 +176,7 @@ public class City : MonoBehaviour {
     public void removePawn(Pawn p)
     {
         pawns.Remove(p);
-		Debug.Log (pawns.ToString());
+		//Debug.Log (pawns.ToString());
         p.setCity(null);
     }
 
