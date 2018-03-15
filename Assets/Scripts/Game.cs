@@ -38,6 +38,7 @@ public class Game : MonoBehaviour {
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
 
 	private CityCard cardToShare;
+	private Player playerToShare;
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
@@ -85,7 +86,6 @@ public class Game : MonoBehaviour {
 	[PunRPC] 
 	public void RPC_askForPermission(string cardName){
 		askForPermisson (cardName);
-		cardToShare = (CityCard)findPlayerCard (cardName);
 	}
 
 	[PunRPC]
@@ -96,6 +96,13 @@ public class Game : MonoBehaviour {
 	[PunRPC]
 	public void RPC_endTurn(){
 		endTurn ();
+	}
+
+	[PunRPC]
+	public void RPC_exchangeCard (string targetPlayerRoleKindName, string cardName){
+		RoleKind targetPlayerRoleKind = findRoleKind (targetPlayerRoleKindName);
+		CityCard card = (CityCard)findPlayerCard (cardName);
+		exchangeCard (targetPlayerRoleKind, card);	
 	}
 	#endregion
 
@@ -736,7 +743,7 @@ public class Game : MonoBehaviour {
         return null;
     }
 
-	public Player findPlayer(String roleKind)
+	public Player findPlayer(string roleKind)
     {
         foreach (Player p in players)
         {
@@ -748,6 +755,11 @@ public class Game : MonoBehaviour {
 		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(String)");
         return null;
     }
+
+	public RoleKind findRoleKind(string roleKind){
+		return (RoleKind)Enum.Parse (typeof(RoleKind), roleKind);
+	}
+
     #region notify methods
     // to do: inform the player that they lose the game
     private void notifyGameLost(GameLostKind lostKind)
@@ -897,6 +909,8 @@ public class Game : MonoBehaviour {
 	public void share(string targetPlayerRoleKind, string cardName){   
 		PhotonPlayer target = findPlayer (targetPlayerRoleKind).PhotonPlayer;
 		PhotonView.RPC ("RPC_askForPermission", target, cardName);
+		cardToShare = (CityCard)findPlayerCard (cardName);
+		playerToShare = findPlayer (targetPlayerRoleKind);
      }
 
     public void takeCard(Player targetPlayer, CityCard card){
@@ -933,8 +947,9 @@ public class Game : MonoBehaviour {
 		shareOperation.showResponse(consentResult);
 		//if true, exchange this card
 		if (consentResult) {
-			
+			PhotonView.RPC ("RPC_exchangeCard",PhotonTargets.All, playerToShare.getRoleKind().ToString(), cardToShare.getCity().getCityName().ToString());
 		}
+		//TO DO: maybe we need to inform the player the current player the response result;
 	}
 
     public void cure(Disease d)
