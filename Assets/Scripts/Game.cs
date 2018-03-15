@@ -191,6 +191,7 @@ public class Game : MonoBehaviour {
 	//initialzie game, set the first player as current player
 	private void InitializeGame(){
 		//load city
+		researchStationRemain = 6;
 		cities = new List<City>();
 		backGround = GameObject.FindGameObjectWithTag("background");
 		backGround.transform.position += new Vector3(0.0001f, 0, 0);
@@ -872,7 +873,7 @@ public class Game : MonoBehaviour {
 
             
         }
-
+		gameInfo.changeCardNumber (playerCardDeck.Count);
         return true;
     }
 
@@ -1047,7 +1048,7 @@ public class Game : MonoBehaviour {
         
         currentCity.setHasResearch(true);
         researchStationRemain--;
-
+		gameInfo.changeResearchNumber (researchStationRemain);
         currentPlayer.decreaseRemainingAction();
     }
 
