@@ -115,18 +115,28 @@ public class Game : MonoBehaviour {
                 pl1.removeCard(card);
                 playerDiscardPile.Add(card);
                 move(pl1,destination);
+				pl1.decreaseRemainingAction ();
                 break;
             }
         }
 
         if(card == null){
             Debug.Log("Player does not have corresponding card.");
-            return;
         }
     }
 
-    public void move(Player pl1, City destinationCity){
+	public void takeShuttleFlight(Player pl1, City destination){
+		if (pl1.getPlayerPawn ().getCity ().getHasResearch () && destination.getHasResearch()) {
+			move (pl1, destination);
+			pl1.decreaseRemainingAction ();
+		} 
+		else 
+		{
+			Debug.Log ("One of the cities does not have a reseach lab. Game.cs: takeShuttleFlight");
+		}
+	}
 
+    public void move(Player pl1, City destinationCity){
         RoleKind rolekind = pl1.getRoleKind();
         Pawn p = pl1.getPlayerPawn();
 		City initialCity = p.getCity();
@@ -136,11 +146,11 @@ public class Game : MonoBehaviour {
 
         if (rolekind == RoleKind.Medic)
 		{
-			resolveMedic();
+			resolveMedic(initialCity);
 		}
         else if (rolekind == RoleKind.ContainmentSpecialist)
 		{
-			resolveContainmentSpecialist();
+			resolveContainmentSpecialist(initialCity);
 		}
     }
 	public void resolveMedic(City destinationCity){
