@@ -178,6 +178,7 @@ public class City : MonoBehaviour {
         pawns.Remove(p);
 		//Debug.Log (pawns.ToString());
         p.setCity(null);
+        displayPawn();
     }
 
     public List<Pawn> getPawns()

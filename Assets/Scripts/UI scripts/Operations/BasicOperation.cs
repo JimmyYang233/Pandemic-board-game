@@ -60,10 +60,7 @@ public class BasicOperation : MonoBehaviour {
         }
         else if(game.getCurrentPlayer()!= me)
         {
-            moveButton.GetComponent<Button>().interactable = false;
-            treatButton.GetComponent<Button>().interactable = false;
-            shareButton.GetComponent<Button>().interactable = false;
-            passButton.GetComponent<Button>().interactable = false;
+            resetAll();
         }
 	}
 
