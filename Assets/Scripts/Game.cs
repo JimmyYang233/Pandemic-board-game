@@ -639,6 +639,8 @@ public class Game : MonoBehaviour {
             {
                 InfectionCard ic = getInfectionCard();
                 ic.getCity().addCubes(i);
+                diseases[ic.getColor()].removeCubes(i);
+                gameInfoController.changeDiseaseNumber(ic.getColor(), diseases[ic.getColor()].getNumOfDiseaseCubeLeft());
             }
         }
     }
