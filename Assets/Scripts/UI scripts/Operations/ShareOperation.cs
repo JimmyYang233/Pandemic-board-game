@@ -9,6 +9,7 @@ public class ShareOperation : MonoBehaviour {
     public GameObject playerCardPanel;
     public GameObject showCardPanel;
 	public GameObject informResultPanel;
+    public GameObject shareOperationPanel;
 
     public GameObject basicOperationPanel;
 	public playerSelectionPanel playerSelect;
@@ -105,6 +106,7 @@ public class ShareOperation : MonoBehaviour {
         showCardPanel.SetActive(false);
         basicOperationPanel.SetActive(true);
 		otherPlayers.SetActive (true);
+        shareOperationPanel.SetActive(true);
         giveButton.GetComponent<Button>().interactable = false;
         takeButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = false;
