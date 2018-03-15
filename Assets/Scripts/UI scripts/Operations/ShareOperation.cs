@@ -112,6 +112,7 @@ public class ShareOperation : MonoBehaviour {
 	}
     public void cancel()
     {
+		playerSelect.reset ();
 		playerSelect.gameObject.SetActive (false);
         playerCardPanel.SetActive(true);
 		otherPlayers.SetActive (true);

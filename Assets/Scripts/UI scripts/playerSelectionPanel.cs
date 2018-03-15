@@ -8,6 +8,8 @@ public class playerSelectionPanel : MonoBehaviour {
 	Maps map;
 	//TODO- other operation
 	public Game game;
+	private City currentCity;
+	private Player currentPlayer;
 	private enum Status {SHARE,OTHER};
 	public ShareOperation share;
 	private Status selectStatus = Status.SHARE; 
@@ -16,14 +18,15 @@ public class playerSelectionPanel : MonoBehaviour {
 		map = Maps.getInstance ();
 		showOrNot = new bool[4];
 	}
+	void Update (){
+		currentPlayer = game.getCurrentPlayer();
+		currentCity = currentPlayer.getPlayerPawn().getCity();
+	}
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
 	public void setShareStatus(){
 		selectStatus = Status.SHARE;
 	}
@@ -71,25 +74,30 @@ public class playerSelectionPanel : MonoBehaviour {
 	}
 	//only display player who is in the same city
 	public void displayPlayerNecessary(){
-		foreach (Player p in game.getPlayers()) {
-			if (!p.getPlayerPawn ().getCity ().Equals (game.getCurrentPlayer ().getPlayerPawn ().getCity ())) {
-				Debug.Log ("conceal");
-				concealPlayer (p.getRoleKind());
-			} 
-		}
-	}
-	public void concealPlayer(RoleKind r){
-		foreach (Transform t in this.transform)
-		{
-			if (t.gameObject.active && t.GetChild (0).GetComponent<Text> ().text.Equals (r.ToString ())) {
-				t.gameObject.SetActive (false);
+		foreach (Transform t in transform) {
+			if (t.gameObject.activeSelf)
+			{
+				string role = t.GetChild (0).GetComponent<Text> ().text;
+				Debug.Log (role);
+				Player p = game.findPlayer (role);
+				Debug.Log (p.getRoleKind ().ToString ());
+				Debug.Log (p.getPlayerPawn ().getCity ().cityName);
+				//bug here cannot find current city
+				Debug.Log (currentCity.getCityName ());
+				/*if(!game.getPlayers(currentCity).Contains(game.findPlayer(t.GetChild(0).GetComponent<Text>().text))){
+					t.gameObject.SetActive (false);
+
+				}*/
+				break;
 			}
 		}
 	}
+
 	public void reset(){
 		int i = 0;
 		foreach (Transform t in this.transform)
 		{
+			Debug.Log (showOrNot [i]);
 			if (showOrNot [i]) {
 				t.gameObject.SetActive (true);
 			}
