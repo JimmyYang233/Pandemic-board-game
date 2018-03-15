@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour {
 	public static Game Instance;
 	public PhotonView PhotonView;
+
 	#region private variables
     private readonly int MAX = 24;
     private Challenge challenge;
@@ -30,13 +31,14 @@ public class Game : MonoBehaviour {
     private List<RoleKind> roleKindTaken = new List<RoleKind>();
     private List<InfectionCard> infectionDeck = new List<InfectionCard>();
     private List<InfectionCard> infectionDiscardPile = new List<InfectionCard>();
-    private List<City> outbreakedCities = new List<City>();
-    
+    private List<City> outbreakedCities = new List<City>();  
     private List<PlayerCard> playerCardDeck = new List<PlayerCard>();
     private List<PlayerCard> AllHandCards = new List<PlayerCard>();
     private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
-
+	private List<City> cities;
+	private int numOfPlayer;
+	private Player me;
 	private CityCard cardToShare;
 	private Player playerToShare;
     #endregion
@@ -50,12 +52,29 @@ public class Game : MonoBehaviour {
 
     GameObject backGround;
 
-    private List<City> cities;
-	private int numOfPlayer;
-    Player me;
+    
     public int nEpidemicCard;
     public Pawn prefab;
     public GameInfoDisplay gameInfoController;
+
+
+	private void Awake(){
+
+		if (Instance == null) {
+			Instance = this;
+			PhotonView = GetComponent<PhotonView> ();
+		}
+
+	}
+
+	private void Start()
+	{	
+		if (PhotonNetwork.isMasterClient) {
+			PhotonView.RPC ("RPC_InitializePlayer",PhotonTargets.All);
+			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
+		}
+
+	}
 
 	#region RPC method		
 	[PunRPC]
@@ -122,24 +141,14 @@ public class Game : MonoBehaviour {
 	}
 	#endregion
 
-    public void takeCharterFlight(Player pl1, City destination){
-        CityCard card = null;
-		City curCity = pl1.getPlayerPawn ().getCity ();
-        foreach(PlayerCard p in pl1.getHand()){
-			if(p.getType() == CardType.CityCard && ((CityCard)p).getCity()== curCity){
-                card = (CityCard) p;
-                pl1.removeCard(card);
-                playerDiscardPile.Add(card);
-                move(pl1,destination);
-				pl1.decreaseRemainingAction ();
-                break;
-            }
-        }
+	#region basicOperationInteraction
+	public void Drive(string roleKind,string name){
+		PhotonView.RPC ("RPC_drive",PhotonTargets.All,roleKind,name);
+	}
 
-        if(card == null){
-            Debug.Log("Player does not have corresponding card.");
-        }
-    }
+	public void TakeDirectFlight(string roleKind,string name){
+		PhotonView.RPC ("RPC_takeDirectFlight",PhotonTargets.All,roleKind,name);
+	}
 
 	public void TakeCharterFlight(string playerRoleKindName, string cityName){
 		PhotonView.RPC ("RPC_takeCharterFlight", PhotonTargets.All,playerRoleKindName, cityName);
@@ -149,137 +158,22 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_takeShuttleFlight", PhotonTargets.All,playerRoleKindName, cityName);
 	}
 
-	public void takeShuttleFlight(Player pl1, City destination){
-		if (pl1.getPlayerPawn ().getCity ().getHasResearch () && destination.getHasResearch()) {
-			move (pl1, destination);
-			pl1.decreaseRemainingAction ();
-		} 
-		else 
-		{
-			Debug.Log ("One of the cities does not have a reseach lab. Game.cs: takeShuttleFlight");
-		}
+	public void EndTurn(){
+		PhotonView.RPC ("RPC_endTurn",PhotonTargets.All);
 	}
 
-    public void move(Player pl1, City destinationCity){
-        RoleKind rolekind = pl1.getRoleKind();
-        Pawn p = pl1.getPlayerPawn();
-		City initialCity = p.getCity();
-		p.setCity(destinationCity);
-		initialCity.removePawn(p);
-		destinationCity.addPawn(p);
-
-        if (rolekind == RoleKind.Medic)
-		{
-			resolveMedic(initialCity);
-		}
-        else if (rolekind == RoleKind.ContainmentSpecialist)
-		{
-			resolveContainmentSpecialist(initialCity);
-		}
-    }
-	public void resolveMedic(City destinationCity){
-        foreach (Disease disease in diseases.Values)
-			{
-				if (disease.isCured())
-				{
-					int cubeNumber = destinationCity.getCubeNumber(disease);
-					destinationCity.removeCubes(disease, cubeNumber);
-					disease.addCubes(cubeNumber);
-					int num = disease.getNumOfDiseaseCubeLeft();
-					if (num == MAX)
-					{
-						disease.eradicate();
-					}
-				}
-
-			}
-    }
-
-	public void resolveContainmentSpecialist(City destinationCity){
-        foreach (Disease disease in diseases.Values)
-			{
-				int cubeNumber = destinationCity.getCubeNumber(disease);
-				if (cubeNumber > 1)
-				{
-					destinationCity.removeCubes(disease, 1);
-					disease.addCubes(1);
-				}
-			}
-    }
-
-	public void drive(Player player, City destinationCity)
-	{
-		Pawn p = player.getPlayerPawn();
-		City initialCity = p.getCity();
-		p.setCity(destinationCity);
-		initialCity.removePawn(p);
-		destinationCity.addPawn(p);
-		RoleKind rolekind = player.getRoleKind();
-
-		if (rolekind == RoleKind.Medic)
-		{
-			foreach (Disease disease in diseases.Values)
-			{
-				if (disease.isCured())
-				{
-					int cubeNumber = destinationCity.getCubeNumber(disease);
-					destinationCity.removeCubes(disease, cubeNumber);
-					disease.addCubes(cubeNumber);
-					int num = disease.getNumOfDiseaseCubeLeft();
-					if (num == MAX)
-					{
-						disease.eradicate();
-					}
-				}
-
-			}
-		}
-
-		else if (rolekind == RoleKind.ContainmentSpecialist)
-		{
-			foreach (Disease disease in diseases.Values)
-			{
-				int cubeNumber = destinationCity.getCubeNumber(disease);
-				if (cubeNumber > 1)
-				{
-					destinationCity.removeCubes(disease, 1);
-					disease.addCubes(1);
-				}
-			}
-		}
-		player.decreaseRemainingAction();
-		//Debug.Log ("move succeed");
+	//this method will be called by shareOperation to ask the target for permission
+	public void share(string targetPlayerRoleKind, string cardName){   
+		PhotonPlayer target = findPlayer (targetPlayerRoleKind).PhotonPlayer;
+		PhotonView.RPC ("RPC_askForPermission", target, cardName);
+		cardToShare = (CityCard)findPlayerCard (cardName);
+		playerToShare = findPlayer (targetPlayerRoleKind);
 	}
+	#endregion
 
 
-
-	private void Awake(){
-		
-		if (Instance == null) {
-			Instance = this;
-			PhotonView = GetComponent<PhotonView> ();
-		}
-
-	}
-
-    private void Start()
-    {	
-		if (PhotonNetwork.isMasterClient) {
-			PhotonView.RPC ("RPC_InitializePlayer",PhotonTargets.All);
-			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
-		}
-			
-    }
-
-	public void Drive(string roleKind,string name){
-		PhotonView.RPC ("RPC_drive",PhotonTargets.All,roleKind,name);
-	}
-
-	public void TakeDirectFlight(string roleKind,string name){
-		PhotonView.RPC ("RPC_takeDirectFlight",PhotonTargets.All,roleKind,name);
-	}
-
-	//initialize player in the network, set the first player as current player
+	#region initialization
+	//initialize player in the network
 	private void InitializePlayer(){
 		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
 		Array.Sort (photonplayers, delegate(PhotonPlayer x, PhotonPlayer y) {
@@ -289,13 +183,14 @@ public class Game : MonoBehaviour {
 			players.Add (new Player(player));
 		}
 	}
-		
+
+	//initialzie game, set the first player as current player
 	private void InitializeGame(){
 		//load city
 		cities = new List<City>();
 		backGround = GameObject.FindGameObjectWithTag("background");
-        backGround.transform.position += new Vector3(0.0001f, 0, 0);
-        foreach (Transform t in backGround.transform)
+		backGround.transform.position += new Vector3(0.0001f, 0, 0);
+		foreach (Transform t in backGround.transform)
 		{
 			if (t.GetComponent<City>() != null)
 			{
@@ -312,14 +207,8 @@ public class Game : MonoBehaviour {
 		numOfEpidemicCard = nEpidemicCard;
 		difficulty = nEpidemicCard;
 		me = FindPlayer(PhotonNetwork.player);
-
-		//players.Add(me);
 		currentPlayer = players[0];
-		Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
-		//for(int i = 0; i< numOfPlayer-1; i++)
-		//{
-		//    players.Add(new Player(new User("others", "2222")));
-		//}
+		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
 
 		foreach(City c in cities)
 		{
@@ -375,6 +264,275 @@ public class Game : MonoBehaviour {
 		//Debug.Log("Everything Complete");
 		//Debug.Log("the role is" + me.getRoleKind().ToString());
 	}
+	#endregion
+
+
+	#region basicOperation
+	//drive
+	private void drive(Player player, City destinationCity)
+	{
+		Pawn p = player.getPlayerPawn();
+		City initialCity = p.getCity();
+		p.setCity(destinationCity);
+		initialCity.removePawn(p);
+		destinationCity.addPawn(p);
+		RoleKind rolekind = player.getRoleKind();
+
+		if (rolekind == RoleKind.Medic)
+		{
+			foreach (Disease disease in diseases.Values)
+			{
+				if (disease.isCured())
+				{
+					int cubeNumber = destinationCity.getCubeNumber(disease);
+					destinationCity.removeCubes(disease, cubeNumber);
+					disease.addCubes(cubeNumber);
+					int num = disease.getNumOfDiseaseCubeLeft();
+					if (num == MAX)
+					{
+						disease.eradicate();
+					}
+				}
+
+			}
+		}
+
+		else if (rolekind == RoleKind.ContainmentSpecialist)
+		{
+			foreach (Disease disease in diseases.Values)
+			{
+				int cubeNumber = destinationCity.getCubeNumber(disease);
+				if (cubeNumber > 1)
+				{
+					destinationCity.removeCubes(disease, 1);
+					disease.addCubes(1);
+				}
+			}
+		}
+		player.decreaseRemainingAction();
+		//Debug.Log ("move succeed");
+	}
+
+	//take direct flight
+	private void takeDirectFlight(Player player, CityCard card)
+	{
+		Pawn p = player.getPlayerPawn();
+		City initialCity = p.getCity();
+		City destinationCity = card.getCity();
+		p.setCity(destinationCity);
+		initialCity.removePawn(p);
+		destinationCity.addPawn(p);
+		RoleKind rolekind = player.getRoleKind();
+		if(rolekind != RoleKind.Troubleshooter)
+		{
+			player.removeCard(card);
+			if (!player.Equals(me))
+			{
+
+				playerPanel.deletePlayerCardFromOtherPlayer(player.getRoleKind(), card);
+			}
+			else
+			{
+				mainPlayerPanel.deletePlayerCard(card);
+			}
+			playerDiscardPile.Add(card);
+
+		}
+		if(rolekind == RoleKind.Medic)
+		{
+			foreach (Disease disease in diseases.Values)
+			{
+				if (disease.isCured())
+				{
+					int cubeNumber = destinationCity.getCubeNumber(disease);
+					destinationCity.removeCubes(disease, cubeNumber);
+					disease.addCubes(cubeNumber);
+					int num = disease.getNumOfDiseaseCubeLeft();
+					if(num == MAX)
+					{
+						disease.eradicate();
+					}
+				}
+
+			}
+		}
+		else if(rolekind == RoleKind.ContainmentSpecialist)
+		{
+			foreach(Disease disease in diseases.Values)
+			{
+				int cubeNumber = destinationCity.getCubeNumber(disease);
+				if(cubeNumber > 1)
+				{
+					destinationCity.removeCubes(disease, 1);
+					disease.addCubes(1);
+				}
+			}
+		}
+		player.decreaseRemainingAction();
+		//Debug.Log ("Flight succeed");
+		//UI only
+	}
+
+	//take charter flight
+	public void takeCharterFlight(Player pl1, City destination){
+		CityCard card = null;
+		City curCity = pl1.getPlayerPawn ().getCity ();
+		foreach(PlayerCard p in pl1.getHand()){
+			if(p.getType() == CardType.CityCard && ((CityCard)p).getCity()== curCity){
+				card = (CityCard) p;
+				pl1.removeCard(card);
+				playerDiscardPile.Add(card);
+				move(pl1,destination);
+				pl1.decreaseRemainingAction ();
+				break;
+			}
+		}
+
+		if(card == null){
+			Debug.Log("Player does not have corresponding card.");
+		}
+	}
+
+	//take shuttle flight
+	private void takeShuttleFlight(Player pl1, City destination){
+		if (pl1.getPlayerPawn ().getCity ().getHasResearch () && destination.getHasResearch()) {
+			move (pl1, destination);
+			pl1.decreaseRemainingAction ();
+		} 
+		else 
+		{
+			Debug.Log ("One of the cities does not have a reseach lab. Game.cs: takeShuttleFlight");
+		}
+	}
+
+	//share
+	public void exchangeCard(RoleKind roleKind, CityCard cityCard)
+	{
+		Player cardHolder = null;
+		Player target = findPlayer(roleKind);
+		foreach(Player player in players)
+		{
+			foreach(PlayerCard p in player.getHand())
+			{
+				if(p == cityCard)
+				{
+					cardHolder = player;
+					break;
+				}
+			}
+		}
+
+		if(cardHolder != null)
+		{
+			if(cardHolder == currentPlayer)
+			{
+				giveCard(currentPlayer, target, cityCard);
+			}
+			else if(cardHolder == target)
+			{
+				giveCard(target, currentPlayer, cityCard);
+			}
+			else {
+				Debug.Log("A uninterested player is holding the card. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
+			}
+		}
+		else
+		{
+			Debug.Log("CardHolder not found. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
+		}
+		currentPlayer.decreaseRemainingAction ();
+	}
+
+	//pass
+	private void endTurn()
+	{
+		if (currentPhase != GamePhase.PlayerTakeTurn)
+			return;
+		currentPhase = GamePhase.Completed;
+
+		currentPlayer.refillAction();
+		currentPlayer.setOncePerturnAction(false);
+		int playerCardDeckSize = playerCardDeck.Count;
+		//Note that epidemic card is resolved in "draw" method
+		//if there is no enough player cards in the deck, players lose the game
+		if (!draw(currentPlayer, 2))
+		{
+			return;
+		}
+		setGamePhase (GamePhase.InfectCities);
+		infectCity();
+		currentPhase = GamePhase.PlayerTakeTurn;
+		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
+	}
+	#endregion
+
+
+
+    
+
+
+
+
+
+
+    private void move(Player pl1, City destinationCity){
+        RoleKind rolekind = pl1.getRoleKind();
+        Pawn p = pl1.getPlayerPawn();
+		City initialCity = p.getCity();
+		p.setCity(destinationCity);
+		initialCity.removePawn(p);
+		destinationCity.addPawn(p);
+
+        if (rolekind == RoleKind.Medic)
+		{
+			resolveMedic(initialCity);
+		}
+        else if (rolekind == RoleKind.ContainmentSpecialist)
+		{
+			resolveContainmentSpecialist(initialCity);
+		}
+    }
+
+	private void resolveMedic(City destinationCity){
+        foreach (Disease disease in diseases.Values)
+			{
+				if (disease.isCured())
+				{
+					int cubeNumber = destinationCity.getCubeNumber(disease);
+					destinationCity.removeCubes(disease, cubeNumber);
+					disease.addCubes(cubeNumber);
+					int num = disease.getNumOfDiseaseCubeLeft();
+					if (num == MAX)
+					{
+						disease.eradicate();
+					}
+				}
+
+			}
+    }
+
+	private void resolveContainmentSpecialist(City destinationCity){
+        foreach (Disease disease in diseases.Values)
+			{
+				int cubeNumber = destinationCity.getCubeNumber(disease);
+				if (cubeNumber > 1)
+				{
+					destinationCity.removeCubes(disease, 1);
+					disease.addCubes(1);
+				}
+			}
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 	public Player FindPlayer(PhotonPlayer photonPlayer){
 		int index = players.FindIndex (x => x.PhotonPlayer == photonPlayer);
@@ -469,34 +627,9 @@ public class Game : MonoBehaviour {
         playerCardDeck = tempList;
     }
 		
-    /*
-		endTurn
-	*/
+    
 
-    public void endTurn()
-    {
-        if (currentPhase != GamePhase.PlayerTakeTurn)
-            return;
-        currentPhase = GamePhase.Completed;
 
-        currentPlayer.refillAction();
-        currentPlayer.setOncePerturnAction(false);
-        int playerCardDeckSize = playerCardDeck.Count;
-		//Note that epidemic card is resolved in "draw" method
-        //if there is no enough player cards in the deck, players lose the game
-        if (!draw(currentPlayer, 2))
-        {
-            return;
-        }
-		setGamePhase (GamePhase.InfectCities);
-        infectCity();
-		currentPhase = GamePhase.PlayerTakeTurn;
-		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
-    }
-
-	public void EndTurn(){
-		PhotonView.RPC ("RPC_endTurn",PhotonTargets.All);
-	}
 
     private bool resolveEpidemic()
     {
@@ -789,42 +922,7 @@ public class Game : MonoBehaviour {
         return null; 
     }
 
-    public void exchangeCard(RoleKind roleKind, CityCard cityCard)
-    {
-        Player cardHolder = null;
-		Player target = findPlayer(roleKind);
-        foreach(Player player in players)
-        {
-            foreach(PlayerCard p in player.getHand())
-            {
-                if(p == cityCard)
-                {
-                    cardHolder = player;
-                    break;
-                }
-            }
-        }
-
-        if(cardHolder != null)
-        {
-            if(cardHolder == currentPlayer)
-            {
-                giveCard(currentPlayer, target, cityCard);
-            }
-            else if(cardHolder == target)
-            {
-                giveCard(target, currentPlayer, cityCard);
-            }
-            else {
-                Debug.Log("A uninterested player is holding the card. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
-            }
-        }
-        else
-        {
-            Debug.Log("CardHolder not found. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
-        }
-		currentPlayer.decreaseRemainingAction ();
-    }
+    
 
     public void giveCard(Player p1, Player p2, CityCard card)
     {
@@ -920,65 +1018,7 @@ public class Game : MonoBehaviour {
 
 
 
-    public void takeDirectFlight(Player player, CityCard card)
-    {
-        Pawn p = player.getPlayerPawn();
-        City initialCity = p.getCity();
-        City destinationCity = card.getCity();
-        p.setCity(destinationCity);
-        initialCity.removePawn(p);
-        destinationCity.addPawn(p);
-        RoleKind rolekind = player.getRoleKind();
-        if(rolekind != RoleKind.Troubleshooter)
-        {
-            player.removeCard(card);
-            if (!player.Equals(me))
-            {
-
-                playerPanel.deletePlayerCardFromOtherPlayer(player.getRoleKind(), card);
-            }
-            else
-            {
-                mainPlayerPanel.deletePlayerCard(card);
-            }
-            playerDiscardPile.Add(card);
-            
-        }
-        if(rolekind == RoleKind.Medic)
-        {
-            foreach (Disease disease in diseases.Values)
-            {
-                if (disease.isCured())
-                {
-                    int cubeNumber = destinationCity.getCubeNumber(disease);
-                    destinationCity.removeCubes(disease, cubeNumber);
-                    disease.addCubes(cubeNumber);
-                    int num = disease.getNumOfDiseaseCubeLeft();
-                    if(num == MAX)
-                    {
-                        disease.eradicate();
-                    }
-                }
-                
-            }
-        }
-        else if(rolekind == RoleKind.ContainmentSpecialist)
-        {
-            foreach(Disease disease in diseases.Values)
-            {
-                int cubeNumber = destinationCity.getCubeNumber(disease);
-                if(cubeNumber > 1)
-                {
-                    destinationCity.removeCubes(disease, 1);
-                    disease.addCubes(1);
-                }
-            }
-        }
-        player.decreaseRemainingAction();
-		//Debug.Log ("Flight succeed");
-        //UI only
-    }
-
+    
     public void treatDisease(Disease d, City currentCity)
     {
         RoleKind rolekind = currentPlayer.getRoleKind();
@@ -1030,13 +1070,7 @@ public class Game : MonoBehaviour {
 	public void Build(string cityCardName){
 		PhotonView.RPC ("RPC_build",PhotonTargets.All,cityCardName);
 	}
-	//this method will be called by shareOperation to ask the target for permission
-	public void share(string targetPlayerRoleKind, string cardName){   
-		PhotonPlayer target = findPlayer (targetPlayerRoleKind).PhotonPlayer;
-		PhotonView.RPC ("RPC_askForPermission", target, cardName);
-		cardToShare = (CityCard)findPlayerCard (cardName);
-		playerToShare = findPlayer (targetPlayerRoleKind);
-     }
+
 
 	/*
     public void takeCard(Player targetPlayer, CityCard card){
