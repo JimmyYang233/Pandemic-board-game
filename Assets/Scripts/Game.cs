@@ -393,6 +393,7 @@ public class Game : MonoBehaviour {
         if(infectionRate < 4)
         {
             infectionRate = infectionArray[++index];
+            gameInfoController.displayInfectionRate();
         }
 
         InfectionCard infectionCard = drawBottomInfectionDeck();
