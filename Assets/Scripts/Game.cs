@@ -799,13 +799,33 @@ public class Game : MonoBehaviour {
         {
             Debug.Log("CardHolder not found. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
         }
-
+		currentPlayer.decreaseRemainingAction ();
     }
 
     public void giveCard(Player p1, Player p2, CityCard card)
     {
         p1.removeCard(card);
+		if (!p1.Equals(me))
+		{
+
+			playerPanel.deletePlayerCardFromOtherPlayer(p1.getRoleKind(), card);
+		}
+		else
+		{
+			mainPlayerPanel.deletePlayerCard(card);
+		}
         p2.addCard(card);
+		if (!p2.Equals(me))
+		{
+
+			playerPanel.addPlayerCardToOtherPlayer(p2.getRoleKind(), card);
+		}
+		else
+		{
+			//Debug.Log("add card to main player" + card.ToString());
+			mainPlayerPanel.addPlayerCard(card);
+		}
+
     }
 
     public Player findPlayer(RoleKind roleKind)

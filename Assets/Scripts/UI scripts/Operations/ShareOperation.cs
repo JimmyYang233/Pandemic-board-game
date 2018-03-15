@@ -116,9 +116,11 @@ public class ShareOperation : MonoBehaviour {
 		agreePanel.SetActive (true);
 	}
 	public void acceptRequest(){
+		game.sendResponse (true);
 		agreePanel.SetActive (false);
 	}
 	public void declineRequest(){
+		game.sendResponse (false);
 		agreePanel.SetActive (false);
 	}
 
