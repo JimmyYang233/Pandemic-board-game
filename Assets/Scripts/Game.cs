@@ -204,6 +204,7 @@ public class Game : MonoBehaviour {
 
 		//players.Add(me);
 		currentPlayer = players[0];
+		Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
 		//for(int i = 0; i< numOfPlayer-1; i++)
 		//{
 		//    players.Add(new Player(new User("others", "2222")));
@@ -382,6 +383,7 @@ public class Game : MonoBehaviour {
         }
 		setGamePhase (GamePhase.InfectCities);
         infectCity();
+		Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
     }
 
 	public void EndTurn(){
