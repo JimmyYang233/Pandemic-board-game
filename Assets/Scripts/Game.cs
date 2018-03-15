@@ -36,6 +36,8 @@ public class Game : MonoBehaviour {
     private List<PlayerCard> AllHandCards = new List<PlayerCard>();
     private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
+
+	private CityCard cardToShare;
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
@@ -67,12 +69,12 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_drive(string roleKind,string name){
-		drive(getPlayer(roleKind),findCity(name));
+		drive(findPlayer(roleKind),findCity(name));
 	}
 
 	[PunRPC]
 	public void RPC_takeDirectFlight(string roleKind,string name){
-		takeDirectFlight(getPlayer(roleKind),(CityCard)getPlayerCard(name));
+		takeDirectFlight(findPlayer(roleKind),(CityCard)findPlayerCard(name));
 	}
 
 	[PunRPC]
@@ -82,7 +84,8 @@ public class Game : MonoBehaviour {
 
 	[PunRPC] 
 	public void RPC_askForPermission(string cardName){
-		askForPermisson (name);
+		askForPermisson (cardName);
+		cardToShare = (CityCard)findPlayerCard (cardName);
 	}
 
 	[PunRPC]
@@ -624,7 +627,7 @@ public class Game : MonoBehaviour {
         List<Player> pInCity = new List<Player>();
         foreach (Pawn p in city.getPawns())
         {
-            pInCity.Add(getPlayer(p.getRoleKind()));
+			pInCity.Add(findPlayer(p.getRoleKind()));
         }
         return pInCity;
     }
@@ -641,7 +644,8 @@ public class Game : MonoBehaviour {
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
-    public PlayerCard getPlayerCard(String cardName)
+	//used to find playerCard with name @cardName
+    public PlayerCard findPlayerCard(String cardName)
     {
 
         foreach (PlayerCard card in AllHandCards)
@@ -663,7 +667,7 @@ public class Game : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Invalid card type exists in AllHandCards. Class: Game.cs : getPlayerCard");
+                Debug.Log("Invalid card type exists in AllHandCards. Class: Game.cs : findPlayerCard");
                 return null;
             }
 
@@ -673,14 +677,14 @@ public class Game : MonoBehaviour {
             }
             
         }
-        Debug.Log("Corresponding PlayerCard Not found. Class: Game.cs : getPlayerCard");
+		Debug.Log("Corresponding PlayerCard Not found. Class: Game.cs : findPlayerCard");
         return null; 
     }
 
     public void exchangeCard(RoleKind roleKind, CityCard cityCard)
     {
         Player cardHolder = null;
-        Player target = getPlayer(roleKind);
+		Player target = findPlayer(roleKind);
         foreach(Player player in players)
         {
             foreach(PlayerCard p in player.getHand())
@@ -720,7 +724,7 @@ public class Game : MonoBehaviour {
         p2.addCard(card);
     }
 
-    public Player getPlayer(RoleKind roleKind)
+    public Player findPlayer(RoleKind roleKind)
     {
         foreach (Player p in players)
         {
@@ -729,11 +733,11 @@ public class Game : MonoBehaviour {
                 return p;
             }
         }
-        Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : getPlayer(RoleKind)");
+		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(RoleKind)");
         return null;
     }
 
-    public Player getPlayer(String roleKind)
+	public Player findPlayer(String roleKind)
     {
         foreach (Player p in players)
         {
@@ -742,7 +746,7 @@ public class Game : MonoBehaviour {
                 return p;
             }
         }
-        Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : getPlayer(String)");
+		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(String)");
         return null;
     }
     #region notify methods
@@ -890,9 +894,9 @@ public class Game : MonoBehaviour {
         currentPlayer.decreaseRemainingAction();
     }
 
-	//we need to split this method to two methods: take and give, pls do this asap!
+	//this method will be called by shareOperation to ask the target for permission
 	public void share(string targetPlayerRoleKind, string cardName){   
-		PhotonPlayer target = getPlayer (targetPlayerRoleKind).PhotonPlayer;
+		PhotonPlayer target = findPlayer (targetPlayerRoleKind).PhotonPlayer;
 		PhotonView.RPC ("RPC_askForPermission", target, cardName);
      }
 
@@ -910,7 +914,7 @@ public class Game : MonoBehaviour {
         currentPlayer.decreaseRemainingAction();
     }
 
-	// zhening's work! written at 5.04am!
+	// zhening's work! written at 5.04am!  obsolete in this version
 	public void take(string name){
 		PhotonPlayer target = findPlayerWithCard (name).PhotonPlayer;
 		PhotonView.RPC ("RPC_askForPermission",target,name);
@@ -921,12 +925,17 @@ public class Game : MonoBehaviour {
 		shareOperation.askPermission (name);
 	}
 
+	//this method will be called by shareOperation to send response to current player
 	public void sendResponse(bool consentResult){
 		PhotonView.RPC ("RPC_sendConsentResult",currentPlayer.PhotonPlayer, consentResult);
 	}
 
 	private void informResponse(bool consentResult){
 		shareOperation.showResponse(consentResult);
+		//if true, exchange this card
+		if (consentResult) {
+			
+		}
 	}
 
     public void cure(Disease d)
