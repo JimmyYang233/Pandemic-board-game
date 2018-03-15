@@ -106,6 +106,74 @@ public class Game : MonoBehaviour {
 	}
 	#endregion
 
+    public void takeCharterFlight(Player pl1, City c1){
+        CityCard card = null;
+        foreach(PlayerCard p in pl1.getHand()){
+            if(p.getType() == CardType.CityCard && ((CityCard)p).getCity()== c1){
+                card = (CityCard) p;
+                pl1.removeCard(card);
+                playerDiscardPile.Add(card);
+                move(pl1,c1);
+                break;
+            }
+        }
+
+        if(card == null){
+            Debug.Log("Player does not have corresponding card.");
+            return;
+        }
+
+
+    }
+
+    public void move(Player pl1, City destinationCity){
+
+        RoleKind rolekind = pl1.getRoleKind();
+        Pawn p = pl1.getPlayerPawn();
+		City initialCity = p.getCity();
+		p.setCity(destinationCity);
+		initialCity.removePawn(p);
+		destinationCity.addPawn(p);
+
+        if (rolekind == RoleKind.Medic)
+		{
+			resolveMedic();
+		}
+        else if (rolekind == RoleKind.ContainmentSpecialist)
+		{
+			resolveContainmentSpecialist();
+		}
+    }
+    public void resolveMedic(){
+        foreach (Disease disease in diseases.Values)
+			{
+				if (disease.isCured())
+				{
+					int cubeNumber = destinationCity.getCubeNumber(disease);
+					destinationCity.removeCubes(disease, cubeNumber);
+					disease.addCubes(cubeNumber);
+					int num = disease.getNumOfDiseaseCubeLeft();
+					if (num == MAX)
+					{
+						disease.eradicate();
+					}
+				}
+
+			}
+    }
+
+    public void resolveContainmentSpecialist(){
+        foreach (Disease disease in diseases.Values)
+			{
+				int cubeNumber = destinationCity.getCubeNumber(disease);
+				if (cubeNumber > 1)
+				{
+					destinationCity.removeCubes(disease, 1);
+					disease.addCubes(1);
+				}
+			}
+    }
+
 	public void drive(Player player, City destinationCity)
 	{
 		Pawn p = player.getPlayerPawn();
