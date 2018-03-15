@@ -12,10 +12,12 @@ public class Game : MonoBehaviour {
     private Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
+	[SerializeField]
     private int infectionRate=2;
     private int[] infectionArray;
     private int infectionCardDrawn= 0 ;
     private bool isnewGame = true;
+	[SerializeField]
     private int outbreaksValue = 0;
     private int researchStationRemain = 6;
     private bool resolvingEpidemic = false;
