@@ -142,13 +142,11 @@ public class Game : MonoBehaviour {
 
 	private void Awake(){
 		
-		if (Instance == null && PhotonNetwork.isMasterClient) {
+		if (Instance == null) {
 			Instance = this;
 			PhotonView = GetComponent<PhotonView> ();
-		} else if (Instance == null && !PhotonNetwork.isMasterClient) {
-			Instance = PhotonView.Find (3).gameObject.GetComponent<Game>();
-
 		}
+
 	}
 
     private void Start()
