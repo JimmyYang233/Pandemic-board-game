@@ -38,8 +38,9 @@ public class ShareOperation : MonoBehaviour {
 
     public void giveButtonClicked()
     {
-		
+
         //agreePanel.SetActive(false);
+        giveButton.GetComponent<Button>().interactable = false;
         playerCardPanel.SetActive(false);
         showCardPanel.SetActive(true);
 
@@ -57,6 +58,7 @@ public class ShareOperation : MonoBehaviour {
     public void takeButtonClicked()
     {
         //agreePanel.SetActive(false);
+        takeButton.GetComponent<Button>().interactable = false;
         playerCardPanel.SetActive(false);
         showCardPanel.SetActive(true);
         basicOperationPanel.SetActive(false);
