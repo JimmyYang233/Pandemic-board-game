@@ -38,7 +38,7 @@ public class PlayerPanelController : MonoBehaviour
 
     public void addPlayerCardToOtherPlayer(RoleKind k, Card c)
     {
-        if (c is EventCard)
+		if (c.getType()==CardType.EventCard)
         {
             foreach (Transform t in this.transform)
             {
