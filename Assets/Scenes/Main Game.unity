@@ -19174,7 +19174,7 @@ MonoBehaviour:
   playerCardPanel: {fileID: 177066085}
   showCardPanel: {fileID: 885608602}
   informResultPanel: {fileID: 315254070}
-  shareOperationPanel: {fileID: 1340808469}
+  shareOperationPanel: {fileID: 1304906788}
   basicOperationPanel: {fileID: 182712636}
   playerSelect: {fileID: 346002627}
   otherPlayers: {fileID: 1923207381}
