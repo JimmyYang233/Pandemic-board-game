@@ -87,6 +87,11 @@ public class Game : MonoBehaviour {
 	public void RPC_sendConsentResult(bool consentResult){
 		informResponse (consentResult);
 	}
+
+	[PunRPC]
+	public void RPC_endturn(){
+		endTurn ();
+	}
 	#endregion
 
 	public void drive(Player player, City destinationCity)
@@ -379,6 +384,9 @@ public class Game : MonoBehaviour {
         infectCity();
     }
 
+	public void EndTurn(){
+		PhotonView.RPC ("RPC_endTurn",PhotonTargets.All);
+	}
 
     private bool resolveEpidemic()
     {
