@@ -125,7 +125,6 @@ public class City : MonoBehaviour {
         int current = numberOfCubes[pColor];
         numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, num+current);
-		gameInfo.changeDiseaseNumber(pColor, -num);
         displayCube();
     }
 
@@ -134,7 +133,6 @@ public class City : MonoBehaviour {
         int current = numberOfCubes[color];
         numberOfCubes.Remove(color);
         numberOfCubes.Add(color, num + current);
-        gameInfo.changeDiseaseNumber(color, -num);
         displayCube();
     }
 
@@ -144,7 +142,6 @@ public class City : MonoBehaviour {
         int current = numberOfCubes[pColor];
         numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, current - num);
-		gameInfo.changeDiseaseNumber(pColor, num);
         displayCube();
     }
 
@@ -178,7 +175,7 @@ public class City : MonoBehaviour {
         pawns.Remove(p);
 		//Debug.Log (pawns.ToString());
         p.setCity(null);
-        displayPawn();
+        displayPawn ();
     }
 
     public List<Pawn> getPawns()

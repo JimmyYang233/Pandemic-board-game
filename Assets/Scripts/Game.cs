@@ -291,7 +291,9 @@ public class Game : MonoBehaviour {
 					int cubeNumber = destinationCity.getCubeNumber(disease);
 					destinationCity.removeCubes(disease, cubeNumber);
 					disease.addCubes(cubeNumber);
-					int num = disease.getNumOfDiseaseCubeLeft();
+                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                    int num = disease.getNumOfDiseaseCubeLeft();
 					if (num == MAX)
 					{
 						disease.eradicate();
@@ -310,7 +312,9 @@ public class Game : MonoBehaviour {
 				{
 					destinationCity.removeCubes(disease, 1);
 					disease.addCubes(1);
-				}
+                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                }
 			}
 		}
 		player.decreaseRemainingAction();
@@ -351,7 +355,9 @@ public class Game : MonoBehaviour {
 					int cubeNumber = destinationCity.getCubeNumber(disease);
 					destinationCity.removeCubes(disease, cubeNumber);
 					disease.addCubes(cubeNumber);
-					int num = disease.getNumOfDiseaseCubeLeft();
+                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                    int num = disease.getNumOfDiseaseCubeLeft();
 					if(num == MAX)
 					{
 						disease.eradicate();
@@ -369,7 +375,9 @@ public class Game : MonoBehaviour {
 				{
 					destinationCity.removeCubes(disease, 1);
 					disease.addCubes(1);
-				}
+                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                }
 			}
 		}
 		player.decreaseRemainingAction();
@@ -469,7 +477,9 @@ public class Game : MonoBehaviour {
 		}
 		currentCity.removeCubes(d, treatNumber);
 		d.addCubes(treatNumber);
-		int num = d.getNumOfDiseaseCubeLeft();
+        gameInfoController.changeDiseaseNumber(d.getColor(), d.getNumOfDiseaseCubeLeft());
+        Debug.Log(d.getNumOfDiseaseCubeLeft());
+        int num = d.getNumOfDiseaseCubeLeft();
 		if(num == MAX && isCured == true)
 		{
 			d.isEradicated();
@@ -558,7 +568,9 @@ public class Game : MonoBehaviour {
 					int cubeNumber = destinationCity.getCubeNumber(disease);
 					destinationCity.removeCubes(disease, cubeNumber);
 					disease.addCubes(cubeNumber);
-					int num = disease.getNumOfDiseaseCubeLeft();
+                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                    int num = disease.getNumOfDiseaseCubeLeft();
 					if (num == MAX)
 					{
 						disease.eradicate();
@@ -576,7 +588,9 @@ public class Game : MonoBehaviour {
 				{
 					destinationCity.removeCubes(disease, 1);
 					disease.addCubes(1);
-				}
+                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                }
 			}
     }
 
@@ -771,6 +785,8 @@ public class Game : MonoBehaviour {
             }
             city.addCubes(disease, number);
             disease.removeCubes (number);
+            gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+            Debug.Log(disease.getNumOfDiseaseCubeLeft());
             return true;
         }
         //else there will be an outbreak
@@ -794,8 +810,10 @@ public class Game : MonoBehaviour {
 
             city.addCubes(disease, 3 - cubeNumber);
 			disease.removeCubes ( 3 - cubeNumber);
+            gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+            Debug.Log(disease.getNumOfDiseaseCubeLeft());
 
-			foreach (City neighbor in neighbors) {
+            foreach (City neighbor in neighbors) {
 				if (outbreakedCities.Contains (neighbor))
 					continue;
                 if (!infect(neighbor, color, 1)) {
@@ -1061,7 +1079,16 @@ public class Game : MonoBehaviour {
 	}
 
 	private void askForPermisson(string name){
-		shareOperation.askPermission (name);
+        Player p = findPlayerWithCard(name);
+        if(currentPlayer == p)
+        {
+            shareOperation.askGivePermission(name);
+        }
+        else
+        {
+            shareOperation.askTakePermission(name);
+        }
+		
 	}
 
 	//this method will be called by shareOperation to send response to current player

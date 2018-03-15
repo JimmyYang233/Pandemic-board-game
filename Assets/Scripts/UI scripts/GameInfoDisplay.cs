@@ -24,19 +24,19 @@ public class GameInfoDisplay : MonoBehaviour
 		} else if(c==Color.red){
 			t = cubeLeft.transform.GetChild (3);
 		}
-		t.GetChild (0).GetComponent<Text> ().text=(System.Int32.Parse (t.GetChild (0).GetComponent<Text> ().text) + num).ToString();
+		t.GetChild (0).GetComponent<Text> ().text=num.ToString();
 
 
 	}
 
 	public void changeCardNumber(int num){
-		cardLeft.transform.GetChild (0).GetComponent<Text> ().text=(System.Int32.Parse (cardLeft.transform.GetChild (0).GetComponent<Text> ().text) + num).ToString();
+		cardLeft.transform.GetChild (0).GetComponent<Text> ().text=num.ToString();
 
 	}
 
     public void changeResearchNumber(int num)
     {
-        researchLabLeft.transform.GetChild(0).GetComponent<Text>().text = (System.Int32.Parse(cardLeft.transform.GetChild(0).GetComponent<Text>().text) + num).ToString();
+        researchLabLeft.transform.GetChild(0).GetComponent<Text>().text = num.ToString();
     }
     public void displayOutbreak()
     {

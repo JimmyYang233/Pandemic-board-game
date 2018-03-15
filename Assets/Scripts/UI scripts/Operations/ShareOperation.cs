@@ -120,10 +120,17 @@ public class ShareOperation : MonoBehaviour {
 
     }
 	//pop permission panel TODO
-	public void askPermission(string name){
-		agreePanel.transform.GetChild (0).GetComponent<Text> ().text="Accept changes to card"+name;
+	public void askGivePermission(string name){
+        
+		agreePanel.transform.GetChild (0).GetComponent<Text> ().text= currentPlayer.getRoleKind().ToString() + " want to give you " + name;
 		agreePanel.SetActive (true);
 	}
+
+    public void askTakePermission(string name)
+    {
+        agreePanel.transform.GetChild(0).GetComponent<Text>().text = currentPlayer.getRoleKind().ToString() + " want you to give him " + name;
+        agreePanel.SetActive(true);
+    }
 	public void acceptRequest(){
 		game.sendResponse (true);
 		agreePanel.SetActive (false);
@@ -133,18 +140,14 @@ public class ShareOperation : MonoBehaviour {
 		agreePanel.SetActive (false);
 	}
 
-	//receive response TODO
-	public void sentResponse(){
-		
-	}
 	//pop agree or disagree message TODO
 	public void showResponse(bool response){
 		informResultPanel.SetActive (true);
 		if (response) {
-            informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Accept";
+            informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He accept, now you have the card";
         }
 		else{
-            informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Reject";
+            informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He reject, maybe you can try again";
         }
         cancel();
         waitingPanel.SetActive(false);
