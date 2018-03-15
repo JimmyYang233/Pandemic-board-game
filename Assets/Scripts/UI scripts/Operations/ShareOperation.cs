@@ -9,6 +9,7 @@ public class ShareOperation : MonoBehaviour {
     public GameObject playerCardPanel;
 	public GameObject informResultPanel;
     public GameObject shareOperationPanel;
+    public GameObject waitingPanel;
 
     public GameObject basicOperationPanel;
 	public playerSelectionPanel playerSelect;
@@ -105,6 +106,7 @@ public class ShareOperation : MonoBehaviour {
 		roleSlected=name;
 		//pc.deleteCityCard(currentCity.cityName);
 		game.share(name,currentCity.getCityName().ToString());
+        waitingPanel.SetActive(true);
 		cancel();
 	}
     public void cancel()
@@ -145,6 +147,7 @@ public class ShareOperation : MonoBehaviour {
             informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Reject";
         }
         cancel();
+        waitingPanel.SetActive(false);
         basicOperationPanel.SetActive(true);
         basicOperation.resetAll();
         shareOperationPanel.SetActive(false);

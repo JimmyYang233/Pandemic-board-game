@@ -33,6 +33,11 @@ public class GameInfoDisplay : MonoBehaviour
 		cardLeft.transform.GetChild (0).GetComponent<Text> ().text=(System.Int32.Parse (cardLeft.transform.GetChild (0).GetComponent<Text> ().text) + num).ToString();
 
 	}
+
+    public void changeResearchNumber(int num)
+    {
+        researchLabLeft.transform.GetChild(0).GetComponent<Text>().text = (System.Int32.Parse(cardLeft.transform.GetChild(0).GetComponent<Text>().text) + num).ToString();
+    }
     public void displayOutbreak()
     {
         int outbreakRate = game.getOutbreakRate();

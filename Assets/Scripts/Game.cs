@@ -602,6 +602,8 @@ public class Game : MonoBehaviour {
     {
         City Atlanta = findCity(CityName.Atlanta);
         Atlanta.setHasResearch(true);
+        researchStationRemain--;
+        gameInfoController.changeResearchNumber(-1);
         foreach(Player p in players)
         {
             Atlanta.addPawn(p.getRole().getPawn());

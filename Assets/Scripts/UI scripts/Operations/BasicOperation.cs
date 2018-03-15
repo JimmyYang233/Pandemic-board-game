@@ -41,10 +41,14 @@ public class BasicOperation : MonoBehaviour {
                     treatButton.GetComponent<Button>().interactable = true;
                 }
                 List<Player> players = game.getPlayers(currentCity);
-                foreach(Player p in players)
+                if (players.Count > 1)
                 {
-					if ((currentPlayer.getRoleKind() == RoleKind.Researcher && currentPlayer.containsCityCard())|| p.containsSpecificCityCard (currentCity)) {
-						shareButton.GetComponent<Button> ().interactable = true;
+                    foreach (Player p in players)
+                    {
+                        if ((currentPlayer.getRoleKind() == RoleKind.Researcher && currentPlayer.containsCityCard()) || p.containsSpecificCityCard(currentCity))
+                        {
+                            shareButton.GetComponent<Button>().interactable = true;
+                        }
                     }
                 }
                 passButton.GetComponent<Button>().interactable = true;
