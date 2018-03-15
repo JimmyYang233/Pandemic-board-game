@@ -90,6 +90,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_sendConsentResult(bool consentResult){
+        Debug.Log("RPC get Called");
 		informResponse (consentResult);
 	}
 
@@ -1038,6 +1039,7 @@ public class Game : MonoBehaviour {
 
 	//this method will be called by shareOperation to send response to current player
 	public void sendResponse(bool consentResult){
+        //Debug.Log("SendRespons Called");
 		PhotonView.RPC ("RPC_sendConsentResult",currentPlayer.PhotonPlayer, consentResult);
 	}
 
