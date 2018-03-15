@@ -137,6 +137,7 @@ public class ShareOperation : MonoBehaviour {
 		else{
 			informResultPanel.transform.GetChild(0).GetComponent<Text>().text="Accept";
 		}
+        cancel();
 	}
 	public string findCityCardPlayer(string cardname){
 		Player target = game.findPlayerWithCard (cardname);
