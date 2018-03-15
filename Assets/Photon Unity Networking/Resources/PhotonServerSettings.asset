@@ -55,4 +55,7 @@ MonoBehaviour:
   - RPC_endturn
   - RPC_endTurn
   - RPC_exchangeCard
+  - RPC_build
+  - RPC_takeCharterFlight
+  - RPC_takeShuttleFlight
   DisableAutoOpenWizard: 1
