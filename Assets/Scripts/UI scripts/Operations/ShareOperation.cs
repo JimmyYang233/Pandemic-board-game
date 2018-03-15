@@ -39,7 +39,7 @@ public class ShareOperation : MonoBehaviour {
     public void giveButtonClicked()
     {
 		
-        agreePanel.SetActive(false);
+        //agreePanel.SetActive(false);
         playerCardPanel.SetActive(false);
         showCardPanel.SetActive(true);
 
@@ -56,7 +56,7 @@ public class ShareOperation : MonoBehaviour {
     }
     public void takeButtonClicked()
     {
-        agreePanel.SetActive(false);
+        //agreePanel.SetActive(false);
         playerCardPanel.SetActive(false);
         showCardPanel.SetActive(true);
         basicOperationPanel.SetActive(false);
