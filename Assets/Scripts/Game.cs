@@ -87,12 +87,6 @@ public class Game : MonoBehaviour {
 	public void RPC_sendConsentResult(bool consentResult){
 		informResponse (consentResult);
 	}
-
-	[PunRPC]
-	public void RPC_endTurn(){
-		endTurn ();
-	}
-
 	#endregion
 
 	public void drive(Player player, City destinationCity)
@@ -205,7 +199,6 @@ public class Game : MonoBehaviour {
 
 		//players.Add(me);
 		currentPlayer = players[0];
-		Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
 		//for(int i = 0; i< numOfPlayer-1; i++)
 		//{
 		//    players.Add(new Player(new User("others", "2222")));
@@ -385,10 +378,6 @@ public class Game : MonoBehaviour {
 		setGamePhase (GamePhase.InfectCities);
         infectCity();
     }
-
-	public void EndTurn(){
-		PhotonView.RPC ("RPC_endTurn", PhotonTargets.All);
-	}
 
 
     private bool resolveEpidemic()
@@ -633,9 +622,7 @@ public class Game : MonoBehaviour {
     public void nextPlayer()
     {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
-		Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
     }
-
     public PlayerCard getPlayerCard(String cardName)
     {
 
