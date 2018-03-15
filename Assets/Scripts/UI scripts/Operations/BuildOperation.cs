@@ -18,6 +18,6 @@ public class BuildOperation : MonoBehaviour {
 	}
 	
 	public void buildReseachCenter(){
-		Game.build ();
+		//Game.build ();
 	}
 }
