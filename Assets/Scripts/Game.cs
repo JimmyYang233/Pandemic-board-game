@@ -167,10 +167,12 @@ public class Game : MonoBehaviour {
 	}
 		
 	private void InitializeGame(){
-		//load city
-		cities = new List<City>();
+        //load city
+        
+        cities = new List<City>();
 		backGround = GameObject.FindGameObjectWithTag("background");
-		foreach(Transform t in backGround.transform)
+        backGround.transform.position += new Vector3(0.0001f, 0, 0);
+        foreach (Transform t in backGround.transform)
 		{
 			if (t.GetComponent<City>() != null)
 			{
