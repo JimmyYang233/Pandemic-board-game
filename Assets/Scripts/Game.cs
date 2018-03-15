@@ -901,7 +901,7 @@ public class Game : MonoBehaviour {
 	private Player findPlayerWithCard(string cardName){
 		foreach (Player player in players) {
 			foreach (PlayerCard card in player.getHand()) {
-				if (card.getType() == CardType.CityCard 
+				if (card.getType == CardType.CityCard 
 					&& ((CityCard)card).getCity().getCityName().ToString().Equals(cardName)) {
 					return player;
 				}
