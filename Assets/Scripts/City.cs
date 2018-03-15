@@ -6,7 +6,6 @@ using UnityEngine.UI;
 // PlayerScript requires the GameObject to have a Rigidbody component
 public class City : MonoBehaviour {
 
-	GameObject bg;
 	GameInfoDisplay gameInfo;
     public Color color;
     public CityName cityName;
@@ -35,7 +34,6 @@ public class City : MonoBehaviour {
         blueCube = "Cubes/blueCube";
         yellowCube = "Cubes/yellowCube";
 		gameInfo = GameObject.FindGameObjectWithTag ("gameInfoDisplay").GetComponent<GameInfoDisplay> ();
-		bg = GameObject.FindGameObjectWithTag ("background");
     }
     public City(CityName name)
     {
