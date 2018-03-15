@@ -40,7 +40,7 @@ public class PlayerNetwork : MonoBehaviour {
 	[PunRPC]
 	private void RPC_LoadGameOthers()
 	{
-		PhotonNetwork.LoadLevel(2);
+		PhotonNetwork.LoadLevel(3);
 	}
 
 	[PunRPC]
