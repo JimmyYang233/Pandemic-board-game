@@ -77,16 +77,6 @@ public class Game : MonoBehaviour {
 	public void RPC_treatDisease(string color,string cityName){
 		treatDisease(diseases[findColor(color)], findCity(cityName));
 	}
-
-	[PunRPC] 
-	public void RPC_askForPermission(string name){
-		askForPermisson (name);
-	}
-
-	[PunRPC]
-	public void RPC_sendConsentResult(bool consentResult){
-		informResponse (consentResult);
-	}
 	#endregion
 
 	public void drive(Player player, City destinationCity)
@@ -156,13 +146,11 @@ public class Game : MonoBehaviour {
     }
 
 	public void Drive(string roleKind,string name){
-		PhotonView.RPC ("RPC_drive",PhotonTargets.Others,roleKind,name);
-		drive (getPlayer(roleKind), findCity(name));
+		PhotonView.RPC ("RPC_drive",PhotonTargets.All,roleKind,name);
 	}
 
 	public void TakeDirectFlight(string roleKind,string name){
-		PhotonView.RPC ("RPC_takeDirectFlight",PhotonTargets.Others,roleKind,name);
-		takeDirectFlight (getPlayer(roleKind), (CityCard)getPlayerCard(name));
+		PhotonView.RPC ("RPC_takeDirectFlight",PhotonTargets.All,roleKind,name);
 	}
 
 	//initialize player in the network, set the first player as current player
@@ -177,10 +165,12 @@ public class Game : MonoBehaviour {
 	}
 		
 	private void InitializeGame(){
-		//load city
-		cities = new List<City>();
+        //load city
+        
+        cities = new List<City>();
 		backGround = GameObject.FindGameObjectWithTag("background");
-		foreach(Transform t in backGround.transform)
+        backGround.transform.position += new Vector3(0.0001f, 0, 0);
+        foreach (Transform t in backGround.transform)
 		{
 			if (t.GetComponent<City>() != null)
 			{
@@ -782,8 +772,7 @@ public class Game : MonoBehaviour {
     }
 
 	public void TreatDisease(string color, string name){
-		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.Others,color,name );
-		treatDisease (diseases[findColor(color)],findCity(name));
+		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.All,color,name );
 	}
 
     public void build(CityCard card)
@@ -843,22 +832,12 @@ public class Game : MonoBehaviour {
     }
 
 	// zhening's work! written at 5.04am!
-	public void take(string name){
-		Player target = findPlayerWithCard (name);
-		PhotonView.RPC ("RPC_askForPermission",target,name);
+	public void take(){
 		//AskforPermisson ();
 	}
 
-	private void askForPermisson(string name){
-		shareOperation.askPermission (name);
-	}
-
-	public void sendResponse(bool consentResult){
-		PhotonView.RPC ("RPC_sendConsentResult",currentPlayer.PhotonPlayer, consentResult);
-	}
-
-	private void informResponse(bool consentResult){
-		shareOperation.showResponse(consentResult);
+	private void askForPermisson(){
+		//shareOperation.askPermission ();
 	}
 
     public void cure(Disease d)
@@ -893,7 +872,7 @@ public class Game : MonoBehaviour {
 		return null;
 	}
     
-    //convert a string color to Color
+    
 	public Color findColor(string color){
 		switch (color) {
 		case "red":
@@ -908,20 +887,6 @@ public class Game : MonoBehaviour {
 		return Color.yellow;
 	}
 
-	/* this method is used to find a player with specific card
-	 * @cardNmae the name of the card
-	 */
 
-	private Player findPlayerWithCard(string cardName){
-		foreach (Player player in players) {
-			foreach (PlayerCard card in player.getHand()) {
-				if (card.getType() == CardType.CityCard 
-					&& ((CityCard)card).getCity().getCityName().ToString().Equals(cardName)) {
-					return player;
-				}
-			}
-		}
-		return null;
-	}
 
 }
