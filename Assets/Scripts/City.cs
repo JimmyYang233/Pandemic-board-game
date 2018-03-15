@@ -323,9 +323,6 @@ public class City : MonoBehaviour {
 				pawn.transform.position = position;
 			}
 		}
-		//ugly code
-		bg.transform.position += new Vector3 (0.0001f, 0.0001f, 0.0001f);
-		//bg.transform.position -= new Vector3 (0.1f, 0.1f, 0.1f);
 	}
 
 
