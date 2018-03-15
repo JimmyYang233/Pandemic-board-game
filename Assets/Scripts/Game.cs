@@ -651,6 +651,62 @@ public class Game : MonoBehaviour {
         return null; 
     }
 
+    public void exchangeCard(RoleKind roleKind, CityCard cityCard)
+    {
+        Player cardHolder = null;
+        Player target = getPlayer(roleKind);
+        foreach(Player player in players)
+        {
+            foreach(PlayerCard p in player.getHand())
+            {
+                if(p == cityCard)
+                {
+                    cardHolder = player;
+                    break;
+                }
+            }
+        }
+
+        if(cardHolder != null)
+        {
+            if(cardHolder == currentPlayer)
+            {
+                giveCard(currentPlayer, target, cityCard);
+            }
+            else if(cardHolder == target)
+            {
+                giveCard(target, currentPlayer, cityCard);
+            }
+            else {
+                Debug.Log("A uninterested player is holding the card. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
+            }
+        }
+        else
+        {
+            Debug.Log("CardHolder not found. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
+        }
+
+    }
+
+    public void giveCard(Player p1, Player p2, CityCard card)
+    {
+        p1.removeCard(card);
+        p2.addCard(card);
+    }
+
+    public Player getPlayer(RoleKind roleKind)
+    {
+        foreach (Player p in players)
+        {
+            if (p.getRoleKind()== roleKind)
+            {
+                return p;
+            }
+        }
+        Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : getPlayer(RoleKind)");
+        return null;
+    }
+
     public Player getPlayer(String roleKind)
     {
         foreach (Player p in players)
@@ -660,7 +716,7 @@ public class Game : MonoBehaviour {
                 return p;
             }
         }
-        Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : getPlayer");
+        Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : getPlayer(String)");
         return null;
     }
     #region notify methods
