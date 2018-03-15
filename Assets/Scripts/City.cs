@@ -323,12 +323,6 @@ public class City : MonoBehaviour {
 		}
 	}
 
-    public List<Player> getPlayers()
-    {
-        return null;//TO-DO
-        //return allPlayers in this game;
-    }
-
     public void undisplayResearch()
     {
         if(hasResearch == false)
