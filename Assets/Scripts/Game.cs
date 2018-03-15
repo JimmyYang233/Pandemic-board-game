@@ -296,12 +296,8 @@ public class Game : MonoBehaviour {
         {
             for (int j = 3; j > 0; j--)
             {
-                InfectionCard ic = infectionDeck[0];
-                infectionDeck.Remove(infectionDeck[0]);
-                infectionDiscardPile.Add(ic);
-                infectionCardDrawn++;
-                City c2 = ic.getCity();
-                infect(c2, c2.getColor(), i);
+                InfectionCard ic = getInfectionCard();
+                ic.getCity().addCubes(i);
             }
         }
     }
@@ -585,9 +581,7 @@ public class Game : MonoBehaviour {
 
     public void infectNextCity()
     {
-        InfectionCard card = infectionDeck[0];
-        infectionDeck.Remove(card);
-        infectionDiscardPile.Add(card);
+        InfectionCard card = getInfectionCard();
         City city = card.getCity();
         Color color = card.getColor();
         Disease disease = diseases[color];
@@ -596,6 +590,15 @@ public class Game : MonoBehaviour {
         {
             return;
         }
+    }
+
+    public InfectionCard getInfectionCard()
+    {
+        InfectionCard card = infectionDeck[0];
+        infectionDeck.Remove(card);
+        infectionDiscardPile.Add(card);
+
+        return card;
     }
 
     public void infectCity()

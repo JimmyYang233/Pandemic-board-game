@@ -121,12 +121,20 @@ public class City : MonoBehaviour {
 	//to be discussed 
     public void addCubes(Disease disease, int num)
     {
-		
         Color pColor = disease.getColor();
         int current = numberOfCubes[pColor];
         numberOfCubes.Remove(pColor);
         numberOfCubes.Add(pColor, num+current);
 		gameInfo.changeDiseaseNumber(pColor, -num);
+        displayCube();
+    }
+
+    public void addCubes(int num)
+    {
+        int current = numberOfCubes[color];
+        numberOfCubes.Remove(color);
+        numberOfCubes.Add(color, num + current);
+        gameInfo.changeDiseaseNumber(color, -num);
         displayCube();
     }
 
