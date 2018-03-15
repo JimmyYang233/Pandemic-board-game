@@ -80,29 +80,15 @@ public class ShareOperation : MonoBehaviour {
         //agreePanel.SetActive(false);
         takeButton.GetComponent<Button>().interactable = false;
         playerCardPanel.SetActive(false);
-        showCardPanel.SetActive(true);
         basicOperationPanel.SetActive(false);
-        //load card for the current city.just now
-        showCardPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = currentCity.getCityName().ToString();
+        check();
         isTake = true;
     }
     //player confirm to take the card
     public void check()
 	{
 		playerSelect.setShareStatus ();
-        if (isTake)
-        {
-			
-            //pc.addCityCard(currentCity.cityName);
-			//game.take(currentCity.getCityName().ToString());
-			game.share(findCityCardPlayer(currentCity.getCityName().ToString()),currentCity.cityName.ToString());
-			cancel();
-        }
-        else
-        {
-			showCardPanel.SetActive (false);
-			playerSelect.gameObject.SetActive (true);
-        }
+		playerSelect.gameObject.SetActive (true);
        
     }
     //player cancel the operation
