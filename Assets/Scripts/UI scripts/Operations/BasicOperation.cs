@@ -66,4 +66,13 @@ public class BasicOperation : MonoBehaviour {
             passButton.GetComponent<Button>().interactable = false;
         }
 	}
+
+    public void resetAll()
+    {
+        moveButton.GetComponent<Button>().interactable = false;
+        treatButton.GetComponent<Button>().interactable = false;
+        shareButton.GetComponent<Button>().interactable = false;
+        buildButton.GetComponent<Button>().interactable = false;
+        passButton.GetComponent<Button>().interactable = false;
+    }
 }
