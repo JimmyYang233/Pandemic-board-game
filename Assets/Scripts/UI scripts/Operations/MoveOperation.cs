@@ -38,7 +38,7 @@ public class MoveOperation : MonoBehaviour {
         {
             charterFlightButton.GetComponent<Button>().interactable = true;
         }
-        if (currentCity.getHasResearch())
+        if (currentCity.getHasResearch()&&game.getRemainingResearch()<5)
         {
             shuttleFlightButton.GetComponent<Button>().interactable = true;
         }
@@ -98,6 +98,25 @@ public class MoveOperation : MonoBehaviour {
         moveStatus = Status.DIRECTFLIGHT;
     }
 
+    public void charterFlightButtonClicked()
+    {
+        driveButton.GetComponent<Button>().interactable = false;
+        directFlightButton.GetComponent<Button>().interactable = false;
+        charterFlightButton.GetComponent<Button>().interactable = false;
+        shuttleFlightButton.GetComponent<Button>().interactable = false;
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        foreach (City city in game.getCities())
+        {
+            if (city != currentCity)
+            {
+                city.displayButton();
+            }
+        }
+
+        moveStatus = Status.CHARTERFLIGHT;
+    }
+
     public static void disableAllCities()
     {
         GameObject[] tmp = GameObject.FindGameObjectsWithTag("City");
@@ -123,6 +142,10 @@ public class MoveOperation : MonoBehaviour {
         else if(moveStatus == Status.DIRECTFLIGHT)
         {
 			game.TakeDirectFlight(currentPlayer.getRoleKind().ToString(), currentPlayer.getCard(destinationCity).getCity().getCityName().ToString());
+        }
+        else if(moveStatus == Status.CHARTERFLIGHT)
+        {
+            game.TakeCharterFlight(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
         }
         disableAllCities();
     }

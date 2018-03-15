@@ -385,7 +385,16 @@ public class Game : MonoBehaviour {
 			if(p.getType() == CardType.CityCard && ((CityCard)p).getCity()== curCity){
 				card = (CityCard) p;
 				pl1.removeCard(card);
-				playerDiscardPile.Add(card);
+                if (!pl1.Equals(me))
+                {
+
+                    playerPanel.deletePlayerCardFromOtherPlayer(pl1.getRoleKind(), card);
+                }
+                else
+                {
+                    mainPlayerPanel.deletePlayerCard(card);
+                }
+                playerDiscardPile.Add(card);
 				move(pl1,destination);
 				pl1.decreaseRemainingAction ();
 				break;
@@ -988,9 +997,15 @@ public class Game : MonoBehaviour {
         return index;
     }
 
+    public int getRemainingResearch()
+    {
+        return researchStationRemain;
+    }
 
-
-    
+    public List<City> getCities()
+    {
+        return cities;
+    }
     
 
 
