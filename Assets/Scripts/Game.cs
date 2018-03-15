@@ -106,14 +106,15 @@ public class Game : MonoBehaviour {
 	}
 	#endregion
 
-    public void takeCharterFlight(Player pl1, City c1){
+    public void takeCharterFlight(Player pl1, City destination){
         CityCard card = null;
+		City curCity = pl1.getPlayerPawn ().getCity ();
         foreach(PlayerCard p in pl1.getHand()){
-            if(p.getType() == CardType.CityCard && ((CityCard)p).getCity()== c1){
+			if(p.getType() == CardType.CityCard && ((CityCard)p).getCity()== curCity){
                 card = (CityCard) p;
                 pl1.removeCard(card);
                 playerDiscardPile.Add(card);
-                move(pl1,c1);
+                move(pl1,destination);
                 break;
             }
         }
@@ -144,7 +145,7 @@ public class Game : MonoBehaviour {
 			resolveContainmentSpecialist();
 		}
     }
-    public void resolveMedic(){
+	public void resolveMedic(City destinationCity){
         foreach (Disease disease in diseases.Values)
 			{
 				if (disease.isCured())
@@ -162,7 +163,7 @@ public class Game : MonoBehaviour {
 			}
     }
 
-    public void resolveContainmentSpecialist(){
+	public void resolveContainmentSpecialist(City destinationCity){
         foreach (Disease disease in diseases.Values)
 			{
 				int cubeNumber = destinationCity.getCubeNumber(disease);
