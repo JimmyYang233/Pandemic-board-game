@@ -8,6 +8,8 @@ public class ShareOperation : MonoBehaviour {
     public GameObject agreePanel;
     public GameObject playerCardPanel;
     public GameObject showCardPanel;
+	public GameObject informResultPanel;
+
     public GameObject basicOperationPanel;
 	public playerSelectionPanel playerSelect;
 	public GameObject otherPlayers;
@@ -93,6 +95,7 @@ public class ShareOperation : MonoBehaviour {
 			
             //pc.addCityCard(currentCity.cityName);
 			//game.take(currentCity.getCityName().ToString());
+			game.share(findCityCardPlayer(currentCity.getCityName().ToString()),currentCity.cityName.ToString());
 			cancel();
         }
         else
@@ -108,6 +111,7 @@ public class ShareOperation : MonoBehaviour {
 	public void selectRole(string name){
 		roleSlected=name;
 		//pc.deleteCityCard(currentCity.cityName);
+		game.share(name,currentCity.getCityName().ToString());
 		cancel();
 	}
     public void cancel()
@@ -127,19 +131,30 @@ public class ShareOperation : MonoBehaviour {
 		agreePanel.SetActive (true);
 	}
 	public void acceptRequest(){
-		
+		agreePanel.SetActive (false);
 	}
 	public void declineRequest(){
+		agreePanel.SetActive (false);
 	}
+
 	//receive response TODO
 	public void sentResponse(){
 		
 	}
 	//pop agree or disagree message TODO
 	public void showResponse(bool response){
-		
+		informResultPanel.SetActive (true);
+		if (response) {
+			informResultPanel.transform.GetChild(0).GetComponent<Text>().text="Reject";
+		}
+		else{
+			informResultPanel.transform.GetChild(0).GetComponent<Text>().text="Accept";
+		}
 	}
-
+	public string findCityCardPlayer(string cardname){
+		Player target = game.findPlayerWithCard (cardname);
+		return target.getRoleKind ().ToString ();
+	}
     public void shareButtonClicked()
     {
         if(currentPlayer.getRoleKind() == RoleKind.Researcher || currentPlayer.containsSpecificCityCard(currentCity))
