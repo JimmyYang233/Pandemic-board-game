@@ -17,7 +17,7 @@ public class BuildOperation : MonoBehaviour {
 		build = this.GetComponent<Button> ();
 	}
 	
-	void operationBegin(){
-		
+	public void buildReseachCenter(){
+		Game.build ();
 	}
 }

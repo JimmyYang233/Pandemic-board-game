@@ -33,6 +33,9 @@ public class BasicOperation : MonoBehaviour {
             if (me.getRemainingAction() != 0)
             {
                 moveButton.GetComponent<Button>().interactable = true;
+				if (!currentCity.getHasResearch ()) {
+					buildButton.GetComponent<Button> ().interactable = true;
+				}
                 if (currentCity.hasCubes())
                 {
                     treatButton.GetComponent<Button>().interactable = true;
@@ -51,6 +54,7 @@ public class BasicOperation : MonoBehaviour {
                 moveButton.GetComponent<Button>().interactable = false;
                 treatButton.GetComponent<Button>().interactable = false;
                 shareButton.GetComponent<Button>().interactable = false;
+				buildButton.GetComponent<Button> ().interactable = false;
                 passButton.GetComponent<Button>().interactable = true;
             }
         }
