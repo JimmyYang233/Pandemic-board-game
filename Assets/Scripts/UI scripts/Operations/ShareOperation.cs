@@ -81,6 +81,7 @@ public class ShareOperation : MonoBehaviour {
         takeButton.GetComponent<Button>().interactable = false;
         playerCardPanel.SetActive(false);
         basicOperationPanel.SetActive(false);
+        otherPlayers.SetActive(false);
         check();
         isTake = true;
     }
