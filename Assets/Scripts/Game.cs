@@ -90,6 +90,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_sendConsentResult(bool consentResult){
+        Debug.Log("RPC get Called");
 		informResponse (consentResult);
 	}
 
@@ -822,13 +823,33 @@ public class Game : MonoBehaviour {
         {
             Debug.Log("CardHolder not found. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
         }
-
+		currentPlayer.decreaseRemainingAction ();
     }
 
     public void giveCard(Player p1, Player p2, CityCard card)
     {
         p1.removeCard(card);
+		if (!p1.Equals(me))
+		{
+
+			playerPanel.deletePlayerCardFromOtherPlayer(p1.getRoleKind(), card);
+		}
+		else
+		{
+			mainPlayerPanel.deletePlayerCard(card);
+		}
         p2.addCard(card);
+		if (!p2.Equals(me))
+		{
+
+			playerPanel.addPlayerCardToOtherPlayer(p2.getRoleKind(), card);
+		}
+		else
+		{
+			//Debug.Log("add card to main player" + card.ToString());
+			mainPlayerPanel.addPlayerCard(card);
+		}
+
     }
 
     public Player findPlayer(RoleKind roleKind)
@@ -1045,6 +1066,7 @@ public class Game : MonoBehaviour {
 
 	//this method will be called by shareOperation to send response to current player
 	public void sendResponse(bool consentResult){
+        //Debug.Log("SendRespons Called");
 		PhotonView.RPC ("RPC_sendConsentResult",currentPlayer.PhotonPlayer, consentResult);
 	}
 

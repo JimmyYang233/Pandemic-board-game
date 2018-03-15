@@ -116,9 +116,11 @@ public class ShareOperation : MonoBehaviour {
 		agreePanel.SetActive (true);
 	}
 	public void acceptRequest(){
+		game.sendResponse (true);
 		agreePanel.SetActive (false);
 	}
 	public void declineRequest(){
+		game.sendResponse (false);
 		agreePanel.SetActive (false);
 	}
 
@@ -130,11 +132,12 @@ public class ShareOperation : MonoBehaviour {
 	public void showResponse(bool response){
 		informResultPanel.SetActive (true);
 		if (response) {
-			informResultPanel.transform.GetChild(0).GetComponent<Text>().text="Reject";
-		}
+            informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Accept";
+        }
 		else{
-			informResultPanel.transform.GetChild(0).GetComponent<Text>().text="Accept";
-		}
+            informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Reject";
+        }
+        cancel();
 	}
 	public string findCityCardPlayer(string cardname){
 		Player target = game.findPlayerWithCard (cardname);
