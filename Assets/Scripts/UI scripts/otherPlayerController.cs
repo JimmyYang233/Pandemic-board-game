@@ -67,9 +67,9 @@ public class otherPlayerController : MonoBehaviour
         {
             for (int i = eventCardNum; i > 0; i--)
             {
-                content.GetChild(cityCardNum + i).GetChild(0).GetComponent<Text>().text = content.GetChild(cityCardNum + i - 1).GetChild(0).GetComponent<Text>().text;
-                content.GetChild(cityCardNum + i).GetChild(0).GetComponent<Text>().color = content.GetChild(cityCardNum + i - 1).GetChild(0).GetComponent<Text>().color;
-                content.GetChild(cityCardNum + i).GetComponent<Image>().color = content.GetChild(cityCardNum + i - 1).GetComponent<Image>().color;
+                content.GetChild(cityCardNum + i-1).GetChild(0).GetComponent<Text>().text = content.GetChild(cityCardNum + i - 2).GetChild(0).GetComponent<Text>().text;
+                content.GetChild(cityCardNum + i-1).GetChild(0).GetComponent<Text>().color = content.GetChild(cityCardNum + i - 2).GetChild(0).GetComponent<Text>().color;
+                content.GetChild(cityCardNum + i-1).GetComponent<Image>().color = content.GetChild(cityCardNum + i - 2).GetComponent<Image>().color;
 
             }
         }
