@@ -73,6 +73,7 @@ public class playerSelectionPanel : MonoBehaviour {
 	public void displayPlayerNecessary(){
 		foreach (Player p in game.getPlayers()) {
 			if (!p.getPlayerPawn ().getCity ().Equals (game.getCurrentPlayer ().getPlayerPawn ().getCity ())) {
+				Debug.Log ("conceal");
 				concealPlayer (p.getRoleKind());
 			} 
 		}

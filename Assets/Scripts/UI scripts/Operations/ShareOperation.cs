@@ -91,6 +91,7 @@ public class ShareOperation : MonoBehaviour {
 	{
 		playerSelect.setShareStatus ();
 		playerSelect.gameObject.SetActive (true);
+		playerSelect.displayPlayerNecessary ();
         int num = playerCardPanel.transform.GetChild(1).childCount;
         for (int i = 0; i < num; i++)
         {
