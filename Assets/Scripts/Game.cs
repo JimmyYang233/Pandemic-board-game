@@ -146,13 +146,11 @@ public class Game : MonoBehaviour {
     }
 
 	public void Drive(string roleKind,string name){
-		PhotonView.RPC ("RPC_drive",PhotonTargets.Others,roleKind,name);
-		drive (getPlayer(roleKind), findCity(name));
+		PhotonView.RPC ("RPC_drive",PhotonTargets.All,roleKind,name);
 	}
 
 	public void TakeDirectFlight(string roleKind,string name){
-		PhotonView.RPC ("RPC_takeDirectFlight",PhotonTargets.Others,roleKind,name);
-		takeDirectFlight (getPlayer(roleKind), (CityCard)getPlayerCard(name));
+		PhotonView.RPC ("RPC_takeDirectFlight",PhotonTargets.All,roleKind,name);
 	}
 
 	//initialize player in the network, set the first player as current player
@@ -774,8 +772,7 @@ public class Game : MonoBehaviour {
     }
 
 	public void TreatDisease(string color, string name){
-		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.Others,color,name );
-		treatDisease (diseases[findColor(color)],findCity(name));
+		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.All,color,name );
 	}
 
     public void build(CityCard card)
