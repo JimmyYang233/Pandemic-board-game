@@ -46,7 +46,6 @@ public class Game : MonoBehaviour {
     public PlayerPanelController playerPanel;
     public PCPanelController mainPlayerPanel;
 	public playerSelectionPanel playerSelect;
-	public GameInfoDisplay gameInfo;
 	public ShareOperation shareOperation;
 
 
@@ -627,7 +626,7 @@ public class Game : MonoBehaviour {
         City Atlanta = findCity(CityName.Atlanta);
         Atlanta.setHasResearch(true);
         researchStationRemain--;
-        gameInfoController.changeResearchNumber(-1);
+		gameInfoController.changeResearchNumber (researchStationRemain);
         foreach(Player p in players)
         {
             Atlanta.addPawn(p.getRole().getPawn());
@@ -789,7 +788,7 @@ public class Game : MonoBehaviour {
             city.addCubes(disease, number);
             disease.removeCubes (number);
             gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-            Debug.Log(disease.getNumOfDiseaseCubeLeft());
+            //Debug.Log(disease.getNumOfDiseaseCubeLeft());
             return true;
         }
         //else there will be an outbreak
@@ -871,11 +870,10 @@ public class Game : MonoBehaviour {
                     mainPlayerPanel.addPlayerCard(card);
                 }
             }
-			gameInfo.changeCardNumber (-1);
-
-            
+			gameInfoController.changeCardNumber (playerCardDeck.Count);
+			Debug.Log (playerCardDeck.Count);
         }
-		gameInfo.changeCardNumber (playerCardDeck.Count);
+
         return true;
     }
 
@@ -1050,7 +1048,7 @@ public class Game : MonoBehaviour {
         
         currentCity.setHasResearch(true);
         researchStationRemain--;
-		gameInfo.changeResearchNumber (researchStationRemain);
+		gameInfoController.changeResearchNumber (researchStationRemain);
         currentPlayer.decreaseRemainingAction();
     }
 
