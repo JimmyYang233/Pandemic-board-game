@@ -104,6 +104,21 @@ public class Game : MonoBehaviour {
 		CityCard card = (CityCard)findPlayerCard (cardName);
 		exchangeCard (targetPlayerRoleKind, card);	
 	}
+
+	[PunRPC]
+	public void RPC_takeCharterFlight(string playerRoleKindName, string cityName){
+		takeCharterFlight (findPlayer(playerRoleKindName), findCity(cityName));
+	}
+
+	[PunRPC]
+	public void RPC_takeShuttleFlight(string playerRoleKindName, string cityName){
+		takeCharterFlight (findPlayer(playerRoleKindName), findCity(cityName));
+	}
+
+	[PunRPC]
+	public void RPC_build(string cityCardName){
+		build ((CityCard)findPlayerCard(cityCardName));
+	}
 	#endregion
 
     public void takeCharterFlight(Player pl1, City destination){
@@ -124,6 +139,14 @@ public class Game : MonoBehaviour {
             Debug.Log("Player does not have corresponding card.");
         }
     }
+
+	public void TakeCharterFlight(string playerRoleKindName, string cityName){
+		PhotonView.RPC ("RPC_takeCharterFlight", PhotonTargets.All,playerRoleKindName, cityName);
+	}
+
+	public void TakeShuttleFlight(string playerRoleKindName, string cityName){
+		PhotonView.RPC ("RPC_takeShuttleFlight", PhotonTargets.All,playerRoleKindName, cityName);
+	}
 
 	public void takeShuttleFlight(Player pl1, City destination){
 		if (pl1.getPlayerPawn ().getCity ().getHasResearch () && destination.getHasResearch()) {
@@ -983,6 +1006,9 @@ public class Game : MonoBehaviour {
         currentPlayer.decreaseRemainingAction();
     }
 
+	public void Build(string cityCardName){
+		PhotonView.RPC ("RPC_build",PhotonTargets.All,cityCardName);
+	}
 	//this method will be called by shareOperation to ask the target for permission
 	public void share(string targetPlayerRoleKind, string cardName){   
 		PhotonPlayer target = findPlayer (targetPlayerRoleKind).PhotonPlayer;
@@ -991,6 +1017,7 @@ public class Game : MonoBehaviour {
 		playerToShare = findPlayer (targetPlayerRoleKind);
      }
 
+	/*
     public void takeCard(Player targetPlayer, CityCard card){
         targetPlayer.removeCard(card);
         currentPlayer.addCard(card);
@@ -1003,7 +1030,7 @@ public class Game : MonoBehaviour {
         targetPlayer.addCard(card);
 
         currentPlayer.decreaseRemainingAction();
-    }
+    }*/
 
 	// zhening's work! written at 5.04am!  obsolete in this version
 	public void take(string name){
