@@ -79,7 +79,7 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC] 
-	public void RPC_askForPermission(string name){
+	public void RPC_askForPermission(string cardName){
 		askForPermisson (name);
 	}
 
@@ -864,23 +864,10 @@ public class Game : MonoBehaviour {
     }
 
 	//we need to split this method to two methods: take and give, pls do this asap!
-    // public void share(Player targetPlayer, CityCard card, bool giveOrTake){
-        
-    //     bool permission = true; //TODO: ask targetPlayer for permission
-        
-    //     if(permission){
-    //         if (giveOrTake){
-    //             currentPlayer.removeCard(card);
-    //             targetPlayer.addCard(card);
-    //         }
-    //         else{
-    //             currentPlayer.removeCard(card);
-    //             targetPlayer.addCard(card);
-    //         }
-    //     }
-
-    //     currentPlayer.decreaseRemainingAction();
-    // }
+	public void share(string targetPlayerRoleKind, string cardName){   
+		PhotonPlayer target = getPlayer (targetPlayerRoleKind).PhotonPlayer;
+		PhotonView.RPC ("RPC_askForPermission", target, cardName);
+     }
 
     public void takeCard(Player targetPlayer, CityCard card){
         targetPlayer.removeCard(card);
@@ -898,7 +885,7 @@ public class Game : MonoBehaviour {
 
 	// zhening's work! written at 5.04am!
 	public void take(string name){
-		Player target = findPlayerWithCard (name);
+		PhotonPlayer target = findPlayerWithCard (name).PhotonPlayer;
 		PhotonView.RPC ("RPC_askForPermission",target,name);
 		//AskforPermisson ();
 	}
