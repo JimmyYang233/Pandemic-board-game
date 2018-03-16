@@ -166,7 +166,9 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_
+	public void RPC_notifyResolveEpidemic(){
+		notifyResolveEpidemic ();
+	}
 	#endregion
 
 	//called by chatbox to send chat message
@@ -218,6 +220,7 @@ public class Game : MonoBehaviour {
 	public void NextPlayer(){
 		PhotonView.RPC ("RPC_nextPlayer",PhotonTargets.All);
 	}
+
 
 	#region initialization
 	//initialize player in the network
@@ -604,6 +607,10 @@ public class Game : MonoBehaviour {
 		passOperation.startInfection ();
 		//nextPlayer();
 	}
+
+	private void notifyResolveEpidemic(){
+		PassOperation.notifyResolveEpidemic ();
+	}
 	#endregion
 
 
@@ -765,6 +772,7 @@ public class Game : MonoBehaviour {
 
     private bool resolveEpidemic()
     {
+		PhotonView.RPC ("RPC_notifyResolveEpidemic",PhotonTargets.All);
         resolvingEpidemic = true;
         if(infectionRate < 4)
         {
