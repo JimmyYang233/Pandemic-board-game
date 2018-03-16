@@ -150,6 +150,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_infectNextCity(){
+        Debug.Log("RPC_infectNextCity got called");
 		infectNextCity ();
 	}
 
@@ -206,6 +207,7 @@ public class Game : MonoBehaviour {
 
 	//called by front end to make all clients infect next city
 	public void InfectNextCity(){
+        Debug.Log("InfectNextCity got called");
 		PhotonView.RPC ("RPC_infectNextCity",PhotonTargets.All);
 	}
 	#endregion
