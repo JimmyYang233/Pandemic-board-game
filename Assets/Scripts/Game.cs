@@ -41,6 +41,7 @@ public class Game : MonoBehaviour {
 	private Player me;
 	private CityCard cardToShare;
 	private Player playerToShare;
+	private bool switchPlayer = false;
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
@@ -149,6 +150,17 @@ public class Game : MonoBehaviour {
 	public void RPC_infectNextCity(){
 		infectNextCity ();
 	}
+
+	[PunRPC]
+	public void RPC_infectCity(){
+		infectCity ();
+	}
+
+	[PunRPC]
+	public void RPC_NextPlayer(){
+		nextPlayer ();
+		switchPlayer = false;
+	}
 	#endregion
 
 	//called by chatbox to send chat message
@@ -187,13 +199,18 @@ public class Game : MonoBehaviour {
 
 	public void EndTurn(){
 		PhotonView.RPC ("RPC_endTurn",PhotonTargets.All);
+		PhotonView.RPC ("RPC_infectCity",currentPlayer.PhotonPlayer);
 	}
 
+	//called by front end to make all clients infect next city
 	public void InfectNextCity(){
 		PhotonView.RPC ("RPC_infectNextCity",PhotonTargets.All);
 	}
 	#endregion
 
+	public void NextPlayer(){
+		PhotonView.RPC ("RPC_NextPlayer",PhotonTargets.All);
+	}
 
 	#region initialization
 	//initialize player in the network
@@ -524,24 +541,10 @@ public class Game : MonoBehaviour {
 		{
 			return;
 		}
-		setGamePhase (GamePhase.InfectCities);
-		infectCity();
-		currentPhase = GamePhase.PlayerTakeTurn;
+		currentPhase = GamePhase.InfectCities;
+		/*setGamePhase (GamePhase.InfectCities);
+		infectCity();*/
 		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
-	}
-
-	//infectNextCity
-	private void infectNextCity()
-	{
-		InfectionCard card = getInfectionCard();
-		City city = card.getCity();
-		Color color = card.getColor();
-		Disease disease = diseases[color];
-		outbreakedCities.Clear();
-		if (!infect(city, color, 1))
-		{
-			return;
-		}
 	}
 
     //cure
@@ -566,6 +569,36 @@ public class Game : MonoBehaviour {
 	}
 	#endregion
 
+	#region endTurnOperation
+	//infectNextCity
+	private void infectNextCity()
+	{
+		InfectionCard card = getInfectionCard();
+		City city = card.getCity();
+		Color color = card.getColor();
+		Disease disease = diseases[color];
+		outbreakedCities.Clear();
+		if (!infect(city, color, 1))
+		{
+			return;
+		}
+		if (switchPlayer) {
+			NextPlayer ();
+		}
+	}
+
+	private void infectCity()
+	{
+		for(int i=0; i<infectionRate; i++)
+		{
+			if (i == infectionRate - 1)
+				switchPlayer = true;
+			//infectNextCity();
+			//call front end method
+		}
+		//nextPlayer();
+	}
+	#endregion
 
 
     
@@ -950,16 +983,7 @@ public class Game : MonoBehaviour {
 
         return card;
     }
-
-    private void infectCity()
-    {
-        for(int i=0; i<infectionRate; i++)
-        {
-            infectNextCity();
-        }
-        nextPlayer();
-    }
-
+		
     public Player getCurrentPlayer()
     {
         return currentPlayer;
