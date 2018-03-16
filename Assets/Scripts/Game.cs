@@ -591,7 +591,7 @@ public class Game : MonoBehaviour {
 			Debug.Log ("num of infection is + " + numOfInfection.ToString());
 			passOperation.startInfection ();
 		}
-		if (numOfInfection == infectionRate)
+		if (numOfInfection == infectionRate && PhotonNetwork.isMasterClient)
 			PhotonView.RPC ("RPC_NextPlayer", PhotonTargets.All);
 	}
 
