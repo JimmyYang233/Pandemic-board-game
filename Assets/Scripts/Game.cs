@@ -113,7 +113,6 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_sendConsentResult(bool consentResult){
-        Debug.Log("RPC get Called");
 		informResponse (consentResult);
 	}
 
@@ -332,7 +331,7 @@ public class Game : MonoBehaviour {
 					destinationCity.removeCubes(disease, cubeNumber);
 					disease.addCubes(cubeNumber);
                     gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                   // Debug.Log(disease.getNumOfDiseaseCubeLeft());
                     int num = disease.getNumOfDiseaseCubeLeft();
 					if (num == MAX)
 					{
@@ -353,7 +352,7 @@ public class Game : MonoBehaviour {
 					destinationCity.removeCubes(disease, 1);
 					disease.addCubes(1);
                     gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                    //Debug.Log(disease.getNumOfDiseaseCubeLeft());
                 }
 			}
 		}
@@ -397,7 +396,7 @@ public class Game : MonoBehaviour {
 					destinationCity.removeCubes(disease, cubeNumber);
 					disease.addCubes(cubeNumber);
                     gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                   // Debug.Log(disease.getNumOfDiseaseCubeLeft());
                     int num = disease.getNumOfDiseaseCubeLeft();
 					if(num == MAX)
 					{
@@ -417,7 +416,7 @@ public class Game : MonoBehaviour {
 					destinationCity.removeCubes(disease, 1);
 					disease.addCubes(1);
                     gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-                    Debug.Log(disease.getNumOfDiseaseCubeLeft());
+                   // Debug.Log(disease.getNumOfDiseaseCubeLeft());
                 }
 			}
 		}
@@ -451,7 +450,7 @@ public class Game : MonoBehaviour {
 		}
 
 		if(card == null){
-			Debug.Log("Player does not have corresponding card.");
+			//Debug.Log("Player does not have corresponding card.");
 		}
 	}
 
@@ -463,7 +462,7 @@ public class Game : MonoBehaviour {
 		} 
 		else 
 		{
-			Debug.Log ("One of the cities does not have a reseach lab. Game.cs: takeShuttleFlight");
+			//Debug.Log ("One of the cities does not have a reseach lab. Game.cs: takeShuttleFlight");
 		}
 	}
 
@@ -519,7 +518,7 @@ public class Game : MonoBehaviour {
 		currentCity.removeCubes(d, treatNumber);
 		d.addCubes(treatNumber);
         gameInfoController.changeDiseaseNumber(d.getColor(), d.getNumOfDiseaseCubeLeft());
-        Debug.Log(d.getNumOfDiseaseCubeLeft());
+       // Debug.Log(d.getNumOfDiseaseCubeLeft());
         int num = d.getNumOfDiseaseCubeLeft();
 		if(num == MAX && isCured == true)
 		{
@@ -546,7 +545,7 @@ public class Game : MonoBehaviour {
 			return;
 		}
 		currentPhase = GamePhase.InfectCities;
-		numOfInfection = 0
+		numOfInfection = 0;
 	}
 
     //cure
