@@ -8,10 +8,10 @@ public class ChatBox : MonoBehaviour
     public InputField input;
     public GameObject textDisplay;
     public Game game;
-    public RoleKind roleToDisplay;
 
-    // Use this for initialization
     private string text = string.Empty;
+    private RoleKind roleToDisplay;
+
     void Start()
     {
 
