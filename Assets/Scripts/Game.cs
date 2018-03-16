@@ -201,7 +201,7 @@ public class Game : MonoBehaviour {
 
 	public void EndTurn(){
 		PhotonView.RPC ("RPC_endTurn",PhotonTargets.All);
-		PhotonView.RPC ("RPC_infectCity",currentPlayer.PhotonPlayer);
+		//PhotonView.RPC ("RPC_infectCity",currentPlayer.PhotonPlayer);
 	}
 
 	//called by front end to make all clients infect next city
@@ -580,14 +580,13 @@ public class Game : MonoBehaviour {
 		Color color = card.getColor();
 		Disease disease = diseases[color];
 		outbreakedCities.Clear();
-		//TODO: 
 		if (!infect(city, color, 1))
 		{
 			return;
 		}
 		if (currentPlayer == me && numOfInfection < infectionRate) {
 			numOfInfection++;
-			Debug.Log (numOfInfection);
+			Debug.Log ("num of infection is + " + numOfInfection.ToString());
 			passOperation.startInfection ();
 		}
 		if (numOfInfection == infectionRate)
