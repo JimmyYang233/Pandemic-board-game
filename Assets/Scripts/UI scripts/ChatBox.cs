@@ -8,7 +8,7 @@ public class ChatBox : MonoBehaviour
     public InputField input;
     public GameObject textDisplay;
     public Game game;
-
+    public GameObject scrollBar;
     private string text = string.Empty;
 
     void Start()
@@ -31,6 +31,7 @@ public class ChatBox : MonoBehaviour
     {
         string previousText = textDisplay.GetComponent<Text>().text;
         textDisplay.GetComponent<Text>().text = previousText + role.ToString() + ": " + text + " \n";
+        scrollBar.GetComponent<Scrollbar>().value = 0;
     }
 
 
