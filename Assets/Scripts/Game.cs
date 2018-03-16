@@ -574,6 +574,7 @@ public class Game : MonoBehaviour {
 	//infectNextCity
 	private void infectNextCity()
 	{
+		Debug.Log ("Danning kan zhe li");
 		InfectionCard card = getInfectionCard();
 		City city = card.getCity();
 		Color color = card.getColor();
