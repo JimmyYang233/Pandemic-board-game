@@ -27,7 +27,7 @@ public class BasicOperation : MonoBehaviour {
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
-        if (currentPlayer == me)
+        if (currentPlayer == me&&game.getCurrentPhase() == GamePhase.PlayerTakeTurn)
         {
             currentCity = me.getPlayerPawn().getCity();
             if (me.getRemainingAction() != 0)
