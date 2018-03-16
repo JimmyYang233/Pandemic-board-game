@@ -546,9 +546,6 @@ public class Game : MonoBehaviour {
 			return;
 		}
 		currentPhase = GamePhase.InfectCities;
-		/*setGamePhase (GamePhase.InfectCities);
-		infectCity();*/
-		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
 	}
 
     //cure
@@ -589,6 +586,7 @@ public class Game : MonoBehaviour {
 		if (currentPlayer == me && numOfInfection <= infectionRate) {
 			passOperation.startInfection ();
 			numOfInfection++;
+			Debug.Log (numOfInfection);
 			if (numOfInfection == infectionRate)
 				PhotonView.RPC ("RPC_NextPlayer", PhotonTargets.All);
 		}
@@ -598,14 +596,8 @@ public class Game : MonoBehaviour {
 
 	private void infectCity()
 	{
+		Debug.Log ("start infect city");
 		passOperation.startInfection ();
-		for(int i=0; i<infectionRate; i++)
-		{
-			if (i == infectionRate - 1)
-				switchPlayer = true;
-			passOperation.startInfection ();
-			//infectNextCity();
-		}
 		//nextPlayer();
 	}
 	#endregion
