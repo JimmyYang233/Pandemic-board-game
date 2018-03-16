@@ -76,6 +76,9 @@ public class playerSelectionPanel : MonoBehaviour {
 			{
 				string role = t.GetChild (0).GetComponent<Text> ().text;
 				Player p = game.findPlayer (role);
+                currentPlayer = game.getCurrentPlayer();
+                currentCity = currentPlayer.getPlayerPawn().getCity();
+                Debug.Log(currentCity);
 				if (p.getPlayerPawn ().getCity () == currentCity) {
 					t.gameObject.SetActive (true);
 
