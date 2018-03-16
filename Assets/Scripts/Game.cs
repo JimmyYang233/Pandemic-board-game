@@ -144,6 +144,11 @@ public class Game : MonoBehaviour {
 	public void RPC_displayMessage(string myRoleKindName,string text){
 		chatBox.displayText (findRoleKind(myRoleKindName),text);
 	}
+
+	[PunRPC]
+	public void RPC_infectNextCity(){
+		infectNextCity ();
+	}
 	#endregion
 
 	//called by chatbox to send chat message
@@ -182,6 +187,10 @@ public class Game : MonoBehaviour {
 
 	public void EndTurn(){
 		PhotonView.RPC ("RPC_endTurn",PhotonTargets.All);
+	}
+
+	public void InfectNextCity(){
+		PhotonView.RPC ("RPC_infectNextCity",PhotonTargets.All);
 	}
 	#endregion
 
@@ -522,7 +531,18 @@ public class Game : MonoBehaviour {
 	}
 
 	//infectNextCity
-
+	private void infectNextCity()
+	{
+		InfectionCard card = getInfectionCard();
+		City city = card.getCity();
+		Color color = card.getColor();
+		Disease disease = diseases[color];
+		outbreakedCities.Clear();
+		if (!infect(city, color, 1))
+		{
+			return;
+		}
+	}
 
     //cure
     private void cure(Player player, List<CityCard> cardsToRemove, Disease d)
@@ -920,18 +940,7 @@ public class Game : MonoBehaviour {
 
     //my part ends here
 
-    private void infectNextCity()
-    {
-        InfectionCard card = getInfectionCard();
-        City city = card.getCity();
-        Color color = card.getColor();
-        Disease disease = diseases[color];
-        outbreakedCities.Clear();
-        if (!infect(city, color, 1))
-        {
-            return;
-        }
-    }
+    
 
     private InfectionCard getInfectionCard()
     {
