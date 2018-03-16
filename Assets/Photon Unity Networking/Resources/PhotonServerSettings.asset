@@ -62,4 +62,6 @@ MonoBehaviour:
   - RPC_infectNextCity
   - RPC_infectCity
   - RPC_NextPlayer
+  - RPC_nextPlayer
+  - RPC_notifyResolveEpidemic
   DisableAutoOpenWizard: 1

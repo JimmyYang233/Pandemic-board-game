@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PassOperation : MonoBehaviour {
 
     public GameObject informResultPanel;
+    public GameObject informEpidemicPanel;
     public Game game;
 
     public void passButtonClicked()
@@ -44,16 +45,14 @@ public class PassOperation : MonoBehaviour {
 
     public void notifyResolveEpidemic()
     {
-        informResultPanel.SetActive(true);
-        informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Resolve Epidemic";
-        informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(close);
+        informEpidemicPanel.SetActive(true);
     }
 
     private void close()
     {
         //game.ResolveEpidemic();
-        informResultPanel.SetActive(false);
-        informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.RemoveListener(close);
+        informEpidemicPanel.SetActive(false);
+        informEpidemicPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.RemoveListener(close);
     }
 
     private void startResolveEpidemic()
