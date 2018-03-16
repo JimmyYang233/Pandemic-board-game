@@ -4,20 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BuildOperation : MonoBehaviour {
-	Game g;
+	public Game game;
 	Player currentPlayer;
 	City currentCity;
-	Button build;
+	//Button build;
 	// Use this for initialization
 	void Start () {
-		//g =GameObject.FindGameObjectWithTag ("GameController").GetComponent<Game>();
-		g = Game.Instance;
-		currentPlayer = g.getCurrentPlayer();
-		currentCity = currentPlayer.getRole ().getPawn ().getCity ();
-		build = this.GetComponent<Button> ();
+
 	}
-	
-	public void buildReseachCenter(){
-		//Game.build ();
+
+    private void Update()
+    {
+        currentPlayer = game.getCurrentPlayer();
+        currentCity = currentPlayer.getPlayerPawn().getCity();
+    }
+
+    public void buildButtonClicked()
+    {
+        if(game.getRemainingResearch() == 0)
+        {
+            //to-do, 再说
+        }
+        else
+        {
+            game.Build(currentCity.getCityName().ToString());
+        }
 	}
 }
