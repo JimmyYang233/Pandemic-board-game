@@ -47,7 +47,7 @@ public class Game : MonoBehaviour {
     public PCPanelController mainPlayerPanel;
 	public playerSelectionPanel playerSelect;
 	public ShareOperation shareOperation;
-    public chatBox chatBox;
+	public  chatbox;
 
 
     GameObject backGround;
@@ -138,6 +138,10 @@ public class Game : MonoBehaviour {
 	[PunRPC]
 	public void RPC_build(string cityCardName){
 		build ((CityCard)findPlayerCard(cityCardName));
+	}
+
+	[PunRPC]
+	public void RPC_displayMessage(){
 	}
 	#endregion
 
