@@ -1041,7 +1041,7 @@ MonoBehaviour:
   mainPlayerPanel: {fileID: 177066089}
   playerSelect: {fileID: 346002627}
   shareOperation: {fileID: 1340808470}
-  chatBox: {fileID: 124084468}
+  chatBox: {fileID: 0}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
@@ -2185,13 +2185,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 124084466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bc12df52e695754e81c67026f23c942, type: 3}
+  m_Script: {fileID: 11500000, guid: c0bdf40f3aa71e241b1b1a00bafed227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 216771469}
   textDisplay: {fileID: 1380428677}
   game: {fileID: 73084184}
-  roleToDisplay: 0
 --- !u!1 &125200430
 GameObject:
   m_ObjectHideFlags: 0
@@ -6531,7 +6530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000012655679, y: -0.000000039468404}
+  m_AnchoredPosition: {x: -0.000012655679, y: 0.0000022887023}
   m_SizeDelta: {x: 0, y: 335.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &363868094
@@ -29999,8 +29998,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: enterButtonClicked
+      - m_Target: {fileID: 124084466}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -26,7 +26,7 @@ public class ChatBox : MonoBehaviour
     public void enterButtonClicked()
     {
         text = input.text;
-		game.sendChatMessage (roleToDisplay, text);
+        game.sendChatMessage(roleToDisplay, text);
     }
 
     public void displayText(RoleKind role, string text)
