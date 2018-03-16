@@ -1,0 +1,38 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class chatBox : MonoBehaviour {
+    public InputField input;
+    public GameObject textDisplay;
+    public Game game;
+    public RoleKind roleToDisplay;
+
+    // Use this for initialization
+    private string text = string.Empty;
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        roleToDisplay = game.getCurrentPlayer().getRoleKind();
+    }
+
+    public void enterButtonClicked()
+    {
+        text = input.text;
+        //something.Something(RoleKind roleKind,string message);
+    }
+
+    public void displayText(RoleKind role, string text)
+    {
+        string previousText = textDisplay.GetComponent<Text>().text;
+        textDisplay.GetComponent<Text>().text = previousText + role.ToString() + ": " + text + " \n";
+    }
+
+
+}
