@@ -609,7 +609,7 @@ public class Game : MonoBehaviour {
 	}
 
 	private void notifyResolveEpidemic(){
-		PassOperation.notifyResolveEpidemic ();
+		passOperation.notifyResolveEpidemic ();
 	}
 	#endregion
 
