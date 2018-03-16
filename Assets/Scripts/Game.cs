@@ -367,7 +367,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 		player.decreaseRemainingAction();
-        record.displayRecord(currentPlayer.getRoleKind().ToString() + " drive to " + destinationCity.getCityName().ToString());
+		record.drive(currentPlayer, destinationCity);
 		//Debug.Log ("move succeed");
 	}
 
@@ -431,6 +431,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 		player.decreaseRemainingAction();
+		record.directFlight(currentPlayer, destinationCity);
 		//Debug.Log ("Flight succeed");
 		//UI only
 	}
@@ -455,6 +456,7 @@ public class Game : MonoBehaviour {
                 playerDiscardPile.Add(card);
 				move(pl1,destination);
 				pl1.decreaseRemainingAction ();
+				record.charterFlight(currentPlayer, destination);
 				break;
 			}
 		}
@@ -469,6 +471,7 @@ public class Game : MonoBehaviour {
 		if (pl1.getPlayerPawn ().getCity ().getHasResearch () && destination.getHasResearch()) {
 			move (pl1, destination);
 			pl1.decreaseRemainingAction ();
+			record.shuttleFlight(currentPlayer, destination);
 		} 
 		else 
 		{
@@ -498,10 +501,12 @@ public class Game : MonoBehaviour {
 			if(cardHolder == currentPlayer)
 			{
 				giveCard(currentPlayer, target, cityCard);
+				record.giveCard(currentPlayer, target, cityCard);
 			}
 			else if(cardHolder == target)
 			{
 				giveCard(target, currentPlayer, cityCard);
+				record.takeCard(currentPlayer, target, cityCard);
 			}
 			else {
 				Debug.Log("A uninterested player is holding the card. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
@@ -522,8 +527,7 @@ public class Game : MonoBehaviour {
 		int treatNumber = 1;
 		if(rolekind == RoleKind.Medic||isCured == true)
 		{
-			int n = currentCity.getCubeNumber(d);
-			treatNumber = n;
+			treatNumber = currentCity.getCubeNumber(d);
 		}
 		currentCity.removeCubes(d, treatNumber);
 		d.addCubes(treatNumber);
@@ -536,6 +540,7 @@ public class Game : MonoBehaviour {
 		}
 
 		currentPlayer.decreaseRemainingAction();
+		record.treat(currentPlayer, treatNumber, d, currentCity);
 	}
 
 	//pass
@@ -928,6 +933,7 @@ public class Game : MonoBehaviour {
         {
             PlayerCard card = playerCardDeck[0];
             playerCardDeck.RemoveAt(0);
+			record.draw(player, card);
             if (card.getType() == CardType.EpidemicCard)
             {
                 resolveEpidemic();
@@ -951,21 +957,24 @@ public class Game : MonoBehaviour {
                     //Debug.Log("add card to main player" + card.ToString());
                     mainPlayerPanel.addPlayerCard(card);
                 }
+
+				
             }
 			gameInfoController.changeCardNumber (playerCardDeck.Count);
 			Debug.Log ("player deck count"+playerCardDeck.Count);
 
+			
 			// For debugging: After first turn, number of player card will increase
-			if (playerCardDeck[0].getType() == CardType.CityCard){
-				CityCard tmp = (CityCard)playerCardDeck[0];
-				//Debug.Log (tmp.getCity().cityName);
-			}
-			else if(playerCardDeck[0].getType() == CardType.EventCard){
-				//Debug.Log ("Event");
-			}
-			else if(playerCardDeck[0].getType() == CardType.EpidemicCard){
-				//Debug.Log ("Epidemic");
-			}
+			// if (playerCardDeck[0].getType() == CardType.CityCard){
+			// 	CityCard tmp = (CityCard)playerCardDeck[0];
+			// 	//Debug.Log (tmp.getCity().cityName);
+			// }
+			// else if(playerCardDeck[0].getType() == CardType.EventCard){
+			// 	//Debug.Log ("Event");
+			// }
+			// else if(playerCardDeck[0].getType() == CardType.EpidemicCard){
+			// 	//Debug.Log ("Epidemic");
+			// }
         }
 
         return true;
@@ -1054,7 +1063,6 @@ public class Game : MonoBehaviour {
 			//Debug.Log("add card to main player" + card.ToString());
 			mainPlayerPanel.addPlayerCard(card);
 		}
-
     }
 
     
