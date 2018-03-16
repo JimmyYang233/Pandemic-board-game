@@ -13,10 +13,8 @@ public class playerSelectionPanel : MonoBehaviour {
 	private enum Status {SHARE,OTHER};
 	public ShareOperation share;
 	private Status selectStatus = Status.SHARE; 
-	public bool[] showOrNot;//to remember whether the spot is used or not  
 	void Awake(){
 		map = Maps.getInstance ();
-		showOrNot = new bool[4];
 	}
 	void Update (){
 		currentPlayer = game.getCurrentPlayer();
@@ -44,7 +42,6 @@ public class playerSelectionPanel : MonoBehaviour {
 			
             if (!t.gameObject.activeSelf)
             {
-				showOrNot [i] = true;
                 t.gameObject.SetActive(true);
 				t.GetChild(0).GetComponent<Text>().text = k.ToString();
 				t.name = k.ToString ();
@@ -75,24 +72,19 @@ public class playerSelectionPanel : MonoBehaviour {
 	//only display player who is in the same city
 	public void displayPlayerNecessary(){
 		foreach (Transform t in transform) {
-			if (t.gameObject.activeSelf)
+			if (!t.name.Equals("noUse"))
 			{
 				string role = t.GetChild (0).GetComponent<Text> ().text;
 				Player p = game.findPlayer (role);
-				if(p.getPlayerPawn().getCity()!=currentCity){
-					t.gameObject.SetActive (false);
+				if (p.getPlayerPawn ().getCity () == currentCity) {
+					t.gameObject.SetActive (true);
 
+				} else {
+					t.gameObject.SetActive (false);
 				}
 			}
-		}
-	}
 
-	public void reset(){
-		foreach (Transform t in transform) {
-			if (!t.name.Equals ("noUse")) {
-				t.gameObject.SetActive (true);
-				Debug.Log ("setactive");
-			}
 		}
 	}
+		
 }
