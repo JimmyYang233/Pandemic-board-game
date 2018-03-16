@@ -85,7 +85,9 @@ public class PCPanelController : MonoBehaviour {
         }
 
         g.transform.parent = this.gameObject.transform;
-        g.transform.position = playerCardStart.transform.position;
+		g.transform.position = playerCardStart.transform.position + new Vector3 (0, 100, 0);
+		g.GetComponent<playerCardUI> ().setDestination (playerCardStart.transform.position);
+        //g.transform.position = playerCardStart.transform.position;
         playerCardStart.transform.position += new Vector3(maxSpace/2, 0, 0);
 
         
@@ -141,7 +143,10 @@ public class PCPanelController : MonoBehaviour {
         }
 
         g.transform.parent = this.gameObject.transform;
-        g.transform.position = eventCardStart.transform.position;
+        //g.transform.position = eventCardStart.transform.position;
+
+		g.transform.position = eventCardStart.transform.position + new Vector3 (0, 100, 0);
+		g.GetComponent<playerCardUI> ().setDestination (eventCardStart.transform.position);
         eventCardStart.transform.position += new Vector3(maxSpace / 2, 0, 0);
 
 
