@@ -27,7 +27,7 @@ public class BasicOperation : MonoBehaviour {
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
-        if (currentPlayer == me&&game.getCurrentPhase() == GamePhase.PlayerTakeTurn)
+        if ((currentPlayer == me)&&(game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
             currentCity = me.getPlayerPawn().getCity();
             if (me.getRemainingAction() != 0)
@@ -62,7 +62,7 @@ public class BasicOperation : MonoBehaviour {
                 passButton.GetComponent<Button>().interactable = true;
             }
         }
-        else if(game.getCurrentPlayer()!= me)
+        else
         {
             resetAll();
         }
