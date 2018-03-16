@@ -581,11 +581,10 @@ public class Game : MonoBehaviour {
 		Disease disease = diseases[color];
 		outbreakedCities.Clear();
 		//TODO: 
-		/*
 		if (!infect(city, color, 1))
 		{
 			return;
-		}*/
+		}
 		if (currentPlayer == me && numOfInfection < infectionRate) {
 			numOfInfection++;
 			Debug.Log (numOfInfection);
