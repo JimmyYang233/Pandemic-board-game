@@ -509,14 +509,12 @@ public class Game : MonoBehaviour {
 		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
 	}
 
-	//cure
-	private void cure(Disease d)
+    //cure
+    private void cure(Player player, List<CityCard> cardsToRemove, Disease d)
 	{
-		List<CityCard> cardsToRemove = new List<CityCard>(); //TODO: ask player to choose 5 cards of same color
-
 		foreach (CityCard card in cardsToRemove)
 		{
-			currentPlayer.removeCard(card);
+			player.removeCard(card);
 			playerDiscardPile.Add(card);
 		}
 
@@ -1048,7 +1046,6 @@ public class Game : MonoBehaviour {
             currentPlayer.removeCard(card);
 			if (!currentPlayer.Equals(me))
 			{
-
 				playerPanel.deletePlayerCardFromOtherPlayer(currentPlayer.getRoleKind(), card);
 			}
 			else
