@@ -38,6 +38,7 @@ public class playerSelectionPanel : MonoBehaviour {
     public void addOtherPlayer(RoleKind k)
     {
 		int i = 0;
+
         foreach (Transform t in this.transform)
         {
 			
@@ -63,7 +64,6 @@ public class playerSelectionPanel : MonoBehaviour {
     }
 	public void characterSelect(){
 		if (selectStatus == Status.SHARE) {
-			reset ();
 			share.selectRole(EventSystem.current.currentSelectedGameObject.name);
 		}
 	}
@@ -78,11 +78,8 @@ public class playerSelectionPanel : MonoBehaviour {
 			if (t.gameObject.activeSelf)
 			{
 				string role = t.GetChild (0).GetComponent<Text> ().text;
-				Debug.Log (role);
 				Player p = game.findPlayer (role);
-				Debug.Log (p.getRoleKind ().ToString ());
-				Debug.Log (p.getPlayerPawn ().getCity ().cityName);
-				if(p.getPlayerPawn ().getCity ().cityName!=currentCity.cityName){
+				if(!p.getPlayerPawn ().getCity ().cityName.ToString().Equals("Atlanta")){
 					t.gameObject.SetActive (false);
 
 				}
@@ -91,14 +88,11 @@ public class playerSelectionPanel : MonoBehaviour {
 	}
 
 	public void reset(){
-		int i = 0;
-		foreach (Transform t in this.transform)
-		{
-			Debug.Log (showOrNot [i]);
-			if (showOrNot [i]) {
+		foreach (Transform t in transform) {
+			if (!t.name.Equals ("noUse")) {
 				t.gameObject.SetActive (true);
+				Debug.Log ("setactive");
 			}
-			i++;
 		}
 	}
 }
