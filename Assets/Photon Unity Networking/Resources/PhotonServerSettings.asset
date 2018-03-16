@@ -60,4 +60,6 @@ MonoBehaviour:
   - RPC_takeShuttleFlight
   - RPC_displayMessage
   - RPC_infectNextCity
+  - RPC_infectCity
+  - RPC_NextPlayer
   DisableAutoOpenWizard: 1

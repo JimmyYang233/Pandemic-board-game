@@ -1123,7 +1123,9 @@ MonoBehaviour:
   mainPlayerPanel: {fileID: 177066089}
   playerSelect: {fileID: 346002627}
   shareOperation: {fileID: 1340808470}
+  passOperation: {fileID: 1069413776}
   chatBox: {fileID: 124084468}
+  record: {fileID: 1438105360}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
@@ -5488,8 +5490,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 659181652}
   m_HandleRect: {fileID: 659181651}
   m_Direction: 2
-  m_Value: 0.49998447
-  m_Size: 0.9916383
+  m_Value: 0
+  m_Size: 0.99163836
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -26642,7 +26644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.9358375}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.600006, y: -199.41441}
+  m_AnchoredPosition: {x: -2.600006, y: -199.41437}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1380428679
@@ -37443,7 +37445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.9358375}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.54999, y: -218.0828}
+  m_AnchoredPosition: {x: -0.5499878, y: -216.1179}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974742613

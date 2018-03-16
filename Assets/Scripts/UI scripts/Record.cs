@@ -7,10 +7,10 @@ public class Record : MonoBehaviour {
     public GameObject textDisplay;
     public GameObject scrollBar;
 
-    public void displayRecord(RoleKind role, string text)
+    public void displayRecord( string text)
     {
             string previousText = textDisplay.GetComponent<Text>().text;
-            textDisplay.GetComponent<Text>().text = previousText + role.ToString() + ": " + text + " \n";
+            textDisplay.GetComponent<Text>().text = previousText  + text + " \n";
             scrollBar.GetComponent<Scrollbar>().value = 0;
     }
 }

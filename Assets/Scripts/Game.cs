@@ -48,7 +48,9 @@ public class Game : MonoBehaviour {
     public PCPanelController mainPlayerPanel;
 	public playerSelectionPanel playerSelect;
 	public ShareOperation shareOperation;
+    public PassOperation passOperation;
     public ChatBox chatBox;
+    public Record record;
 
 
     GameObject backGround;
@@ -355,6 +357,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 		player.decreaseRemainingAction();
+        record.displayRecord(currentPlayer.getRoleKind().ToString() + " drive to the " + destinationCity.getCityName().ToString());
 		//Debug.Log ("move succeed");
 	}
 
