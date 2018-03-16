@@ -357,9 +357,8 @@ public class Game : MonoBehaviour {
 			}
 		}
 		player.decreaseRemainingAction();
-        //Debug.Log (currentPlayer.getRoleKind().ToString() + " drive to " + destinationCity.getCityName().ToString());
-        record.displayRecord(currentPlayer.getRoleKind().ToString() + " drive to " + destinationCity.getCityName().ToString());
-		
+        record.displayRecord(currentPlayer.getRoleKind().ToString() + " drive to" + destinationCity.getCityName().ToString());
+		//Debug.Log ("move succeed");
 	}
 
 	//take direct flight
@@ -597,6 +596,7 @@ public class Game : MonoBehaviour {
 		{
 			if (i == infectionRate - 1)
 				switchPlayer = true;
+			passOperation.startInfection ();
 			//infectNextCity();
 			//call front end method
 		}
