@@ -21,7 +21,7 @@ public class ChatBox : MonoBehaviour
     {
     }
 
-    public void enterButtonClicked()
+    public void OnEnterButtonClicked()
     {
         text = input.text;
         game.sendChatMessage(text);

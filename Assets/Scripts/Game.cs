@@ -142,7 +142,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_displayMessage(string text){
-		chatBox.displayText (me.getRoleKind,text);
+		chatBox.displayText (me.getRoleKind(),text);
 	}
 	#endregion
 
