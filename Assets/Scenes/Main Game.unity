@@ -5690,7 +5690,7 @@ GameObject:
   - component: {fileID: 315254073}
   - component: {fileID: 315254072}
   m_Layer: 5
-  m_Name: inforResult
+  m_Name: informResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41013,7 +41013,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2059910299}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

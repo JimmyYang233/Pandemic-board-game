@@ -11,6 +11,7 @@ public class PassOperation : MonoBehaviour {
 
     public void passButtonClicked()
     {
+        Debug.Log("Pass button clicked");
         informResultPanel.SetActive(true);
         informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Start draw Card";
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startDrawCard);
@@ -18,22 +19,24 @@ public class PassOperation : MonoBehaviour {
     
     public void startDrawCard()
     {
-        game.EndTurn();
         informResultPanel.SetActive(false);
+        game.EndTurn();
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.RemoveListener(startDrawCard);
     }
 
     public void startInfection()
     {
+        Debug.Log("StartInfection got called");
         informResultPanel.SetActive(true);
+        Debug.Log(informResultPanel.GetActive());
         informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Start Infection";
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startInfectNextCity);
     }
 
     private void startInfectNextCity()
     {
-        game.InfectNextCity();
         informResultPanel.SetActive(false);
+        game.InfectNextCity();
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.RemoveListener(startInfectNextCity);
     }
 
