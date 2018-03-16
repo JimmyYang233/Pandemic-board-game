@@ -885,6 +885,18 @@ public class Game : MonoBehaviour {
             }
 			gameInfoController.changeCardNumber (playerCardDeck.Count);
 			Debug.Log (playerCardDeck.Count);
+
+			// For debugging: After first turn, number of player card will increase
+			if (playerCardDeck[0].getType() == CardType.CityCard){
+				CityCard tmp = (CityCard)playerCardDeck[0];
+				Debug.Log (tmp.getCity().cityName);
+			}
+			else if(playerCardDeck[0].getType() == CardType.EventCard){
+				Debug.Log ("Event");
+			}
+			else if(playerCardDeck[0].getType() == CardType.EpidemicCard){
+				Debug.Log ("Epidemic");
+			}
         }
 
         return true;
