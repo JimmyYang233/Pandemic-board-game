@@ -1010,6 +1010,7 @@ public class Game : MonoBehaviour {
     public void nextPlayer()
     {
         currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
+		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
