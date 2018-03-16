@@ -358,7 +358,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 		player.decreaseRemainingAction();
-        record.displayRecord(currentPlayer.getRoleKind().ToString() + " drive to" + destinationCity.getCityName().ToString());
+        record.displayRecord(currentPlayer.getRoleKind().ToString() + " drive to " + destinationCity.getCityName().ToString());
 		//Debug.Log ("move succeed");
 	}
 
