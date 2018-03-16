@@ -75,6 +75,8 @@ public class ShareOperation : MonoBehaviour {
     protected void btn_Click(object sender, EventArgs e)
     {
         check();
+        playerSelect.displayPlayerNecessary();
+        
     }
     public void takeButtonClicked()
     {
@@ -84,6 +86,7 @@ public class ShareOperation : MonoBehaviour {
         basicOperationPanel.SetActive(false);
         otherPlayers.SetActive(false);
         check();
+        playerSelect.displayPlayerWithCard();
         isTake = true;
     }
     //player confirm to take the card
@@ -91,7 +94,7 @@ public class ShareOperation : MonoBehaviour {
 	{
 		playerSelect.setShareStatus ();
 		playerSelect.gameObject.SetActive (true);
-		playerSelect.displayPlayerNecessary ();
+		
         int num = playerCardPanel.transform.GetChild(1).childCount;
         for (int i = 0; i < num; i++)
         {

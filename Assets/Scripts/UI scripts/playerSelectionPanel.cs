@@ -69,6 +69,33 @@ public class playerSelectionPanel : MonoBehaviour {
 			share.cancel ();
 		}
 	}
+    public void displayPlayerWithCard()
+    {
+        
+        foreach (Transform t in transform)
+        {
+            
+            if (!t.name.Equals("noUse"))
+            {
+                string role = t.GetChild(0).GetComponent<Text>().text;
+                Player p = game.findPlayer(role);
+                currentPlayer = game.getCurrentPlayer();
+                currentCity = currentPlayer.getPlayerPawn().getCity();
+                if (p.containsSpecificCityCard(currentCity))
+                {
+                    Debug.Log("find");
+                    t.gameObject.SetActive(true);
+
+                }
+                else
+                {
+                    Debug.Log("not find");
+                    t.gameObject.SetActive(false);
+                }
+            }
+
+        }
+    }
 	//only display player who is in the same city
 	public void displayPlayerNecessary(){
 		foreach (Transform t in transform) {
