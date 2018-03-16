@@ -79,7 +79,7 @@ public class playerSelectionPanel : MonoBehaviour {
 			{
 				string role = t.GetChild (0).GetComponent<Text> ().text;
 				Player p = game.findPlayer (role);
-				if(!p.getPlayerPawn ().getCity ().cityName.ToString().Equals("Atlanta")){
+				if(p.getPlayerPawn().getCity()!=currentCity){
 					t.gameObject.SetActive (false);
 
 				}
