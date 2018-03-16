@@ -576,6 +576,7 @@ public class Game : MonoBehaviour {
 	//infectNextCity
 	private void infectNextCity()
 	{
+		numOfInfection++;
 		Debug.Log ("Danning kan zhe li");
 		InfectionCard card = getInfectionCard();
 		City city = card.getCity();
@@ -587,7 +588,6 @@ public class Game : MonoBehaviour {
 			return;
 		}
 		if (currentPlayer == me && numOfInfection < infectionRate) {
-			numOfInfection++;
 			Debug.Log ("num of infection is + " + numOfInfection.ToString());
 			passOperation.startInfection ();
 		}
