@@ -160,10 +160,13 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_NextPlayer(){
+	public void RPC_nextPlayer(){
 		nextPlayer ();
 		switchPlayer = false;
 	}
+
+	[PunRPC]
+	public void RPC_
 	#endregion
 
 	//called by chatbox to send chat message
@@ -213,7 +216,7 @@ public class Game : MonoBehaviour {
 	#endregion
 
 	public void NextPlayer(){
-		PhotonView.RPC ("RPC_NextPlayer",PhotonTargets.All);
+		PhotonView.RPC ("RPC_nextPlayer",PhotonTargets.All);
 	}
 
 	#region initialization
@@ -592,7 +595,7 @@ public class Game : MonoBehaviour {
 			passOperation.startInfection ();
 		}
 		if (numOfInfection == infectionRate && PhotonNetwork.isMasterClient)
-			PhotonView.RPC ("RPC_NextPlayer", PhotonTargets.All);
+			PhotonView.RPC ("RPC_nextPlayer", PhotonTargets.All);
 	}
 
 	private void infectCity()
