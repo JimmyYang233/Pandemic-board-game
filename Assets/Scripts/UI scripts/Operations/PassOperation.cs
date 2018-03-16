@@ -37,8 +37,9 @@ public class PassOperation : MonoBehaviour {
     {
         Debug.Log("StartInfectNextCity got called");
         informResultPanel.SetActive(false);
-        game.InfectNextCity();
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.RemoveListener(startInfectNextCity);
+        game.InfectNextCity();
+        
     }
 
     public void startEpidemic()
