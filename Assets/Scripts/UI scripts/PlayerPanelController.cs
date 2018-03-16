@@ -19,6 +19,11 @@ public class PlayerPanelController : MonoBehaviour
 		}
 	}
 	*/
+	public void addMainPlayer(RoleKind k){
+		this.transform.GetChild (4).gameObject.SetActive (true);
+		this.transform.GetChild (4).GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (k);
+		this.transform.GetChild (4).GetChild (1).GetComponent<Text> ().text = k.ToString ();
+	}
     public void addOtherPlayer(RoleKind k)
     {
         foreach (Transform t in this.transform)

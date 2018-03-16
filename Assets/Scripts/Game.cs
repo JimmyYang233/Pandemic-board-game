@@ -299,6 +299,7 @@ public class Game : MonoBehaviour {
 		gameInfoController.displayInfectionRate();
 
 		//FOR GUI
+
 		foreach (Player p in players)
 		{
 			if (!p.Equals(me))
@@ -306,6 +307,7 @@ public class Game : MonoBehaviour {
 				playerPanel.addOtherPlayer(p.getRoleKind());
 			}
 		}
+		playerPanel.addMainPlayer(me.getRoleKind());
 		playerSelect.gameObject.SetActive (false);
 
 		setInitialHand();
@@ -951,7 +953,7 @@ public class Game : MonoBehaviour {
                 }
             }
 			gameInfoController.changeCardNumber (playerCardDeck.Count);
-			//Debug.Log (playerCardDeck.Count);
+			Debug.Log ("player deck count"+playerCardDeck.Count);
 
 			// For debugging: After first turn, number of player card will increase
 			if (playerCardDeck[0].getType() == CardType.CityCard){
