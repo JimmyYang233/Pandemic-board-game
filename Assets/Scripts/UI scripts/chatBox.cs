@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class chatBox : MonoBehaviour {
+public class ChatBox : MonoBehaviour
+{
     public InputField input;
     public GameObject textDisplay;
     public Game game;

@@ -1041,7 +1041,7 @@ MonoBehaviour:
   mainPlayerPanel: {fileID: 177066089}
   playerSelect: {fileID: 346002627}
   shareOperation: {fileID: 1340808470}
-  chatBox: {fileID: 124084468}
+  chatBox: {fileID: 0}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 124084466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d878952e63ba9904cb9a47e9426b76d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bc12df52e695754e81c67026f23c942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 216771469}
@@ -6531,7 +6531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000012655679, y: 0.10618057}
+  m_AnchoredPosition: {x: -0.000012655679, y: -0.000000039468404}
   m_SizeDelta: {x: 0, y: 335.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &363868094
@@ -29999,7 +29999,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 124084468}
+      - m_Target: {fileID: 0}
         m_MethodName: enterButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -40266,7 +40266,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2059910299}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9455938
+  m_Size: 0.99979776
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

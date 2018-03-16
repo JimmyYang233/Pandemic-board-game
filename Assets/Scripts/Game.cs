@@ -47,7 +47,7 @@ public class Game : MonoBehaviour {
     public PCPanelController mainPlayerPanel;
 	public playerSelectionPanel playerSelect;
 	public ShareOperation shareOperation;
-    public chatBox chatBox;
+    public ChatBox chatBox;
 
 
     GameObject backGround;
