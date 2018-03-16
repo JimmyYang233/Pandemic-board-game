@@ -498,12 +498,13 @@ public class Game : MonoBehaviour {
 
 		currentPlayer.decreaseRemainingAction();
 	}
+
 	//pass
 	private void endTurn()
 	{
 		if (currentPhase != GamePhase.PlayerTakeTurn)
 			return;
-		currentPhase = GamePhase.Completed;
+		currentPhase = GamePhase.PlayerDrawCard;
 
 		currentPlayer.refillAction();
 		currentPlayer.setOncePerturnAction(false);
@@ -519,6 +520,9 @@ public class Game : MonoBehaviour {
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
 	}
+
+	//infectNextCity
+
 
     //cure
     private void cure(Player player, List<CityCard> cardsToRemove, Disease d)
@@ -897,6 +901,10 @@ public class Game : MonoBehaviour {
     {
         currentPhase = gamePhase;
     }
+
+	public GamePhase getCurrentPhase(){
+		return currentPhase;
+	}
 
     //my part ends here
 
