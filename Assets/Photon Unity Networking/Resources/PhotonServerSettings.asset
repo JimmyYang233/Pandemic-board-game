@@ -58,4 +58,5 @@ MonoBehaviour:
   - RPC_build
   - RPC_takeCharterFlight
   - RPC_takeShuttleFlight
+  - RPC_displayMessage
   DisableAutoOpenWizard: 1
