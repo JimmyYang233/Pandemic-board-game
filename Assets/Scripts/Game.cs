@@ -546,6 +546,7 @@ public class Game : MonoBehaviour {
 			return;
 		}
 		currentPhase = GamePhase.InfectCities;
+		numOfInfection = 0
 	}
 
     //cure
@@ -579,10 +580,19 @@ public class Game : MonoBehaviour {
 		Color color = card.getColor();
 		Disease disease = diseases[color];
 		outbreakedCities.Clear();
+		//TODO: 
+		/*
 		if (!infect(city, color, 1))
 		{
 			return;
+		}*/
+		if (currentPlayer == me && numOfInfection < infectionRate) {
+			numOfInfection++;
+			Debug.Log (numOfInfection);
+			passOperation.startInfection ();
 		}
+		if (numOfInfection == infectionRate)
+			PhotonView.RPC ("RPC_NextPlayer", PhotonTargets.All);
 	}
 
 	private void infectCity()
