@@ -10,7 +10,6 @@ public class ChatBox : MonoBehaviour
     public Game game;
 
     private string text = string.Empty;
-    private RoleKind roleToDisplay;
 
     void Start()
     {
@@ -20,13 +19,12 @@ public class ChatBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        roleToDisplay = game.getCurrentPlayer().getRoleKind();
     }
 
     public void enterButtonClicked()
     {
         text = input.text;
-        game.sendChatMessage(roleToDisplay, text);
+        game.sendChatMessage(text);
     }
 
     public void displayText(RoleKind role, string text)
