@@ -59,4 +59,5 @@ MonoBehaviour:
   - RPC_takeCharterFlight
   - RPC_takeShuttleFlight
   - RPC_displayMessage
+  - RPC_infectNextCity
   DisableAutoOpenWizard: 1

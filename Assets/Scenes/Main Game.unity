@@ -5494,7 +5494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &315254071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20790,6 +20790,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1066025535}
+--- !u!1 &1069413775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1069413777}
+  - component: {fileID: 1069413776}
+  m_Layer: 0
+  m_Name: PassOperationController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1069413776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069413775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b2430ddc94d0f4b921a9e679e6677c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informResultPanel: {fileID: 315254070}
+  game: {fileID: 73084184}
+--- !u!4 &1069413777
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069413775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -39.380512, y: 0.35233927, z: 98.012726}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1072088214
 GameObject:
   m_ObjectHideFlags: 0
@@ -29916,7 +29958,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Close
+  m_Text: Ok
 --- !u!222 &1664901481
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30461,8 +30503,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73084184}
-        m_MethodName: EndTurn
+      - m_Target: {fileID: 1069413776}
+        m_MethodName: passButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34206,7 +34248,7 @@ GameObject:
   - component: {fileID: 1866817746}
   - component: {fileID: 1866817745}
   m_Layer: 5
-  m_Name: close
+  m_Name: Ok
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40266,7 +40308,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2059910299}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9956977
+  m_Size: 0.99552584
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
