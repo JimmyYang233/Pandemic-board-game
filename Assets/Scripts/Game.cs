@@ -141,14 +141,14 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_displayMessage(string text){
-		chatBox.displayText (me.getRoleKind(),text);
+	public void RPC_displayMessage(string myRoleKindName,string text){
+		chatBox.displayText (findRoleKind(myRoleKindName),text);
 	}
 	#endregion
 
 	//called by chatbox to send chat message
 	public void sendChatMessage(string message){
-		PhotonView.RPC ("RPC_displayMessage", PhotonTargets.All, message );
+		PhotonView.RPC ("RPC_displayMessage", PhotonTargets.All,me.getRoleKind().ToString(), message );
 	}
 
 	#region basicOperationInteraction
