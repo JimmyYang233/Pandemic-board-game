@@ -1041,6 +1041,7 @@ MonoBehaviour:
   mainPlayerPanel: {fileID: 177066089}
   playerSelect: {fileID: 346002627}
   shareOperation: {fileID: 1340808470}
+  chatBox: {fileID: 124084468}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
@@ -6099,7 +6100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 73084184}
   share: {fileID: 1340808470}
-  showOrNot: 
 --- !u!222 &346002628
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6531,7 +6531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000012655679, y: 0.000008359515}
+  m_AnchoredPosition: {x: -0.000012655679, y: 0.10618057}
   m_SizeDelta: {x: 0, y: 335.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &363868094
@@ -40266,7 +40266,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2059910299}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9455938
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
