@@ -42,11 +42,18 @@ public class PassOperation : MonoBehaviour {
         
     }
 
-    public void startEpidemic()
+    public void notifyResolveEpidemic()
     {
         informResultPanel.SetActive(true);
         informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Resolve Epidemic";
-        informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startResolveEpidemic);
+        informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(close);
+    }
+
+    private void close()
+    {
+        //game.ResolveEpidemic();
+        informResultPanel.SetActive(false);
+        informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.RemoveListener(close);
     }
 
     private void startResolveEpidemic()
