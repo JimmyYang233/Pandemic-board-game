@@ -30,7 +30,7 @@ public class PassOperation : MonoBehaviour {
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startInfectNextCity);
     }
 
-    public void startInfectNextCity()
+    private void startInfectNextCity()
     {
         game.InfectNextCity();
         informResultPanel.SetActive(false);
@@ -44,7 +44,7 @@ public class PassOperation : MonoBehaviour {
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startResolveEpidemic);
     }
 
-    public void startResolveEpidemic()
+    private void startResolveEpidemic()
     {
         //game.ResolveEpidemic();
         informResultPanel.SetActive(false);

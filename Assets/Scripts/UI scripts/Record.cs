@@ -9,8 +9,9 @@ public class Record : MonoBehaviour {
 
     public void displayRecord( string text)
     {
-            string previousText = textDisplay.GetComponent<Text>().text;
-            textDisplay.GetComponent<Text>().text = previousText  + text + " \n";
-            scrollBar.GetComponent<Scrollbar>().value = 0;
+        Debug.Log(text);
+        string previousText = textDisplay.GetComponent<Text>().text;
+        textDisplay.GetComponent<Text>().text = previousText  + text + " \n";
+        scrollBar.GetComponent<Scrollbar>().value = 0;
     }
 }
