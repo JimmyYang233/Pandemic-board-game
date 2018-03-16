@@ -82,13 +82,10 @@ public class playerSelectionPanel : MonoBehaviour {
 				Player p = game.findPlayer (role);
 				Debug.Log (p.getRoleKind ().ToString ());
 				Debug.Log (p.getPlayerPawn ().getCity ().cityName);
-				//bug here cannot find current city
-				Debug.Log (currentCity.getCityName ());
-				/*if(!game.getPlayers(currentCity).Contains(game.findPlayer(t.GetChild(0).GetComponent<Text>().text))){
+				if(p.getPlayerPawn ().getCity ().cityName!=currentCity.cityName){
 					t.gameObject.SetActive (false);
 
-				}*/
-				break;
+				}
 			}
 		}
 	}
