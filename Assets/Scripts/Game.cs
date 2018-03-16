@@ -583,15 +583,6 @@ public class Game : MonoBehaviour {
 		{
 			return;
 		}
-		if (currentPlayer == me && numOfInfection <= infectionRate) {
-			passOperation.startInfection ();
-			numOfInfection++;
-			Debug.Log (numOfInfection);
-			if (numOfInfection == infectionRate)
-				PhotonView.RPC ("RPC_NextPlayer", PhotonTargets.All);
-		}
-		if (numOfInfection == infectionRate)
-			numOfInfection = 0;
 	}
 
 	private void infectCity()
