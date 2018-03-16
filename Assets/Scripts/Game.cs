@@ -598,6 +598,7 @@ public class Game : MonoBehaviour {
 	private void infectCity()
 	{
 		Debug.Log ("start infect city");
+		numOfInfection++;
 		passOperation.startInfection ();
 		//nextPlayer();
 	}
