@@ -33,7 +33,7 @@ public class BasicOperation : MonoBehaviour {
             if (me.getRemainingAction() != 0)
             {
                 moveButton.GetComponent<Button>().interactable = true;
-				if (!currentCity.getHasResearch ()) {
+				if (!currentCity.getHasResearch ()&&(currentPlayer.containsSpecificCityCard(currentCity)||(currentPlayer.getRoleKind() == RoleKind.OperationsExpert))) {
 					buildButton.GetComponent<Button> ().interactable = true;
 				}
                 if (currentCity.hasCubes())
