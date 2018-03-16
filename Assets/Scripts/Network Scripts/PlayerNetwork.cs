@@ -50,7 +50,7 @@ public class PlayerNetwork : MonoBehaviour {
 		PlayersInGame++;
 		if (PlayersInGame == PhotonNetwork.playerList.Length)
 		{
-			print("All players are in the game scene.");
+			//print("All players are in the game scene.");
 		}
 	}
 }

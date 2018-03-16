@@ -35,6 +35,7 @@ public class PassOperation : MonoBehaviour {
 
     private void startInfectNextCity()
     {
+        Debug.Log("StartInfectNextCity got called");
         informResultPanel.SetActive(false);
         game.InfectNextCity();
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.RemoveListener(startInfectNextCity);
