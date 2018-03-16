@@ -42,6 +42,7 @@ public class Game : MonoBehaviour {
 	private CityCard cardToShare;
 	private Player playerToShare;
 	private bool switchPlayer = false;
+	private int numOfInfection = 0;
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
@@ -585,20 +586,25 @@ public class Game : MonoBehaviour {
 		{
 			return;
 		}
-		if (switchPlayer) {
-			NextPlayer ();
+		if (currentPlayer == me && numOfInfection <= infectionRate) {
+			passOperation.startInfection ();
+			numOfInfection++;
+			if (numOfInfection == infectionRate)
+				PhotonView.RPC ("RPC_NextPlayer", PhotonTargets.All);
 		}
+		if (numOfInfection == infectionRate)
+			numOfInfection = 0;
 	}
 
 	private void infectCity()
 	{
+		passOperation.startInfection ();
 		for(int i=0; i<infectionRate; i++)
 		{
 			if (i == infectionRate - 1)
 				switchPlayer = true;
 			passOperation.startInfection ();
 			//infectNextCity();
-			//call front end method
 		}
 		//nextPlayer();
 	}
