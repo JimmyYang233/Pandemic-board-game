@@ -696,6 +696,7 @@ public class Game : MonoBehaviour {
 		// TODO
 
 		putIntoInfectionDeck (list);
+		dropEventCard (EventKind.Forecast);
 	}
 
 	public void governmentGrant(City c){
@@ -704,23 +705,63 @@ public class Game : MonoBehaviour {
 		}
 		c.setHasResearch (true);
 		researchStationRemain--;
+		dropEventCard (EventKind.GovernmentGrant);
 	}
 
 
 	public void oneQuietNight(){
 		oneQueitNightUsed = true;
+		dropEventCard (EventKind.OneQuietNight);
 	}
 
 
 
 	public void resilientPopulation(InfectionCard card){
 		infectionDiscardPile.Remove (card);
+		dropEventCard (EventKind.ResilientPopulation);
 	}
 
 	public void airlift(Player pl1, City destination){
 		move (pl1, destination);
+		dropEventCard (EventKind.Airlift);
 	}
 
+	public void borrowedTime(){
+		if (findHolder (EventKind.BorrowedTime) == currentPlayer) {
+			currentPlayer.increaseRemainingAction (2);
+			dropEventCard (EventKind.BorrowedTime);
+		} 
+		else {
+			//TODO notify player that card cannot be used
+		}
+	}
+
+	public Player findEventCardHolder(EventKind eCard){
+		Player holder = null;
+
+		foreach(Player pl in players){
+			foreach(PlayerCard p in pl.getHand()){
+				if(p.getType() == EventCard){
+					if (((EventCard)p).getEventKind == eCard) {
+						holder = pl;
+						break;
+					}
+				}
+			}
+		}
+
+		return holder;
+	}
+
+	public void dropEventCard(EventKind eKind){
+		Player pl = findEventCardHolder (eKind);
+		EventCard eCard = EventCard.getEventCard (eKind);
+		if (pl == null) {
+			Debug.Log ("No player is holding this card. Game.cs: dropEventCard(EventKind)");
+		}
+		pl.removeCard (eCard);
+		playerDiscardPile.Add (eCard);
+	}
 
     public RoleKind selectRole()
     {	

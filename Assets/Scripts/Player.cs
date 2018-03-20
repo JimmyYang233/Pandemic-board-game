@@ -118,6 +118,10 @@ public class Player {
 		remainingAction--;
 	}
 
+	public void increaseRemainingAction(int num){
+		remainingAction+=num;
+	}
+
 	public void refillAction(){
 		remainingAction = maximumAction;
 	}
