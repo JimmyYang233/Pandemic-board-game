@@ -902,7 +902,7 @@ public class Game : MonoBehaviour {
                 return false;
             }
             city.addCubes(disease, number);
-            disease.removeCubes (number);
+            disease.removeCubes(number);
             gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
             //Debug.Log(disease.getNumOfDiseaseCubeLeft());
             return true;
@@ -927,19 +927,19 @@ public class Game : MonoBehaviour {
             }
 
             city.addCubes(disease, 3 - cubeNumber);
-			disease.removeCubes ( 3 - cubeNumber);
+            disease.removeCubes(3 - cubeNumber);
             gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
             Debug.Log(disease.getNumOfDiseaseCubeLeft());
 
             foreach (City neighbor in neighbors) {
-				if (outbreakedCities.Contains (neighbor))
-					continue;
+                if (outbreakedCities.Contains(neighbor))
+                    continue;
                 if (!infect(neighbor, color, 1)) {
                     return false;
                 };
-			}
+            }
 
-			return true;
+            return true;
         }
     }
     /*
@@ -966,6 +966,13 @@ public class Game : MonoBehaviour {
             if (card.getType() == CardType.EpidemicCard)
             {
                 resolveEpidemic();
+            }
+            else if (card.getType() == CardType.MutationEventCard && !diseases[Color.magenta].isEradicated())
+            {
+                InfectionCard mCard = drawBottomInfectionDeck();
+                City mCity = mCard.getCity();
+                infect(mCity, Color.magenta, 3);
+                infectionDiscardPile.Add(mCard);
             }
             else
             {
