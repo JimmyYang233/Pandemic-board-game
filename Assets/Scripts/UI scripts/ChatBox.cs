@@ -23,8 +23,12 @@ public class ChatBox : MonoBehaviour
 
     public void OnEnterButtonClicked()
     {
-        text = input.text;
-        game.sendChatMessage(text);
+        if (!(input.text.Equals(""))){
+            text = input.text;
+            game.sendChatMessage(text);
+            input.text = "";
+        }
+       
     }
 
     public void displayText(RoleKind role, string text)
