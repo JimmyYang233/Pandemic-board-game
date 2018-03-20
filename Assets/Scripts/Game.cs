@@ -20,6 +20,7 @@ public class Game : MonoBehaviour {
     private bool isnewGame = true;
 	[SerializeField]
     private int outbreaksValue = 0;
+	private bool oneQueitNightUsed = false;
     private int researchStationRemain = 6;
     private bool resolvingEpidemic = false;
     private int numOfEpidemicCard;
@@ -610,6 +611,10 @@ public class Game : MonoBehaviour {
 
 	private void infectCity()
 	{
+		if(oneQueitNightUsed){
+			oneQueitNightUsed = false;
+			return;
+		}
 		Debug.Log ("start infect city");
 		passOperation.startInfection ();
 		//nextPlayer();
@@ -699,16 +704,22 @@ public class Game : MonoBehaviour {
 		}
 		c.setHasResearch (true);
 		researchStationRemain--;
+	}
 
+
+	public void oneQuietNight(){
+		oneQueitNightUsed = true;
 	}
 
 
 
+	public void resilientPopulation(InfectionCard card){
+		infectionDiscardPile.Remove (card);
+	}
 
-
-
-
-
+	public void airlift(Player pl1, City destination){
+		move (pl1, destination);
+	}
 
 
     public RoleKind selectRole()
