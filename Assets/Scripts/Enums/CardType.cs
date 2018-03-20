@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum CardType
 {
-    CityCard, EpidemicCard, EventCard, InfectionCard
+    CityCard, EpidemicCard, EventCard, InfectionCard, MutationEventCard
 }
