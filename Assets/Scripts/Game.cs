@@ -675,9 +675,27 @@ public class Game : MonoBehaviour {
 			}
     }
 
+	private void putIntoInfectionDeck(List<InfectionCard> list){
+		list.AddRange (infectionDeck);
+		infectionDeck = list;
+	}
 
+	public void foreCast(){
+		List<InfectionCard> list = borrowInfectionCard (6);
 
+		// TODO
 
+		putIntoInfectionDeck (list);
+	}
+
+	public void governmentGrant(City c){
+		if (getRemainingResearch () == 0) {
+			//TODO
+		}
+		c.setHasResearch (true);
+		researchStationRemain--;
+
+	}
 
 
 
@@ -999,6 +1017,16 @@ public class Game : MonoBehaviour {
 
         return card;
     }
+
+	private List<InfectionCard> borrowInfectionCard(int num){
+		List<InfectionCard> list = new List<InfectionCard> ();
+		for(int i=0; i<num;i++){
+			InfectionCard card = infectionDeck[0];
+			infectionDeck.Remove(card);
+			list.Add (card);
+		}
+		return list;
+	}
 		
     public Player getCurrentPlayer()
     {
