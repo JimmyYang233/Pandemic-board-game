@@ -727,7 +727,7 @@ public class Game : MonoBehaviour {
 	}
 
 	public void borrowedTime(){
-		if (findHolder (EventKind.BorrowedTime) == currentPlayer) {
+		if (findEventCardHolder(EventKind.BorrowedTime) == currentPlayer) {
 			currentPlayer.increaseRemainingAction (2);
 			dropEventCard (EventKind.BorrowedTime);
 		} 
@@ -741,8 +741,8 @@ public class Game : MonoBehaviour {
 
 		foreach(Player pl in players){
 			foreach(PlayerCard p in pl.getHand()){
-				if(p.getType() == EventCard){
-					if (((EventCard)p).getEventKind == eCard) {
+				if(p.getType() == CardType.EventCard){
+					if (((EventCard)p).getEventKind() == eCard) {
 						holder = pl;
 						break;
 					}
