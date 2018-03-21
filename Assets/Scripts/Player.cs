@@ -167,6 +167,10 @@ public class Player {
 			oncePerTurnAction = false;
 		}
 	}
+		
+	public int getMaxnumAction(){
+		return maximumAction;
+	}
 
     public Role getRole()
     {

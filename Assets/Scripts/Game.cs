@@ -742,6 +742,43 @@ public class Game : MonoBehaviour {
 		return holder;
 	}
 
+	private bool checkForRoleExistence(Role roleKind){
+		foreach(Player pl in players){
+			if(pl.getRole().getRoleKind() == roleKind)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private bool swapRole(Player pl1, RoleKind roleKind){
+		if(checkForRoleExistence(roleKind)){
+			Debug.Log ("Role already exist in the game. Game.cs: swapRole");
+			return false;
+		}
+
+		Role r1 = pl1.getRole ();
+		Pawn pawn = pl1.getPlayerPawn ();
+		City city = pawn.getCity ();
+		city.removePawn (pawn);
+		Role r2 = new Role (roleKind);
+
+		if(r2.getRoleKind() == RoleKind.Generalist && pl1 == currentPlayer && pl1.getMaxnumAction() == 4){
+			pl1.increaseRemainingAction (1);
+		}
+
+		pl1.setRole (r2);
+		city.addPawn (pl1.getPlayerPawn());
+	}
+
+	public void newAssignment(Player pl1, Role roleKind){
+		if (!swapRole (pl1, roleKind)) {
+			return;
+		}
+		dropEventCard (EventKind.NewAssignment);
+	}
+
 	public void dropEventCard(EventKind eKind){
 		Player pl = findEventCardHolder (eKind);
 		EventCard eCard = EventCard.getEventCard (eKind);
