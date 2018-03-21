@@ -609,13 +609,6 @@ public class Game : MonoBehaviour {
 	#endregion
 
 
-    
-
-
-
-
-
-
     private void move(Player pl1, City destinationCity){
         RoleKind rolekind = pl1.getRoleKind();
         Pawn p = pl1.getPlayerPawn();
@@ -624,13 +617,17 @@ public class Game : MonoBehaviour {
 		initialCity.removePawn(p);
 		destinationCity.addPawn(p);
 
-        if (rolekind == RoleKind.Medic)
-		{
-			resolveMedic(initialCity);
-		}
-        else if (rolekind == RoleKind.ContainmentSpecialist)
-		{
-			resolveContainmentSpecialist(initialCity);
+		if (rolekind == RoleKind.Medic) {
+			resolveMedic (initialCity);
+		} else if (rolekind == RoleKind.ContainmentSpecialist) {
+			resolveContainmentSpecialist (initialCity);
+		} else if (rolekind == RoleKind.ContainmentSpecialist) {
+			Dictionary<Color,int> cubes = destinationCity.getNumOfCubes ();
+			foreach(Color c in cubes.Keys){
+				if (cubes [c] > 1) {
+					destinationCity.removeCubes (diseases[c],1);
+				}
+			}
 		}
     }
 

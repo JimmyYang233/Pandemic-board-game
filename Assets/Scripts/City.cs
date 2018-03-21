@@ -343,4 +343,8 @@ public class City : MonoBehaviour {
             }
         }
     }
+
+	public Dictionary<Color, int> getNumOfCubes(){
+		return numberOfCubes;
+	}
 }
