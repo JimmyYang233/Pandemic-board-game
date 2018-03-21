@@ -10,6 +10,7 @@ public class Player {
 	private bool oncePerTurnAction = false;
     private Role curRole = null;
 	private List<PlayerCard> handCard = new List<PlayerCard>();
+    private bool mobileHospitalActivated = false;
 
 	//connect this player with the PhotonPlayer
 	//not: in the future, we need to add argument"role" to constructor
@@ -19,6 +20,15 @@ public class Player {
 
 	}
 
+    public void setMobileHospitalActivated(bool toggle)
+    {
+        mobileHospitalActivated = toggle;
+    }
+
+    public bool getMobileHospitalActivated()
+    {
+        return mobileHospitalActivated;
+    }
 
     // public boolean consentRequest(){
 

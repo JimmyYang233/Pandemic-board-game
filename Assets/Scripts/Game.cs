@@ -334,39 +334,16 @@ public class Game : MonoBehaviour {
 
 		if (rolekind == RoleKind.Medic)
 		{
-			foreach (Disease disease in diseases.Values)
-			{
-				if (disease.isCured())
-				{
-					int cubeNumber = destinationCity.getCubeNumber(disease);
-					destinationCity.removeCubes(disease, cubeNumber);
-					disease.addCubes(cubeNumber);
-                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-                   // Debug.Log(disease.getNumOfDiseaseCubeLeft());
-                    int num = disease.getNumOfDiseaseCubeLeft();
-					if (num == MAX)
-					{
-						disease.eradicate();
-					}
-				}
-
-			}
+            resolveMedic(destinationCity);
 		}
-
 		else if (rolekind == RoleKind.ContainmentSpecialist)
 		{
-			foreach (Disease disease in diseases.Values)
-			{
-				int cubeNumber = destinationCity.getCubeNumber(disease);
-				if (cubeNumber > 1)
-				{
-					destinationCity.removeCubes(disease, 1);
-					disease.addCubes(1);
-                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-                    //Debug.Log(disease.getNumOfDiseaseCubeLeft());
-                }
-			}
+            resolveContainmentSpecialist(destinationCity);
 		}
+        if (player.getMobileHospitalActivated())
+        {
+            //TODO call treat, to remove 1 cube from the city
+        }
 		player.decreaseRemainingAction();
 		record.drive(currentPlayer, destinationCity);
 		//Debug.Log ("move succeed");
@@ -553,6 +530,12 @@ public class Game : MonoBehaviour {
 
 		currentPlayer.refillAction();
 		currentPlayer.setOncePerturnAction(false);
+
+        if (currentPlayer.getMobileHospitalActivated())
+        {
+            currentPlayer.setMobileHospitalActivated(false);
+        }
+
 		int playerCardDeckSize = playerCardDeck.Count;
 		//Note that epidemic card is resolved in "draw" method
 		//if there is no enough player cards in the deck, players lose the game
@@ -736,7 +719,13 @@ public class Game : MonoBehaviour {
 		}
 	}
 
-	public Player findEventCardHolder(EventKind eCard){
+    public void mobileHospital(Player pl1)
+    {
+        pl1.setMobileHospitalActivated(true);
+        dropEventCard(EventKind.MobileHospital);
+    }
+
+    public Player findEventCardHolder(EventKind eCard){
 		Player holder = null;
 
 		foreach(Player pl in players){
