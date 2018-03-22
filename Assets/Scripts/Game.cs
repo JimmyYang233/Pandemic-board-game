@@ -140,8 +140,16 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_build(string cityCardName){
-		build ((CityCard)findPlayerCard(cityCardName));
+	public void RPC_build(string initialCityName, string cityCardName){
+        if (initialCityName.Equals(String.Empty))
+        {
+            build(null, (CityCard)findPlayerCard(cityCardName));
+        }
+        else
+        {
+            build(findCity(initialCityName), (CityCard)findPlayerCard(cityCardName));
+        }
+		
 	}
 
 	[PunRPC]
@@ -151,7 +159,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_infectNextCity(){
-        Debug.Log("RPC_infectNextCity got called");
+        //Debug.Log("RPC_infectNextCity got called");
 		infectNextCity ();
 	}
 
@@ -213,7 +221,7 @@ public class Game : MonoBehaviour {
 
 	//called by front end to make all clients infect next city
 	public void InfectNextCity(){
-        Debug.Log("InfectNextCity got called");
+        //Debug.Log("InfectNextCity got called");
 		PhotonView.RPC ("RPC_infectNextCity",PhotonTargets.All);
 	}
 	#endregion
@@ -574,7 +582,7 @@ public class Game : MonoBehaviour {
 	private void infectNextCity()
 	{
 		numOfInfection++;
-		Debug.Log ("Danning kan zhe li");
+		//Debug.Log ("Danning kan zhe li");
 		InfectionCard card = getInfectionCard();
 		City city = card.getCity();
 		Color color = card.getColor();
@@ -585,7 +593,7 @@ public class Game : MonoBehaviour {
 			return;
 		}
 		if (currentPlayer == me && numOfInfection < infectionRate) {
-			Debug.Log ("num of infection is + " + numOfInfection.ToString());
+			//Debug.Log ("num of infection is + " + numOfInfection.ToString());
 			passOperation.startInfection ();
 		}
 		if (numOfInfection == infectionRate && PhotonNetwork.isMasterClient)
@@ -598,7 +606,7 @@ public class Game : MonoBehaviour {
 			oneQueitNightUsed = false;
 			return;
 		}
-		Debug.Log ("start infect city");
+		//Debug.Log ("start infect city");
 		passOperation.startInfection ();
 		//nextPlayer();
 	}
@@ -739,9 +747,9 @@ public class Game : MonoBehaviour {
 		return holder;
 	}
 
-	private bool checkForRoleExistence(Role roleKind){
+	private bool checkForRoleExistence(RoleKind roleKind){
 		foreach(Player pl in players){
-			if(pl.getRole().getRoleKind() == roleKind)
+			if(pl.getRoleKind() == roleKind)
 			{
 				return true;
 			}
@@ -767,9 +775,10 @@ public class Game : MonoBehaviour {
 
 		pl1.setRole (r2);
 		city.addPawn (pl1.getPlayerPawn());
+        return true;
 	}
 
-	public void newAssignment(Player pl1, Role roleKind){
+	public void newAssignment(Player pl1, RoleKind roleKind){
 		if (!swapRole (pl1, roleKind)) {
 			return;
 		}
@@ -1061,7 +1070,7 @@ public class Game : MonoBehaviour {
 				
             }
 			gameInfoController.changeCardNumber (playerCardDeck.Count);
-			Debug.Log ("player deck count"+playerCardDeck.Count);
+			//Debug.Log ("player deck count"+playerCardDeck.Count);
 
 			
 			// For debugging: After first turn, number of player card will increase
@@ -1229,39 +1238,45 @@ public class Game : MonoBehaviour {
     }
 
 
-    public void build(CityCard card)
+    public void build(City initialCity, CityCard card)
     {
         RoleKind rolekind = currentPlayer.getRoleKind();
         Pawn p = currentPlayer.getPlayerPawn();
         City currentCity = p.getCity();
-
-        if(researchStationRemain == 0)
-        {
-            //Todo: ask player to remove one Research Station   
-        }
-
-        if(rolekind != RoleKind.OperationsExpert)
+        if (rolekind != RoleKind.OperationsExpert)
         {
             currentPlayer.removeCard(card);
-			if (!currentPlayer.Equals(me))
-			{
-				playerPanel.deletePlayerCardFromOtherPlayer(currentPlayer.getRoleKind(), card);
-			}
-			else
-			{
-				mainPlayerPanel.deletePlayerCard(card);
-			}
+            if (!currentPlayer.Equals(me))
+            {
+                playerPanel.deletePlayerCardFromOtherPlayer(currentPlayer.getRoleKind(), card);
+            }
+            else
+            {
+                mainPlayerPanel.deletePlayerCard(card);
+            }
             playerDiscardPile.Add(card);
         }
-        
+
         currentCity.setHasResearch(true);
-        researchStationRemain--;
-		gameInfoController.changeResearchNumber (researchStationRemain);
+
+        if (researchStationRemain == 0)
+        {
+            if(initialCity != null)
+            {
+                initialCity.setHasResearch(false);
+            }   
+        }
+        else
+        {
+            researchStationRemain--;
+            gameInfoController.changeResearchNumber(researchStationRemain);
+        }
+
         currentPlayer.decreaseRemainingAction();
     }
 
-	public void Build(string cityCardName){
-		PhotonView.RPC ("RPC_build",PhotonTargets.All,cityCardName);
+	public void Build(string initialCityName, string cityCardName){
+		PhotonView.RPC ("RPC_build",PhotonTargets.All, initialCityName, cityCardName);
 	}
 
 
