@@ -57,7 +57,26 @@ public class Player {
 		}
 	}
 	
-	public int getHandCardNumber(){
+    public bool hasEnoughCard(Color color)
+    {
+        int cardNeeded = 5;
+        if (compareRole(RoleKind.Scientist))
+        {
+            cardNeeded = 4;
+        }
+
+        foreach (PlayerCard p in handCard)
+        {
+            if(p.getType() == CardType.CityCard && ((CityCard)p).getColor() == color)
+            {
+                cardNeeded--;
+            }
+        }
+        return cardNeeded <= 0;
+    }
+
+
+    public int getHandCardNumber(){
 		return handCard.Count;
 	}
 
