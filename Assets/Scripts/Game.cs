@@ -411,37 +411,11 @@ public class Game : MonoBehaviour {
 		}
 		if(rolekind == RoleKind.Medic)
 		{
-			foreach (Disease disease in diseases.Values)
-			{
-				if (disease.isCured())
-				{
-					int cubeNumber = destinationCity.getCubeNumber(disease);
-					destinationCity.removeCubes(disease, cubeNumber);
-					disease.addCubes(cubeNumber);
-                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-                   // Debug.Log(disease.getNumOfDiseaseCubeLeft());
-                    int num = disease.getNumOfDiseaseCubeLeft();
-					if(num == MAX)
-					{
-						disease.eradicate();
-					}
-				}
-
-			}
+			resolveMedic (destinationCity);
 		}
 		else if(rolekind == RoleKind.ContainmentSpecialist)
 		{
-			foreach(Disease disease in diseases.Values)
-			{
-				int cubeNumber = destinationCity.getCubeNumber(disease);
-				if(cubeNumber > 1)
-				{
-					destinationCity.removeCubes(disease, 1);
-					disease.addCubes(1);
-                    gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
-                   // Debug.Log(disease.getNumOfDiseaseCubeLeft());
-                }
-			}
+			resolveContainmentSpecialist (destinationCity);
 		}
 		player.decreaseRemainingAction();
 		record.directFlight(currentPlayer, destinationCity);
