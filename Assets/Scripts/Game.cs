@@ -548,6 +548,14 @@ public class Game : MonoBehaviour {
 		foreach (CityCard card in cardsToRemove)
 		{
 			player.removeCard(card);
+			if (!player.Equals(me))
+			{
+				playerPanel.deletePlayerCardFromOtherPlayer(player.getRoleKind(), card);
+			}
+			else
+			{
+				mainPlayerPanel.deletePlayerCard(card);
+			}
 			playerDiscardPile.Add(card);
 		}
 
