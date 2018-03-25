@@ -53,6 +53,15 @@ public class Record : MonoBehaviour {
         displayRecord(p1.getRoleKind().ToString() + " gave the City Card: "+ card.getCity().getCityName().ToString()+ " to " + p2.getRoleKind().ToString());
     }
 
+    public void cure(){}
+
+    public void build(City city){
+        displayRecord("A research station is built in "+ city.getCityName().ToString());
+    }
+
+    public void pass(Player p1){
+        displayRecord(p1.getRoleKind().ToString() + "'s turn ended.");
+    }
 
     public void draw(Player player, PlayerCard card){
         switch (card.getType())
@@ -90,6 +99,23 @@ public class Record : MonoBehaviour {
                 break;
         }
        
+    }
+
+
+    public void infect(City city, Disease disease, int number){
+
+        bool hasMedic = city.contains(RoleKind.Medic);
+        bool hasQS = city.contains(RoleKind.QuarantineSpecialist);
+        bool isEradicated = disease.isEradicated();
+
+        displayRecord("Infection in "+ city.getCityName().ToString()+", "+number.ToString()+" cubes will be added!");
+        if(hasMedic){
+            displayRecord("Infection is prevented by Medic");
+        }else if(hasQS){
+            displayRecord("Infection is prevented by Quarantine Specialist");
+        }if(isEradicated){
+            displayRecord("Desease has been eradicated~");
+        }
     }
 
     

@@ -90,7 +90,7 @@ public class Player {
 
     public int getNumberOfCardNeededToCure()
     {
-        int cardNeeded = 5;
+        int cardNeeded = 2;
         if (compareRole(RoleKind.Scientist))
         {
             cardNeeded = 4;

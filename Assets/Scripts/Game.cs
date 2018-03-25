@@ -575,8 +575,10 @@ public class Game : MonoBehaviour {
         }
 
 		int playerCardDeckSize = playerCardDeck.Count;
+		record.pass(currentPlayer);
 		//Note that epidemic card is resolved in "draw" method
 		//if there is no enough player cards in the deck, players lose the game
+		
 		if (!draw(currentPlayer, 2))
 		{
 			return;
@@ -596,6 +598,7 @@ public class Game : MonoBehaviour {
 		City city = card.getCity();
 		Color color = card.getColor();
 		Disease disease = diseases[color];
+		
 		outbreakedCities.Clear();
 		if (!infect(city, color, 1))
 		{
@@ -605,6 +608,7 @@ public class Game : MonoBehaviour {
 			//Debug.Log ("num of infection is + " + numOfInfection.ToString());
 			passOperation.startInfection ();
 		}
+
 		if (numOfInfection == infectionRate && PhotonNetwork.isMasterClient)
 			PhotonView.RPC ("RPC_nextPlayer", PhotonTargets.All);
 	}
@@ -997,6 +1001,8 @@ public class Game : MonoBehaviour {
         bool isEradicated = disease.isEradicated();
 
         List<City> neighbors = city.getNeighbors();
+		record.infect(city,disease,number);
+		
         foreach (City neighbor in neighbors)
         {
             if (neighbor.contains(RoleKind.QuarantineSpecialist))
@@ -1311,7 +1317,7 @@ public class Game : MonoBehaviour {
             }
             playerDiscardPile.Add(card);
         }
-
+		record.build(initialCity);
         currentCity.setHasResearch(true);
 
         if (researchStationRemain == 0)
