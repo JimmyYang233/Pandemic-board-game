@@ -11,6 +11,7 @@ public class Player {
     private Role curRole = null;
 	private List<PlayerCard> handCard = new List<PlayerCard>();
     private bool mobileHospitalActivated = false;
+    private EventCard eventCardOnTopOfRoleCard = null;
 
 	//connect this player with the PhotonPlayer
 	//not: in the future, we need to add argument"role" to constructor
@@ -19,6 +20,16 @@ public class Player {
 		this.PhotonPlayer = photonPlayer;
 
 	}
+
+    public void setEventCardOnTopOfRoleCard(EventCard card)
+    {
+        eventCardOnTopOfRoleCard = card;
+    }
+
+    public void removeEventCardOnTopOfRoleCard(EventCard card)
+    {
+        eventCardOnTopOfRoleCard = null;
+    }
 
     public void setMobileHospitalActivated(bool toggle)
     {
