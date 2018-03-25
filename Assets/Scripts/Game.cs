@@ -820,7 +820,7 @@ public class Game : MonoBehaviour {
 		
 	}
 
-    public Player findContigencyPlanner()
+    public Player findContingencyPlanner()
     {
         foreach (Player pl in players)
         {
@@ -833,7 +833,7 @@ public class Game : MonoBehaviour {
         return null;
     }
 
-    public void contigencyPlannerPutCardOnTopOfRoleCard(Player pl1, EventCard card)
+    public void contingencyPlannerPutCardOnTopOfRoleCard(Player pl1, EventCard card)
     {
         pl1.setEventCardOnTopOfRoleCard(card);
         pl1.decreaseRemainingAction();
