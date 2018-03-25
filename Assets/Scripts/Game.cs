@@ -310,9 +310,8 @@ public class Game : MonoBehaviour {
 
         foreach (Player p in players) 
 		{
-			RoleKind rk = (p!=bioTerrorist) ? selectRole():RoleKind.BioTerrorist;
-			Role r = new Role(rk);
-			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			Role r = (p != bioTerrorist) ? new Role(selectRole()) : new BioTerrorist();
+            Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
@@ -373,7 +372,15 @@ public class Game : MonoBehaviour {
         {
             //TODO call treat, to remove 1 cube from the city
         }
-		player.decreaseRemainingAction();
+        if (player.getRoleKind() == RoleKind.BioTerrorist && !((BioTerrorist)player.getRole()).getBioTerroristExtraDriveUsed())
+        {
+            ((BioTerrorist)player.getRole()).setbioTerroristExtraDriveUsed();
+        }
+        else
+        {
+            player.decreaseRemainingAction();
+        }
+		
 		record.drive(currentPlayer, destinationCity);
 		//Debug.Log ("move succeed");
 	}
@@ -556,6 +563,14 @@ public class Game : MonoBehaviour {
 		foreach (CityCard card in cardsToRemove)
 		{
 			player.removeCard(card);
+			if (!player.Equals(me))
+			{
+				playerPanel.deletePlayerCardFromOtherPlayer(player.getRoleKind(), card);
+			}
+			else
+			{
+				mainPlayerPanel.deletePlayerCard(card);
+			}
 			playerDiscardPile.Add(card);
 		}
 
@@ -828,7 +843,7 @@ public class Game : MonoBehaviour {
 		
 	}
 
-    public Player findContigencyPlanner()
+    public Player findContingencyPlanner()
     {
         foreach (Player pl in players)
         {
@@ -841,7 +856,7 @@ public class Game : MonoBehaviour {
         return null;
     }
 
-    public void contigencyPlannerPutCardOnTopOfRoleCard(Player pl1, EventCard card)
+    public void contingencyPlannerPutCardOnTopOfRoleCard(Player pl1, EventCard card)
     {
         pl1.setEventCardOnTopOfRoleCard(card);
         pl1.decreaseRemainingAction();
@@ -1148,6 +1163,14 @@ public class Game : MonoBehaviour {
         }
 
         return true;
+    }
+
+
+    public void BioTerroristDraw(Player pl)
+    {
+        InfectionCard card = infectionDeck[0];
+        infectionDeck.Remove(card);
+        record.draw(pl, card);
     }
 
     public PlayerCard AckCardToDrop(List<PlayerCard> cards)

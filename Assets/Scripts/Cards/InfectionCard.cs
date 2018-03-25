@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InfectionCard : Card 
+public class InfectionCard : PlayerCard 
 {
-	private CardType cardType;
 	private City city;
     private Color color;
 
-	public InfectionCard(City c)
+	public InfectionCard(City c) : base(CardType.InfectionCard)
     {
-        cardType = CardType.InfectionCard;
+        
         city = c;
         color = c.getColor();
     }
@@ -23,10 +22,5 @@ public class InfectionCard : Card
     public City getCity()
     {
         return city;
-    }
-
-	public CardType getType()
-    {
-        return cardType;
     }
 }
