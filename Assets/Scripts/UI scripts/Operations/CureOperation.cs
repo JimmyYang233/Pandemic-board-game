@@ -16,12 +16,13 @@ public class CureOperation : MonoBehaviour {
     Player currentPlayer;
     Maps mapInstance;
     List<CityCard> cardsToCure;
-    List<Button> children;
+    List<GameObject> children;
 
     // Use this for initialization
     void Start () {
         mapInstance = Maps.getInstance();
         cardsToCure = new List<CityCard>();
+        children = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -53,115 +54,22 @@ public class CureOperation : MonoBehaviour {
 
     public void cureBlueButtonClicked()
     {
-        cureBlue.GetComponent<Button>().interactable = false;
-        cureYellow.GetComponent<Button>().interactable = false;
-        cureBlack.GetComponent<Button>().interactable = false;
-        cureRed.GetComponent<Button>().interactable = false;
-        cancelButton.GetComponent<Button>().interactable = true;
-
-        int num = playerCardPanel.transform.GetChild(1).childCount;
-        for (int i = 0; i < num; i++)
-        {
-            Debug.Log(i);
-            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
-            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
-            if (child.GetComponent<Image>().color == Color.blue)
-            {
-                child.GetComponent<Button>().interactable = true;
-                child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
-                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseOn());
-            }
-            else
-            {
-                child.GetComponent<Button>().interactable = false;
-            }
-        }
-        confirmCure.gameObject.SetActive(true);
+        goCure(Color.blue);
     }
 
     public void cureYellowButtonClicked()
     {
-        cureBlue.GetComponent<Button>().interactable = false;
-        cureYellow.GetComponent<Button>().interactable = false;
-        cureBlack.GetComponent<Button>().interactable = false;
-        cureRed.GetComponent<Button>().interactable = false;
-        cancelButton.GetComponent<Button>().interactable = true;
-
-        int num = playerCardPanel.transform.GetChild(1).childCount;
-        for (int i = 0; i < num; i++)
-        {
-            Debug.Log(i);
-            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
-            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
-            if (child.GetComponent<Image>().color == Color.yellow)
-            {
-                child.GetComponent<Button>().interactable = true;
-                child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
-                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseOn());
-            }
-            else
-            {
-                child.GetComponent<Button>().interactable = false;
-            }
-        }
-        confirmCure.gameObject.SetActive(true);
+        goCure(Color.yellow);
     }
 
     public void cureRedButtonClicked()
     {
-        cureBlue.GetComponent<Button>().interactable = false;
-        cureYellow.GetComponent<Button>().interactable = false;
-        cureBlack.GetComponent<Button>().interactable = false;
-        cureRed.GetComponent<Button>().interactable = false;
-        cancelButton.GetComponent<Button>().interactable = true;
-
-        int num = playerCardPanel.transform.GetChild(1).childCount;
-        for (int i = 0; i < num; i++)
-        {
-            Debug.Log(i);
-            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
-            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
-            if (child.GetComponent<Image>().color == Color.red)
-            {
-                child.GetComponent<Button>().interactable = true;
-                child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
-                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseOn());
-            }
-            else
-            {
-                child.GetComponent<Button>().interactable = false;
-            }
-        }
-        confirmCure.gameObject.SetActive(true);
-
+        goCure(Color.red);
     }
 
     public void cureBlackButtonClicked()
     {
-        cureBlue.GetComponent<Button>().interactable = false;
-        cureYellow.GetComponent<Button>().interactable = false;
-        cureBlack.GetComponent<Button>().interactable = false;
-        cureRed.GetComponent<Button>().interactable = false;
-        cancelButton.GetComponent<Button>().interactable = true;
-
-        int num = playerCardPanel.transform.GetChild(1).childCount;
-        for (int i = 0; i < num; i++)
-        {
-            Debug.Log(i);
-            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
-            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
-            if (child.GetComponent<Image>().color == Color.black)
-            {
-                child.GetComponent<Button>().interactable = true;
-                child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
-                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseOn());
-            }
-            else
-            {
-                child.GetComponent<Button>().interactable = false;
-            }
-        }
-        confirmCure.gameObject.SetActive(true);
+        goCure(Color.black);
     }
 
     public void cancelButtonClicked()
@@ -172,13 +80,63 @@ public class CureOperation : MonoBehaviour {
         cureRed.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = false;
         confirmCure.gameObject.SetActive(false);
+        foreach (GameObject child in children)
+        {
+            child.GetComponent<playerCardUI>().mouseClick();
+            child.GetComponent<Button>().onClick.RemoveAllListeners();
+        }
+        int num = playerCardPanel.transform.GetChild(1).childCount;
+        for (int i = 0; i < num; i++)
+        {
+            Debug.Log(i);
+            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
+            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
+            child.GetComponent<Button>().interactable = false;
+        }
+        children.Clear();
+        cardsToCure.Clear();
 
+    }
+
+    public void startCure()
+    {
+        cancelButtonClicked();
     }
 
     private void addCardToList(String cityName)
     {
         CityCard card = currentPlayer.getCard(game.findCity(cityName));
         cardsToCure.Add(card);
+    }
+
+    private void goCure(Color color)
+    {
+        cureBlue.GetComponent<Button>().interactable = false;
+        cureYellow.GetComponent<Button>().interactable = false;
+        cureBlack.GetComponent<Button>().interactable = false;
+        cureRed.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = true;
+
+        int num = playerCardPanel.transform.GetChild(1).childCount;
+        for (int i = 0; i < num; i++)
+        {
+            Debug.Log(i);
+            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
+            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
+            if (child.GetComponent<Image>().color == color)
+            {
+                child.GetComponent<Button>().interactable = true;
+                child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
+                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseClick());
+                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<Button>().interactable = false);
+                child.GetComponent<Button>().onClick.AddListener(() => children.Add(child));
+            }
+            else
+            {
+                child.GetComponent<Button>().interactable = false;
+            }
+        }
+        confirmCure.gameObject.SetActive(true);
     }
 
 
