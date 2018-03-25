@@ -225,7 +225,7 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.All,color,name );
 	}
 
-	public void Cure(string playerRoleKind, string cardsToRemove, string diseaseColor){
+	public void Cure(string playerRoleKind, List<string> cardsToRemove, string diseaseColor){
 		PhotonView.RPC ("RPC_cure", PhotonTargets.All, playerRoleKind, cardsToRemove, diseaseColor);
 	}
 
