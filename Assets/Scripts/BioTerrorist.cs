@@ -28,4 +28,8 @@ public class BioTerrorist : Role {
     {
         bioTerroristExtraDriveUsed = true;
     }
+
+	public bool getIsCaptured(){
+		return isCaptured;
+	}
 }

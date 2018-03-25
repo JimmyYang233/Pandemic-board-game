@@ -24,7 +24,6 @@ public class PlayerManagement : MonoBehaviour {
 	public Player FindLocalPlayer(PhotonPlayer photonPlayer){
 		int index = Players.FindIndex (x => x.PhotonPlayer == photonPlayer);
 		return Players [index];
-		Debug.Log (index);
 	}
 
 }
