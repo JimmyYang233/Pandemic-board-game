@@ -69,6 +69,7 @@ public class CureOperation : MonoBehaviour {
             {
                 child.GetComponent<Button>().interactable = true;
                 child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
+                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseOn());
             }
             else
             {
@@ -96,6 +97,7 @@ public class CureOperation : MonoBehaviour {
             {
                 child.GetComponent<Button>().interactable = true;
                 child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
+                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseOn());
             }
             else
             {
@@ -123,6 +125,7 @@ public class CureOperation : MonoBehaviour {
             {
                 child.GetComponent<Button>().interactable = true;
                 child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
+                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseOn());
             }
             else
             {
@@ -151,6 +154,7 @@ public class CureOperation : MonoBehaviour {
             {
                 child.GetComponent<Button>().interactable = true;
                 child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
+                child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseOn());
             }
             else
             {
