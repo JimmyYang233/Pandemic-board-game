@@ -563,6 +563,7 @@ public class Game : MonoBehaviour {
 		}
 
 		d.cure();
+		gameInfoController.cure (d.getColor());
 		int num = d.getNumOfDiseaseCubeLeft();
 		if(num == MAX)
 		{
