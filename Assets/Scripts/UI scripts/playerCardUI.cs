@@ -6,9 +6,13 @@ public class playerCardUI : MonoBehaviour {
 	bool start=false;
 	Vector3 target;
 	public float speed;
+	private Vector3 addSize;
+	private Vector3 originalSize;
 	public void Awake(){
 		start = false;
 		speed = 40;
+		addSize = new Vector3(1.5f,1.5f,1.5f);
+		originalSize = new Vector3(1,1,1);
 	}
 	public void Update(){
 		if (start) {
@@ -26,12 +30,12 @@ public class playerCardUI : MonoBehaviour {
     public void mouseOn()
     {
         this.transform.position += new Vector3(0,40,0);
-        this.transform.localScale = this.transform.localScale * 1.5f;
+		this.transform.localScale = addSize;
     }
 
     public void mouseLeave()
     {
         this.transform.position += new Vector3(0, -40, 0);
-        this.transform.localScale = this.transform.localScale /1.5f;
+		this.transform.localScale = originalSize;
     }
 }
