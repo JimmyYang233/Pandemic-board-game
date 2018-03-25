@@ -102,14 +102,9 @@ public class Record : MonoBehaviour {
     }
 
 
-    public void infect(City city, Disease disease, int number){
-
-        bool hasMedic = city.contains(RoleKind.Medic);
-        bool hasQS = city.contains(RoleKind.QuarantineSpecialist);
-        bool isEradicated = disease.isEradicated();
-
-        displayRecord("Infection in "+ city.getCityName().ToString()+", "+number.ToString()+" cubes will be added!");
-        if(hasMedic){
+    public void infect(City city, int number, bool hasMedic,bool hasQS,bool isCured,bool isEradicated){
+        displayRecord("Infection in "+ city.getCityName().ToString()+": "+number.ToString()+" cube will be added!");
+        if(hasMedic&&isCured){
             displayRecord("Infection is prevented by Medic");
         }else if(hasQS){
             displayRecord("Infection is prevented by Quarantine Specialist");
