@@ -537,6 +537,27 @@ public class Game : MonoBehaviour {
 		record.treat(currentPlayer, treatNumber, d, currentCity);
 	}
 
+	//cure
+	private void cure(Player player, List<CityCard> cardsToRemove, Disease d)
+	{
+		foreach (CityCard card in cardsToRemove)
+		{
+			player.removeCard(card);
+			playerDiscardPile.Add(card);
+		}
+
+		d.cure();
+		int num = d.getNumOfDiseaseCubeLeft();
+		if(num == MAX)
+		{
+			d.isEradicated();
+		}
+
+		//UI TODO: set disease’s cure marker
+
+		currentPlayer.decreaseRemainingAction();
+	}
+
 	//pass
 	private void endTurn()
 	{
@@ -561,27 +582,6 @@ public class Game : MonoBehaviour {
 		}
 		currentPhase = GamePhase.InfectCities;
 		numOfInfection = 0;
-	}
-
-    //cure
-    private void cure(Player player, List<CityCard> cardsToRemove, Disease d)
-	{
-		foreach (CityCard card in cardsToRemove)
-		{
-			player.removeCard(card);
-			playerDiscardPile.Add(card);
-		}
-
-		d.cure();
-		int num = d.getNumOfDiseaseCubeLeft();
-		if(num == MAX)
-		{
-			d.isEradicated();
-		}
-
-		//UI TODO: set disease’s cure marker
-
-		currentPlayer.decreaseRemainingAction();
 	}
 	#endregion
 

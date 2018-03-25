@@ -40,6 +40,12 @@ public class BasicOperation : MonoBehaviour {
                 {
                     treatButton.GetComponent<Button>().interactable = true;
                 }
+                List<CityCard> cityCards = new List<CityCard>();
+                if(currentPlayer.hasEnoughCard(Color.red)|| currentPlayer.hasEnoughCard(Color.blue)|| currentPlayer.hasEnoughCard(Color.black)|| currentPlayer.hasEnoughCard(Color.yellow))
+                {
+                    cureButton.GetComponent<Button>().interactable = true;
+                }
+
                 List<Player> players = game.getPlayers(currentCity);
                 if (players.Count > 1)
                 {
@@ -57,6 +63,7 @@ public class BasicOperation : MonoBehaviour {
             {
                 moveButton.GetComponent<Button>().interactable = false;
                 treatButton.GetComponent<Button>().interactable = false;
+                cureButton.GetComponent<Button>().interactable = false;
                 shareButton.GetComponent<Button>().interactable = false;
 				buildButton.GetComponent<Button> ().interactable = false;
                 passButton.GetComponent<Button>().interactable = true;
@@ -72,6 +79,7 @@ public class BasicOperation : MonoBehaviour {
     {
         moveButton.GetComponent<Button>().interactable = false;
         treatButton.GetComponent<Button>().interactable = false;
+        cureButton.GetComponent<Button>().interactable = false;
         shareButton.GetComponent<Button>().interactable = false;
         buildButton.GetComponent<Button>().interactable = false;
         passButton.GetComponent<Button>().interactable = false;

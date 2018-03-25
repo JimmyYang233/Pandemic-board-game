@@ -25,6 +25,7 @@ public class ShareOperation : MonoBehaviour {
     bool isTake;
     PCPanelController pc;
 	string roleSlected;
+    GameObject cardToShare;
 
 
     void Start()
@@ -55,6 +56,7 @@ public class ShareOperation : MonoBehaviour {
             if (name == currentCity.getCityName().ToString())
             {
                 child.GetComponent<Button>().interactable = true;
+                cardToShare = child;
                 child.GetComponent<Button>().onClick.AddListener(check);
             }
             else
@@ -152,6 +154,7 @@ public class ShareOperation : MonoBehaviour {
         }
 		else{
             informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He reject, maybe you can try again";
+            cardToShare.GetComponent<Button>().onClick.RemoveAllListeners();
         }
         cancel();
         waitingPanel.SetActive(false);
