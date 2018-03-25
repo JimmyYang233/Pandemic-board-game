@@ -15,13 +15,13 @@ public class CureOperation : MonoBehaviour {
     public Button confirmCure;
     Player currentPlayer;
     Maps mapInstance;
-    List<CityCard> cardsToCure;
+    List<String> cardsToCure;
     List<GameObject> children;
 
     // Use this for initialization
     void Start () {
         mapInstance = Maps.getInstance();
-        cardsToCure = new List<CityCard>();
+        cardsToCure = new List<String>();
         children = new List<GameObject>();
 	}
 	
@@ -105,8 +105,7 @@ public class CureOperation : MonoBehaviour {
 
     private void addCardToList(String cityName)
     {
-        CityCard card = currentPlayer.getCard(game.findCity(cityName));
-        cardsToCure.Add(card);
+        cardsToCure.Add(cityName);
     }
 
     private void goCure(Color color)
