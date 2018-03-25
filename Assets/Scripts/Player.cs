@@ -12,6 +12,8 @@ public class Player {
 	private List<PlayerCard> handCard = new List<PlayerCard>();
     private bool mobileHospitalActivated = false;
     private EventCard eventCardOnTopOfRoleCard = null;
+    
+
 
 	//connect this player with the PhotonPlayer
 	//not: in the future, we need to add argument"role" to constructor
@@ -169,8 +171,17 @@ public class Player {
 	}
 
 	public void refillAction(){
+        if (compareRole(RoleKind.BioTerrorist))
+        {
+            refillDriveAction();
+        }
 		remainingAction = maximumAction;
 	}
+
+    public void refillDriveAction()
+    {
+        ((BioTerrorist)curRole).refillDriveAction();
+    }
 
 	public int getRemainingAction()
     {
@@ -191,7 +202,10 @@ public class Player {
 		if(compareRole(RoleKind.Generalist)){
 			this.maximumAction = 5;
 		}
-		else{
+		else if(compareRole(RoleKind.BioTerrorist)){
+            maximumAction = 2;
+        }
+        else{
 			this.maximumAction = 4;
 		}
 		refillAction();
