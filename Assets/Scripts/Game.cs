@@ -825,7 +825,7 @@ public class Game : MonoBehaviour {
 		Player pl = findEventCardHolder (eKind);
 		EventCard eCard = EventCard.getEventCard (eKind);
 		if (pl == null) {
-            pl = findContigencyPlanner();
+			pl = findContingencyPlanner();
             if(pl == null)
             {
                 Debug.Log("No player is holding this card. Game.cs: dropEventCard(EventKind)");
