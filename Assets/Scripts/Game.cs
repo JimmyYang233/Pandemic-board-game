@@ -1013,11 +1013,11 @@ public class Game : MonoBehaviour {
         Disease disease = diseases[color];
         bool hasMedic = city.contains(RoleKind.Medic);
         bool hasQS = city.contains(RoleKind.QuarantineSpecialist);
+		bool isCured = disease.isCured();
         bool isEradicated = disease.isEradicated();
 
         List<City> neighbors = city.getNeighbors();
-		record.infect(city,disease,number);
-		
+
         foreach (City neighbor in neighbors)
         {
             if (neighbor.contains(RoleKind.QuarantineSpecialist))
@@ -1027,7 +1027,9 @@ public class Game : MonoBehaviour {
             }
         }
 
-        if (hasQS || hasMedic || isEradicated) return true;
+		record.infect(city,number,hasMedic,hasQS,isCured,isEradicated);
+
+        if ((hasQS&&isCured) || hasMedic || isEradicated) return true;
 
         outbreakedCities.Add(city);
         int cubeNumber = city.getCubeNumber(color);
