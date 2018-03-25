@@ -179,13 +179,18 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_cure(string playerRoleKind, List<string> cardsToRemoveName, string diseaseColor){
+	public void RPC_cure(string playerRoleKind, string diseaseColor, string card1, string card2, string card3, string card4, string card5){
 		Player player = findPlayer (playerRoleKind);
 		List<CityCard> cityCardsToRemove = new List<CityCard>();
-		foreach (string cardName in cardsToRemoveName) {
-			cityCardsToRemove.Add((CityCard)findPlayerCard(cardName));
-		}
-		Disease disease = findDisease(diseaseColor);
+		cityCardsToRemove.Add((CityCard)findPlayerCard(card1));
+        cityCardsToRemove.Add((CityCard)findPlayerCard(card2));
+        cityCardsToRemove.Add((CityCard)findPlayerCard(card3));
+        cityCardsToRemove.Add((CityCard)findPlayerCard(card4));
+        if (!card5.Equals(""))
+        {
+            cityCardsToRemove.Add((CityCard)findPlayerCard(card1));
+        }
+        Disease disease = findDisease(diseaseColor);
 		cure (player, cityCardsToRemove, disease);
 	}
 	#endregion
@@ -225,7 +230,17 @@ public class Game : MonoBehaviour {
 	}
 
 	public void Cure(string playerRoleKind, List<string> cardsToRemove, string diseaseColor){
-		PhotonView.RPC ("RPC_cure", PhotonTargets.All, playerRoleKind, cardsToRemove, diseaseColor);
+        string card1 = cardsToRemove[0];
+        string card2 = cardsToRemove[1];
+        string card3 = cardsToRemove[2];
+        string card4 = cardsToRemove[3];
+        string card5 = "";
+        if (cardsToRemove.Count > 4)
+        {
+            card5 = cardsToRemove[4];
+        }
+        
+        PhotonView.RPC ("RPC_cure", PhotonTargets.All, playerRoleKind, diseaseColor, card1, card2, card3, card4, card5);
 	}
 
 	public void EndTurn(){
