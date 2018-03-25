@@ -82,7 +82,7 @@ public class CureOperation : MonoBehaviour {
         confirmCure.gameObject.SetActive(false);
         foreach (GameObject child in children)
         {
-            child.GetComponent<playerCardUI>().mouseLeave();
+            child.GetComponent<playerCardUI>().mouseClick();
             child.GetComponent<Button>().onClick.RemoveAllListeners();
         }
         int num = playerCardPanel.transform.GetChild(1).childCount;
