@@ -145,11 +145,6 @@ public class City : MonoBehaviour {
         displayCube();
     }
 
-    public void removeNormalCubes(int num)
-    {
-
-    }
-
     public bool hasCubes()
     {
         foreach(int i in numberOfCubes.Values)

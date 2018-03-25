@@ -70,11 +70,7 @@ public class Player {
 	
     public bool hasEnoughCard(Color color)
     {
-        int cardNeeded = 5;
-        if (compareRole(RoleKind.Scientist))
-        {
-            cardNeeded = 4;
-        }
+        int cardNeeded = getNumberOfCardNeededToCure();
 
         foreach (PlayerCard p in handCard)
         {
@@ -86,6 +82,16 @@ public class Player {
         return cardNeeded <= 0;
     }
 
+    public int getNumberOfCardNeededToCure()
+    {
+        int cardNeeded = 5;
+        if (compareRole(RoleKind.Scientist))
+        {
+            cardNeeded = 4;
+        }
+
+        return cardNeeded;
+    }
 
     public int getHandCardNumber(){
 		return handCard.Count;
