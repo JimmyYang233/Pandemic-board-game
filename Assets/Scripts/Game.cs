@@ -178,6 +178,17 @@ public class Game : MonoBehaviour {
 	public void RPC_notifyResolveEpidemic(){
 		notifyResolveEpidemic ();
 	}
+
+	[PunRPC]
+	public void RPC_cure(string playerRoleKind, List<string> cardsToRemoveName, string diseaseColor){
+		Player player = findPlayer (playerRoleKind);
+		List<CityCard> cityCardsToRemove = new List<CityCard>();
+		foreach (string cardName in cardsToRemoveName) {
+			cityCardsToRemove.Add((CityCard)findPlayerCard(cardName));
+		}
+		Disease disease = diseases [diseaseColor];
+		cure (player, cityCardsToRemove, disease);
+	}
 	#endregion
 
 	//called by chatbox to send chat message
@@ -212,6 +223,10 @@ public class Game : MonoBehaviour {
 
 	public void TreatDisease(string color, string name){
 		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.All,color,name );
+	}
+
+	public void Cure(string playerRoleKind, string cardsToRemove, string diseaseColor){
+		PhotonView.RPC ("RPC_cure", PhotonTargets.All, playerRoleKind, cardsToRemove, diseaseColor);
 	}
 
 	public void EndTurn(){
