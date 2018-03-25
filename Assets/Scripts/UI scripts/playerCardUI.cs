@@ -11,6 +11,7 @@ public class playerCardUI : MonoBehaviour {
 	private Vector3 originalPosition;
 	private Vector3 originalSize;
 	bool isEventCard=false;
+	bool isSelected=false;
 	public void Awake(){
 		isEventCard = false;
 		start = false;
@@ -24,8 +25,6 @@ public class playerCardUI : MonoBehaviour {
 			transform.position = Vector3.MoveTowards(transform.position, target, step);
 			if (target == transform.position) {
 				start = false;
-				addPosition = this.transform.position + new Vector3 (0, 40, 0);
-				originalPosition = this.transform.position;
 			}
 		}
 	}
@@ -36,19 +35,22 @@ public class playerCardUI : MonoBehaviour {
 	}
     public void mouseOn()
     {
-		if (!start) {
-			this.transform.position = addPosition;
-			this.transform.localScale = addSize;
-		} 
-
+        this.transform.position += new Vector3(0,40,0);
+		this.transform.localScale = addSize;
     }
-
+	public void mouseClick(){
+		if (!isSelected) {
+			isSelected = true;
+		} else {
+			isSelected = false;
+			mouseLeave();
+		}
+	}
     public void mouseLeave()
     {
-		if (!start) {
-			this.transform.position = originalPosition;
+		if (!isSelected) {
+			this.transform.position += new Vector3 (0, -40, 0);
 			this.transform.localScale = originalSize;
 		}
-
     }
 }
