@@ -290,8 +290,6 @@ public class Game : MonoBehaviour {
 
         if(challenge == Challenge.BioTerroist)
         {
-            UnityEngine.Random.seed = 34;
-
             bioTerrorist = players[UnityEngine.Random.Range(0, numOfPlayer+1)];
         }
 
