@@ -16,7 +16,7 @@ public class Game : MonoBehaviour {
 	[SerializeField]
     private int infectionRate=2;
     private int[] infectionArray;
-    private int infectionCardDrawn= 0 ;
+    private int infectionCardDrawn;
     private bool isnewGame = true;
 	[SerializeField]
     private int outbreaksValue = 0;
@@ -38,7 +38,6 @@ public class Game : MonoBehaviour {
     private List<PlayerCard> playerDiscardPile = new List<PlayerCard>();
     private Dictionary<Color, Disease> diseases = new Dictionary<Color, Disease>();
 	private List<City> cities;
-	private int numOfPlayer;
 	private Player me;
 	private CityCard cardToShare;
 	private Player playerToShare;
@@ -305,7 +304,7 @@ public class Game : MonoBehaviour {
 
         if(challenge == Challenge.BioTerroist)
         {
-            bioTerrorist = players[UnityEngine.Random.Range(0, numOfPlayer+1)];
+			bioTerrorist = players[UnityEngine.Random.Range(0, players.Count+1)];
         }
 
         foreach (Player p in players) 
@@ -798,8 +797,6 @@ public class Game : MonoBehaviour {
 			Debug.Log ("Role already exist in the game. Game.cs: swapRole");
 			return false;
 		}
-
-		Role r1 = pl1.getRole ();
 		Pawn pawn = pl1.getPlayerPawn ();
 		City city = pawn.getCity ();
 		city.removePawn (pawn);

@@ -33,6 +33,10 @@ public class Player {
         eventCardOnTopOfRoleCard = null;
     }
 
+	public EventCard getEventCardOnTopOfRoleCard(){
+		return eventCardOnTopOfRoleCard;
+	}
+
     public void setMobileHospitalActivated(bool toggle)
     {
         mobileHospitalActivated = toggle;
