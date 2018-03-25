@@ -286,17 +286,25 @@ public class Game : MonoBehaviour {
 		}
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
 
-		foreach (Player p in players)
+        Player bioTerrorist = null;
+
+        if(challenge == Challenge.BioTerroist)
+        {
+            UnityEngine.Random.seed = 34;
+
+            bioTerrorist = players[UnityEngine.Random.Range(0, numOfPlayer+1)];
+        }
+
+        foreach (Player p in players) 
 		{
-			RoleKind rk = selectRole();
+			RoleKind rk = (p!=bioTerrorist) ? selectRole():RoleKind.BioTerrorist;
 			Role r = new Role(rk);
 			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
-
-
 		}
+
 		List<Color> dc = mapInstance.getDiseaseColor();
 		foreach (Color c in dc)
 		{
@@ -628,7 +636,7 @@ public class Game : MonoBehaviour {
 		if (rolekind == RoleKind.Medic) {
 			resolveMedic (initialCity);
 		} else if (rolekind == RoleKind.ContainmentSpecialist) {
-			resolveContainmentSpecialist (initialCity);
+			resolveContainmentSpecialist (destinationCity);
 		} else if (rolekind == RoleKind.ContainmentSpecialist) {
 			Dictionary<Color,int> cubes = destinationCity.getNumOfCubes ();
 			foreach(Color c in cubes.Keys){
@@ -636,7 +644,7 @@ public class Game : MonoBehaviour {
 					destinationCity.removeCubes (diseases[c],1);
 				}
 			}
-		}
+		} 
     }
 
 	private void resolveMedic(City destinationCity){
@@ -789,20 +797,60 @@ public class Game : MonoBehaviour {
 		Player pl = findEventCardHolder (eKind);
 		EventCard eCard = EventCard.getEventCard (eKind);
 		if (pl == null) {
-			Debug.Log ("No player is holding this card. Game.cs: dropEventCard(EventKind)");
+            pl = findContigencyPlanner();
+            if(pl == null)
+            {
+                Debug.Log("No player is holding this card. Game.cs: dropEventCard(EventKind)");
+            }
+            else
+            {
+                pl.removeEventCardOnTopOfRoleCard();
+            }
 		}
-		pl.removeCard (eCard);
-		playerDiscardPile.Add (eCard);
+        else
+        {
+            pl.removeCard (eCard);
+		    playerDiscardPile.Add (eCard);
+        }
+		
 	}
+
+    public Player findContigencyPlanner()
+    {
+        foreach (Player pl in players)
+        {
+            if(pl.getRole().getRoleKind() == RoleKind.ContingencyPlanner)
+            {
+                return pl;
+            }
+        }
+
+        return null;
+    }
+
+    public void contigencyPlannerPutCardOnTopOfRoleCard(Player pl1, EventCard card)
+    {
+        pl1.setEventCardOnTopOfRoleCard(card);
+        pl1.decreaseRemainingAction();
+    }
 
     public RoleKind selectRole()
     {	
 		UnityEngine.Random.seed = 34;
-        RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
 
-        while(roleKindTaken.Contains(rkRandom))
+        
+        int num = 8;
+
+        if (hasDLC)
         {
-            rkRandom =  (RoleKind)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(RoleKind)).Length));
+            num = 14;
+        }
+
+        RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
+
+        while (roleKindTaken.Contains(rkRandom))
+        {
+            rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
         }
 
         roleKindTaken.Add(rkRandom);
