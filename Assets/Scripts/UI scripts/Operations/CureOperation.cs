@@ -17,6 +17,7 @@ public class CureOperation : MonoBehaviour {
     Maps mapInstance;
     List<String> cardsToCure;
     List<GameObject> children;
+    private Color colorToCure = Color.blue;
 
     // Use this for initialization
     void Start () {
@@ -100,6 +101,7 @@ public class CureOperation : MonoBehaviour {
 
     public void startCure()
     {
+        game.Cure(currentPlayer.getRoleKind().ToString(), cardsToCure, "Color." + colorToCure.ToString());
         cancelButtonClicked();
     }
 
@@ -135,6 +137,7 @@ public class CureOperation : MonoBehaviour {
                 child.GetComponent<Button>().interactable = false;
             }
         }
+        colorToCure = color;
         confirmCure.gameObject.SetActive(true);
     }
 
