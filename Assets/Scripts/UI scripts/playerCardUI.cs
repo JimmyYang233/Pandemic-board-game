@@ -35,13 +35,18 @@ public class playerCardUI : MonoBehaviour {
 	}
     public void mouseOn()
     {
-        this.transform.position += new Vector3(0,40,0);
-		this.transform.localScale = addSize;
+        if (!isSelected)
+        {
+            this.transform.position += new Vector3(0, 40, 0);
+            this.transform.localScale = addSize;
+        }
+        
     }
 	public void mouseClick(){
 		if (!isSelected) {
 			isSelected = true;
-		} else {
+            mouseLeave();
+        } else {
 			isSelected = false;
 			mouseLeave();
 		}
