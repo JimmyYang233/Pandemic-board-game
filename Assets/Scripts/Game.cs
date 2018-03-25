@@ -186,7 +186,7 @@ public class Game : MonoBehaviour {
 		foreach (string cardName in cardsToRemoveName) {
 			cityCardsToRemove.Add((CityCard)findPlayerCard(cardName));
 		}
-		Disease disease = diseases [diseaseColor];
+		Disease disease = findDisease(diseaseColor);
 		cure (player, cityCardsToRemove, disease);
 	}
 	#endregion
@@ -1541,6 +1541,10 @@ public class Game : MonoBehaviour {
 
 	public RoleKind findRoleKind(string roleKind){
 		return (RoleKind)Enum.Parse (typeof(RoleKind), roleKind);
+	}
+
+	public Disease findDisease(string diseaseColorName){
+		return diseases [findColor (diseaseColorName)];
 	}
 	#endregion
 
