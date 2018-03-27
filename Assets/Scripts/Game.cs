@@ -895,7 +895,8 @@ public class Game : MonoBehaviour {
                 ic.getCity().addCubes(i);
                 diseases[ic.getColor()].removeCubes(i);
                 gameInfoController.changeDiseaseNumber(ic.getColor(), diseases[ic.getColor()].getNumOfDiseaseCubeLeft());
-            }
+				record.infect(ic.getCity(),i);
+			}
         }
     }
 
@@ -1055,6 +1056,7 @@ public class Game : MonoBehaviour {
         else
         {
 			Debug.Log ("An outbreak happens in " + city.ToString());
+			record.outbreak(city);
             outbreaksValue++;
             gameInfoController.displayOutbreak();
             if (outbreaksValue == maxOutbreaksValue)
