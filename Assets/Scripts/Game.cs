@@ -44,6 +44,7 @@ public class Game : MonoBehaviour {
 	private Player playerToShare;
 	private bool switchPlayer = false;
 	private int numOfInfection = 0;
+	private Player BioTerroristVolunteer = null;
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
@@ -320,7 +321,7 @@ public class Game : MonoBehaviour {
 
         if(challenge == Challenge.BioTerroist)
         {
-			bioTerrorist = players[UnityEngine.Random.Range(0, players.Count+1)];
+			bioTerrorist = (BioTerroristVolunteer==null) ? players[UnityEngine.Random.Range(0, players.Count+1)] : BioTerroristVolunteer;
         }
 
         foreach (Player p in players) 
@@ -817,7 +818,7 @@ public class Game : MonoBehaviour {
 		Player pl = findEventCardHolder (eKind);
 		EventCard eCard = EventCard.getEventCard (eKind);
 		if (pl == null) {
-			pl = findContingencyPlanner();
+			pl = findPlayer(RoleKind.ContingencyPlanner);
             if(pl == null)
             {
                 Debug.Log("No player is holding this card. Game.cs: dropEventCard(EventKind)");
@@ -835,18 +836,7 @@ public class Game : MonoBehaviour {
 		
 	}
 
-    public Player findContingencyPlanner()
-    {
-        foreach (Player pl in players)
-        {
-            if(pl.getRole().getRoleKind() == RoleKind.ContingencyPlanner)
-            {
-                return pl;
-            }
-        }
-
-        return null;
-    }
+    
 
     public void contingencyPlannerPutCardOnTopOfRoleCard(Player pl1, EventCard card)
     {
@@ -1233,12 +1223,14 @@ public class Game : MonoBehaviour {
 
     public void nextPlayer()
     {
-        currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
+		currentPlayer =(challenge == Challenge.BioTerroist) ? findPlayer (RoleKind.BioTerrorist):players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
-
+	public void setBioTerroristVolunteer(Player pl){
+		BioTerroristVolunteer = pl;
+	}
 
     
 
