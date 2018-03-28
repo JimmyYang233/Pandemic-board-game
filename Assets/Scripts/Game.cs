@@ -43,6 +43,7 @@ public class Game : MonoBehaviour {
 	private Player playerToShare;
 	private bool switchPlayer = false;
 	private int numOfInfection = 0;
+	private Player BioTerroristVolunteer = null;
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
@@ -319,7 +320,7 @@ public class Game : MonoBehaviour {
 
         if(challenge == Challenge.BioTerroist)
         {
-			bioTerrorist = players[UnityEngine.Random.Range(0, players.Count+1)];
+			bioTerrorist = (BioTerroristVolunteer==null) ? players[UnityEngine.Random.Range(0, players.Count+1)] : BioTerroristVolunteer;
         }
 
         foreach (Player p in players) 
@@ -1226,7 +1227,9 @@ public class Game : MonoBehaviour {
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
-
+	public void setBioTerroristVolunteer(Player pl){
+		BioTerroristVolunteer = pl;
+	}
 
     
 
