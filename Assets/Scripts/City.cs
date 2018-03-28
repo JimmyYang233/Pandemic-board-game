@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // PlayerScript requires the GameObject to have a Rigidbody component
+[System.Serializable]
 public class City : MonoBehaviour {
 
 	GameInfoDisplay gameInfo;

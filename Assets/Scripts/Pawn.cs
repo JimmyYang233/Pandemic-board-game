@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Pawn : MonoBehaviour {
 	public RoleKind rolekind;
     private City currentCity;

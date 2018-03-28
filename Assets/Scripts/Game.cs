@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Game : MonoBehaviour {
 	public static Game Instance;
 	public PhotonView PhotonView;
