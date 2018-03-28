@@ -3913,6 +3913,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCardPrefab: {fileID: 1365530616001778, guid: d81038025b0dcf0439693c95dbcb3aad,
     type: 2}
+  eventCardPrefab: {fileID: 1563410207794540, guid: f68bc34d0a3a94d2e8b878e89b746785,
+    type: 2}
   playerCardStart: {fileID: 532244875}
   eventCardStart: {fileID: 752810892}
   radius: 70

@@ -7,6 +7,7 @@ public class PCPanelController : MonoBehaviour {
     int cityCardNum;
     int eventCardNum;
     public GameObject PlayerCardPrefab;
+	public GameObject eventCardPrefab;
     public GameObject playerCardStart;
     public Transform eventCardStart;
 
@@ -127,7 +128,7 @@ public class PCPanelController : MonoBehaviour {
     {
         eventCardNum++;
 
-        GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject g = Instantiate(eventCardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
 
         t.text = e.ToString();
