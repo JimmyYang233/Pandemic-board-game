@@ -815,7 +815,7 @@ public class Game : MonoBehaviour {
 		Player pl = findEventCardHolder (eKind);
 		EventCard eCard = EventCard.getEventCard (eKind);
 		if (pl == null) {
-			pl = findContingencyPlanner();
+			pl = findPlayer(RoleKind.ContingencyPlanner);
             if(pl == null)
             {
                 Debug.Log("No player is holding this card. Game.cs: dropEventCard(EventKind)");
@@ -833,18 +833,7 @@ public class Game : MonoBehaviour {
 		
 	}
 
-    public Player findContingencyPlanner()
-    {
-        foreach (Player pl in players)
-        {
-            if(pl.getRole().getRoleKind() == RoleKind.ContingencyPlanner)
-            {
-                return pl;
-            }
-        }
-
-        return null;
-    }
+    
 
     public void contingencyPlannerPutCardOnTopOfRoleCard(Player pl1, EventCard card)
     {
@@ -1228,7 +1217,7 @@ public class Game : MonoBehaviour {
 
     public void nextPlayer()
     {
-        currentPlayer = players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
+		currentPlayer =(challenge == Challenge.BioTerroist) ? findPlayer (RoleKind.BioTerrorist):players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
