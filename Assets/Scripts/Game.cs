@@ -563,6 +563,7 @@ public class Game : MonoBehaviour {
 		}
 
 		d.cure();
+		gameInfoController.cure (d.getColor());
 		int num = d.getNumOfDiseaseCubeLeft();
 		if(num == MAX)
 		{
@@ -883,7 +884,8 @@ public class Game : MonoBehaviour {
                 ic.getCity().addCubes(i);
                 diseases[ic.getColor()].removeCubes(i);
                 gameInfoController.changeDiseaseNumber(ic.getColor(), diseases[ic.getColor()].getNumOfDiseaseCubeLeft());
-            }
+				record.infect(ic.getCity(),i);
+			}
         }
     }
 
@@ -1024,7 +1026,7 @@ public class Game : MonoBehaviour {
         int cubeNumber = city.getCubeNumber(color);
         int remainingCubes = disease.getNumOfDiseaseCubeLeft();
         //if not exceeding 3 cubes, put cubes to that city
-        if (cubeNumber <= 3)
+        if (cubeNumber < 3)
         {
             //check if there is enough cubes left 
             if (remainingCubes - number < 0)
@@ -1042,6 +1044,8 @@ public class Game : MonoBehaviour {
         //else there will be an outbreak
         else
         {
+			Debug.Log ("An outbreak happens in " + city.ToString());
+			record.outbreak(city);
             outbreaksValue++;
             gameInfoController.displayOutbreak();
             if (outbreaksValue == maxOutbreaksValue)

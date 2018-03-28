@@ -102,15 +102,19 @@ public class Record : MonoBehaviour {
     }
 
 
-    public void infect(City city, int number, bool hasMedic,bool hasQS,bool isCured,bool isEradicated){
-        displayRecord("Infection in "+ city.getCityName().ToString()+": "+number.ToString()+" cube will be added!");
+    public void infect(City city, int number, bool hasMedic=false,bool hasQS=false,bool isCured=false,bool isEradicated=false){
+        displayRecord("Infection in "+ city.getCityName().ToString()+": "+number.ToString()+" cube added!");
         if(hasMedic&&isCured){
             displayRecord("Infection is prevented by Medic");
         }else if(hasQS){
             displayRecord("Infection is prevented by Quarantine Specialist");
-        }if(isEradicated){
+        }else if(isEradicated){
             displayRecord("Desease has been eradicated~");
         }
+    }
+
+    public void outbreak(City city){
+        displayRecord("Outbreak in "+ city.getCityName().ToString());
     }
 
     
