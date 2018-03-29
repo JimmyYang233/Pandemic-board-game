@@ -71,6 +71,10 @@ public class PlayerLayoutGroup : MonoBehaviour
 		PlayerListings.Add(playerListing);
 	}
 
+	private void OnLeftRoom(){
+		SceneManager.LoadScene ("Lobby");
+	}
+
 	private void PlayerLeftRoom(PhotonPlayer photonPlayer)
 	{
 		int index = PlayerListings.FindIndex(x => x.PhotonPlayer == photonPlayer);
@@ -92,7 +96,9 @@ public class PlayerLayoutGroup : MonoBehaviour
 
 	public void OnClickLeaveRoom()
 	{
+		Debug.Log ("leaving room");
 		PhotonNetwork.LeaveRoom();
-		SceneManager.LoadScene ("Lobby");
 	}
+
+
 }

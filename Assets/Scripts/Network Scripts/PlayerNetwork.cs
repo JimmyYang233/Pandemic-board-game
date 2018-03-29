@@ -19,8 +19,10 @@ public class PlayerNetwork : MonoBehaviour {
 	{
 		if (scene.name == "Main Game")
 		{
-			if (PhotonNetwork.isMasterClient)
-				MasterLoadedGame();
+			if (PhotonNetwork.isMasterClient) {
+				MasterLoadedGame ();
+			}
+				
 			else
 				NonMasterLoadedGame();
 		}

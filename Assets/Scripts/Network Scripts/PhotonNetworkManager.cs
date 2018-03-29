@@ -53,6 +53,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 	void JoinRoom(string roomName){
 		SceneManager.LoadScene ("Room");
 		PhotonNetwork.JoinRoom (roomName);
+		Debug.Log ("Join room " + roomName);
 	}
 
 	void OnGUI(){
@@ -60,7 +61,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 	}
 
 	void OnJoinedLobby(){
-		PhotonNetwork.automaticallySyncScene = false;
+		PhotonNetwork.automaticallySyncScene = true;
 		Invoke ("RefreshRoomList",0.1f);
 	}
 		
