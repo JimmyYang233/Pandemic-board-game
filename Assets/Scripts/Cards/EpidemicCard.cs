@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class EpidemicCard : PlayerCard {
     private static EpidemicCard INSTANCE = new EpidemicCard();
 

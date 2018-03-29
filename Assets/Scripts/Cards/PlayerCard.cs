@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public abstract class PlayerCard : Card
 {
     private CardType cardType;
@@ -10,7 +11,6 @@ public abstract class PlayerCard : Card
     public PlayerCard(CardType c)
     {
         cardType = c;
-
     }
 
     public CardType getType()

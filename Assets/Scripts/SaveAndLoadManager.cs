@@ -40,8 +40,10 @@ public static class SaveAndLoadManager{
 
 [Serializable]
 public class GameData{
-	Player[] playerList;
+	//List<List<PlayerCard>> playerCardList = new List<List<PlayerCard>>();
+	Challenge challenge;
+	//List<Role> roleList = new List<Role>();
 	public GameData(Game game){
-		
+		challenge = game.challenge;
 	}
 }
