@@ -197,6 +197,9 @@ public class Game : MonoBehaviour {
         Disease disease = findDisease(diseaseColor);
 		cure (player, cityCardsToRemove, disease);
 	}
+	public void RPC_borrowedTime(){
+		borrowedTime();
+	}
 	#endregion
 
 	//called by chatbox to send chat message
@@ -257,12 +260,22 @@ public class Game : MonoBehaviour {
         //Debug.Log("InfectNextCity got called");
 		PhotonView.RPC ("RPC_infectNextCity",PhotonTargets.All);
 	}
-	#endregion
+	
 
 	public void NextPlayer(){
 		PhotonView.RPC ("RPC_nextPlayer",PhotonTargets.All);
 	}
 
+	// Event Card
+	public void Airlift()
+	{
+
+	}	
+
+	public void BorrowedTime(){
+		PhotonView.RPC ("RPC_borrowedTime",PhotonTargets.All);
+	}
+	#endregion
 
 	#region initialization
 	//initialize player in the network
@@ -748,13 +761,10 @@ public class Game : MonoBehaviour {
 	}
 
 	public void borrowedTime(){
-		if (findEventCardHolder(EventKind.BorrowedTime) == currentPlayer) {
-			currentPlayer.increaseRemainingAction (2);
-			dropEventCard (EventKind.BorrowedTime);
-		} 
-		else {
-			//TODO notify player that card cannot be used
-		}
+		// if (findEventCardHolder(EventKind.BorrowedTime) == currentPlayer) {
+		currentPlayer.increaseRemainingAction (2);
+		dropEventCard (EventKind.BorrowedTime);
+		
 	}
 
     public void mobileHospital(Player pl1)
