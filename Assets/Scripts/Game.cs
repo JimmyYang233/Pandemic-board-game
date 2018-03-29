@@ -1294,8 +1294,39 @@ public class Game : MonoBehaviour {
 			//Debug.Log("add card to main player" + card.ToString());
 			mainPlayerPanel.addPlayerCard(card);
 		}
-		
+		player.setOncePerturnAction(true);
 	}
+
+	/*
+	for EPIDEMIOLOGIST, once per turn
+	 */
+	private void EpidemiologistShare(){}
+
+
+	/*
+	for Field Operative, once per turn
+	 */
+	private void FieldOperativeSample(Player player, Disease d){
+		RoleKind rk = player.getRoleKind();
+		if (rk!=RoleKind.FieldOperative){
+			return;
+		}
+        City currentCity = player.getPlayerPawn().getCity();
+
+		int treatNumber = 1;
+		currentCity.removeCubes(d, treatNumber);
+		player.getRole().addSample(d,treatNumber);
+
+		int num = d.getNumOfDiseaseCubeLeft();
+		bool isCured = d.isCured();
+		if(num == MAX && isCured == true)
+		{
+			d.isEradicated();
+		}
+
+		player.setOncePerturnAction(true);
+	}
+	
     
 
     #region notify methods
