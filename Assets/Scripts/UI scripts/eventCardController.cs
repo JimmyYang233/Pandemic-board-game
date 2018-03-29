@@ -8,6 +8,7 @@ public class eventCardController : MonoBehaviour {
 	public Game game;
 	Player currentPlayer;
 	City currentCity;
+	public GameObject informEvent;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,14 +17,10 @@ public class eventCardController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {		
 	}
+
 	private void borrowedTime(){
 		currentPlayer = game.getCurrentPlayer();
-		if (currentPlayer == game.findEventCardHolder (EventKind.BorrowedTime)) {
-			Debug.Log ("ok");
-			game.BorrowedTime ();
-		} else {
-			Debug.Log ("not your card");
-		}
+		game.BorrowedTime ();
 	}
 	public void useEvent(){
 		name = this.transform.GetChild (1).GetComponent<Text> ().text;
