@@ -1260,6 +1260,42 @@ public class Game : MonoBehaviour {
 		}
     }
 
+	/*
+	For Archivist draw citycard from discard pile only!
+	 */
+	private void ArchivistDraw(Player player){
+		RoleKind rk = player.getRoleKind();
+		if (rk!=RoleKind.Archivist){
+			return;
+		}
+        Pawn p = player.getPlayerPawn();
+        City currentCity = p.getCity();
+
+		PlayerCard card = playerDiscardPile.Find(x => ((CityCard)x).getCity() == currentCity);
+		if (card == null){
+			return;
+		}
+
+		playerDiscardPile.Remove(card);
+		player.addCard(card);
+		if (currentPlayer.getHandCardNumber() > currentPlayer.getHandLimit())
+		{
+			player.removeCard(AckCardToDrop(player.getHand()));
+		}
+		//FOR GUI
+		//Debug.Log(me.getRoleKind());
+		if (!player.Equals(me))
+		{
+
+			playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), card);
+		}
+		else
+		{
+			//Debug.Log("add card to main player" + card.ToString());
+			mainPlayerPanel.addPlayerCard(card);
+		}
+		
+	}
     
 
     #region notify methods
