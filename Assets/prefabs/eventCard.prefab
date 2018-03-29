@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114390380894163376}
   - component: {fileID: 114507589481527902}
   - component: {fileID: 114482455502787380}
+  - component: {fileID: 114999142571875298}
   m_Layer: 8
   m_Name: eventCard
   m_TagString: Untagged
@@ -135,6 +136,23 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114507589481527902}
+          m_MethodName: mouseLeave
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!114 &114507589481527902
 MonoBehaviour:
@@ -208,6 +226,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Atlantic
+--- !u!114 &114999142571875298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563410207794540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a92c80c7e8d4fbda85f9330b923d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222291168228276226
 CanvasRenderer:
   m_ObjectHideFlags: 1

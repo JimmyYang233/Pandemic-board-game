@@ -15,6 +15,7 @@ TagManager:
   - purple Cube
   - researchStation
   - gameInfoDisplay
+  - eventCardAsk
   layers:
   - Default
   - TransparentFX
