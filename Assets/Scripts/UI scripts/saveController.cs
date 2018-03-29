@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class saveController : MonoBehaviour {
-	public Text text;
+	public GameObject input;
 	public Game game;
 	// Use this for initialization
 	void Start () {
@@ -17,6 +17,7 @@ public class saveController : MonoBehaviour {
 	}
 
 	public void save(){
-		game.save (text.ToString ());
+		Debug.Log (input.GetComponent<InputField> ().text);
+		game.save (input.GetComponent<InputField>().text);
 	}
 }

@@ -1483,6 +1483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PhotonView: {fileID: 0}
+  challenge: 0
   infectionRate: 2
   outbreaksValue: 0
   playerPanel: {fileID: 1923207385}
@@ -34935,7 +34936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910f0a740b6044d81a373cbf464b03fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1751365168}
+  input: {fileID: 751196210}
   game: {fileID: 73084184}
 --- !u!114 &1638852003
 MonoBehaviour:
