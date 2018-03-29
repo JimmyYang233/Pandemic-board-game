@@ -11,6 +11,8 @@ public class PCPanelController : MonoBehaviour {
     public GameObject playerCardStart;
     public Transform eventCardStart;
 
+	public GameObject eventCardPanel;
+
     public float radius;
     public float totalDegree;
     public float maxSpace;
@@ -129,6 +131,7 @@ public class PCPanelController : MonoBehaviour {
         eventCardNum++;
 
         GameObject g = Instantiate(eventCardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+		g.GetComponent<eventCardUI> ().setEventCardPanel (eventCardPanel);
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
 
         t.text = e.ToString();

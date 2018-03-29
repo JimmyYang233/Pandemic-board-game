@@ -3987,6 +3987,7 @@ MonoBehaviour:
     type: 2}
   playerCardStart: {fileID: 532244875}
   eventCardStart: {fileID: 752810892}
+  eventCardPanel: {fileID: 1900971756}
   radius: 70
   totalDegree: 90
   maxSpace: 20
