@@ -65,7 +65,7 @@ public class GameData{
 		challenge = game.challenge;
 		foreach (Player player in game.getPlayers()) {
 			playerCardList.Add (player.getHand ());
-			roleList.Add (player.getRoleKind ());
+			roleKindList.Add (player.getRoleKind ());
 			//debug purpose
 			foreach (PlayerCard pc in player.getHand()) {
 				if (pc.getType().Equals(CardType.CityCard)){
