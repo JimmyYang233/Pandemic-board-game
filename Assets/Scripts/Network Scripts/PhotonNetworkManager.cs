@@ -22,9 +22,6 @@ public class PhotonNetworkManager : MonoBehaviour {
 	void Start(){
 	}
 
-	void Update(){
-		RefreshRoomList ();
-	}
 	void RefreshRoomList(){
 		//destroy old rooms
 		if (roomPrefabs.Count > 0) {
