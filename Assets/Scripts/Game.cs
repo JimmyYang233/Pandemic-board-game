@@ -201,6 +201,11 @@ public class Game : MonoBehaviour {
 	public void RPC_borrowedTime(){
 		borrowedTime();
 	}
+
+	[PunRPC]
+	public void RPC_oneQuietNight(){
+		oneQuietNight();
+	}
 	#endregion
 
 	//called by chatbox to send chat message
@@ -275,6 +280,10 @@ public class Game : MonoBehaviour {
 
 	public void BorrowedTime(){
 		PhotonView.RPC ("RPC_borrowedTime",PhotonTargets.All);
+	}
+
+	public void OneQuietNight(){
+		PhotonView.RPC ("RPC_oneQuietNight",PhotonTargets.All);
 	}
 	#endregion
 

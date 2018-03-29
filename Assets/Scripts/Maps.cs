@@ -61,11 +61,10 @@ public class Maps{
         eventCardDescription.Add(EventKind.CommercialTravelBan, "The infection rate is 1 until the current player’s next turn begins. Put this card in front of this player. Discard it when his next turn begins.");
         eventCardDescription.Add(EventKind.ReExaminedResearch, "Select a player. This player may draw any 1 city card from The player discard pile into his hand (discarding if ovei his hand limit).");
         eventCardDescription.Add(EventKind.RemoteTreatment, "Removec 2 Disease cubes from the board");
-        eventCardDescription.Add(EventKind.BorrowedTime, "The player drawing this card may not immediately play it to continue taking actions (as that player is now in the Draw Cards step of his turn).");
-        eventCardDescription.Add(EventKind.MobileHospital, "The Containment Specialist  rst removes 1 cube of each color with 2 or more cubes present and then removes 1 more cube (for each city entered).");
-        eventCardDescription.Add(EventKind.NewAssignment, "If the current player was selected and he swapped either from or to the Generalist role, then he may do up to 5 actions this turn.");
-        eventCardDescription.Add(EventKind.RapidVaccineDeployment, "This can be played only immediately after a Discover a Cure action. Each affected city must be connected to at least 1 other city affected by this event (unless this event affects just 1 city). At least 1 cube must be removed from each of these cities.");
-        eventCardDescription.Add(EventKind.SpecialOrders, "As when moving other pawns with the Dispatcher, the current player must discard (or reveal) any cards used to move that pawn by Direct or Charter  ights. Powers that are part of movement (such as the Medic’s power to remove cured disease cubes or the Containment Specialist’s power) do occur.");
+        eventCardDescription.Add(EventKind.BorrowedTime, "Take 2 extra actions this turn.");
+        eventCardDescription.Add(EventKind.MobileHospital, "This turn, remove 1 disease cube from each city the player drives or ferries to.");
+        eventCardDescription.Add(EventKind.NewAssignment, "Select a player. This player may swap his role card with any one of the unused roles.");
+        eventCardDescription.Add(EventKind.SpecialOrders, "This turn, the player may spend actions to move 1 other pawn (with permission), as if it were his own.");
 
 // blue
         
