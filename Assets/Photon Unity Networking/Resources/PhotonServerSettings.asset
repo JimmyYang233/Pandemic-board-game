@@ -65,4 +65,5 @@ MonoBehaviour:
   - RPC_nextPlayer
   - RPC_notifyResolveEpidemic
   - RPC_cure
+  - RPC_borrowedTime
   DisableAutoOpenWizard: 1

@@ -197,6 +197,7 @@ public class Game : MonoBehaviour {
         Disease disease = findDisease(diseaseColor);
 		cure (player, cityCardsToRemove, disease);
 	}
+	[PunRPC]
 	public void RPC_borrowedTime(){
 		borrowedTime();
 	}
@@ -843,6 +844,15 @@ public class Game : MonoBehaviour {
         else
         {
             pl.removeCard (eCard);
+			if (!pl.Equals(me))
+			{
+
+				playerPanel.deletePlayerCardFromOtherPlayer(pl.getRoleKind(), eCard);
+			}
+			else
+			{
+				mainPlayerPanel.deleteEventCard (eCard.getEventKind());
+			}
 		    playerDiscardPile.Add (eCard);
         }
 		

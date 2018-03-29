@@ -19,5 +19,6 @@ public class saveController : MonoBehaviour {
 	public void save(){
 		Debug.Log (input.GetComponent<InputField> ().text);
 		game.save (input.GetComponent<InputField>().text);
+
 	}
 }
