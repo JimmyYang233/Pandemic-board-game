@@ -22,7 +22,7 @@ public class eventCardUI : MonoBehaviour {
 
 	public void click(){
 		eventCardPanel.SetActive (true);
-		eventCardPanel.transform.GetChild (0).GetComponent<Text> ().text = "Use eventCard "+this.transform.GetChild (0).GetComponent<Text> ().text+"?";
+		eventCardPanel.transform.GetChild (1).GetComponent<Text> ().text = this.transform.GetChild (0).GetComponent<Text> ().text;
 	}
 
 }
