@@ -10,6 +10,7 @@ public class Game : MonoBehaviour {
 	public PhotonView PhotonView;
 
 	#region private variables
+	private GameData savedGame;
     private readonly int MAX = 24;
     private Challenge challenge;
     private GamePhase currentPhase;
@@ -1539,6 +1540,17 @@ public class Game : MonoBehaviour {
 	}
 	#endregion
 
+
+	#region saveAndLoad
+	public void save(string name){
+		SaveAndLoadManager.SaveGameData (this, name);
+	}
+
+	public void load(){
+		this.savedGame = SaveAndLoadManager.LoadGameData (name);
+	}
+
+	#endregion
 
 
 

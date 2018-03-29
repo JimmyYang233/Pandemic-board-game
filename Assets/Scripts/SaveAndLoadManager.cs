@@ -32,14 +32,15 @@ public static class SaveAndLoadManager{
 			GameData data = bf.Deserialize (stream) as GameData;
 
 			stream.Close ();
-			return GameData;
-		}
+			return data;
+		} else
+			return null;
 	}
 }
 
 [Serializable]
 public class GameData{
-	
+	Player[] playerList;
 	public GameData(Game game){
 		
 	}
