@@ -12,7 +12,7 @@ public class Game : MonoBehaviour {
 	#region private variables
 	private GameData savedGame;
     private readonly int MAX = 24;
-    private Challenge challenge;
+    public Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
 	[SerializeField]
@@ -1206,6 +1206,7 @@ public class Game : MonoBehaviour {
     {
         return currentPlayer;
     }
+
     public List<Player> getPlayers(City city)
     {
         List<Player> pInCity = new List<Player>();
@@ -1610,7 +1611,7 @@ public class Game : MonoBehaviour {
 
 	#region saveAndLoad
 	public void save(string name){
-		SaveAndLoadManager.SaveGameData (this, name);
+		SaveAndLoadManager.SaveGameData (Instance, name);
 	}
 
 	public void load(){

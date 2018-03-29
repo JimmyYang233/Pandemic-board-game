@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[Serializable]
 public class EventCard : PlayerCard {
     private EventKind eventKind;
     private static Dictionary<EventKind, EventCard> eventCards = new Dictionary<EventKind, EventCard>();

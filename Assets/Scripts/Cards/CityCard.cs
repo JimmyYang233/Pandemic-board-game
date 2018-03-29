@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class CityCard : PlayerCard {
     private City city;
+	[NonSerialized]
     private Color color;
         
     public CityCard(City c): base(CardType.CityCard)
