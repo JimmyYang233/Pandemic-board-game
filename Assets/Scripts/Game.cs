@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Game : MonoBehaviour {
@@ -1609,16 +1610,19 @@ public class Game : MonoBehaviour {
 	#endregion
 
 
-	#region saveAndLoad
+	#region saveAndQuit
 	public void save(string name){
 		SaveAndLoadManager.SaveGameData (Instance, name);
 	}
 
-	public void load(){
-		this.savedGame = SaveAndLoadManager.LoadGameData (name);
+	public void quit(){
+		PhotonNetwork.LeaveRoom ();
+		SceneManager.LoadScene ("Lobby");
 	}
 
 	#endregion
+
+
 
 
 

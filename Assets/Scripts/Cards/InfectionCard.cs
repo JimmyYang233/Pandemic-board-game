@@ -6,15 +6,18 @@ using UnityEngine;
 [Serializable]
 public class InfectionCard : PlayerCard 
 {
+	[NonSerialized]
 	private City city;
 	[NonSerialized]
     private Color color;
+	private CityName name;
 
 	public InfectionCard(City c) : base(CardType.InfectionCard)
     {
         
         city = c;
         color = c.getColor();
+		name = city.cityName;
     }
 
 	public Color getColor()
@@ -26,4 +29,8 @@ public class InfectionCard : PlayerCard
     {
         return city;
     }
+
+	public CityName getName(){
+		return name;
+	}
 }

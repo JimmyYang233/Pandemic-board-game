@@ -96,6 +96,11 @@ public class PhotonNetworkManager : MonoBehaviour {
 				RefreshRoomList ();
 			}
 			break;
+		//debug purpose
+		case "Load":
+			GameData data = SaveAndLoadManager.LoadGameData (roomName.text);
+			Debug.Log (data.challenge);
+			break;
 		}
 	}
 	#endregion

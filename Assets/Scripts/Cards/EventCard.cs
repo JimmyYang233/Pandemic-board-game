@@ -8,10 +8,9 @@ using UnityEngine;
 public class EventCard : PlayerCard {
     private EventKind eventKind;
     private static Dictionary<EventKind, EventCard> eventCards = new Dictionary<EventKind, EventCard>();
-
     
 
-    private EventCard(EventKind kind): base(CardType.EventCard)
+	private EventCard(EventKind kind): base(CardType.EventCard)
     {
         eventKind = kind;
     }
@@ -30,4 +29,5 @@ public class EventCard : PlayerCard {
 
         return eventCards[kind];
     }
+
 }

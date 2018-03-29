@@ -30,7 +30,20 @@ public static class SaveAndLoadManager{
 			FileStream stream = new FileStream (path, FileMode.Open);
 
 			GameData data = bf.Deserialize (stream) as GameData;
-
+			//----------debug----------
+			foreach (List<PlayerCard> playerCards in data.playerCardList) {
+				foreach (PlayerCard pc in playerCards) {
+					if (pc.getType().Equals(CardType.CityCard)){
+						CityCard cityCard = (CityCard)pc;
+						Debug.Log ("City Card: " + cityCard.getName());
+					}
+					else if (pc.getType().Equals(CardType.EventCard)){
+						EventCard eventCard = (EventCard)pc;
+						Debug.Log ("Event Card: " + eventCard.getEventKind());
+					}
+				}
+			}
+			//-------------------------
 			stream.Close ();
 			return data;
 		} else
@@ -40,10 +53,24 @@ public static class SaveAndLoadManager{
 
 [Serializable]
 public class GameData{
-	//List<List<PlayerCard>> playerCardList = new List<List<PlayerCard>>();
-	Challenge challenge;
+	public List<List<PlayerCard>> playerCardList = new List<List<PlayerCard>>();
+	public Challenge challenge;
 	//List<Role> roleList = new List<Role>();
 	public GameData(Game game){
 		challenge = game.challenge;
+		foreach (Player player in game.getPlayers()) {
+			playerCardList.Add (player.getHand ());
+			//debug purpose
+			foreach (PlayerCard pc in player.getHand()) {
+				if (pc.getType().Equals(CardType.CityCard)){
+					CityCard cityCard = (CityCard)pc;
+					Debug.Log ("City Card: " + cityCard.getName());
+				}
+				else if (pc.getType().Equals(CardType.EventCard)){
+					EventCard eventCard = (EventCard)pc;
+					Debug.Log ("Event Card: " + eventCard.getEventKind());
+				}
+			}
+		}
 	}
 }
