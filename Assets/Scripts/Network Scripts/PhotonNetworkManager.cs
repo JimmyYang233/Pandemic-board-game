@@ -22,7 +22,9 @@ public class PhotonNetworkManager : MonoBehaviour {
 	void Start(){
 	}
 
-
+	void Update(){
+		RefreshRoomList ();
+	}
 	void RefreshRoomList(){
 		//destroy old rooms
 		if (roomPrefabs.Count > 0) {
@@ -51,9 +53,9 @@ public class PhotonNetworkManager : MonoBehaviour {
 	}
 
 	void JoinRoom(string roomName){
-		SceneManager.LoadScene ("Room");
 		PhotonNetwork.JoinRoom (roomName);
 		Debug.Log ("Join room " + roomName);
+		SceneManager.LoadScene ("Room");
 	}
 
 	void OnGUI(){

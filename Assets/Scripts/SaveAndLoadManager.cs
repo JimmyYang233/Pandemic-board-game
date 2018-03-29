@@ -43,6 +43,10 @@ public static class SaveAndLoadManager{
 					}
 				}
 			}
+
+			foreach (RoleKind rk in data.roleKindList) {
+				Debug.Log ("RoleKind is " + rk.ToString());
+			}
 			//-------------------------
 			stream.Close ();
 			return data;
@@ -53,13 +57,15 @@ public static class SaveAndLoadManager{
 
 [Serializable]
 public class GameData{
+	//list of player's hand cards
 	public List<List<PlayerCard>> playerCardList = new List<List<PlayerCard>>();
 	public Challenge challenge;
-	//List<Role> roleList = new List<Role>();
+	public List<RoleKind> roleKindList = new List<Role>();
 	public GameData(Game game){
 		challenge = game.challenge;
 		foreach (Player player in game.getPlayers()) {
 			playerCardList.Add (player.getHand ());
+			roleList.Add (player.getRoleKind ());
 			//debug purpose
 			foreach (PlayerCard pc in player.getHand()) {
 				if (pc.getType().Equals(CardType.CityCard)){
