@@ -60,7 +60,7 @@ public class GameData{
 	//list of player's hand cards
 	public List<List<PlayerCard>> playerCardList = new List<List<PlayerCard>>();
 	public Challenge challenge;
-	public List<RoleKind> roleKindList = new List<Role>();
+	public List<RoleKind> roleKindList = new List<RoleKind>();
 	public GameData(Game game){
 		challenge = game.challenge;
 		foreach (Player player in game.getPlayers()) {
