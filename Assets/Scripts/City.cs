@@ -229,51 +229,74 @@ public class City : MonoBehaviour {
             }
             
         }
-        string currentCube;
-        foreach(Color color in numberOfCubes.Keys)
+        List<string> cubes = new List<string>();
+        foreach (Color color in numberOfCubes.Keys)
         {
-            if(color == Color.black)
+            for (int i = 0; i < numberOfCubes[color]; i++)
             {
-                currentCube = blackCube;
-                //Debug.Log(currentCube);
+                if (color == Color.black)
+                {
+                    cubes.Add(blackCube);
+                }
+                else if (color == Color.red)
+                {
+                    cubes.Add(redCube);
+                }
+                else if (color == Color.blue)
+                {
+                    cubes.Add(blueCube);
+                }
+                else
+                {
+                    cubes.Add(yellowCube);
+                }
             }
-            else if(color == Color.red)
-            {
-                currentCube = redCube;
-                //Debug.Log(currentCube);
-            }
-            else if(color == Color.blue)
-            {
-                currentCube = blueCube;
-                //Debug.Log(currentCube);
-            }
-            else
-            {
-                currentCube = yellowCube;
-                //Debug.Log(currentCube);
-            }
-            if(numberOfCubes[color] >= 1)
-            {
-                //Debug.Log(Resources.Load(currentCube));
-                GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x - 8, transform.position.y + 7, transform.position.z), gameObject.transform.rotation);
-                //cube.transform.localScale = new Vector3(1, 1, 1);
-                cube.transform.parent = gameObject.transform;
-            }
-            if (numberOfCubes[color] >= 2)
-            {
-                //Debug.Log(Resources.Load(currentCube));
-                GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x + 8, transform.position.y + 7, transform.position.z), gameObject.transform.rotation);
-                //cube.transform.localScale = new Vector3(1, 1, 1);
-                cube.transform.parent = gameObject.transform;
-            }
-            if (numberOfCubes[color] >= 3)
-            {
-                //Debug.Log(Resources.Load(currentCube));
-                GameObject cube = (GameObject)Instantiate(Resources.Load(currentCube), new Vector3(transform.position.x, transform.position.y - 7, transform.position.z), gameObject.transform.rotation);
-                //cube.transform.localScale = new Vector3(1, 1, 1);
-                cube.transform.parent = gameObject.transform;
-            }
+        } 
+        if(cubes.Count == 1)
+        {
+            GameObject cube = (GameObject)Instantiate(Resources.Load(cubes[0]), new Vector3(transform.position.x - 7, transform.position.y + 6, transform.position.z), gameObject.transform.rotation);
+            cube.transform.parent = gameObject.transform;
+        }
+        else if (cubes.Count == 2)
+        {
+            GameObject cube1 = (GameObject)Instantiate(Resources.Load(cubes[0]), new Vector3(transform.position.x - 7, transform.position.y + 6, transform.position.z), gameObject.transform.rotation);
+            cube1.transform.parent = gameObject.transform;
+            GameObject cube2 = (GameObject)Instantiate(Resources.Load(cubes[1]), new Vector3(transform.position.x + 7, transform.position.y + 6, transform.position.z), gameObject.transform.rotation);
+            cube2.transform.parent = gameObject.transform;
+        }
+        else if (cubes.Count == 3)
+        {
+            GameObject cube1 = (GameObject)Instantiate(Resources.Load(cubes[0]), new Vector3(transform.position.x - 7, transform.position.y + 6, transform.position.z), gameObject.transform.rotation);
+            cube1.transform.parent = gameObject.transform;
+            GameObject cube2 = (GameObject)Instantiate(Resources.Load(cubes[1]), new Vector3(transform.position.x + 7, transform.position.y + 6, transform.position.z), gameObject.transform.rotation);
+            cube2.transform.parent = gameObject.transform;
+            GameObject cube3 = (GameObject)Instantiate(Resources.Load(cubes[2]), new Vector3(transform.position.x, transform.position.y - 6, transform.position.z), gameObject.transform.rotation);
+            cube3.transform.parent = gameObject.transform;
+        }
+        else if(cubes.Count == 4)
+        {
+            GameObject cube1 = (GameObject)Instantiate(Resources.Load(cubes[0]), new Vector3(transform.position.x - 6, transform.position.y + 6, transform.position.z), gameObject.transform.rotation);
+            cube1.transform.parent = gameObject.transform;
+            GameObject cube2 = (GameObject)Instantiate(Resources.Load(cubes[1]), new Vector3(transform.position.x + 6, transform.position.y + 6, transform.position.z), gameObject.transform.rotation);
+            cube2.transform.parent = gameObject.transform;
+            GameObject cube3 = (GameObject)Instantiate(Resources.Load(cubes[2]), new Vector3(transform.position.x - 6, transform.position.y - 6, transform.position.z), gameObject.transform.rotation);
+            cube3.transform.parent = gameObject.transform;
+            GameObject cube4 = (GameObject)Instantiate(Resources.Load(cubes[3]), new Vector3(transform.position.x + 6, transform.position.y - 6, transform.position.z), gameObject.transform.rotation);
+            cube4.transform.parent = gameObject.transform;
+        }
 
+        else if(cubes.Count == 5)
+        {
+            GameObject cube1 = (GameObject)Instantiate(Resources.Load(cubes[0]), new Vector3(transform.position.x - 5, transform.position.y + 7, transform.position.z), gameObject.transform.rotation);
+            cube1.transform.parent = gameObject.transform;
+            GameObject cube2 = (GameObject)Instantiate(Resources.Load(cubes[1]), new Vector3(transform.position.x + 5, transform.position.y + 7, transform.position.z), gameObject.transform.rotation);
+            cube2.transform.parent = gameObject.transform;
+            GameObject cube3 = (GameObject)Instantiate(Resources.Load(cubes[2]), new Vector3(transform.position.x - 8, transform.position.y - 3, transform.position.z), gameObject.transform.rotation);
+            cube3.transform.parent = gameObject.transform;
+            GameObject cube4 = (GameObject)Instantiate(Resources.Load(cubes[3]), new Vector3(transform.position.x + 8, transform.position.y - 3, transform.position.z), gameObject.transform.rotation);
+            cube4.transform.parent = gameObject.transform;
+            GameObject cube5 = (GameObject)Instantiate(Resources.Load(cubes[4]), new Vector3(transform.position.x, transform.position.y - 10, transform.position.z), gameObject.transform.rotation);
+            cube5.transform.parent = gameObject.transform;
         }
     }
 
