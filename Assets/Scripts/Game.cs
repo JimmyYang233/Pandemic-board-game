@@ -139,7 +139,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_takeShuttleFlight(string playerRoleKindName, string cityName){
-		takeCharterFlight (findPlayer(playerRoleKindName), findCity(cityName));
+		takeShuttleFlight (findPlayer(playerRoleKindName), findCity(cityName));
 	}
 
 	[PunRPC]
@@ -1430,7 +1430,7 @@ public class Game : MonoBehaviour {
             }
             playerDiscardPile.Add(card);
         }
-		record.build(initialCity);
+		//record.build(initialCity);
         currentCity.setHasResearch(true);
 
         if (researchStationRemain == 0)

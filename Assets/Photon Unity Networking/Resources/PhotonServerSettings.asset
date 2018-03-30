@@ -66,4 +66,5 @@ MonoBehaviour:
   - RPC_notifyResolveEpidemic
   - RPC_cure
   - RPC_borrowedTime
+  - RPC_oneQuietNight
   DisableAutoOpenWizard: 1

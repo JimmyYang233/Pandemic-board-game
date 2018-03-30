@@ -117,6 +117,25 @@ public class MoveOperation : MonoBehaviour {
         moveStatus = Status.CHARTERFLIGHT;
     }
 
+    public void shuttleFlightButtonClicked()
+    {
+        driveButton.GetComponent<Button>().interactable = false;
+        directFlightButton.GetComponent<Button>().interactable = false;
+        charterFlightButton.GetComponent<Button>().interactable = false;
+        shuttleFlightButton.GetComponent<Button>().interactable = false;
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        foreach (City city in game.getCities())
+        {
+            if ((city != currentCity)&&(city.getHasResearch()))
+            {
+                city.displayButton();
+            }
+        }
+
+        moveStatus = Status.SHUTTLEFLIGHT;
+    }
+
     public static void disableAllCities()
     {
         GameObject[] tmp = GameObject.FindGameObjectsWithTag("City");
@@ -131,7 +150,6 @@ public class MoveOperation : MonoBehaviour {
     }
     
 
-    // for testing only
     public void cityButtonClicked(City destinationCity)
     {
         currentPlayer = game.getCurrentPlayer();
@@ -146,6 +164,10 @@ public class MoveOperation : MonoBehaviour {
         else if(moveStatus == Status.CHARTERFLIGHT)
         {
             game.TakeCharterFlight(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
+        }
+        else if(moveStatus == Status.SHUTTLEFLIGHT)
+        {
+            game.TakeShuttleFlight(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
         }
         disableAllCities();
     }
