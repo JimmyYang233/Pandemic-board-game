@@ -56,17 +56,24 @@ public static class SaveAndLoadManager{
 }
 
 [Serializable]
+/*
+	this class will be used to save game data
+	the player's role will be saved in a list and their 
+
+
+*/
 public class GameData{
 	//list of player's hand cards
 	public List<List<PlayerCard>> playerCardList = new List<List<PlayerCard>>();
 	public Challenge challenge;
 	public List<RoleKind> roleKindList = new List<RoleKind>();
 	public GameData(Game game){
-		challenge = game.challenge;
+		challenge = game.getChallenge();
 		foreach (Player player in game.getPlayers()) {
 			playerCardList.Add (player.getHand ());
 			roleKindList.Add (player.getRoleKind ());
 			//debug purpose
+			/*
 			foreach (PlayerCard pc in player.getHand()) {
 				if (pc.getType().Equals(CardType.CityCard)){
 					CityCard cityCard = (CityCard)pc;
@@ -76,7 +83,7 @@ public class GameData{
 					EventCard eventCard = (EventCard)pc;
 					Debug.Log ("Event Card: " + eventCard.getEventKind());
 				}
-			}
+			}*/
 		}
 	}
 }

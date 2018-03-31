@@ -13,7 +13,7 @@ public class Game : MonoBehaviour {
 	#region private variables
 	private GameData savedGame;
     private readonly int MAX = 24;
-    public Challenge challenge;
+    private Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
 	[SerializeField]
@@ -91,8 +91,18 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
+	private void RPC_LoadPlayer(){
+		Instance.LoadPlayer ();
+	}
+
+	[PunRPC]
 	private void RPC_InitializeGame(){
 		Instance.InitializeGame ();
+	}
+
+	[PunRPC]
+	private void RPC_LoadGame(){
+		Instance.LoadGame ();
 	}
 
 	[PunRPC]
@@ -299,6 +309,10 @@ public class Game : MonoBehaviour {
 		}
 	}
 
+	private void LoadPlayer(){
+		
+	}
+
 	//initialzie game, set the first player as current player
 	private void InitializeGame(){
 		//load city
@@ -386,6 +400,10 @@ public class Game : MonoBehaviour {
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log("Everything Complete");
 		//Debug.Log("the role is" + me.getRoleKind().ToString());
+	}
+
+	private void LoadGame(){
+		
 	}
 	#endregion
 
@@ -1410,6 +1428,10 @@ public class Game : MonoBehaviour {
     {
         return playerDiscardPile;
     }
+
+	public Challenge getChallenge(){
+		return challenge;
+	}
 
 
     public void build(City initialCity, CityCard card)
