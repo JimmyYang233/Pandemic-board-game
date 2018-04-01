@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class EpidemicCard : PlayerCard {
     private static EpidemicCard INSTANCE = new EpidemicCard();
+	private string name = "Epidemic";
 
     private EpidemicCard() : base(CardType.EpidemicCard)
     {
@@ -15,4 +16,8 @@ public class EpidemicCard : PlayerCard {
     {
         return INSTANCE;
     }
+
+	public string getName(){
+		return name;
+	}
 }

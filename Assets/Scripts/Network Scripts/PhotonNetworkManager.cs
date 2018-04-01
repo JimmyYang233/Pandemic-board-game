@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 public class PhotonNetworkManager : MonoBehaviour {
 	public InputField roomName;
@@ -101,17 +99,10 @@ public class PhotonNetworkManager : MonoBehaviour {
 		//debug purpose
 		case "Load":
 			GameData data = SaveAndLoadManager.LoadGameData (roomName.text);
-			Debug.Log ("when loaded, we have ");
-			foreach (List<PlayerCard> playerCards in data.playerCardList) {
-				foreach (PlayerCard pc in playerCards) {
-					if (pc.getType().Equals(CardType.CityCard)){
-						CityCard cityCard = (CityCard)pc;
-						Debug.Log ("City Card: " + cityCard.getName());
-					}
-					else if (pc.getType().Equals(CardType.EventCard)){
-						EventCard eventCard = (EventCard)pc;
-						Debug.Log ("Event Card: " + eventCard.getEventKind());
-					}
+			Debug.Log ("when loaded, we have " + data.playerCardList.Count);
+			foreach (PlayerCardList pcl in data.playerCardList) {
+				foreach (string pc in pcl.playerHand) {
+					Debug.Log ("Player card " + pc);
 				}
 			}
 
@@ -119,20 +110,13 @@ public class PhotonNetworkManager : MonoBehaviour {
 				Debug.Log ("RoleKind is " + rk.ToString());
 			}
 			PlayerNetwork.Instance.isNewGame = false;
-			PlayerNetwork.Instance.savedGameJson = JsonConvert.SerializeObject (data);
-			//Debug.Log (PlayerNetwork.Instance.savedGameJson);
-			GameData savedGame = JsonConvert.DeserializeObject<GameData> (PlayerNetwork.Instance.savedGameJson);
+			PlayerNetwork.Instance.savedGameJson =  JsonUtility.ToJson(data);
+			Debug.Log (PlayerNetwork.Instance.savedGameJson);
+			GameData savedGame = JsonUtility.FromJson<GameData>(PlayerNetwork.Instance.savedGameJson);
 			Debug.Log ("After loaded, we have ");
-			foreach (List<PlayerCard> playerCards in savedGame.playerCardList) {
-				foreach (PlayerCard pc in playerCards) {
-					if (pc.getType().Equals(CardType.CityCard)){
-						CityCard cityCard = (CityCard)pc;
-						Debug.Log ("City Card: " + cityCard.getName());
-					}
-					else if (pc.getType().Equals(CardType.EventCard)){
-						EventCard eventCard = (EventCard)pc;
-						Debug.Log ("Event Card: " + eventCard.getEventKind());
-					}
+			foreach (PlayerCardList pcl in savedGame.playerCardList) {
+				foreach (string pc in pcl.playerHand) {
+					Debug.Log ("Player card " + pc);
 				}
 			}
 			/*

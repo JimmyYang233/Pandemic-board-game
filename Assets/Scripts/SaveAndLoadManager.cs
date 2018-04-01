@@ -31,17 +31,10 @@ public static class SaveAndLoadManager{
 
 			GameData data = bf.Deserialize (stream) as GameData;
 			//----------debug----------
-			Debug.Log("Show detail of loaded game....." + data.playerCardList.Count);
-			foreach (List<PlayerCard> playerCards in data.playerCardList) {
-				foreach (PlayerCard pc in playerCards) {
-					if (pc.getType().Equals(CardType.CityCard)){
-						CityCard cityCard = (CityCard)pc;
-						Debug.Log ("City Card: " + cityCard.getName());
-					}
-					else if (pc.getType().Equals(CardType.EventCard)){
-						EventCard eventCard = (EventCard)pc;
-						Debug.Log ("Event Card: " + eventCard.getEventKind());
-					}
+			Debug.Log("Show detail of loaded game.....");
+			foreach (PlayerCardList pcl in data.playerCardList) {
+				foreach (string pc in pcl.playerHand) {
+					Debug.Log ("Player card " + pc);
 				}
 			}
 
@@ -66,30 +59,44 @@ public static class SaveAndLoadManager{
 [Serializable]
 public class GameData{
 	//list of player's hand cards
-	public List<List<PlayerCard>> playerCardList = new List<List<PlayerCard>>();
+	public List<PlayerCardList> playerCardList = new List<PlayerCardList>();
 	public Challenge challenge;
 	public List<RoleKind> roleKindList = new List<RoleKind>();
 	public GameData(Game game){
 		challenge = game.getChallenge();
 		foreach (Player player in game.getPlayers()) {
-			playerCardList.Add (player.getHand ());
+			PlayerCardList playerHand= new PlayerCardList();
 			roleKindList.Add (player.getRoleKind ());
 			//debug purpose
 
-			/*
+
 			foreach (PlayerCard pc in player.getHand()) {
 				if (pc.getType().Equals(CardType.CityCard)){
 					CityCard cityCard = (CityCard)pc;
-					Debug.Log ("City Card: " + cityCard.getName());
+					playerHand.playerHand.Add (cityCard.getName());
+					//Debug.Log ("City Card: " + cityCard.getName());
 				}
 				else if (pc.getType().Equals(CardType.EventCard)){
 					EventCard eventCard = (EventCard)pc;
-					Debug.Log ("Event Card: " + eventCard.getEventKind());
+					playerHand.playerHand.Add (eventCard.getName());
+					//Debug.Log ("Event Card: " + eventCard.getEventKind());
 				}
-			}*/
+			}
+			playerCardList.Add (playerHand);
 		}
 	}
 
 	public GameData(){
+		
+	}
+}
+
+[Serializable]
+public class PlayerCardList
+{
+	public List<string> playerHand = new List<string>();
+
+	public PlayerCardList(){
+		
 	}
 }

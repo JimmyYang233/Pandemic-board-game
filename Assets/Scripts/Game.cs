@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 [System.Serializable]
 public class Game : MonoBehaviour {
@@ -100,7 +98,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	private void RPC_LoadPlayer(string gameDataJson){
-		savedGame = JsonConvert.DeserializeObject<GameData> (gameDataJson);
+		savedGame = JsonUtility.FromJson<GameData>(gameDataJson) ;
 		Instance.LoadPlayer (savedGame);
 	}
 
@@ -323,17 +321,9 @@ public class Game : MonoBehaviour {
 
 		Debug.Log ("Start to load players....");
 		Debug.Log (savedGame.playerCardList.Count);
-		foreach (List<PlayerCard> playerCards in savedGame.playerCardList) {
-			foreach (PlayerCard pc in playerCards) {
-				Debug.Log ("Player card here");
-				if (pc.getType().Equals(CardType.CityCard)){
-					CityCard cityCard = (CityCard)pc;
-					Debug.Log ("City Card: " + cityCard.getName());
-				}
-				else if (pc.getType().Equals(CardType.EventCard)){
-					EventCard eventCard = (EventCard)pc;
-					Debug.Log ("Event Card: " + eventCard.getEventKind());
-				}
+		foreach (PlayerCardList pcl in savedGame.playerCardList) {
+			foreach (string pc in pcl.playerHand) {
+				Debug.Log ("Player card " + pc);
 			}
 		}
 		/*

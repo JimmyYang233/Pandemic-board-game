@@ -9,13 +9,13 @@ public class CityCard : PlayerCard {
     private City city;
 	[NonSerialized]
     private Color color;
-	private CityName name;
+	private string name;
         
     public CityCard(City c): base(CardType.CityCard)
     {
         city = c;
         color = c.getColor();
-		name = c.getCityName ();
+		name = c.getCityName ().ToString();
     }
 
     public Color getColor()
@@ -28,7 +28,7 @@ public class CityCard : PlayerCard {
         return city;
     }
 
-	public CityName getName(){
+	public string getName(){
 		return name;
 	}
     

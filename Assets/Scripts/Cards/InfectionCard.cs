@@ -30,7 +30,7 @@ public class InfectionCard : PlayerCard
         return city;
     }
 
-	public CityName getName(){
-		return name;
+	public string getName(){
+		return name.ToString();
 	}
 }
