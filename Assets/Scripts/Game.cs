@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 [System.Serializable]
 public class Game : MonoBehaviour {
@@ -78,8 +80,14 @@ public class Game : MonoBehaviour {
 	private void Start()
 	{	
 		if (PhotonNetwork.isMasterClient) {
-			PhotonView.RPC ("RPC_InitializePlayer",PhotonTargets.All);
-			PhotonView.RPC ("RPC_InitializeGame",PhotonTargets.All);
+			if (isnewGame) {
+				PhotonView.RPC ("RPC_InitializePlayer", PhotonTargets.All);
+				PhotonView.RPC ("RPC_InitializeGame", PhotonTargets.All);
+			} else {
+				PhotonView.RPC ("RPC_LoadPlayer", PhotonTargets.All);
+				PhotonView.RPC ("RPC_LoadGame", PhotonTargets.All);
+			}
+
 		}
 
 	}
@@ -91,8 +99,9 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	private void RPC_LoadPlayer(){
-		Instance.LoadPlayer ();
+	private void RPC_LoadPlayer(string gameDataJson){
+		savedGame = JsonConvert.DeserializeObject<GameData> (gameDataJson);
+		Instance.LoadPlayer (savedGame);
 	}
 
 	[PunRPC]
@@ -309,8 +318,21 @@ public class Game : MonoBehaviour {
 		}
 	}
 
-	private void LoadPlayer(){
-		
+	private void LoadPlayer(GameData savedGame){
+		this.savedGame = savedGame;
+
+		foreach (List<PlayerCard> playerCards in savedGame.playerCardList) {
+			foreach (PlayerCard pc in playerCards) {
+				if (pc.getType().Equals(CardType.CityCard)){
+					CityCard cityCard = (CityCard)pc;
+					Debug.Log ("City Card: " + cityCard.getName());
+				}
+				else if (pc.getType().Equals(CardType.EventCard)){
+					EventCard eventCard = (EventCard)pc;
+					Debug.Log ("Event Card: " + eventCard.getEventKind());
+				}
+			}
+		}
 	}
 
 	//initialzie game, set the first player as current player
