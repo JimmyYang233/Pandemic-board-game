@@ -67,4 +67,6 @@ MonoBehaviour:
   - RPC_cure
   - RPC_borrowedTime
   - RPC_oneQuietNight
+  - RPC_LoadGame
+  - RPC_LoadPlayer
   DisableAutoOpenWizard: 1

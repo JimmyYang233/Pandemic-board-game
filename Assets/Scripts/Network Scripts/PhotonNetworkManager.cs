@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 public class PhotonNetworkManager : MonoBehaviour {
 	public InputField roomName;
@@ -99,7 +101,48 @@ public class PhotonNetworkManager : MonoBehaviour {
 		//debug purpose
 		case "Load":
 			GameData data = SaveAndLoadManager.LoadGameData (roomName.text);
-			Debug.Log (data.challenge);
+			Debug.Log ("when loaded, we have ");
+			foreach (List<PlayerCard> playerCards in data.playerCardList) {
+				foreach (PlayerCard pc in playerCards) {
+					if (pc.getType().Equals(CardType.CityCard)){
+						CityCard cityCard = (CityCard)pc;
+						Debug.Log ("City Card: " + cityCard.getName());
+					}
+					else if (pc.getType().Equals(CardType.EventCard)){
+						EventCard eventCard = (EventCard)pc;
+						Debug.Log ("Event Card: " + eventCard.getEventKind());
+					}
+				}
+			}
+
+			foreach (RoleKind rk in data.roleKindList) {
+				Debug.Log ("RoleKind is " + rk.ToString());
+			}
+			PlayerNetwork.Instance.isNewGame = false;
+			PlayerNetwork.Instance.savedGameJson = JsonConvert.SerializeObject (data);
+			//Debug.Log (PlayerNetwork.Instance.savedGameJson);
+			GameData savedGame = JsonConvert.DeserializeObject<GameData> (PlayerNetwork.Instance.savedGameJson);
+			Debug.Log ("After loaded, we have ");
+			foreach (List<PlayerCard> playerCards in savedGame.playerCardList) {
+				foreach (PlayerCard pc in playerCards) {
+					if (pc.getType().Equals(CardType.CityCard)){
+						CityCard cityCard = (CityCard)pc;
+						Debug.Log ("City Card: " + cityCard.getName());
+					}
+					else if (pc.getType().Equals(CardType.EventCard)){
+						EventCard eventCard = (EventCard)pc;
+						Debug.Log ("Event Card: " + eventCard.getEventKind());
+					}
+				}
+			}
+			/*
+			foreach (RoleKind rk in savedGame.roleKindList) {
+				Debug.Log ("RoleKind is " + rk.ToString());
+			}*/
+			RoomOptions testRo = new RoomOptions ();
+			testRo.MaxPlayers = byte.Parse (maxCount.text);
+			PhotonNetwork.CreateRoom ("LoadTest", testRo, TypedLobby.Default);
+			SceneManager.LoadScene ("Room");
 			break;
 		}
 	}

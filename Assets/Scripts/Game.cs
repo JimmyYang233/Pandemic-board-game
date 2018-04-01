@@ -80,17 +80,17 @@ public class Game : MonoBehaviour {
 	private void Start()
 	{	
 		if (PhotonNetwork.isMasterClient) {
-			if (isnewGame) {
+			if (PlayerNetwork.Instance.isNewGame) {
 				PhotonView.RPC ("RPC_InitializePlayer", PhotonTargets.All);
 				PhotonView.RPC ("RPC_InitializeGame", PhotonTargets.All);
 			} else {
-				PhotonView.RPC ("RPC_LoadPlayer", PhotonTargets.All);
+				PhotonView.RPC ("RPC_LoadPlayer", PhotonTargets.All, PlayerNetwork.Instance.savedGameJson);
 				PhotonView.RPC ("RPC_LoadGame", PhotonTargets.All);
 			}
 
 		}
 
-	}
+	} 
 
 	#region RPC method		
 	[PunRPC]
@@ -321,8 +321,11 @@ public class Game : MonoBehaviour {
 	private void LoadPlayer(GameData savedGame){
 		this.savedGame = savedGame;
 
+		Debug.Log ("Start to load players....");
+		Debug.Log (savedGame.playerCardList.Count);
 		foreach (List<PlayerCard> playerCards in savedGame.playerCardList) {
 			foreach (PlayerCard pc in playerCards) {
+				Debug.Log ("Player card here");
 				if (pc.getType().Equals(CardType.CityCard)){
 					CityCard cityCard = (CityCard)pc;
 					Debug.Log ("City Card: " + cityCard.getName());
@@ -333,6 +336,10 @@ public class Game : MonoBehaviour {
 				}
 			}
 		}
+		/*
+		foreach (RoleKind rk in savedGame.roleKindList) {
+			Debug.Log ("RoleKind is " + rk.ToString());
+		}*/
 	}
 
 	//initialzie game, set the first player as current player

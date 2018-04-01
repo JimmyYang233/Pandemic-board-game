@@ -6,6 +6,8 @@ public class PlayerNetwork : MonoBehaviour {
 	public static PlayerNetwork Instance;
 	private PhotonView PhotonView;
 	private int PlayersInGame = 0;
+	public bool isNewGame = true;
+	public string savedGameJson;
 
 	private void Awake(){
 		if (Instance == null) {

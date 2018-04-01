@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public abstract class PlayerCard : Card
+public class PlayerCard : Card
 {
     private CardType cardType;
 

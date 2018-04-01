@@ -31,6 +31,7 @@ public static class SaveAndLoadManager{
 
 			GameData data = bf.Deserialize (stream) as GameData;
 			//----------debug----------
+			Debug.Log("Show detail of loaded game....." + data.playerCardList.Count);
 			foreach (List<PlayerCard> playerCards in data.playerCardList) {
 				foreach (PlayerCard pc in playerCards) {
 					if (pc.getType().Equals(CardType.CityCard)){
@@ -55,13 +56,14 @@ public static class SaveAndLoadManager{
 	}
 }
 
-[Serializable]
+
 /*
 	this class will be used to save game data
 	the player's role will be saved in a list and their 
 
 
 */
+[Serializable]
 public class GameData{
 	//list of player's hand cards
 	public List<List<PlayerCard>> playerCardList = new List<List<PlayerCard>>();
@@ -73,6 +75,7 @@ public class GameData{
 			playerCardList.Add (player.getHand ());
 			roleKindList.Add (player.getRoleKind ());
 			//debug purpose
+
 			/*
 			foreach (PlayerCard pc in player.getHand()) {
 				if (pc.getType().Equals(CardType.CityCard)){
@@ -85,5 +88,8 @@ public class GameData{
 				}
 			}*/
 		}
+	}
+
+	public GameData(){
 	}
 }
