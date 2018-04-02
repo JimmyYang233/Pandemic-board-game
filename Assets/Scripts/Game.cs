@@ -331,18 +331,8 @@ public class Game : MonoBehaviour {
 			Player newPlayer = new Player (player);
 			players.Add (new Player(player));
 		}
-		using(var e1 = players.GetEnumerator())
-		using(var e2 = savedGame.roleKindList.GetEnumerator())
-		{
-			while(e1.MoveNext() && e2.MoveNext())
-			{
-				var curPlayer = e1.Current;
-				var curRolekind = e2.Current;
-				Role curRole = new Role(curRolekind);
-				curPlayer.setRole (curRole);
-				// use item1 and item2
-			}
-		}
+
+
 	}
 
 	//initialzie game, set the first player as current player
@@ -457,6 +447,31 @@ public class Game : MonoBehaviour {
 
 		}
 
+		using(var e1 = players.GetEnumerator())
+		using(var e2 = savedGame.roleKindList.GetEnumerator())
+		using(var e3 = savedGame.playerCardList.GetEnumerator())
+		{
+			while(e1.MoveNext() && e2.MoveNext() && e3.MoveNext())
+			{
+				var curPlayer = e1.Current;
+				var curRolekind = e2.Current;
+				PlayerCardList playerHand = e3.Current;
+				Role curRole = new Role(curRolekind);
+				curPlayer.setRole (curRole);
+				foreach (string s in playerHand.playerHand) {
+					if (Enum.IsDefined (typeof(EventKind), s)) {
+						curPlayer.addCard (EventCard.getEventCard((EventKind)Enum.Parse (typeof(EventKind), s)));
+						Debug.Log ("Event card " + s);
+					}
+					if (Enum.IsDefined (typeof(CityName), s)) {
+						curPlayer.addCard (new CityCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
+						Debug.Log ("City card " + s);
+					}
+				}
+				// use item1 and item2
+			}
+		}
+
 		Maps mapInstance = Maps.getInstance();
 		//initialize infectionArray
 		infectionArray = new int[]{2,2,2,3,3,4,4};
@@ -548,21 +563,16 @@ public class Game : MonoBehaviour {
 
 
 
-		foreach (PlayerCardList pcl in savedGame.playerCardList) {
-			foreach (string pc in pcl.playerHand) {
-				if (Enum.IsDefined (typeof(EventKind), pc)) {
-					Debug.Log ("Event card " + pc);
-				}
-				if (Enum.IsDefined (typeof(CityName), pc)) {
-					Debug.Log ("City card " + pc);
-				}
-			}
-		}
-		/*
+
 		foreach (RoleKind rk in savedGame.roleKindList) {
 			Debug.Log ("RoleKind is " + rk.ToString());
 		}
-		*/
+
+		foreach(Player player in players){
+			foreach (PlayerCard pc in player.getHand()) {
+				Debug.Log (pc.GetType());
+			}
+		}
 	}
 	#endregion
 
