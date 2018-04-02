@@ -321,12 +321,26 @@ public class Game : MonoBehaviour {
 
 		Debug.Log ("Start to load players....");
 
+		//reconstruct role
 		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
 		Array.Sort (photonplayers, delegate(PhotonPlayer x, PhotonPlayer y) {
 			return x.ID.CompareTo(y.ID);
 		});
 		foreach (PhotonPlayer player in photonplayers){
+			Player newPlayer = new Player (player);
 			players.Add (new Player(player));
+		}
+		using(var e1 = players.GetEnumerator())
+		using(var e2 = savedGame.roleKindList.GetEnumerator())
+		{
+			while(e1.MoveNext() && e2.MoveNext())
+			{
+				var curPlayer = e1.Current;
+				var curRolekind = e2.Current;
+				Role curRole = new Role(curRolekind);
+				curPlayer.setRole (curRole);
+				// use item1 and item2
+			}
 		}
 	}
 
@@ -437,12 +451,82 @@ public class Game : MonoBehaviour {
 		//initialize infectionArray
 		infectionArray = new int[]{2,2,2,3,3,4,4};
 
+	
+		numOfEpidemicCard = savedGame.difficulity;
+		difficulty = savedGame.difficulity;
+		me = FindPlayer(PhotonNetwork.player);
+
+		currentPlayer = findPlayer(savedGame.currentPlayerRoleKind);
+		Debug.Log ("current player is player" + currentPlayer.getRoleKind());
+
+		//TODO
+		foreach(City c in cities)
+		{
+			playerCardDeck.Add(new CityCard(c));
+			infectionDeck.Add(new InfectionCard(c));
+		}
+		List<EventKind> eventKinds = mapInstance.getEventNames();
+		foreach (EventKind k in eventKinds)
+		{
+			playerCardDeck.Add(EventCard.getEventCard(k));
+		}
+
+		foreach (PlayerCard p in playerCardDeck){
+			AllHandCards.Add(p);
+		}
+		AllHandCards.Add(EpidemicCard.getEpidemicCard());
+
+		Player bioTerrorist = null;
+
+		if(challenge == Challenge.BioTerroist)
+		{
+			bioTerrorist = (BioTerroristVolunteer==null) ? players[UnityEngine.Random.Range(0, players.Count+1)] : BioTerroristVolunteer;
+		}
+
+		foreach (Player p in players) 
+		{
+			Role r = (p != bioTerrorist) ? new Role(selectRole()) : new BioTerrorist();
+			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			r.setPawn(pawn);
+			p.setRole(r);
+			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
+		}
+
+		List<Color> dc = mapInstance.getDiseaseColor();
+		foreach (Color c in dc)
+		{
+			Disease d = new Disease(c);
+			diseases.Add(c, d);
+		}
+
+		gameInfoController.displayOutbreak();
+		gameInfoController.displayInfectionRate();
+
+		//FOR GUI
+
+		foreach (Player p in players)
+		{
+			if (!p.Equals(me))
+			{
+				playerPanel.addOtherPlayer(p.getRoleKind());
+			}
+		}
+		playerPanel.addMainPlayer(me.getRoleKind());
+		playerSelect.gameObject.SetActive (false);
+
+		setInitialHand();
+		shuffleAndAddEpidemic();
+		setUp();
+		currentPhase = GamePhase.PlayerTakeTurn;
 
 		Debug.Log (savedGame.playerCardList.Count);
 		foreach (PlayerCardList pcl in savedGame.playerCardList) {
 			foreach (string pc in pcl.playerHand) {
 				if (Enum.IsDefined (typeof(EventKind), pc)) {
-
+					Debug.Log ("Event card " + pc);
+				}
+				if (Enum.IsDefined (typeof(CityName), pc)) {
+					Debug.Log ("City card " + pc);
 				}
 			}
 		}

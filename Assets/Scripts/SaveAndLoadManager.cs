@@ -76,6 +76,10 @@ public class GameData{
 		remainingResearch = game.getRemainingResearch ();
 		List<CityInfo> CityInfoList = new List<CityInfo> ();
 		difficulity = game.nEpidemicCard;
+		List<string> playerCardDeck = new List<string> ();
+		List<string> playerDiscardPile = new List<string> ();
+		List<string> infectionCardDeck = new List<string> ();
+		List<string> infectionDiscardPile = new List<string>();
 
 		foreach(City city in game.getCities()){
 			CityInfo cityInfo = new CityInfo (city);
