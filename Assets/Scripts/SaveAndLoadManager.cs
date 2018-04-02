@@ -62,14 +62,29 @@ public class GameData{
 	public List<PlayerCardList> playerCardList = new List<PlayerCardList>();
 	public Challenge challenge;
 	public List<RoleKind> roleKindList = new List<RoleKind>();
+	public RoleKind currentPlayerRoleKind;
+	public int infectionRateIndex;
+	public int outBreakRate;
+	public int remainingResearch;
+	public int difficulity;
+
 	public GameData(Game game){
 		challenge = game.getChallenge();
+		currentPlayerRoleKind = game.getCurrentPlayer ().getRoleKind ();
+		infectionRateIndex = game.getInfectionIndex ();
+		outBreakRate = game.getOutbreakRate ();
+		remainingResearch = game.getRemainingResearch ();
+		List<CityInfo> CityInfoList = new List<CityInfo> ();
+		difficulity = game.nEpidemicCard;
+
+		foreach(City city in game.getCities()){
+			CityInfo cityInfo = new CityInfo (city);
+			CityInfoList.Add (cityInfo);
+		}
+
 		foreach (Player player in game.getPlayers()) {
 			PlayerCardList playerHand= new PlayerCardList();
 			roleKindList.Add (player.getRoleKind ());
-			//debug purpose
-
-
 			foreach (PlayerCard pc in player.getHand()) {
 				if (pc.getType().Equals(CardType.CityCard)){
 					CityCard cityCard = (CityCard)pc;
@@ -97,6 +112,23 @@ public class PlayerCardList
 	public List<string> playerHand = new List<string>();
 
 	public PlayerCardList(){
+		
+	}
+}
+
+[Serializable]
+public class CityInfo{
+	public Dictionary<String,int> cubes = new Dictionary<string, int>();
+	public string cityName;
+
+	public CityInfo(City city){
+		cityName = city.getCityName ().ToString ();
+		foreach (KeyValuePair<Color,int> entry in city.getNumOfCubes()) {
+			cubes.Add (entry.Key.ToString(),entry.Value);
+		}
+	}
+
+	public CityInfo(){
 		
 	}
 }

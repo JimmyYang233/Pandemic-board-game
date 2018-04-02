@@ -61,7 +61,7 @@ public class Game : MonoBehaviour {
     GameObject backGround;
 
     
-    public int nEpidemicCard;
+	public int nEpidemicCard;
     public Pawn prefab;
     public GameInfoDisplay gameInfoController;
 
@@ -320,16 +320,14 @@ public class Game : MonoBehaviour {
 		this.savedGame = savedGame;
 
 		Debug.Log ("Start to load players....");
-		Debug.Log (savedGame.playerCardList.Count);
-		foreach (PlayerCardList pcl in savedGame.playerCardList) {
-			foreach (string pc in pcl.playerHand) {
-				Debug.Log ("Player card " + pc);
-			}
+
+		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
+		Array.Sort (photonplayers, delegate(PhotonPlayer x, PhotonPlayer y) {
+			return x.ID.CompareTo(y.ID);
+		});
+		foreach (PhotonPlayer player in photonplayers){
+			players.Add (new Player(player));
 		}
-		/*
-		foreach (RoleKind rk in savedGame.roleKindList) {
-			Debug.Log ("RoleKind is " + rk.ToString());
-		}*/
 	}
 
 	//initialzie game, set the first player as current player
@@ -422,7 +420,36 @@ public class Game : MonoBehaviour {
 	}
 
 	private void LoadGame(){
-		
+		researchStationRemain = savedGame.remainingResearch;
+		cities = new List<City>();
+		backGround = GameObject.FindGameObjectWithTag("background");
+		backGround.transform.position += new Vector3(0.0001f, 0, 0);
+		foreach (Transform t in backGround.transform)
+		{
+			if (t.GetComponent<City>() != null)
+			{
+				cities.Add(t.GetComponent<City>());
+			}
+
+		}
+
+		Maps mapInstance = Maps.getInstance();
+		//initialize infectionArray
+		infectionArray = new int[]{2,2,2,3,3,4,4};
+
+
+		Debug.Log (savedGame.playerCardList.Count);
+		foreach (PlayerCardList pcl in savedGame.playerCardList) {
+			foreach (string pc in pcl.playerHand) {
+				if (Enum.IsDefined (typeof(EventKind), pc)) {
+
+				}
+			}
+		}
+		/*
+		foreach (RoleKind rk in savedGame.roleKindList) {
+			Debug.Log ("RoleKind is " + rk.ToString());
+		}*/
 	}
 	#endregion
 
