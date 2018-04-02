@@ -20,10 +20,18 @@ public class Disease : MonoBehaviour {
         return cured;
     }
 
+	public void setCured(bool isCured){
+		cured = isCured;
+	}
+
     public bool isEradicated()
     {
         return eradicated;
     }
+
+	public void setEradicated(bool isEradicated){
+		eradicated = isEradicated;
+	}
 
     public Color getColor()
     {
@@ -34,6 +42,10 @@ public class Disease : MonoBehaviour {
     {
         return numberOfDiseaseCubesLeft;
     }
+
+	public void setNumOfDiseaseCubeLeft(int cubeLeft){
+		this.numberOfDiseaseCubesLeft = cubeLeft;
+	}
 
     public void addCubes(int num)
     {

@@ -509,6 +509,25 @@ public class Game : MonoBehaviour {
 			diseases.Add(c, d);
 		}
 
+		using (var e = savedGame.diseaseInfoList.GetEnumerator ()) {
+			e.MoveNext ();
+			foreach (KeyValuePair<Color, Disease> entry in diseases) {
+				Disease curDisease = entry.Value;
+				curDisease.setCured(e.Current.cured);
+				curDisease.setEradicated(e.Current.eradicated);
+				curDisease.setNumOfDiseaseCubeLeft(e.Current.numberOfDiseaseCubesLeft);
+				e.MoveNext ();
+			}
+		}
+
+		using (var e = savedGame.CityInfoList.GetEnumerator ()) {
+			e.MoveNext ();
+			foreach(City city in cities){
+				city.restoreCityInfo (e.Current);
+				e.MoveNext ();
+			}
+		}
+
 		gameInfoController.displayOutbreak();
 		gameInfoController.displayInfectionRate();
 
@@ -524,12 +543,10 @@ public class Game : MonoBehaviour {
 		playerPanel.addMainPlayer(me.getRoleKind());
 		playerSelect.gameObject.SetActive (false);
 
-		setInitialHand();
-		shuffleAndAddEpidemic();
-		setUp();
-		currentPhase = GamePhase.PlayerTakeTurn;
+		currentPhase = savedGame.currentGamePhase;
 
-		Debug.Log (savedGame.playerCardList.Count);
+
+
 		foreach (PlayerCardList pcl in savedGame.playerCardList) {
 			foreach (string pc in pcl.playerHand) {
 				if (Enum.IsDefined (typeof(EventKind), pc)) {
@@ -1679,6 +1696,16 @@ public class Game : MonoBehaviour {
 		return players [index];
 	}
 
+
+	public Pawn FindPlayerPawnWithRoleKind(RoleKind roleKind){
+		foreach (Player player in players) {
+			if (player.getRoleKind ().Equals (roleKind)) {
+				return player.getPlayerPawn ();
+			}
+		}
+		return null;
+	}
+
 	private City findCity(CityName cityname)
 	{
 		foreach (City c in cities)
@@ -1826,6 +1853,7 @@ public class Game : MonoBehaviour {
 		return cardListToStringList (AllHandCards);
 	}
 
+
 	private static List<string> cardListToStringList(List<PlayerCard> inputCards){
 		List<string> output = new List<string> ();
 		foreach (PlayerCard pc in inputCards) {
@@ -1840,15 +1868,15 @@ public class Game : MonoBehaviour {
 		List<PlayerCard> output = new List<PlayerCard> ();
 		foreach(string s in input){
 			if (s.Equals ("Epidemic")) {
-				Debug.Log ("Found an epidemic card");
+				//Debug.Log ("Found an epidemic card");
 				output.Add (EpidemicCard.getEpidemicCard ());
 			}
 			else if (Enum.IsDefined (typeof(EventKind), s)){
-				Debug.Log ("Found an event card");
+				//Debug.Log ("Found an event card");
 				output.Add (EventCard.getEventCard((EventKind)Enum.Parse (typeof(EventKind), s)));
 			}
 			else if (Enum.IsDefined (typeof(CityName), s)){
-				Debug.Log ("Found a city card");
+				//Debug.Log ("Found a city card");
 				output.Add (new CityCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
 			}
 			else{

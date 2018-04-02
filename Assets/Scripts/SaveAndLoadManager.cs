@@ -64,6 +64,7 @@ public class GameData{
 	public Challenge challenge;
 	public List<RoleKind> roleKindList = new List<RoleKind>();
 	public RoleKind currentPlayerRoleKind;
+	public GamePhase currentGamePhase;
 	public int infectionRateIndex;
 	public int outBreakRate;
 	public int remainingResearch;
@@ -78,6 +79,7 @@ public class GameData{
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
+		currentGamePhase = game.getCurrentPhase ();
 		currentPlayerRoleKind = game.getCurrentPlayer ().getRoleKind ();
 		infectionRateIndex = game.getInfectionIndex ();
 		outBreakRate = game.getOutbreakRate ();
@@ -97,7 +99,7 @@ public class GameData{
 		}
 
 		foreach (KeyValuePair<Color, Disease> entry in game.getDiseases()) {
-			diseaseInfoList.Add (entry.Key);
+			diseaseInfoList.Add (new DiseaseInfo(entry.Value));
 		}
 
 		foreach (Player player in game.getPlayers()) {
@@ -138,12 +140,18 @@ public class PlayerCardList
 public class CityInfo{
 	public Dictionary<String,int> cubes = new Dictionary<string, int>();
 	public string cityName;
+	public List<RoleKind> playerRoleKindInCity = new List<RoleKind> ();
 
 	public CityInfo(City city){
 		cityName = city.getCityName ().ToString ();
 		foreach (KeyValuePair<Color,int> entry in city.getNumOfCubes()) {
 			cubes.Add (entry.Key.ToString(),entry.Value);
+			Debug.Log ("CityName: " + cityName + "color: "+ entry.Key.ToString() + "value: " + entry.Value);
 		}
+		foreach(Pawn pawn in city.getPawns()){
+			playerRoleKindInCity.Add (pawn.getRoleKind());
+		}
+
 	}
 
 	public CityInfo(){

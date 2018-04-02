@@ -47,8 +47,20 @@ public class City : MonoBehaviour {
         numberOfCubes.Add(Color.red, 0);
 
         //UI only
-    
     }
+
+	public Color ToColor(string color){
+		return (Color)typeof(Color).GetProperty (color.ToLowerInvariant ()).GetValue (null, null);
+	}
+
+	public void restoreCityInfo(CityInfo cityInfo){
+		foreach (KeyValuePair<string ,int> entry in cityInfo.cubes) {
+			numberOfCubes.Add (ToColor(entry.Key),entry.Value);
+		}
+		foreach(RoleKind roleKind in cityInfo.playerRoleKindInCity){
+			this.addPawn (Game.Instance.FindPlayerPawnWithRoleKind(roleKind));
+		}
+	}
 
     public void setCityColor(Color color)
     {
