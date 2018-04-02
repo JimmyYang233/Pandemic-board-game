@@ -516,6 +516,7 @@ public class Game : MonoBehaviour {
 				curDisease.setCured(e.Current.cured);
 				curDisease.setEradicated(e.Current.eradicated);
 				curDisease.setNumOfDiseaseCubeLeft(e.Current.numberOfDiseaseCubesLeft);
+				Debug.Log (entry.Key + "has " + curDisease.getNumOfDiseaseCubeLeft ());
 				e.MoveNext ();
 			}
 		}
@@ -1890,7 +1891,7 @@ public class Game : MonoBehaviour {
 		List<InfectionCard> output = new List<InfectionCard> ();
 		foreach (string s in input) {
 			if (Enum.IsDefined (typeof(CityName), s)) {
-				Debug.Log ("Found an infection card");
+				//Debug.Log ("Found an infection card");
 				output.Add (new InfectionCard (findCity((CityName)Enum.Parse (typeof(CityName), s))));
 			} else {
 				Debug.Log ("Unknown card in InfectionCard pile");

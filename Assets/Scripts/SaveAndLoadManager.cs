@@ -138,7 +138,7 @@ public class PlayerCardList
 
 [Serializable]
 public class CityInfo{
-	public Dictionary<String,int> cubes = new Dictionary<string, int>();
+	public Dictionary<string,int> cubes = new Dictionary<string, int>();
 	public string cityName;
 	public List<RoleKind> playerRoleKindInCity = new List<RoleKind> ();
 
