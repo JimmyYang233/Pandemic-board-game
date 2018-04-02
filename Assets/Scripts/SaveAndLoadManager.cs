@@ -72,6 +72,7 @@ public class GameData{
 	public List<string> playerDiscardPile = new List<string> ();
 	public List<string> infectionCardDeck = new List<string> ();
 	public List<string> infectionDiscardPile = new List<string>();
+	public List<string> allHandCards= new List<string> ();
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
@@ -86,7 +87,7 @@ public class GameData{
 		playerDiscardPile = game.getPlayerDiscardPileString ();
 		infectionCardDeck = game.getInfectionDeckString ();
 		infectionDiscardPile = game.getInfectionDiscardPileString ();
-
+		allHandCards = game.getAllHandCards ();
 
 		foreach(City city in game.getCities()){
 			CityInfo cityInfo = new CityInfo (city);

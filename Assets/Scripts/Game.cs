@@ -460,23 +460,23 @@ public class Game : MonoBehaviour {
 		currentPlayer = findPlayer(savedGame.currentPlayerRoleKind);
 		Debug.Log ("current player is player" + currentPlayer.getRoleKind());
 
-		//TODO
-		foreach(City c in cities)
-		{
-			playerCardDeck.Add(new CityCard(c));
-			infectionDeck.Add(new InfectionCard(c));
-		}
-		List<EventKind> eventKinds = mapInstance.getEventNames();
-		foreach (EventKind k in eventKinds)
-		{
-			playerCardDeck.Add(EventCard.getEventCard(k));
-		}
+
+		playerCardDeck = convertToPlayerCardList(savedGame.playerCardDeck);
+		playerDiscardPile = convertToPlayerCardList (savedGame.playerDiscardPile);
+		infectionDeck = convertToInfecionCardList (savedGame.infectionCardDeck);
+		infectionDiscardPile = convertToInfecionCardList (savedGame.infectionDiscardPile);
 
 		foreach (PlayerCard p in playerCardDeck){
 			AllHandCards.Add(p);
 		}
+
+		foreach (PlayerCard p in playerDiscardPile){
+			AllHandCards.Add(p);
+		}
+			
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
 
+		//TODO : IMPORTANT! add playr hand to allhandcard
 		Player bioTerrorist = null;
 
 		if(challenge == Challenge.BioTerroist)
@@ -1685,8 +1685,7 @@ public class Game : MonoBehaviour {
 
 		return null;
 	}
-
-	//used to find playerCard with name @cardName
+		
 	public PlayerCard findPlayerCard(String cardName)
 	{
 
@@ -1808,10 +1807,51 @@ public class Game : MonoBehaviour {
 		return cardListToStringList(infectionDiscardPile.Cast<PlayerCard>().ToList());
 	}
 
+	public List<string> getAllHandCards(){
+		return cardListToStringList (AllHandCards);
+	}
+
 	private static List<string> cardListToStringList(List<PlayerCard> inputCards){
 		List<string> output = new List<string> ();
 		foreach (PlayerCard pc in inputCards) {
 			output.Add (pc.getName());
+		}
+		return output;
+	}
+	#endregion
+
+	#region convertMethod
+	private List<PlayerCard> convertToPlayerCardList(List<string> input){
+		List<PlayerCard> output = new List<PlayerCard> ();
+		foreach(string s in input){
+			if (s.Equals ("Epidemic")) {
+				Debug.Log ("Found an epidemic card");
+				output.Add (EpidemicCard.getEpidemicCard ());
+			}
+			else if (Enum.IsDefined (typeof(EventKind), s)){
+				Debug.Log ("Found an event card");
+				output.Add (EventCard.getEventCard((EventKind)Enum.Parse (typeof(EventKind), s)));
+			}
+			else if (Enum.IsDefined (typeof(CityName), s)){
+				Debug.Log ("Found a city card");
+				output.Add (new CityCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
+			}
+			else{
+				Debug.Log("Unknown Card in PlayerCard pile");
+			}
+		}
+		return output;
+	}
+
+	private List<InfectionCard> convertToInfecionCardList(List<string> input){
+		List<InfectionCard> output = new List<InfectionCard> ();
+		foreach (string s in input) {
+			if (Enum.IsDefined (typeof(CityName), s)) {
+				Debug.Log ("Found an infection card");
+				output.Add (new InfectionCard (findCity((CityName)Enum.Parse (typeof(CityName), s))));
+			} else {
+				Debug.Log ("Unknown card in InfectionCard pile");
+			}
 		}
 		return output;
 	}
