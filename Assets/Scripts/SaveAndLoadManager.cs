@@ -141,10 +141,12 @@ public class CityInfo{
 	public List<string> cubesColor = new List<string>();
 	public List<int> cubesNumber = new List<int>();
 	public string cityName;
+	public bool hasResearch;
 	public List<RoleKind> playerRoleKindInCity = new List<RoleKind> ();
 
 	public CityInfo(City city){
 		cityName = city.getCityName ().ToString ();
+		hasResearch = city.getHasResearch ();
 		foreach (KeyValuePair<Color,int> entry in city.getNumOfCubes()) {
 			cubesColor.Add (Game.colorToString(entry.Key));
 			cubesNumber.Add (entry.Value);

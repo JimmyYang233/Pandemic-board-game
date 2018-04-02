@@ -51,6 +51,10 @@ public class City : MonoBehaviour {
 
 
 	public void restoreCityInfo(CityInfo cityInfo){
+		if (cityInfo.hasResearch) {
+			hasResearch = true;
+			displayResearch ();
+		}
 		using (var e1 = cityInfo.cubesColor.GetEnumerator ())
 		using (var e2 = cityInfo.cubesNumber.GetEnumerator ()) {
 			while (e1.MoveNext () && e2.MoveNext ()) {
