@@ -434,6 +434,15 @@ public class Game : MonoBehaviour {
 		//Debug.Log("the role is" + me.getRoleKind().ToString());
 	}
 
+	/*
+	LoadGame will:
+	load all game info like outbreakrate, infection rate
+	load all player hand card :TODO
+	load all deck and discard pile
+	load all city info: TODO
+
+	RoleKind for each player has been loaded in LoadPlayer, TODO: player position and pawn
+	*/
 	private void LoadGame(){
 		researchStationRemain = savedGame.remainingResearch;
 		cities = new List<City>();
