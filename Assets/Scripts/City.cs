@@ -64,6 +64,7 @@ public class City : MonoBehaviour {
 			this.addPawn (Game.Instance.FindPlayerPawnWithRoleKind(roleKind));
 			Debug.Log (roleKind);
 		}
+		displayCube();
 	}
 
     public void setCityColor(Color color)
