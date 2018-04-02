@@ -1909,6 +1909,67 @@ public class Game : MonoBehaviour {
 		}
 		return output;
 	}
+
+    public static string colorToString(Color color)
+    {
+        if (color == Color.red)
+        {
+            return "red";
+        }
+        else if (color == Color.blue)
+        {
+            return "blue";
+        }
+        else if (color == Color.black)
+        {
+            return "black";
+        }
+
+        else if (color == Color.yellow)
+        {
+            return "yellow";
+        }
+
+        else if(color == Color.magenta)
+        {
+            return "purple";
+        }
+
+        else
+        {
+            Debug.Log("Wrong color type");
+            return "";
+        }
+    }
+
+    public static Color stringToColor(string color)
+    {
+        if (color.Equals("red"))
+        {
+            return Color.red;
+        }
+        else if (color.Equals("blue"))
+        {
+            return Color.blue;
+        }
+        else if (color.Equals("yellow"))
+        {
+            return Color.yellow;
+        }
+        else if (color.Equals("black"))
+        {
+            return Color.black;
+        }
+        else if (color.Equals("purple"))
+        {
+            return Color.magenta;
+        }
+        else
+        {
+            Debug.Log("Wrong string value");
+            return Color.white;
+        }
+    }
 	#endregion
 
 	#region saveAndQuit
