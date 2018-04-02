@@ -54,11 +54,16 @@ public class City : MonoBehaviour {
 	}
 
 	public void restoreCityInfo(CityInfo cityInfo){
-		Debug.Log (cityInfo.cityName + " has" );
-		foreach (KeyValuePair<string ,int> entry in cityInfo.cubes) {
-			numberOfCubes.Add (ToColor(entry.Key),entry.Value);
-			Debug.Log (ToColor(entry.Key));
-			Debug.Log ("Number " + entry.Value);
+		using (var e1 = cityInfo.cubesColor.GetEnumerator ())
+		using (var e2 = cityInfo.cubesNumber.GetEnumerator ()) {
+			while (e1.MoveNext () && e2.MoveNext ()) {
+				Debug.Log (e1.Current);
+				Debug.Log (e2.Current);
+				numberOfCubes.Add (ToColor ((string)e1.Current), e2.Current);
+				Debug.Log ("There are cubes in city " + cityInfo.cityName);
+				Debug.Log (ToColor (e1.Current));
+				Debug.Log ("Number " + e2.Current);
+			}
 		}
 		foreach(RoleKind roleKind in cityInfo.playerRoleKindInCity){
 			this.addPawn (Game.Instance.FindPlayerPawnWithRoleKind(roleKind));

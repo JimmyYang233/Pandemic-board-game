@@ -138,14 +138,16 @@ public class PlayerCardList
 
 [Serializable]
 public class CityInfo{
-	public Dictionary<string,int> cubes = new Dictionary<string, int>();
+	public List<string> cubesColor = new List<string>();
+	public List<int> cubesNumber = new List<int>();
 	public string cityName;
 	public List<RoleKind> playerRoleKindInCity = new List<RoleKind> ();
 
 	public CityInfo(City city){
 		cityName = city.getCityName ().ToString ();
 		foreach (KeyValuePair<Color,int> entry in city.getNumOfCubes()) {
-			cubes.Add (entry.Key.ToString(),entry.Value);
+			cubesColor.Add (entry.Key.ToString());
+			cubesNumber.Add (entry.Value);
 			Debug.Log ("CityName: " + cityName + "color: "+ entry.Key.ToString() + "value: " + entry.Value);
 		}
 		foreach(Pawn pawn in city.getPawns()){
