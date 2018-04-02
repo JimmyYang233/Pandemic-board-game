@@ -490,12 +490,12 @@ public class Game : MonoBehaviour {
 
 		if(challenge == Challenge.BioTerroist)
 		{
-			bioTerrorist = (BioTerroristVolunteer==null) ? players[UnityEngine.Random.Range(0, players.Count+1)] : BioTerroristVolunteer;
+			bioTerrorist = findPlayer (RoleKind.BioTerrorist);
 		}
 
 		foreach (Player p in players) 
 		{
-			Role r = (p != bioTerrorist) ? new Role(selectRole()) : new BioTerrorist();
+			Role r = p.getRole ();
 			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			r.setPawn(pawn);
 			p.setRole(r);
@@ -1180,10 +1180,7 @@ public class Game : MonoBehaviour {
         return card;
     }
 
-    public Disease getDisease(Color color)
-    {
-        return diseases[color];
-    }
+    
 
     /*
 		infect specified city with specified disease
@@ -1794,6 +1791,15 @@ public class Game : MonoBehaviour {
 
 	public Challenge getChallenge(){
 		return challenge;
+	}
+
+	public Disease getDisease(Color color)
+	{
+		return diseases[color];
+	}
+
+	public Dictionary<Color, Disease> getDiseases(){
+		return diseases;
 	}
 
 	public List<PlayerCard> getPlayerDiscardPile(){

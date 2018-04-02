@@ -73,6 +73,8 @@ public class GameData{
 	public List<string> infectionCardDeck = new List<string> ();
 	public List<string> infectionDiscardPile = new List<string>();
 	public List<string> allHandCards= new List<string> ();
+	public List<DiseaseInfo> diseaseInfoList = new List<DiseaseInfo> ();
+	public List<CityInfo> CityInfoList = new List<CityInfo> ();
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
@@ -80,7 +82,7 @@ public class GameData{
 		infectionRateIndex = game.getInfectionIndex ();
 		outBreakRate = game.getOutbreakRate ();
 		remainingResearch = game.getRemainingResearch ();
-		List<CityInfo> CityInfoList = new List<CityInfo> ();
+
 		difficulity = game.nEpidemicCard;
 
 		playerCardDeck = game.getPlayerCardDeckString ();
@@ -92,6 +94,10 @@ public class GameData{
 		foreach(City city in game.getCities()){
 			CityInfo cityInfo = new CityInfo (city);
 			CityInfoList.Add (cityInfo);
+		}
+
+		foreach (KeyValuePair<Color, Disease> entry in game.getDiseases()) {
+			diseaseInfoList.Add (entry.Key);
 		}
 
 		foreach (Player player in game.getPlayers()) {
@@ -141,6 +147,23 @@ public class CityInfo{
 	}
 
 	public CityInfo(){
+		
+	}
+}
+
+[Serializable]
+public class DiseaseInfo{
+	public bool cured;
+	public bool eradicated;
+	public int numberOfDiseaseCubesLeft;
+
+	public DiseaseInfo(Disease disease){
+		cured = disease.isCured ();
+		eradicated = disease.isEradicated ();
+		numberOfDiseaseCubesLeft = disease.getNumOfDiseaseCubeLeft ();
+	}
+
+	public DiseaseInfo(){
 		
 	}
 }
