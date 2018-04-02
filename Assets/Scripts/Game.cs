@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 [System.Serializable]
 public class Game : MonoBehaviour {
@@ -533,7 +534,8 @@ public class Game : MonoBehaviour {
 		/*
 		foreach (RoleKind rk in savedGame.roleKindList) {
 			Debug.Log ("RoleKind is " + rk.ToString());
-		}*/
+		}
+		*/
 	}
 	#endregion
 
@@ -1529,40 +1531,6 @@ public class Game : MonoBehaviour {
     }
     #endregion
 
-    public int getOutbreakRate()
-    {
-        return outbreaksValue;
-    }
-
-    public int getInfectionRate()
-    {
-        return infectionRate;
-    }
-
-    public int getInfectionIndex()
-    {
-        return index;
-    }
-
-    public int getRemainingResearch()
-    {
-        return researchStationRemain;
-    }
-
-    public List<City> getCities()
-    {
-        return cities;
-    }
-    
-    public List<PlayerCard> getPlayerDiscardPile()
-    {
-        return playerDiscardPile;
-    }
-
-	public Challenge getChallenge(){
-		return challenge;
-	}
-
 
     public void build(City initialCity, CityCard card)
     {
@@ -1790,42 +1758,62 @@ public class Game : MonoBehaviour {
 	}
 	#endregion
 
-	#region getDeckAndDiscardPile
-	public List<PlayerCard> getPlayerCardDeck(){
-		return playerCardDeck;
+	#region getMethods
+	public int getOutbreakRate()
+	{
+		return outbreaksValue;
+	}
+
+	public int getInfectionRate()
+	{
+		return infectionRate;
+	}
+
+	public int getInfectionIndex()
+	{
+		return index;
+	}
+
+	public int getRemainingResearch()
+	{
+		return researchStationRemain;
+	}
+
+	public List<City> getCities()
+	{
+		return cities;
+	}
+
+	public Challenge getChallenge(){
+		return challenge;
 	}
 
 	public List<PlayerCard> getPlayerDiscardPile(){
 		return playerDiscardPile;
 	}
 
-	public List<PlayerCard> getInfectionDeck(){
-		return infectionDeck;
+	public List<string> getPlayerCardDeckString(){
+		return cardListToStringList(playerCardDeck);
 	}
 
-	public List<PlayerCard> getInfectionDiscardPile(){
-		return infectionDiscardPile;
+	public List<string> getPlayerDiscardPileString(){
+		return cardListToStringList(playerDiscardPile);
+	}
+
+	public List<string> getInfectionDeckString(){
+		return cardListToStringList(infectionDeck.Cast<PlayerCard>().ToList());
+	}
+
+	public List<string> getInfectionDiscardPileString(){
+		return cardListToStringList(infectionDiscardPile.Cast<PlayerCard>().ToList());
 	}
 
 	private static List<string> cardListToStringList(List<PlayerCard> inputCards){
 		List<string> output = new List<string> ();
-		/*
-		foreach(PlayerCard pc in inputCards){
-			if (pc.getType().Equals(CardType.CityCard)){
-				CityCard cityCard = (CityCard)pc;
-				output.Add (cityCard.getName());
-				//Debug.Log ("City Card: " + cityCard.getName());
-			}
-			else if (pc.getType().Equals(CardType.EventCard)){
-				EventCard eventCard = (EventCard)pc;
-				output.Add (eventCard.getName());
-				//Debug.Log ("Event Card: " + eventCard.getEventKind());
-			}
-			else if (pc.getType().Equals(CardType.InfectionCard)){
-				InfectionCard infectionCard = (InfectionCard)pc;
-				output.Add (infectionCard.getName());
-			}
-		}*/
+		foreach (PlayerCard pc in inputCards) {
+			output.Add (pc.getName());
+		}
+		return output;
 	}
 	#endregion
 

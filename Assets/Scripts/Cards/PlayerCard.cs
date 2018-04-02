@@ -8,7 +8,8 @@ public class PlayerCard : Card
 {
     private CardType cardType;
 
-    public PlayerCard(CardType c)
+
+	public PlayerCard(CardType c)
     {
         cardType = c;
     }
@@ -17,4 +18,8 @@ public class PlayerCard : Card
     {
         return cardType;
     }
+
+	public virtual string getName (){
+		return "test failed";
+	}
 }

@@ -29,7 +29,7 @@ public class EventCard : PlayerCard {
         return eventCards[kind];
     }
 
-	public string getName(){
+	public override string getName(){
 		return eventKind.ToString ();
 	}
 

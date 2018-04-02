@@ -14,7 +14,6 @@ public class InfectionCard : PlayerCard
 
 	public InfectionCard(City c) : base(CardType.InfectionCard)
     {
-        
         city = c;
         color = c.getColor();
 		name = city.cityName;
@@ -30,7 +29,7 @@ public class InfectionCard : PlayerCard
         return city;
     }
 
-	public string getName(){
+	public override string getName(){
 		return name.ToString();
 	}
 }

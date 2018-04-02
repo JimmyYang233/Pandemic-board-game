@@ -31,6 +31,7 @@ public static class SaveAndLoadManager{
 
 			GameData data = bf.Deserialize (stream) as GameData;
 			//----------debug----------
+			/*
 			Debug.Log("Show detail of loaded game.....");
 			foreach (PlayerCardList pcl in data.playerCardList) {
 				foreach (string pc in pcl.playerHand) {
@@ -40,7 +41,7 @@ public static class SaveAndLoadManager{
 
 			foreach (RoleKind rk in data.roleKindList) {
 				Debug.Log ("RoleKind is " + rk.ToString());
-			}
+			}*/
 			//-------------------------
 			stream.Close ();
 			return data;
@@ -67,10 +68,10 @@ public class GameData{
 	public int outBreakRate;
 	public int remainingResearch;
 	public int difficulity;
-	List<string> playerCardDeck = new List<string> ();
-	List<string> playerDiscardPile = new List<string> ();
-	List<string> infectionCardDeck = new List<string> ();
-	List<string> infectionDiscardPile = new List<string>();
+	public List<string> playerCardDeck = new List<string> ();
+	public List<string> playerDiscardPile = new List<string> ();
+	public List<string> infectionCardDeck = new List<string> ();
+	public List<string> infectionDiscardPile = new List<string>();
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
@@ -80,6 +81,11 @@ public class GameData{
 		remainingResearch = game.getRemainingResearch ();
 		List<CityInfo> CityInfoList = new List<CityInfo> ();
 		difficulity = game.nEpidemicCard;
+
+		playerCardDeck = game.getPlayerCardDeckString ();
+		playerDiscardPile = game.getPlayerDiscardPileString ();
+		infectionCardDeck = game.getInfectionDeckString ();
+		infectionDiscardPile = game.getInfectionDiscardPileString ();
 
 
 		foreach(City city in game.getCities()){

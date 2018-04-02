@@ -19,7 +19,7 @@ public class MutationEventCard : PlayerCard {
         return INSTANCE;
     }
 
-	public string getName(){
+	public override string getName(){
 		return name;
 	}
     

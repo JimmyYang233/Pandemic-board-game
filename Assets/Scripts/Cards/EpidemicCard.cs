@@ -17,7 +17,7 @@ public class EpidemicCard : PlayerCard {
         return INSTANCE;
     }
 
-	public string getName(){
+	public override string getName(){
 		return name;
 	}
 }

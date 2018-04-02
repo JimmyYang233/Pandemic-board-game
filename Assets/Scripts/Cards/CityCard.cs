@@ -28,7 +28,7 @@ public class CityCard : PlayerCard {
         return city;
     }
 
-	public string getName(){
+	public override string getName(){
 		return name;
 	}
     

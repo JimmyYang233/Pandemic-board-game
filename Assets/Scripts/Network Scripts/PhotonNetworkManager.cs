@@ -99,7 +99,8 @@ public class PhotonNetworkManager : MonoBehaviour {
 		//debug purpose
 		case "Load":
 			GameData data = SaveAndLoadManager.LoadGameData (roomName.text);
-			Debug.Log ("when loaded, we have " + data.playerCardList.Count);
+			/*
+			Debug.Log ("when loaded, we have ");
 			foreach (PlayerCardList pcl in data.playerCardList) {
 				foreach (string pc in pcl.playerHand) {
 					Debug.Log ("Player card " + pc);
@@ -108,18 +109,17 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 			foreach (RoleKind rk in data.roleKindList) {
 				Debug.Log ("RoleKind is " + rk.ToString());
-			}
+			}*/
 			PlayerNetwork.Instance.isNewGame = false;
 			PlayerNetwork.Instance.savedGameJson =  JsonUtility.ToJson(data);
-			Debug.Log (PlayerNetwork.Instance.savedGameJson);
+			Debug.Log ("Saved GameJson is : " + PlayerNetwork.Instance.savedGameJson);
 			GameData savedGame = JsonUtility.FromJson<GameData>(PlayerNetwork.Instance.savedGameJson);
-			Debug.Log ("After loaded, we have ");
-			foreach (PlayerCardList pcl in savedGame.playerCardList) {
-				foreach (string pc in pcl.playerHand) {
-					Debug.Log ("Player card " + pc);
-				}
-			}
 			/*
+			Debug.Log ("After loaded, we have ");
+			foreach (string s in savedGame.infectionCardDeck) {
+				Debug.Log ("Infection card: "+ s);
+			}
+
 			foreach (RoleKind rk in savedGame.roleKindList) {
 				Debug.Log ("RoleKind is " + rk.ToString());
 			}*/
