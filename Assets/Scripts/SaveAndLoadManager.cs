@@ -146,7 +146,7 @@ public class CityInfo{
 	public CityInfo(City city){
 		cityName = city.getCityName ().ToString ();
 		foreach (KeyValuePair<Color,int> entry in city.getNumOfCubes()) {
-			cubesColor.Add (entry.Key.ToString());
+			cubesColor.Add (Game.colorToString(entry.Key));
 			cubesNumber.Add (entry.Value);
 			Debug.Log ("CityName: " + cityName + "color: "+ entry.Key.ToString() + "value: " + entry.Value);
 		}

@@ -49,19 +49,14 @@ public class City : MonoBehaviour {
         //UI only
     }
 
-	public Color ToColor(string color){
-		return (Color)typeof(Color).GetProperty (color.ToLowerInvariant ()).GetValue (null, null);
-	}
 
 	public void restoreCityInfo(CityInfo cityInfo){
 		using (var e1 = cityInfo.cubesColor.GetEnumerator ())
 		using (var e2 = cityInfo.cubesNumber.GetEnumerator ()) {
 			while (e1.MoveNext () && e2.MoveNext ()) {
-				Debug.Log (e1.Current);
-				Debug.Log (e2.Current);
-				numberOfCubes.Add (ToColor ((string)e1.Current), e2.Current);
+				numberOfCubes[Game.stringToColor(e1.Current)] =  e2.Current;
 				Debug.Log ("There are cubes in city " + cityInfo.cityName);
-				Debug.Log (ToColor (e1.Current));
+				Debug.Log (e1.Current);
 				Debug.Log ("Number " + e2.Current);
 			}
 		}

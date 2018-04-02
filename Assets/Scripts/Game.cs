@@ -531,7 +531,7 @@ public class Game : MonoBehaviour {
 				curDisease.setCured(e.Current.cured);
 				curDisease.setEradicated(e.Current.eradicated);
 				curDisease.setNumOfDiseaseCubeLeft(e.Current.numberOfDiseaseCubesLeft);
-				Debug.Log (entry.Key + "has " + curDisease.getNumOfDiseaseCubeLeft ());
+				Debug.Log (colorToString(entry.Key) + "has " + curDisease.getNumOfDiseaseCubeLeft ());
 				e.MoveNext ();
 			}
 		}
