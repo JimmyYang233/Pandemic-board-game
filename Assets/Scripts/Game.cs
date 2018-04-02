@@ -1657,7 +1657,7 @@ public class Game : MonoBehaviour {
 	}
 
     
-
+	#region findMethod
 	public City findCity(string name){
 
 		foreach (City c in cities) {
@@ -1683,7 +1683,7 @@ public class Game : MonoBehaviour {
 		return Color.yellow;
 	}
 
-	#region findMethod
+
 	/* this method is used to find a player with specific card
 	 * @cardNmae the name of the card
 	 */
@@ -1790,6 +1790,44 @@ public class Game : MonoBehaviour {
 	}
 	#endregion
 
+	#region getDeckAndDiscardPile
+	public List<PlayerCard> getPlayerCardDeck(){
+		return playerCardDeck;
+	}
+
+	public List<PlayerCard> getPlayerDiscardPile(){
+		return playerDiscardPile;
+	}
+
+	public List<PlayerCard> getInfectionDeck(){
+		return infectionDeck;
+	}
+
+	public List<PlayerCard> getInfectionDiscardPile(){
+		return infectionDiscardPile;
+	}
+
+	private static List<string> cardListToStringList(List<PlayerCard> inputCards){
+		List<string> output = new List<string> ();
+		/*
+		foreach(PlayerCard pc in inputCards){
+			if (pc.getType().Equals(CardType.CityCard)){
+				CityCard cityCard = (CityCard)pc;
+				output.Add (cityCard.getName());
+				//Debug.Log ("City Card: " + cityCard.getName());
+			}
+			else if (pc.getType().Equals(CardType.EventCard)){
+				EventCard eventCard = (EventCard)pc;
+				output.Add (eventCard.getName());
+				//Debug.Log ("Event Card: " + eventCard.getEventKind());
+			}
+			else if (pc.getType().Equals(CardType.InfectionCard)){
+				InfectionCard infectionCard = (InfectionCard)pc;
+				output.Add (infectionCard.getName());
+			}
+		}*/
+	}
+	#endregion
 
 	#region saveAndQuit
 	public void save(string name){

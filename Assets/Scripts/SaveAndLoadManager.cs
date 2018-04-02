@@ -67,6 +67,10 @@ public class GameData{
 	public int outBreakRate;
 	public int remainingResearch;
 	public int difficulity;
+	List<string> playerCardDeck = new List<string> ();
+	List<string> playerDiscardPile = new List<string> ();
+	List<string> infectionCardDeck = new List<string> ();
+	List<string> infectionDiscardPile = new List<string>();
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
@@ -76,10 +80,7 @@ public class GameData{
 		remainingResearch = game.getRemainingResearch ();
 		List<CityInfo> CityInfoList = new List<CityInfo> ();
 		difficulity = game.nEpidemicCard;
-		List<string> playerCardDeck = new List<string> ();
-		List<string> playerDiscardPile = new List<string> ();
-		List<string> infectionCardDeck = new List<string> ();
-		List<string> infectionDiscardPile = new List<string>();
+
 
 		foreach(City city in game.getCities()){
 			CityInfo cityInfo = new CityInfo (city);
