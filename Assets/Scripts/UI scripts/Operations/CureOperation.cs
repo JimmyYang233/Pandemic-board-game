@@ -106,6 +106,10 @@ public class CureOperation : MonoBehaviour {
             game.Cure(currentPlayer.getRoleKind().ToString(), cardsToCure, "Color." + colorToCure.ToString());
             cancelButtonClicked();
         }
+        else
+        {
+            //TO-DO
+        }
     }
 
     private void addCardToList(String cityName)

@@ -38,9 +38,17 @@ public class MoveOperation : MonoBehaviour {
         {
             charterFlightButton.GetComponent<Button>().interactable = true;
         }
-        if (currentCity.getHasResearch()&&game.getRemainingResearch()<5)
+        if (currentCity.getHasResearch())
         {
-            shuttleFlightButton.GetComponent<Button>().interactable = true;
+            if(game.getRemainingResearch() < 5)
+            {
+                shuttleFlightButton.GetComponent<Button>().interactable = true;
+            }
+            else if(currentPlayer.getRoleKind() == RoleKind.OperationsExpert&&currentPlayer.containsCityCard())
+            {
+                shuttleFlightButton.GetComponent<Button>().interactable = true;
+            }
+            
         }
         cancelButton.GetComponent<Button>().interactable = true;
     }
@@ -127,7 +135,7 @@ public class MoveOperation : MonoBehaviour {
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         foreach (City city in game.getCities())
         {
-            if ((city != currentCity)&&(city.getHasResearch()))
+            if ((city != currentCity)&&(city.getHasResearch()|| (currentPlayer.getRoleKind() == RoleKind.OperationsExpert && currentPlayer.containsSpecificCityCard(city))))
             {
                 city.displayButton();
             }
