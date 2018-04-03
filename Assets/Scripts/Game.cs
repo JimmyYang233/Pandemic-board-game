@@ -531,6 +531,9 @@ public class Game : MonoBehaviour {
 				curDisease.setCured(e.Current.cured);
 				curDisease.setEradicated(e.Current.eradicated);
 				curDisease.setNumOfDiseaseCubeLeft(e.Current.numberOfDiseaseCubesLeft);
+				//for gui
+				gameInfoController.changeDiseaseNumber (curDisease.getColor (), curDisease.getNumOfDiseaseCubeLeft ());
+
 				Debug.Log (colorToString(entry.Key) + "has " + curDisease.getNumOfDiseaseCubeLeft ());
 				e.MoveNext ();
 			}
@@ -571,6 +574,17 @@ public class Game : MonoBehaviour {
 		foreach(Player player in players){
 			foreach (PlayerCard pc in player.getHand()) {
 				Debug.Log (pc.GetType());
+				//for gui
+				if (!player.Equals(me))
+				{
+
+					playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), pc);
+				}
+				else
+				{
+					//Debug.Log("add card to main player" + card.ToString());
+					mainPlayerPanel.addPlayerCard(pc);
+				}
 			}
 		}
 	}
