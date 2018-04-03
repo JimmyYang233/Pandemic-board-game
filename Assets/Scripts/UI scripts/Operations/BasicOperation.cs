@@ -10,9 +10,10 @@ public class BasicOperation : MonoBehaviour {
     public Button cureButton;
     public Button buildButton;
     public Button shareButton;
-    public Button RoleOnlyButton;
     public Button passButton;
+    public Button contingencyPlannerSkillButton;
 
+    Button roleOnlyButton = null;
     Game game;
     Player me;
     City currentCity;
@@ -27,6 +28,11 @@ public class BasicOperation : MonoBehaviour {
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
+        if(currentPlayer.getRoleKind() == RoleKind.ContingencyPlanner)
+        {
+            contingencyPlannerSkillButton.gameObject.SetActive(true);
+            roleOnlyButton = contingencyPlannerSkillButton;
+        }
         if ((currentPlayer == me)&&(game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
             currentCity = me.getPlayerPawn().getCity();
@@ -57,6 +63,11 @@ public class BasicOperation : MonoBehaviour {
                         }
                     }
                 }
+
+                if (game.hasEventCardInDiscardPile())
+                {
+                    contingencyPlannerSkillButton.GetComponent<Button>().interactable = true;
+                }
                 passButton.GetComponent<Button>().interactable = true;
             }
             else if (me.getRemainingAction() == 0)
@@ -66,6 +77,10 @@ public class BasicOperation : MonoBehaviour {
                 cureButton.GetComponent<Button>().interactable = false;
                 shareButton.GetComponent<Button>().interactable = false;
 				buildButton.GetComponent<Button> ().interactable = false;
+                if (roleOnlyButton != null)
+                {
+                    roleOnlyButton.GetComponent<Button>().interactable = false;
+                }
                 passButton.GetComponent<Button>().interactable = true;
             }
         }

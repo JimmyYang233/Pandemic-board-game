@@ -1175,9 +1175,15 @@ public class Game : MonoBehaviour {
         playerCardDeck = tempList;
     }
 		
-    
+    public bool hasEventCardInDiscardPile()
+    {
+        return false; //TO-DO
+    }
 
-
+    public List<EventCard> getEventCardsFromDiscardPile()
+    {
+        return null; //TO-DO
+    }
 
     private bool resolveEpidemic()
     {
