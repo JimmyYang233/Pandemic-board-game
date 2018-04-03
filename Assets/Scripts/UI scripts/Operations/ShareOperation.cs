@@ -53,16 +53,26 @@ public class ShareOperation : MonoBehaviour {
             Debug.Log(i);
             GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
             string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
-            if (name == currentCity.getCityName().ToString())
+            if(currentPlayer.getRoleKind() == RoleKind.Researcher)
             {
                 child.GetComponent<Button>().interactable = true;
-                cardToShare = child;
+                child.GetComponent<Button>().onClick.AddListener(() => addCardToShare(child));
                 child.GetComponent<Button>().onClick.AddListener(check);
             }
             else
             {
-                child.GetComponent<Button>().interactable = false;
+                if (name == currentCity.getCityName().ToString())
+                {
+                    child.GetComponent<Button>().interactable = true;
+                    cardToShare = child;
+                    child.GetComponent<Button>().onClick.AddListener(check);
+                }
+                else
+                {
+                    child.GetComponent<Button>().interactable = false;
+                }
             }
+            
         }
         basicOperationPanel.SetActive(false);
 		otherPlayers.SetActive (false);
@@ -79,6 +89,11 @@ public class ShareOperation : MonoBehaviour {
         check();
         playerSelect.displayPlayerNecessary();
         
+    }
+
+    public void addCardToShare(GameObject child)
+    {
+        cardToShare = child;
     }
     public void takeButtonClicked()
     {
@@ -168,14 +183,14 @@ public class ShareOperation : MonoBehaviour {
 	}
     public void shareButtonClicked()
     {
-        if(currentPlayer.getRoleKind() == RoleKind.Researcher || currentPlayer.containsSpecificCityCard(currentCity))
+        if((currentPlayer.getRoleKind() == RoleKind.Researcher&&currentPlayer.containsCityCard()) || currentPlayer.containsSpecificCityCard(currentCity))
         {
             giveButton.GetComponent<Button>().interactable = true;
         }
         List<Player> players = game.getPlayers(currentCity);
         foreach(Player player in players)
         {
-            if (player.containsSpecificCityCard(currentCity)&&player!=currentPlayer)
+            if ((player.containsSpecificCityCard(currentCity)||(player.getRoleKind() == RoleKind.Researcher&&player.containsCityCard()))&&player!=currentPlayer)
             {
                 takeButton.GetComponent<Button>().interactable = true;
             }

@@ -57,7 +57,7 @@ public class BasicOperation : MonoBehaviour {
                 {
                     foreach (Player p in players)
                     {
-                        if ((currentPlayer.getRoleKind() == RoleKind.Researcher && currentPlayer.containsCityCard()) || p.containsSpecificCityCard(currentCity))
+                        if ((p.getRoleKind() == RoleKind.Researcher && p.containsCityCard()) || p.containsSpecificCityCard(currentCity))
                         {
                             shareButton.GetComponent<Button>().interactable = true;
                         }
