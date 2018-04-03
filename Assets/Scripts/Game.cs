@@ -303,11 +303,17 @@ public class Game : MonoBehaviour {
 	public void OneQuietNight(){
 		PhotonView.RPC ("RPC_oneQuietNight",PhotonTargets.All);
 	}
-	#endregion
 
-	#region initialization
-	//initialize player in the network
-	private void InitializePlayer(){
+    // Special Role Skills
+    public void ContingencyPlannerPutCardOnTopOfRoleCard(string roleKind, string eventCardName)
+    {
+        //To-Do networking
+    }
+    #endregion
+
+    #region initialization
+    //initialize player in the network
+    private void InitializePlayer(){
 		PhotonPlayer[] photonplayers = PhotonNetwork.playerList;
 		Array.Sort (photonplayers, delegate(PhotonPlayer x, PhotonPlayer y) {
 			return x.ID.CompareTo(y.ID);
