@@ -799,11 +799,12 @@ public class Game : MonoBehaviour {
 		}
 
 		d.cure();
-		gameInfoController.cure (d.getColor());
+		gameInfoController.cure(d.getColor());
 		int num = d.getNumOfDiseaseCubeLeft();
 		if(num == MAX)
 		{
 			d.isEradicated();
+			gameInfoController.eradicate(d.getColor());
 		}
 
 		//UI TODO: set disease’s cure marker

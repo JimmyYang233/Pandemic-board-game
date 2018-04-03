@@ -15,7 +15,7 @@ public class GameInfoDisplay : MonoBehaviour
     public List<GameObject> outbreakrates;
     public List<GameObject> infectionrates;
 
-	public void cure(Color c){
+	public void eradicate(Color c){
 		Transform t = cubeLeft.transform.GetChild (0);
 		if (c == Color.black) {
 			t = cubeLeft.transform.GetChild (1);
@@ -26,6 +26,18 @@ public class GameInfoDisplay : MonoBehaviour
 		}
 		t.GetChild (1).gameObject.SetActive (false);
 		t.GetChild (2).gameObject.SetActive (true);
+
+	}
+	public void cure(Color c){
+		Transform t = cubeLeft.transform.GetChild (0);
+		if (c == Color.black) {
+			t = cubeLeft.transform.GetChild (1);
+		} else if (c == Color.blue) {
+			t = cubeLeft.transform.GetChild (2);
+		} else if(c==Color.red){
+			t = cubeLeft.transform.GetChild (3);
+		}
+		t.GetChild (1).gameObject.SetActive (true);
 
 	}
 	public void changeDiseaseNumber(Color c, int num){
