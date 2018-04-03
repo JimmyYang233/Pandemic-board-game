@@ -435,6 +435,8 @@ public class Game : MonoBehaviour {
 	*/
 	private void LoadGame(){
 		researchStationRemain = savedGame.remainingResearch;
+		index = savedGame.infectionRateIndex;
+		outbreaksValue = savedGame.outBreakRate;
 		cities = new List<City>();
 		backGround = GameObject.FindGameObjectWithTag("background");
 		backGround.transform.position += new Vector3(0.0001f, 0, 0);
@@ -499,6 +501,12 @@ public class Game : MonoBehaviour {
 		}
 			
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
+
+		foreach(Player p in players){
+			foreach (PlayerCard pc in p.getHand()) {
+				AllHandCards.Add (pc);
+			}
+		}
 
 		//TODO : IMPORTANT! add playr hand to allhandcard
 		Player bioTerrorist = null;
