@@ -125,7 +125,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 			}*/
 			RoomOptions testRo = new RoomOptions ();
 			testRo.MaxPlayers = byte.Parse (maxCount.text);
-			PhotonNetwork.CreateRoom ("LoadTest", testRo, TypedLobby.Default);
+			PhotonNetwork.CreateRoom (roomName.text, testRo, TypedLobby.Default);
 			SceneManager.LoadScene ("Room");
 			break;
 		}
