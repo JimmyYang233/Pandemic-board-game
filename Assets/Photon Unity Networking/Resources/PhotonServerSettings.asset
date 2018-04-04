@@ -69,4 +69,5 @@ MonoBehaviour:
   - RPC_oneQuietNight
   - RPC_LoadGame
   - RPC_LoadPlayer
+  - RPC_ContingencyPlannerPutCardOnTopOfRoleCard
   DisableAutoOpenWizard: 1
