@@ -7376,6 +7376,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114507589481527902, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
     - {fileID: 114482455502787380, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
@@ -10504,6 +10509,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114507589481527902, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
@@ -13895,6 +13905,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114507589481527902, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
     - {fileID: 114482455502787380, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
@@ -14199,6 +14214,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114507589481527902, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
@@ -14581,6 +14601,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114507589481527902, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
@@ -17054,6 +17079,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114507589481527902, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
@@ -24390,7 +24420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &990919269
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28575,6 +28605,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114507589481527902, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
