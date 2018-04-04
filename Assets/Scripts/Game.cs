@@ -224,6 +224,12 @@ public class Game : MonoBehaviour {
 	public void RPC_oneQuietNight(){
 		oneQuietNight();
 	}
+
+	[PunRPC]
+	public void RPC_ContingencyPlannerPutCardOnTopOfRoleCard(string cardName){
+		EventCard card = (EventCard)findPlayerCard (cardName);
+		contingencyPlannerPutCardOnTopOfRoleCard (card);
+	}
 	#endregion
 
 	//called by chatbox to send chat message
@@ -307,7 +313,7 @@ public class Game : MonoBehaviour {
     // Special Role Skills
     public void ContingencyPlannerPutCardOnTopOfRoleCard(string roleKind, string eventCardName)
     {
-        //To-Do networking
+		PhotonView.RPC ("RPC_ContingencyPlannerPutCardOnTopOfRoleCard",PhotonTargets.All);
     }
     #endregion
 
@@ -1085,10 +1091,10 @@ public class Game : MonoBehaviour {
 
     
 
-    public void contingencyPlannerPutCardOnTopOfRoleCard(Player pl1, EventCard card)
+    public void contingencyPlannerPutCardOnTopOfRoleCard(EventCard card)
     {
-        pl1.setEventCardOnTopOfRoleCard(card);
-        pl1.decreaseRemainingAction();
+		currentPlayer.setEventCardOnTopOfRoleCard(card);
+		currentPlayer.decreaseRemainingAction();
     }
 
     public RoleKind selectRole()
