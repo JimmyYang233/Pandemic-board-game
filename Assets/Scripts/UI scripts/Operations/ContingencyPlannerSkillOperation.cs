@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ContingencyPlannerSkillOperation : MonoBehaviour {
 
@@ -11,20 +13,29 @@ public class ContingencyPlannerSkillOperation : MonoBehaviour {
 
 	public void findEventCardButtonClicked()
     {
+		int i = 0;
         foreach(EventCard eventCard in game.getEventCardsFromDiscardPile())
         {
-            //TO-DO What I want to do is to display all the eventCard that I get, but how?
+			contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).gameObject.SetActive (true);
+			contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).GetChild (0).GetComponent<Text> ().text = eventCard.getName ();
+			contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).name = eventCard.getName ();
+			i++;
         }        
     }
 
-    public void cardButtonClicked(string eventCardName)
+    public void cardButtonClicked()
     {
-        eventCardToPut = eventCardName;
+		eventCardToPut = EventSystem.current.currentSelectedGameObject.name;
     }
 
     public void takeButtonClicked()
     {
         game.ContingencyPlannerPutCardOnTopOfRoleCard("ContingencyPlanner", eventCardToPut);
         eventCardToPut = null;
+		//hide card in the panel,prepare for next one
+		foreach (Transform t in contingencyPlannerOnlyPanel.transform.GetChild(0)) {
+			t.gameObject.SetActive (false);
+		}
     }
+
 }
