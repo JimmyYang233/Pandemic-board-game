@@ -130,6 +130,13 @@ public class ShareOperation : MonoBehaviour {
         waitingPanel.SetActive(true);
 		cancel();
 	}
+
+	public void takeFromResearcher(string cityName){
+		game.share("Researcher",cityName);
+		waitingPanel.SetActive(true);
+		cancel();		
+	}
+
     public void cancel()
     {
 		playerSelect.gameObject.SetActive (false);

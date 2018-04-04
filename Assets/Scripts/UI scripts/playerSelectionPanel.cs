@@ -13,6 +13,9 @@ public class playerSelectionPanel : MonoBehaviour {
 	private enum Status {SHARE,OTHER};
 	public ShareOperation share;
 	private Status selectStatus = Status.SHARE; 
+
+	public otherPlayerCardSelection selectCard;
+
 	void Awake(){
 		map = Maps.getInstance ();
 	}
@@ -61,7 +64,13 @@ public class playerSelectionPanel : MonoBehaviour {
     }
 	public void characterSelect(){
 		if (selectStatus == Status.SHARE) {
-			share.selectRole(EventSystem.current.currentSelectedGameObject.name);
+			string name = EventSystem.current.currentSelectedGameObject.name;
+			if (!name.Equals ("Researcher")) {
+				share.selectRole (EventSystem.current.currentSelectedGameObject.name);
+			} else {
+				selectCard.gameObject.SetActive (true);
+				selectCard.loadOtherPlayerCard ("Researcher");
+			}
 		}
 	}
 	public void cancelButtonClick(){
@@ -81,12 +90,17 @@ public class playerSelectionPanel : MonoBehaviour {
                 Player p = game.findPlayer(role);
                 currentPlayer = game.getCurrentPlayer();
                 currentCity = currentPlayer.getPlayerPawn().getCity();
+
                 if (p.containsSpecificCityCard(currentCity))
                 {
                     Debug.Log("find");
                     t.gameObject.SetActive(true);
 
                 }
+				else if(role.Equals("Researcher")){
+					Debug.Log ("find researcher");
+					t.gameObject.SetActive (true);
+				}
                 else
                 {
                     Debug.Log("not find");
