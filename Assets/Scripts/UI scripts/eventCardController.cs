@@ -22,6 +22,7 @@ public class eventCardController : MonoBehaviour {
 		currentPlayer = game.getCurrentPlayer();
 		game.BorrowedTime ();
 	}
+
 	public void useEvent(){
 		name = this.transform.GetChild (1).GetComponent<Text> ().text;
 		Debug.Log (name);
@@ -30,7 +31,7 @@ public class eventCardController : MonoBehaviour {
 		case "BorrowedTime":
 			borrowedTime ();
 			break;
-		case "":
+		case "ResilientPopulation":
 			
 			break;
 		default:
