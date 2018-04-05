@@ -976,7 +976,6 @@ public class Game : MonoBehaviour {
     }
 
 	public void forecast(List<InfectionCard> orderedCards){
-		int num = orderedCards.Count;
 		foreach(InfectionCard c in orderedCards){
 			infectionDeck.Remove(c);
 		}
