@@ -13,6 +13,8 @@ public class eventCardController : MonoBehaviour {
 
 	//Resilient zone
 	public GameObject infectionDiscardPile;
+	//ForeCastPanel
+	public GameObject forecastPanel;
 
 	// Use this for initialization
 	void Start () {
@@ -47,8 +49,48 @@ public class eventCardController : MonoBehaviour {
 		game.ResilientPopulation (EventSystem.current.currentSelectedGameObject.name);
 		infectionDiscardPile.GetComponent<infectionDiscardPileUI> ().eventCardTime = false;
 	}
-	//------------------------------Resilient zone end-----------------------------------
+	//------------------------------ForeCast-----------------------------------
+	public void Forecast(){
+		List<string> infectionCards = game.getInfectionDeckString ();
+		if(infectionCards.Count>=6){
+			for (int i = 0; i < 6; i++) {
+				
+				Transform target = forecastPanel.transform.GetChild (i);
+				target.gameObject.SetActive (true);
+				target.name = infectionCards[i];
+				target.GetComponent<Image> ().color = game.findCity (infectionCards [i]).getColor ();
+				target.GetChild (0).GetComponent<Text> ().text = infectionCards [i];
+				target.GetComponent<Button> ().interactable = true;
+			}
 
+			for (int i = 6; i < 12; i++) {
+				Transform target = forecastPanel.transform.GetChild (i);
+				target.gameObject.SetActive (true);
+				target.GetComponent<Image> ().color = Color.gray;
+				target.GetChild (0).GetComponent<Text> ().text = (i-5).ToString();
+				target.GetComponent<Button> ().interactable = true;
+			}
+		}
+		forecastPanel.SetActive (true);
+
+	}
+	string foreCastName;
+	public void forecastSelectCard(){
+		foreCastName = EventSystem.current.currentSelectedGameObject.name;
+	}
+	public void foreCastOrderSelect(){
+		int order = int.Parse(EventSystem.current.currentSelectedGameObject.name);
+		foreach (Transform t in forecastPanel.transform) {
+			if (t.name.Equals (foreCastName)) {
+				t.gameObject.SetActive (false);
+			}
+		}
+		Transform target = forecastPanel.transform.GetChild (5+order);
+		target.GetComponent<Image> ().color = game.findCity (foreCastName).getColor ();
+		target.GetChild (0).GetComponent<Text> ().text = foreCastName;
+		target.GetComponent<Button> ().interactable = false;
+	}
+	//---------------------------
 	public void useEvent(){
 		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;
 		Debug.Log (eventCardName);
@@ -59,6 +101,9 @@ public class eventCardController : MonoBehaviour {
 			break;
 		case "ResilientPopulation":
 			ResilientPopulation ();
+			break;
+		case "Forecast":
+			Forecast();
 			break;
 		default:
 			

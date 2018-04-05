@@ -3211,7 +3211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &106833132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3222,7 +3222,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1599253156}
   - {fileID: 1800814707}
   - {fileID: 310770769}
   - {fileID: 1203046397}
@@ -3235,6 +3234,7 @@ RectTransform:
   - {fileID: 1992642971}
   - {fileID: 383793522}
   - {fileID: 1720598352}
+  - {fileID: 1599253156}
   - {fileID: 1653124575}
   m_Father: {fileID: 1708901210}
   m_RootOrder: 0
@@ -8770,7 +8770,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -8844,6 +8844,16 @@ Prefab:
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
       value: eventForContingency (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: forecastSelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -11056,7 +11066,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -11165,6 +11175,16 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: foreCastOrderSelect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -18419,7 +18439,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -18528,6 +18548,16 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_VerticalOverflow
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: foreCastOrderSelect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -25679,7 +25709,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -25788,6 +25818,16 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_FontSize
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: foreCastOrderSelect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -25984,7 +26024,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -26093,6 +26133,16 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_FontSize
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: foreCastOrderSelect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -26949,7 +26999,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -27023,6 +27073,16 @@ Prefab:
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
       value: eventForContingency (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: forecastSelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -35911,7 +35971,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -35985,6 +36045,16 @@ Prefab:
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
       value: eventForContingency (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: forecastSelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -46371,7 +46441,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 106833132}
-  m_RootOrder: 0
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -46623,7 +46693,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -46697,6 +46767,16 @@ Prefab:
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
       value: eventForContingency (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: forecastSelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -47859,7 +47939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1663666087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47919,7 +47999,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1900971760}
-        m_MethodName: ResilientPopulation
+        m_MethodName: Forecast
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -49158,7 +49238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1708901210
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49503,7 +49583,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -49612,6 +49692,16 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_VerticalOverflow
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: foreCastOrderSelect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -52368,6 +52458,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 106833132}
     m_Modifications:
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -52406,7 +52501,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -52461,6 +52556,26 @@ Prefab:
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: forecastSelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -53369,7 +53484,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -53443,6 +53558,16 @@ Prefab:
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
       value: eventForContingency (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: forecastSelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -55108,6 +55233,7 @@ MonoBehaviour:
   game: {fileID: 73084184}
   informEvent: {fileID: 1210501276}
   infectionDiscardPile: {fileID: 788425837}
+  forecastPanel: {fileID: 106833131}
 --- !u!1 &1902755404
 GameObject:
   m_ObjectHideFlags: 0
@@ -58211,7 +58337,7 @@ Prefab:
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 224623070009214122, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -58320,6 +58446,16 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_VerticalOverflow
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1900971760}
+    - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: foreCastOrderSelect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
