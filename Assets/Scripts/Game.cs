@@ -1636,9 +1636,10 @@ public class Game : MonoBehaviour {
             }
             playerDiscardPile.Add(card);
         }
-		//record.build(initialCity);
+		
         currentCity.setHasResearch(true);
-
+		record.build(currentCity);
+		
         if (researchStationRemain == 0)
         {
             if(initialCity != null)
