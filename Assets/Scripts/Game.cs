@@ -236,6 +236,15 @@ public class Game : MonoBehaviour {
 		contingencyPlannerPutCardOnTopOfRoleCard (card);
 	}
 
+	[PunRPC]
+	public void RPC_forecast(List<string> cards){
+		List<InfectionCard> orderedCards = new List<InfectionCard>();
+		foreach (string cardName in cards){
+			orderedCards.Add(findInfectionCard(cardName));
+		}
+		forecast(orderedCards);
+	}
+
 	
 	#endregion
 
@@ -319,6 +328,10 @@ public class Game : MonoBehaviour {
 
 	public void ResilientPopulation(string cardName){
 		PhotonView.RPC ("RPC_resilientPopulation",PhotonTargets.All,cardName);
+	}
+
+	public void Forecast(List<string> cards){
+		PhotonView.RPC ("RPC_forecast",PhotonTargets.All,cards);
 	}
 
     // Special Role Skills
@@ -962,17 +975,13 @@ public class Game : MonoBehaviour {
 			}
     }
 
-	private void putIntoInfectionDeck(List<InfectionCard> list){
-		list.AddRange (infectionDeck);
-		infectionDeck = list;
-	}
-
-	public void foreCast(){
-		List<InfectionCard> list = borrowInfectionCard (6);
-
-		// TODO
-
-		putIntoInfectionDeck (list);
+	public void forecast(List<InfectionCard> orderedCards){
+		int num = orderedCards.Count;
+		foreach(InfectionCard c in orderedCards){
+			infectionDeck.Remove(c);
+		}
+		orderedCards.AddRange (infectionDeck);
+		infectionDeck = orderedCards;
 		dropEventCard (EventKind.Forecast);
 	}
 
@@ -1473,6 +1482,7 @@ public class Game : MonoBehaviour {
     {
         return currentPlayer;
     }
+
     public List<Player> getPlayers(City city)
     {
         List<Player> pInCity = new List<Player>();
