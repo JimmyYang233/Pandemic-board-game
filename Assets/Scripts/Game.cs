@@ -57,7 +57,7 @@ public class Game : MonoBehaviour {
     public PassOperation passOperation;
     public ChatBox chatBox;
     public Record record;
-
+	public infectionDiscardPileUI infectionDiscardUI;
 
     GameObject backGround;
 
@@ -995,6 +995,7 @@ public class Game : MonoBehaviour {
 
 	public void resilientPopulation(InfectionCard card){
 		infectionDiscardPile.Remove (card);
+		infectionDiscardUI.deleteCityCard (card.getName ().ToString ());
 		dropEventCard (EventKind.ResilientPopulation);
 	}
 
