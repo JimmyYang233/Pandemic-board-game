@@ -10,9 +10,11 @@ public class infectionDiscardPileUI : MonoBehaviour {
 	private Transform content;
 	private int cardNum = 0;
 	private Maps map;
+	public bool eventCardTime;
 
 	private void Awake()
 	{
+		eventCardTime = false;
 		content = this.transform.GetChild(0).GetChild(0);
 		map = Maps.getInstance();
 	}
@@ -49,7 +51,9 @@ public class infectionDiscardPileUI : MonoBehaviour {
 
 	public void mouseLeave()
 	{
-		scroll.SetActive(false);
+		if (!eventCardTime) {
+			scroll.SetActive (false);
+		}
 	}
 	public void addCityCard(string c)
 	{

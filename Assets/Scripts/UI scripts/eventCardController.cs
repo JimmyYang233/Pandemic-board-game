@@ -13,7 +13,7 @@ public class eventCardController : MonoBehaviour {
 
 	//Resilient zone
 	public GameObject infectionDiscardPile;
-	string resilientCard;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -39,11 +39,13 @@ public class eventCardController : MonoBehaviour {
 				b.onClick.AddListener (resilientSelectCard);
 			}
 		}
+		infectionDiscardPile.GetComponent<infectionDiscardPileUI> ().eventCardTime = true;
 		infectionDiscardPile.SetActive (true);
 	}
 	public void resilientSelectCard(){
 		Debug.Log (EventSystem.current.currentSelectedGameObject.name);
 		game.ResilientPopulation (EventSystem.current.currentSelectedGameObject.name);
+		infectionDiscardPile.GetComponent<infectionDiscardPileUI> ().eventCardTime = false;
 	}
 	public void resolveResilientSelect(){
 		

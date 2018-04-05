@@ -24064,6 +24064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 73084184}
   scroll: {fileID: 788425837}
+  eventCardTime: 0
 --- !u!114 &788425840
 MonoBehaviour:
   m_ObjectHideFlags: 0
