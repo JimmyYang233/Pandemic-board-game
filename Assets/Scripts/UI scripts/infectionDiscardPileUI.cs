@@ -94,7 +94,13 @@ public class infectionDiscardPileUI : MonoBehaviour {
 		setBar();
 		content.GetChild(cardNum).gameObject.SetActive(false);
 	}
-
+	public void buttonUninteractable(){
+		foreach (Transform t in content) {
+			if (t.gameObject.GetComponent<Button> () != null) {
+				t.gameObject.GetComponent<Button> ().interactable=false;
+			}
+		}
+	}
 	// add event card to gui of other player
 
 
