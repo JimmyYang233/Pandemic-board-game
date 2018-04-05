@@ -226,10 +226,17 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
+	public void RPC_resilientPopulation(String cardName){
+		resilientPopulation(findInfectionCard(cardName));
+	}
+
+	[PunRPC]
 	public void RPC_ContingencyPlannerPutCardOnTopOfRoleCard(string cardName){
 		EventCard card = (EventCard)findPlayerCard (cardName);
 		contingencyPlannerPutCardOnTopOfRoleCard (card);
 	}
+
+	
 	#endregion
 
 	//called by chatbox to send chat message
@@ -308,6 +315,10 @@ public class Game : MonoBehaviour {
 
 	public void OneQuietNight(){
 		PhotonView.RPC ("RPC_oneQuietNight",PhotonTargets.All);
+	}
+
+	public void ResilientPopulation(string cardName){
+		PhotonView.RPC ("RPC_resilientPopulation",PhotonTargets.All,cardName);
 	}
 
     // Special Role Skills
@@ -1805,6 +1816,21 @@ public class Game : MonoBehaviour {
 		}
 		Debug.Log("Corresponding PlayerCard Not found. Class: Game.cs : findPlayerCard");
 		return null; 
+	}
+
+	public InfectionCard findInfectionCard(String cardName){
+		foreach (InfectionCard ic in infectionDeck){
+			if(ic.getName() == cardName){
+				return ic;
+			}
+		}
+		foreach (InfectionCard ic in infectionDiscardPile){
+			if(ic.getName() == cardName){
+				return ic;
+			}
+		}
+		Debug.Log("InfectionCard not found. Class: Game.cs : findInfectionCard");
+		return null;
 	}
 
 	public Player findPlayer(RoleKind roleKind)
