@@ -54,51 +54,57 @@ public class infectionDiscardPileUI : MonoBehaviour {
 	public void addCityCard(string c)
 	{
 		content.GetChild(cardNum).gameObject.SetActive(true);
-
-
+		cardNum++;
 		//adjust text color 
-		content.GetChild(cardNum ).GetChild(0).GetComponent<Text>().text = c;
-		content.GetChild(cardNum ).GetComponent<Image>().color = map.getCityColor(game.findCity(c).cityName);
-		if (content.GetChild(cardNum ).GetComponent<Image>().color == Color.black)
+		content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = c.ToString();
+		content.GetChild(cardNum - 1).GetComponent<Image>().color = map.getCityColor(game.findCity(c).getCityName());
+		content.GetChild (cardNum - 1).name = c;
+		if (content.GetChild(cardNum - 1).GetComponent<Image>().color == Color.black)
 		{
-			content.GetChild(cardNum ).GetChild(0).GetComponent<Text>().color = Color.white;
+			content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().color = Color.white;
 		}
 		else
 		{
-			content.GetChild(cardNum ).GetChild(0).GetComponent<Text>().color = Color.black;
+			content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().color = Color.black;
 		}
-		cardNum++;
+
 		setBar();
 	}
 
 
-    //delete city card from gui of other player
+	//delete city card from gui of other player
 	public void deleteCityCard(string c)
 	{
+		Debug.Log ("delete c");
 		int i;
 		for (i = 0; i < cardNum; i++)
 		{
-			if (c.Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
+			if (c.ToString().Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
 			{
 				break;
 			}
 		}
 		for (int j = i; j < cardNum; j++)
 		{
+			content.GetChild(j).name = content.GetChild(j + 1).name;
 			content.GetChild(j).GetChild(0).GetComponent<Text>().text = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().text;
 			content.GetChild(j).GetChild(0).GetComponent<Text>().color = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().color;
 			content.GetChild(j).GetComponent<Image>().color = content.GetChild(j + 1).GetComponent<Image>().color;
 		}
 		content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = "";
+		content.GetChild(cardNum - 1).name = "";
 		cardNum--;
 		setBar();
 		content.GetChild(cardNum).gameObject.SetActive(false);
+		buttonUninteractable ();
 	}
 	public void buttonUninteractable(){
 		foreach (Transform t in content) {
-			if (t.gameObject.GetComponent<Button> () != null) {
+			/*if (t.gameObject.GetComponent<Button> () != null) {
 				t.gameObject.GetComponent<Button> ().interactable=false;
-			}
+			}*/
+			Destroy (t.gameObject.GetComponent<Button> ());
+			this.gameObject.SetActive (false);
 		}
 	}
 	// add event card to gui of other player

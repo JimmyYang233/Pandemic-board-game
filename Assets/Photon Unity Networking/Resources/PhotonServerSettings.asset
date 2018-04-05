@@ -70,4 +70,5 @@ MonoBehaviour:
   - RPC_LoadGame
   - RPC_LoadPlayer
   - RPC_ContingencyPlannerPutCardOnTopOfRoleCard
+  - RPC_resilientPopulation
   DisableAutoOpenWizard: 1

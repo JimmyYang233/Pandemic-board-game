@@ -29,7 +29,7 @@ public class eventCardController : MonoBehaviour {
 	}
 	//---------------------------------Resilient zone-----------------------------------
 
-	private void ResilientPopulation(){
+	public void ResilientPopulation(){
 		foreach (Transform t in infectionDiscardPile.transform.GetChild(0).GetChild(0)) {
 			if (t.gameObject.GetComponent<Button> () == null) {
 				t.gameObject.AddComponent<Button> ();
