@@ -1207,7 +1207,7 @@ public class Game : MonoBehaviour {
         playerCardDeck = tempList;
     }
 		
-    public bool hasEventCardInDiscardPile()
+    public bool containsEventCardInDiscardPile()
     {
         return false; //TO-DO
     }
@@ -1215,6 +1215,11 @@ public class Game : MonoBehaviour {
     public List<EventCard> getEventCardsFromDiscardPile()
     {
         return null; //TO-DO
+    }
+
+    public bool containsSpecificCardInDiscardPile(City city)
+    {
+        return false; //TO-DO
     }
 
     private bool resolveEpidemic()

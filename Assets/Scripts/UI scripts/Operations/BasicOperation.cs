@@ -12,6 +12,7 @@ public class BasicOperation : MonoBehaviour {
     public Button shareButton;
     public Button passButton;
     public Button contingencyPlannerSkillButton;
+    public Button archivistSkillButton;
 
     Button roleOnlyButton = null;
     Game game;
@@ -32,6 +33,11 @@ public class BasicOperation : MonoBehaviour {
         {
             contingencyPlannerSkillButton.gameObject.SetActive(true);
             roleOnlyButton = contingencyPlannerSkillButton;
+        }
+        else if(me.getRoleKind() == RoleKind.Archivist)
+        {
+            archivistSkillButton.gameObject.SetActive(true);
+            roleOnlyButton = archivistSkillButton;
         }
         if ((currentPlayer == me)&&(game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
@@ -64,11 +70,19 @@ public class BasicOperation : MonoBehaviour {
                     }
                 }
 
-                if (game.hasEventCardInDiscardPile())
+                passButton.GetComponent<Button>().interactable = true;
+
+                //Buttons for different role skills
+                if (game.containsEventCardInDiscardPile())
                 {
                     contingencyPlannerSkillButton.GetComponent<Button>().interactable = true;
                 }
-                passButton.GetComponent<Button>().interactable = true;
+                else if (game.containsSpecificCardInDiscardPile(currentCity))
+                {
+                    archivistSkillButton.GetComponent<Button>().interactable = true;
+                }
+            }
+
             }
             else if (me.getRemainingAction() == 0)
             {
