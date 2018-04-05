@@ -81,7 +81,6 @@ public class BasicOperation : MonoBehaviour {
                 {
                     archivistSkillButton.GetComponent<Button>().interactable = true;
                 }
-            }
 
             }
             else if (me.getRemainingAction() == 0)
