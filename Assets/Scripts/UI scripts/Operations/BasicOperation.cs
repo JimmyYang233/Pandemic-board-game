@@ -77,7 +77,7 @@ public class BasicOperation : MonoBehaviour {
                 {
                     contingencyPlannerSkillButton.GetComponent<Button>().interactable = true;
                 }
-                else if (game.containsSpecificCardInDiscardPile(currentCity))
+                else if (game.containsSpecificCityCardInDiscardPile(currentCity))
                 {
                     archivistSkillButton.GetComponent<Button>().interactable = true;
                 }

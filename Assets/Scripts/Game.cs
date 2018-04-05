@@ -1217,7 +1217,7 @@ public class Game : MonoBehaviour {
         return null; //TO-DO
     }
 
-    public bool containsSpecificCardInDiscardPile(City city)
+    public bool containsSpecificCityCardInDiscardPile(City city)
     {
         return false; //TO-DO
     }
