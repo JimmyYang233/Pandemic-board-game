@@ -71,30 +71,30 @@ public class infectionDiscardPileUI : MonoBehaviour {
 		setBar();
 	}
 
-	/**
+
     //delete city card from gui of other player
-	public void deleteCityCard(CityName c)
+	public void deleteCityCard(string c)
 	{
 		int i;
-		for (i = 0; i < cityCardNum + eventCardNum; i++)
+		for (i = 0; i < cardNum; i++)
 		{
-			if (c.ToString().Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
+			if (c.Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
 			{
 				break;
 			}
 		}
-		for (int j = i; j < cityCardNum + eventCardNum; j++)
+		for (int j = i; j < cardNum; j++)
 		{
 			content.GetChild(j).GetChild(0).GetComponent<Text>().text = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().text;
 			content.GetChild(j).GetChild(0).GetComponent<Text>().color = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().color;
 			content.GetChild(j).GetComponent<Image>().color = content.GetChild(j + 1).GetComponent<Image>().color;
 		}
-		content.GetChild(cityCardNum + eventCardNum - 1).GetChild(0).GetComponent<Text>().text = "";
-		cityCardNum--;
+		content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = "";
+		cardNum--;
 		setBar();
-		content.GetChild(cityCardNum + eventCardNum).gameObject.SetActive(false);
+		content.GetChild(cardNum).gameObject.SetActive(false);
 	}
-	**/
+
 	// add event card to gui of other player
 
 
