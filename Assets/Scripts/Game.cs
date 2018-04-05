@@ -1473,9 +1473,6 @@ public class Game : MonoBehaviour {
     {
         return currentPlayer;
     }
-	public List<InfectionCard> getInfectionCardDeck(){
-		return getInfectionCardDeck;
-	}
     public List<Player> getPlayers(City city)
     {
         List<Player> pInCity = new List<Player>();
