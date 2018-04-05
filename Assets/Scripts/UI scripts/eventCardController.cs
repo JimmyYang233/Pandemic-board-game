@@ -5,11 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class eventCardController : MonoBehaviour {
-	string name;
+	string eventCardName;
 	public Game game;
-	Player currentPlayer;
 	City currentCity;
 	public GameObject informEvent;
+	Player currentPlayer;
 
 	//Resilient zone
 	public GameObject infectionDiscardPile;
@@ -47,15 +47,12 @@ public class eventCardController : MonoBehaviour {
 		game.ResilientPopulation (EventSystem.current.currentSelectedGameObject.name);
 		infectionDiscardPile.GetComponent<infectionDiscardPileUI> ().eventCardTime = false;
 	}
-	public void resolveResilientSelect(){
-		
-	}
 	//------------------------------Resilient zone end-----------------------------------
 
 	public void useEvent(){
-		name = this.transform.GetChild (1).GetComponent<Text> ().text;
-		Debug.Log (name);
-		switch (name)
+		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;
+		Debug.Log (eventCardName);
+		switch (eventCardName)
 		{
 		case "BorrowedTime":
 			borrowedTime ();
