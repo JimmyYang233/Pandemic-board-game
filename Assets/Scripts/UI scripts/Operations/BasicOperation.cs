@@ -28,7 +28,7 @@ public class BasicOperation : MonoBehaviour {
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
-        if(currentPlayer.getRoleKind() == RoleKind.ContingencyPlanner)
+        if(me.getRoleKind() == RoleKind.ContingencyPlanner)
         {
             contingencyPlannerSkillButton.gameObject.SetActive(true);
             roleOnlyButton = contingencyPlannerSkillButton;

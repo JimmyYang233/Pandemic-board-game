@@ -17,7 +17,7 @@ public class ContingencyPlannerSkillOperation : MonoBehaviour {
         foreach(EventCard eventCard in game.getEventCardsFromDiscardPile())
         {
 			contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).gameObject.SetActive (true);
-			contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).GetChild (0).GetComponent<Text> ().text = eventCard.getName ();
+            contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).GetChild (0).GetComponent<Text> ().text = eventCard.getName ();
 			contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).name = eventCard.getName ();
 			i++;
         }        
