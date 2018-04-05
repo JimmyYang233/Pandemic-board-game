@@ -90,6 +90,18 @@ public class eventCardController : MonoBehaviour {
 		target.GetChild (0).GetComponent<Text> ().text = foreCastName;
 		target.GetComponent<Button> ().interactable = false;
 	}
+	public void forecastYes(){
+		List<string> str = new List<string> ();
+		for (int i = 6; i < 12; i++) {
+			Transform target = forecastPanel.transform.GetChild (i);
+			str.Add(target.GetChild (0).GetComponent<Text> ().text);
+		}
+		foreach (string  t in str) {
+			Debug.Log (t);
+		}
+		game.Forecast (str);
+		forecastPanel.SetActive (false);
+	}
 	//---------------------------
 	public void useEvent(){
 		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;
