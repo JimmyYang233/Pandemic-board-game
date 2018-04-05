@@ -56,9 +56,11 @@ public class infectionDiscardPileUI : MonoBehaviour {
 		content.GetChild(cardNum).gameObject.SetActive(true);
 		cardNum++;
 		//adjust text color 
+
+		content.GetChild (cardNum - 1).name = c;
 		content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = c.ToString();
 		content.GetChild(cardNum - 1).GetComponent<Image>().color = map.getCityColor(game.findCity(c).getCityName());
-		content.GetChild (cardNum - 1).name = c;
+
 		if (content.GetChild(cardNum - 1).GetComponent<Image>().color == Color.black)
 		{
 			content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().color = Color.white;

@@ -35,14 +35,15 @@ public class eventCardController : MonoBehaviour {
 				t.gameObject.AddComponent<Button> ();
 				t.GetComponent<Button> ().interactable = true;
 				Button b = t.GetComponent<Button> ();
+				//Debug.log("add listener");
 				b.onClick.AddListener (resilientSelectCard);
 			}
 		}
 		infectionDiscardPile.SetActive (true);
 	}
 	public void resilientSelectCard(){
-		resilientCard=EventSystem.current.currentSelectedGameObject.name;
-		//game.resilientPopulation();
+		Debug.Log (EventSystem.current.currentSelectedGameObject.name);
+		game.ResilientPopulation (EventSystem.current.currentSelectedGameObject.name);
 	}
 	public void resolveResilientSelect(){
 		

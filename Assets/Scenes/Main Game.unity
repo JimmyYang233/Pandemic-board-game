@@ -2002,7 +2002,7 @@ MonoBehaviour:
   passOperation: {fileID: 1069413776}
   chatBox: {fileID: 124084468}
   record: {fileID: 1438105360}
-  infectionDiscardUI: {fileID: 0}
+  infectionDiscardUI: {fileID: 788425839}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
@@ -46352,7 +46352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1663666087
 RectTransform:
   m_ObjectHideFlags: 0
