@@ -15,6 +15,8 @@ public class eventCardController : MonoBehaviour {
 	public GameObject infectionDiscardPile;
 	//ForeCastPanel
 	public GameObject forecastPanel;
+	//newAssignment
+	public GameObject newAssignmentPanel;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +30,9 @@ public class eventCardController : MonoBehaviour {
 	private void borrowedTime(){
 		currentPlayer = game.getCurrentPlayer();
 		game.BorrowedTime ();
+	}
+	private void NewAssignment(){
+		
 	}
 	//---------------------------------Resilient zone-----------------------------------
 
@@ -116,6 +121,9 @@ public class eventCardController : MonoBehaviour {
 			break;
 		case "Forecast":
 			Forecast();
+			break;
+		case "NewAssignment":
+			NewAssignment();
 			break;
 		default:
 			
