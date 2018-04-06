@@ -30,12 +30,21 @@ public class ContingencyPlannerSkillOperation : MonoBehaviour {
 
     public void takeButtonClicked()
     {
-        game.ContingencyPlannerPutCardOnTopOfRoleCard("ContingencyPlanner", eventCardToPut);
-        eventCardToPut = null;
-		//hide card in the panel,prepare for next one
-		foreach (Transform t in contingencyPlannerOnlyPanel.transform.GetChild(0)) {
-			t.gameObject.SetActive (false);
-		}
+        if (eventCardToPut != null)
+        {
+            game.ContingencyPlannerPutCardOnTopOfRoleCard("ContingencyPlanner", eventCardToPut);
+            eventCardToPut = null;
+            //hide card in the panel,prepare for next one
+            foreach (Transform t in contingencyPlannerOnlyPanel.transform.GetChild(0))
+            {
+                t.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            //TO-DO, say something
+        }
+       
     }
 
 }
