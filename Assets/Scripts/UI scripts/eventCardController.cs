@@ -31,8 +31,16 @@ public class eventCardController : MonoBehaviour {
 		currentPlayer = game.getCurrentPlayer();
 		game.BorrowedTime ();
 	}
+	//---------------------------------NewAssignment zone------------------------------
 	private void NewAssignment(){
 		
+	}
+	string newAssignmentName;
+	public void newAssignmentCardSelect(){
+		newAssignmentName = EventSystem.current.currentSelectedGameObject.name;
+	}
+	public void newAssignmentClickYes(){
+		//game.NewAssignment (newAssignmentName);
 	}
 	//---------------------------------Resilient zone-----------------------------------
 
