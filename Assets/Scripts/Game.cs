@@ -339,6 +339,17 @@ public class Game : MonoBehaviour {
     {
 		PhotonView.RPC ("RPC_ContingencyPlannerPutCardOnTopOfRoleCard",PhotonTargets.All);
     }
+
+    public void ArchivistDraw()
+    {
+        //TO-DO
+    }
+
+    public void EpidemiologistShare()
+    {
+        //TO-DO
+    }
+    public void 
     #endregion
 
     #region initialization
@@ -1544,7 +1555,7 @@ public class Game : MonoBehaviour {
 	/*
 	For Archivist draw citycard from discard pile only!
 	 */
-	private void ArchivistDraw(Player player){
+	private void archivistDraw(Player player){
 		RoleKind rk = player.getRoleKind();
 		if (rk!=RoleKind.Archivist){
 			return;
@@ -1581,13 +1592,13 @@ public class Game : MonoBehaviour {
 	/*
 	for EPIDEMIOLOGIST, once per turn
 	 */
-	private void EpidemiologistShare(){}
+	private void epidemiologistShare(){}
 
 
 	/*
 	for Field Operative, once per turn
 	 */
-	private void FieldOperativeSample(Player player, Disease d){
+	private void fieldOperativeSample(Player player, Disease d){
 		RoleKind rk = player.getRoleKind();
 		if (rk!=RoleKind.FieldOperative){
 			return;
