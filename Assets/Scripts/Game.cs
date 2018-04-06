@@ -237,11 +237,16 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_forecast(List<string> cards){
+	public void RPC_forecast(string card1, string card2, string card3, string card4, string card5, string card6){
 		List<InfectionCard> orderedCards = new List<InfectionCard>();
-		foreach (string cardName in cards){
-			orderedCards.Add(findInfectionCard(cardName));
-		}
+		
+		if(card1!=null){orderedCards.Add(findInfectionCard(card1));}
+		if(card2!=null){orderedCards.Add(findInfectionCard(card2));}
+		if(card3!=null){orderedCards.Add(findInfectionCard(card3));}
+		if(card4!=null){orderedCards.Add(findInfectionCard(card4));}
+		if(card5!=null){orderedCards.Add(findInfectionCard(card5));}
+		if(card6!=null){orderedCards.Add(findInfectionCard(card6));}
+		
 		forecast(orderedCards);
 	}
 
@@ -330,8 +335,12 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_resilientPopulation",PhotonTargets.All,cardName);
 	}
 
-	public void Forecast(List<string> cards){
-		PhotonView.RPC ("RPC_forecast",PhotonTargets.All,cards);
+	public void Forecast(List<string> orderedCards){
+		string[] cards = new string[6];
+		for (int i=0; i<orderedCards.Count; i++){
+			cards[i] = orderedCards[i];
+		}
+		PhotonView.RPC ("RPC_forecast",PhotonTargets.All,cards[0],cards[1],cards[2],cards[3],cards[4],cards[5]);
 	}
 
     // Special Role Skills
@@ -1954,6 +1963,16 @@ public class Game : MonoBehaviour {
 
 	public List<string> getAllHandCards(){
 		return cardListToStringList (AllHandCards);
+	}
+
+	public List<string> getUnusedRole(){
+		List<string> unusedRole = new List<string>();
+		foreach(RoleKind rk in Enum.GetValues(typeof(RoleKind))){
+			if (!roleKindTaken.Contains(rk)){
+				unusedRole.Add(rk.ToString());
+			}
+		}
+		return unusedRole;
 	}
 
 
