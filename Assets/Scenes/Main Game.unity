@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -19446,7 +19446,7 @@ MonoBehaviour:
   shareButton: {fileID: 1727023487}
   passButton: {fileID: 1690017431}
   contingencyPlannerSkillButton: {fileID: 1933850050}
-  archivistSkillButton: {fileID: 0}
+  archivistSkillButton: {fileID: 2093747171}
 --- !u!224 &660150424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25695,7 +25695,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Whatever
+  m_Text: Draw current city card
 --- !u!222 &813166136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56886,7 +56886,6 @@ MonoBehaviour:
   informEvent: {fileID: 1210501276}
   infectionDiscardPile: {fileID: 788425837}
   forecastPanel: {fileID: 106833131}
-  newAssignmentPanel: {fileID: 0}
 --- !u!1 &1902755404
 GameObject:
   m_ObjectHideFlags: 0
@@ -63790,7 +63789,7 @@ GameObject:
   - component: {fileID: 2093747172}
   - component: {fileID: 2093747171}
   m_Layer: 9
-  m_Name: Whatever (1)
+  m_Name: ArchivistSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63853,7 +63852,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2093747172}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 73084183}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2093747172
