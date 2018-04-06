@@ -349,12 +349,17 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_ContingencyPlannerPutCardOnTopOfRoleCard",PhotonTargets.All);
     }
 
-    public void ArchivistDraw()
+    public void ArchivistDraw(string cityName)
     {
         //TO-DO
     }
 
     public void EpidemiologistShare()
+    {
+        //TO-DO
+    }
+
+    public void FieldOperativeSample(Color color)
     {
         //TO-DO
     }

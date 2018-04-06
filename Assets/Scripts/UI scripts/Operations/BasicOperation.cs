@@ -13,6 +13,8 @@ public class BasicOperation : MonoBehaviour {
     public Button passButton;
     public Button contingencyPlannerSkillButton;
     public Button archivistSkillButton;
+    public Button fieldOperativeSkillButton;
+
 
     Button roleOnlyButton = null;
     Game game;
@@ -38,6 +40,11 @@ public class BasicOperation : MonoBehaviour {
         {
             archivistSkillButton.gameObject.SetActive(true);
             roleOnlyButton = archivistSkillButton;
+        }
+        else if(me.getRoleKind() == RoleKind.FieldOperative)
+        {
+            fieldOperativeSkillButton.gameObject.SetActive(true);
+            roleOnlyButton = fieldOperativeSkillButton;
         }
         if ((currentPlayer == me)&&(game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
@@ -80,6 +87,10 @@ public class BasicOperation : MonoBehaviour {
                 else if (game.containsSpecificCityCardInDiscardPile(currentCity))
                 {
                     archivistSkillButton.GetComponent<Button>().interactable = true;
+                }
+                else if (currentCity.hasCubes())
+                {
+                    fieldOperativeSkillButton.GetComponent<Button>().interactable = true;
                 }
 
             }
