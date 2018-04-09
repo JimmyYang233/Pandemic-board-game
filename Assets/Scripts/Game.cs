@@ -1233,17 +1233,41 @@ public class Game : MonoBehaviour {
 		
     public bool containsEventCardInDiscardPile()
     {
-        return false; //TO-DO
+        foreach(PlayerCard p in playerDiscardPile)
+        {
+            if(p.getType() == CardType.EventCard)
+            {
+                return true;
+            }
+        }
+        return false; 
     }
 
     public List<EventCard> getEventCardsFromDiscardPile()
     {
-        return null; //TO-DO
+        List<EventCard> result = new List<EventCard>();
+
+        foreach (PlayerCard p in playerDiscardPile)
+        {
+            if (p.getType() == CardType.EventCard)
+            {
+                result.Add((EventCard)p);
+            }
+        }
+
+        return result; 
     }
 
     public bool containsSpecificCityCardInDiscardPile(City city)
     {
-        return false; //TO-DO
+        foreach (PlayerCard p in playerDiscardPile)
+        {
+            if (p.getType() == CardType.CityCard && ((CityCard)p).getCity() == city)
+            {
+                return true;
+            }
+        }
+        return false; 
     }
 
     private bool resolveEpidemic()
