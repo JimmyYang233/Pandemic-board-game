@@ -1516,6 +1516,25 @@ public class Game : MonoBehaviour {
 
     }
 
+    public void BioTerroristInfectRemotely(InfectionCard card)
+    {
+        BioTerrorist bioTerrorist = getBioTerrorist();
+        if (bioTerrorist.getInfectRemotelyUsed())
+        {
+            return;
+        }
+        if (bioTerrorist.getIsCaptured() || bioTerrorist.getIsSpotted())
+        {
+            bioTerrorist.useInfectRemotely();
+        }
+
+        card.getCity().addCubes(diseases[Color.magenta], 1);
+        BioTerroristVolunteer.removeCard(card);
+        infectionDiscardPile.Add(card);
+        BioTerroristVolunteer.decreaseRemainingAction();
+
+    }
+
     public PlayerCard AckCardToDrop(List<PlayerCard> cards)
     {
         //TODO Handle hand limit here
