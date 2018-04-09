@@ -443,6 +443,7 @@ public class Game : MonoBehaviour {
         if(challenge == Challenge.BioTerroist)
         {
 			bioTerrorist = (BioTerroristVolunteer==null) ? players[UnityEngine.Random.Range(0, players.Count+1)] : BioTerroristVolunteer;
+            BioTerroristVolunteer = bioTerrorist;
         }
 
         foreach (Player p in players) 
@@ -1489,6 +1490,30 @@ public class Game : MonoBehaviour {
         InfectionCard card = infectionDeck[0];
         infectionDeck.Remove(card);
         record.draw(pl, card);
+    }
+
+    public BioTerrorist getBioTerrorist()
+    {
+        return (BioTerrorist) BioTerroristVolunteer.getRole();
+
+    }
+    
+    public void BioTerroristInfectLocally()
+    {
+        BioTerrorist bioTerrorist = getBioTerrorist();
+        if (bioTerrorist.getinfectLocallyUsed())
+        {
+            return;
+        }
+        if (bioTerrorist.getIsCaptured() || bioTerrorist.getIsSpotted())
+        {
+            bioTerrorist.useInfectLocally();
+        }
+
+        BioTerroristVolunteer.getPlayerPawn().getCity().addCubes(diseases[Color.magenta],1);
+
+        BioTerroristVolunteer.decreaseRemainingAction();
+
     }
 
     public PlayerCard AckCardToDrop(List<PlayerCard> cards)
