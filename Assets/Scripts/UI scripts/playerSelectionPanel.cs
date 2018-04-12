@@ -70,6 +70,7 @@ public class playerSelectionPanel : MonoBehaviour {
 				share.selectRole (EventSystem.current.currentSelectedGameObject.name);
 			} else {
 				selectCard.gameObject.SetActive (true);
+				selectCard.setResearcherStatus ();
 				selectCard.loadOtherPlayerCard ("Researcher");
 			}
 		}

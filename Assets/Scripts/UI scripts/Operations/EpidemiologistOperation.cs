@@ -26,6 +26,9 @@ public class EpidemiologistOperation : MonoBehaviour {
 	public void characterSelect(string name){
 		epidemiologistOnlyPanel.SetActive (true);
 		playerSelect.gameObject.SetActive (false);
+		playerSelect.setShareStatus ();
+
+		//to card selection
 		cardSelection.gameObject.SetActive (true);
 		cardSelection.setEpidemiologistStatus();
 		cardSelection.loadOtherPlayerCard (name);

@@ -34,6 +34,9 @@ public class eventCardController : MonoBehaviour {
 	private void oneQuietNight(){
 		game.OneQuietNight ();
 	}
+	private void reExaminedResearch(){
+		
+	}
 	//---------------------------------NewAssignment zone------------------------------
 	private void NewAssignment(){
 		
@@ -138,6 +141,9 @@ public class eventCardController : MonoBehaviour {
 			break;
 		case "OneQuietNight":
 			oneQuietNight();
+			break;
+		case "ReExaminedResearch":
+			reExaminedResearch();
 			break;
 		default:
 			
