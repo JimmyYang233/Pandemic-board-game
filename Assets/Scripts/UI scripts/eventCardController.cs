@@ -31,6 +31,9 @@ public class eventCardController : MonoBehaviour {
 		currentPlayer = game.getCurrentPlayer();
 		game.BorrowedTime ();
 	}
+	private void oneQuietNight(){
+		game.OneQuietNight ();
+	}
 	//---------------------------------NewAssignment zone------------------------------
 	private void NewAssignment(){
 		
@@ -132,6 +135,9 @@ public class eventCardController : MonoBehaviour {
 			break;
 		case "NewAssignment":
 			NewAssignment();
+			break;
+		case "OneQuietNight":
+			oneQuietNight();
 			break;
 		default:
 			
