@@ -1497,6 +1497,24 @@ public class Game : MonoBehaviour {
         return (BioTerrorist) BioTerroristVolunteer.getRole();
 
     }
+
+    public void BioTerroristSabotage(InfectionCard card)
+    {
+        City city = BioTerroristVolunteer.getPlayerPawn().getCity();
+        if (!city.getHasResearch())
+        {
+            Debug.Log("No reseach in that city: Game.cs BioTerrorist Sabotage");
+        }
+        if(card.getColor() != city.getColor())
+        {
+            Debug.Log("Color does not match: Game.cs BioTerrorist Sabotage");
+        }
+        BioTerroristVolunteer.removeCard(card);
+        infectionDiscardPile.Add(card);
+        BioTerroristVolunteer.getPlayerPawn().getCity().setHasResearch(false);
+        researchStationRemain++;
+
+    }
     
     public void BioTerroristInfectLocally()
     {
