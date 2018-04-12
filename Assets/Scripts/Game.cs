@@ -1492,6 +1492,27 @@ public class Game : MonoBehaviour {
         record.draw(pl, card);
     }
 
+    public void capture()
+    {
+        if (currentPlayer.getPlayerPawn().getCity() != BioTerroristVolunteer.getPlayerPawn().getCity())
+        {
+            Debug.Log("Not in the same city, cannot capture: Game.cs capture()");
+        }
+        getBioTerrorist().setCaptured();
+        foreach(PlayerCard card in BioTerroristVolunteer.getHand())
+        {
+            if(card.getType() != CardType.InfectionCard)
+            {
+                Debug.Log("Has invalid card: Game.cs capture()");
+            }
+
+            infectionDiscardPile.Add((InfectionCard)card);
+        }
+
+        BioTerroristVolunteer.dropAllCards();
+        currentPlayer.decreaseRemainingAction();
+    }
+
     public BioTerrorist getBioTerrorist()
     {
         return (BioTerrorist) BioTerroristVolunteer.getRole();

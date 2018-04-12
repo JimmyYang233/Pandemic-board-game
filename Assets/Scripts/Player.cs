@@ -122,6 +122,11 @@ public class Player {
 		handCard.Remove(card);
 	}
 
+    public void dropAllCards()
+    {
+        handCard.Clear();
+    }
+
     public List<PlayerCard> getHand()
     {
         List<PlayerCard> tmp = new List<PlayerCard>(handCard);

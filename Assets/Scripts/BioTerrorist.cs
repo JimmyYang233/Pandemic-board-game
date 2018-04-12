@@ -55,6 +55,11 @@ public class BioTerrorist : Role {
 		return isCaptured;
 	}
 
+    public void setCaptured()
+    {
+        isCaptured = true;
+    }
+
     public void spot()
     {
         isSpotted = true;
