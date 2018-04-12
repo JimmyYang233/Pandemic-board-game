@@ -16,17 +16,6 @@ public class Scroll : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            initialPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        }
-
-        else if (Input.GetMouseButtonUp(0))
-        {
-            Vector3 position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        }
-
-        
         if(transform.position.x < -557)
         {
             transform.position = startPos;
@@ -37,6 +26,13 @@ public class Scroll : MonoBehaviour {
         }
         
 	}
+
+    public void beginDrag()
+    {
+        initialPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+    }
+
+
     public void move()
     {
         Vector3 mouseMovement = new Vector3((Camera.main.ScreenToViewportPoint(Input.mousePosition).x - initialPosition.x), 0, 0);
