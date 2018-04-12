@@ -14,7 +14,7 @@ public class BasicOperation : MonoBehaviour {
     public Button contingencyPlannerSkillButton;
     public Button archivistSkillButton;
     public Button fieldOperativeSkillButton;
-
+	public Button epidemiologistSkillButton;
 
     Button roleOnlyButton = null;
     Game game;
@@ -31,21 +31,19 @@ public class BasicOperation : MonoBehaviour {
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
-        if(me.getRoleKind() == RoleKind.ContingencyPlanner)
-        {
-            contingencyPlannerSkillButton.gameObject.SetActive(true);
-            roleOnlyButton = contingencyPlannerSkillButton;
-        }
-        else if(me.getRoleKind() == RoleKind.Archivist)
-        {
-            archivistSkillButton.gameObject.SetActive(true);
-            roleOnlyButton = archivistSkillButton;
-        }
-        else if(me.getRoleKind() == RoleKind.FieldOperative)
-        {
-            fieldOperativeSkillButton.gameObject.SetActive(true);
-            roleOnlyButton = fieldOperativeSkillButton;
-        }
+		if (me.getRoleKind () == RoleKind.ContingencyPlanner) {
+			contingencyPlannerSkillButton.gameObject.SetActive (true);
+			roleOnlyButton = contingencyPlannerSkillButton;
+		} else if (me.getRoleKind () == RoleKind.Archivist) {
+			archivistSkillButton.gameObject.SetActive (true);
+			roleOnlyButton = archivistSkillButton;
+		} else if (me.getRoleKind () == RoleKind.FieldOperative) {
+			epidemiologistSkillButton.gameObject.SetActive (true);
+			roleOnlyButton = epidemiologistSkillButton;
+		} else if (me.getRoleKind () == RoleKind.Epidemiologist) {
+			fieldOperativeSkillButton.gameObject.SetActive (true);
+			roleOnlyButton = epidemiologistSkillButton;
+		}
         if ((currentPlayer == me)&&(game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
             currentCity = me.getPlayerPawn().getCity();
