@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Scroll : MonoBehaviour {
     public float speed = 0.5f;
-    bool isClicked;
-    bool isOn = false;
     Vector3 startPos;
     Vector3 initialPosition;
 
@@ -20,13 +18,11 @@ public class Scroll : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            isClicked = true;
             initialPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
 
         else if (Input.GetMouseButtonUp(0))
         {
-            isClicked = false;
             Vector3 position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
 
