@@ -38,8 +38,17 @@ public class eventCardController : MonoBehaviour {
 		
 	}
 	//---------------------------------NewAssignment zone------------------------------
-	private void NewAssignment(){
-		
+	public void NewAssignment(){
+		List<string> roles = game.getUnusedRole ();
+		newAssignmentPanel.SetActive (true);
+		Transform t = newAssignmentPanel.transform.GetChild (0);
+		for (int i = 0; i < roles.Count; i++) {
+			t.GetChild (i).gameObject.SetActive (true);
+			t.GetChild (i).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (game.findRoleKind(roles[i]));
+			t.GetChild (i).gameObject.name = roles [i];
+			t.GetChild (i).GetChild (0).GetComponent<Text> ().text = roles [i];
+		}
+
 	}
 	string newAssignmentName;
 	public void newAssignmentCardSelect(){
@@ -47,6 +56,12 @@ public class eventCardController : MonoBehaviour {
 	}
 	public void newAssignmentClickYes(){
 		//game.NewAssignment (newAssignmentName);
+
+		Transform t = newAssignmentPanel.transform.GetChild (0);
+		foreach(Transform d in t) {
+			d.gameObject.SetActive (false);
+		}
+		newAssignmentPanel.SetActive(false);
 	}
 	//---------------------------------Resilient zone-----------------------------------
 
