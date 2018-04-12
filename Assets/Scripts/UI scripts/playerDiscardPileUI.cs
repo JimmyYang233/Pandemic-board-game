@@ -11,9 +11,11 @@ public class playerDiscardPileUI : MonoBehaviour {
     private Transform content;
     private int cardNum = 0;
     private Maps map;
+	public bool eventCardTime;
 
     private void Awake()
     {
+		eventCardTime = false;
         content = this.transform.GetChild(0).GetChild(0);
         map = Maps.getInstance();
     }
@@ -57,7 +59,9 @@ public class playerDiscardPileUI : MonoBehaviour {
 
     public void mouseLeave()
     {
-        scroll.SetActive(false);
+		if (!eventCardTime) {
+			scroll.SetActive (false);
+		}
     }
     public void addCityCard(CityName c)
     {
@@ -78,32 +82,43 @@ public class playerDiscardPileUI : MonoBehaviour {
 
         setBar();
     }
-
-    /**
-    //delete city card from gui of other player
-    public void deleteCityCard(CityName c)
-    {
-        int i;
-        for (i = 0; i < cityCardNum + eventCardNum; i++)
-        {
-            if (c.ToString().Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
-            {
-                break;
-            }
-        }
-        for (int j = i; j < cityCardNum + eventCardNum; j++)
-        {
-            content.GetChild(j).GetChild(0).GetComponent<Text>().text = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().text;
-            content.GetChild(j).GetChild(0).GetComponent<Text>().color = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().color;
-            content.GetChild(j).GetComponent<Image>().color = content.GetChild(j + 1).GetComponent<Image>().color;
-        }
-        content.GetChild(cityCardNum + eventCardNum - 1).GetChild(0).GetComponent<Text>().text = "";
-        cityCardNum--;
-        setBar();
-        content.GetChild(cityCardNum + eventCardNum).gameObject.SetActive(false);
-    }
-    **/
-    // add event card to gui of other player
+		
+   
+	//delete city card from gui of other player
+	public void deleteCityCard(string c)
+	{
+		Debug.Log ("delete c");
+		int i;
+		for (i = 0; i < cardNum; i++)
+		{
+			if (c.ToString().Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
+			{
+				break;
+			}
+		}
+		for (int j = i; j < cardNum; j++)
+		{
+			content.GetChild(j).name = content.GetChild(j + 1).name;
+			content.GetChild(j).GetChild(0).GetComponent<Text>().text = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().text;
+			content.GetChild(j).GetChild(0).GetComponent<Text>().color = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().color;
+			content.GetChild(j).GetComponent<Image>().color = content.GetChild(j + 1).GetComponent<Image>().color;
+		}
+		content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = "";
+		content.GetChild(cardNum - 1).name = "";
+		cardNum--;
+		setBar();
+		content.GetChild(cardNum).gameObject.SetActive(false);
+		buttonUninteractable ();
+	}
+	public void buttonUninteractable(){
+		foreach (Transform t in content) {
+			/*if (t.gameObject.GetComponent<Button> () != null) {
+				t.gameObject.GetComponent<Button> ().interactable=false;
+			}*/
+			Destroy (t.gameObject.GetComponent<Button> ());
+			this.gameObject.SetActive (false);
+		}
+	}
     public void addEventCard(EventKind e)
     {
         content.GetChild(cardNum).gameObject.SetActive(true);
@@ -113,27 +128,5 @@ public class playerDiscardPileUI : MonoBehaviour {
         cardNum++;
         setBar();
     }
-    /**
-    // delete event card to gui of 
-    public void deleteEventCard(EventKind e)
-    {
 
-        int i;
-        for (i = 0; i < cityCardNum + eventCardNum; i++)
-        {
-            if (e.ToString().Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
-            {
-                break;
-            }
-        }
-        for (int j = i; j < cityCardNum + eventCardNum; j++)
-        {
-            content.GetChild(j).GetChild(0).GetComponent<Text>().text = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().text;
-        }
-        content.GetChild(cityCardNum + eventCardNum - 1).GetChild(0).GetComponent<Text>().text = "";
-        eventCardNum--;
-        setBar();
-        content.GetChild(cityCardNum + eventCardNum).gameObject.SetActive(false);
-    }
-    **/
 }

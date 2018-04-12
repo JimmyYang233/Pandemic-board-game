@@ -10,6 +10,7 @@ public class eventCardController : MonoBehaviour {
 	City currentCity;
 	public GameObject informEvent;
 	Player currentPlayer;
+	public playerSelectionPanel playerSelect;
 
 	//Resilient zone
 	public GameObject infectionDiscardPile;
@@ -17,7 +18,8 @@ public class eventCardController : MonoBehaviour {
 	public GameObject forecastPanel;
 	//newAssignment
 	public GameObject newAssignmentPanel;
-	public playerSelectionPanel playerSelect;
+	//for reExamineResearch
+	public playerDiscardPileUI playerDiscard;
 
 	// Use this for initialization
 	void Start () {
@@ -45,6 +47,25 @@ public class eventCardController : MonoBehaviour {
 	public void selectReExaminedResearchPlayer(string n){
 		selectRERPlayer = n;
 		playerSelect.gameObject.SetActive (false);
+	}
+
+	public void doReExamineResearch(){
+		foreach (Transform t in playerDiscard.transform.GetChild(0).GetChild(0)) {
+			if (t.gameObject.GetComponent<Button> () == null) {
+				t.gameObject.AddComponent<Button> ();
+				t.GetComponent<Button> ().interactable = true;
+				Button b = t.GetComponent<Button> ();
+				//Debug.log("add listener");
+				b.onClick.AddListener (reExaminedResearchSelectCard);
+			}
+		}
+
+		playerDiscard.eventCardTime = true;
+		playerDiscard.gameObject.SetActive (true);
+	}
+	public void reExaminedResearchSelectCard(){
+		//game.ResilientPopulation (EventSystem.current.currentSelectedGameObject.name);
+		playerDiscard.eventCardTime = false;
 	}
 	//---------------------------------NewAssignment zone------------------------------
 	public void doNewAssignment(){
