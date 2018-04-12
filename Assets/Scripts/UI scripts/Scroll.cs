@@ -5,6 +5,7 @@ using UnityEngine;
 public class Scroll : MonoBehaviour {
     public float speed = 0.5f;
     bool isClicked;
+    bool isOn = false;
     Vector3 startPos;
     Vector3 initialPosition;
 
@@ -28,7 +29,7 @@ public class Scroll : MonoBehaviour {
             isClicked = false;
             Vector3 position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
-        if (isClicked)
+        if (isClicked&&isOn)
         {
             Vector3 mouseMovement = new Vector3((Camera.main.ScreenToViewportPoint(Input.mousePosition).x - initialPosition.x), 0, 0);
             transform.position = new Vector3(mouseMovement.x*557+transform.position.x, transform.position.y, transform.position.z);
@@ -45,4 +46,14 @@ public class Scroll : MonoBehaviour {
         }
         
 	}
+
+    public void mouseOn()
+    {
+        isOn = true;
+    }
+
+    public void mousLeave()
+    {
+        isOn = false;
+    }
 }
