@@ -10,9 +10,10 @@ public class playerSelectionPanel : MonoBehaviour {
 	public Game game;
 	private City currentCity;
 	private Player currentPlayer;
-	private enum Status {SHARE,Epidemiologist};
+	private enum Status {SHARE,EPIDEMIOLOGIST,REEXAMINEDRESEARCH,NEWASSIGNMENT};
 	public ShareOperation share;
 	public EpidemiologistOperation epidemiologist;
+	public eventCardController eventController;
 	private Status selectStatus = Status.SHARE; 
 
 	public otherPlayerCardSelection selectCard;
@@ -34,7 +35,13 @@ public class playerSelectionPanel : MonoBehaviour {
 	}
 	//todo other status reimplement
 	public void setEpidemiologistStatus(){
-		selectStatus = Status.Epidemiologist;
+		selectStatus = Status.EPIDEMIOLOGIST;
+	}
+	public void setReExaminedResearch(){
+		selectStatus = Status.REEXAMINEDRESEARCH;
+	}
+	public void setNewAssignmentStatus(){
+		selectStatus = Status.NEWASSIGNMENT;
 	}
 	//This is for initializsation, for the beginning of the game
     public void addOtherPlayer(RoleKind k)
@@ -64,10 +71,11 @@ public class playerSelectionPanel : MonoBehaviour {
         // apply it on current object's material
     }
 	public void characterSelect(){
+		string name = EventSystem.current.currentSelectedGameObject.name;
 		if (selectStatus == Status.SHARE) {
-			string name = EventSystem.current.currentSelectedGameObject.name;
+			
 			if (!name.Equals ("Researcher")) {
-				share.selectRole (EventSystem.current.currentSelectedGameObject.name);
+				share.selectRole (name);
 			} else {
 				selectCard.gameObject.SetActive (true);
 				selectCard.setResearcherStatus ();
@@ -75,9 +83,12 @@ public class playerSelectionPanel : MonoBehaviour {
 			}
 		}
 		//remember to turn into status.share
-		if (selectStatus == Status.Epidemiologist) {
-			string name = EventSystem.current.currentSelectedGameObject.name;
+		else if (selectStatus == Status.EPIDEMIOLOGIST) {
 			epidemiologist.characterSelect (name);
+		} else if (selectStatus == Status.REEXAMINEDRESEARCH) {
+			eventController.selectReExaminedResearchPlayer (name);
+		} else if (selectStatus == Status.NEWASSIGNMENT) {
+			eventController.selectNewAssignmentPlayer (name);
 		}
 	}
 	public void cancelButtonClick(){
@@ -133,6 +144,26 @@ public class playerSelectionPanel : MonoBehaviour {
 				} else {
 					t.gameObject.SetActive (false);
 				}
+			}
+
+		}
+	}
+
+	public void displayAllPlayerForEventCard(){
+		foreach (Transform t in transform) {
+			if (!t.name.Equals("noUse"))
+			{
+				t.gameObject.SetActive (true);
+			}
+
+		}
+	}
+
+	public void clear(){
+		foreach (Transform t in transform) {
+			if (!t.name.Equals("noUse"))
+			{
+				t.gameObject.SetActive (false);
 			}
 
 		}

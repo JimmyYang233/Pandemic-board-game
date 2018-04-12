@@ -17,6 +17,7 @@ public class eventCardController : MonoBehaviour {
 	public GameObject forecastPanel;
 	//newAssignment
 	public GameObject newAssignmentPanel;
+	public playerSelectionPanel playerSelect;
 
 	// Use this for initialization
 	void Start () {
@@ -34,11 +35,19 @@ public class eventCardController : MonoBehaviour {
 	private void oneQuietNight(){
 		game.OneQuietNight ();
 	}
-	private void reExaminedResearch(){
-		
+	//--------------------------------for reExamination--------------------------------
+	string selectRERPlayer;
+	public void reExaminedResearch(){
+		playerSelect.gameObject.SetActive (true);
+		playerSelect.setReExaminedResearch ();
+		playerSelect.displayAllPlayerForEventCard ();
+	}
+	public void selectReExaminedResearchPlayer(string n){
+		selectRERPlayer = n;
+		playerSelect.gameObject.SetActive (false);
 	}
 	//---------------------------------NewAssignment zone------------------------------
-	public void NewAssignment(){
+	public void doNewAssignment(){
 		List<string> roles = game.getUnusedRole ();
 		newAssignmentPanel.SetActive (true);
 		Transform t = newAssignmentPanel.transform.GetChild (0);
@@ -48,8 +57,21 @@ public class eventCardController : MonoBehaviour {
 			t.GetChild (i).gameObject.name = roles [i];
 			t.GetChild (i).GetChild (0).GetComponent<Text> ().text = roles [i];
 		}
+	}
+	string selectNAPlayer;
+	public void NewAssignment(){
+		playerSelect.gameObject.SetActive (true);
+		playerSelect.setNewAssignmentStatus ();
+		playerSelect.displayAllPlayerForEventCard ();
 
 	}
+	public void selectNewAssignmentPlayer(string n){
+		selectNAPlayer = n;
+		playerSelect.gameObject.SetActive (false);
+	}
+	//todo response 
+
+
 	string newAssignmentName;
 	public void newAssignmentCardSelect(){
 		newAssignmentName = EventSystem.current.currentSelectedGameObject.name;

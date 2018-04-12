@@ -10333,6 +10333,7 @@ MonoBehaviour:
   game: {fileID: 73084184}
   share: {fileID: 1340808470}
   epidemiologist: {fileID: 590150772}
+  eventController: {fileID: 1900971760}
   selectCard: {fileID: 990919270}
 --- !u!222 &346002628
 CanvasRenderer:
@@ -59444,6 +59445,7 @@ MonoBehaviour:
   infectionDiscardPile: {fileID: 788425837}
   forecastPanel: {fileID: 106833131}
   newAssignmentPanel: {fileID: 655612832}
+  playerSelect: {fileID: 346002627}
 --- !u!1 &1902755404
 GameObject:
   m_ObjectHideFlags: 0
