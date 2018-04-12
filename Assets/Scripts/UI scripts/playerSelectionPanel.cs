@@ -10,8 +10,9 @@ public class playerSelectionPanel : MonoBehaviour {
 	public Game game;
 	private City currentCity;
 	private Player currentPlayer;
-	private enum Status {SHARE,OTHER};
+	private enum Status {SHARE,Epidemiologist};
 	public ShareOperation share;
+	public EpidemiologistOperation epidemiologist;
 	private Status selectStatus = Status.SHARE; 
 
 	public otherPlayerCardSelection selectCard;
@@ -32,10 +33,10 @@ public class playerSelectionPanel : MonoBehaviour {
 		selectStatus = Status.SHARE;
 	}
 	//todo other status reimplement
-	public void setOtherStatus(){
-		selectStatus = Status.OTHER;
+	public void setEpidemiologistStatus(){
+		selectStatus = Status.Epidemiologist;
 	}
-
+	//This is for initializsation, for the beginning of the game
     public void addOtherPlayer(RoleKind k)
     {
 		int i = 0;
@@ -71,6 +72,11 @@ public class playerSelectionPanel : MonoBehaviour {
 				selectCard.gameObject.SetActive (true);
 				selectCard.loadOtherPlayerCard ("Researcher");
 			}
+		}
+		//remember to turn into status.share
+		if (selectStatus == Status.Epidemiologist) {
+			string name = EventSystem.current.currentSelectedGameObject.name;
+			epidemiologist.characterSelect (name);
 		}
 	}
 	public void cancelButtonClick(){

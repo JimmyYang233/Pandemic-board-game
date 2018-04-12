@@ -7,8 +7,9 @@ using UnityEngine.EventSystems;
 public class otherPlayerCardSelection : MonoBehaviour {
 	public Game game;
 	private City currentCity;
-	private enum Status {RESEARCHER,OTHER};
+	private enum Status {RESEARCHER,EPIDEMIOLOGIST};
 	public ShareOperation share;
+	public EpidemiologistOperation epidemiologist;
 	private Status selectStatus = Status.RESEARCHER; 
 
 	// Use this for initialization
@@ -43,14 +44,24 @@ public class otherPlayerCardSelection : MonoBehaviour {
 	}
 
 	public void cardSelect(){
+		string name = EventSystem.current.currentSelectedGameObject.name;
 		if (selectStatus == Status.RESEARCHER) {
-			share.takeFromResearcher (EventSystem.current.currentSelectedGameObject.name);
+			share.takeFromResearcher (name);
 			clear ();
+		} else if (selectStatus == Status.EPIDEMIOLOGIST) {
+			epidemiologist.takeCard(name);
 		}
 	}
 	public void clear(){
 		foreach (Transform t in this.transform) {
 			t.gameObject.SetActive (false);
 		}
+	}
+
+	public void setResearcherStatus(){
+		this.selectStatus = Status.RESEARCHER;
+	}
+	public void setEpidemiologistStatus(){
+		this.selectStatus = Status.EPIDEMIOLOGIST;
 	}
 }

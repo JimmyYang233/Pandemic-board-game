@@ -5,6 +5,10 @@ using UnityEngine;
 public class EpidemiologistOperation : MonoBehaviour {
 	public GameObject epidemiologistOnlyPanel;
 	public Game game;
+	public playerSelectionPanel playerSelect;
+	public otherPlayerCardSelection cardSelection;
+	string characterName;
+	string cardName;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,11 +18,27 @@ public class EpidemiologistOperation : MonoBehaviour {
 	void Update () {
 		
 	}
-		
+	public void useSkill(){
+		playerSelect.displayPlayerNecessary ();
+	}	
 
-	public void takeButtonClicked()
-	{
 
+	public void characterSelect(string name){
+		epidemiologistOnlyPanel.SetActive (true);
+		playerSelect.gameObject.SetActive (false);
+		cardSelection.gameObject.SetActive (true);
+		cardSelection.setEpidemiologistStatus();
+		cardSelection.loadOtherPlayerCard (name);
+		characterName = name;
 	}
+
+	public void takeCard(string name){
+		cardName = name;
+	}
+	public void takeClick(){
+		game.share (characterName, cardName);
+		cardSelection.clear ();
+	}
+
 
 }
