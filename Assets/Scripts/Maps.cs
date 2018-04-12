@@ -65,7 +65,7 @@ public class Maps{
         eventCardDescription.Add(EventKind.MobileHospital, "This turn, remove 1 disease cube from each city the player drives or ferries to.");
         eventCardDescription.Add(EventKind.NewAssignment, "Select a player. This player may swap his role card with any one of the unused roles.");
         eventCardDescription.Add(EventKind.SpecialOrders, "This turn, the player may spend actions to move 1 other pawn (with permission), as if it were his own.");
-
+        eventCardDescription.Add(EventKind.RapidVaccineDeployment,"Play immediately after a discover a cure action to remove 1-5 cubes of the cured disease. These disease cubes must come from connected cities.")
 // blue
         
 
