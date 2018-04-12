@@ -29,12 +29,7 @@ public class Scroll : MonoBehaviour {
             isClicked = false;
             Vector3 position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
-        if (isClicked&&isOn)
-        {
-            Vector3 mouseMovement = new Vector3((Camera.main.ScreenToViewportPoint(Input.mousePosition).x - initialPosition.x), 0, 0);
-            transform.position = new Vector3(mouseMovement.x*557+transform.position.x, transform.position.y, transform.position.z);
-            initialPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition); 
-        }
+
         
         if(transform.position.x < -557)
         {
@@ -46,14 +41,10 @@ public class Scroll : MonoBehaviour {
         }
         
 	}
-
-    public void mouseOn()
+    public void move()
     {
-        isOn = true;
-    }
-
-    public void mousLeave()
-    {
-        isOn = false;
+        Vector3 mouseMovement = new Vector3((Camera.main.ScreenToViewportPoint(Input.mousePosition).x - initialPosition.x), 0, 0);
+        transform.position = new Vector3(mouseMovement.x * 557 + transform.position.x, transform.position.y, transform.position.z);
+        initialPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
     }
 }
