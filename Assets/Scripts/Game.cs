@@ -1050,6 +1050,15 @@ public class Game : MonoBehaviour {
         dropEventCard(EventKind.MobileHospital);
     }
 
+    public void remoteTreatment(City city1, City city2, Color color1, Color color2)
+    {
+        city1.removeCubes(diseases[color1], 1);
+        diseases[color1].incrementNumOfDiseaseCubeLeft();
+        city2.removeCubes(diseases[color2], 1);
+        diseases[color2].incrementNumOfDiseaseCubeLeft();
+        dropEventCard(EventKind.RemoteTreatment);
+    }
+
     public Player findEventCardHolder(EventKind eCard){
 		Player holder = null;
 
