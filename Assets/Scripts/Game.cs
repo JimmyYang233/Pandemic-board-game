@@ -58,6 +58,7 @@ public class Game : MonoBehaviour {
     public ChatBox chatBox;
     public Record record;
 	public infectionDiscardPileUI infectionDiscardUI;
+	public eventCardController eventController;
 
     GameObject backGround;
 
@@ -279,6 +280,15 @@ public class Game : MonoBehaviour {
 		fieldOperativeSample (diseases[stringToColor(color)]);
 	}
 
+	[PunRPC]
+	public void RPC_askForEventCardPermission(string info){
+		askForEventCardPermission (info);
+	}
+
+	[PunRPC]
+	public void RPC_informEventCardPermissionResult(bool result){
+		informEventCardPermissionResult (result);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -407,6 +417,16 @@ public class Game : MonoBehaviour {
     {
 		PhotonView.RPC ("RPC_fieldOperativeSample",PhotonTargets.All, colorToString(color));
     }
+
+	public void AskForEventCardPermission (string info, string targetRoleKind, string sourceRoleKind){
+		PhotonPlayer targetPlayer = findPlayer (targetRoleKind).PhotonPlayer;
+		PhotonView.RPC ("RPC_askForEventCardPermission",targetPlayer,info, sourceRoleKind);
+	}
+
+	public void InformEventCardPermissionResult(bool result, string sourceRoleKind){
+		PhotonPlayer targetPlayer = findPlayer (sourceRoleKind).PhotonPlayer;
+		PhotonView.RPC ("RPC_informEventCardPermissionResult", targetPlayer, result);
+	}
     #endregion
 
     #region initialization
@@ -1100,6 +1120,15 @@ public class Game : MonoBehaviour {
     }
 
 
+	private void askForEventCardPermission(string info, string sourcePlayerRoleKind){
+		eventController.showAgreePanel (info, sourcePlayerRoleKind);
+	}
+
+	private void informEventCardPermissionResult(bool result){
+		eventController.informResult (result);
+	}
+
+
     public void oneQuietNight(){
 		oneQuietNightUsed = true;
 		dropEventCard (EventKind.OneQuietNight);
@@ -1125,12 +1154,17 @@ public class Game : MonoBehaviour {
 		
 	}
 
+	public void specialOrders(){
+		dropEventCard (EventKind.specialOrders);
+	}
+
 	/* 
 	Remove cubes of color c in cities.
 	Return 1 if 5 cubes are removed, return 0 if less than 5.
 	*/
 	public int rapidVaccineDeployment(Color c, List<City> cities){
 		int ctr = 0;
+		dropEventCard (EventKind.RapidVaccineDeployment);
 		foreach (City city in cities){
 			while (city.getCubeNumber(c)>0){
 				city.removeCubes(diseases[c], 1);
@@ -1159,7 +1193,7 @@ public class Game : MonoBehaviour {
         dropEventCard(EventKind.RemoteTreatment);
     }
 
-    public void ReExaminedResearch(Player pl, CityCard card)
+    public void reExaminedResearch(Player pl, CityCard card)
     {
         if (!playerDiscardPile.Contains(card))
         {
@@ -1174,7 +1208,7 @@ public class Game : MonoBehaviour {
         }
     }
 
-    public void CommercialTravelBan(Player pl)
+    public void commercialTravelBan(Player pl)
     {
         dropEventCard(EventKind.CommercialTravelBan);
         pl.setCommercialTravelBanTurn();
