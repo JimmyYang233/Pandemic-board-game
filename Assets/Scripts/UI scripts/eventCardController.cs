@@ -12,6 +12,8 @@ public class eventCardController : MonoBehaviour {
     public GameObject informEvent;
     Player currentPlayer;
     public playerSelectionPanel playerSelect;
+	public agreePanelController agreeController;
+	public GameObject informResultPanel;
 
     //Resilient zone
     public GameObject infectionDiscardPile;
@@ -31,6 +33,18 @@ public class eventCardController : MonoBehaviour {
     void Update() {
     }
 
+	public void informResult(bool response){
+		informResultPanel.SetActive (true);
+		if (response) {
+			informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He accept the eventCard";
+		}
+		else{
+			informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He reject the EventCard";
+		}
+	}
+	public void rejectTheRequest(){
+		
+	}
     private void borrowedTime() {
         currentPlayer = game.getCurrentPlayer();
         game.BorrowedTime();
@@ -49,7 +63,12 @@ public class eventCardController : MonoBehaviour {
         selectRERPlayer = n;
         playerSelect.gameObject.SetActive(false);
     }
+	public void showAgreePanelForReExaminedResearch(){
+		agreeController.status = agreePanelController.Status.REEXAMINEDRESEARCH;
+		agreeController.agreePanel.gameObject.SetActive (true);
+		agreeController.agreePanel.transform.GetChild(0).GetComponent<Text>().text="Do you want to accept reExaminedResearch?";
 
+	}
     public void doReExamineResearch() {
         foreach (Transform t in playerDiscard.transform.GetChild(0).GetChild(0)) {
             if (t.gameObject.GetComponent<Button>() == null) {
@@ -91,8 +110,14 @@ public class eventCardController : MonoBehaviour {
         selectNAPlayer = n;
         playerSelect.gameObject.SetActive(false);
     }
-    //todo response 
+    //todo response
 
+	public void showAgreePanelForNewAssignment(){
+		agreeController.status = agreePanelController.Status.NEWASSIGNMENT;
+		agreeController.agreePanel.gameObject.SetActive (true);
+		agreeController.agreePanel.transform.GetChild(0).GetComponent<Text>().text="Do you want to accept New Assignment?";
+
+	}
 
     string newAssignmentName;
     public void newAssignmentCardSelect() {
@@ -100,7 +125,6 @@ public class eventCardController : MonoBehaviour {
     }
     public void newAssignmentClickYes() {
         //game.NewAssignment (newAssignmentName);
-
         Transform t = newAssignmentPanel.transform.GetChild(0);
         foreach (Transform d in t) {
             d.gameObject.SetActive(false);

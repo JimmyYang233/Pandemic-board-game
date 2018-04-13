@@ -6585,7 +6585,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agreePanel: {fileID: 250146712}
+  eventController: {fileID: 1900971760}
   game: {fileID: 73084184}
+  status: 0
   share: {fileID: 1340808470}
 --- !u!1 &215633208
 GameObject:
@@ -59493,10 +59495,13 @@ MonoBehaviour:
   game: {fileID: 73084184}
   informEvent: {fileID: 1210501276}
   playerSelect: {fileID: 346002627}
+  agreeController: {fileID: 215428524}
+  informResultPanel: {fileID: 315254070}
   infectionDiscardPile: {fileID: 788425837}
   forecastPanel: {fileID: 106833131}
   newAssignmentPanel: {fileID: 655612832}
-  playerDiscard: {fileID: 0}
+  playerDiscard: {fileID: 10558121}
+  cityToBuild: {fileID: 0}
 --- !u!1 &1902755404
 GameObject:
   m_ObjectHideFlags: 0

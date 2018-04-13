@@ -72,4 +72,7 @@ MonoBehaviour:
   - RPC_ContingencyPlannerPutCardOnTopOfRoleCard
   - RPC_resilientPopulation
   - RPC_forecast
+  - RPC_mobileHospital
+  - RPC_governmentGrant
+  - RPC_archivistDraw
   DisableAutoOpenWizard: 1
