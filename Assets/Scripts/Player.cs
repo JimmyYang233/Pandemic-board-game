@@ -246,6 +246,10 @@ public class Player {
 		oncePerTurnAction = toggle;
 	}
     
+    public bool getOncePerTurnAction(){
+        return oncePerTurnAction;
+    }
+
 	public void setRole(Role r)
 	{
 		this.curRole = r;
