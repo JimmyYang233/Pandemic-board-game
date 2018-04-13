@@ -44,7 +44,7 @@ public class eventCardController : MonoBehaviour {
 			informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He reject the EventCard";
 		}
 	}
-	public void showAgreePanel(string request){
+	public void showAgreePanel(string request,string source){
 		
 	}
 	public void rejectTheRequest(){
