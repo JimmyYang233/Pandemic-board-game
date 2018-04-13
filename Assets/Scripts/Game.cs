@@ -296,6 +296,12 @@ public class Game : MonoBehaviour {
 		CityCard cityCard = (CityCard)findPlayerCard (cardName);
 		reExaminedResearch (player, cityCard);
 	}
+
+	[PunRPC]
+	public void RPC_newAssignment(string targetRoleKind, string newRoleKind){
+		Player player = findPlayer (targetRoleKind);
+		newAssignment (player, findRoleKind(newRoleKind));
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -437,6 +443,10 @@ public class Game : MonoBehaviour {
 
 	public void ReExaminedResearch(string playerRoleKind, string cardName){
 		PhotonView.RPC ("RPC_reExaminedResearch", PhotonTargets.All, playerRoleKind, cardName);
+	}
+
+	public void NewAssignment(string targetPlayer, string newRoleKind){
+		PhotonView.RPC ("RPC_newAssignment",PhotonTargets.All, targetPlayer, newRoleKind);
 	}
     #endregion
 
