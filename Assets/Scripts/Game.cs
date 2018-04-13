@@ -556,13 +556,34 @@ public class Game : MonoBehaviour {
 		using(var e1 = players.GetEnumerator())
 		using(var e2 = savedGame.roleKindList.GetEnumerator())
 		using(var e3 = savedGame.playerCardList.GetEnumerator())
+		using(var e4 = savedGame.mobileHospitalActivated.GetEnumerator())
+		using(var e6 = savedGame.hasCommercialTravelBanInfrontOfPlayer.GetEnumerator())
+		using(var e7 = savedGame.CommercialTravelBanTurn.GetEnumerator())
+			
 		{
-			while(e1.MoveNext() && e2.MoveNext() && e3.MoveNext())
+			while(e1.MoveNext() && e2.MoveNext() && e3.MoveNext() && e4.MoveNext() && e6.MoveNext() && e7.MoveNext())
 			{
 				var curPlayer = e1.Current;
 				var curRolekind = e2.Current;
 				PlayerCardList playerHand = e3.Current;
+
+				//EventCard eventCardOnTopOfRoleCard = EventCard.getEventCard((EventKind)Enum.Parse (typeof(EventKind), e5.Current));
+
+
 				Role curRole = new Role(curRolekind);
+
+				bool mobileHospitalActivated = e4.Current;
+				curPlayer.setMobileHospitalActivated (mobileHospitalActivated);
+				if (curRolekind == RoleKind.ContingencyPlanner && savedGame.eventCardOnTopOfRoleCard != null) {
+					curPlayer.setEventCardOnTopOfRoleCard (EventCard.getEventCard((EventKind)Enum.Parse (typeof(EventKind), savedGame.eventCardOnTopOfRoleCard)));
+				}
+				bool hasCommercialTravelBanInfrontOfPlayer = e6.Current;
+				if (hasCommercialTravelBanInfrontOfPlayer) {
+					curPlayer.setCommercialTravelBanTurn ();
+				}
+				int commercialTravelBanTurn = e7.Current;
+				curPlayer.setCommercialTravelBanTurnValue (commercialTravelBanTurn);
+
 				curPlayer.setRole (curRole);
 				foreach (string s in playerHand.playerHand) {
 					if (Enum.IsDefined (typeof(EventKind), s)) {
@@ -1781,7 +1802,6 @@ public class Game : MonoBehaviour {
         p2.addCard(card);
 		if (!p2.Equals(me))
 		{
-
 			playerPanel.addPlayerCardToOtherPlayer(p2.getRoleKind(), card);
 		}
 		else

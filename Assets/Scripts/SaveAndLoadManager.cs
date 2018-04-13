@@ -74,6 +74,10 @@ public class GameData{
 	public List<string> infectionCardDeck = new List<string> ();
 	public List<string> infectionDiscardPile = new List<string>();
 	public List<string> allHandCards= new List<string> ();
+	public List<bool> mobileHospitalActivated = new List<bool> ();
+	public string eventCardOnTopOfRoleCard = null;
+	public List<bool> hasCommercialTravelBanInfrontOfPlayer = new List<bool> ();
+	public List<int> CommercialTravelBanTurn = new List<int> ();
 	public List<DiseaseInfo> diseaseInfoList = new List<DiseaseInfo> ();
 	public List<CityInfo> CityInfoList = new List<CityInfo> ();
 
@@ -104,6 +108,12 @@ public class GameData{
 
 		foreach (Player player in game.getPlayers()) {
 			PlayerCardList playerHand= new PlayerCardList();
+			mobileHospitalActivated.Add (player.getMobileHospitalActivated());
+			if (player.getRoleKind == RoleKind.ContingencyPlanner && player.getEventCardOnTopOfRoleCard()!=null) {
+				eventCardOnTopOfRoleCard = player.getEventCardOnTopOfRoleCard ().getName ();
+			}
+			hasCommercialTravelBanInfrontOfPlayer.Add (player.hasEventCardInFront());
+			CommercialTravelBanTurn.Add (player.getCommercialTravelBanTurn());
 			roleKindList.Add (player.getRoleKind ());
 			foreach (PlayerCard pc in player.getHand()) {
 				if (pc.getType().Equals(CardType.CityCard)){

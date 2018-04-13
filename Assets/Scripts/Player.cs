@@ -21,6 +21,10 @@ public class Player {
         return hasCommercialTravelBanInfrontOfPlayer;
     }
 
+	public void setCommercialTravelBanTurnValue(int input){
+		CommercialTravelBanTurn = input;
+	}
+
     public void setCommercialTravelBanTurn()
     {
         hasCommercialTravelBanInfrontOfPlayer = true;
