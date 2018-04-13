@@ -1984,6 +1984,7 @@ public class Game : MonoBehaviour {
 			//Debug.Log("add card to main player" + card.ToString());
 			mainPlayerPanel.addPlayerCard(card);
 		}
+        player.decreaseRemainingAction();
 		player.setOncePerturnAction(true);
 	}
 

@@ -82,7 +82,7 @@ public class BasicOperation : MonoBehaviour {
                 {
                     contingencyPlannerSkillButton.GetComponent<Button>().interactable = true;
                 }
-                else if (game.containsSpecificCityCardInDiscardPile(currentCity))
+                else if (game.containsSpecificCityCardInDiscardPile(currentCity)&&(!me.getOncePerTurnAction()))
                 {
                     archivistSkillButton.GetComponent<Button>().interactable = true;
                 }

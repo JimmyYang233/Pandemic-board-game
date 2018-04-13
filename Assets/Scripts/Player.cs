@@ -265,9 +265,6 @@ public class Player {
 		refillAction();
 
 		if(compareRole(RoleKind.FieldOperative) || compareRole(RoleKind.Archivist) || compareRole(RoleKind.Epidemiologist) || compareRole(RoleKind.OperationsExpert)){
-			oncePerTurnAction = true;
-		}
-		else{
 			oncePerTurnAction = false;
 		}
 	}
