@@ -58,6 +58,7 @@ public class Game : MonoBehaviour {
     public ChatBox chatBox;
     public Record record;
 	public infectionDiscardPileUI infectionDiscardUI;
+	public eventCardController eventController;
 
     GameObject backGround;
 
