@@ -276,7 +276,7 @@ public class eventCardController : MonoBehaviour {
         }
     }
     #endregion
-    #region remote treatement
+    #region Remote Treatement
     //---------------------------------Remote Treatement zone-----------------------------
     List<Transform> cubes = new List<Transform>();
     public void remoteTreatment()
@@ -325,6 +325,7 @@ public class eventCardController : MonoBehaviour {
     private int remoteCount = 0;
     public void selectRemoteCube(City city, Color color)
     {
+        Debug.Log("Choose this city for remote treatment" + city.getCityName().ToString());
         cities[remoteCount] = city;
         colors[remoteCount] = color;
         if(remoteCount == 1)
@@ -342,36 +343,54 @@ public class eventCardController : MonoBehaviour {
         }
     }
     #endregion
+    #region Commercial Travel Ban
+    //---------------------------------Commercial Travel Ban zone-----------------------------
+    public void commercialTravelBan()
+    {
+        game.CommercialTravelBan(currentPlayer);
+    }
+    #endregion
     //---------------------------
     public void useEvent(){
 		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;
 		Debug.Log (eventCardName);
 		switch (eventCardName)
 		{
-		case "BorrowedTime":
-			borrowedTime ();
-			break;
-		case "ResilientPopulation":
-			ResilientPopulation ();
-			break;
-		case "Forecast":
-			Forecast();
-			break;
-		case "NewAssignment":
-			NewAssignment();
-			break;
-		case "OneQuietNight":
-			oneQuietNight();
-			break;
-		case "ReExaminedResearch":
-			reExaminedResearch();
-			break;
-        case "MobileHospital":
-            mobileHospital();
-            break;
-		default:
-			
-			break;
+		    case "BorrowedTime":
+			    borrowedTime ();
+			    break;
+		    case "ResilientPopulation":
+			    ResilientPopulation ();
+			    break;
+		    case "Forecast":
+			    Forecast();
+			    break;
+		    case "NewAssignment":
+			    NewAssignment();
+			    break;
+		    case "OneQuietNight":
+			    oneQuietNight();
+			    break;
+		    case "ReExaminedResearch":
+			    reExaminedResearch();
+			    break;
+            case "MobileHospital":
+                mobileHospital();
+                break;
+            case "RemoteTreatment":
+                remoteTreatment();
+                break;
+            case "Airlift":
+                airLift();
+                break;
+            case "GovernmentGrant":
+                governmentGrant();
+                break;
+            case "CommercialTravelBan":
+                commercialTravelBan();
+                break;               
+		    default:
+			    break;
 		}
 		/*
 		Airlift
