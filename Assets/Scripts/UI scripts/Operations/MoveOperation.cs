@@ -28,6 +28,8 @@ public class MoveOperation : MonoBehaviour {
 
     public void moveButtonClicked()
     {
+        currentPlayer = game.getCurrentPlayer();
+        playerToMove = currentPlayer;
         if (currentPlayer.getRoleKind() == RoleKind.Dispatcher)
         {
             playerSelect.gameObject.SetActive(true);
@@ -40,9 +42,7 @@ public class MoveOperation : MonoBehaviour {
     }
 
     public void showMove()
-    {
-        currentPlayer = game.getCurrentPlayer();
-        playerToMove = currentPlayer;
+    {   
         driveButton.GetComponent<Button>().interactable = true;
         City currentCity = playerToMove.getPlayerPawn().getCity();
 
