@@ -175,12 +175,12 @@ public class eventCardController : MonoBehaviour {
         List<string> infectionCards = game.getInfectionDeckString();
         if (infectionCards.Count >= 6) {
             for (int i = 0; i < 6; i++) {
-
+				string tstr = infectionCards[i];
                 Transform target = forecastPanel.transform.GetChild(i);
                 target.gameObject.SetActive(true);
-                target.name = infectionCards[i];
-                target.GetComponent<Image>().color = game.findCity(infectionCards[i]).getColor();
-                target.GetChild(0).GetComponent<Text>().text = infectionCards[i];
+				target.name = tstr;
+				target.GetComponent<Image>().color = game.findCity(tstr).getColor();
+				target.GetChild(0).GetComponent<Text>().text = tstr;
                 target.GetComponent<Button>().interactable = true;
             }
 
@@ -195,21 +195,24 @@ public class eventCardController : MonoBehaviour {
         forecastPanel.SetActive(true);
 
     }
-    string foreCastName;
+    string foreCastName="";
     public void forecastSelectCard() {
         foreCastName = EventSystem.current.currentSelectedGameObject.name;
     }
     public void foreCastOrderSelect() {
-        int order = int.Parse(EventSystem.current.currentSelectedGameObject.name);
-        foreach (Transform t in forecastPanel.transform) {
-            if (t.name.Equals(foreCastName)) {
-                t.gameObject.SetActive(false);
-            }
-        }
-        Transform target = forecastPanel.transform.GetChild(5 + order);
-        target.GetComponent<Image>().color = game.findCity(foreCastName).getColor();
-        target.GetChild(0).GetComponent<Text>().text = foreCastName;
-        target.GetComponent<Button>().interactable = false;
+		if (foreCastName != "") {
+			int order = int.Parse (EventSystem.current.currentSelectedGameObject.name);
+			foreach (Transform t in forecastPanel.transform) {
+				if (t.name.Equals (foreCastName)) {
+					t.gameObject.SetActive (false);
+				}
+			}
+			Transform target = forecastPanel.transform.GetChild (5 + order);
+			target.GetComponent<Image> ().color = game.findCity (foreCastName).getColor ();
+			target.GetChild (0).GetComponent<Text> ().text = foreCastName;
+			target.GetComponent<Button> ().interactable = false;
+			foreCastName = "";
+		}
     }
     public void forecastYes() {
         List<string> str = new List<string>();
