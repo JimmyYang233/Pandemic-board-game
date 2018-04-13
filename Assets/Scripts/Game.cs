@@ -279,6 +279,11 @@ public class Game : MonoBehaviour {
 		fieldOperativeSample (diseases[stringToColor(color)]);
 	}
 
+	[PunRPC]
+	public void RPC_askForEventCardPermission(string info){
+		
+	}
+
     #endregion
 
     //called by chatbox to send chat message
@@ -407,6 +412,11 @@ public class Game : MonoBehaviour {
     {
 		PhotonView.RPC ("RPC_fieldOperativeSample",PhotonTargets.All, colorToString(color));
     }
+
+	public void AskForEventCardPermission (string info, string roleKind){
+		PhotonPlayer targetPlayer = findPlayer (roleKind).PhotonPlayer;
+		PhotonView.RPC ("RPC_askForEventCardPermission",targetPlayer,info);
+	}
     #endregion
 
     #region initialization
