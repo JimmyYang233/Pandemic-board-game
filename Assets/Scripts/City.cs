@@ -247,8 +247,7 @@ public class City : MonoBehaviour {
             if (child.tag != "researchStation")
             {
                 GameObject.Destroy(child.gameObject);
-            }
-            
+            }  
         }
         List<string> cubes = new List<string>();
         foreach (Color color in numberOfCubes.Keys)

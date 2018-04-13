@@ -270,7 +270,72 @@ public class eventCardController : MonoBehaviour {
             city.undisplayButton();
         }
     }
+    #region remote treatement
+    //---------------------------------Remote Treatement zone-----------------------------
+    List<Transform> cubes = new List<Transform>();
+    public void remoteTreatment()
+    {
+        foreach(City city in game.getCities())
+        {
+            if (city.hasCubes())
+            {
+                foreach (Transform child in city.transform)
+                {
+                    if (child.tag != "researchStation")
+                    {
+                        Color color = Color.blue;
+                        if (child.tag == "blue Cube")
+                        {
+                            color = Color.blue;
+                        }
+                        else if (child.tag == "black Cube")
+                        {
+                            color = Color.black;
+                        }
+                        else if (child.tag == "red Cube")
+                        {
+                            color = Color.red;
+                        }
+                        else if (child.tag == "yellow Cube")
+                        {
+                            color = Color.yellow;
+                        }
+                        else if (child.tag == "purple Cube")
+                        {
+                            color = Color.magenta;
+                        }
+                        child.gameObject.AddComponent<Button>().onClick.AddListener(() => selectRemoteCube(city, color));
+                        child.gameObject.GetComponent<Button>().onClick.AddListener(() => Destroy(child.gameObject.GetComponent<Button>()));
+                        cubes.Add(child);
+                    }
+                }
+            }
+        }
+    }
 
+
+    private City[] cities = new City[2];
+    private Color[] colors = new Color[2];
+    private int remoteCount = 0;
+    public void selectRemoteCube(City city, Color color)
+    {
+        cities[remoteCount] = city;
+        colors[remoteCount] = color;
+        if(remoteCount == 1)
+        {
+            game.remoteTreatment(cities[0], cities[1], colors[0], colors[1]);
+            foreach(Transform child in cubes){
+                Destroy(child.gameObject.GetComponent<Button>());
+            }
+            remoteCount = 0;
+        }
+        else
+        {
+            remoteCount++;
+            //TO-DO maybe display something?
+        }
+    }
+    #endregion
     //---------------------------
     public void useEvent(){
 		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;
