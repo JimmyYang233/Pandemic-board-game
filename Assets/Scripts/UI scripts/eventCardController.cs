@@ -179,6 +179,11 @@ public class eventCardController : MonoBehaviour {
 		game.Forecast (str);
 		forecastPanel.SetActive (false);
 	}
+    //---------------------------------MobileHospital zone------------------------------
+    public void mobileHospital()
+    {
+        game.MobileHospital(currentPlayer.getRoleKind().ToString());
+    }
 	//---------------------------
 	public void useEvent(){
 		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;
@@ -203,6 +208,9 @@ public class eventCardController : MonoBehaviour {
 		case "ReExaminedResearch":
 			reExaminedResearch();
 			break;
+        case "MobileHospital":
+            mobileHospital();
+            break;
 		default:
 			
 			break;

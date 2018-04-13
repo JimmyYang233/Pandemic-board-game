@@ -250,7 +250,11 @@ public class Game : MonoBehaviour {
 		forecast(orderedCards);
 	}
 
-	
+	[PunRPC]
+    public void RPC_mobileHospital(string roleKind)
+    {
+        mobileHospital(findPlayer(roleKind));
+    }
 	#endregion
 
 	//called by chatbox to send chat message
@@ -334,6 +338,11 @@ public class Game : MonoBehaviour {
 	public void ResilientPopulation(string cardName){
 		PhotonView.RPC ("RPC_resilientPopulation",PhotonTargets.All,cardName);
 	}
+
+    public void MobileHospital(string roleKind)
+    {
+        PhotonView.RPC("RPC_mobileHospital", PhotonTargets.All, roleKind);
+    }
 
 	public void Forecast(List<string> orderedCards){
 		string[] cards = new string[6];
@@ -681,7 +690,7 @@ public class Game : MonoBehaviour {
 		}
         if (player.getMobileHospitalActivated())
         {
-            //TODO call treat, to remove 1 cube from the city
+            resolveContainmentSpecialist(destinationCity); //I realize I can use exactly the same function
         }
         if (player.getRoleKind() == RoleKind.BioTerrorist && !((BioTerrorist)player.getRole()).getBioTerroristExtraDriveUsed())
         {
@@ -777,6 +786,7 @@ public class Game : MonoBehaviour {
 			//Debug.Log ("One of the cities does not have a reseach lab. Game.cs: takeShuttleFlight");
 		}
 	}
+
 
 	//share
 	private void exchangeCard(RoleKind roleKind, CityCard cityCard)
@@ -882,6 +892,7 @@ public class Game : MonoBehaviour {
 
 		currentPlayer.refillAction();
 		currentPlayer.setOncePerturnAction(false);
+        currentPlayer.setMobileHospitalActivated(false);
 
         if (currentPlayer.getMobileHospitalActivated())
         {
@@ -995,6 +1006,11 @@ public class Game : MonoBehaviour {
 					destinationCity.removeCubes(disease, 1);
 					disease.addCubes(1);
                     gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
+                    int num = disease.getNumOfDiseaseCubeLeft();
+                    if (num == MAX)
+                    {
+                        disease.eradicate();
+                    }
                     Debug.Log(disease.getNumOfDiseaseCubeLeft());
                 }
 			}
