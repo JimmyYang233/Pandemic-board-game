@@ -16,7 +16,7 @@ public class eventCardUI : MonoBehaviour {
 		if (this.transform.GetChild (0).GetComponent<Text> ().text == "MobileHospital") {
 			
 			Player p = game.getCurrentPlayer ();
-			if (p != game.findEventCardHolder (EventKind.MobileHospital)) {
+			if (p == game.findEventCardHolder (EventKind.MobileHospital)) {
 				this.GetComponent<Button> ().interactable = true;
 			} else {
 				this.GetComponent<Button> ().interactable = false;

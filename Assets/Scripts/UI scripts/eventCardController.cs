@@ -37,7 +37,7 @@ public class eventCardController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        me = game.FindPlayer(PhotonNetwork.player);
+        
         currentPlayer = game.getCurrentPlayer();
         currentCity = currentPlayer.getPlayerPawn().getCity();
     }
@@ -268,6 +268,8 @@ public class eventCardController : MonoBehaviour {
     //---------------------------------MobileHospital zone------------------------------
     public void mobileHospital()
     {
+        me = game.FindPlayer(PhotonNetwork.player);
+        Debug.Log(me.getRoleKind().ToString());
         game.MobileHospital(me.getRoleKind().ToString());
     }
     #endregion
@@ -281,15 +283,19 @@ public class eventCardController : MonoBehaviour {
     #region Government Grant
     //---------------------------------Government Grant zone-----------------------------
     public City cityToBuild = null;
+    List<UnityEngine.Events.UnityAction> calls = new List<UnityEngine.Events.UnityAction>();
     public void governmentGrant()
     {
-        foreach(City city in game.getCities()){
+        List<City> cities = game.getCities();
+        for (int i = 0; i <cities.Count; i++){
+            City city = cities[i];
+            UnityEngine.Events.UnityAction call = () => selectCity(city);
+            calls.Add(call);
             if (!city.getHasResearch())
             {
-                UnityEngine.Events.UnityAction call = () => selectCity(city);
                 city.displayButton();
                 city.GetComponent<Button>().onClick.AddListener(call);
-                city.GetComponent<Button>().onClick.AddListener(() => city.GetComponent<Button>().onClick.RemoveListener(call));
+                
             }
         }
     }
@@ -325,9 +331,12 @@ public class eventCardController : MonoBehaviour {
             game.GovernmentGrant(String.Empty, city.getCityName().ToString());
         }
 
-        foreach(City aCity in game.getCities())
+        List<City> cities = game.getCities();
+        for (int i = 0; i < cities.Count; i++)
         {
-            city.undisplayButton();
+            City aCity = cities[i];
+            aCity.undisplayButton();
+            aCity.GetComponent<Button>().onClick.RemoveListener(calls[i]);
         }
     }
     #endregion
@@ -336,6 +345,7 @@ public class eventCardController : MonoBehaviour {
     List<Transform> cubes = new List<Transform>();
     public void remoteTreatment()
     {
+        Debug.Log("Remote Treatment clicked");
         foreach(City city in game.getCities())
         {
             if (city.hasCubes())
@@ -365,8 +375,10 @@ public class eventCardController : MonoBehaviour {
                         {
                             color = Color.magenta;
                         }
-                        child.gameObject.AddComponent<Button>().onClick.AddListener(() => selectRemoteCube(city, color));
-                        child.gameObject.GetComponent<Button>().onClick.AddListener(() => Destroy(child.gameObject.GetComponent<Button>()));
+                        EventTrigger.Entry entry = new EventTrigger.Entry();
+                        entry.eventID = EventTriggerType.PointerClick;
+                        entry.callback.AddListener((eventData) => { selectRemoteCube(city, color); });
+                        child.gameObject.AddComponent<EventTrigger>().triggers.Add(entry);
                         cubes.Add(child);
                     }
                 }
@@ -387,14 +399,15 @@ public class eventCardController : MonoBehaviour {
         {
             game.RemoteTreatment(cities[0].getCityName().ToString(), cities[1].getCityName().ToString(), colors[0], colors[1]);
             foreach(Transform child in cubes){
-                Destroy(child.gameObject.GetComponent<Button>());
+                Destroy(child.gameObject.GetComponent<EventTrigger>());
             }
             remoteCount = 0;
+            Debug.Log("two cubes selected");
         }
         else
         {
             remoteCount++;
-            //TO-DO maybe display something?
+            Debug.Log("one cube selected");
         }
     }
     #endregion
