@@ -1065,8 +1065,9 @@ public class Game : MonoBehaviour {
 	{
 		if(oneQuietNightUsed){
 			oneQuietNightUsed = false;
-			return;
-		}
+            PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
+            return;
+        }
 		//Debug.Log ("start infect city");
 		passOperation.startInfection ();
 		//nextPlayer();

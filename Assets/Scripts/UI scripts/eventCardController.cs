@@ -76,7 +76,7 @@ public class eventCardController : MonoBehaviour {
         currentPlayer = game.getCurrentPlayer();
         game.BorrowedTime();
     }
-    private void oneQuietNight() {
+    public void oneQuietNight() {
         game.OneQuietNight();
     }
     //--------------------------------for reExamination--------------------------------
