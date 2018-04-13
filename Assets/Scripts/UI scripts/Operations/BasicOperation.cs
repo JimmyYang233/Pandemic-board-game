@@ -136,11 +136,12 @@ public class BasicOperation : MonoBehaviour {
                     }
                     passButton.GetComponent<Button>().interactable = true;
                 }
+                else
+                {
+                    resetAll();
+                }
             }
-            else
-            {
-                resetAll();
-            }
+            
         }
 		
 	}
