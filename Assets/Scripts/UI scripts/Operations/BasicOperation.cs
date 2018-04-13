@@ -119,6 +119,7 @@ public class BasicOperation : MonoBehaviour {
         cureButton.GetComponent<Button>().interactable = false;
         shareButton.GetComponent<Button>().interactable = false;
         buildButton.GetComponent<Button>().interactable = false;
+        roleOnlyButton.GetComponent<Button>().interactable = false;
         passButton.GetComponent<Button>().interactable = false;
     }
 }
