@@ -155,7 +155,7 @@ public class PCPanelController : MonoBehaviour {
 
 
 
-        g.transform.parent = transform.GetChild(1);
+        g.transform.parent = transform.GetChild(3);
 
     }
 
