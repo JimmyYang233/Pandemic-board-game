@@ -24,7 +24,7 @@ public class Game : MonoBehaviour {
     private bool isnewGame = true;
 	[SerializeField]
     private int outbreaksValue = 0;
-	private bool oneQueitNightUsed = false;
+	private bool oneQuietNightUsed = false;
     private int researchStationRemain = 6;
     private bool resolvingEpidemic = false;
     private int numOfEpidemicCard;
@@ -969,8 +969,8 @@ public class Game : MonoBehaviour {
 
 	private void infectCity()
 	{
-		if(oneQueitNightUsed){
-			oneQueitNightUsed = false;
+		if(oneQuietNightUsed){
+			oneQuietNightUsed = false;
 			return;
 		}
 		//Debug.Log ("start infect city");
@@ -1074,7 +1074,7 @@ public class Game : MonoBehaviour {
 
 
     public void oneQuietNight(){
-		oneQueitNightUsed = true;
+		oneQuietNightUsed = true;
 		dropEventCard (EventKind.OneQuietNight);
 	}
 
