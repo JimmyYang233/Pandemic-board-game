@@ -34,6 +34,8 @@ public class eventCardController : MonoBehaviour {
     }
 
 	public void informResult(bool response){
+
+		//rpc call this method to show result.
 		informResultPanel.SetActive (true);
 		if (response) {
 			informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He accept the eventCard";
@@ -43,7 +45,7 @@ public class eventCardController : MonoBehaviour {
 		}
 	}
 	public void rejectTheRequest(){
-		
+		//eg rpc call game.RejectInvitation()
 	}
     private void borrowedTime() {
         currentPlayer = game.getCurrentPlayer();
@@ -62,8 +64,10 @@ public class eventCardController : MonoBehaviour {
     public void selectReExaminedResearchPlayer(string n) {
         selectRERPlayer = n;
         playerSelect.gameObject.SetActive(false);
+		//need rpc here ask player eg. game.NewAssignmentAskPermission(selectRERPlayer);
     }
 	public void showAgreePanelForReExaminedResearch(){
+		//rpc call this method to show agree panel
 		agreeController.status = agreePanelController.Status.REEXAMINEDRESEARCH;
 		agreeController.agreePanel.gameObject.SetActive (true);
 		agreeController.agreePanel.transform.GetChild(0).GetComponent<Text>().text="Do you want to accept reExaminedResearch?";
@@ -75,7 +79,6 @@ public class eventCardController : MonoBehaviour {
                 t.gameObject.AddComponent<Button>();
                 t.GetComponent<Button>().interactable = true;
                 Button b = t.GetComponent<Button>();
-                //Debug.log("add listener");
                 b.onClick.AddListener(reExaminedResearchSelectCard);
             }
         }
@@ -84,8 +87,10 @@ public class eventCardController : MonoBehaviour {
         playerDiscard.gameObject.SetActive(true);
     }
     public void reExaminedResearchSelectCard() {
-        //game.ResilientPopulation (EventSystem.current.currentSelectedGameObject.name);
+        string cardSelect=EventSystem.current.currentSelectedGameObject.name;
         playerDiscard.eventCardTime = false;
+		//game.ReExamined(currentPlayer,cardSelect)
+
     }
     //---------------------------------NewAssignment zone------------------------------
     public void doNewAssignment() {
@@ -109,10 +114,11 @@ public class eventCardController : MonoBehaviour {
     public void selectNewAssignmentPlayer(string n) {
         selectNAPlayer = n;
         playerSelect.gameObject.SetActive(false);
+		//rpc Example: game.newAssignmentAskPermission(selectNAPlayer);
     }
-    //todo response
 
 	public void showAgreePanelForNewAssignment(){
+		//rpc call here
 		agreeController.status = agreePanelController.Status.NEWASSIGNMENT;
 		agreeController.agreePanel.gameObject.SetActive (true);
 		agreeController.agreePanel.transform.GetChild(0).GetComponent<Text>().text="Do you want to accept New Assignment?";
@@ -124,12 +130,13 @@ public class eventCardController : MonoBehaviour {
         newAssignmentName = EventSystem.current.currentSelectedGameObject.name;
     }
     public void newAssignmentClickYes() {
-        //game.NewAssignment (newAssignmentName);
+       
         Transform t = newAssignmentPanel.transform.GetChild(0);
         foreach (Transform d in t) {
             d.gameObject.SetActive(false);
         }
         newAssignmentPanel.SetActive(false);
+		//game.NewAssignment (currentPlayer,newAssignmentName);
     }
     //---------------------------------Resilient zone-----------------------------------
 
