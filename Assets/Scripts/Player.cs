@@ -14,8 +14,8 @@ public class Player {
     private bool mobileHospitalActivated = false;
     private EventCard eventCardOnTopOfRoleCard = null;
     private EventCard eventCardInfrontOfPlayer = null;//TODO new field
-    private int CommercialTravelBanTurn = 0;
-    private int infectionRateCopy = 0;
+    private int CommercialTravelBanTurn = 0;//TODO new field
+    private int infectionRateCopy = 0;//TODO new field
 
     public bool hasEventCardInFront()
     {
