@@ -13,6 +13,7 @@ public class MoveOperation : MonoBehaviour {
     Game game;
 
     Player currentPlayer;
+    Player playerToMove;
 
     private enum Status {DRIVE, DIRECTFLIGHT, SHUTTLEFLIGHT, CHARTERFLIGHT, NULL};
 
@@ -27,6 +28,7 @@ public class MoveOperation : MonoBehaviour {
     public void moveButtonClicked()
     {
         currentPlayer = game.getCurrentPlayer();
+        playerToMove = currentPlayer;
         driveButton.GetComponent<Button>().interactable = true;
         City currentCity = currentPlayer.getPlayerPawn().getCity();
 
@@ -163,23 +165,27 @@ public class MoveOperation : MonoBehaviour {
         currentPlayer = game.getCurrentPlayer();
         if(moveStatus == Status.DRIVE)
         {
-			game.Drive(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
+			game.Drive(playerToMove.getRoleKind().ToString(), destinationCity.cityName.ToString());
         }
         else if(moveStatus == Status.DIRECTFLIGHT)
         {
-			game.TakeDirectFlight(currentPlayer.getRoleKind().ToString(), currentPlayer.getCard(destinationCity).getCity().getCityName().ToString());
+			game.TakeDirectFlight(playerToMove.getRoleKind().ToString(), currentPlayer.getCard(destinationCity).getCity().getCityName().ToString());
         }
         else if(moveStatus == Status.CHARTERFLIGHT)
         {
-            game.TakeCharterFlight(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
+            game.TakeCharterFlight(playerToMove.getRoleKind().ToString(), destinationCity.cityName.ToString());
         }
         else if(moveStatus == Status.SHUTTLEFLIGHT)
         {
-            game.TakeShuttleFlight(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
+            game.TakeShuttleFlight(playerToMove.getRoleKind().ToString(), destinationCity.cityName.ToString());
         }
         moveStatus = Status.NULL;
         disableAllCities();
     }
 
+    public void changePlayerToMove(string rolekind)
+    {
+        playerToMove = game.findPlayer(rolekind);
+    }
 
 }

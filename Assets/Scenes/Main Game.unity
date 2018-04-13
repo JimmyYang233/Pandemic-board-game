@@ -9636,7 +9636,7 @@ GameObject:
   - component: {fileID: 329504042}
   - component: {fileID: 329504041}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EventCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
