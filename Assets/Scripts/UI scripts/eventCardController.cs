@@ -12,7 +12,7 @@ public class eventCardController : MonoBehaviour {
     public GameObject informEvent;
     Player currentPlayer;
     public playerSelectionPanel playerSelect;
-	public agreePanelController agreePanel;
+	public agreePanelController agreeController;
 	public GameObject informResultPanel;
 
     //Resilient zone
@@ -42,6 +42,9 @@ public class eventCardController : MonoBehaviour {
 			informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He reject the EventCard";
 		}
 	}
+	public void rejectTheRequest(){
+		
+	}
     private void borrowedTime() {
         currentPlayer = game.getCurrentPlayer();
         game.BorrowedTime();
@@ -61,9 +64,9 @@ public class eventCardController : MonoBehaviour {
         playerSelect.gameObject.SetActive(false);
     }
 	public void showAgreePanelForReExaminedResearch(){
-		agreePanel.status = agreePanelController.Status.REEXAMINEDRESEARCH;
-		agreePanel.gameObject.SetActive (true);
-		agreePanel.transform.GetChild(0).GetComponent<Text>().text="Do you want to accept reExaminedResearch?";
+		agreeController.status = agreePanelController.Status.REEXAMINEDRESEARCH;
+		agreeController.agreePanel.gameObject.SetActive (true);
+		agreeController.agreePanel.transform.GetChild(0).GetComponent<Text>().text="Do you want to accept reExaminedResearch?";
 
 	}
     public void doReExamineResearch() {
@@ -110,9 +113,9 @@ public class eventCardController : MonoBehaviour {
     //todo response
 
 	public void showAgreePanelForNewAssignment(){
-		agreePanel.status = agreePanelController.Status.NEWASSIGNMENT;
-		agreePanel.gameObject.SetActive (true);
-		agreePanel.transform.GetChild(0).GetComponent<Text>().text="Do you want to accept New Assignment?";
+		agreeController.status = agreePanelController.Status.NEWASSIGNMENT;
+		agreeController.agreePanel.gameObject.SetActive (true);
+		agreeController.agreePanel.transform.GetChild(0).GetComponent<Text>().text="Do you want to accept New Assignment?";
 
 	}
 
