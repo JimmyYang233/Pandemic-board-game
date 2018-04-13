@@ -285,6 +285,10 @@ public class Game : MonoBehaviour {
 		askForEventCardPermission (info);
 	}
 
+	[PunRPC]
+	public void RPC_informEventCardPermissionResult(bool result){
+		informEventCardPermissionResult (result);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -414,9 +418,14 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_fieldOperativeSample",PhotonTargets.All, colorToString(color));
     }
 
-	public void AskForEventCardPermission (string info, string roleKind){
-		PhotonPlayer targetPlayer = findPlayer (roleKind).PhotonPlayer;
-		PhotonView.RPC ("RPC_askForEventCardPermission",targetPlayer,info);
+	public void AskForEventCardPermission (string info, string targetRoleKind, string sourceRoleKind){
+		PhotonPlayer targetPlayer = findPlayer (targetRoleKind).PhotonPlayer;
+		PhotonView.RPC ("RPC_askForEventCardPermission",targetPlayer,info, sourceRoleKind);
+	}
+
+	public void InformEventCardPermissionResult(bool result, string sourceRoleKind){
+		PhotonPlayer targetPlayer = findPlayer (sourceRoleKind).PhotonPlayer;
+		PhotonView.RPC ("RPC_informEventCardPermissionResult", targetPlayer, result);
 	}
     #endregion
 
@@ -1111,9 +1120,14 @@ public class Game : MonoBehaviour {
     }
 
 
-	private void askForEventCardPermission(string info){
-		
+	private void askForEventCardPermission(string info, string sourcePlayerRoleKind){
+		eventController.showAgreePanel (info, sourcePlayerRoleKind);
 	}
+
+	private void informEventCardPermissionResult(bool result){
+		eventController.informResult (result);
+	}
+
 
     public void oneQuietNight(){
 		oneQuietNightUsed = true;
