@@ -1125,6 +1125,25 @@ public class Game : MonoBehaviour {
 		
 	}
 
+	/* 
+	Remove cubes of color c in cities.
+	Return 1 if 5 cubes are removed, return 0 if less than 5.
+	*/
+	public int rapidVaccineDeployment(Color c, List<City> cities){
+		int ctr = 0;
+		foreach (City city in cities){
+			while (city.getCubeNumber(c)>0){
+				city.removeCubes(diseases[c], 1);
+        		diseases[c].incrementNumOfDiseaseCubeLeft();
+				ctr++;
+				if(ctr>5){
+					return 1;
+				}
+			}
+		}
+		return 0;
+	}
+
     public void mobileHospital(Player pl1)
     {
         pl1.setMobileHospitalActivated(true);
