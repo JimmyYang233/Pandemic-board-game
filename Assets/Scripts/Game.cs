@@ -311,6 +311,12 @@ public class Game : MonoBehaviour {
 		Color color2 = stringToColor (color2Name);
 		remoteTreatment (city1,city2,color1,color2);
 	}
+
+	[PunRPC]
+	public void RPC_commercialTravelBan(string playerRoleKind){
+		Player player = findPlayer (playerRoleKind);
+		commercialTravelBan (player);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -460,7 +466,11 @@ public class Game : MonoBehaviour {
 
 	public void RemoteTreatment(string city1Name, string city2Name, string color1Name, string color2Name){
 		PhotonView.RPC ("RPC_remoteTreatment", PhotonTargets.All, city1Name, city2Name, color1Name, color2Name);
-	} 
+	}
+
+	public void CommercialTravelBan(string roleKindString){
+		PhotonView.RPC ("RPC_commercialTravelBan", PhotonTargets.All, roleKindString);
+	}
     #endregion
 
     #region initialization
