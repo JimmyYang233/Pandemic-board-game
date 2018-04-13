@@ -14,9 +14,9 @@ public class MoveOperation : MonoBehaviour {
 
     Player currentPlayer;
 
-    private enum Status {DRIVE, DIRECTFLIGHT, SHUTTLEFLIGHT, CHARTERFLIGHT};
+    private enum Status {DRIVE, DIRECTFLIGHT, SHUTTLEFLIGHT, CHARTERFLIGHT, NULL};
 
-    private Status moveStatus = Status.DRIVE; 
+    private Status moveStatus = Status.NULL; 
 
     void Start()
     {
@@ -177,6 +177,7 @@ public class MoveOperation : MonoBehaviour {
         {
             game.TakeShuttleFlight(currentPlayer.getRoleKind().ToString(), destinationCity.cityName.ToString());
         }
+        moveStatus = Status.NULL;
         disableAllCities();
     }
 
