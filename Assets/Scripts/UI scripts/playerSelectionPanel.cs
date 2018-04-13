@@ -10,11 +10,12 @@ public class playerSelectionPanel : MonoBehaviour {
 	public Game game;
 	private City currentCity;
 	private Player currentPlayer;
-	private enum Status {SHARE,EPIDEMIOLOGIST,REEXAMINEDRESEARCH,NEWASSIGNMENT};
+	public enum Status {SHARE,EPIDEMIOLOGIST,REEXAMINEDRESEARCH,NEWASSIGNMENT,DISPATCHER};
 	public ShareOperation share;
+	public MoveOperation move;
 	public EpidemiologistOperation epidemiologist;
 	public eventCardController eventController;
-	private Status selectStatus = Status.SHARE; 
+	public Status selectStatus = Status.SHARE; 
 
 	public otherPlayerCardSelection selectCard;
 
@@ -89,6 +90,8 @@ public class playerSelectionPanel : MonoBehaviour {
 			eventController.selectReExaminedResearchPlayer (name);
 		} else if (selectStatus == Status.NEWASSIGNMENT) {
 			eventController.selectNewAssignmentPlayer (name);
+		} else if (selectStatus == Status.DISPATCHER) {
+			move.changePlayerToMove (name);
 		}
 	}
 	public void cancelButtonClick(){
