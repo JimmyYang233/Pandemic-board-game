@@ -821,7 +821,7 @@ public class Game : MonoBehaviour {
         }
         else
         {
-            player.decreaseRemainingAction();
+            currentPlayer.decreaseRemainingAction();
         }
 		
 		record.drive(currentPlayer, destinationCity);
@@ -861,8 +861,8 @@ public class Game : MonoBehaviour {
 		{
 			resolveContainmentSpecialist (destinationCity);
 		}
-		player.decreaseRemainingAction();
-		record.directFlight(currentPlayer, destinationCity);
+		currentPlayer.decreaseRemainingAction();
+		record.directFlight(player, destinationCity);
 		//Debug.Log ("Flight succeed");
 		//UI only
 	}
@@ -1992,7 +1992,7 @@ public class Game : MonoBehaviour {
 			//Debug.Log("add card to main player" + card.ToString());
 			mainPlayerPanel.addPlayerCard(card);
 		}
-        player.decreaseRemainingAction();
+        currentPlayer.decreaseRemainingAction();
 		player.setOncePerturnAction(true);
 	}
 

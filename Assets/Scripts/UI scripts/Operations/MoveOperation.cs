@@ -32,27 +32,34 @@ public class MoveOperation : MonoBehaviour {
         driveButton.GetComponent<Button>().interactable = true;
         City currentCity = currentPlayer.getPlayerPawn().getCity();
 
-        if (currentPlayer.containsCityCard())
+        if (currentPlayer.getRoleKind() == RoleKind.Dispatcher)
         {
-            directFlightButton.GetComponent<Button>().interactable = true;
+            //TO-DO
         }
-        if (currentPlayer.containsSpecificCityCard(currentCity))
+        else
         {
-            charterFlightButton.GetComponent<Button>().interactable = true;
-        }
-        if (currentCity.getHasResearch())
-        {
-            if(game.getRemainingResearch() < 5)
+            if (currentPlayer.containsCityCard())
             {
-                shuttleFlightButton.GetComponent<Button>().interactable = true;
+                directFlightButton.GetComponent<Button>().interactable = true;
             }
-            else if(currentPlayer.getRoleKind() == RoleKind.OperationsExpert&&currentPlayer.containsCityCard())
+            if (currentPlayer.containsSpecificCityCard(currentCity))
             {
-                shuttleFlightButton.GetComponent<Button>().interactable = true;
+                charterFlightButton.GetComponent<Button>().interactable = true;
             }
-            
+            if (currentCity.getHasResearch())
+            {
+                if (game.getRemainingResearch() < 5)
+                {
+                    shuttleFlightButton.GetComponent<Button>().interactable = true;
+                }
+                else if (currentPlayer.getRoleKind() == RoleKind.OperationsExpert && currentPlayer.containsCityCard())
+                {
+                    shuttleFlightButton.GetComponent<Button>().interactable = true;
+                }
+
+            }
+            cancelButton.GetComponent<Button>().interactable = true;
         }
-        cancelButton.GetComponent<Button>().interactable = true;
     }
 
     public void cancelButtonClicked()
@@ -72,7 +79,7 @@ public class MoveOperation : MonoBehaviour {
         charterFlightButton.GetComponent<Button>().interactable = false;
         shuttleFlightButton.GetComponent<Button>().interactable = false;
         currentPlayer = game.getCurrentPlayer();
-        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        City currentCity = playerToMove.getPlayerPawn().getCity();
         //Debug.Log(currentCity.getCityName());
         foreach (City neighbor in currentCity.getNeighbors())
         {
@@ -89,7 +96,7 @@ public class MoveOperation : MonoBehaviour {
         charterFlightButton.GetComponent<Button>().interactable = false;
         shuttleFlightButton.GetComponent<Button>().interactable = false;
         currentPlayer = game.getCurrentPlayer();
-        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        City currentCity = playerToMove.getPlayerPawn().getCity();
         List<PlayerCard> cards = currentPlayer.getHand();
         foreach(PlayerCard card in cards)
         {
@@ -115,7 +122,7 @@ public class MoveOperation : MonoBehaviour {
         charterFlightButton.GetComponent<Button>().interactable = false;
         shuttleFlightButton.GetComponent<Button>().interactable = false;
         currentPlayer = game.getCurrentPlayer();
-        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        City currentCity = playerToMove.getPlayerPawn().getCity();
         foreach (City city in game.getCities())
         {
             if (city != currentCity)
@@ -134,7 +141,7 @@ public class MoveOperation : MonoBehaviour {
         charterFlightButton.GetComponent<Button>().interactable = false;
         shuttleFlightButton.GetComponent<Button>().interactable = false;
         currentPlayer = game.getCurrentPlayer();
-        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        City currentCity = playerToMove.getPlayerPawn().getCity();
         foreach (City city in game.getCities())
         {
             if (((city != currentCity)&&(city.getHasResearch())||(currentPlayer.getRoleKind() == RoleKind.OperationsExpert && currentPlayer.containsSpecificCityCard(city))))
@@ -186,6 +193,21 @@ public class MoveOperation : MonoBehaviour {
     public void changePlayerToMove(string rolekind)
     {
         playerToMove = game.findPlayer(rolekind);
+    }
+
+    public void dispatcherMove()
+    {
+        //TO-DO a function call to player selection
+    }
+
+    public void selectCityWithPawn()
+    {
+        moveStatus = Status.DRIVE;
+        foreach(Player player in game.getPlayers())
+        {
+            City city = player.getPlayerPawn().getCity();
+            city.displayButton();
+        }
     }
 
 }
