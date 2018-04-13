@@ -13,12 +13,41 @@ public class Player {
 	private List<PlayerCard> handCard = new List<PlayerCard>();
     private bool mobileHospitalActivated = false;
     private EventCard eventCardOnTopOfRoleCard = null;
-    
+    private EventCard eventCardInfrontOfPlayer = null;//TODO new field
+    private int CommercialTravelBanTurn = 0;
+    private int infectionRateCopy = 0;
 
+    public bool hasEventCardInFront()
+    {
+        return eventCardInfrontOfPlayer != null;
+    }
 
-	//connect this player with the PhotonPlayer
-	//not: in the future, we need to add argument"role" to constructor
-	public Player(PhotonPlayer photonPlayer)
+    public void setCommercialTravelBanTurn(int infectionRate)
+    {
+        eventCardInfrontOfPlayer = EventCard.getEventCard(EventKind.CommercialTravelBan);
+        CommercialTravelBanTurn = 1;
+        infectionRateCopy = infectionRate;
+    }
+
+    public int getCommercialTravelBanTurn()
+    {
+        return CommercialTravelBanTurn;
+    }
+
+    public void decrementCommercialTravelBanTurn()
+    {
+        CommercialTravelBanTurn--;
+    }
+
+    public int terminateCommercialTravelBanTurn()
+    {
+        eventCardInfrontOfPlayer = null;
+        return infectionRateCopy;
+    }
+
+    //connect this player with the PhotonPlayer
+    //not: in the future, we need to add argument"role" to constructor
+    public Player(PhotonPlayer photonPlayer)
 	{
 		this.PhotonPlayer = photonPlayer;
 

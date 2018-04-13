@@ -268,12 +268,6 @@ public class Game : MonoBehaviour {
             governmentGrant(findCity(initialCity), findCity(endCity));
         }
     }
-
-	[PunRPC]
-	public void RPC_archivistDraw(){
-		archivistDraw ();
-	}
-
     #endregion
 
     //called by chatbox to send chat message
@@ -389,7 +383,7 @@ public class Game : MonoBehaviour {
 
     public void ArchivistDraw(string cityName)
     {
-		PhotonView.RPC ("RPC_archivistDraw",PhotonTargets.All);
+        //TO-DO
     }
 
     public void EpidemiologistShare()
@@ -526,11 +520,11 @@ public class Game : MonoBehaviour {
 	/*
 	LoadGame will:
 	load all game info like outbreakrate, infection rate
-	load all player hand card
+	load all player hand card :TODO
 	load all deck and discard pile
-	load all city info
+	load all city info: TODO
 
-	RoleKind for each player has been loaded in LoadPlayer
+	RoleKind for each player has been loaded in LoadPlayer, TODO: player position and pawn
 	*/
 	private void LoadGame(){
 		researchStationRemain = savedGame.remainingResearch;
@@ -607,7 +601,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 
-		//TODO : Check if allhandcard is restored properly
+		//TODO : IMPORTANT! add playr hand to allhandcard
 		Player bioTerrorist = null;
 
 		if(challenge == Challenge.BioTerroist)
@@ -1127,6 +1121,14 @@ public class Game : MonoBehaviour {
             pl.addCard(card);
         }
     }
+
+    public void CommercialTravelBan(Player pl)
+    {
+        dropEventCard(EventKind.CommercialTravelBan);
+        pl.setCommercialTravelBanTurn(infectionRate);
+        infectionRate = 1;
+    }
+
     public Player findEventCardHolder(EventKind eCard){
 		Player holder = null;
 
@@ -1206,7 +1208,11 @@ public class Game : MonoBehaviour {
 			{
 				mainPlayerPanel.deleteEventCard (eCard.getEventKind());
 			}
-		    playerDiscardPile.Add (eCard);
+            if (EventKind.CommercialTravelBan != eKind)
+            {
+                playerDiscardPile.Add(eCard);
+            }
+		    
         }
 		
 	}
@@ -1714,7 +1720,18 @@ public class Game : MonoBehaviour {
     public void nextPlayer()
     {
 		currentPlayer =(challenge == Challenge.BioTerroist) ? findPlayer (RoleKind.BioTerrorist):players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
-		currentPhase = GamePhase.PlayerTakeTurn;
+        if (currentPlayer.hasEventCardInFront())
+        {
+            if(currentPlayer.getCommercialTravelBanTurn() == 0)
+            {
+                infectionRate = currentPlayer.terminateCommercialTravelBanTurn();
+            }
+            else
+            {
+                currentPlayer.decrementCommercialTravelBanTurn();
+            }
+        }
+        currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
@@ -1752,14 +1769,12 @@ public class Game : MonoBehaviour {
 	/*
 	For Archivist draw citycard from discard pile only!
 	 */
-	private void archivistDraw(){
-		Player player = currentPlayer;
+	private void archivistDraw(Player player){
 		RoleKind rk = player.getRoleKind();
 		if (rk!=RoleKind.Archivist){
-			Debug.Log ("ArchivistDraw error, current player is not archivist!");
 			return;
 		}
-		Pawn p = player.getPlayerPawn();
+        Pawn p = player.getPlayerPawn();
         City currentCity = p.getCity();
 
 		PlayerCard card = playerDiscardPile.Find(x => ((CityCard)x).getCity() == currentCity);
