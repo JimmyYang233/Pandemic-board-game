@@ -43,7 +43,17 @@ public class Disease : MonoBehaviour {
         return numberOfDiseaseCubesLeft;
     }
 
-	public void setNumOfDiseaseCubeLeft(int cubeLeft){
+    public void decrementNumOfDiseaseCubeLeft()
+    {
+        numberOfDiseaseCubesLeft--;
+    }
+
+    public void incrementNumOfDiseaseCubeLeft()
+    {
+        numberOfDiseaseCubesLeft++;
+    }
+
+    public void setNumOfDiseaseCubeLeft(int cubeLeft){
 		this.numberOfDiseaseCubesLeft = cubeLeft;
 	}
 

@@ -1066,6 +1066,29 @@ public class Game : MonoBehaviour {
         dropEventCard(EventKind.MobileHospital);
     }
 
+    public void remoteTreatment(City city1, City city2, Color color1, Color color2)
+    {
+        city1.removeCubes(diseases[color1], 1);
+        diseases[color1].incrementNumOfDiseaseCubeLeft();
+        city2.removeCubes(diseases[color2], 1);
+        diseases[color2].incrementNumOfDiseaseCubeLeft();
+        dropEventCard(EventKind.RemoteTreatment);
+    }
+
+    public void ReExaminedResearch(Player pl, CityCard card)
+    {
+        if (!playerDiscardPile.Contains(card))
+        {
+            Debug.Log("Does not contain that card: Games.cs ReExaminedResearch()");
+            return;
+        }
+        dropEventCard(EventKind.ReExaminedResearch);
+        if(pl.getHandLimit() > pl.getHandSize())
+        {
+            playerDiscardPile.Remove(card);
+            pl.addCard(card);
+        }
+    }
     public Player findEventCardHolder(EventKind eCard){
 		Player holder = null;
 

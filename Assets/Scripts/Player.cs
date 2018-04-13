@@ -29,6 +29,11 @@ public class Player {
         eventCardOnTopOfRoleCard = card;
     }
 
+    public int getHandSize()
+    {
+        return handCard.Count;
+    }
+
     public void removeEventCardOnTopOfRoleCard()
     {
         eventCardOnTopOfRoleCard = null;
