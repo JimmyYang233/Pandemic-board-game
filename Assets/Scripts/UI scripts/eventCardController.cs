@@ -17,6 +17,7 @@ public class eventCardController : MonoBehaviour {
 	public enum Status {REEXAMINEDRESEARCH,NEWASSIGNMENT};
 	public Status status=Status.NEWASSIGNMENT;
 	public string requestSource;
+    Player me;
 
     //Resilient zone
     public GameObject infectionDiscardPile;
@@ -35,6 +36,7 @@ public class eventCardController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        me = game.FindPlayer(PhotonNetwork.player);
     }
 	//---------------------------------REQUEST HANDLE-------------------------
 	public void informResult(bool response){
@@ -223,8 +225,7 @@ public class eventCardController : MonoBehaviour {
     //---------------------------------MobileHospital zone------------------------------
     public void mobileHospital()
     {
-        currentPlayer = game.getCurrentPlayer();
-        game.MobileHospital(currentPlayer.getRoleKind().ToString());
+        game.MobileHospital(me.getRoleKind().ToString());
     }
     #endregion
     #region Airlift
@@ -338,7 +339,7 @@ public class eventCardController : MonoBehaviour {
         colors[remoteCount] = color;
         if(remoteCount == 1)
         {
-            //game.RemoteTreatment(cities[0], cities[1], colors[0], colors[1]); //TO-DO wait RPC done. 
+            game.RemoteTreatment(cities[0].getCityName().ToString(), cities[1].getCityName().ToString(), colors[0], colors[1]);
             foreach(Transform child in cubes){
                 Destroy(child.gameObject.GetComponent<Button>());
             }
@@ -355,7 +356,7 @@ public class eventCardController : MonoBehaviour {
     //---------------------------------Commercial Travel Ban zone-----------------------------
     public void commercialTravelBan()
     {
-        game.CommercialTravelBan(currentPlayer);
+        game.CommercialTravelBan(me.getRoleKind().ToString());
     }
     #endregion
     //---------------------------

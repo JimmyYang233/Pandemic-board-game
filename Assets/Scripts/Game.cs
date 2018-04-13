@@ -464,7 +464,9 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_newAssignment",PhotonTargets.All, targetPlayer, newRoleKind);
 	}
 
-	public void RemoteTreatment(string city1Name, string city2Name, string color1Name, string color2Name){
+	public void RemoteTreatment(string city1Name, string city2Name, Color color1, Color color2){
+        string color1Name = colorToString(color1);
+        string color2Name = colorToString(color2);
 		PhotonView.RPC ("RPC_remoteTreatment", PhotonTargets.All, city1Name, city2Name, color1Name, color2Name);
 	}
 
