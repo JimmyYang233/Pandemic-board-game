@@ -22,19 +22,7 @@ public class playerDiscardPileUI : MonoBehaviour {
 
     private void Update()
     {
-        List < PlayerCard > cards = game.getPlayerDiscardPile();
-        if (cards.Count > cardNum)
-        {
-            PlayerCard card = cards[cardNum];
-            if(card.getType() == CardType.CityCard)
-            {
-                addCityCard(((CityCard)card).getCity().getCityName());
-            }
-            else if(card.getType() == CardType.EventCard)
-            {
-                addEventCard(((EventCard)card).getEventKind());
-            }
-        }
+       
         
     }
 
@@ -55,14 +43,33 @@ public class playerDiscardPileUI : MonoBehaviour {
     public void mouseOn()
     {
         scroll.SetActive(true);
+        List<PlayerCard> cards = game.getPlayerDiscardPile();
+        if (cards.Count > cardNum)
+        {
+            PlayerCard card = cards[cardNum];
+            if (card.getType() == CardType.CityCard)
+            {
+                addCityCard(((CityCard)card).getCity().getCityName());
+            }
+            else if (card.getType() == CardType.EventCard)
+            {
+                addEventCard(((EventCard)card).getEventKind());
+            }
+        }
     }
 
     public void mouseLeave()
     {
 		if (!eventCardTime) {
 			scroll.SetActive (false);
+            for(int i = 0; i<cardNum; i++)
+            {
+                deleteCityCard(content.GetChild(i).GetChild(0).GetComponent<Text>().text);
+            }
 		}
     }
+
+
     public void addCityCard(CityName c)
     {
         content.GetChild(cardNum).gameObject.SetActive(true);
@@ -84,7 +91,7 @@ public class playerDiscardPileUI : MonoBehaviour {
     }
 		
    
-	//delete city card from gui of other player
+	//delete city card from gui of discard pile
 	public void deleteCityCard(string c)
 	{
 		Debug.Log ("delete c");
