@@ -1319,6 +1319,7 @@ public class Game : MonoBehaviour {
 	}
 
 	public void dropEventCard(EventKind eKind){
+		//TODO:call front end
 		Player pl = findEventCardHolder (eKind);
 		EventCard eCard = EventCard.getEventCard (eKind);
 		if (pl == null) {
