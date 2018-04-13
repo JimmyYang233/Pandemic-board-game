@@ -2004,6 +2004,7 @@ MonoBehaviour:
   chatBox: {fileID: 124084468}
   record: {fileID: 1438105360}
   infectionDiscardUI: {fileID: 788425839}
+  eventController: {fileID: 0}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
@@ -59525,6 +59526,8 @@ MonoBehaviour:
   playerSelect: {fileID: 346002627}
   agreeController: {fileID: 215428524}
   informResultPanel: {fileID: 315254070}
+  status: 1
+  requestSource: 
   infectionDiscardPile: {fileID: 788425837}
   forecastPanel: {fileID: 106833131}
   newAssignmentPanel: {fileID: 655612832}
@@ -66512,6 +66515,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 73084184}
         m_MethodName: ArchivistDraw
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 660150423}
+        m_MethodName: resetAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

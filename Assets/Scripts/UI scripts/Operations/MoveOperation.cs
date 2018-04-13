@@ -135,7 +135,7 @@ public class MoveOperation : MonoBehaviour {
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         foreach (City city in game.getCities())
         {
-            if ((city != currentCity)&&(city.getHasResearch()|| (currentPlayer.getRoleKind() == RoleKind.OperationsExpert && currentPlayer.containsSpecificCityCard(city))))
+            if (((city != currentCity)&&(city.getHasResearch())||(currentPlayer.getRoleKind() == RoleKind.OperationsExpert && currentPlayer.containsSpecificCityCard(city))))
             {
                 city.displayButton();
             }

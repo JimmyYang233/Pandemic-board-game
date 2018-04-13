@@ -77,4 +77,9 @@ MonoBehaviour:
   - RPC_archivistDraw
   - RPC_askForEventCardPermission
   - RPC_fieldOperativeSample
+  - RPC_commercialTravelBan
+  - RPC_informEventCardPermissionResult
+  - RPC_newAssignment
+  - RPC_reExaminedResearch
+  - RPC_remoteTreatment
   DisableAutoOpenWizard: 1
