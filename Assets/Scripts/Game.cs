@@ -1136,7 +1136,7 @@ public class Game : MonoBehaviour {
     public void CommercialTravelBan(Player pl)
     {
         dropEventCard(EventKind.CommercialTravelBan);
-        pl.setCommercialTravelBanTurn(infectionRate);
+        pl.setCommercialTravelBanTurn();
         infectionRate = 1;
     }
 
@@ -1371,7 +1371,20 @@ public class Game : MonoBehaviour {
         resolvingEpidemic = true;
         if(infectionRate < 4)
         {
-            infectionRate = infectionArray[++index];
+            bool infectionRateDummied = false;
+            foreach(Player pl in players)
+            {
+                if (pl.hasEventCardInFront())
+                {
+                    infectionRateDummied = true;
+                }
+            }
+            index++;
+            if (!infectionRateDummied)
+            {
+                infectionRate = infectionArray[index];
+            }
+            
             gameInfoController.displayInfectionRate();
         }
 
@@ -1735,7 +1748,8 @@ public class Game : MonoBehaviour {
         {
             if(currentPlayer.getCommercialTravelBanTurn() == 0)
             {
-                infectionRate = currentPlayer.terminateCommercialTravelBanTurn();
+                infectionRate = infectionArray[index]; 
+                currentPlayer.terminateCommercialTravelBanTurn();
             }
             else
             {

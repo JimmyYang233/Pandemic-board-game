@@ -15,18 +15,16 @@ public class Player {
     private EventCard eventCardOnTopOfRoleCard = null;
     private EventCard eventCardInfrontOfPlayer = null;//TODO new field
     private int CommercialTravelBanTurn = 0;//TODO new field
-    private int infectionRateCopy = 0;//TODO new field
 
     public bool hasEventCardInFront()
     {
         return eventCardInfrontOfPlayer != null;
     }
 
-    public void setCommercialTravelBanTurn(int infectionRate)
+    public void setCommercialTravelBanTurn()
     {
         eventCardInfrontOfPlayer = EventCard.getEventCard(EventKind.CommercialTravelBan);
         CommercialTravelBanTurn = 1;
-        infectionRateCopy = infectionRate;
     }
 
     public int getCommercialTravelBanTurn()
@@ -39,10 +37,9 @@ public class Player {
         CommercialTravelBanTurn--;
     }
 
-    public int terminateCommercialTravelBanTurn()
+    public void terminateCommercialTravelBanTurn()
     {
         eventCardInfrontOfPlayer = null;
-        return infectionRateCopy;
     }
 
     //connect this player with the PhotonPlayer
