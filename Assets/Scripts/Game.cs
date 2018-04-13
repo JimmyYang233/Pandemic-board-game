@@ -397,6 +397,7 @@ public class Game : MonoBehaviour {
         //TO-DO
     }
 
+	//ATTENTION: THIS HAS BEEND CHANGED
 	public void ArchivistDraw()
 	{
 		PhotonView.RPC ("RPC_archivistDraw", PhotonTargets.All);
