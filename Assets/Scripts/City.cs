@@ -205,6 +205,7 @@ public class City : MonoBehaviour {
     {
         //TO-DO
     }
+
     public void setHasResearch(bool b)
     {
         hasResearch = b;
