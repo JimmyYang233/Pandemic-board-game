@@ -11,6 +11,7 @@ public class eventCardController : MonoBehaviour {
     City currentCity;
     public GameObject informEvent;
     Player currentPlayer;
+	public GameObject otherPlayers;
     public playerSelectionPanel playerSelect;
 	public agreePanelController agreeController;
 	public GameObject informResultPanel;
@@ -64,11 +65,11 @@ public class eventCardController : MonoBehaviour {
 		agreeController.agreePanel.transform.GetChild (0).GetComponent<Text> ().text = request;
 	}
 	public void rejectTheRequest(){
-		agreeController.gameObject.SetActive (false);
+		agreeController.agreePanel.gameObject.SetActive (false);
 		game.InformEventCardPermissionResult (false,requestSource);
 	}
 	public void acceptTheRequest(){
-		agreeController.gameObject.SetActive (false);
+		agreeController.agreePanel.gameObject.SetActive (false);
 		game.InformEventCardPermissionResult (true,requestSource);
 	}
 	//-----------------------------small event cards------------------------------------
@@ -83,6 +84,7 @@ public class eventCardController : MonoBehaviour {
     string selectRERPlayer;
     public void reExaminedResearch() {
 		this.status = Status.REEXAMINEDRESEARCH;
+		otherPlayers.SetActive (false);
         playerSelect.gameObject.SetActive(true);
         playerSelect.setReExaminedResearch();
         playerSelect.displayAllPlayerForEventCard();
@@ -90,6 +92,7 @@ public class eventCardController : MonoBehaviour {
     public void selectReExaminedResearchPlayer(string n) {
         selectRERPlayer = n;
         playerSelect.gameObject.SetActive(false);
+		otherPlayers.SetActive (true);
 		game.AskForEventCardPermission("Do you want to accept event card reExainedResearch?",selectRERPlayer,game.FindPlayer(PhotonNetwork.player).getRoleKind().ToString());
     }
     public void doReExamineResearch() {
@@ -122,10 +125,15 @@ public class eventCardController : MonoBehaviour {
             t.GetChild(i).gameObject.name = roles[i];
             t.GetChild(i).GetChild(0).GetComponent<Text>().text = roles[i];
         }
+		for (int i = roles.Count; i < 13; i++) {
+			t.GetChild(i).gameObject.SetActive(false);
+
+		}
     }
     string selectNAPlayer;
     public void NewAssignment() {
 		this.status = Status.NEWASSIGNMENT;
+		otherPlayers.SetActive (false);
         playerSelect.gameObject.SetActive(true);
         playerSelect.setNewAssignmentStatus();
         playerSelect.displayAllPlayerForEventCard();
@@ -134,12 +142,21 @@ public class eventCardController : MonoBehaviour {
     public void selectNewAssignmentPlayer(string n) {
         selectNAPlayer = n;
         playerSelect.gameObject.SetActive(false);
+		otherPlayers.SetActive (true);
 		game.AskForEventCardPermission("Do you want to accept event card NewAssignment?",selectNAPlayer,game.FindPlayer(PhotonNetwork.player).getRoleKind().ToString());
     }
 
     string newAssignmentName;
     public void newAssignmentCardSelect() {
         newAssignmentName = EventSystem.current.currentSelectedGameObject.name;
+		Debug.Log (newAssignmentName);
+		Transform t = newAssignmentPanel.transform.GetChild(0);
+		foreach (Transform d in t) {
+			Debug.Log (d.name);
+			if (!d.name.Equals (newAssignmentName)) {
+				d.gameObject.SetActive (false);
+			}
+		}
     }
     public void newAssignmentClickYes() {
        

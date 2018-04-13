@@ -2004,7 +2004,7 @@ MonoBehaviour:
   chatBox: {fileID: 124084468}
   record: {fileID: 1438105360}
   infectionDiscardUI: {fileID: 788425839}
-  eventController: {fileID: 0}
+  eventController: {fileID: 1900971760}
   nEpidemicCard: 4
   prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
   gameInfoController: {fileID: 1779426929}
@@ -16984,10 +16984,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 3
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -16995,7 +16995,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'eventCard Debug Use
+
+    Change method to debug'
 --- !u!222 &562183125
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -51802,7 +51804,7 @@ GameObject:
   - component: {fileID: 1663666089}
   - component: {fileID: 1663666088}
   m_Layer: 5
-  m_Name: Button
+  m_Name: DebugButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51824,8 +51826,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -304}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 376.9, y: -62}
+  m_SizeDelta: {x: 187.7, y: 164.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1663666088
 MonoBehaviour:
@@ -51867,7 +51869,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1900971760}
-        m_MethodName: Forecast
+        m_MethodName: doNewAssignment
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -59523,6 +59525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 73084184}
   informEvent: {fileID: 1210501276}
+  otherPlayers: {fileID: 1923207381}
   playerSelect: {fileID: 346002627}
   agreeController: {fileID: 215428524}
   informResultPanel: {fileID: 315254070}
