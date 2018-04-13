@@ -109,7 +109,7 @@ public class GameData{
 		foreach (Player player in game.getPlayers()) {
 			PlayerCardList playerHand= new PlayerCardList();
 			mobileHospitalActivated.Add (player.getMobileHospitalActivated());
-			if (player.getRoleKind == RoleKind.ContingencyPlanner && player.getEventCardOnTopOfRoleCard()!=null) {
+			if (player.getRoleKind() == RoleKind.ContingencyPlanner && player.getEventCardOnTopOfRoleCard()!=null) {
 				eventCardOnTopOfRoleCard = player.getEventCardOnTopOfRoleCard ().getName ();
 			}
 			hasCommercialTravelBanInfrontOfPlayer.Add (player.hasEventCardInFront());
