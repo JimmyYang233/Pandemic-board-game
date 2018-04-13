@@ -323,7 +323,7 @@ public class eventCardController : MonoBehaviour {
         colors[remoteCount] = color;
         if(remoteCount == 1)
         {
-            game.remoteTreatment(cities[0], cities[1], colors[0], colors[1]);
+            //game.RemoteTreatment(cities[0], cities[1], colors[0], colors[1]); //TO-DO wait RPC done. 
             foreach(Transform child in cubes){
                 Destroy(child.gameObject.GetComponent<Button>());
             }
