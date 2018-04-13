@@ -9,7 +9,8 @@ public class MoveOperation : MonoBehaviour {
     public Button shuttleFlightButton;
     public Button charterFlightButton;
     public Button cancelButton;
-    
+    public playerSelectionPanel playerSelect;
+
     Game game;
 
     Player currentPlayer;
@@ -27,39 +28,45 @@ public class MoveOperation : MonoBehaviour {
 
     public void moveButtonClicked()
     {
-        currentPlayer = game.getCurrentPlayer();
-        playerToMove = currentPlayer;
-        driveButton.GetComponent<Button>().interactable = true;
-        City currentCity = currentPlayer.getPlayerPawn().getCity();
-
         if (currentPlayer.getRoleKind() == RoleKind.Dispatcher)
         {
-            //TO-DO
+            playerSelect.gameObject.SetActive(true);
+            playerSelect.selectStatus = playerSelectionPanel.Status.DISPATCHER;
         }
         else
         {
-            if (currentPlayer.containsCityCard())
-            {
-                directFlightButton.GetComponent<Button>().interactable = true;
-            }
-            if (currentPlayer.containsSpecificCityCard(currentCity))
-            {
-                charterFlightButton.GetComponent<Button>().interactable = true;
-            }
-            if (currentCity.getHasResearch())
-            {
-                if (game.getRemainingResearch() < 5)
-                {
-                    shuttleFlightButton.GetComponent<Button>().interactable = true;
-                }
-                else if (currentPlayer.getRoleKind() == RoleKind.OperationsExpert && currentPlayer.containsCityCard())
-                {
-                    shuttleFlightButton.GetComponent<Button>().interactable = true;
-                }
-
-            }
-            cancelButton.GetComponent<Button>().interactable = true;
+            showMove();
         }
+    }
+
+    public void showMove()
+    {
+        currentPlayer = game.getCurrentPlayer();
+        playerToMove = currentPlayer;
+        driveButton.GetComponent<Button>().interactable = true;
+        City currentCity = playerToMove.getPlayerPawn().getCity();
+
+        if (currentPlayer.containsCityCard())
+        {
+            directFlightButton.GetComponent<Button>().interactable = true;
+        }
+        if (currentPlayer.containsSpecificCityCard(currentCity))
+        {
+            charterFlightButton.GetComponent<Button>().interactable = true;
+        }
+        if (currentCity.getHasResearch())
+        {
+            if (game.getRemainingResearch() < 5)
+            {
+                shuttleFlightButton.GetComponent<Button>().interactable = true;
+            }
+            else if (currentPlayer.getRoleKind() == RoleKind.OperationsExpert && currentPlayer.containsCityCard())
+            {
+                shuttleFlightButton.GetComponent<Button>().interactable = true;
+            }
+
+        }
+        cancelButton.GetComponent<Button>().interactable = true;
     }
 
     public void cancelButtonClicked()
