@@ -1059,6 +1059,20 @@ public class Game : MonoBehaviour {
         dropEventCard(EventKind.RemoteTreatment);
     }
 
+    public void ReExaminedResearch(Player pl, CityCard card)
+    {
+        if (!playerDiscardPile.Contains(card))
+        {
+            Debug.Log("Does not contain that card: Games.cs ReExaminedResearch()");
+            return;
+        }
+        dropEventCard(EventKind.ReExaminedResearch);
+        if(pl.getHandLimit() > pl.getHandSize())
+        {
+            playerDiscardPile.Remove(card);
+            pl.addCard(card);
+        }
+    }
     public Player findEventCardHolder(EventKind eCard){
 		Player holder = null;
 
