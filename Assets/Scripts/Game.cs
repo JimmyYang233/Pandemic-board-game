@@ -1203,7 +1203,7 @@ public class Game : MonoBehaviour {
 	}
 
 	public void specialOrders(){
-		dropEventCard (EventKind.specialOrders);
+		dropEventCard (EventKind.SpecialOrders);
 	}
 
 	/* 
