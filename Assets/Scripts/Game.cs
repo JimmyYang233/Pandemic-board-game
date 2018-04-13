@@ -268,6 +268,12 @@ public class Game : MonoBehaviour {
             governmentGrant(findCity(initialCity), findCity(endCity));
         }
     }
+
+	[PunRPC]
+	public void RPC_archivistDraw(){
+		archivistDraw ();
+	}
+
     #endregion
 
     //called by chatbox to send chat message
@@ -383,7 +389,7 @@ public class Game : MonoBehaviour {
 
     public void ArchivistDraw(string cityName)
     {
-        //TO-DO
+		PhotonView.RPC ("RPC_archivistDraw",PhotonTargets.All);
     }
 
     public void EpidemiologistShare()
@@ -520,11 +526,11 @@ public class Game : MonoBehaviour {
 	/*
 	LoadGame will:
 	load all game info like outbreakrate, infection rate
-	load all player hand card :TODO
+	load all player hand card
 	load all deck and discard pile
-	load all city info: TODO
+	load all city info
 
-	RoleKind for each player has been loaded in LoadPlayer, TODO: player position and pawn
+	RoleKind for each player has been loaded in LoadPlayer
 	*/
 	private void LoadGame(){
 		researchStationRemain = savedGame.remainingResearch;
@@ -601,7 +607,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 
-		//TODO : IMPORTANT! add playr hand to allhandcard
+		//TODO : Check if allhandcard is restored properly
 		Player bioTerrorist = null;
 
 		if(challenge == Challenge.BioTerroist)
@@ -1746,12 +1752,14 @@ public class Game : MonoBehaviour {
 	/*
 	For Archivist draw citycard from discard pile only!
 	 */
-	private void archivistDraw(Player player){
+	private void archivistDraw(){
+		Player player = currentPlayer;
 		RoleKind rk = player.getRoleKind();
 		if (rk!=RoleKind.Archivist){
+			Debug.Log ("ArchivistDraw error, current player is not archivist!");
 			return;
 		}
-        Pawn p = player.getPlayerPawn();
+		Pawn p = player.getPlayerPawn();
         City currentCity = p.getCity();
 
 		PlayerCard card = playerDiscardPile.Find(x => ((CityCard)x).getCity() == currentCity);
