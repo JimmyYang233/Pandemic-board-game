@@ -268,8 +268,6 @@ public class Game : MonoBehaviour {
             governmentGrant(findCity(initialCity), findCity(endCity));
         }
     }
-<<<<<<< HEAD
-=======
 
 	[PunRPC]
 	public void RPC_archivistDraw(){
@@ -278,10 +276,9 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_fieldOperativeSample(string color){
-		fieldOperativeSample (diseases[findColor(color)]);
+		fieldOperativeSample (diseases[stringToColor(color)]);
 	}
 
->>>>>>> e32a9f5be2c902de3caf35490b3426df24534c91
     #endregion
 
     //called by chatbox to send chat message
@@ -405,9 +402,9 @@ public class Game : MonoBehaviour {
         //TO-DO
     }
 
-    public void FieldOperativeSample(string color)
+    public void FieldOperativeSample(Color color)
     {
-		PhotonView.RPC ("RPC_fieldOperativeSample",PhotonTargets.All, color);
+		PhotonView.RPC ("RPC_fieldOperativeSample",PhotonTargets.All, colorToString(color));
     }
     #endregion
 
@@ -1783,7 +1780,8 @@ public class Game : MonoBehaviour {
 	/*
 	For Archivist draw citycard from discard pile only!
 	 */
-	private void archivistDraw(Player player){
+	private void archivistDraw(){
+		Player player = currentPlayer;
 		RoleKind rk = player.getRoleKind();
 		if (rk!=RoleKind.Archivist){
 			return;
