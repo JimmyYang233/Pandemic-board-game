@@ -243,10 +243,13 @@ public class eventCardController : MonoBehaviour {
     public void governmentGrant()
     {
         foreach(City city in game.getCities()){
-            UnityEngine.Events.UnityAction call = ()=>selectCity(city);
-            city.displayButton();
-            city.GetComponent<Button>().onClick.AddListener(call);
-            city.GetComponent<Button>().onClick.AddListener(() => city.GetComponent<Button>().onClick.RemoveListener(call));
+            if (!city.getHasResearch())
+            {
+                UnityEngine.Events.UnityAction call = () => selectCity(city);
+                city.displayButton();
+                city.GetComponent<Button>().onClick.AddListener(call);
+                city.GetComponent<Button>().onClick.AddListener(() => city.GetComponent<Button>().onClick.RemoveListener(call));
+            }
         }
     }
 
