@@ -267,14 +267,14 @@ public class eventCardController : MonoBehaviour {
             }
             foreach (City initialCity in citiesWithResearch)
             {
-                foreach (Transform child in city.transform)
+                foreach (Transform child in initialCity.transform)
                 {
                     if (child.tag == "researchStation")
                     {
                         Debug.Log("addListener in button");
                         Button button = child.gameObject.GetComponent<Button>();
                         button.onClick.RemoveAllListeners();
-                        button.onClick.AddListener(delegate { game.GovernmentGrant(initialCity.getCityName().ToString(), currentCity.getCityName().ToString()); });
+                        button.onClick.AddListener(delegate { game.GovernmentGrant(initialCity.getCityName().ToString(), city.getCityName().ToString()); });
                     }
                 }
             }
