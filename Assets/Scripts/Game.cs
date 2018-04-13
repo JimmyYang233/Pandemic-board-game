@@ -17,6 +17,7 @@ public class Game : MonoBehaviour {
     private Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
+	private Disease VirulentStrainDisease = null;
 	[SerializeField]
     private int infectionRate=2;
     private int[] infectionArray;
@@ -1532,10 +1533,42 @@ public class Game : MonoBehaviour {
         Collection.Shuffle<InfectionCard>(infectionDiscardPile);
         placeInfectionDiscardPileOnTop();
 
+		// Virulent Strain part
+		// if(challenge = Challenge.VirulentStrain){
+		// 	//set Virulent Strain
+		// 	if (VirulentStrainDisease == null){
+		// 		int min = 25;
+		// 		foreach (Disease disease in diseases.Values){
+		// 			if(disease.getNumOfDiseaseCubeLeft()<min){
+		// 				min = diesase.getNumOfDiseaseCubeLeft();
+		// 				VirulentStrainDisease = disease;
+		// 			}
+		// 		}
+		// 	}
+
+		// 	// apply Virulent Strain Epidemic Effects
+		// 	switch(VirulentStrainEffect){
+		// 	case VirulentStrainEpidemicEffects.ChronicEffect:
+		// 		chronicEffect();
+		// 	case VirulentStrainEpidemicEffects.ComplexMolecularStructure:
+		// 		complexMolecularStructure();
+		// 	case VirulentStrainEpidemicEffects.GovernmentInterference:
+		// 		governmentInterference()
+		// 	case VirulentStrainEpidemicEffects.HiddenPocket:
+		// 		hiddenPocket();
+		// 	}
+		// }
         resolvingEpidemic = false;
 
         return true;
     }
+
+	// private void chronicEffect(){}
+	// private void complexMolecularStructure(){}
+	// private void governmentInterference(){}
+	// private void hiddenPocket(){}
+
+
 
     private void placeInfectionDiscardPileOnTop()
     {
