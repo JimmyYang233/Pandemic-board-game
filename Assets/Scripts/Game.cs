@@ -289,6 +289,13 @@ public class Game : MonoBehaviour {
 	public void RPC_informEventCardPermissionResult(bool result){
 		informEventCardPermissionResult (result);
 	}
+
+	[PunRPC]
+	public void RPC_reExaminedResearch(string playerRoleKind, string cardName){
+		Player player = findPlayer (playerRoleKind);
+		CityCard cityCard = (CityCard)findPlayerCard (cardName);
+		reExaminedResearch (player, cityCard);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -426,6 +433,10 @@ public class Game : MonoBehaviour {
 	public void InformEventCardPermissionResult(bool result, string sourceRoleKind){
 		PhotonPlayer targetPlayer = findPlayer (sourceRoleKind).PhotonPlayer;
 		PhotonView.RPC ("RPC_informEventCardPermissionResult", targetPlayer, result);
+	}
+
+	public void ReExaminedResearch(string playerRoleKind, string cardName){
+		PhotonView.RPC ("RPC_reExaminedResearch", PhotonTargets.All, playerRoleKind, cardName);
 	}
     #endregion
 
@@ -1092,6 +1103,8 @@ public class Game : MonoBehaviour {
 			}
     }
 
+
+	#region eventCard
 	private void forecast(List<InfectionCard> orderedCards){
 		foreach(InfectionCard c in orderedCards){
 			infectionDeck.Remove(c);
@@ -1215,6 +1228,7 @@ public class Game : MonoBehaviour {
         infectionRate = 1;
     }
 
+	#endregion
     public Player findEventCardHolder(EventKind eCard){
 		Player holder = null;
 
