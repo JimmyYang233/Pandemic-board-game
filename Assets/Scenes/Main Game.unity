@@ -51869,7 +51869,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1900971760}
-        m_MethodName: remoteTreatment
+        m_MethodName: commercialTravelBan
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

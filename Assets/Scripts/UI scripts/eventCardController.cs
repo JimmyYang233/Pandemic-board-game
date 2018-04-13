@@ -415,6 +415,8 @@ public class eventCardController : MonoBehaviour {
     //---------------------------------Commercial Travel Ban zone-----------------------------
     public void commercialTravelBan()
     {
+        Debug.Log("Commercial travel ban clicked");
+        me = game.FindPlayer(PhotonNetwork.player);
         game.CommercialTravelBan(me.getRoleKind().ToString());
     }
     #endregion

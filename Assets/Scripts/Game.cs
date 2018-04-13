@@ -1263,6 +1263,7 @@ public class Game : MonoBehaviour {
         dropEventCard(EventKind.CommercialTravelBan);
         pl.setCommercialTravelBanTurn();
         infectionRate = 1;
+        gameInfoController.displayInfectionRate();
     }
 
 	#endregion
