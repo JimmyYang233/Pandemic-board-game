@@ -302,6 +302,15 @@ public class Game : MonoBehaviour {
 		Player player = findPlayer (targetRoleKind);
 		newAssignment (player, findRoleKind(newRoleKind));
 	}
+
+	[PunRPC]
+	public void RPC_remoteTreatment(string city1Name, string city2Name, string color1Name, string color2Name){
+		City city1 = findCity (city1Name);
+		City city2 = findCity (city2Name);
+		Color color1 = stringToColor(color1Name);
+		Color color2 = stringToColor (color2Name);
+		remoteTreatment (city1,city2,color1,color2);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -448,6 +457,10 @@ public class Game : MonoBehaviour {
 	public void NewAssignment(string targetPlayer, string newRoleKind){
 		PhotonView.RPC ("RPC_newAssignment",PhotonTargets.All, targetPlayer, newRoleKind);
 	}
+
+	public void RemoteTreatment(string city1Name, string city2Name, string color1Name, string color2Name){
+		PhotonView.RPC ("RPC_remoteTreatment", PhotonTargets.All, city1Name, city2Name, color1Name, color2Name);
+	} 
     #endregion
 
     #region initialization
