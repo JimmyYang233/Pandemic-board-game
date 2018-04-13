@@ -183,6 +183,7 @@ public class eventCardController : MonoBehaviour {
     //---------------------------------MobileHospital zone------------------------------
     public void mobileHospital()
     {
+        currentPlayer = game.getCurrentPlayer();
         game.MobileHospital(currentPlayer.getRoleKind().ToString());
     }
     //---------------------------------airLift zone-----------------------------
