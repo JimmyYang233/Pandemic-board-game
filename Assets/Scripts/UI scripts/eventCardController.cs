@@ -173,25 +173,44 @@ public class eventCardController : MonoBehaviour {
     //------------------------------ForeCast-----------------------------------
     public void Forecast() {
         List<string> infectionCards = game.getInfectionDeckString();
-        if (infectionCards.Count >= 6) {
-            for (int i = 0; i < 6; i++) {
-				string tstr = infectionCards[i];
-                Transform target = forecastPanel.transform.GetChild(i);
-                target.gameObject.SetActive(true);
+		if (infectionCards.Count >= 6) {
+			for (int i = 0; i < 6; i++) {
+				string tstr = infectionCards [i];
+				Transform target = forecastPanel.transform.GetChild (i);
+				target.gameObject.SetActive (true);
 				target.name = tstr;
-				target.GetComponent<Image>().color = game.findCity(tstr).getColor();
-				target.GetChild(0).GetComponent<Text>().text = tstr;
-                target.GetComponent<Button>().interactable = true;
-            }
+				target.GetComponent<Image> ().color = game.findCity (tstr).getColor ();
+				target.GetChild (0).GetComponent<Text> ().text = tstr;
+				target.GetComponent<Button> ().interactable = true;
+			}
 
-            for (int i = 6; i < 12; i++) {
-                Transform target = forecastPanel.transform.GetChild(i);
-                target.gameObject.SetActive(true);
-                target.GetComponent<Image>().color = Color.gray;
-                target.GetChild(0).GetComponent<Text>().text = (i - 5).ToString();
-                target.GetComponent<Button>().interactable = true;
-            }
-        }
+			for (int i = 6; i < 12; i++) {
+				Transform target = forecastPanel.transform.GetChild (i);
+				target.gameObject.SetActive (true);
+				target.GetComponent<Image> ().color = Color.gray;
+				target.GetChild (0).GetComponent<Text> ().text = (i - 5).ToString ();
+				target.GetComponent<Button> ().interactable = true;
+			}
+		} else {
+			for (int i = 0; i < infectionCards.Count; i++) {
+				string tstr = infectionCards [i];
+				Transform target = forecastPanel.transform.GetChild (i);
+				target.gameObject.SetActive (true);
+				target.name = tstr;
+				target.GetComponent<Image> ().color = game.findCity (tstr).getColor ();
+				target.GetChild (0).GetComponent<Text> ().text = tstr;
+				target.GetComponent<Button> ().interactable = true;
+			}
+			for (int i = infectionCards.Count; i <6; i++) {
+				Transform target = forecastPanel.transform.GetChild (i);
+				target.gameObject.SetActive (false);
+			}
+
+			for (int i = 6+infectionCards.Count; i < 12; i++) {
+				Transform target = forecastPanel.transform.GetChild (i);
+				target.gameObject.SetActive (false);
+			}
+		}
         forecastPanel.SetActive(true);
 
     }
@@ -218,7 +237,9 @@ public class eventCardController : MonoBehaviour {
         List<string> str = new List<string>();
         for (int i = 6; i < 12; i++) {
             Transform target = forecastPanel.transform.GetChild(i);
-            str.Add(target.GetChild(0).GetComponent<Text>().text);
+			if (target.gameObject.activeSelf) {
+				str.Add (target.GetChild (0).GetComponent<Text> ().text);
+			}
         }
         foreach (string t in str) {
             Debug.Log(t);
