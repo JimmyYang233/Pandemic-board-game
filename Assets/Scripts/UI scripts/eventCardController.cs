@@ -37,6 +37,8 @@ public class eventCardController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         me = game.FindPlayer(PhotonNetwork.player);
+        currentPlayer = game.getCurrentPlayer();
+        currentCity = currentPlayer.getPlayerPawn().getCity();
     }
 	//---------------------------------REQUEST HANDLE-------------------------
 	public void informResult(bool response){
@@ -276,7 +278,7 @@ public class eventCardController : MonoBehaviour {
         }
         else
         {
-            game.GovernmentGrant(String.Empty, currentCity.getCityName().ToString());
+            game.GovernmentGrant(String.Empty, city.getCityName().ToString());
         }
 
         foreach(City aCity in game.getCities())
