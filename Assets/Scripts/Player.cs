@@ -13,17 +13,17 @@ public class Player {
 	private List<PlayerCard> handCard = new List<PlayerCard>();
     private bool mobileHospitalActivated = false;
     private EventCard eventCardOnTopOfRoleCard = null;
-    private EventCard eventCardInfrontOfPlayer = null;//TODO new field
+    private bool hasCommercialTravelBanInfrontOfPlayer = false;//TODO new field
     private int CommercialTravelBanTurn = 0;//TODO new field
 
     public bool hasEventCardInFront()
     {
-        return eventCardInfrontOfPlayer != null;
+        return hasCommercialTravelBanInfrontOfPlayer;
     }
 
     public void setCommercialTravelBanTurn()
     {
-        eventCardInfrontOfPlayer = EventCard.getEventCard(EventKind.CommercialTravelBan);
+        hasCommercialTravelBanInfrontOfPlayer = true;
         CommercialTravelBanTurn = 1;
     }
 
@@ -39,7 +39,7 @@ public class Player {
 
     public void terminateCommercialTravelBanTurn()
     {
-        eventCardInfrontOfPlayer = null;
+        hasCommercialTravelBanInfrontOfPlayer = false;
     }
 
     //connect this player with the PhotonPlayer
