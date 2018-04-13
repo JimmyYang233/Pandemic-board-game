@@ -75,7 +75,7 @@ public class GameData{
 	public List<string> infectionDiscardPile = new List<string>();
 	public List<string> allHandCards= new List<string> ();
 	public List<bool> mobileHospitalActivated = new List<bool> ();
-	public string eventCardOnTopOfRoleCard = null;
+	public string eventCardOnTopOfRoleCard = "Null";
 	public List<bool> hasCommercialTravelBanInfrontOfPlayer = new List<bool> ();
 	public List<int> CommercialTravelBanTurn = new List<int> ();
 	public List<DiseaseInfo> diseaseInfoList = new List<DiseaseInfo> ();
