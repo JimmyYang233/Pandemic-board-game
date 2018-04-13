@@ -81,7 +81,6 @@ public class infectionDiscardPileUI : MonoBehaviour {
 	//delete city card from gui of other player
 	public void deleteCityCard(string c)
 	{
-		Debug.Log ("delete c");
 		int i;
 		for (i = 0; i < cardNum; i++)
 		{
@@ -106,10 +105,10 @@ public class infectionDiscardPileUI : MonoBehaviour {
 	}
 	public void buttonUninteractable(){
 		foreach (Transform t in content) {
-			/*if (t.gameObject.GetComponent<Button> () != null) {
-				t.gameObject.GetComponent<Button> ().interactable=false;
-			}*/
-			Destroy (t.gameObject.GetComponent<Button> ());
+			if (t.gameObject.GetComponent<Button> () != null) {
+				Destroy (t.gameObject.GetComponent<Button> ());
+			}
+
 			this.gameObject.SetActive (false);
 		}
 	}
