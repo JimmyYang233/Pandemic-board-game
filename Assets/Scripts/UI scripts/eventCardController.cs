@@ -203,7 +203,7 @@ public class eventCardController : MonoBehaviour {
 
     public void selectCity(City city)
     {
-        List<City> citiesWithResearch = new List<City>;
+        List<City> citiesWithResearch = new List<City>();
         if (game.getRemainingResearch() == 0)
         {
             foreach (City initialCity in game.getCities())
@@ -222,7 +222,7 @@ public class eventCardController : MonoBehaviour {
                         Debug.Log("addListener in button");
                         Button button = child.gameObject.GetComponent<Button>();
                         button.onClick.RemoveAllListeners();
-                        button.onClick.AddListener(delegate { game.GovernmentGrant(initialCity.getCityName().ToString(), currentCity.getCityName().ToString()) });
+                        button.onClick.AddListener(delegate { game.GovernmentGrant(initialCity.getCityName().ToString(), currentCity.getCityName().ToString()); });
                     }
                 }
             }

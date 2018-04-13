@@ -255,10 +255,23 @@ public class Game : MonoBehaviour {
     {
         mobileHospital(findPlayer(roleKind));
     }
-	#endregion
 
-	//called by chatbox to send chat message
-	public void sendChatMessage(string message){
+    [PunRPC]
+    public void RPC_governmentGrant(string initialCity, string endCity)
+    {
+        if (initialCity.Equals(String.Empty))
+        {
+            governmentGrant(null, findCity(endCity));
+        }
+        else
+        {
+            governmentGrant(findCity(initialCity), findCity(endCity));
+        }
+    }
+    #endregion
+
+    //called by chatbox to send chat message
+    public void sendChatMessage(string message){
 		PhotonView.RPC ("RPC_displayMessage", PhotonTargets.All,me.getRoleKind().ToString(), message );
 	}
 
@@ -291,7 +304,12 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_treatDisease",PhotonTargets.All,color,name );
 	}
 
-	public void Cure(string playerRoleKind, List<string> cardsToRemove, string diseaseColor){
+    public void Build(string initialCityName, string cityCardName)
+    {
+        PhotonView.RPC("RPC_build", PhotonTargets.All, initialCityName, cityCardName);
+    }
+
+    public void Cure(string playerRoleKind, List<string> cardsToRemove, string diseaseColor){
         string card1 = cardsToRemove[0];
         string card2 = cardsToRemove[1];
         string card3 = cardsToRemove[2];
@@ -351,6 +369,11 @@ public class Game : MonoBehaviour {
 		}
 		PhotonView.RPC ("RPC_forecast",PhotonTargets.All,cards[0],cards[1],cards[2],cards[3],cards[4],cards[5]);
 	}
+
+    public void GovernmentGrant(string initialCity, string endCity)
+    {
+        PhotonView.RPC("RPC_governmentGrant", PhotonTargets.All, initialCity, endCity);
+    }
 
     // Special Role Skills
     public void ContingencyPlannerPutCardOnTopOfRoleCard(string roleKind, string eventCardName)
@@ -1016,7 +1039,7 @@ public class Game : MonoBehaviour {
 			}
     }
 
-	public void forecast(List<InfectionCard> orderedCards){
+	private void forecast(List<InfectionCard> orderedCards){
 		foreach(InfectionCard c in orderedCards){
 			infectionDeck.Remove(c);
 		}
@@ -1025,17 +1048,26 @@ public class Game : MonoBehaviour {
 		dropEventCard (EventKind.Forecast);
 	}
 
-	public void governmentGrant(City c){
-		if (getRemainingResearch () == 0) {
-			//TODO
-		}
-		c.setHasResearch (true);
-		researchStationRemain--;
-		dropEventCard (EventKind.GovernmentGrant);
-	}
+    private void governmentGrant(City initialCity, City c)
+    {
+        if (researchStationRemain == 0)
+        {
+            if (initialCity != null)
+            {
+                initialCity.setHasResearch(false);
+            }
+        }
+        else
+        {
+            researchStationRemain--;
+            gameInfoController.changeResearchNumber(researchStationRemain);
+        }
+        c.setHasResearch(true);
+        dropEventCard(EventKind.GovernmentGrant);
+    }
 
 
-	public void oneQuietNight(){
+    public void oneQuietNight(){
 		oneQueitNightUsed = true;
 		dropEventCard (EventKind.OneQuietNight);
 	}
@@ -1840,9 +1872,7 @@ public class Game : MonoBehaviour {
         currentPlayer.decreaseRemainingAction();
     }
 
-	public void Build(string initialCityName, string cityCardName){
-		PhotonView.RPC ("RPC_build",PhotonTargets.All, initialCityName, cityCardName);
-	}
+
 
 
 	/*
