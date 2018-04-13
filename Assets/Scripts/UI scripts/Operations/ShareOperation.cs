@@ -126,7 +126,7 @@ public class ShareOperation : MonoBehaviour {
 	public void selectRole(string name){
 		roleSlected=name;
 		//pc.deleteCityCard(currentCity.cityName);
-		game.share(name,currentCity.getCityName().ToString());
+		game.share(name,cardToShare.transform.GetChild(0).gameObject.GetComponent<Text>().text);
         waitingPanel.SetActive(true);
 		cancel();
 	}
