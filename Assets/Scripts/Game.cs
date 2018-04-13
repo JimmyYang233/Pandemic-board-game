@@ -274,6 +274,11 @@ public class Game : MonoBehaviour {
 		archivistDraw ();
 	}
 
+	[PunRPC]
+	public void RPC_fieldOperativeSample(string color){
+		fieldOperativeSample (diseases[findColor(color)]);
+	}
+
     #endregion
 
     //called by chatbox to send chat message
@@ -384,10 +389,10 @@ public class Game : MonoBehaviour {
     // Special Role Skills
     public void ContingencyPlannerPutCardOnTopOfRoleCard(string roleKind, string eventCardName)
     {
-		PhotonView.RPC ("RPC_ContingencyPlannerPutCardOnTopOfRoleCard",PhotonTargets.All);
+		PhotonView.RPC ("RPC_ContingencyPlannerPutCardOnTopOfRoleCard",PhotonTargets.All, roleKind,eventCardName);
     }
 
-    public void ArchivistDraw(string cityName)
+    public void ArchivistDraw()
     {
 		PhotonView.RPC ("RPC_archivistDraw",PhotonTargets.All);
     }
@@ -397,9 +402,9 @@ public class Game : MonoBehaviour {
         //TO-DO
     }
 
-    public void FieldOperativeSample(Color color)
+    public void FieldOperativeSample(string color)
     {
-        //TO-DO
+		PhotonView.RPC ("RPC_fieldOperativeSample",PhotonTargets.All, color);
     }
     #endregion
 
@@ -1789,7 +1794,7 @@ public class Game : MonoBehaviour {
 	}
 
 	/*
-	for EPIDEMIOLOGIST, once per turn
+	TODO: for EPIDEMIOLOGIST, once per turn
 	 */
 	private void epidemiologistShare(){}
 
@@ -1797,7 +1802,8 @@ public class Game : MonoBehaviour {
 	/*
 	for Field Operative, once per turn
 	 */
-	private void fieldOperativeSample(Player player, Disease d){
+	private void fieldOperativeSample(Disease d){
+		Player player = currentPlayer;
 		RoleKind rk = player.getRoleKind();
 		if (rk!=RoleKind.FieldOperative){
 			return;
