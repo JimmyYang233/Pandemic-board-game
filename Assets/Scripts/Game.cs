@@ -281,7 +281,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_askForEventCardPermission(string info){
-		
+		askForEventCardPermission (info);
 	}
 
     #endregion
@@ -1109,6 +1109,10 @@ public class Game : MonoBehaviour {
         dropEventCard(EventKind.GovernmentGrant);
     }
 
+
+	private void askForEventCardPermission(string info){
+		
+	}
 
     public void oneQuietNight(){
 		oneQuietNightUsed = true;
