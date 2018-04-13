@@ -281,8 +281,8 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_askForEventCardPermission(string info){
-		askForEventCardPermission (info);
+	public void RPC_askForEventCardPermission(string info, string sourcePlayerRoleKind){
+		askForEventCardPermission (info,sourcePlayerRoleKind);
 	}
 
 	[PunRPC]
