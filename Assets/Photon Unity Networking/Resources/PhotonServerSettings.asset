@@ -75,4 +75,6 @@ MonoBehaviour:
   - RPC_mobileHospital
   - RPC_governmentGrant
   - RPC_archivistDraw
+  - RPC_askForEventCardPermission
+  - RPC_fieldOperativeSample
   DisableAutoOpenWizard: 1
