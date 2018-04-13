@@ -1154,12 +1154,17 @@ public class Game : MonoBehaviour {
 		
 	}
 
+	public void specialOrders(){
+		dropEventCard (EventKind.specialOrders);
+	}
+
 	/* 
 	Remove cubes of color c in cities.
 	Return 1 if 5 cubes are removed, return 0 if less than 5.
 	*/
 	public int rapidVaccineDeployment(Color c, List<City> cities){
 		int ctr = 0;
+		dropEventCard (EventKind.RapidVaccineDeployment);
 		foreach (City city in cities){
 			while (city.getCubeNumber(c)>0){
 				city.removeCubes(diseases[c], 1);
@@ -1188,7 +1193,7 @@ public class Game : MonoBehaviour {
         dropEventCard(EventKind.RemoteTreatment);
     }
 
-    public void ReExaminedResearch(Player pl, CityCard card)
+    public void reExaminedResearch(Player pl, CityCard card)
     {
         if (!playerDiscardPile.Contains(card))
         {
@@ -1203,7 +1208,7 @@ public class Game : MonoBehaviour {
         }
     }
 
-    public void CommercialTravelBan(Player pl)
+    public void commercialTravelBan(Player pl)
     {
         dropEventCard(EventKind.CommercialTravelBan);
         pl.setCommercialTravelBanTurn();
