@@ -397,6 +397,11 @@ public class Game : MonoBehaviour {
         //TO-DO
     }
 
+	public void ArchivistDraw()
+	{
+		PhotonView.RPC ("RPC_archivistDraw", PhotonTargets.All);
+	}
+
     public void FieldOperativeSample(Color color)
     {
 		PhotonView.RPC ("RPC_fieldOperativeSample",PhotonTargets.All, colorToString(color));
