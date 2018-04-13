@@ -228,6 +228,7 @@ public class eventCardController : MonoBehaviour {
     {
         foreach(City city in game.getCities()){
             UnityEngine.Events.UnityAction call = ()=>selectCity(city);
+            city.displayButton();
             city.GetComponent<Button>().onClick.AddListener(call);
             city.GetComponent<Button>().onClick.AddListener(() => city.GetComponent<Button>().onClick.RemoveListener(call));
         }
@@ -262,6 +263,11 @@ public class eventCardController : MonoBehaviour {
         else
         {
             game.GovernmentGrant(String.Empty, currentCity.getCityName().ToString());
+        }
+
+        foreach(City aCity in game.getCities())
+        {
+            city.undisplayButton();
         }
     }
 
