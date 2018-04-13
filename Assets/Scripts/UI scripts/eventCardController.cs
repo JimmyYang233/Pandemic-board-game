@@ -211,17 +211,22 @@ public class eventCardController : MonoBehaviour {
         game.Forecast(str);
         forecastPanel.SetActive(false);
     }
+    #region Mobile Hospital
     //---------------------------------MobileHospital zone------------------------------
     public void mobileHospital()
     {
         currentPlayer = game.getCurrentPlayer();
         game.MobileHospital(currentPlayer.getRoleKind().ToString());
     }
+    #endregion
+    #region Airlift
     //---------------------------------airLift zone-----------------------------
     public void airLift()
     {
         //TO-DO maybe later
     }
+    #endregion 
+    #region Government Grant
     //---------------------------------Government Grant zone-----------------------------
     public City cityToBuild = null;
     public void governmentGrant()
@@ -270,6 +275,7 @@ public class eventCardController : MonoBehaviour {
             city.undisplayButton();
         }
     }
+    #endregion
     #region remote treatement
     //---------------------------------Remote Treatement zone-----------------------------
     List<Transform> cubes = new List<Transform>();
