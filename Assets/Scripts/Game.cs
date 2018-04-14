@@ -1440,12 +1440,12 @@ public class Game : MonoBehaviour {
             num = 14;
         }
 
-        //Testing only
+        /*//Testing only
 		RoleKind testRole = RoleKind.ContingencyPlanner;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
-        }
+        }*/
 
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 
