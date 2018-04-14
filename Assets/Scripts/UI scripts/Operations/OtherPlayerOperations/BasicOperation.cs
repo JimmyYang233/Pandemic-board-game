@@ -33,6 +33,7 @@ public class BasicOperation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
+        Debug.Log(currentPlayer.getRoleKind().ToString());
         currentPlayer = game.getCurrentPlayer();
         if(me.getRoleKind() == RoleKind.BioTerrorist)
         {
