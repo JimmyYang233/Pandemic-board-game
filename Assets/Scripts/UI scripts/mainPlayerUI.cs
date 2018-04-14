@@ -7,6 +7,7 @@ public class mainPlayerUI : MonoBehaviour {
     public Game game;
     public Button card;
     public GameObject cubeHolder;
+    public eventCardUI eventCard;
     private string redCube;
     private string blackCube;
     private string blueCube;
@@ -28,12 +29,15 @@ public class mainPlayerUI : MonoBehaviour {
 		if(me.getRoleKind() == RoleKind.ContingencyPlanner&&me.hasEventCardOnTopOfRoleCard())
         {
             EventCard theCard = me.getEventCardOnTopOfRoleCard();
+            string cardName = theCard.getName().ToString();
             card.gameObject.SetActive(true);
-            card.transform.GetChild(0).gameObject.GetComponent<Text>().text = theCard.getName().ToString();
+            card.gameObject.GetComponent<Button>().onClick.AddListener(() => eventCard.click());
+            card.transform.GetChild(0).gameObject.GetComponent<Text>().text = cardName;
         }
         else
         {
             card.gameObject.SetActive(false);
+            card.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
         }
     }
     public void displayCubes()

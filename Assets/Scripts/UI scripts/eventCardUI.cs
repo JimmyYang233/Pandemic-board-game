@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class eventCardUI : MonoBehaviour {
-	GameObject eventCardPanel;
+	public GameObject eventCardPanel;
 	Game game;
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,7 @@ public class eventCardUI : MonoBehaviour {
 		if (this.transform.GetChild (0).GetComponent<Text> ().text == "MobileHospital") {
 			
 			Player p = game.getCurrentPlayer ();
-			if (p == game.findEventCardHolder (EventKind.MobileHospital)) {
+			if (p == game.findEventCardHolder (EventKind.MobileHospital)||p.getEventCardOnTopOfRoleCard().getEventKind() == EventKind.MobileHospital) {
 				this.GetComponent<Button> ().interactable = true;
 			} else {
 				this.GetComponent<Button> ().interactable = false;
@@ -26,6 +26,7 @@ public class eventCardUI : MonoBehaviour {
 			this.GetComponent<Button> ().interactable = true;
 		}
 	}
+
 	public void setEventCardPanel(GameObject t){
 		eventCardPanel = t;
 	}
