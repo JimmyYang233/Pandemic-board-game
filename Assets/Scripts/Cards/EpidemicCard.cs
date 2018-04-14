@@ -20,4 +20,8 @@ public class EpidemicCard : PlayerCard {
 	public override string getName(){
 		return name;
 	}
+
+    public VirulentStrainEpidemicEffects getVirulentStrainEpidemicEffects(){
+        return (VirulentStrainEpidemicEffects)(UnityEngine.Random.Range(0, 4));
+    }
 }

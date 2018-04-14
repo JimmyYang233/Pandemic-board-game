@@ -17,11 +17,14 @@ public class Game : MonoBehaviour {
     private Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
+	// Virulent Strain Challenge Part
 	private Disease VirulentStrainDisease = null;
+	private VirulentStrainEpidemicEffects currentVirulentStrainEpidemicEffects;
 	private bool chronicEffect = false;
 	private bool complexMolecularStructure = false;
 	private bool governmentInterference = false;
 	private bool usedTreated = false;
+	// Virulent Strain end
 	[SerializeField]
     private int infectionRate=2;
     private int[] infectionArray;
@@ -1605,37 +1608,47 @@ public class Game : MonoBehaviour {
             return false;
         }
 
+		// Virulent Strain part: need to be before shuffle discard pile
+		if(challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain){
+			//set Virulent Strain
+			if (VirulentStrainDisease == null){
+				int min = 25;
+				foreach (Disease d in diseases.Values){
+					if(d.getNumOfDiseaseCubeLeft()<min){
+						min = d.getNumOfDiseaseCubeLeft();
+						VirulentStrainDisease = d;
+					}
+				}
+			}
+
+			// apply Virulent Strain Epidemic Effects
+			switch(currentVirulentStrainEpidemicEffects){
+			case VirulentStrainEpidemicEffects.ChronicEffect:
+				chronicEffect = true;
+				break;
+			case VirulentStrainEpidemicEffects.ComplexMolecularStructure:
+				complexMolecularStructure = true;
+				break;
+			case VirulentStrainEpidemicEffects.GovernmentInterference:
+				governmentInterference = true;
+				break;
+			case VirulentStrainEpidemicEffects.HiddenPocket:
+				if (VirulentStrainDisease.isEradicated()){
+					// TODO: flip cure maker!
+					foreach(InfectionCard ic in infectionDeck){
+						if(ic.getColor() == VirulentStrainDisease.getColor()){
+							ic.getCity().addCubes(VirulentStrainDisease,1);
+						}
+					}
+				}
+				break;
+			}
+		}
+
         Collection.Shuffle<InfectionCard>(infectionDiscardPile);
         placeInfectionDiscardPileOnTop();
 
-		// Virulent Strain part
-		// if(challenge = Challenge.VirulentStrain){
-		// 	//set Virulent Strain
-		// 	if (VirulentStrainDisease == null){
-		// 		int min = 25;
-		// 		foreach (Disease disease in diseases.Values){
-		// 			if(disease.getNumOfDiseaseCubeLeft()<min){
-		// 				min = diesase.getNumOfDiseaseCubeLeft();
-		// 				VirulentStrainDisease = disease;
-		// 			}
-		// 		}
-		// 	}
-
-		// 	// apply Virulent Strain Epidemic Effects
-		// 	switch(VirulentStrainEffect){
-		// 	case VirulentStrainEpidemicEffects.ChronicEffect:
-		// 		chronicEffect = true;
-		// 	case VirulentStrainEpidemicEffects.ComplexMolecularStructure:
-		// 		complexMolecularStructure = true;
-		// 	case VirulentStrainEpidemicEffects.GovernmentInterference:
-		// 		governmentInterference = true;
-		// 	case VirulentStrainEpidemicEffects.HiddenPocket:
-		// 		hiddenPocket();
-		// 	}
-		// }
-
         resolvingEpidemic = false;
-
         return true;
     }
 	
@@ -1644,6 +1657,7 @@ public class Game : MonoBehaviour {
 			&& VirulentStrainDisease.getColor() == getCurrentColor()
 			&& chronicEffect == true;
 	}
+	
 	public bool isComplexMolecularStructure(){
 		return (challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain)
 			&& VirulentStrainDisease.getColor() == getCurrentColor()
@@ -1787,6 +1801,9 @@ public class Game : MonoBehaviour {
 			record.draw(player, card);
             if (card.getType() == CardType.EpidemicCard)
             {
+				if(challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain){
+					currentVirulentStrainEpidemicEffects = ((EpidemicCard)card).getVirulentStrainEpidemicEffects();
+				}
                 resolveEpidemic();
             }
             else if (card.getType() == CardType.MutationEventCard && !diseases[Color.magenta].isEradicated())
