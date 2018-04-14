@@ -245,6 +245,18 @@ public class Player {
         return false;
     }
 
+    public bool containsInfectionCard()
+    {
+        foreach (PlayerCard card in handCard)
+        {
+            if (card.getType() == CardType.InfectionCard)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public bool containsSpecificCityCard(City c)
     {
         foreach(PlayerCard card in handCard)
