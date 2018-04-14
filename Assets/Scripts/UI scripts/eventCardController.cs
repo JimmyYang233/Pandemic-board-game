@@ -458,7 +458,7 @@ public class eventCardController : MonoBehaviour {
             city.displayButton();
             UnityEngine.Events.UnityAction call = () => deployCity(city);
             city.gameObject.GetComponent<Button>().onClick.AddListener(call);
-            calls.Add(call);
+            deployCalls.Add(call);
         }
     }
 
@@ -487,9 +487,9 @@ public class eventCardController : MonoBehaviour {
         }
     }
 
-
     public void deployVaccineButtonClicked()
     {
+        Debug.Log("Calling functions rapidVaccineDeployment");
         deploymentButton.gameObject.SetActive(false);
         game.RapidVaccineDeployment();//TO-DO
         List<City> allCities = game.getCities();
