@@ -88,7 +88,13 @@ public class playerDiscardPileUI : MonoBehaviour {
 
 		content.GetChild (cardNum - 1).name = c;
 		content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = c.ToString();
-		content.GetChild(cardNum - 1).GetComponent<Image>().color = map.getCityColor(game.findCity(c).getCityName());
+		if (game.findCity (c)!= null) {
+			Debug.Log (game.findCity(c));
+			content.GetChild (cardNum - 1).GetComponent<Image> ().color = map.getCityColor (game.findCity (c).getCityName ());
+		} else {
+			content.GetChild (cardNum - 1).GetComponent<Image> ().color = Color.green;
+		}
+
 
 		if (content.GetChild(cardNum - 1).GetComponent<Image>().color == Color.black)
 		{
