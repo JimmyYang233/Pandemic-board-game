@@ -2189,13 +2189,11 @@ public class Game : MonoBehaviour {
 		}
         City currentCity = player.getPlayerPawn().getCity();
 
-		int treatNumber = 1;
-		currentCity.removeCubes(d, treatNumber);
-		player.getRole().addSample(d,treatNumber);
-
-		int num = d.getNumOfDiseaseCubeLeft();
-		bool isCured = d.isCured();
-		if(num == MAX && isCured == true)
+		
+		currentCity.removeCubes(d, 1);
+		player.putCube(d,1);
+        
+		if(d.getNumOfDiseaseCubeLeft() == MAX && d.isCured())
 		{
 			d.isEradicated();
 		}

@@ -10,7 +10,6 @@ public class Role {
     private RoleKind rolekind;
     private int handlimit;
     private Pawn pawn;
-    private Dictionary<Color, int> numberOfSamples = null;
 
     public Role(RoleKind r)
     {
@@ -19,8 +18,6 @@ public class Role {
         if (r == RoleKind.Archivist)
         {
             handlimit = 8;
-        }else if(r == RoleKind.FieldOperative){
-            numberOfSamples = new Dictionary<Color, int>();
         }
         description = Maps.getInstance().getDescription(r);
         pawn = new Pawn(r);
@@ -61,27 +58,5 @@ public class Role {
             return true;
         }
         return false;
-    }
-
-    public void addSample(Disease disease, int num){
-        Color pColor = disease.getColor();
-        int current = 0;
-
-        if(numberOfSamples.ContainsKey(pColor)){
-            current = numberOfSamples[pColor];
-            numberOfSamples.Remove(pColor);
-        }
-
-        numberOfSamples.Add(pColor, num+current);
-    }
-
-    public int getCubesNumber(Color c)
-    {
-        return numberOfSamples[c];
-    }
-
-    public int removeCubes(Color c, int amount)
-    {
-        return numberOfSamples[c] -= amount;
     }
 }

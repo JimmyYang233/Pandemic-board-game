@@ -54,6 +54,26 @@ public class Player {
         cubes[index] += amount;
     }
 
+    public void putCube(Disease d, int amount)
+    {
+        Color c = d.getColor();
+        
+        if (c == Color.blue)
+                putCube(0,amount);
+                
+        if (c == Color.red)
+                putCube(0, amount);
+                
+        if (c == Color.yellow)
+                putCube(0, amount);
+                
+        if (c == Color.black)
+                putCube(0, amount);
+                
+        if (c == Color.magenta)
+                putCube(0, amount);
+    }
+
     public void returnCubes(int index, int amount)
     {
         if (cubes[index]>=amount)
