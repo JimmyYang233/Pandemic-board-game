@@ -1382,6 +1382,7 @@ public class Game : MonoBehaviour {
 		}
 
 		pl1.setRole (r2);
+        r2.setPawn(pawn);
 		city.addPawn (pawn);
         return true;
 	}
@@ -1471,7 +1472,8 @@ public class Game : MonoBehaviour {
             roleKindTaken.Add(testRole);
             return testRole;
         }
-		*/
+        */
+		
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 
         while (roleKindTaken.Contains(rkRandom))
