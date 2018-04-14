@@ -85,4 +85,5 @@ MonoBehaviour:
   - RPC_displayNewAssignment
   - RPC_displayReExaminedResearch
   - RPC_quitAll
+  - RPC_fieldOperativePutBack
   DisableAutoOpenWizard: 1
