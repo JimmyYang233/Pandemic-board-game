@@ -84,5 +84,4 @@ MonoBehaviour:
   - RPC_remoteTreatment
   - RPC_displayNewAssignment
   - RPC_displayReExaminedResearch
-  - RPC_quitAll
   DisableAutoOpenWizard: 1

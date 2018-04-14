@@ -286,8 +286,17 @@ public class Player {
 	}
 
 	public void refillAction(){
+        if (compareRole(RoleKind.BioTerrorist))
+        {
+            refillDriveAction();
+        }
 		remainingAction = maximumAction;
 	}
+
+    public void refillDriveAction()
+    {
+        ((BioTerrorist)curRole).refillDriveAction();
+    }
 
 	public int getRemainingAction()
     {
