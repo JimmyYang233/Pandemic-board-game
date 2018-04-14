@@ -48,6 +48,11 @@ public class eventCardController : MonoBehaviour {
 		informResultPanel.SetActive (true);
 		if (response) {
 			informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He accept the eventCard";
+			if (status == Status.NEWASSIGNMENT) {
+				game.DisplayNewAssignment (selectNAPlayer);
+			} else if (status == Status.REEXAMINEDRESEARCH) {
+				game.DisplayReExaminedResearch (selectRERPlayer);
+			}
 		}
 		else{
 			informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He reject the EventCard";
@@ -158,6 +163,7 @@ public class eventCardController : MonoBehaviour {
 			}
 		}
     }
+		
     public void newAssignmentClickYes() {
        
         Transform t = newAssignmentPanel.transform.GetChild(0);
