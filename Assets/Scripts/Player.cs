@@ -49,6 +49,23 @@ public class Player {
         return cubes.Length;
     }
 
+    public void putCube(int index, int amount)
+    {
+        cubes[index] += amount;
+    }
+
+    public void returnCubes(int index, int amount)
+    {
+        if (cubes[index]>=amount)
+        {
+            cubes[index] -= amount;
+        }
+        else
+        {
+            Debug.Log("not enough");
+        }
+    }
+
     public bool hasEventCardInFront()
     {
         return hasCommercialTravelBanInfrontOfPlayer;
