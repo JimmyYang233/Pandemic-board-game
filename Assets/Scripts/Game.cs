@@ -1043,7 +1043,10 @@ public class Game : MonoBehaviour {
 		if (currentPhase != GamePhase.PlayerTakeTurn)
 			return;
 		currentPhase = GamePhase.PlayerDrawCard;
-
+        if(currentPlayer == BioTerroristVolunteer)
+        {
+            getBioTerrorist().refillDriveAction();
+        }
 		currentPlayer.refillAction();
 		currentPlayer.setOncePerturnAction(false);
         currentPlayer.setMobileHospitalActivated(false);
@@ -1359,6 +1362,12 @@ public class Game : MonoBehaviour {
 		City city = pawn.getCity ();
 		city.removePawn (pawn);
 		Role r2 = new Role (roleKind);
+
+		if (pl1 == me) {
+			playerPanel.swapRoleSelf (roleKind);
+		} else {
+			playerPanel.swapRoleOther (pl1.getRoleKind (),roleKind);
+		}
 
 		if(r2.getRoleKind() == RoleKind.Generalist && pl1 == currentPlayer && pl1.getMaxnumAction() == 4){
 			pl1.increaseRemainingAction (1);
@@ -2594,9 +2603,17 @@ public class Game : MonoBehaviour {
 		SaveAndLoadManager.SaveGameData (Instance, name);
 	}
 
+	[PunRPC]
+	public void RPC_quitAll(){
+		quit ();
+	}
 	public void quit(){
 		PhotonNetwork.LeaveRoom ();
 		SceneManager.LoadScene ("Lobby");
+	}
+
+	public void quitAll(){
+		PhotonView.RPC ("RPC_quitAll",PhotonTargets.All);
 	}
 
 	#endregion
