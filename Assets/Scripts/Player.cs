@@ -261,6 +261,22 @@ public class Player {
         return false;
     }
 
+    public bool containsSpecificInfectionCard(City c)
+    {
+        foreach (PlayerCard card in handCard)
+        {
+            if (card.getType() == CardType.InfectionCard)
+            {
+                InfectionCard aCityCard = (InfectionCard)card;
+                if (aCityCard.getCity() == c)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public CityCard getCard(City c)
     {
         foreach(PlayerCard card in handCard)
