@@ -14,9 +14,11 @@ public class FieldOperativeSkillOperation : MonoBehaviour {
 
     Player currentPlayer = null;
     City currentCity = null;
+    Player me = null;
 
     private void Update()
     {
+        me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
         currentCity = currentPlayer.getPlayerPawn().getCity();
     }
@@ -100,7 +102,7 @@ public class FieldOperativeSkillOperation : MonoBehaviour {
 
     private void returnACube(Color color)
     {
-        //TO-DO I need backend function
+        game.FieldOperativePutBack(me.getRoleKind().ToString(), color);
     }
 
     private void removeCube(Color color)

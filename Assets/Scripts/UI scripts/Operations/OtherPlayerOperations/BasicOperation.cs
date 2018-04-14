@@ -86,10 +86,10 @@ public class BasicOperation : MonoBehaviour {
                 currentCity = me.getPlayerPawn().getCity();
                 if (me.getRemainingAction() != 0)
                 {
-                    //if (!game.isGovernmentInterference())
-                    //{
+                    if (!game.isGovernmentInterference())
+                    {
                         moveButton.GetComponent<Button>().interactable = true;
-                    //}
+                    }
                     if (!currentCity.getHasResearch() && (currentPlayer.containsSpecificCityCard(currentCity) || (currentPlayer.getRoleKind() == RoleKind.OperationsExpert)))
                     {
                         buildButton.GetComponent<Button>().interactable = true;

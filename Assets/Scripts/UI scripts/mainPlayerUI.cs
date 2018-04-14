@@ -63,7 +63,7 @@ public class mainPlayerUI : MonoBehaviour {
                 {
                     buttons[i].gameObject.GetComponent<Button>().interactable = true;
                     Debug.Log(i + " has " + numberOfCubes[i]);
-                    for (int j = 0; j < numberOfCubes[i]; i++)
+                    for (int j = 0; j < numberOfCubes[i]; j++)
                     {
                         if (i == 3)
                         {
@@ -83,7 +83,6 @@ public class mainPlayerUI : MonoBehaviour {
                         }
                     }
                 }
-                
             }
             if(cubes.Count == 0)
             {
@@ -91,6 +90,7 @@ public class mainPlayerUI : MonoBehaviour {
             }
             else
             {
+                Debug.Log("Total " + cubes.Count);
                 returnButtonPanel.SetActive(true);
                 if (cubes.Count == 1)
                 {
