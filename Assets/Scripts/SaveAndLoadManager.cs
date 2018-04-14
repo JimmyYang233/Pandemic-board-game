@@ -80,6 +80,7 @@ public class GameData{
 	public List<int> CommercialTravelBanTurn = new List<int> ();
 	public List<DiseaseInfo> diseaseInfoList = new List<DiseaseInfo> ();
 	public List<CityInfo> CityInfoList = new List<CityInfo> ();
+	public int[] FOcubes;
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
@@ -111,6 +112,9 @@ public class GameData{
 			mobileHospitalActivated.Add (player.getMobileHospitalActivated());
 			if (player.getRoleKind() == RoleKind.ContingencyPlanner && player.getEventCardOnTopOfRoleCard()!=null) {
 				eventCardOnTopOfRoleCard = player.getEventCardOnTopOfRoleCard ().getName ();
+			}
+			if (player.getRoleKind () == RoleKind.FieldOperative) {
+				FOcubes = player.getAllCubes ();
 			}
 			hasCommercialTravelBanInfrontOfPlayer.Add (player.hasEventCardInFront());
 			CommercialTravelBanTurn.Add (player.getCommercialTravelBanTurn());

@@ -694,7 +694,10 @@ public class Game : MonoBehaviour {
 				bool mobileHospitalActivated = e4.Current;
 				curPlayer.setMobileHospitalActivated (mobileHospitalActivated);
 				if (curRolekind == RoleKind.ContingencyPlanner && !savedGame.eventCardOnTopOfRoleCard.Equals("Null")) {
-					curPlayer.setEventCardOnTopOfRoleCard (EventCard.getEventCard((EventKind)Enum.Parse (typeof(EventKind), savedGame.eventCardOnTopOfRoleCard)));
+					curPlayer.setEventCardOnTopOfRoleCard (EventCard.getEventCa　　rd((EventKind)Enum.Parse (typeof(EventKind), savedGame.eventCardOnTopOfRoleCard)));
+				}
+				if(curRolekind == RoleKind.FieldOperative){
+					curPlayer.setAllCubes(savedGame.FOcubes);
 				}
 				bool hasCommercialTravelBanInfrontOfPlayer = e6.Current;
 				if (hasCommercialTravelBanInfrontOfPlayer) {
