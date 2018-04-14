@@ -28,6 +28,7 @@ public class PlayerLayoutGroup : MonoBehaviour
 	//Called by photon whenever you join a room.
 	private void OnJoinedRoom()
 	{
+		Debug.Log (PhotonNetwork.room.CustomProperties);
 		foreach (Transform child in transform)
 		{
 			Destroy(child.gameObject);

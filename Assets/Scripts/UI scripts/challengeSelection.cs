@@ -12,6 +12,12 @@ public class challengeSelection : MonoBehaviour {
     public Toggle MutationChallenge;
     public Toggle BioTerroristChallenge;
 
+
+	private void Start(){
+		
+
+	}
+
     private void Update()
     {
         if (PhotonNetwork.isMasterClient)
@@ -38,6 +44,11 @@ public class challengeSelection : MonoBehaviour {
         {
             BioTerroristChallenge.isOn = false;
         }
+		ExitGames.Client.Photon.Hashtable roomProperty = new ExitGames.Client.Photon.Hashtable ();
+		roomProperty.Add ("Challenge", getChallenge().ToString() );
+		PhotonNetwork.room.SetCustomProperties (roomProperty);
+		Debug.Log (PhotonNetwork.room.CustomProperties);
+
     }
 
     public void BioTerroristChallengeToggled()
@@ -46,8 +57,19 @@ public class challengeSelection : MonoBehaviour {
         {
             MutationChallenge.isOn = false;
         }
+		ExitGames.Client.Photon.Hashtable roomProperty = new ExitGames.Client.Photon.Hashtable ();
+		roomProperty.Add ("Challenge", getChallenge().ToString() );
+		PhotonNetwork.room.SetCustomProperties (roomProperty);
+		Debug.Log (PhotonNetwork.room.CustomProperties);
        
     }
+
+	public void VirulentStrainChallengeToggled(){
+		ExitGames.Client.Photon.Hashtable roomProperty = new ExitGames.Client.Photon.Hashtable ();
+		roomProperty.Add ("Challenge", getChallenge().ToString() );
+		PhotonNetwork.room.SetCustomProperties (roomProperty);
+		Debug.Log (PhotonNetwork.room.CustomProperties);
+	}
 
     public Challenge getChallenge()
     {
