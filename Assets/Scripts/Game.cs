@@ -1416,11 +1416,15 @@ public class Game : MonoBehaviour {
 		
 	}
 
-    
-
     public void contingencyPlannerPutCardOnTopOfRoleCard(EventCard card)
     {
-		currentPlayer.setEventCardOnTopOfRoleCard(card);
+        if (!playerDiscardPile.Contains(card))
+        {
+            Debug.Log("Discard pile does not contain this card.");
+        }
+        playerDiscardPile.Remove(card);
+        currentPlayer.setEventCardOnTopOfRoleCard(card);
+        
 		currentPlayer.decreaseRemainingAction();
     }
 
