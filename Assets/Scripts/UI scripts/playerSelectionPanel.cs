@@ -28,7 +28,6 @@ public class playerSelectionPanel : MonoBehaviour {
 		currentCity = currentPlayer.getPlayerPawn().getCity();
 	}
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame

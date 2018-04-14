@@ -33,15 +33,16 @@ public class PlayerPanelController : MonoBehaviour
 	public void swapRoleSelf(RoleKind roleKindNew){
 		this.transform.GetChild (4).GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (roleKindNew);
 		this.transform.GetChild (4).GetChild (1).GetComponent<Text> ().text = roleKindNew.ToString ();
+
+		Transform t = playerSelect.selfButton.transform.GetChild (0);
+		t.GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (roleKindNew);
+		t.GetChild (1).GetComponent<Text> ().text = roleKindNew.ToString();
 	}
 	public void swapRoleOther(RoleKind roleKindOld,RoleKind roleKindNew){
 		foreach (Transform t in this.transform)
 		{
 			if (t.gameObject.activeSelf) {
-				Debug.Log (t.transform.GetChild (2).GetComponent<Text> ().text);
-				Debug.Log (roleKindOld);
 				if (t.transform.GetChild (2).GetComponent<Text> ().text.Equals (roleKindOld.ToString())) {
-					Debug.Log ("FIND");
 					t.transform.GetChild (2).GetComponent<Text> ().text = roleKindNew.ToString ();
 					t.transform.GetChild (1).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (roleKindNew);
 					break;
@@ -54,6 +55,11 @@ public class PlayerPanelController : MonoBehaviour
 		this.transform.GetChild (4).gameObject.SetActive (true);
 		this.transform.GetChild (4).GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (k);
 		this.transform.GetChild (4).GetChild (1).GetComponent<Text> ().text = k.ToString ();
+
+		Transform t = playerSelect.selfButton.transform.GetChild (0);
+		t.GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (k);
+		t.GetChild (1).GetComponent<Text> ().text = k.ToString ();
+
 	}
     public void addOtherPlayer(RoleKind k)
     {
