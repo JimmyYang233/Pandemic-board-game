@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class ContingencyPlannerSkillOperation : MonoBehaviour {
 
     public GameObject contingencyPlannerOnlyPanel;
+	public GameObject eventCardSelect;
     public Game game;
 
     string eventCardToPut = null;
@@ -16,9 +17,10 @@ public class ContingencyPlannerSkillOperation : MonoBehaviour {
 		int i = 0;
         foreach(EventCard eventCard in game.getEventCardsFromDiscardPile())
         {
-			contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).gameObject.SetActive (true);
-            contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).GetChild (0).GetComponent<Text> ().text = eventCard.getName ();
-			contingencyPlannerOnlyPanel.transform.GetChild(0).GetChild (i).name = eventCard.getName ();
+			Debug.Log (eventCard.getName ());
+			eventCardSelect.transform.GetChild(0).GetChild (i).gameObject.SetActive (true);
+			eventCardSelect.transform.GetChild(0).GetChild (i).GetChild (0).GetComponent<Text> ().text = eventCard.getName ();
+			eventCardSelect.transform.GetChild(0).GetChild (i).name = eventCard.getName ();
 			i++;
         }        
     }

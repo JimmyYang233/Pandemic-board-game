@@ -23,7 +23,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 		foreach (FileInfo file in fileInfo) {
 			if (file.Extension == ".pandemic") {
 				Debug.Log (file.Name);
-				listOfSavedGame.Add (file.Name);
+				listOfSavedGame.Add (Path.GetFileNameWithoutExtension(file.Name));
 			}
 		}
 		
@@ -96,7 +96,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 		case "CreateRoom":
 			if (PhotonNetwork.JoinLobby ()) {
 				RoomOptions RO = new RoomOptions ();
-				RO.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable (){ { "Challenge","NoChallenge" } };
+				RO.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable (){ { "Challenge",Challenge.Nochallenge.ToString() } };
 				RO.MaxPlayers = 5;
 				PhotonNetwork.CreateRoom (roomName.text, RO, TypedLobby.Default);
 
@@ -163,8 +163,10 @@ public class PhotonNetworkManager : MonoBehaviour {
     public void onClick(string loadName)
     {
 		GameData data = SaveAndLoadManager.LoadGameData (loadName);
+		Debug.Log (loadName);
 		PlayerNetwork.Instance.isNewGame = false;
 		PlayerNetwork.Instance.savedGameJson =  JsonUtility.ToJson(data);
+		Debug.Log (PlayerNetwork.Instance.savedGameJson);
 		GameData savedGame = JsonUtility.FromJson<GameData>(PlayerNetwork.Instance.savedGameJson);
 		RoomOptions testRo = new RoomOptions ();
 		testRo.MaxPlayers = 5;

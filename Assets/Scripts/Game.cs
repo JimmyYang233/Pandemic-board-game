@@ -1378,7 +1378,7 @@ public class Game : MonoBehaviour {
         }
 
         //Testing only
-        RoleKind testRole = RoleKind.Medic;
+		RoleKind testRole = RoleKind.ContingencyPlanner;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
