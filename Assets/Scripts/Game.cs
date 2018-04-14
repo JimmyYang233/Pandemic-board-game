@@ -1385,6 +1385,7 @@ public class Game : MonoBehaviour {
 			playerPanel.swapRoleSelf (roleKind);
 		} else {
 			playerPanel.swapRoleOther (old,roleKind);
+			playerSelect.swapRole (old, roleKind);
 		}
 
         return true;
