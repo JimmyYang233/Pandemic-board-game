@@ -71,6 +71,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 	void OnJoinedLobby(){
 		PhotonNetwork.automaticallySyncScene = true;
+		Debug.Log (PhotonNetwork.GetRoomList());
 		Invoke ("RefreshRoomList",0.1f);
 	}
 		
@@ -98,7 +99,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 				RoomOptions RO = new RoomOptions ();
 				RO.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable (){ { "Challenge",Challenge.Nochallenge.ToString() }, {"seed",(int)System.DateTime.Now.Ticks } };
 				RO.MaxPlayers = 5;
-				PhotonNetwork.CreateRoom (roomName.text, RO, TypedLobby.Default);
+				PhotonNetwork.CreateRoom (roomName.text + " #"+ Random.Range (100000, 999999), RO, TypedLobby.Default);
 
 				SceneManager.LoadScene ("Room");
 			}
