@@ -56,7 +56,7 @@ public class Game : MonoBehaviour {
 	private bool switchPlayer = false;
 	private int numOfInfection = 0;
 	private Player BioTerroristVolunteer = null;
-    private BioTerrorist bioTerroristRole;
+    private BioTerrorist bioTerroristRole; //TODO new field
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
