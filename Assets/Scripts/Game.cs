@@ -72,7 +72,8 @@ public class Game : MonoBehaviour {
 
     
 	public int nEpidemicCard;
-    public Pawn prefab;
+    public Pawn playerPawn;
+    public Pawn bioterroristPawn;
     public GameInfoDisplay gameInfoController;
 
 
@@ -588,7 +589,15 @@ public class Game : MonoBehaviour {
         foreach (Player p in players) 
 		{
 			Role r = (p != bioTerrorist) ? new Role(selectRole()) : new BioTerrorist();
-            Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
+            Pawn pawn;
+            if (r.getRoleKind() == RoleKind.BioTerrorist)
+            {
+                pawn = Instantiate(bioterroristPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+            }
+            else
+            {
+                pawn = Instantiate(playerPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+            }
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
@@ -741,7 +750,7 @@ public class Game : MonoBehaviour {
 		foreach (Player p in players) 
 		{
 			Role r = p.getRole ();
-			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			Pawn pawn = Instantiate(playerPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
@@ -1455,12 +1464,12 @@ public class Game : MonoBehaviour {
             num = 14;
         }
 
-        /*//Testing only
-		RoleKind testRole = RoleKind.ContingencyPlanner;
+        //Testing only
+		RoleKind testRole = RoleKind.BioTerrorist;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
-        }*/
+        }
 
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 

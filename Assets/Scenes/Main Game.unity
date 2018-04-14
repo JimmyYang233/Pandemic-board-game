@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2006,7 +2006,10 @@ MonoBehaviour:
   infectionDiscardUI: {fileID: 788425839}
   eventController: {fileID: 1900971760}
   nEpidemicCard: 4
-  prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
+  playerPawn: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75,
+    type: 2}
+  bioterroristPawn: {fileID: 114061088410261570, guid: 6aabe10741e81e64186cb938a9b5695a,
+    type: 2}
   gameInfoController: {fileID: 1779426929}
 --- !u!224 &73084185
 RectTransform:
