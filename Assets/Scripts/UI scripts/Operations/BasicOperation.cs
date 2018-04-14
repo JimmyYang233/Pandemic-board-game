@@ -37,10 +37,25 @@ public class BasicOperation : MonoBehaviour {
         if(me.getRoleKind() == RoleKind.BioTerrorist)
         {
             bioTerroristPanel.gameObject.SetActive(true);
+            me.getPlayerPawn().gameObject.SetActive(true);
         }
         else
         {
             basicOperationPanel.gameObject.SetActive(true);
+            BioTerrorist bioTerrorist = game.getBioTerrorist();
+            
+            if (bioTerrorist != null)
+            {
+                Pawn bioPawn = bioTerrorist.getPawn(); 
+                if (bioTerrorist.getIsSpotted())
+                {
+                    bioPawn.gameObject.SetActive(true);
+                }
+                else
+                {
+                    bioPawn.gameObject.SetActive(false);
+                }
+            }
             if (me.getRoleKind() == RoleKind.ContingencyPlanner)
             {
                 contingencyPlannerSkillButton.gameObject.SetActive(true);

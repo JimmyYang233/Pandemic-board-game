@@ -98,7 +98,15 @@ public class eventCardController : MonoBehaviour {
         selectRERPlayer = n;
         playerSelect.gameObject.SetActive(false);
 		otherPlayers.SetActive (true);
-		game.AskForEventCardPermission("Do you want to accept event card reExainedResearch?",selectRERPlayer,game.FindPlayer(PhotonNetwork.player).getRoleKind().ToString());
+		Debug.Log (game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ());
+		Debug.Log (n);
+		if (n.Equals (game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ())) {
+			
+			Debug.Log ("here");
+			doReExamineResearch ();
+		} else {
+			game.AskForEventCardPermission ("Do you want to accept event card reExainedResearch?", selectRERPlayer, game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ());
+		}
     }
     public void doReExamineResearch() {
         foreach (Transform t in playerDiscard.transform.GetChild(0).GetChild(0)) {
@@ -148,7 +156,11 @@ public class eventCardController : MonoBehaviour {
         selectNAPlayer = n;
         playerSelect.gameObject.SetActive(false);
 		otherPlayers.SetActive (true);
-		game.AskForEventCardPermission("Do you want to accept event card NewAssignment?",selectNAPlayer,game.FindPlayer(PhotonNetwork.player).getRoleKind().ToString());
+		if (n.Equals (game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ())) {
+			doNewAssignment ();
+		} else {
+			game.AskForEventCardPermission ("Do you want to accept event card newAssignment?", selectNAPlayer, game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ());
+		}
     }
 
     string newAssignmentName;

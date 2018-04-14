@@ -72,7 +72,8 @@ public class Game : MonoBehaviour {
 
     
 	public int nEpidemicCard;
-    public Pawn prefab;
+    public Pawn playerPawn;
+    public Pawn bioterroristPawn;
     public GameInfoDisplay gameInfoController;
 
 
@@ -588,7 +589,15 @@ public class Game : MonoBehaviour {
         foreach (Player p in players) 
 		{
 			Role r = (p != bioTerrorist) ? new Role(selectRole()) : new BioTerrorist();
-            Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
+            Pawn pawn;
+            if (r.getRoleKind() == RoleKind.BioTerrorist)
+            {
+                pawn = Instantiate(bioterroristPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+            }
+            else
+            {
+                pawn = Instantiate(playerPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+            }
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
@@ -741,7 +750,7 @@ public class Game : MonoBehaviour {
 		foreach (Player p in players) 
 		{
 			Role r = p.getRole ();
-			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			Pawn pawn = Instantiate(playerPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
@@ -1359,6 +1368,7 @@ public class Game : MonoBehaviour {
 	}
 
 	private bool swapRole(Player pl1, RoleKind roleKind){
+		RoleKind old = pl1.getRoleKind ();
 		if(checkForRoleExistence(roleKind)){
 			Debug.Log ("Role already exist in the game. Game.cs: swapRole");
 			return false;
@@ -1368,18 +1378,22 @@ public class Game : MonoBehaviour {
 		city.removePawn (pawn);
 		Role r2 = new Role (roleKind);
 
-		if (pl1 == me) {
-			playerPanel.swapRoleSelf (roleKind);
-		} else {
-			playerPanel.swapRoleOther (pl1.getRoleKind (),roleKind);
-		}
 
 		if(r2.getRoleKind() == RoleKind.Generalist && pl1 == currentPlayer && pl1.getMaxnumAction() == 4){
 			pl1.increaseRemainingAction (1);
 		}
 
 		pl1.setRole (r2);
+        r2.setPawn(pawn);
 		city.addPawn (pawn);
+
+		if (pl1 == me) {
+			playerPanel.swapRoleSelf (roleKind);
+		} else {
+			playerPanel.swapRoleOther (old,roleKind);
+			playerSelect.swapRole (old, roleKind);
+		}
+
         return true;
 	}
 
@@ -1461,13 +1475,15 @@ public class Game : MonoBehaviour {
             num = 14;
         }
 
-        /*//Testing only
-		RoleKind testRole = RoleKind.ContingencyPlanner;
+        //Testing only
+		/*
+		RoleKind testRole = RoleKind.BioTerrorist;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
-        }*/
-
+        }
+        */
+		
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 
         while (roleKindTaken.Contains(rkRandom))

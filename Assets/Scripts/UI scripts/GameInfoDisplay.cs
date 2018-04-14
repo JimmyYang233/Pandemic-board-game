@@ -15,7 +15,15 @@ public class GameInfoDisplay : MonoBehaviour
     public List<GameObject> outbreakrates;
     public List<GameObject> infectionrates;
 
-	public void eradicate(Color c){
+    private void Update()
+    {
+        if(game.getChallenge() == Challenge.BioTerroist||game.getChallenge() == Challenge.BioTerroistAndVirulentStrain||game.getChallenge() == Challenge.Mutation || game.getChallenge() == Challenge.MutationAndVirulentStrain)
+        {
+            cubeLeft.transform.GetChild(4).gameObject.SetActive(true);
+        }
+    }
+
+    public void eradicate(Color c){
 		Transform t = cubeLeft.transform.GetChild (0);
 		if (c == Color.black) {
 			t = cubeLeft.transform.GetChild (1);
@@ -24,6 +32,10 @@ public class GameInfoDisplay : MonoBehaviour
 		} else if(c==Color.red){
 			t = cubeLeft.transform.GetChild (3);
 		}
+        else if(c == Color.magenta)
+        {
+            t = cubeLeft.transform.GetChild(4);
+        }
 		t.GetChild (1).gameObject.SetActive (false);
 		t.GetChild (2).gameObject.SetActive (true);
 

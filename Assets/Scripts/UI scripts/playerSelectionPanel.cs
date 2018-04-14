@@ -16,6 +16,7 @@ public class playerSelectionPanel : MonoBehaviour {
 	public EpidemiologistOperation epidemiologist;
 	public eventCardController eventController;
 	public Status selectStatus = Status.SHARE; 
+	public GameObject selfButton;
 
 	public otherPlayerCardSelection selectCard;
 
@@ -27,7 +28,6 @@ public class playerSelectionPanel : MonoBehaviour {
 		currentCity = currentPlayer.getPlayerPawn().getCity();
 	}
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -71,6 +71,22 @@ public class playerSelectionPanel : MonoBehaviour {
 
         // apply it on current object's material
     }
+	public void swapRole(RoleKind oldRole, RoleKind newRole){
+		foreach (Transform t in this.transform) {
+			if (t.GetChild (0).GetComponent<Text> ().text.Equals(oldRole.ToString ())) {
+				t.GetChild (0).GetComponent<Text> ().text =newRole.ToString ();
+				t.name = newRole.ToString ();
+				if (map.getRoleColor (newRole) != null) {
+
+
+					t.GetComponent<Image> ().color = map.getRoleColor (newRole);
+				}
+
+				break;
+			}
+		}
+
+	}
 	public void characterSelect(){
 		string name = EventSystem.current.currentSelectedGameObject.name;
 		if (selectStatus == Status.SHARE) {
@@ -160,6 +176,9 @@ public class playerSelectionPanel : MonoBehaviour {
 			}
 
 		}
+		if (selectStatus == Status.NEWASSIGNMENT || selectStatus == Status.REEXAMINEDRESEARCH) {
+			selfButton.gameObject.SetActive (true);
+		}
 	}
 
 	public void clear(){
@@ -170,6 +189,7 @@ public class playerSelectionPanel : MonoBehaviour {
 			}
 
 		}
+		selfButton.gameObject.SetActive (false);
 	}
 		
 }
