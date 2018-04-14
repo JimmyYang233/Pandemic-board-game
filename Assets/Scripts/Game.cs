@@ -1359,6 +1359,12 @@ public class Game : MonoBehaviour {
 		city.removePawn (pawn);
 		Role r2 = new Role (roleKind);
 
+		if (pl1 == me) {
+			playerPanel.swapRoleSelf (roleKind);
+		} else {
+			playerPanel.swapRoleOther (pl1.getRoleKind (),roleKind);
+		}
+
 		if(r2.getRoleKind() == RoleKind.Generalist && pl1 == currentPlayer && pl1.getMaxnumAction() == 4){
 			pl1.increaseRemainingAction (1);
 		}

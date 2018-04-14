@@ -4,6 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerPanelController : MonoBehaviour
 {
+	// Use this for initialization
+	void Start()
+	{
+
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
 	public playerSelectionPanel playerSelect;
 	/*
 	public string findPlayerWithSpecificCity(string cName){
@@ -19,6 +30,21 @@ public class PlayerPanelController : MonoBehaviour
 		}
 	}
 	*/
+	public void swapRoleSelf(RoleKind roleKindNew){
+		this.transform.GetChild (4).GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (roleKindNew);
+		this.transform.GetChild (4).GetChild (1).GetComponent<Text> ().text = roleKindNew.ToString ();
+	}
+	public void swapRoleOther(RoleKind roleKindOld,RoleKind roleKindNew){
+		foreach (Transform t in this.transform)
+		{
+			if (this.transform.GetChild (2).GetComponent<Text> ().text.Equals (roleKindOld)) {
+				this.transform.GetChild (2).GetComponent<Text> ().text = roleKindNew.ToString ();
+				this.transform.GetChild(1).GetComponent<Image>().color = Maps.getInstance().getRoleColor(roleKindNew);
+				break;
+			}
+
+		}		
+	}
 	public void addMainPlayer(RoleKind k){
 		this.transform.GetChild (4).gameObject.SetActive (true);
 		this.transform.GetChild (4).GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (k);
@@ -107,15 +133,5 @@ public class PlayerPanelController : MonoBehaviour
             }
         }
     }
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }
