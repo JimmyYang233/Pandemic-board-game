@@ -1388,13 +1388,15 @@ public class Game : MonoBehaviour {
             }
             else
             {
-                if (pl.getEventCardOnTopOfRoleCard().getEventKind() == eKind)
-                {
-                    pl.removeEventCardOnTopOfRoleCard();
-                }
-                else
-                {
-                    Debug.Log("No player is holding this card. Game.cs: dropEventCard(EventKind)");
+                if(pl.hasEventCardOnTopOfRoleCard()){
+                    if (pl.getEventCardOnTopOfRoleCard().getEventKind() == eKind)
+                    {
+                        pl.removeEventCardOnTopOfRoleCard();
+                    }
+                    else
+                    {
+                        Debug.Log("No player is holding this card. Game.cs: dropEventCard(EventKind)");
+                    }
                 }
             }
 		}
