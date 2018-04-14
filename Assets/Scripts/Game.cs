@@ -1694,7 +1694,7 @@ public class Game : MonoBehaviour {
 
 		record.infect(city,number,hasMedic,hasQS,isCured,isEradicated);
 
-        if ((hasQS&&isCured) || hasMedic || isEradicated) return true;
+        if ((hasQS /*&&isCured*/) || hasMedic || isEradicated) return true;
 
         outbreakedCities.Add(city);
         int cubeNumber = city.getCubeNumber(color);
@@ -1826,6 +1826,10 @@ public class Game : MonoBehaviour {
         return true;
     }
 
+    public bool bioTerroristCanDraw()
+    {
+        return false;
+    }
 
     public void BioTerroristDraw(Player pl)
     {
