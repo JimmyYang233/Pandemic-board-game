@@ -106,7 +106,9 @@ public class eventCardController : MonoBehaviour {
     }
     public void doReExamineResearch() {
         foreach (Transform t in playerDiscard.transform.GetChild(0).GetChild(0)) {
-            if (t.gameObject.GetComponent<Button>() == null) {
+			Debug.Log ("Here");
+			if (t.gameObject.GetComponent<Button>() == null && game.findCity(t.GetChild(0).GetComponent<Text>().text)!=null) {
+				Debug.Log ("I am here");
                 t.gameObject.AddComponent<Button>();
                 t.GetComponent<Button>().interactable = true;
                 Button b = t.GetComponent<Button>();
