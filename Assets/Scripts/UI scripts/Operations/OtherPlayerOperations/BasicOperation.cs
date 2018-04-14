@@ -34,7 +34,6 @@ public class BasicOperation : MonoBehaviour {
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
-        Debug.Log(currentPlayer.getRoleKind().ToString());
         if (me.getRoleKind() == RoleKind.BioTerrorist)
         {
             bioTerroristPanel.gameObject.SetActive(true);
