@@ -15,7 +15,19 @@ public class Player {
     private EventCard eventCardOnTopOfRoleCard = null;
     private bool hasCommercialTravelBanInfrontOfPlayer = false;//TODO new field
     private int[] cubes = new int[5]; //TODO new field //0 blue 1 red 2 yellow 3 black 4 magenta
-    
+
+    public bool hasThreeCubesOfSameColor()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (cubes[i] >= 3)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int[] getAllCubes()
     {
         return cubes;
@@ -24,6 +36,25 @@ public class Player {
 	public void setAllCubes(int[] savedCubes){
 		cubes = savedCubes;
 	}
+
+    public int getCubesHolded(Color c)
+    {
+        if (c == Color.blue)
+            return cubes[0];
+
+        if (c == Color.red)
+            return cubes[1];
+
+        if (c == Color.yellow)
+            return cubes[2];
+
+        if (c == Color.black)
+            return cubes[3];
+
+        if (c == Color.magenta)
+            return cubes[4];
+        return 0;
+    }
 
     public int getblueCubesHolded()
     {
@@ -224,6 +255,14 @@ public class Player {
         if (compareRole(RoleKind.Scientist))
         {
             cardNeeded = 4;
+        }
+
+        if (compareRole(RoleKind.FieldOperative))
+        {
+            if (getCubesHolded(color) >= 3)
+            {
+                cardNeeded = 3;
+            }
         }
         Game game = Game.Instance;
         if(game.isComplexMolecularStructure()){

@@ -512,7 +512,8 @@ public class Game : MonoBehaviour {
 		
 	}
 
-	public void FieldOperativePutBack(string playerRoleKind, string colorString){
+	public void FieldOperativePutBack(string playerRoleKind, Color color){
+        string colorString = colorToString(color);
 		PhotonView.RPC ("RPC_fieldOperativePutBack", PhotonTargets.All, playerRoleKind, colorString);
 	}
     #endregion
