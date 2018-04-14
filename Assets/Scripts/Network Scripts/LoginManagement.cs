@@ -20,7 +20,7 @@ public class LoginManagement : MonoBehaviour {
 	public void OnLoginClicked(){
 		if (!PhotonNetwork.connected) {
 			PhotonNetwork.ConnectUsingSettings (_gameVersion);
-			PhotonNetwork.playerName = playerName.text;
+			PhotonNetwork.playerName = playerName.text + " #" +Random.Range(10000,99999) ;
 		}
 		PhotonNetwork.automaticallySyncScene = true;
 		SceneManager.LoadScene ("Lobby");

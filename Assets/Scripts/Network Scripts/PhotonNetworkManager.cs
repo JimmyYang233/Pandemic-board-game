@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PhotonNetworkManager : MonoBehaviour {
 	public InputField roomName;
-	public InputField maxCount;
+	//public InputField maxCount;
 	public InputField playerName;
 	public GameObject roomPrefab;
 
@@ -86,7 +86,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 		case "CreateRoom":
 			if (PhotonNetwork.JoinLobby ()) {
 				RoomOptions RO = new RoomOptions ();
-				RO.MaxPlayers = byte.Parse (maxCount.text);
+				RO.MaxPlayers = 5;
 				PhotonNetwork.CreateRoom (roomName.text, RO, TypedLobby.Default);
 				SceneManager.LoadScene ("Room");
 			}
@@ -112,7 +112,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 			}*/
 			PlayerNetwork.Instance.isNewGame = false;
 			PlayerNetwork.Instance.savedGameJson =  JsonUtility.ToJson(data);
-			Debug.Log ("Saved GameJson is : " + PlayerNetwork.Instance.savedGameJson);
+			//Debug.Log ("Saved GameJson is : " + PlayerNetwork.Instance.savedGameJson);
 			GameData savedGame = JsonUtility.FromJson<GameData>(PlayerNetwork.Instance.savedGameJson);
 			/*
 			Debug.Log ("After loaded, we have ");
@@ -124,7 +124,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 				Debug.Log ("RoleKind is " + rk.ToString());
 			}*/
 			RoomOptions testRo = new RoomOptions ();
-			testRo.MaxPlayers = byte.Parse (maxCount.text);
+			testRo.MaxPlayers = 5;
 			PhotonNetwork.CreateRoom (roomName.text, testRo, TypedLobby.Default);
 			SceneManager.LoadScene ("Room");
 			break;
