@@ -20,6 +20,18 @@ public class City : MonoBehaviour {
     private string blackCube;
     private string blueCube;
     private string yellowCube;
+    private int quarantineMarker; // Todo new field
+
+    public int getNumPlayers()
+    {
+        return pawns.Count;
+    }
+
+    public void flipMarkerTo(int num)
+    {
+        quarantineMarker = num;
+    }
+
 	private void Awake()
 	{
 		colors = new List<Color>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future
@@ -143,6 +155,11 @@ public class City : MonoBehaviour {
 	//to be discussed 
     public void addCubes(Disease disease, int num)
     {
+        if (quarantineMarker > 0)
+        {
+            quarantineMarker--;
+            return;
+        }
         Color pColor = disease.getColor();
         int current = numberOfCubes[pColor];
         numberOfCubes.Remove(pColor);
@@ -152,6 +169,11 @@ public class City : MonoBehaviour {
 
     public void addCubes(int num)
     {
+        if (quarantineMarker > 0)
+        {
+            quarantineMarker--;
+            return;
+        }
         int current = numberOfCubes[color];
         numberOfCubes.Remove(color);
         numberOfCubes.Add(color, num + current);

@@ -1118,13 +1118,14 @@ public class Game : MonoBehaviour {
 
 
     private void move(Player pl1, City destinationCity){
+        
         RoleKind rolekind = pl1.getRoleKind();
         Pawn p = pl1.getPlayerPawn();
 		City initialCity = p.getCity();
 		p.setCity(destinationCity);
 		initialCity.removePawn(p);
 		destinationCity.addPawn(p);
-
+        
 		if (rolekind == RoleKind.Medic) {
 			resolveMedic (initialCity);
 		} else if (rolekind == RoleKind.ContainmentSpecialist) {
@@ -1136,7 +1137,12 @@ public class Game : MonoBehaviour {
 					destinationCity.removeCubes (diseases[c],1);
 				}
 			}
-		} 
+		}
+
+        if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers() > 1)
+        {
+            getBioTerrorist().spot();
+        }
     }
 
 	private void resolveMedic(City destinationCity){
