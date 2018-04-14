@@ -1042,7 +1042,10 @@ public class Game : MonoBehaviour {
 		if (currentPhase != GamePhase.PlayerTakeTurn)
 			return;
 		currentPhase = GamePhase.PlayerDrawCard;
-
+        if(currentPlayer == BioTerroristVolunteer)
+        {
+            getBioTerrorist().refillDriveAction();
+        }
 		currentPlayer.refillAction();
 		currentPlayer.setOncePerturnAction(false);
         currentPlayer.setMobileHospitalActivated(false);
