@@ -37,7 +37,7 @@ public class challengeSelection : MonoBehaviour {
             MutationChallenge.interactable = false;
             BioTerroristChallenge.interactable = false;
 			if (PhotonNetwork.room != null) {
-				string challenge = (Challenge)Enum.Parse (typeof(Challenge), PhotonNetwork.room.CustomProperties["Challenge"]);
+				Challenge challenge = (Challenge)Enum.Parse (typeof(Challenge), (string)PhotonNetwork.room.CustomProperties["Challenge"]);
 				if (challenge.Equals (Challenge.Nochallenge)) {
 					VirulentStrainChallenge.isOn = false;
 					MutationChallenge.isOn = false;

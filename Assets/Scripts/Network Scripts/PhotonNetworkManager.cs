@@ -14,6 +14,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 	private System.Random _rnd = new System.Random();
 	private List<GameObject> roomPrefabs = new List<GameObject> ();
+	private List<string> listOfSavedGame = new List<string>();
 
 	#region private methods
 	void Awake(){
@@ -22,6 +23,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 		foreach (FileInfo file in fileInfo) {
 			if (file.Extension == ".pandemic") {
 				Debug.Log (file.Name);
+				listOfSavedGame.Add (file.Name);
 			}
 		}
 		
