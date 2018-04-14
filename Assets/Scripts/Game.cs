@@ -1923,6 +1923,10 @@ public class Game : MonoBehaviour {
 
     public BioTerrorist getBioTerrorist()
     {
+        if (BioTerroristVolunteer == null)
+        {
+            return null;
+        }
         return (BioTerrorist) BioTerroristVolunteer.getRole();
 
     }
