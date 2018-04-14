@@ -323,10 +323,14 @@ public class Game : MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RPC_DisplayReExaminedResearch(){
+	public void RPC_displayReExaminedResearch(){
 		displayReExaminedResearch ();
 	}
 
+	[PunRPC]
+	public void RPC_displayNewAssignment(){
+		displayNewAssignment ();
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -486,7 +490,13 @@ public class Game : MonoBehaviour {
 
 	public void DisplayReExaminedResearch(string roleKindString){
 		PhotonPlayer targetPlayer = findPlayer (roleKindString).PhotonPlayer;
-		PhotonView.RPC ("RPC_DisplayReExaminedResearch",targetPlayer);
+		PhotonView.RPC ("RPC_displayReExaminedResearch",targetPlayer);
+	}
+
+	public void DisplayNewAssignment(string roleKindString){
+		PhotonPlayer targetPlayer = findPlayer (roleKindString).PhotonPlayer;
+		PhotonView.RPC ("RPC_displayNewAssignment",targetPlayer);
+		
 	}
     #endregion
 
@@ -1302,6 +1312,10 @@ public class Game : MonoBehaviour {
 
 	private void displayReExaminedResearch(){
 		eventController.doReExamineResearch ();
+	}
+
+	private void displayNewAssignment(){
+		eventController.doNewAssignment ();
 	}
 
 	#endregion
