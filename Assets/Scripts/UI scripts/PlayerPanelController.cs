@@ -37,10 +37,15 @@ public class PlayerPanelController : MonoBehaviour
 	public void swapRoleOther(RoleKind roleKindOld,RoleKind roleKindNew){
 		foreach (Transform t in this.transform)
 		{
-			if (this.transform.GetChild (2).GetComponent<Text> ().text.Equals (roleKindOld)) {
-				this.transform.GetChild (2).GetComponent<Text> ().text = roleKindNew.ToString ();
-				this.transform.GetChild(1).GetComponent<Image>().color = Maps.getInstance().getRoleColor(roleKindNew);
-				break;
+			if (t.gameObject.activeSelf) {
+				Debug.Log (t.transform.GetChild (2).GetComponent<Text> ().text);
+				Debug.Log (roleKindOld);
+				if (t.transform.GetChild (2).GetComponent<Text> ().text.Equals (roleKindOld.ToString())) {
+					Debug.Log ("FIND");
+					t.transform.GetChild (2).GetComponent<Text> ().text = roleKindNew.ToString ();
+					t.transform.GetChild (1).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (roleKindNew);
+					break;
+				}
 			}
 
 		}		
