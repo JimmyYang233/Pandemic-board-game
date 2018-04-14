@@ -66,16 +66,16 @@ public class Player {
                 putCube(0,amount);
                 
         if (c == Color.red)
-                putCube(0, amount);
+                putCube(1, amount);
                 
         if (c == Color.yellow)
-                putCube(0, amount);
+                putCube(2, amount);
                 
         if (c == Color.black)
-                putCube(0, amount);
+                putCube(3, amount);
                 
         if (c == Color.magenta)
-                putCube(0, amount);
+                putCube(4, amount);
     }
 
     public void returnCubes(int index, int amount)
@@ -88,6 +88,26 @@ public class Player {
         {
             Debug.Log("not enough");
         }
+    }
+
+    public void returnCubes(Disease d, int amount)
+    {
+        Color c = d.getColor();
+
+        if (c == Color.blue)
+            returnCubes(0, amount);
+
+        if (c == Color.red)
+            returnCubes(1, amount);
+
+        if (c == Color.yellow)
+            returnCubes(2, amount);
+
+        if (c == Color.black)
+            returnCubes(3, amount);
+
+        if (c == Color.magenta)
+            returnCubes(4, amount);
     }
 
     public bool hasEventCardInFront()

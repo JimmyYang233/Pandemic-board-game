@@ -2218,7 +2218,12 @@ public class Game : MonoBehaviour {
 		player.setOncePerturnAction(true);
 	}
 	
-    
+    private void fieldOperativePutBack(Player pl, Color c)
+    {
+        Disease d = diseases[c];
+        pl.returnCubes(d,1);
+        d.incrementNumOfDiseaseCubeLeft();  
+    }
 
     #region notify methods
     // to do: inform the player that they lose the game
