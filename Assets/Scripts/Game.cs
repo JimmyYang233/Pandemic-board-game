@@ -342,7 +342,7 @@ public class Game : MonoBehaviour {
 	public void RPC_fieldOperativePutBack(string playerRoleKind, string colorString){
 		Player targetPlayer = findPlayer (playerRoleKind);
 		Color color = stringToColor (colorString);
-		fieldOperativePutBack (targetPlayer,stringToColor);
+		fieldOperativePutBack (targetPlayer,color);
 	}
     #endregion
 
