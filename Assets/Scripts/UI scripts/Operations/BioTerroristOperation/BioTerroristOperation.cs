@@ -12,6 +12,7 @@ public class BioTerroristOperation : MonoBehaviour {
     public Button sabotageButton;
     public Button escapeButton;
     public Button passButton;
+    public MoveOperation moveOperation;
     Player me;
     Player currentPlayer;
 
@@ -36,5 +37,19 @@ public class BioTerroristOperation : MonoBehaviour {
                 passButton.GetComponent<Button>().interactable = true;
             }
         }
+        else
+        {
+            resetAll();
+        }
 	}
+
+    public void resetAll()
+    {
+        drawButton.GetComponent<Button>().interactable = false;
+        moveButton.GetComponent<Button>().interactable = false;
+        infectButton.GetComponent<Button>().interactable = false;
+        sabotageButton.GetComponent<Button>().interactable = false;
+        escapeButton.GetComponent<Button>().interactable = false;
+        passButton.GetComponent<Button>().interactable = false;
+    }
 }

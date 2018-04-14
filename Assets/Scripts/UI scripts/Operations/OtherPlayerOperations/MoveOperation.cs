@@ -9,6 +9,12 @@ public class MoveOperation : MonoBehaviour {
     public Button shuttleFlightButton;
     public Button charterFlightButton;
     public Button cancelButton;
+
+    public Button bioDriveButton;
+    public Button bioDirectFlightButton;
+    public Button bioCharterFlightButton;
+    public Button bioCancelButton;
+
     public playerSelectionPanel playerSelect;
 
     Game game;
@@ -218,4 +224,49 @@ public class MoveOperation : MonoBehaviour {
         }
     }
 
+    //bio-Terrorist Operations
+    public void bioMoveButtonClicked()
+    {
+        BioTerrorist bioterrorist = game.getBioTerrorist();
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        bioDriveButton.gameObject.GetComponent<Button>().interactable = true;
+        if (currentPlayer.containsInfectionCard())
+        {
+            bioDirectFlightButton.gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        if (currentPlayer.containsSpecificInfectionCard(currentCity))
+        {
+            bioCharterFlightButton.gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        bioCancelButton.gameObject.GetComponent<Button>().interactable = true;
+    }
+
+    public void bioDriveButtonClicked()
+    {
+        bioDriveButton.GetComponent<Button>().interactable = false;
+        bioDirectFlightButton.GetComponent<Button>().interactable = false;
+        bioCharterFlightButton.GetComponent<Button>().interactable = false;
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        foreach (City neighbor in currentCity.getNeighbors())
+        {
+            neighbor.displayButton();
+        }
+        moveStatus = Status.DRIVE;
+    }
+
+    public void bioCancelButtonClicked()
+    {
+        driveButton.GetComponent<Button>().interactable = false;
+        directFlightButton.GetComponent<Button>().interactable = false;
+        charterFlightButton.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = false;
+        foreach (City city in game.getCities())
+        {
+            city.undisplayButton();
+        }
+    }
 }
