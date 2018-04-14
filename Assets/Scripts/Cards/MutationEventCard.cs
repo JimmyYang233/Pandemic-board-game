@@ -9,7 +9,6 @@ public class MutationEventCard : PlayerCard {
 
     // private static Dictionary<EventKind, EventCard> eventCards = new Dictionary<EventKind, EventCard>();
     private MutationEvent MutationEvent;
-	private string name = "MutationEventCard";
 
 
     public MutationEventCard(MutationEvent me): base(CardType.MutationEventCard)
@@ -22,7 +21,7 @@ public class MutationEventCard : PlayerCard {
     }
 
 	public override string getName(){
-		return name;
+		return MutationEvent.ToString();
 	}
     
 }

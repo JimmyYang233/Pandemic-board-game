@@ -5,5 +5,12 @@ using UnityEngine;
 
 public enum VirulentStrainEpidemicEffects
 {
-    ChronicEffect,ComplexMolecularStructure,GovernmentInterference,HiddenPocket
+    ChronicEffect,
+    ComplexMolecularStructure,
+    GovernmentInterference, 
+    HiddenPocket, 
+    RateEffect, 
+    SlipperySlope,
+    UnacceptableLoss,
+    UncountedPopulatIons
 }

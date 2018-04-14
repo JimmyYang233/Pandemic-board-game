@@ -1707,6 +1707,9 @@ public class Game : MonoBehaviour {
 					}
 				}
 				break;
+			default:
+				Debug.Log("no Virulent Strain Epidemic Effects");
+				break;
 			}
 		}
 
