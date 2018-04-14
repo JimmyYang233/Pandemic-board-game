@@ -7308,8 +7308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.99504, y: -250.44}
-  m_SizeDelta: {x: 251.61, y: 34.58}
+  m_AnchoredPosition: {x: -21.045, y: -204.12}
+  m_SizeDelta: {x: 171.9, y: 32.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216771469
 MonoBehaviour:
@@ -31423,7 +31423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &878742667
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35415,18 +35415,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1012884032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.01427337, g: 0.9705882, b: 0.5748717, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0d113733be304465e99df7b6d448506a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -56088,7 +56088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127.90496, y: -249.69995}
+  m_AnchoredPosition: {x: 87, y: -206}
   m_SizeDelta: {x: 44.19, y: 36.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668992942
@@ -63631,7 +63631,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -73643,8 +73643,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2059910300}
   m_HandleRect: {fileID: 2059910299}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.99620754
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
