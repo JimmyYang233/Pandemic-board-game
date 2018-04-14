@@ -10,9 +10,9 @@ public class PhotonNetworkManager : MonoBehaviour {
 	//public InputField maxCount;
 	public InputField playerName;
 	public GameObject roomPrefab;
+    public GameObject loadPanel;
 
-
-	private System.Random _rnd = new System.Random();
+    private System.Random _rnd = new System.Random();
 	private List<GameObject> roomPrefabs = new List<GameObject> ();
 	private List<string> listOfSavedGame = new List<string>();
 
@@ -142,6 +142,24 @@ public class PhotonNetworkManager : MonoBehaviour {
 			break;
 		}
 	}
-	#endregion
+
+    public void LoadButtonClicked()
+    {
+        loadPanel.gameObject.SetActive(true);
+        int count = listOfSavedGame.Count;
+        for(int i = 0; i< count; i++)
+        {
+            loadPanel.transform.GetChild(i).gameObject.SetActive(true);
+            loadPanel.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text = listOfSavedGame[i];
+            loadPanel.transform.GetChild(i).gameObject.GetComponent<Button>().onClick.AddListener(() => onClick(listOfSavedGame[i]));
+
+        }
+    }
+
+    public void onClick(string loadName)
+    {
+        //TO-DO
+    }
+    #endregion
 
 }
