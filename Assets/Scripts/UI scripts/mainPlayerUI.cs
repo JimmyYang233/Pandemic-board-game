@@ -39,30 +39,33 @@ public class mainPlayerUI : MonoBehaviour {
             card.gameObject.SetActive(false);
             card.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
         }
+        displayCubes();
     }
     public void displayCubes()
     {
         if (me.getRoleKind() == RoleKind.FieldOperative)
         {
-            Dictionary<Color, int> numberOfCubes = new Dictionary<Color, int>(); //TO-DO a way to get them
+            int[] numberOfCubes = me.getAllCubes();
             foreach (Transform child in cubeHolder.transform)
             {
                 GameObject.Destroy(child.gameObject);
             }
             List<string> cubes = new List<string>();
-            foreach (Color color in numberOfCubes.Keys)
+            for(int i = 0; i<5; i++)
             {
-                for (int i = 0; i < numberOfCubes[color]; i++)
+                Debug.Log(i + " has " + numberOfCubes[i]);
+                for (int j = 0; j < numberOfCubes[i]; i++)
                 {
-                    if (color == Color.black)
+                    
+                    if (i == 3)
                     {
                         cubes.Add(blackCube);
                     }
-                    else if (color == Color.red)
+                    else if (i == 1)
                     {
                         cubes.Add(redCube);
                     }
-                    else if (color == Color.blue)
+                    else if (i == 0)
                     {
                         cubes.Add(blueCube);
                     }
