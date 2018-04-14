@@ -38,15 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
->>>>>>> parent of 1127ce8... Merge branch 'master' of https://github.com/COMP361/f2017-group3
-=======
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
->>>>>>> parent of 1127ce8... Merge branch 'master' of https://github.com/COMP361/f2017-group3
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -395,8 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d145dca211512d44a0207fe4a477490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  scroll: {fileID: 0}
+  game: {fileID: 73084184}
+  scroll: {fileID: 10558116}
   eventCardTime: 0
 --- !u!1 &12452838
 GameObject:
@@ -2004,21 +1996,18 @@ MonoBehaviour:
   PhotonView: {fileID: 0}
   infectionRate: 2
   outbreaksValue: 0
-  playerPanel: {fileID: 0}
-  mainPlayerPanel: {fileID: 0}
-  playerSelect: {fileID: 0}
-  shareOperation: {fileID: 0}
-  passOperation: {fileID: 0}
-  chatBox: {fileID: 0}
-  record: {fileID: 0}
-  infectionDiscardUI: {fileID: 0}
-  eventController: {fileID: 0}
-  nEpidemicCard: 0
-  playerPawn: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75,
-    type: 2}
-  bioTerroristPawn: {fileID: 114061088410261570, guid: 6aabe10741e81e64186cb938a9b5695a,
-    type: 2}
-  gameInfoController: {fileID: 0}
+  playerPanel: {fileID: 1923207385}
+  mainPlayerPanel: {fileID: 177066089}
+  playerSelect: {fileID: 346002627}
+  shareOperation: {fileID: 1340808470}
+  passOperation: {fileID: 1069413776}
+  chatBox: {fileID: 124084468}
+  record: {fileID: 1438105360}
+  infectionDiscardUI: {fileID: 788425839}
+  eventController: {fileID: 1900971760}
+  nEpidemicCard: 4
+  prefab: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75, type: 2}
+  gameInfoController: {fileID: 1779426929}
 --- !u!224 &73084185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2052,15 +2041,15 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 0
+  synchronization: 1
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 73084185}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 3
+  instantiationId: 3
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!1 &75065537
@@ -3768,10 +3757,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f476e08f8883148bfb0bc86d643129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  textDisplay: {fileID: 0}
-  game: {fileID: 0}
-  scrollBar: {fileID: 0}
+  input: {fileID: 216771469}
+  textDisplay: {fileID: 1380428677}
+  game: {fileID: 73084184}
+  scrollBar: {fileID: 2122921558}
 --- !u!1 &124241596
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,12 +3862,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393ac91195f49a84ab35830e187cfa6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  driveButton: {fileID: 0}
-  directFlightButton: {fileID: 0}
-  shuttleFlightButton: {fileID: 0}
-  charterFlightButton: {fileID: 0}
-  cancelButton: {fileID: 0}
-  playerSelect: {fileID: 0}
+  driveButton: {fileID: 21281695}
+  directFlightButton: {fileID: 1077415816}
+  shuttleFlightButton: {fileID: 597376514}
+  charterFlightButton: {fileID: 914999443}
+  cancelButton: {fileID: 708000213}
+  playerSelect: {fileID: 346002627}
 --- !u!224 &125200432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3998,8 +3987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2d5310d2b80417a917f9933243b575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  basicOperation: {fileID: 0}
+  game: {fileID: 73084184}
+  basicOperation: {fileID: 660150423}
 --- !u!4 &126167616
 Transform:
   m_ObjectHideFlags: 0
@@ -5808,14 +5797,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8a002627488944aadf49662e513f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCardPrefab: {fileID: 0}
-  eventCardPrefab: {fileID: 0}
-  playerCardStart: {fileID: 0}
-  eventCardStart: {fileID: 0}
-  eventCardPanel: {fileID: 0}
-  radius: 0
-  totalDegree: 0
-  maxSpace: 0
+  PlayerCardPrefab: {fileID: 1365530616001778, guid: d81038025b0dcf0439693c95dbcb3aad,
+    type: 2}
+  eventCardPrefab: {fileID: 1563410207794540, guid: f68bc34d0a3a94d2e8b878e89b746785,
+    type: 2}
+  playerCardStart: {fileID: 532244875}
+  eventCardStart: {fileID: 752810892}
+  eventCardPanel: {fileID: 1900971756}
+  radius: 70
+  totalDegree: 90
+  maxSpace: 20
 --- !u!1 &178455724
 GameObject:
   m_ObjectHideFlags: 0
@@ -6163,9 +6154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 32
+  neighbors:
+  - {fileID: 1521600202}
+  - {fileID: 214404735}
+  - {fileID: 784909844}
 --- !u!222 &195733778
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6754,9 +6748,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 10
+  neighbors:
+  - {fileID: 1201592486}
+  - {fileID: 1521600202}
+  - {fileID: 195733777}
+  - {fileID: 784909844}
+  - {fileID: 784909845}
 --- !u!222 &214404736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6925,11 +6924,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8587907c505b74248a56594804fdfc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agreePanel: {fileID: 0}
-  eventController: {fileID: 0}
-  game: {fileID: 0}
+  agreePanel: {fileID: 250146712}
+  eventController: {fileID: 1900971760}
+  game: {fileID: 73084184}
   status: 0
-  share: {fileID: 0}
+  share: {fileID: 1340808470}
 --- !u!1 &215633208
 GameObject:
   m_ObjectHideFlags: 0
@@ -10369,7 +10368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a92c80c7e8d4fbda85f9330b923d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventCardPanel: {fileID: 0}
+  eventCardPanel: {fileID: 1900971756}
 --- !u!1001 &332554011
 Prefab:
   m_ObjectHideFlags: 0
@@ -11091,13 +11090,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27d35747a6e8964cb2f0e52bdd4d152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  share: {fileID: 0}
-  move: {fileID: 0}
-  epidemiologist: {fileID: 0}
-  eventController: {fileID: 0}
+  game: {fileID: 73084184}
+  share: {fileID: 1340808470}
+  move: {fileID: 125200431}
+  epidemiologist: {fileID: 590150772}
+  eventController: {fileID: 1900971760}
   selectStatus: 0
-  selectCard: {fileID: 0}
+  selectCard: {fileID: 990919270}
 --- !u!222 &346002628
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12469,8 +12468,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000011444092}
-  m_SizeDelta: {x: 132.46, y: 30}
+  m_AnchoredPosition: {x: 0.000083923, y: -0.0024948}
+  m_SizeDelta: {x: 303, y: 467.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &392740703
 MonoBehaviour:
@@ -13706,7 +13705,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 73084184}
-        m_MethodName: quit
+        m_MethodName: quitAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15077,6 +15076,26 @@ Prefab:
     - target: {fileID: 1702393532528080, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000011444303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0025329706
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
@@ -19091,10 +19110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f220d1dba8c842e898c2a355cddf128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  epidemiologistOnlyPanel: {fileID: 0}
-  game: {fileID: 0}
-  playerSelect: {fileID: 0}
-  cardSelection: {fileID: 0}
+  epidemiologistOnlyPanel: {fileID: 1573300317}
+  game: {fileID: 73084184}
+  playerSelect: {fileID: 346002627}
+  cardSelection: {fileID: 990919270}
 --- !u!1 &592131450
 GameObject:
   m_ObjectHideFlags: 0
@@ -20626,9 +20645,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 9
+  neighbors:
+  - {fileID: 1972338544}
+  - {fileID: 1024837862}
+  - {fileID: 784909810}
+  - {fileID: 784909809}
+  - {fileID: 784909817}
 --- !u!1001 &637417056
 Prefab:
   m_ObjectHideFlags: 0
@@ -21525,19 +21549,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9104ed287f3e145bed4b573ca8d27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicOperationPanel: {fileID: 0}
-  bioTerroristPanel: {fileID: 0}
-  moveButton: {fileID: 0}
-  treatButton: {fileID: 0}
-  cureButton: {fileID: 0}
-  buildButton: {fileID: 0}
-  shareButton: {fileID: 0}
-  passButton: {fileID: 0}
-  contingencyPlannerSkillButton: {fileID: 0}
-  archivistSkillButton: {fileID: 0}
-  fieldOperativeSkillButton: {fileID: 0}
-  epidemiologistSkillButton: {fileID: 0}
-  dispatcherSkillButton: {fileID: 0}
+  basicOperationPanel: {fileID: 182712636}
+  bioTerroristPanel: {fileID: 681583566}
+  moveButton: {fileID: 2000924703}
+  treatButton: {fileID: 1949369147}
+  cureButton: {fileID: 1732076110}
+  buildButton: {fileID: 412586238}
+  shareButton: {fileID: 1727023487}
+  passButton: {fileID: 1690017431}
+  contingencyPlannerSkillButton: {fileID: 1933850050}
+  archivistSkillButton: {fileID: 2093747171}
+  fieldOperativeSkillButton: {fileID: 1204905168}
+  epidemiologistSkillButton: {fileID: 1435711907}
+  dispatcherSkillButton: {fileID: 624561548}
 --- !u!224 &660150424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22434,6 +22458,26 @@ Prefab:
     - target: {fileID: 1702393532528080, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000026703303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0025329706
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
@@ -26961,9 +27005,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 24
+  neighbors:
+  - {fileID: 784909817}
+  - {fileID: 635151403}
+  - {fileID: 784909810}
+  - {fileID: 784909818}
 --- !u!114 &784909810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26976,9 +27024,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 27
+  neighbors:
+  - {fileID: 635151403}
+  - {fileID: 784909809}
+  - {fileID: 1917851605}
+  - {fileID: 784909821}
+  - {fileID: 784909819}
 --- !u!114 &784909811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26991,9 +27044,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 33
+  neighbors:
+  - {fileID: 1972338544}
+  - {fileID: 1018759369}
+  - {fileID: 784909834}
+  - {fileID: 784909823}
 --- !u!114 &784909813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27006,9 +27063,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 3
+  neighbors:
+  - {fileID: 784909845}
+  - {fileID: 784909844}
+  - {fileID: 784909843}
+  - {fileID: 784909842}
+  - {fileID: 784909814}
 --- !u!114 &784909814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27021,9 +27083,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 13
+  neighbors:
+  - {fileID: 784909845}
+  - {fileID: 784909813}
+  - {fileID: 784909842}
+  - {fileID: 784909841}
+  - {fileID: 784909840}
+  - {fileID: 784909815}
 --- !u!114 &784909815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27036,9 +27104,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 41
+  neighbors:
+  - {fileID: 784909839}
+  - {fileID: 784909838}
+  - {fileID: 784909816}
+  - {fileID: 784909840}
+  - {fileID: 784909814}
 --- !u!114 &784909816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27051,9 +27124,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 46
+  neighbors:
+  - {fileID: 784909838}
+  - {fileID: 784909815}
+  - {fileID: 784909837}
+  - {fileID: 784909817}
 --- !u!114 &784909817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27066,9 +27143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 37
+  neighbors:
+  - {fileID: 635151403}
+  - {fileID: 784909809}
+  - {fileID: 784909816}
+  - {fileID: 784909841}
 --- !u!114 &784909818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27081,9 +27162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 43
+  neighbors:
+  - {fileID: 784909841}
+  - {fileID: 784909843}
+  - {fileID: 784909809}
 --- !u!114 &784909819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27096,9 +27180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 22
+  neighbors:
+  - {fileID: 784909810}
+  - {fileID: 784909821}
+  - {fileID: 784909820}
 --- !u!114 &784909820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27111,9 +27198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 38
+  neighbors:
+  - {fileID: 784909819}
 --- !u!114 &784909821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27126,9 +27214,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 5
+  neighbors:
+  - {fileID: 784909810}
+  - {fileID: 784909819}
+  - {fileID: 784909836}
+  - {fileID: 784909822}
+  - {fileID: 1917851605}
 --- !u!114 &784909822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27141,9 +27234,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 39
+  neighbors:
+  - {fileID: 784909821}
+  - {fileID: 784909836}
+  - {fileID: 784909835}
+  - {fileID: 784909823}
 --- !u!114 &784909823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27156,9 +27253,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 25
+  neighbors:
+  - {fileID: 784909811}
+  - {fileID: 784909834}
+  - {fileID: 784909833}
+  - {fileID: 784909824}
+  - {fileID: 784909822}
 --- !u!114 &784909824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27171,9 +27273,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
   cityName: 0
-  neighbors: []
+  neighbors:
+  - {fileID: 784909823}
+  - {fileID: 784909833}
+  - {fileID: 784909832}
+  - {fileID: 2109818244}
 --- !u!114 &784909825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27186,9 +27292,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 18
+  neighbors:
+  - {fileID: 784909835}
+  - {fileID: 784909827}
+  - {fileID: 784909826}
 --- !u!114 &784909826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27201,9 +27310,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 16
+  neighbors:
+  - {fileID: 784909827}
+  - {fileID: 784909825}
 --- !u!114 &784909827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27216,9 +27327,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 19
+  neighbors:
+  - {fileID: 784909835}
+  - {fileID: 784909825}
+  - {fileID: 784909826}
 --- !u!114 &784909828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27231,9 +27345,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 31
+  neighbors:
+  - {fileID: 784909829}
+  - {fileID: 784909832}
+  - {fileID: 1201592486}
 --- !u!114 &784909829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27246,9 +27363,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 42
+  neighbors:
+  - {fileID: 784909830}
+  - {fileID: 784909832}
+  - {fileID: 784909828}
 --- !u!114 &784909830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27261,9 +27381,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 11
+  neighbors:
+  - {fileID: 784909834}
+  - {fileID: 784909833}
+  - {fileID: 784909831}
+  - {fileID: 784909829}
 --- !u!114 &784909831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27276,9 +27400,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 29
+  neighbors:
+  - {fileID: 784909830}
+  - {fileID: 784909833}
+  - {fileID: 784909832}
 --- !u!114 &784909832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27291,9 +27418,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 14
+  neighbors:
+  - {fileID: 784909829}
+  - {fileID: 784909828}
+  - {fileID: 1277945684}
+  - {fileID: 2109818244}
+  - {fileID: 784909824}
+  - {fileID: 784909831}
 --- !u!114 &784909833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27306,9 +27439,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 35
+  neighbors:
+  - {fileID: 784909834}
+  - {fileID: 784909830}
+  - {fileID: 784909831}
+  - {fileID: 784909824}
+  - {fileID: 784909823}
 --- !u!114 &784909834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27321,9 +27459,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 23
+  neighbors:
+  - {fileID: 784909811}
+  - {fileID: 784909823}
+  - {fileID: 784909833}
+  - {fileID: 784909830}
 --- !u!114 &784909835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27336,9 +27478,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 21
+  neighbors:
+  - {fileID: 784909822}
+  - {fileID: 784909827}
+  - {fileID: 784909825}
 --- !u!114 &784909836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27351,9 +27496,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 6
+  neighbors:
+  - {fileID: 784909821}
+  - {fileID: 784909822}
 --- !u!114 &784909837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27366,9 +27513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 34
+  neighbors:
+  - {fileID: 784909840}
+  - {fileID: 784909816}
 --- !u!114 &784909838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27381,9 +27530,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 40
+  neighbors:
+  - {fileID: 784909839}
+  - {fileID: 784909815}
+  - {fileID: 784909816}
 --- !u!114 &784909839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27396,9 +27548,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 4
+  neighbors:
+  - {fileID: 784909815}
+  - {fileID: 784909838}
 --- !u!114 &784909840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27411,9 +27565,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 44
+  neighbors:
+  - {fileID: 784909837}
+  - {fileID: 784909815}
+  - {fileID: 784909814}
+  - {fileID: 784909841}
 --- !u!114 &784909841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27426,9 +27584,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 26
+  neighbors:
+  - {fileID: 784909817}
+  - {fileID: 784909840}
+  - {fileID: 784909814}
+  - {fileID: 784909842}
+  - {fileID: 784909818}
 --- !u!114 &784909842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27441,9 +27604,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 12
+  neighbors:
+  - {fileID: 784909813}
+  - {fileID: 784909843}
+  - {fileID: 784909841}
 --- !u!114 &784909843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27456,9 +27622,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cityName: 15
+  neighbors:
+  - {fileID: 784909844}
+  - {fileID: 784909813}
+  - {fileID: 784909842}
+  - {fileID: 784909818}
 --- !u!114 &784909844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27471,9 +27641,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 8
+  neighbors:
+  - {fileID: 195733777}
+  - {fileID: 214404735}
+  - {fileID: 784909845}
+  - {fileID: 784909813}
+  - {fileID: 784909843}
 --- !u!114 &784909845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27486,9 +27661,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 20
+  neighbors:
+  - {fileID: 214404735}
+  - {fileID: 784909844}
+  - {fileID: 784909813}
+  - {fileID: 784909814}
 --- !u!1 &788381340
 GameObject:
   m_ObjectHideFlags: 0
@@ -27614,8 +27793,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4041e708500e646987a1f2bfaebf87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  scroll: {fileID: 0}
+  game: {fileID: 73084184}
+  scroll: {fileID: 788425837}
   eventCardTime: 0
 --- !u!114 &788425840
 MonoBehaviour:
@@ -31966,9 +32145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9dc1397bb25cbf45b1985377dd5bbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contingencyPlannerOnlyPanel: {fileID: 0}
-  eventCardSelect: {fileID: 0}
-  game: {fileID: 0}
+  contingencyPlannerOnlyPanel: {fileID: 599101244}
+  eventCardSelect: {fileID: 599101244}
+  game: {fileID: 73084184}
 --- !u!4 &937231416
 Transform:
   m_ObjectHideFlags: 0
@@ -32806,12 +32985,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528d5c55ffa6c2949ae004a8751bb540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  takeBlueButton: {fileID: 0}
-  takeRedButton: {fileID: 0}
-  takeBlackButton: {fileID: 0}
-  takeYellowButton: {fileID: 0}
-  cancelButton: {fileID: 0}
+  game: {fileID: 73084184}
+  takeBlueButton: {fileID: 1272672473}
+  takeRedButton: {fileID: 1003977322}
+  takeBlackButton: {fileID: 1018981778}
+  takeYellowButton: {fileID: 1042882005}
+  cancelButton: {fileID: 1479100564}
 --- !u!4 &954440398
 Transform:
   m_ObjectHideFlags: 0
@@ -33234,14 +33413,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc4a347d24838b4e8c2d704026938bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  cureBlue: {fileID: 0}
-  cureYellow: {fileID: 0}
-  cureBlack: {fileID: 0}
-  cureRed: {fileID: 0}
-  cancelButton: {fileID: 0}
-  playerCardPanel: {fileID: 0}
-  confirmCure: {fileID: 0}
+  game: {fileID: 73084184}
+  cureBlue: {fileID: 1325348435}
+  cureYellow: {fileID: 640783355}
+  cureBlack: {fileID: 239561579}
+  cureRed: {fileID: 1042498468}
+  cancelButton: {fileID: 1235403637}
+  playerCardPanel: {fileID: 177066085}
+  confirmCure: {fileID: 1046633411}
 --- !u!1 &964995258
 GameObject:
   m_ObjectHideFlags: 0
@@ -33690,10 +33869,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d1b61c231e66a499ed6e94f7c3f9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  card: {fileID: 0}
-  cubeHolder: {fileID: 0}
-  eventCard: {fileID: 0}
+  game: {fileID: 73084184}
+  card: {fileID: 329504041}
+  cubeHolder: {fileID: 1932018190}
+  eventCard: {fileID: 329504044}
 --- !u!1 &983929108
 GameObject:
   m_ObjectHideFlags: 0
@@ -33954,9 +34133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7518504dbc6a24d92923f2fe6446017f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  share: {fileID: 0}
-  epidemiologist: {fileID: 0}
+  game: {fileID: 73084184}
+  share: {fileID: 1340808470}
+  epidemiologist: {fileID: 590150772}
 --- !u!222 &990919272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34773,9 +34952,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 47
+  neighbors:
+  - {fileID: 784909811}
+  - {fileID: 1972338544}
+  - {fileID: 1024837862}
+  - {fileID: 1917851605}
 --- !u!1 &1018981774
 GameObject:
   m_ObjectHideFlags: 0
@@ -35006,9 +35189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 1
+  neighbors:
+  - {fileID: 635151403}
+  - {fileID: 1018759369}
+  - {fileID: 1917851605}
 --- !u!1 &1024848839 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1519134435638626, guid: b911c18d0f18e66488fafae5448df6e1,
@@ -36628,9 +36814,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b2430ddc94d0f4b921a9e679e6677c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  informResultPanel: {fileID: 0}
-  informEpidemicPanel: {fileID: 0}
-  game: {fileID: 0}
+  informResultPanel: {fileID: 315254070}
+  informEpidemicPanel: {fileID: 1952993444}
+  game: {fileID: 73084184}
 --- !u!4 &1069413777
 Transform:
   m_ObjectHideFlags: 0
@@ -36847,6 +37033,26 @@ Prefab:
     - target: {fileID: 1702393532528080, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.728484e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030517396
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
@@ -37176,6 +37382,26 @@ Prefab:
     - target: {fileID: 1702393532528080, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888213
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
@@ -37567,11 +37793,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ae02d5065f86646b3e4f71f42d92fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueButton: {fileID: 0}
-  yellowButton: {fileID: 0}
-  blackButton: {fileID: 0}
-  redButton: {fileID: 0}
-  cancelButton: {fileID: 0}
+  blueButton: {fileID: 1486297782}
+  yellowButton: {fileID: 2024154950}
+  blackButton: {fileID: 1525791695}
+  redButton: {fileID: 1549289030}
+  cancelButton: {fileID: 414710289}
 --- !u!224 &1108456754
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40063,9 +40289,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 45
+  neighbors:
+  - {fileID: 784909828}
+  - {fileID: 1277945684}
+  - {fileID: 1521600202}
+  - {fileID: 214404735}
 --- !u!222 &1201592487
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41683,13 +41913,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849aed1c0e6165748aa236617ecafb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  drawButton: {fileID: 0}
-  moveButton: {fileID: 0}
-  infectButton: {fileID: 0}
-  sabotageButton: {fileID: 0}
-  escapeButton: {fileID: 0}
-  passButton: {fileID: 0}
+  game: {fileID: 73084184}
+  drawButton: {fileID: 232815414}
+  moveButton: {fileID: 846366178}
+  infectButton: {fileID: 350287809}
+  sabotageButton: {fileID: 986527864}
+  escapeButton: {fileID: 1787521805}
+  passButton: {fileID: 1712606086}
 --- !u!1 &1239431085
 GameObject:
   m_ObjectHideFlags: 0
@@ -42596,6 +42826,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000038147
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000022888
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
   m_IsPrefabParent: 0
@@ -42997,9 +43247,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 2
+  neighbors:
+  - {fileID: 784909832}
+  - {fileID: 2109818244}
+  - {fileID: 2143648673}
+  - {fileID: 1521600202}
+  - {fileID: 1201592486}
 --- !u!222 &1277945685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -44070,6 +44325,26 @@ Prefab:
     - target: {fileID: 1702393532528080, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0025406
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
@@ -45192,18 +45467,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28d784dc1dfd404dad9bd631f534690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agreePanel: {fileID: 0}
-  playerCardPanel: {fileID: 0}
-  informResultPanel: {fileID: 0}
-  shareOperationPanel: {fileID: 0}
-  waitingPanel: {fileID: 0}
-  basicOperationPanel: {fileID: 0}
-  playerSelect: {fileID: 0}
-  otherPlayers: {fileID: 0}
-  giveButton: {fileID: 0}
-  takeButton: {fileID: 0}
-  cancelButton: {fileID: 0}
-  basicOperation: {fileID: 0}
+  agreePanel: {fileID: 250146712}
+  playerCardPanel: {fileID: 177066085}
+  informResultPanel: {fileID: 315254070}
+  shareOperationPanel: {fileID: 1304906788}
+  waitingPanel: {fileID: 1312684473}
+  basicOperationPanel: {fileID: 182712636}
+  playerSelect: {fileID: 346002627}
+  otherPlayers: {fileID: 1923207381}
+  giveButton: {fileID: 148751997}
+  takeButton: {fileID: 383723591}
+  cancelButton: {fileID: 1217991699}
+  basicOperation: {fileID: 660150423}
 --- !u!224 &1340808471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48064,8 +48339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ba2ce934f387645a25506f5370697a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textDisplay: {fileID: 0}
-  scrollBar: {fileID: 0}
+  textDisplay: {fileID: 1974742611}
+  scrollBar: {fileID: 301112536}
 --- !u!1 &1441820403
 GameObject:
   m_ObjectHideFlags: 0
@@ -48542,6 +48817,26 @@ Prefab:
     - target: {fileID: 1702393532528080, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0025406
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
@@ -49840,6 +50135,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000005722
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.024992
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
   m_IsPrefabParent: 0
@@ -50170,9 +50485,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 17
+  neighbors:
+  - {fileID: 1201592486}
+  - {fileID: 1277945684}
+  - {fileID: 214404735}
+  - {fileID: 195733777}
+  - {fileID: 2143648673}
 --- !u!222 &1521600203
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53126,8 +53446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910f0a740b6044d81a373cbf464b03fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  game: {fileID: 0}
+  input: {fileID: 751196210}
+  game: {fileID: 73084184}
 --- !u!114 &1638852003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58510,14 +58830,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcfdfdef2f295f24e80b4c1f18fc6b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  outbreak: {fileID: 0}
-  infection: {fileID: 0}
-  cubeLeft: {fileID: 0}
-  researchLabLeft: {fileID: 0}
-  cardLeft: {fileID: 0}
-  outbreakrates: []
-  infectionrates: []
+  game: {fileID: 73084184}
+  outbreak: {fileID: 1129109007}
+  infection: {fileID: 304775218}
+  cubeLeft: {fileID: 515891268}
+  researchLabLeft: {fileID: 997094495}
+  cardLeft: {fileID: 1482294529}
+  outbreakrates:
+  - {fileID: 964995258}
+  - {fileID: 35393515}
+  - {fileID: 326996132}
+  - {fileID: 2062327224}
+  - {fileID: 637776918}
+  - {fileID: 1700693453}
+  - {fileID: 15540923}
+  - {fileID: 1300778688}
+  infectionrates:
+  - {fileID: 1455904497}
+  - {fileID: 1027348980}
+  - {fileID: 380084524}
+  - {fileID: 319753231}
+  - {fileID: 1027902014}
+  - {fileID: 174336662}
+  - {fileID: 1592342989}
 --- !u!1 &1787521803
 GameObject:
   m_ObjectHideFlags: 0
@@ -59923,10 +60258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7103b5b1e1dca740bfcef7345a15a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  mainCanavas: {fileID: 0}
-  winPanel: {fileID: 0}
-  losePanel: {fileID: 0}
+  game: {fileID: 73084184}
+  mainCanavas: {fileID: 1850405380}
+  winPanel: {fileID: 573594284}
+  losePanel: {fileID: 592131450}
 --- !u!1 &1850631059
 GameObject:
   m_ObjectHideFlags: 0
@@ -60808,6 +61143,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0024796
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
   m_IsPrefabParent: 0
@@ -61286,6 +61641,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000011444303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0024719704
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
   m_IsPrefabParent: 0
@@ -61330,10 +61705,11 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
+  viewIdField: 1
+  instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &1880472409
@@ -62112,18 +62488,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c5a5bd97ec74ff39868d6ecc0bf6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  informEvent: {fileID: 0}
-  otherPlayers: {fileID: 0}
-  playerSelect: {fileID: 0}
-  agreeController: {fileID: 0}
-  informResultPanel: {fileID: 0}
+  game: {fileID: 73084184}
+  informEvent: {fileID: 1210501276}
+  otherPlayers: {fileID: 1923207381}
+  playerSelect: {fileID: 346002627}
+  agreeController: {fileID: 215428524}
+  informResultPanel: {fileID: 315254070}
   status: 1
   requestSource: 
-  infectionDiscardPile: {fileID: 0}
-  forecastPanel: {fileID: 0}
-  newAssignmentPanel: {fileID: 0}
-  playerDiscard: {fileID: 0}
+  infectionDiscardPile: {fileID: 788425837}
+  forecastPanel: {fileID: 106833131}
+  newAssignmentPanel: {fileID: 655612832}
+  playerDiscard: {fileID: 10558121}
   cityToBuild: {fileID: 0}
 --- !u!1 &1902755404
 GameObject:
@@ -62807,9 +63183,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  cityName: 28
+  neighbors:
+  - {fileID: 1024837862}
+  - {fileID: 1018759369}
+  - {fileID: 784909810}
+  - {fileID: 784909821}
 --- !u!1 &1922055353
 GameObject:
   m_ObjectHideFlags: 0
@@ -63094,7 +63474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b24915f3a692e4f9e1fe7a06f4455d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSelect: {fileID: 0}
+  playerSelect: {fileID: 346002627}
 --- !u!1 &1930274073
 GameObject:
   m_ObjectHideFlags: 0
@@ -64634,9 +65014,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 1, a: 1}
+  cityName: 30
+  neighbors:
+  - {fileID: 784909811}
+  - {fileID: 1018759369}
+  - {fileID: 635151403}
 --- !u!114 &1972338545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65693,7 +66076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b63e78180e2ad14a9366e4613c4cb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 50
 --- !u!1 &2000924701
 GameObject:
   m_ObjectHideFlags: 0
@@ -66775,6 +67158,26 @@ Prefab:
     - target: {fileID: 1702393532528080, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
@@ -70283,9 +70686,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 7
+  neighbors:
+  - {fileID: 784909824}
+  - {fileID: 784909832}
+  - {fileID: 1277945684}
+  - {fileID: 2143648673}
+  - {fileID: 784909825}
 --- !u!222 &2109818245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71050,6 +71458,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000026703303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0025329706
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224886282049710930, guid: 0de505200022e45b886437ba1413fcd2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0de505200022e45b886437ba1413fcd2, type: 2}
   m_IsPrefabParent: 0
@@ -71672,9 +72100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebffcce9d96bb54a95757bf3efa90cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cityName: 0
-  neighbors: []
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cityName: 36
+  neighbors:
+  - {fileID: 2109818244}
+  - {fileID: 1277945684}
+  - {fileID: 1521600202}
 --- !u!222 &2143648674
 CanvasRenderer:
   m_ObjectHideFlags: 0

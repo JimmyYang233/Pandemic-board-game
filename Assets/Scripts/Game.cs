@@ -72,8 +72,7 @@ public class Game : MonoBehaviour {
 
     
 	public int nEpidemicCard;
-    public Pawn playerPawn;
-    public Pawn bioTerroristPawn;
+    public Pawn prefab;
     public GameInfoDisplay gameInfoController;
 
 
@@ -589,7 +588,7 @@ public class Game : MonoBehaviour {
         foreach (Player p in players) 
 		{
 			Role r = (p != bioTerrorist) ? new Role(selectRole()) : new BioTerrorist();
-            Pawn pawn = Instantiate(playerPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+            Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
@@ -742,7 +741,7 @@ public class Game : MonoBehaviour {
 		foreach (Player p in players) 
 		{
 			Role r = p.getRole ();
-			Pawn pawn = Instantiate(playerPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			Pawn pawn = Instantiate(prefab, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
@@ -1043,7 +1042,10 @@ public class Game : MonoBehaviour {
 		if (currentPhase != GamePhase.PlayerTakeTurn)
 			return;
 		currentPhase = GamePhase.PlayerDrawCard;
-
+        if(currentPlayer == BioTerroristVolunteer)
+        {
+            getBioTerrorist().refillDriveAction();
+        }
 		currentPlayer.refillAction();
 		currentPlayer.setOncePerturnAction(false);
         currentPlayer.setMobileHospitalActivated(false);
@@ -1360,6 +1362,12 @@ public class Game : MonoBehaviour {
 		city.removePawn (pawn);
 		Role r2 = new Role (roleKind);
 
+		if (pl1 == me) {
+			playerPanel.swapRoleSelf (roleKind);
+		} else {
+			playerPanel.swapRoleOther (pl1.getRoleKind (),roleKind);
+		}
+
 		if(r2.getRoleKind() == RoleKind.Generalist && pl1 == currentPlayer && pl1.getMaxnumAction() == 4){
 			pl1.increaseRemainingAction (1);
 		}
@@ -1389,13 +1397,15 @@ public class Game : MonoBehaviour {
             }
             else
             {
-                if (pl.getEventCardOnTopOfRoleCard().getEventKind() == eKind)
-                {
-                    pl.removeEventCardOnTopOfRoleCard();
-                }
-                else
-                {
-                    Debug.Log("No player is holding this card. Game.cs: dropEventCard(EventKind)");
+                if(pl.hasEventCardOnTopOfRoleCard()){
+                    if (pl.getEventCardOnTopOfRoleCard().getEventKind() == eKind)
+                    {
+                        pl.removeEventCardOnTopOfRoleCard();
+                    }
+                    else
+                    {
+                        Debug.Log("No player is holding this card. Game.cs: dropEventCard(EventKind)");
+                    }
                 }
             }
 		}
@@ -1445,12 +1455,12 @@ public class Game : MonoBehaviour {
             num = 14;
         }
 
-        //Testing only
-		RoleKind testRole = RoleKind.BioTerrorist;
+        /*//Testing only
+		RoleKind testRole = RoleKind.ContingencyPlanner;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
-        }
+        }*/
 
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 
@@ -2592,9 +2602,17 @@ public class Game : MonoBehaviour {
 		SaveAndLoadManager.SaveGameData (Instance, name);
 	}
 
+	[PunRPC]
+	public void RPC_quitAll(){
+		quit ();
+	}
 	public void quit(){
 		PhotonNetwork.LeaveRoom ();
 		SceneManager.LoadScene ("Lobby");
+	}
+
+	public void quitAll(){
+		PhotonView.RPC ("RPC_quitAll",PhotonTargets.All);
 	}
 
 	#endregion
