@@ -140,6 +140,21 @@ public class Player {
         return cardNeeded;
     }
 
+    public int getNumberOfCardNeededToCure(Color color)
+    {
+        int cardNeeded = 5;
+        if (compareRole(RoleKind.Scientist))
+        {
+            cardNeeded = 4;
+        }
+        Game game = Game.Instance;
+        if(game.isComplexMolecularStructure()){
+                cardNeeded++;
+            }
+
+        return cardNeeded;
+    }
+
     public int getHandCardNumber(){
 		return handCard.Count;
 	}

@@ -18,6 +18,10 @@ public class Game : MonoBehaviour {
     private GamePhase currentPhase;
     private bool hasDLC;
 	private Disease VirulentStrainDisease = null;
+	private bool chronicEffect = false;
+	private bool complexMolecularStructure = false;
+	private bool governmentInterference = false;
+	private bool usedTreated = false;
 	[SerializeField]
     private int infectionRate=2;
     private int[] infectionArray;
@@ -972,6 +976,7 @@ public class Game : MonoBehaviour {
 			d.isEradicated();
 		}
 
+		usedTreated = true;
 		currentPlayer.decreaseRemainingAction();
 		record.treat(currentPlayer, treatNumber, d, currentCity);
 	}
@@ -1018,6 +1023,8 @@ public class Game : MonoBehaviour {
 		currentPlayer.setOncePerturnAction(false);
         currentPlayer.setMobileHospitalActivated(false);
 
+		usedTreated = false;
+
         if (currentPlayer.getMobileHospitalActivated())
         {
             currentPlayer.setMobileHospitalActivated(false);
@@ -1049,7 +1056,10 @@ public class Game : MonoBehaviour {
 		Disease disease = diseases[color];
 		
 		outbreakedCities.Clear();
-		if (!infect(city, color, 1))
+		if(isChronicEffect()){
+				infect(city, color, 2);
+			}
+		else if (!infect(city, color, 1))
 		{
 			return;
 		}
@@ -1560,24 +1570,39 @@ public class Game : MonoBehaviour {
 		// 	// apply Virulent Strain Epidemic Effects
 		// 	switch(VirulentStrainEffect){
 		// 	case VirulentStrainEpidemicEffects.ChronicEffect:
-		// 		chronicEffect();
+		// 		chronicEffect = true;
 		// 	case VirulentStrainEpidemicEffects.ComplexMolecularStructure:
-		// 		complexMolecularStructure();
+		// 		complexMolecularStructure = true;
 		// 	case VirulentStrainEpidemicEffects.GovernmentInterference:
-		// 		governmentInterference()
+		// 		governmentInterference = true;
 		// 	case VirulentStrainEpidemicEffects.HiddenPocket:
 		// 		hiddenPocket();
 		// 	}
 		// }
+
         resolvingEpidemic = false;
 
         return true;
     }
+	
+	public bool isChronicEffect(){
+		return (challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain)
+			&& VirulentStrainDisease.getColor() == getCurrentColor()
+			&& chronicEffect == true;
+	}
+	public bool isComplexMolecularStructure(){
+		return (challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain)
+			&& VirulentStrainDisease.getColor() == getCurrentColor()
+			&& complexMolecularStructure == true
+			&& VirulentStrainDisease.isCured() == false;
+		}
 
-	// private void chronicEffect(){}
-	// private void complexMolecularStructure(){}
-	// private void governmentInterference(){}
-	// private void hiddenPocket(){}
+	public bool isGovernmentInterference(){
+		return (challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain)
+			&& VirulentStrainDisease.getColor() == getCurrentColor()
+			&& governmentInterference == true
+			&& usedTreated == false;
+	}
 
 
 
@@ -1892,6 +1917,10 @@ public class Game : MonoBehaviour {
     {
         return currentPlayer;
     }
+
+	public Color getCurrentColor(){
+		return currentPlayer.getPlayerPawn().getCity().getColor();
+	}
 
     public List<Player> getPlayers(City city)
     {
