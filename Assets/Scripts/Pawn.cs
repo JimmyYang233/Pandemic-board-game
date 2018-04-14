@@ -45,7 +45,14 @@ public class Pawn : MonoBehaviour {
     }
 	public void setRole(RoleKind r){
 		rolekind = r;
-		this.gameObject.GetComponent<SpriteRenderer>().color=Maps.getInstance().getRoleColor(r);
+        if(r == RoleKind.BioTerrorist)
+        {
+            this.gameObject.GetComponent<Image>().color = Maps.getInstance().getRoleColor(r);
+        }
+        else
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = Maps.getInstance().getRoleColor(r);
+        }
 	}
     public void setCity(City c)
     {
