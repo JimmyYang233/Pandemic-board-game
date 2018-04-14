@@ -18,6 +18,7 @@ public class eventCardController : MonoBehaviour {
 	public enum Status {REEXAMINEDRESEARCH,NEWASSIGNMENT};
 	public Status status=Status.NEWASSIGNMENT;
 	public string requestSource;
+    public Button deploymentButton;
     Player me;
 
     //Resilient zone
@@ -77,7 +78,8 @@ public class eventCardController : MonoBehaviour {
 		agreeController.agreePanel.gameObject.SetActive (false);
 		game.InformEventCardPermissionResult (true,requestSource);
 	}
-	//-----------------------------small event cards------------------------------------
+    #region borrowed Time
+    //-----------------------------small event cards------------------------------------
     private void borrowedTime() {
         currentPlayer = game.getCurrentPlayer();
         game.BorrowedTime();
@@ -85,6 +87,8 @@ public class eventCardController : MonoBehaviour {
     public void oneQuietNight() {
         game.OneQuietNight();
     }
+    #endregion
+    #region reExaminate search
     //--------------------------------for reExamination--------------------------------
     string selectRERPlayer;
     public void reExaminedResearch() {
@@ -125,6 +129,8 @@ public class eventCardController : MonoBehaviour {
 		game.ReExaminedResearch (game.FindPlayer(PhotonNetwork.player).getRoleKind().ToString(), cardSelect);
 
     }
+#endregion
+    #region New Assignment
     //---------------------------------NewAssignment zone------------------------------
     public void doNewAssignment() {
         List<string> roles = game.getUnusedRole();
@@ -183,8 +189,9 @@ public class eventCardController : MonoBehaviour {
         newAssignmentPanel.SetActive(false);
 		game.NewAssignment (game.FindPlayer(PhotonNetwork.player).getRoleKind().ToString(),newAssignmentName);
     }
+#endregion
+    #region Resilient Population
     //---------------------------------Resilient zone-----------------------------------
-
     public void ResilientPopulation() {
         foreach (Transform t in infectionDiscardPile.transform.GetChild(0).GetChild(0)) {
             if (t.gameObject.GetComponent<Button>() == null) {
@@ -203,6 +210,8 @@ public class eventCardController : MonoBehaviour {
         game.ResilientPopulation(EventSystem.current.currentSelectedGameObject.name);
         infectionDiscardPile.GetComponent<infectionDiscardPileUI>().eventCardTime = false;
     }
+    #endregion
+    #region Forecast
     //------------------------------ForeCast-----------------------------------
     public void Forecast() {
         List<string> infectionCards = game.getInfectionDeckString();
@@ -280,6 +289,7 @@ public class eventCardController : MonoBehaviour {
         game.Forecast(str);
         forecastPanel.SetActive(false);
     }
+    #endregion
     #region Mobile Hospital
     //---------------------------------MobileHospital zone------------------------------
     public void mobileHospital()
@@ -298,7 +308,7 @@ public class eventCardController : MonoBehaviour {
     #endregion 
     #region Government Grant
     //---------------------------------Government Grant zone-----------------------------
-    public City cityToBuild = null;
+    private City cityToBuild = null;
     List<UnityEngine.Events.UnityAction> calls = new List<UnityEngine.Events.UnityAction>();
     public void governmentGrant()
     {
@@ -436,7 +446,61 @@ public class eventCardController : MonoBehaviour {
         game.CommercialTravelBan(me.getRoleKind().ToString());
     }
     #endregion
-    //---------------------------
+    #region RapidVaccineDeployment
+    List<City> citiesToDeploye = new List<City>();
+    List<UnityEngine.Events.UnityAction> deployCalls = new List<UnityEngine.Events.UnityAction>();
+    public void rapidVaccineDeployment()
+    {
+        deploymentButton.gameObject.SetActive(true);
+        List<City> allCities = game.getCities();
+        foreach(City city in allCities)
+        {
+            city.displayButton();
+            UnityEngine.Events.UnityAction call = () => deployCity(city);
+            city.gameObject.GetComponent<Button>().onClick.AddListener(call);
+            calls.Add(call);
+        }
+    }
+
+    public void deployCity(City city)
+    {
+        citiesToDeploye.Add(city);
+        foreach(City otherCity in game.getCities())
+        {
+            city.undisplayButton();
+        }
+        if (citiesToDeploye.Count >= 5)
+        {
+            List<City> allCities = game.getCities();
+            for(int i= 0; i< allCities.Count; i++)
+            {
+                allCities[i].gameObject.GetComponent<Button>().onClick.RemoveListener(deployCalls[i]);
+            }
+        }
+        else
+        {
+            city.displayButton();
+            foreach(City otherCity in city.getNeighbors())
+            {
+                otherCity.displayButton();
+            }
+        }
+    }
+
+
+    public void deployVaccineButtonClicked()
+    {
+        deploymentButton.gameObject.SetActive(false);
+        game.RapidVaccineDeployment();//TO-DO
+        List<City> allCities = game.getCities();
+        for (int i = 0; i < allCities.Count; i++)
+        {
+            allCities[i].undisplayButton();
+            allCities[i].gameObject.GetComponent<Button>().onClick.RemoveListener(deployCalls[i]);
+        }
+    }
+    #endregion
+    //--------------------------
     public void useEvent(){
 		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;
 		Debug.Log (eventCardName);
@@ -474,7 +538,10 @@ public class eventCardController : MonoBehaviour {
                 break;
             case "CommercialTravelBan":
                 commercialTravelBan();
-                break;               
+                break;
+            case "RapidVaccineDeployment":
+                rapidVaccineDeployment();
+                break;
 		    default:
 			    break;
 		}

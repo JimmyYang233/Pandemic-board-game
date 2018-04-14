@@ -516,6 +516,11 @@ public class Game : MonoBehaviour {
         string colorString = colorToString(color);
 		PhotonView.RPC ("RPC_fieldOperativePutBack", PhotonTargets.All, playerRoleKind, colorString);
 	}
+
+    public void RapidVaccineDeployment()
+    {
+        //RPC-TO-DO
+    }
     #endregion
 
     #region initialization
