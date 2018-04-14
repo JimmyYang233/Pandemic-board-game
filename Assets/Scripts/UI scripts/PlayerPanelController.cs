@@ -59,6 +59,7 @@ public class PlayerPanelController : MonoBehaviour
 		Transform t = playerSelect.selfButton.transform.GetChild (0);
 		t.GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (k);
 		t.GetChild (1).GetComponent<Text> ().text = k.ToString ();
+		t.name = k.ToString ();
 
 	}
     public void addOtherPlayer(RoleKind k)
