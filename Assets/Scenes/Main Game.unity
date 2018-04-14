@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -41736,11 +41736,11 @@ RectTransform:
   m_Father: {fileID: 1892236290}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.115}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0.000015258789, y: -0.000015258789}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 3.5603875e-10, y: 1}
 --- !u!114 &1204132139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47559,7 +47559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.9358375}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.600006, y: -171.35188}
+  m_AnchoredPosition: {x: 0.6999817, y: -148.00227}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1380428679
@@ -47626,8 +47626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 280
-  m_MinHeight: 423
+  m_MinWidth: 215
+  m_MinHeight: 315
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
@@ -63610,8 +63610,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 18.51036}
-  m_SizeDelta: {x: 233.6, y: 366.2}
+  m_AnchoredPosition: {x: -0.44, y: 14.11}
+  m_SizeDelta: {x: 234.48, y: 357.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1892236291
 MonoBehaviour:
@@ -73766,8 +73766,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2059910300}
   m_HandleRect: {fileID: 2059910299}
   m_Direction: 2
-  m_Value: 0.50000054
-  m_Size: 0.86572105
+  m_Value: 1
+  m_Size: 0.9899217
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
