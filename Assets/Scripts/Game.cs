@@ -2593,9 +2593,17 @@ public class Game : MonoBehaviour {
 		SaveAndLoadManager.SaveGameData (Instance, name);
 	}
 
+	[PunRPC]
+	public void RPC_quitAll(){
+		quit ();
+	}
 	public void quit(){
 		PhotonNetwork.LeaveRoom ();
 		SceneManager.LoadScene ("Lobby");
+	}
+
+	public void quitAll(){
+		PhotonView.RPC ("RPC_quitAll",PhotonTargets.All);
 	}
 
 	#endregion
