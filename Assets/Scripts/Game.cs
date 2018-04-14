@@ -67,6 +67,7 @@ public class Game : MonoBehaviour {
     public ChatBox chatBox;
     public Record record;
 	public infectionDiscardPileUI infectionDiscardUI;
+	public playerDiscardPileUI playerDiscardUI;
 	public eventCardController eventController;
 
     GameObject backGround;
@@ -1320,7 +1321,20 @@ public class Game : MonoBehaviour {
         if(pl.getHandLimit() > pl.getHandSize())
         {
             playerDiscardPile.Remove(card);
+			playerDiscardUI.deleteCityCard (card.getName ().ToString ());
             pl.addCard(card);
+			//for gui
+			if (!pl.Equals(me))
+			{
+
+				playerPanel.addPlayerCardToOtherPlayer(pl.getRoleKind(), card);
+			}
+			else
+			{
+				//Debug.Log("add card to main player" + card.ToString());
+				mainPlayerPanel.addPlayerCard(card);
+			}
+
         }
     }
 
