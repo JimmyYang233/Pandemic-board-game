@@ -1361,7 +1361,7 @@ public class Game : MonoBehaviour {
 		}
 
 		pl1.setRole (r2);
-		city.addPawn (pl1.getPlayerPawn());
+		city.addPawn (pawn);
         return true;
 	}
 
