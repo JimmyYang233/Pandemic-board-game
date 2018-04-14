@@ -77,7 +77,7 @@ public class GameData{
 	public List<bool> mobileHospitalActivated = new List<bool> ();
 	public string eventCardOnTopOfRoleCard = "Null";
 	public List<bool> hasCommercialTravelBanInfrontOfPlayer = new List<bool> ();
-	public List<int> CommercialTravelBanTurn = new List<int> ();
+	//public List<int> CommercialTravelBanTurn = new List<int> ();
 	public List<DiseaseInfo> diseaseInfoList = new List<DiseaseInfo> ();
 	public List<CityInfo> CityInfoList = new List<CityInfo> ();
 	public int[] FOcubes;
@@ -118,7 +118,7 @@ public class GameData{
 				FOcubes = player.getAllCubes ();
 			}
 			hasCommercialTravelBanInfrontOfPlayer.Add (player.hasEventCardInFront());
-			CommercialTravelBanTurn.Add (player.getCommercialTravelBanTurn());
+			//CommercialTravelBanTurn.Add (player.getCommercialTravelBanTurn());
 			roleKindList.Add (player.getRoleKind ());
 			foreach (PlayerCard pc in player.getHand()) {
 				if (pc.getType().Equals(CardType.CityCard)){

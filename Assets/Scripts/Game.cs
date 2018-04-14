@@ -691,10 +691,9 @@ public class Game : MonoBehaviour {
 		using(var e3 = savedGame.playerCardList.GetEnumerator())
 		using(var e4 = savedGame.mobileHospitalActivated.GetEnumerator())
 		using(var e6 = savedGame.hasCommercialTravelBanInfrontOfPlayer.GetEnumerator())
-		using(var e7 = savedGame.CommercialTravelBanTurn.GetEnumerator())
 			
 		{
-			while(e1.MoveNext() && e2.MoveNext() && e3.MoveNext() && e4.MoveNext() && e6.MoveNext() && e7.MoveNext())
+			while(e1.MoveNext() && e2.MoveNext() && e3.MoveNext() && e4.MoveNext() && e6.MoveNext())
 			{
 				var curPlayer = e1.Current;
 				var curRolekind = e2.Current;
