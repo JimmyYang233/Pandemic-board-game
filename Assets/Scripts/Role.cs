@@ -74,4 +74,14 @@ public class Role {
 
         numberOfSamples.Add(pColor, num+current);
     }
+
+    public int getCubesNumber(Color c)
+    {
+        return numberOfSamples[c];
+    }
+
+    public int removeCubes(Color c, int amount)
+    {
+        return numberOfSamples[c] -= amount;
+    }
 }
