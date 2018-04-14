@@ -81,6 +81,7 @@ public class GameData{
 	public List<DiseaseInfo> diseaseInfoList = new List<DiseaseInfo> ();
 	public List<CityInfo> CityInfoList = new List<CityInfo> ();
 	public int[] FOcubes;
+	public List<int> EpidemicCardIntList = new List<int>();
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
@@ -97,7 +98,7 @@ public class GameData{
 		infectionCardDeck = game.getInfectionDeckString ();
 		infectionDiscardPile = game.getInfectionDiscardPileString ();
 		allHandCards = game.getAllHandCards ();
-
+		EpidemicCardIntList = EpidemicCard.getEpidemicCard ().getIntList ();
 		foreach(City city in game.getCities()){
 			CityInfo cityInfo = new CityInfo (city);
 			CityInfoList.Add (cityInfo);

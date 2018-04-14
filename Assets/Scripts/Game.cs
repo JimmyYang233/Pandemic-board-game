@@ -660,10 +660,12 @@ public class Game : MonoBehaviour {
 	/*
 	LoadGame will:
 	load all game info like outbreakrate, infection rate
-	load all player hand card :TODO
+	load all player hand card :done
 	load all deck and discard pile
-	load all city info: TODO
-
+	load all city info: done
+	load vs card: done
+	load mutation event card: TODO
+	load mutation card: TODO
 	RoleKind for each player has been loaded in LoadPlayer, TODO: player position and pawn
 	*/
 	private void LoadGame(){
@@ -672,6 +674,7 @@ public class Game : MonoBehaviour {
 		index = savedGame.infectionRateIndex;
 		outbreaksValue = savedGame.outBreakRate;
 		cities = new List<City>();
+		EpidemicCard.getEpidemicCard ().setIntList (savedGame.EpidemicCardIntList);
 		backGround = GameObject.FindGameObjectWithTag("background");
 		backGround.transform.position += new Vector3(0.0001f, 0, 0);
 		foreach (Transform t in backGround.transform)
