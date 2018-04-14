@@ -1430,7 +1430,8 @@ public class Game : MonoBehaviour {
 
     public RoleKind selectRole()
     {	
-		UnityEngine.Random.seed = 34;
+		//set random seed
+		UnityEngine.Random.seed = (int)PhotonNetwork.room.CustomProperties["seed"];
 
         
         int num = 8;

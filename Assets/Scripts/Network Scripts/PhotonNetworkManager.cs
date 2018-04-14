@@ -96,7 +96,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 		case "CreateRoom":
 			if (PhotonNetwork.JoinLobby ()) {
 				RoomOptions RO = new RoomOptions ();
-				RO.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable (){ { "Challenge",Challenge.Nochallenge.ToString() } };
+				RO.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable (){ { "Challenge",Challenge.Nochallenge.ToString() }, {"seed",(int)System.DateTime.Now.Ticks } };
 				RO.MaxPlayers = 5;
 				PhotonNetwork.CreateRoom (roomName.text, RO, TypedLobby.Default);
 
@@ -169,6 +169,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 		Debug.Log (PlayerNetwork.Instance.savedGameJson);
 		GameData savedGame = JsonUtility.FromJson<GameData>(PlayerNetwork.Instance.savedGameJson);
 		RoomOptions testRo = new RoomOptions ();
+		testRo.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable (){ {"seed",(int)System.DateTime.Now.Ticks } };
 		testRo.MaxPlayers = 5;
 		PhotonNetwork.CreateRoom (loadName, testRo, TypedLobby.Default);
 		SceneManager.LoadScene ("Room");
