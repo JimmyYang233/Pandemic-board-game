@@ -2004,6 +2004,7 @@ MonoBehaviour:
   chatBox: {fileID: 124084468}
   record: {fileID: 1438105360}
   infectionDiscardUI: {fileID: 788425839}
+  playerDiscardUI: {fileID: 10558121}
   eventController: {fileID: 1900971760}
   nEpidemicCard: 4
   playerPawn: {fileID: 114612494599226358, guid: 97b9f543ac405d3459f6b50b00628b75,
@@ -54609,7 +54610,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1900971760}
-        m_MethodName: NewAssignment
+        m_MethodName: reExaminedResearch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

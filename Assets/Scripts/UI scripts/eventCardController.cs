@@ -98,11 +98,7 @@ public class eventCardController : MonoBehaviour {
         selectRERPlayer = n;
         playerSelect.gameObject.SetActive(false);
 		otherPlayers.SetActive (true);
-		Debug.Log (game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ());
-		Debug.Log (n);
 		if (n.Equals (game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ())) {
-			
-			Debug.Log ("here");
 			doReExamineResearch ();
 		} else {
 			game.AskForEventCardPermission ("Do you want to accept event card reExainedResearch?", selectRERPlayer, game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ());

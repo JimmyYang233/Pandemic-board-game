@@ -68,12 +68,12 @@ public class BasicOperation : MonoBehaviour {
             }
             else if (me.getRoleKind() == RoleKind.FieldOperative)
             {
-                epidemiologistSkillButton.gameObject.SetActive(true);
-                roleOnlyButton = epidemiologistSkillButton;
+                fieldOperativeSkillButton.gameObject.SetActive(true);
+                roleOnlyButton = fieldOperativeSkillButton;
             }
             else if (me.getRoleKind() == RoleKind.Epidemiologist)
             {
-                fieldOperativeSkillButton.gameObject.SetActive(true);
+                epidemiologistSkillButton.gameObject.SetActive(true);
                 roleOnlyButton = epidemiologistSkillButton;
             }
             else if (me.getRoleKind() == RoleKind.Dispatcher)
