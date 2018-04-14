@@ -1048,6 +1048,9 @@ public class Game : MonoBehaviour {
 	//cure
 	private void cure(Player player, List<CityCard> cardsToRemove, Disease d)
 	{
+		if(cardsToRemove.Count==3 && currentPlayer.getRoleKind() == RoleKind.FieldOperative){// field operative
+			currentPlayer.returnCubes(d, 3);
+		}
 		foreach (CityCard card in cardsToRemove)
 		{
 			player.removeCard(card);
