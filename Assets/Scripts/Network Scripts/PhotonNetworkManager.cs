@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class PhotonNetworkManager : MonoBehaviour {
 	public InputField roomName;
@@ -16,6 +17,13 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 	#region private methods
 	void Awake(){
+		DirectoryInfo levelDirectoryPath = new DirectoryInfo(Application.persistentDataPath);
+		FileInfo[] fileInfo = levelDirectoryPath.GetFiles("*.*", SearchOption.AllDirectories);
+		foreach (FileInfo file in fileInfo) {
+			if (file.Extension == ".pandemic") {
+				Debug.Log (file.Name);
+			}
+		}
 		
 	}
 
