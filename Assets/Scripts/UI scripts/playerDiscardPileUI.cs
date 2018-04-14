@@ -82,23 +82,6 @@ public class playerDiscardPileUI : MonoBehaviour {
 
 	public void addCityCard(string c)
     {
-		/*
-        content.GetChild(cardNum).gameObject.SetActive(true);
-        cardNum++;
-
-        //adjust text color 
-        content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = c.ToString();
-        content.GetChild(cardNum - 1).GetComponent<Image>().color = map.getCityColor(c);
-        if (content.GetChild(cardNum - 1).GetComponent<Image>().color == Color.black)
-        {
-            content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().color = Color.white;
-        }
-        else
-        {
-            content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().color = Color.black;
-        }
-
-        setBar();*/
 		content.GetChild(cardNum).gameObject.SetActive(true);
 		cardNum++;
 		//adjust text color 
@@ -123,13 +106,13 @@ public class playerDiscardPileUI : MonoBehaviour {
 	//delete city card from gui of discard pile
 	public void deleteCityCard(string c)
 	{
-		/*
-		Debug.Log ("delete c");
+		bool find = false;
 		int i;
 		for (i = 0; i < cardNum; i++)
 		{
 			if (c.ToString().Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
 			{
+				find = true;
 				break;
 			}
 		}
@@ -140,32 +123,15 @@ public class playerDiscardPileUI : MonoBehaviour {
 			content.GetChild(j).GetChild(0).GetComponent<Text>().color = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().color;
 			content.GetChild(j).GetComponent<Image>().color = content.GetChild(j + 1).GetComponent<Image>().color;
 		}
-		content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = "";
-		content.GetChild(cardNum - 1).name = "";
-		cardNum--;
-		setBar();
-		content.GetChild(cardNum).gameObject.SetActive(false);
-		buttonUninteractable ();*/
-		int i;
-		for (i = 0; i < cardNum; i++)
-		{
-			if (c.ToString().Equals(content.GetChild(i).GetChild(0).GetComponent<Text>().text))
-			{
-				break;
-			}
+		if (find) {
+			Debug.Log (cardNum);
+			content.GetChild (cardNum - 1).GetChild (0).GetComponent<Text> ().text = "";
+			content.GetChild (cardNum - 1).name = "";
+			cardNum--;
+			setBar ();
+			content.GetChild (cardNum).gameObject.SetActive (false);
+
 		}
-		for (int j = i; j < cardNum; j++)
-		{
-			content.GetChild(j).name = content.GetChild(j + 1).name;
-			content.GetChild(j).GetChild(0).GetComponent<Text>().text = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().text;
-			content.GetChild(j).GetChild(0).GetComponent<Text>().color = content.GetChild(j + 1).GetChild(0).GetComponent<Text>().color;
-			content.GetChild(j).GetComponent<Image>().color = content.GetChild(j + 1).GetComponent<Image>().color;
-		}
-		content.GetChild(cardNum - 1).GetChild(0).GetComponent<Text>().text = "";
-		content.GetChild(cardNum - 1).name = "";
-		cardNum--;
-		setBar();
-		content.GetChild(cardNum).gameObject.SetActive(false);
 		buttonUninteractable ();
 	}
 	public void buttonUninteractable(){
