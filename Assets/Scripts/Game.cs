@@ -836,21 +836,11 @@ public class Game : MonoBehaviour {
 	//drive
 	private void drive(Player player, City destinationCity)
 	{
-		Pawn p = player.getPlayerPawn();
-		City initialCity = p.getCity();
-		p.setCity(destinationCity);
-		initialCity.removePawn(p);
-		destinationCity.addPawn(p);
+        move(player, destinationCity);
+
 		RoleKind rolekind = player.getRoleKind();
 
-		if (rolekind == RoleKind.Medic)
-		{
-            resolveMedic(destinationCity);
-		}
-		else if (rolekind == RoleKind.ContainmentSpecialist)
-		{
-            resolveContainmentSpecialist(destinationCity);
-		}
+		
         if (player.getMobileHospitalActivated())
         {
             resolveContainmentSpecialist(destinationCity); //I realize I can use exactly the same function
@@ -1141,14 +1131,7 @@ public class Game : MonoBehaviour {
 			resolveMedic (initialCity);
 		} else if (rolekind == RoleKind.ContainmentSpecialist) {
 			resolveContainmentSpecialist (destinationCity);
-		} else if (rolekind == RoleKind.ContainmentSpecialist) {
-			Dictionary<Color,int> cubes = destinationCity.getNumOfCubes ();
-			foreach(Color c in cubes.Keys){
-				if (cubes [c] > 1) {
-					destinationCity.removeCubes (diseases[c],1);
-				}
-			}
-		}
+		} 
 
         if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers() > 1)
         {
