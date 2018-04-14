@@ -200,7 +200,6 @@ public class MoveOperation : MonoBehaviour {
     public void changePlayerToMove(string rolekind)
     {
         playerToMove = game.findPlayer(rolekind);
-        showMove();
         playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
     }
 
