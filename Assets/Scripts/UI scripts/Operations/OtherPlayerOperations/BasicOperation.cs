@@ -160,6 +160,10 @@ public class BasicOperation : MonoBehaviour {
                     resetAll();
                 }
             }
+            else
+            {
+                resetAll();
+            }
             
         }
 		
