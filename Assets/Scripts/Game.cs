@@ -337,6 +337,13 @@ public class Game : MonoBehaviour {
 	public void RPC_displayNewAssignment(){
 		displayNewAssignment ();
 	}
+
+	[PunRPC]
+	public void RPC_fieldOperativePutBack(string playerRoleKind, string colorString){
+		Player targetPlayer = findPlayer (playerRoleKind);
+		Color color = stringToColor (colorString);
+		fieldOperativePutBack (targetPlayer,stringToColor);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -503,6 +510,10 @@ public class Game : MonoBehaviour {
 		PhotonPlayer targetPlayer = findPlayer (roleKindString).PhotonPlayer;
 		PhotonView.RPC ("RPC_displayNewAssignment",targetPlayer);
 		
+	}
+
+	public void FieldOperativePutBack(string playerRoleKind, string colorString){
+		PhotonView.RPC ("RPC_fieldOperativePutBack", PhotonTargets.All, playerRoleKind, colorString);
 	}
     #endregion
 
