@@ -176,6 +176,9 @@ public class playerSelectionPanel : MonoBehaviour {
 			}
 
 		}
+		if (selectStatus == Status.NEWASSIGNMENT || selectStatus == Status.REEXAMINEDRESEARCH) {
+			selfButton.gameObject.SetActive (true);
+		}
 	}
 
 	public void clear(){
@@ -186,6 +189,7 @@ public class playerSelectionPanel : MonoBehaviour {
 			}
 
 		}
+		selfButton.gameObject.SetActive (false);
 	}
 		
 }
