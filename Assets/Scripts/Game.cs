@@ -708,14 +708,24 @@ public class Game : MonoBehaviour {
 
 				curPlayer.setRole (curRole);
 				foreach (string s in playerHand.playerHand) {
-					if (Enum.IsDefined (typeof(EventKind), s)) {
-						curPlayer.addCard (EventCard.getEventCard((EventKind)Enum.Parse (typeof(EventKind), s)));
-						Debug.Log ("Event card " + s);
+					if (curRolekind != RoleKind.BioTerrorist){
+						if (Enum.IsDefined (typeof(EventKind), s)) {
+							curPlayer.addCard (EventCard.getEventCard((EventKind)Enum.Parse (typeof(EventKind), s)));
+							Debug.Log ("Event card " + s);
+						}
+						if (Enum.IsDefined (typeof(CityName), s)) {
+							curPlayer.addCard (new CityCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
+							Debug.Log ("City card " + s);
+						}
 					}
-					if (Enum.IsDefined (typeof(CityName), s)) {
-						curPlayer.addCard (new CityCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
-						Debug.Log ("City card " + s);
+					else{
+						if (Enum.IsDefined (typeof(InfectionCard), s)) {
+							curPlayer.addCard (new InfectionCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
+							Debug.Log ("Bio-t has infection card: " + s);
+						}
 					}
+
+
 				}
 				// use item1 and item2
 			}
@@ -2216,7 +2226,12 @@ public class Game : MonoBehaviour {
 		player.setOncePerturnAction(true);
 	}
 	
-    
+    private void fieldOperativePutBack(Player pl, Color c)
+    {
+        Disease d = diseases[c];
+        pl.returnCubes(d,1);
+        d.incrementNumOfDiseaseCubeLeft();  
+    }
 
     #region notify methods
     // to do: inform the player that they lose the game
