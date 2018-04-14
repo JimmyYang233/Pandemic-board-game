@@ -1518,14 +1518,14 @@ public class Game : MonoBehaviour {
         {
             num = 14;
         }
-
+		/*
         //Testing only
 		RoleKind testRole = RoleKind.FieldOperative;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
         }
-		
+		*/
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 
         while (roleKindTaken.Contains(rkRandom))
