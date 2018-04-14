@@ -146,8 +146,9 @@ public class playerDiscardPileUI : MonoBehaviour {
 				Destroy (t.gameObject.GetComponent<Button> ());
 			}
 
-			this.gameObject.SetActive (false);
+
 		}
+		this.gameObject.SetActive (false);
 	}
 /*
     public void addEventCard(EventKind e)
