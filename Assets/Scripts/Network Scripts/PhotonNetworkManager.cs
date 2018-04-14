@@ -109,8 +109,9 @@ public class PhotonNetworkManager : MonoBehaviour {
 			}
 			break;
 		//debug purpose
-		case "Load":
-			GameData data = SaveAndLoadManager.LoadGameData (roomName.text);
+
+		//case "Load":
+			//GameData data = SaveAndLoadManager.LoadGameData (roomName.text);
 			/*
 			Debug.Log ("when loaded, we have ");
 			foreach (PlayerCardList pcl in data.playerCardList) {
@@ -122,6 +123,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 			foreach (RoleKind rk in data.roleKindList) {
 				Debug.Log ("RoleKind is " + rk.ToString());
 			}*/
+			/*
 			PlayerNetwork.Instance.isNewGame = false;
 			PlayerNetwork.Instance.savedGameJson =  JsonUtility.ToJson(data);
 			//Debug.Log ("Saved GameJson is : " + PlayerNetwork.Instance.savedGameJson);
@@ -135,11 +137,12 @@ public class PhotonNetworkManager : MonoBehaviour {
 			foreach (RoleKind rk in savedGame.roleKindList) {
 				Debug.Log ("RoleKind is " + rk.ToString());
 			}*/
+			/*
 			RoomOptions testRo = new RoomOptions ();
 			testRo.MaxPlayers = 5;
 			PhotonNetwork.CreateRoom (roomName.text, testRo, TypedLobby.Default);
 			SceneManager.LoadScene ("Room");
-			break;
+			break;*/
 		}
 	}
 
@@ -158,7 +161,14 @@ public class PhotonNetworkManager : MonoBehaviour {
 
     public void onClick(string loadName)
     {
-        //TO-DO
+		GameData data = SaveAndLoadManager.LoadGameData (loadName);
+		PlayerNetwork.Instance.isNewGame = false;
+		PlayerNetwork.Instance.savedGameJson =  JsonUtility.ToJson(data);
+		GameData savedGame = JsonUtility.FromJson<GameData>(PlayerNetwork.Instance.savedGameJson);
+		RoomOptions testRo = new RoomOptions ();
+		testRo.MaxPlayers = 5;
+		PhotonNetwork.CreateRoom (loadName, testRo, TypedLobby.Default);
+		SceneManager.LoadScene ("Room");
     }
     #endregion
 
