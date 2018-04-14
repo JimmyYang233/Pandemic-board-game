@@ -150,15 +150,16 @@ public class PhotonNetworkManager : MonoBehaviour {
         for(int i = 0; i< count; i++)
         {
             loadPanel.transform.GetChild(i).gameObject.SetActive(true);
-            loadPanel.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text = listOfSavedGame[i];
-            loadPanel.transform.GetChild(i).gameObject.GetComponent<Button>().onClick.AddListener(() => onClick(listOfSavedGame[i]));
+            string savedGameName = listOfSavedGame[i];
+            loadPanel.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text = savedGameName;
+            loadPanel.transform.GetChild(i).gameObject.GetComponent<Button>().onClick.AddListener(() => onClick(savedGameName));
 
         }
     }
 
     public void onClick(string loadName)
     {
-        //TO-DO
+        Debug.Log("loading" + loadName);
     }
     #endregion
 
