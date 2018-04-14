@@ -508,6 +508,7 @@ public class Game : MonoBehaviour {
 	//initialzie game, set the first player as current player
 	private void InitializeGame(){
 		//load city
+		challenge = (Challenge)Enum.Parse (typeof(Challenge), (string)PhotonNetwork.room.CustomProperties["Challenge"]);
 		researchStationRemain = 6;
 		cities = new List<City>();
 		backGround = GameObject.FindGameObjectWithTag("background");
@@ -605,6 +606,7 @@ public class Game : MonoBehaviour {
 	RoleKind for each player has been loaded in LoadPlayer, TODO: player position and pawn
 	*/
 	private void LoadGame(){
+		challenge = savedGame.challenge;
 		researchStationRemain = savedGame.remainingResearch;
 		index = savedGame.infectionRateIndex;
 		outbreaksValue = savedGame.outBreakRate;
