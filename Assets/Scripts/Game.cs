@@ -711,11 +711,12 @@ public class Game : MonoBehaviour {
 					curPlayer.setAllCubes(savedGame.FOcubes);
 				}
 				bool hasCommercialTravelBanInfrontOfPlayer = e6.Current;
+
 				if (hasCommercialTravelBanInfrontOfPlayer) {
 					curPlayer.setCommercialTravelBanTurn ();
 				}
-				int commercialTravelBanTurn = e7.Current;
-				curPlayer.setCommercialTravelBanTurnValue (commercialTravelBanTurn);
+				//int commercialTravelBanTurn = e7.Current;
+				//curPlayer.setCommercialTravelBanTurnValue (commercialTravelBanTurn);
 
 				curPlayer.setRole (curRole);
 				foreach (string s in playerHand.playerHand) {
@@ -2128,10 +2129,14 @@ public class Game : MonoBehaviour {
 		currentPlayer =(challenge == Challenge.BioTerroist) ? findPlayer (RoleKind.BioTerrorist):players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
         if (currentPlayer.hasEventCardInFront())
         {
-            if(currentPlayer.hasEventCardInFront())
+            if(currentPlayer.getCommercialTravelBanTurn() == 0)
             {
                 infectionRate = infectionArray[index]; 
                 currentPlayer.terminateCommercialTravelBanTurn();
+            }
+            else
+            {
+                currentPlayer.decrementCommercialTravelBanTurn();
             }
         }
         currentPhase = GamePhase.PlayerTakeTurn;
