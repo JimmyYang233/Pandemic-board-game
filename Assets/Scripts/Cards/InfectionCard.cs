@@ -19,6 +19,9 @@ public class InfectionCard : PlayerCard
 		name = city.cityName;
     }
 
+    public InfectionCard(CardType c) : base(CardType.InfectionCard)
+    {}
+
 	public Color getColor()
     {
         return color;

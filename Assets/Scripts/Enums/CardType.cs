@@ -6,5 +6,5 @@ using UnityEngine;
 [Serializable]
 public enum CardType
 {
-    CityCard, EpidemicCard, EventCard, InfectionCard, MutationEventCard
+    CityCard, EpidemicCard, EventCard, InfectionCard, MutationEventCard, MutationCard
 }

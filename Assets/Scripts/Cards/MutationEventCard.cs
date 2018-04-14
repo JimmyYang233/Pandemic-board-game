@@ -6,17 +6,19 @@ using UnityEngine;
 [Serializable]
 public class MutationEventCard : PlayerCard {
 
-    private static MutationEventCard INSTANCE = new MutationEventCard();
-    private static Dictionary<EventKind, EventCard> eventCards = new Dictionary<EventKind, EventCard>();
-	private string name = "MuatationEventCard";
+
+    // private static Dictionary<EventKind, EventCard> eventCards = new Dictionary<EventKind, EventCard>();
+    private MutationEvent MutationEvent;
+	private string name = "MutationEventCard";
 
 
-    private MutationEventCard(): base(CardType.MutationEventCard)
-    {}
-
-    public MutationEventCard getMutationEventCard()
+    public MutationEventCard(MutationEvent me): base(CardType.MutationEventCard)
     {
-        return INSTANCE;
+        MutationEvent = me;
+    }
+    
+    public MutationEvent getMutationEvent(){
+        return MutationEvent;
     }
 
 	public override string getName(){
