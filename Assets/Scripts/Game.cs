@@ -568,6 +568,13 @@ public class Game : MonoBehaviour {
 			playerCardDeck.Add(new CityCard(c));
 			infectionDeck.Add(new InfectionCard(c));
 		}
+
+		if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
+			for(int i = 0; i<2; i++){
+				infectionDiscardPile.Add(MutationCard.getMutationCard());
+			}
+		}
+
 		List<EventKind> eventKinds = mapInstance.getEventNames();
 		foreach (EventKind k in eventKinds)
 		{
@@ -628,6 +635,9 @@ public class Game : MonoBehaviour {
 		playerSelect.gameObject.SetActive (false);
 
 		setInitialHand();
+		if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
+			shuffleMutatonEventCards();
+		}
 		shuffleAndAddEpidemic();
 		setUp();
 		currentPhase = GamePhase.PlayerTakeTurn;
@@ -1101,6 +1111,13 @@ public class Game : MonoBehaviour {
 		{
 			return;
 		}
+		// for mutation challenge
+		if((challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain)
+		&& !diseases[Color.magenta].isEradicated()
+		&& city.getCubeNumber(diseases[Color.magenta])>0){
+			infect(city, Color.magenta, 1);
+		}
+
 		if (currentPlayer == me && numOfInfection < infectionRate) {
 			//Debug.Log ("num of infection is + " + numOfInfection.ToString());
 			passOperation.startInfection ();
@@ -1536,7 +1553,12 @@ public class Game : MonoBehaviour {
         }
     }
 
-    
+    private void shuffleMutatonEventCards(){
+		playerCardDeck.Add(new MutationEventCard(MutationEvent.Threatens));
+		playerCardDeck.Add(new MutationEventCard(MutationEvent.Spreads));
+		playerCardDeck.Add(new MutationEventCard(MutationEvent.Intensifies));
+		Collection.Shuffle(playerCardDeck);
+	}
 
     private void shuffleAndAddEpidemic()
     {
@@ -1841,12 +1863,39 @@ public class Game : MonoBehaviour {
 				}
                 resolveEpidemic();
             }
-            else if (card.getType() == CardType.MutationEventCard && !diseases[Color.magenta].isEradicated())
+            else if (card.getType() == CardType.MutationEventCard)
             {
-                InfectionCard mCard = drawBottomInfectionDeck();
-                City mCity = mCard.getCity();
-                infect(mCity, Color.magenta, 3);
-                infectionDiscardPile.Add(mCard);
+				switch (((MutationEventCard)card).getMutationEvent()) {
+				case MutationEvent.Threatens:
+					if(!diseases[Color.magenta].isEradicated()){
+						InfectionCard mCard = drawBottomInfectionDeck();
+						City mCity = mCard.getCity();
+						infect(mCity, Color.magenta, 3);
+						infectionDiscardPile.Add(mCard);
+					}
+					break;
+				case MutationEvent.Spreads:
+					if(!diseases[Color.magenta].isEradicated()){
+						for(int j=0; j<3; j++){
+							InfectionCard mCard = drawBottomInfectionDeck();
+							City mCity = mCard.getCity();
+							infect(mCity, Color.magenta, 1);
+							infectionDiscardPile.Add(mCard);
+						}
+					}
+					break;
+				case MutationEvent.Intensifies:
+					foreach (City c in cities){
+						if(c.getCubeNumber(diseases[Color.magenta]) == 2){
+							infect(c, Color.magenta, 1);
+						}
+					}
+					break;
+				default:
+					Debug.Log("Error: no mutation event kind");
+					break; 
+				}
+                
             }
             else
             {
