@@ -22,6 +22,10 @@ public class Player {
         return cubes;
     }
 
+	public void setAllCubes(int[] savedCubes){
+		cubes = savedCubes;
+	}
+
     public int getblueCubesHolded()
     {
         return cubes[0];
