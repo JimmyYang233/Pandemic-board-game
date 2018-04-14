@@ -439,9 +439,9 @@ public class Game : MonoBehaviour {
     }
 
     // Special Role Skills
-    public void ContingencyPlannerPutCardOnTopOfRoleCard(string roleKind, string eventCardName)
+    public void ContingencyPlannerPutCardOnTopOfRoleCard(string eventCardName)
     {
-		PhotonView.RPC ("RPC_ContingencyPlannerPutCardOnTopOfRoleCard",PhotonTargets.All, roleKind,eventCardName);
+		PhotonView.RPC ("RPC_ContingencyPlannerPutCardOnTopOfRoleCard",PhotonTargets.All, eventCardName);
     }
 
     public void EpidemiologistShare()
