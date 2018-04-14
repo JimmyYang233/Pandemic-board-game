@@ -56,6 +56,7 @@ public class Game : MonoBehaviour {
 	private bool switchPlayer = false;
 	private int numOfInfection = 0;
 	private Player BioTerroristVolunteer = null;
+    private BioTerrorist bioTerroristRole;
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
@@ -584,11 +585,12 @@ public class Game : MonoBehaviour {
         {
 			bioTerrorist = (BioTerroristVolunteer==null) ? players[UnityEngine.Random.Range(0, players.Count+1)] : BioTerroristVolunteer;
             BioTerroristVolunteer = bioTerrorist;
+            bioTerroristRole = new BioTerrorist();
         }
 
         foreach (Player p in players) 
 		{
-			Role r = (p != bioTerrorist) ? new Role(selectRole()) : new BioTerrorist();
+			Role r = (p != bioTerrorist) ? new Role(selectRole()) : bioTerroristRole;
             Pawn pawn;
             if (r.getRoleKind() == RoleKind.BioTerrorist)
             {
@@ -853,9 +855,9 @@ public class Game : MonoBehaviour {
         {
             resolveContainmentSpecialist(destinationCity); //I realize I can use exactly the same function
         }
-        if (player.getRoleKind() == RoleKind.BioTerrorist && !((BioTerrorist)player.getRole()).getBioTerroristExtraDriveUsed())
+        if (player.getRoleKind() == RoleKind.BioTerrorist && !getBioTerrorist().getBioTerroristExtraDriveUsed())
         {
-            ((BioTerrorist)player.getRole()).setbioTerroristExtraDriveUsed();
+            getBioTerrorist().setbioTerroristExtraDriveUsed();
         }
         else
         {
@@ -1927,7 +1929,7 @@ public class Game : MonoBehaviour {
         {
             return null;
         }
-        return (BioTerrorist) BioTerroristVolunteer.getRole();
+        return bioTerroristRole;
 
     }
 
