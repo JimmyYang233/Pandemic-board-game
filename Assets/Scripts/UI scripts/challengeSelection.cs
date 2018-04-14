@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,41 @@ public class challengeSelection : MonoBehaviour {
             VirulentStrainChallenge.interactable = false;
             MutationChallenge.interactable = false;
             BioTerroristChallenge.interactable = false;
+			if (PhotonNetwork.room != null) {
+				Challenge challenge = (Challenge)Enum.Parse (typeof(Challenge), (string)PhotonNetwork.room.CustomProperties["Challenge"]);
+				if (challenge.Equals (Challenge.Nochallenge)) {
+					VirulentStrainChallenge.isOn = false;
+					MutationChallenge.isOn = false;
+					BioTerroristChallenge.isOn = false;
+				}
+				else if (challenge.Equals (Challenge.BioTerroist)) {
+					VirulentStrainChallenge.isOn = false;
+					MutationChallenge.isOn = false;
+					BioTerroristChallenge.isOn = true;
+				}
+				else if (challenge.Equals (Challenge.BioTerroistAndVirulentStrain)) {
+					VirulentStrainChallenge.isOn = true;
+					MutationChallenge.isOn = false;
+					BioTerroristChallenge.isOn = true;
+				}
+				else if (challenge.Equals (Challenge.Mutation)) {
+					VirulentStrainChallenge.isOn = false;
+					MutationChallenge.isOn = true;
+					BioTerroristChallenge.isOn = false;
+				}
+				else if (challenge.Equals (Challenge.MutationAndVirulentStrain)) {
+					VirulentStrainChallenge.isOn = true;
+					MutationChallenge.isOn = true;
+					BioTerroristChallenge.isOn = false;
+				}
+				else if (challenge.Equals (Challenge.VirulentStrain)) {
+					VirulentStrainChallenge.isOn = true;
+					MutationChallenge.isOn = false;
+					BioTerroristChallenge.isOn = false;
+				}
+			
+			}
+			//if(PhotonNetwork.room.CustomProperties["Challenge"]
         }
     }
 
