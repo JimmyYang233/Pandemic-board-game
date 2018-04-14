@@ -63,6 +63,10 @@ public class Record : MonoBehaviour {
         displayRecord(p1.getRoleKind().ToString() + "'s turn ended.");
     }
 
+    public void eventCard(Player p, EventKind ek){
+        displayRecord(p.getRoleKind().ToString() + " played Event Card: " +ek.ToString());
+    }
+
     public void draw(Player player, PlayerCard card){
         switch (card.getType())
         {

@@ -1160,6 +1160,7 @@ public class Game : MonoBehaviour {
 		orderedCards.AddRange (infectionDeck);
 		infectionDeck = orderedCards;
 		dropEventCard (EventKind.Forecast);
+		record.eventCard(currentPlayer,EventKind.Forecast);
 	}
 
     private void governmentGrant(City initialCity, City c)
@@ -1178,6 +1179,7 @@ public class Game : MonoBehaviour {
         }
         c.setHasResearch(true);
         dropEventCard(EventKind.GovernmentGrant);
+		record.eventCard(currentPlayer,EventKind.GovernmentGrant);
     }
 
 
@@ -1193,6 +1195,7 @@ public class Game : MonoBehaviour {
     public void oneQuietNight(){
 		oneQuietNightUsed = true;
 		dropEventCard (EventKind.OneQuietNight);
+		record.eventCard(currentPlayer,EventKind.OneQuietNight);
 	}
 
 
@@ -1201,22 +1204,26 @@ public class Game : MonoBehaviour {
 		infectionDiscardPile.Remove (card);
 		infectionDiscardUI.deleteCityCard (card.getName ().ToString ());
 		dropEventCard (EventKind.ResilientPopulation);
+		record.eventCard(currentPlayer,EventKind.ResilientPopulation);
 	}
 
 	public void airlift(Player pl1, City destination){
 		move (pl1, destination);
 		dropEventCard (EventKind.Airlift);
+		record.eventCard(currentPlayer,EventKind.Airlift);
 	}
 
 	public void borrowedTime(){
 		// if (findEventCardHolder(EventKind.BorrowedTime) == currentPlayer) {
 		currentPlayer.increaseRemainingAction (2);
 		dropEventCard (EventKind.BorrowedTime);
+		record.eventCard(currentPlayer,EventKind.BorrowedTime);
 		
 	}
 
 	public void specialOrders(){
 		dropEventCard (EventKind.SpecialOrders);
+		record.eventCard(currentPlayer,EventKind.SpecialOrders);
 	}
 
 	/* 
@@ -1226,6 +1233,7 @@ public class Game : MonoBehaviour {
 	public int rapidVaccineDeployment(Color c, List<City> cities){
 		int ctr = 0;
 		dropEventCard (EventKind.RapidVaccineDeployment);
+		record.eventCard(currentPlayer,EventKind.RapidVaccineDeployment);
 		foreach (City city in cities){
 			while (city.getCubeNumber(c)>0){
 				city.removeCubes(diseases[c], 1);
@@ -1243,6 +1251,7 @@ public class Game : MonoBehaviour {
     {
         pl1.setMobileHospitalActivated(true);
         dropEventCard(EventKind.MobileHospital);
+		record.eventCard(currentPlayer,EventKind.MobileHospital);
     }
 
     public void remoteTreatment(City city1, City city2, Color color1, Color color2)
@@ -1252,6 +1261,7 @@ public class Game : MonoBehaviour {
         city2.removeCubes(diseases[color2], 1);
         diseases[color2].incrementNumOfDiseaseCubeLeft();
         dropEventCard(EventKind.RemoteTreatment);
+		record.eventCard(currentPlayer,EventKind.RemoteTreatment);
     }
 
     public void reExaminedResearch(Player pl, CityCard card)
@@ -1262,6 +1272,7 @@ public class Game : MonoBehaviour {
             return;
         }
         dropEventCard(EventKind.ReExaminedResearch);
+		record.eventCard(currentPlayer,EventKind.ReExaminedResearch);
         if(pl.getHandLimit() > pl.getHandSize())
         {
             playerDiscardPile.Remove(card);
@@ -1272,6 +1283,7 @@ public class Game : MonoBehaviour {
     public void commercialTravelBan(Player pl)
     {
         dropEventCard(EventKind.CommercialTravelBan);
+		record.eventCard(currentPlayer,EventKind.CommercialTravelBan);
         pl.setCommercialTravelBanTurn();
         infectionRate = 1;
         gameInfoController.displayInfectionRate();
@@ -1329,6 +1341,7 @@ public class Game : MonoBehaviour {
 			return;
 		}
 		dropEventCard (EventKind.NewAssignment);
+		record.eventCard(currentPlayer,EventKind.NewAssignment);
 	}
 
 	public void dropEventCard(EventKind eKind){
