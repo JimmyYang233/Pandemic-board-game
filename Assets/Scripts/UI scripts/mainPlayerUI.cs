@@ -7,6 +7,7 @@ public class mainPlayerUI : MonoBehaviour {
     public Game game;
     public Button card;
     public GameObject cubeHolder;
+    public GameObject commercialTravelBan;
     public eventCardUI eventCard;
     public GameObject returnButtonPanel;
     public Button[] buttons;
@@ -42,6 +43,14 @@ public class mainPlayerUI : MonoBehaviour {
             card.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
         }
         displayCubes();
+        if (me.hasEventCardInFront())
+        {
+            commercialTravelBan.gameObject.SetActive(true);
+        }
+        else
+        {
+            commercialTravelBan.gameObject.SetActive(false);
+        }
     }
     public void displayCubes()
     {
