@@ -321,6 +321,12 @@ public class Game : MonoBehaviour {
 		Player player = findPlayer (playerRoleKind);
 		commercialTravelBan (player);
 	}
+
+	[PunRPC]
+	public void RPC_DisplayReExaminedResearch(){
+		displayReExaminedResearch ();
+	}
+
     #endregion
 
     //called by chatbox to send chat message
@@ -476,6 +482,11 @@ public class Game : MonoBehaviour {
 
 	public void CommercialTravelBan(string roleKindString){
 		PhotonView.RPC ("RPC_commercialTravelBan", PhotonTargets.All, roleKindString);
+	}
+
+	public void DisplayReExaminedResearch(string roleKindString){
+		PhotonPlayer targetPlayer = findPlayer (roleKindString).PhotonPlayer;
+		PhotonView.RPC ("RPC_DisplayReExaminedResearch",targetPlayer);
 	}
     #endregion
 
@@ -1276,6 +1287,10 @@ public class Game : MonoBehaviour {
         infectionRate = 1;
         gameInfoController.displayInfectionRate();
     }
+
+	private void displayReExaminedResearch(){
+		eventController.doReExamineResearch ();
+	}
 
 	#endregion
     public Player findEventCardHolder(EventKind eCard){
