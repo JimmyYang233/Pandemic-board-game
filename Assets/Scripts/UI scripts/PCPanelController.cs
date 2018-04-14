@@ -156,7 +156,6 @@ public class PCPanelController : MonoBehaviour {
 
 
         g.transform.parent = transform.GetChild(3);
-
     }
 
     public void deleteEventCard(EventKind e)

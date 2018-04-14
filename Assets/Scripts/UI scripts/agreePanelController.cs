@@ -17,10 +17,8 @@ public class agreePanelController : MonoBehaviour {
 			share.acceptRequest ();
 		} else if (status == Status.NEWASSIGNMENT) {
 			eventController.acceptTheRequest ();
-			eventController.doNewAssignment();
 		} else if (status == Status.REEXAMINEDRESEARCH) {
 			eventController.acceptTheRequest ();
-			eventController.doReExamineResearch();
 		}
 	}
 	public void clickNo(){
