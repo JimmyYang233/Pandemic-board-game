@@ -2128,14 +2128,10 @@ public class Game : MonoBehaviour {
 		currentPlayer =(challenge == Challenge.BioTerroist) ? findPlayer (RoleKind.BioTerrorist):players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
         if (currentPlayer.hasEventCardInFront())
         {
-            if(currentPlayer.getCommercialTravelBanTurn() == 0)
+            if(currentPlayer.hasEventCardInFront())
             {
                 infectionRate = infectionArray[index]; 
                 currentPlayer.terminateCommercialTravelBanTurn();
-            }
-            else
-            {
-                currentPlayer.decrementCommercialTravelBanTurn();
             }
         }
         currentPhase = GamePhase.PlayerTakeTurn;

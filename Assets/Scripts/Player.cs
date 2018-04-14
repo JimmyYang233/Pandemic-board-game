@@ -14,7 +14,6 @@ public class Player {
     private bool mobileHospitalActivated = false;
     private EventCard eventCardOnTopOfRoleCard = null;
     private bool hasCommercialTravelBanInfrontOfPlayer = false;//TODO new field
-    private int CommercialTravelBanTurn = 0;//TODO new field
     private int[] cubes = new int[5]; //TODO new field //0 blue 1 red 2 yellow 3 black 4 magenta
     
     public int[] getAllCubes()
@@ -115,24 +114,9 @@ public class Player {
         return hasCommercialTravelBanInfrontOfPlayer;
     }
 
-	public void setCommercialTravelBanTurnValue(int input){
-		CommercialTravelBanTurn = input;
-	}
-
     public void setCommercialTravelBanTurn()
     {
         hasCommercialTravelBanInfrontOfPlayer = true;
-        CommercialTravelBanTurn = 1;
-    }
-
-    public int getCommercialTravelBanTurn()
-    {
-        return CommercialTravelBanTurn;
-    }
-
-    public void decrementCommercialTravelBanTurn()
-    {
-        CommercialTravelBanTurn--;
     }
 
     public void terminateCommercialTravelBanTurn()
