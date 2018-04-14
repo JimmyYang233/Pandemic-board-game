@@ -33,9 +33,9 @@ public class BasicOperation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		me = game.FindPlayer(PhotonNetwork.player);
-        Debug.Log(currentPlayer.getRoleKind().ToString());
         currentPlayer = game.getCurrentPlayer();
-        if(me.getRoleKind() == RoleKind.BioTerrorist)
+        Debug.Log(currentPlayer.getRoleKind().ToString());
+        if (me.getRoleKind() == RoleKind.BioTerrorist)
         {
             bioTerroristPanel.gameObject.SetActive(true);
             me.getPlayerPawn().gameObject.SetActive(true);
