@@ -127,7 +127,7 @@ public class BasicOperation : MonoBehaviour {
                     {
                         archivistSkillButton.GetComponent<Button>().interactable = true;
                     }
-                    else if (currentCity.hasCubes())
+                    else if (currentCity.hasCubes()&&(!me.getOncePerTurnAction()))
                     {
                         fieldOperativeSkillButton.GetComponent<Button>().interactable = true;
                     }

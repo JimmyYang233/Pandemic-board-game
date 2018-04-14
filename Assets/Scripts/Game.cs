@@ -1495,13 +1495,11 @@ public class Game : MonoBehaviour {
         }
 
         //Testing only
-		/*
-		RoleKind testRole = RoleKind.BioTerrorist;
+		RoleKind testRole = RoleKind.FieldOperative;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
         }
-        */
 		
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 
