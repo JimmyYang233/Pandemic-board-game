@@ -15,6 +15,39 @@ public class Player {
     private EventCard eventCardOnTopOfRoleCard = null;
     private bool hasCommercialTravelBanInfrontOfPlayer = false;//TODO new field
     private int CommercialTravelBanTurn = 0;//TODO new field
+    private int[] cubes = new int[5]; //TODO new field //0 blue 1 red 2 yellow 3 black 4 magenta
+    
+    public int[] getAllCubes()
+    {
+        return cubes;
+    }
+
+    public int getblueCubesHolded()
+    {
+        return cubes[0];
+    }
+
+    public int getredCubesHolded()
+    {
+        return cubes[1];
+    }
+    public int getyellowCubesHolded()
+    {
+        return cubes[2];
+    }
+    public int getblackCubesHolded()
+    {
+        return cubes[3];
+    }
+    public int getmagentaCubesHolded()
+    {
+        return cubes[4];
+    }
+
+    public int getTotalNumberOfCubesHolded()
+    {
+        return cubes.Length;
+    }
 
     public bool hasEventCardInFront()
     {
