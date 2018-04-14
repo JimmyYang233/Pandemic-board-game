@@ -6,6 +6,6 @@ using UnityEngine;
 [Serializable]
 public enum Challenge
 {
-    Nochallenge, Mutation, BioTerroist, VirulentStrain
+    Nochallenge, Mutation, BioTerroist, VirulentStrain, MutationAndVirulentStrain, BioTerroistAndVirulentStrain
 
 }
