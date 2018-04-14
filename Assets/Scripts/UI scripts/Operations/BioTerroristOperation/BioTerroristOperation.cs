@@ -25,10 +25,7 @@ public class BioTerroristOperation : MonoBehaviour {
             if (me.getRemainingAction() != 0)
             {
                 drawButton.GetComponent<Button>().interactable = true;
-                if (!game.getBioTerrorist().getIsCaptured())
-                {
-                    moveButton.GetComponent<Button>().interactable = true;
-                }
+                moveButton.GetComponent<Button>().interactable = true;
                 infectButton.GetComponent<Button>().interactable = true;
                 sabotageButton.GetComponent<Button>().interactable = true;
                 escapeButton.GetComponent<Button>().interactable = true;
