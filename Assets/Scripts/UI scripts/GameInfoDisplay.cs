@@ -83,7 +83,6 @@ public class GameInfoDisplay : MonoBehaviour
             if(i == outbreakRate)
             {
                 outbreakrates[i-1].SetActive(true);
-                outbreakrates[i-1].transform.GetChild(0).gameObject.GetComponent<Text>().text = game.getInfectionRate().ToString();
             }
             else{
                 outbreakrates[i-1].SetActive(false);
@@ -99,6 +98,7 @@ public class GameInfoDisplay : MonoBehaviour
             if (i == infectionIndex)
             {
                 infectionrates[i].SetActive(true);
+                infectionrates[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = game.getInfectionRate().ToString();
             }
             else
             {
