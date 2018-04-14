@@ -1362,6 +1362,7 @@ public class Game : MonoBehaviour {
 	}
 
 	private bool swapRole(Player pl1, RoleKind roleKind){
+		RoleKind old = pl1.getRoleKind ();
 		if(checkForRoleExistence(roleKind)){
 			Debug.Log ("Role already exist in the game. Game.cs: swapRole");
 			return false;
@@ -1371,11 +1372,6 @@ public class Game : MonoBehaviour {
 		city.removePawn (pawn);
 		Role r2 = new Role (roleKind);
 
-		if (pl1 == me) {
-			playerPanel.swapRoleSelf (roleKind);
-		} else {
-			playerPanel.swapRoleOther (pl1.getRoleKind (),roleKind);
-		}
 
 		if(r2.getRoleKind() == RoleKind.Generalist && pl1 == currentPlayer && pl1.getMaxnumAction() == 4){
 			pl1.increaseRemainingAction (1);
@@ -1384,6 +1380,13 @@ public class Game : MonoBehaviour {
 		pl1.setRole (r2);
         r2.setPawn(pawn);
 		city.addPawn (pawn);
+
+		if (pl1 == me) {
+			playerPanel.swapRoleSelf (roleKind);
+		} else {
+			playerPanel.swapRoleOther (old,roleKind);
+		}
+
         return true;
 	}
 
