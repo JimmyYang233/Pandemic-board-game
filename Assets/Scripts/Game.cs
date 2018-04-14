@@ -88,7 +88,6 @@ public class Game : MonoBehaviour {
 				PhotonView.RPC ("RPC_LoadPlayer", PhotonTargets.All, PlayerNetwork.Instance.savedGameJson);
 				PhotonView.RPC ("RPC_LoadGame", PhotonTargets.All);
 			}
-
 		}
 
 	} 
