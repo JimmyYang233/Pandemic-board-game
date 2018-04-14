@@ -4339,7 +4339,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -4360,6 +4360,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000038147
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0000076294
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -5253,7 +5273,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -5268,6 +5288,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000015259
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000061035
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -10216,6 +10256,7 @@ GameObject:
   - component: {fileID: 329504043}
   - component: {fileID: 329504042}
   - component: {fileID: 329504041}
+  - component: {fileID: 329504044}
   m_Layer: 5
   m_Name: EventCard
   m_TagString: Untagged
@@ -10316,6 +10357,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 329504039}
+--- !u!114 &329504044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 329504039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a92c80c7e8d4fbda85f9330b923d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventCardPanel: {fileID: 1900971756}
 --- !u!1001 &332554011
 Prefab:
   m_ObjectHideFlags: 0
@@ -17239,7 +17292,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -17254,6 +17307,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000061034996
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.728484e-12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -18553,7 +18626,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -18568,6 +18641,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000038147
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000061035
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -19351,7 +19444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &599101245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21728,7 +21821,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -21743,6 +21836,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000038147
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.025032245
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -33707,7 +33820,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 73084184}
   card: {fileID: 329504041}
-  cubeHolder: {fileID: 0}
+  cubeHolder: {fileID: 1932018190}
+  eventCard: {fileID: 329504044}
 --- !u!1 &983929108
 GameObject:
   m_ObjectHideFlags: 0
@@ -39016,7 +39130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -39031,6 +39145,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000061035
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -41330,7 +41464,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1229745187}
   m_OnClick:
     m_PersistentCalls:
@@ -53544,7 +53678,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -53559,6 +53693,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0024719704
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00006484969
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -53951,7 +54105,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -53966,6 +54120,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000019073603
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0024719704
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.71
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -56718,7 +56892,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -56733,6 +56907,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0025024
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0000457766
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -69242,7 +69436,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -69257,6 +69451,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000038147
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.025014
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
@@ -70486,7 +70700,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_Name
@@ -70501,6 +70715,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: cardButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000019073603
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0024719704
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572458646458654, guid: 1853fc53655cb44f4a4763199019c06e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 467.71
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
