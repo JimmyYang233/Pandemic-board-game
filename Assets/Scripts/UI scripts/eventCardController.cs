@@ -481,4 +481,6 @@ public class eventCardController : MonoBehaviour {
 		MobileHospital
 		NewAssignmentRapidVaccineDeployment*/
 	}
+
+
 }
