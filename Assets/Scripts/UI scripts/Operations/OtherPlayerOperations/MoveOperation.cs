@@ -81,7 +81,12 @@ public class MoveOperation : MonoBehaviour {
 		} else {
 			result.SetActive (true);
 			result.transform.GetChild(0).GetComponent<Text>().text="He rejects!";
+			playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
+			ppc.gameObject.SetActive (true);
+			playerSelect.clear();
+			playerSelect.gameObject.SetActive(false);
 		}
+
 	}
 
 	public void acceptTheRequest(){
