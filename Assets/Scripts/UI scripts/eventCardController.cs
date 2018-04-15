@@ -20,6 +20,7 @@ public class eventCardController : MonoBehaviour {
 	public Status status=Status.NEWASSIGNMENT;
 	public string requestSource;
     public Button deploymentButton;
+    public BasicOperation basicOperation;
     Player me;
 
     //Resilient zone
@@ -192,6 +193,7 @@ public class eventCardController : MonoBehaviour {
         }
         newAssignmentPanel.SetActive(false);
 		game.NewAssignment (game.FindPlayer(PhotonNetwork.player).getRoleKind().ToString(),newAssignmentName);
+        basicOperation.resetAll();
     }
 #endregion
     #region Resilient Population
