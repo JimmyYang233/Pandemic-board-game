@@ -301,17 +301,35 @@ public class eventCardController : MonoBehaviour {
     #endregion
     #region Airlift
     //---------------------------------airLift zone-----------------------------
+    List<UnityEngine.Events.UnityAction> airLiftCalls = new List<UnityEngine.Events.UnityAction>();
+    List<City> cityAddCalls = new List<City>();
     public void airLift()
     {
         //TO-DO maybe later
     }
 
-    public void movePawn(string roleKind)
+    public void chooseDirection(string roleKind)
     {
         Player player = game.findPlayer(roleKind);
-
+        List<Player> players = game.getPlayers();
+        foreach(Player otherPlayer in players)
+        {
+            if (otherPlayer != player)
+            {
+                City otherCity = otherPlayer.getPlayerPawn().getCity();
+                otherCity.displayButton();
+                UnityEngine.Events.UnityAction thisCall = ()=>movePawn(player, otherCity);
+                otherCity.gameObject.GetComponent<Button>().onClick.AddListener(thisCall);
+                airLiftCalls.Add(thisCall);
+            }
+        }
     }
-    public void 
+
+    public void movePawn(Player player, City city)
+    {
+        game.Airlift(player, city);
+        //for(int i = 0; i<)
+    }
     #endregion 
     #region Government Grant
     //---------------------------------Government Grant zone-----------------------------
