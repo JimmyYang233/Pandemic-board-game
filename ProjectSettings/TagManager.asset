@@ -16,6 +16,7 @@ TagManager:
   - researchStation
   - gameInfoDisplay
   - eventCardAsk
+  - marker
   layers:
   - Default
   - TransparentFX
