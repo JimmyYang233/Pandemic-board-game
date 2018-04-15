@@ -769,11 +769,31 @@ public class Game : MonoBehaviour {
         {
             BioTerroristVolunteer =  UnityEngine.Random.Range(0, players.Count);
         }
-        
-        
+        /*
+		Role r1 = new Role (RoleKind.Archivist);
+		Role r2 = new Role (RoleKind.ContainmentSpecialist);
+		Role r3 = new Role (RoleKind.ContingencyPlanner);
+
+		Role r1 = new Role (RoleKind.Dispatcher);
+		Role r2 = new Role (RoleKind.BioTerrorist);
+		Role r3 = new Role (RoleKind.Epidemiologist);
+
+		Role r1 = new Role (RoleKind.Colonel);
+		Role r2 = new Role (RoleKind.FieldOperative);
+		Role r3 = new Role (RoleKind.Generalist);
+
+		Role r1 = new Role (RoleKind.Medic);
+		Role r2 = new Role (RoleKind.OperationsExpert);
+		Role r3 = new Role (RoleKind.QuarantineSpecialist);
+
+		Role r1 = new Role (RoleKind.Researcher);
+		Role r2 = new Role (RoleKind.Scientist);
+		Role r3 = new Role (RoleKind.Troubleshooter);
+		*/
         foreach (Player p in players) 
         {
             Role r;
+			//this needs to be commented when faking saved game
             if (challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain)
             {
                 r = (p != players[BioTerroristVolunteer]) ? new Role(selectRole()) : bioTerroristRole;
@@ -823,6 +843,7 @@ public class Game : MonoBehaviour {
 		if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
 			shuffleMutatonEventCards();
 		}
+
         setInitialHand();
         shuffleAndAddEpidemic();
 		setUp();
