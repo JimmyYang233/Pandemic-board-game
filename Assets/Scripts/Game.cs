@@ -638,16 +638,22 @@ public class Game : MonoBehaviour {
 
         
 
-        if (challenge == Challenge.BioTerroist)
-        {
-            UnityEngine.Random.seed = (int)PhotonNetwork.room.CustomProperties["seed"];
-            BioTerroristVolunteer = UnityEngine.Random.Range(0, players.Count);
-            
-        }
+        UnityEngine.Random.seed = (int)PhotonNetwork.room.CustomProperties["seed"];
+        BioTerroristVolunteer = UnityEngine.Random.Range(0, players.Count);
+         
 
         foreach (Player p in players) 
         {
-            Role r = (p != players[BioTerroristVolunteer]) ? new Role(selectRole()) : bioTerroristRole;
+            Role r;
+            if (challenge == Challenge.BioTerroist)
+            {
+                 r = (p != players[BioTerroristVolunteer]) ? new Role(selectRole()) : bioTerroristRole;
+            }
+            else
+            {
+                r = new Role(selectRole());
+            }
+            
             Pawn pawn;
             if (r.getRoleKind() == RoleKind.BioTerrorist)
             {
