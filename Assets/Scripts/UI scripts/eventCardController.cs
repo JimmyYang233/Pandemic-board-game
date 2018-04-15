@@ -54,7 +54,6 @@ public class eventCardController : MonoBehaviour {
 			} else if (status == Status.REEXAMINEDRESEARCH) {
 				game.DisplayReExaminedResearch (selectRERPlayer);
 			} else if (status == Status.AIRLIFT) {
-				Debug.Log ("here");
 				chooseDirection ((selectALPlayer));
 			}
 		}
@@ -66,9 +65,10 @@ public class eventCardController : MonoBehaviour {
 		requestSource = source;
 		if (this.status == Status.NEWASSIGNMENT) {
 			agreeController.status = agreePanelController.Status.NEWASSIGNMENT;
-		}
-		else if(this.status == Status.REEXAMINEDRESEARCH){
+		} else if (this.status == Status.REEXAMINEDRESEARCH) {
 			agreeController.status = agreePanelController.Status.REEXAMINEDRESEARCH;
+		} else if (this.status == Status.AIRLIFT) {
+			agreeController.status = agreePanelController.Status.AIRLIFT;
 		}
 		agreeController.agreePanel.gameObject.SetActive (true);
 		agreeController.agreePanel.transform.GetChild (0).GetComponent<Text> ().text = request;
@@ -328,6 +328,7 @@ public class eventCardController : MonoBehaviour {
 		otherPlayers.SetActive (true);
 		if (n.Equals (game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ())) {
 			chooseDirection (selectALPlayer);
+			Debug.Log ("myself");
 		} else {
 			game.AskForEventCardPermission ("Do you want to accept event card airLift?", selectALPlayer, game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ());
 		}
@@ -335,6 +336,7 @@ public class eventCardController : MonoBehaviour {
 
     public void chooseDirection(string roleKind)
     {
+		Debug.Log ("choose direction");
         Player player = game.findPlayer(roleKind);
         List<Player> players = game.getPlayers();
         foreach(Player otherPlayer in players)
