@@ -34,6 +34,7 @@ public class Maps{
         diseaseColor.Add(Color.red);
         diseaseColor.Add(Color.blue);
         diseaseColor.Add(Color.yellow);
+		diseaseColor.Add (Color.magenta);
 
 
         roleColors.Add(RoleKind.ContingencyPlanner, new Color32(72, 209, 204,255));
@@ -256,6 +257,7 @@ public class Maps{
 
 	public List<Color> getDiseaseColor(Challenge challenge)
     {
+		/*
 		if ((challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain || challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain)
 		    && (!diseaseColor.Contains (Color.magenta))) {
 			diseaseColor.Add (Color.magenta);
@@ -263,7 +265,7 @@ public class Maps{
 			if (diseaseColor.Contains (Color.magenta)) {
 				diseaseColor.Remove (Color.magenta);
 			}
-		}
+		}*/
         return diseaseColor;
     }
 }

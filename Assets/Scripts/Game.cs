@@ -836,7 +836,7 @@ public class Game : MonoBehaviour {
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
 		}
 
-		List<Color> dc = mapInstance.getDiseaseColor(challenge);
+		List<Color> dc = mapInstance.getDiseaseColor();
 		foreach (Color c in dc)
 		{
 			Disease d = new Disease(c);
@@ -1805,7 +1805,7 @@ public class Game : MonoBehaviour {
         }
         //Testing only
    
-		RoleKind testRole = RoleKind.Researcher;
+		RoleKind testRole = RoleKind.Epidemiologist;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
