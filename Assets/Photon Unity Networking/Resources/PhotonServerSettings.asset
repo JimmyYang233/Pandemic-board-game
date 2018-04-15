@@ -90,4 +90,5 @@ MonoBehaviour:
   - RPC_askPermissionDispatcher
   - RPC_informDispatcher
   - RPC_bioterroristDraw
+  - RPC_airlift
   DisableAutoOpenWizard: 1

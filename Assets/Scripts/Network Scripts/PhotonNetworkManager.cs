@@ -60,9 +60,11 @@ public class PhotonNetworkManager : MonoBehaviour {
 	}
 
 	void JoinRoom(string roomName){
-		PhotonNetwork.JoinRoom (roomName);
-		Debug.Log ("Join room " + roomName);
-		SceneManager.LoadScene ("Room");
+		if (PhotonNetwork.JoinLobby ()) {
+			PhotonNetwork.JoinRoom (roomName);
+			Debug.Log ("Join room " + roomName);
+			SceneManager.LoadScene ("Room");
+		}
 	}
 
 	void OnGUI(){
