@@ -16,7 +16,7 @@ public class MoveOperation : MonoBehaviour {
     public Button bioCancelButton;
 
     public playerSelectionPanel playerSelect;
-
+	public PlayerPanelController ppc;
     Game game;
 
     Player currentPlayer;
@@ -31,15 +31,19 @@ public class MoveOperation : MonoBehaviour {
         //game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
 		game = Game.Instance;
     }
-
+	public void setActivePpc(){
+		ppc.gameObject.SetActive (true);
+	}
     public void moveButtonClicked()
     {
         currentPlayer = game.getCurrentPlayer();
         playerToMove = currentPlayer;
         if (currentPlayer.getRoleKind() == RoleKind.Dispatcher)
         {
-            playerSelect.gameObject.SetActive(true);
             playerSelect.selectStatus = playerSelectionPanel.Status.DISPATCHER;
+			ppc.gameObject.SetActive (false);
+			playerSelect.displayAllPlayerForEventCard ();
+			playerSelect.gameObject.SetActive(true);
         }
         else
         {

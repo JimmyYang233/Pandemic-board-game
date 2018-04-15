@@ -108,6 +108,8 @@ public class playerSelectionPanel : MonoBehaviour {
 			eventController.selectNewAssignmentPlayer (name);
 		} else if (selectStatus == Status.DISPATCHER) {
 			move.changePlayerToMove (name);
+			move.showMove ();
+			move.setActivePpc ();
 		}
 	}
 	public void cancelButtonClick(){
@@ -176,7 +178,7 @@ public class playerSelectionPanel : MonoBehaviour {
 			}
 
 		}
-		if (selectStatus == Status.NEWASSIGNMENT || selectStatus == Status.REEXAMINEDRESEARCH) {
+		if (selectStatus == Status.NEWASSIGNMENT || selectStatus == Status.REEXAMINEDRESEARCH || selectStatus==Status.DISPATCHER) {
 			selfButton.gameObject.SetActive (true);
 		}
 	}
