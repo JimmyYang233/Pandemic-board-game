@@ -37,6 +37,7 @@ public class PlayerPanelController : MonoBehaviour
 		Transform t = playerSelect.selfButton.transform.GetChild (0);
 		t.GetChild (0).GetComponent<Image> ().color = Maps.getInstance ().getRoleColor (roleKindNew);
 		t.GetChild (1).GetComponent<Text> ().text = roleKindNew.ToString();
+		t.name = roleKindNew.ToString ();
 	}
 	public void swapRoleOther(RoleKind roleKindOld,RoleKind roleKindNew){
 		foreach (Transform t in this.transform)
