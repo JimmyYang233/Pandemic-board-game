@@ -99,7 +99,7 @@ public class BuildOperation : MonoBehaviour
                         Debug.Log("addListener in button");
                         Button button = child.gameObject.GetComponent<Button>();
                         button.onClick.RemoveAllListeners();
-                        button.onClick.AddListener(delegate { buildResearch(city); });
+                        button.onClick.AddListener(delegate { buildQuarantine(city); });
                         button.onClick.AddListener(delegate { basicOperation.resetAll(); });
                     }
                 }

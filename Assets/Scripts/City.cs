@@ -30,6 +30,7 @@ public class City : MonoBehaviour {
     public void flipMarkerTo(int num)
     {
         quarantineMarker = num;
+        displayMarker();
     }
 
     public int getMarker()
@@ -40,6 +41,13 @@ public class City : MonoBehaviour {
     public void putMarker()
     {
         quarantineMarker = 2;
+        displayMarker();
+    }
+
+    public void removeMarker()
+    {
+        quarantineMarker = 0;
+        undisplayMarker();
     }
 	private void Awake()
 	{
@@ -373,6 +381,29 @@ public class City : MonoBehaviour {
             //Debug.Log(station.transform.position);
         }
     }
+
+    public void displayMarker()
+    {
+        undisplayMarker();
+        if (quarantineMarker == 1)
+        {
+            GameObject marker1 = (GameObject)Instantiate(Resources.Load("Markers/Marker1"), new Vector3(0, 0, 0), gameObject.transform.rotation);
+            marker1.transform.parent = gameObject.transform;
+            Vector3 aPosition = transform.position;
+            aPosition.y = aPosition.y - 5;
+            marker1.transform.position = aPosition;
+        }
+        else if(quarantineMarker == 2)
+        {
+            GameObject marker2 = (GameObject)Instantiate(Resources.Load("Markers/Marker2"), new Vector3(0, 0, 0), gameObject.transform.rotation);
+            marker2.transform.parent = gameObject.transform;
+            Vector3 aPosition = transform.position;
+            aPosition.y = aPosition.y - 5;
+            marker2.transform.position = aPosition;
+        }
+    }
+
+
 	public void displayPawn(){
 		int num = 0;
 		foreach (Pawn pawn in pawns) {
@@ -421,6 +452,18 @@ public class City : MonoBehaviour {
                 }
 
             }
+        }
+    }
+
+    public void undisplayMarker()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "marker")
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+
         }
     }
 
