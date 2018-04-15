@@ -26,6 +26,7 @@ public class Game : MonoBehaviour {
 	private bool complexMolecularStructure = false;
 	private bool governmentInterference = false;
 	private bool usedTreated = false;
+	private bool slipperySlope = false;
 	// Virulent Strain end
 	[SerializeField]
     private int infectionRate=2;
@@ -397,6 +398,48 @@ public class Game : MonoBehaviour {
 		PlayerCard card = findPlayerCard (cardNmae);
 		discard (card);
 	}
+
+	[PunRPC]
+	public void RPC_bioTerroristCapture(){
+		bioTerroristCapture ();
+	}
+
+	[PunRPC]
+	public void RPC_bioTerroristSabotage(string infectionCardName){
+		InfectionCard ic = findInfectionCard (infectionCardName);
+		bioTerroristSabotage (ic);
+	}
+
+	[PunRPC]
+	public void RPC_bioTerroristInfectLocally(){
+		bioTerroristInfectLocally ();
+	}
+
+	[PunRPC]
+	public void RPC_bioTerroristInfectRemotely(string icName){
+		InfectionCard ic = findInfectionCard (icName);
+		bioTerroristInfectRemotely (ic);
+	}
+
+	[PunRPC]
+	public void RPC_bioTerroristDirectFlight(string icName){
+		InfectionCard ic = findInfectionCard (icName);
+		bioTerroristDirectFlight (ic);
+	}
+
+	[PunRPC]
+	public void RPC_bioTerroristCharterFlight(string icName, string cityName){
+		InfectionCard ic = findInfectionCard (icName);
+		City c = findCity (cityName);
+		bioTerroristCharterFlight (ic,c);
+	}
+
+
+	[PunRPC]
+	public void RPC_bioTerroristEscape(string icName){
+		InfectionCard ic = findInfectionCard (icName);
+		bioTerroristEscape (ic);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -609,6 +652,34 @@ public class Game : MonoBehaviour {
 	public void BioterroristDraw(){
 		PhotonView.RPC ("RPC_bioterroristDraw", PhotonTargets.All);
 	}
+
+	public void BioTerroristCapture(){
+		PhotonView.RPC ("RPC_bioTerroristCapture", PhotonTargets.All);
+	}
+
+	public void BioTerroristSabotage(string infectionCardName){
+		PhotonView.RPC ("RPC_bioTerroristSabotage", PhotonTargets.All, infectionCardName );
+	}
+
+	public void BioTerroristInfectLocally(){
+		PhotonView.RPC ("RPC_bioTerroristInfectLocally", PhotonTargets.All);
+	}
+
+	public void BioTerroristInfectRemotely(string infectionCardName){
+		PhotonView.RPC ("RPC_bioTerroristInfectRemotely", PhotonTargets.All, infectionCardName);
+	}
+
+	public void BioTerroristDirectFlight(string infectionCardName){
+		PhotonView.RPC ("RPC_bioTerroristDirectFlight", PhotonTargets.All, infectionCardName);
+	}
+
+	public void BioTerroristCharterFlight(string cardName, string cityName){
+		PhotonView.RPC ("RPC_bioTerroristCharterFlight", PhotonTargets.All, cardName, cityName);
+	}
+
+	public void BioTerroristEscape(string icName){
+		PhotonView.RPC ("RPC_bioTerroristEscape", PhotonTargets.All, icName);
+	}
     #endregion
 
     #region initialization
@@ -702,7 +773,7 @@ public class Game : MonoBehaviour {
         foreach (Player p in players) 
         {
             Role r;
-            if (challenge == Challenge.BioTerroist)
+            if (challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain)
             {
                 r = (p != players[BioTerroristVolunteer]) ? new Role(selectRole()) : bioTerroristRole;
             }
@@ -962,7 +1033,6 @@ public class Game : MonoBehaviour {
 				//for gui
 				if (!player.Equals(me))
 				{
-
 					playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), pc);
 				}
 				else
@@ -1163,6 +1233,7 @@ public class Game : MonoBehaviour {
 				mainPlayerPanel.deletePlayerCard(card);
 			}
 			playerDiscardPile.Add(card);
+			record.discard(player, card);
 		}
 
 		d.cure();
@@ -1886,6 +1957,20 @@ public class Game : MonoBehaviour {
 					}
 				}
 				break;
+			case VirulentStrainEpidemicEffects.SlipperySlope:
+				slipperySlope = true;
+				break;
+			case VirulentStrainEpidemicEffects.UnacceptableLoss:
+				int nCubes = VirulentStrainDisease.getNumOfDiseaseCubeLeft();
+				VirulentStrainDisease.removeCubes(nCubes >= 4 ? 4 : nCubes);
+				break;
+			case VirulentStrainEpidemicEffects.UncountedPopulatIons:
+				foreach(City c in cities){
+					if(c.getCubeNumber(VirulentStrainDisease) == 1){
+						c.addCubes(VirulentStrainDisease,1);
+					}
+				}
+				break;
 			default:
 				Debug.Log("no Virulent Strain Epidemic Effects");
 				break;
@@ -1998,6 +2083,9 @@ public class Game : MonoBehaviour {
 			Debug.Log ("An outbreak happens in " + city.ToString());
 			record.outbreak(city);
             outbreaksValue++;
+			if(slipperySlope){
+				outbreaksValue++;
+			}
             gameInfoController.displayOutbreak();
             if (outbreaksValue == maxOutbreaksValue)
             {
@@ -2378,6 +2466,7 @@ public class Game : MonoBehaviour {
         bioTerroristMove(players[BioTerroristVolunteer], card.getCity());
         announceAirportSighting();
         players[BioTerroristVolunteer].decreaseRemainingAction();
+		record.bioTerroristSighted(card.getCity());
     }
 
     private void bioTerroristCharterFlight(InfectionCard card, City city)
@@ -2387,6 +2476,7 @@ public class Game : MonoBehaviour {
         bioTerroristMove(players[BioTerroristVolunteer], city);
         announceAirportSighting();
         players[BioTerroristVolunteer].decreaseRemainingAction();
+		record.bioTerroristSighted(city);
     }
 
     private void bioTerroristEscape(InfectionCard card)
@@ -2396,7 +2486,7 @@ public class Game : MonoBehaviour {
 
     private void announceAirportSighting()
     {
-        //TBW TODO
+        //TBW TODO . zsh: done by call record.bioTerroristSighted(city);
     }
 
     public PlayerCard AckCardToDrop(List<PlayerCard> cards)
@@ -2632,6 +2722,7 @@ public class Game : MonoBehaviour {
                 mainPlayerPanel.deletePlayerCard(card);
             }
             playerDiscardPile.Add(card);
+			record.discard(currentPlayer, card);
         }
 		
         currentCity.setHasResearch(true);

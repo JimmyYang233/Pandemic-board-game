@@ -27,7 +27,7 @@ public class MoveOperation : MonoBehaviour {
     Player currentPlayer;
     Player playerToMove;
 
-    private enum Status {DRIVE, DIRECTFLIGHT, SHUTTLEFLIGHT, CHARTERFLIGHT, NULL,DISPATCHER,DISPATCHERPAWN};
+    private enum Status {DRIVE, DIRECTFLIGHT, SHUTTLEFLIGHT, CHARTERFLIGHT, NULL, DISPATCHER, DISPATCHERPAWN, BIODIRECTFLIGHT, BIOCHATTERFLIGHT};
 
     private Status moveStatus = Status.NULL; 
 
@@ -275,6 +275,14 @@ public class MoveOperation : MonoBehaviour {
         {
             game.TakeShuttleFlight(playerToMove.getRoleKind().ToString(), destinationCity.cityName.ToString());
         }
+        else if(moveStatus == Status.BIODIRECTFLIGHT)
+        {
+            game.BioTerroristDirectFlight(destinationCity.cityName.ToString());
+        }
+        else if(moveStatus == Status.BIOCHATTERFLIGHT)
+        {
+            game.BioTerroristCharterFlight(playerToMove.getPlayerPawn().getCity().getCityName().ToString(), destinationCity.getCityName().ToString());
+        }
         moveStatus = Status.NULL;
         disableAllCities();
     }
@@ -375,7 +383,6 @@ public class MoveOperation : MonoBehaviour {
         {
             bioCharterFlightButton.gameObject.GetComponent<Button>().interactable = true;
         }
-
         bioCancelButton.gameObject.GetComponent<Button>().interactable = true;
     }
 
@@ -391,6 +398,37 @@ public class MoveOperation : MonoBehaviour {
             neighbor.displayButton();
         }
         moveStatus = Status.DRIVE;
+    }
+
+    public void bioDirectFlightButtonClicked()
+    {
+        bioDriveButton.GetComponent<Button>().interactable = false;
+        bioDirectFlightButton.GetComponent<Button>().interactable = false;
+        bioCharterFlightButton.GetComponent<Button>().interactable = false;
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        foreach (PlayerCard card in currentPlayer.getHand())
+        {
+            if (card.getType() == CardType.InfectionCard)
+            {
+                InfectionCard infectionCard = (InfectionCard)card;
+                City infectionCity = infectionCard.getCity();
+                if (infectionCity != currentCity)
+                {
+                    infectionCity.displayButton();
+                }
+            }
+        }
+        moveStatus = Status.BIODIRECTFLIGHT;
+    }
+
+    public void bioTerroristCharterFlightButtonClicked()
+    {
+        foreach(City city in game.getCities())
+        {
+            city.displayButton();
+        }
+        moveStatus = Status.BIOCHATTERFLIGHT;
     }
 
     public void bioCancelButtonClicked()

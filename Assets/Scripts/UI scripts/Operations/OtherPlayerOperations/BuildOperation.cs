@@ -34,7 +34,7 @@ public class BuildOperation : MonoBehaviour
 
     public void buildButtonClicked()
     {
-        if (currentCity.getMarker() == 0)
+        if (currentCity.getMarker() == 0 && (game.getChallenge() != Challenge.BioTerroist) && (game.getChallenge() != Challenge.BioTerroistAndVirulentStrain))
         {
             buildQuarantineButton.gameObject.GetComponent<Button>().interactable = true;
         }

@@ -66,7 +66,7 @@ public class BasicOperation : MonoBehaviour {
 				contingencyPlannerSkillButton.gameObject.SetActive (true);
 				roleOnlyButton = contingencyPlannerSkillButton;
 			} else if (me.getRoleKind () == RoleKind.Troubleshooter) {
-				contingencyPlannerSkillButton.gameObject.SetActive (true);
+				troubleShooterSkillButton.gameObject.SetActive (true);
 				roleOnlyButton = contingencyPlannerSkillButton;
 			}
             else if (me.getRoleKind() == RoleKind.Archivist)
@@ -103,7 +103,8 @@ public class BasicOperation : MonoBehaviour {
                     {
                         moveButton.GetComponent<Button>().interactable = true;
                     }
-                    if ((!currentCity.getHasResearch() && (currentPlayer.containsSpecificCityCard(currentCity) || (currentPlayer.getRoleKind() == RoleKind.OperationsExpert))||(currentCity.getMarker()==0)))
+                    if (!currentCity.getHasResearch() && (currentPlayer.containsSpecificCityCard(currentCity) || (currentPlayer.getRoleKind() == RoleKind.OperationsExpert))||
+                        (currentCity.getMarker()==0&&(game.getChallenge()!=Challenge.BioTerroist)&&(game.getChallenge()!=Challenge.BioTerroistAndVirulentStrain)))
                     {
                         buildButton.GetComponent<Button>().interactable = true;
                     }
@@ -144,6 +145,11 @@ public class BasicOperation : MonoBehaviour {
                     {
                         fieldOperativeSkillButton.GetComponent<Button>().interactable = true;
                     }
+
+					if(game.getInfectionRate()<=4 && game.getInfectionRate()>=1 && (!me.getOncePerTurnAction())){
+						troubleShooterSkillButton.GetComponent<Button> ().interactable = true;
+					}
+
                     foreach (Player otherPlayer in game.getPlayers())
                     {
                         if (me.getPlayerPawn().getCity() != otherPlayer.getPlayerPawn().getCity())
