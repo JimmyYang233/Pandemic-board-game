@@ -51,7 +51,7 @@ public class BioTerroristOperation : MonoBehaviour {
 
     public void drawButtonClicked()
     {
-
+        game.BioterroristDraw();
         resetAll();
     }
 

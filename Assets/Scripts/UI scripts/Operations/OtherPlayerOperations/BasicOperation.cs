@@ -103,7 +103,8 @@ public class BasicOperation : MonoBehaviour {
                     {
                         moveButton.GetComponent<Button>().interactable = true;
                     }
-                    if ((!currentCity.getHasResearch() && (currentPlayer.containsSpecificCityCard(currentCity) || (currentPlayer.getRoleKind() == RoleKind.OperationsExpert))||(currentCity.getMarker()==0)))
+                    if (!currentCity.getHasResearch() && (currentPlayer.containsSpecificCityCard(currentCity) || (currentPlayer.getRoleKind() == RoleKind.OperationsExpert))||
+                        (currentCity.getMarker()==0&&(game.getChallenge()!=Challenge.BioTerroist)&&(game.getChallenge()!=Challenge.BioTerroistAndVirulentStrain)))
                     {
                         buildButton.GetComponent<Button>().interactable = true;
                     }

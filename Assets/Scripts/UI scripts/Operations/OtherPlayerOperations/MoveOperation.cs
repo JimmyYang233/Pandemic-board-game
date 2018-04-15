@@ -393,6 +393,16 @@ public class MoveOperation : MonoBehaviour {
         moveStatus = Status.DRIVE;
     }
 
+    public void bioDirectFlightButtonClicked()
+    {
+        bioDriveButton.GetComponent<Button>().interactable = false;
+        bioDirectFlightButton.GetComponent<Button>().interactable = false;
+        bioCharterFlightButton.GetComponent<Button>().interactable = false;
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        foreach(InfectionCard infectionCard in currentPlayer.get)
+    }
+
     public void bioCancelButtonClicked()
     {
         driveButton.GetComponent<Button>().interactable = false;
