@@ -343,7 +343,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_rapidVaccineDeployment(string colorString, string[] cityNamesArray){
-		Debug.Log ("RPC sends: " + cityNamesArray);
+		Debug.Log ("RPC sends: " + cityNamesArray.Length);
 		Color color = stringToColor (colorString);
 		List<City> cities = new List<City> ();
 		for (int i = 0; i < cityNamesArray.Length; i++) {
@@ -527,7 +527,9 @@ public class Game : MonoBehaviour {
 		int i = 0;
 		foreach (City city in cities) {
 			cityNamesArray [i] = city.getCityName().ToString();
+			i++;
 		}
+
 		PhotonView.RPC ("RPC_rapidVaccineDeployment", PhotonTargets.All, colorString, cityNamesArray);
     }
     #endregion
