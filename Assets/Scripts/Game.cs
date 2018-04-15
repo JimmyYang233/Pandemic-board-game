@@ -615,15 +615,14 @@ public class Game : MonoBehaviour {
 		}
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
 
-        
+        bioTerroristRole = new BioTerrorist();
 
-        if(challenge == Challenge.BioTerroist)
+        if (challenge == Challenge.BioTerroist)
         {
             if (BioTerroristVolunteer == null)
             {
                 BioTerroristVolunteer =  players[0];
             }
-            bioTerroristRole = new BioTerrorist();
         }
 
         foreach (Player p in players) 
