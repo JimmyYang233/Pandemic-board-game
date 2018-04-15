@@ -351,8 +351,6 @@ public class Game : MonoBehaviour {
 		Color color = stringToColor (colorString);
 		List<City> cities = new List<City> ();
 		for (int i = 0; i < cityNamesArray.Length; i++) {
-			Debug.Log ("city name ");
-			Debug.Log (cityNamesArray[i]);
 			cities.Add (findCity(cityNamesArray[i]));
 		}
 		rapidVaccineDeployment (color, cities);
