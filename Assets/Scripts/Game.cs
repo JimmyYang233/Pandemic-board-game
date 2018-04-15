@@ -605,6 +605,10 @@ public class Game : MonoBehaviour {
 	public void Discard(string cardName){
 		PhotonView.RPC ("RPC_discard", PhotonTargets.All, cardName);
 	}
+
+	public void BioterroristDraw(){
+		PhotonView.RPC ("RPC_bioterroristDraw", PhotonTargets.All);
+	}
     #endregion
 
     #region initialization
