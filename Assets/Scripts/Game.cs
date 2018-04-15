@@ -394,7 +394,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_discard(string cardNmae){
-		Card card = findPlayerCard (cardNmae);
+		PlayerCard card = findPlayerCard (cardNmae);
 		discard (card);
 	}
     #endregion
