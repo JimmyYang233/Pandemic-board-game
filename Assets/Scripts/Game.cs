@@ -2198,21 +2198,14 @@ public class Game : MonoBehaviour {
         return markersAvailable;
     }
 
-<<<<<<< HEAD
-=======
-    private void placeMarker()
-    {
-        currentPlayer.getPlayerPawn().getCity().putMarker();
-        currentPlayer.decreaseRemainingAction();
-    }
-
->>>>>>> origin/master
     private void colonelPlaceMarker(CityCard card, City city)
     {
         if (markersAvailable > 0)
         {
             markersAvailable--;
             city.putMarker();
+			currentPlayer.removeCard(card);
+			playerDiscardPile.Add(card);	
             currentPlayer.decreaseRemainingAction();
         }
         else
