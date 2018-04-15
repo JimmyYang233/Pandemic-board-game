@@ -357,6 +357,11 @@ public class Game : MonoBehaviour {
 	public void RPC_askPermissionDispatcher(string request){
 		askPermissionDispatcher (request);
 	}
+
+	[PunRPC]
+	public void RPC_informDispatcher(bool result){
+		informDispatcher (result);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -1149,6 +1154,10 @@ public class Game : MonoBehaviour {
 
 	private void askPermissionDispatcher(string request){
 		moveOperation.askPermission (request);
+	}
+
+	private void informDispatcher(bool result){
+		moveOperation.informResult (result);
 	}
 	#endregion
 
