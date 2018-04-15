@@ -77,9 +77,6 @@ public class ShareOperation : MonoBehaviour {
         basicOperationPanel.SetActive(false);
 		otherPlayers.SetActive (false);
         //load all players current in the city
-
-
-
         //load card for the current city
         isTake = false;
     }
