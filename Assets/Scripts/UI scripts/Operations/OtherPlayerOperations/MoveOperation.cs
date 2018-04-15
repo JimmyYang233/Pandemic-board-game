@@ -17,12 +17,13 @@ public class MoveOperation : MonoBehaviour {
 
     public playerSelectionPanel playerSelect;
 	public PlayerPanelController ppc;
+	public GameObject result;
     Game game;
 
     Player currentPlayer;
     Player playerToMove;
 
-    private enum Status {DRIVE, DIRECTFLIGHT, SHUTTLEFLIGHT, CHARTERFLIGHT, NULL};
+    private enum Status {DRIVE, DIRECTFLIGHT, SHUTTLEFLIGHT, CHARTERFLIGHT, NULL,DISPATCHER,DISPATCHERPAWN};
 
     private Status moveStatus = Status.NULL; 
 
@@ -31,6 +32,60 @@ public class MoveOperation : MonoBehaviour {
         //game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
 		game = Game.Instance;
     }
+	//---------------------------------Request Handle-----------------------------------//
+	string targetPlayer;
+	public void roleSelectForMove(string target){
+		targetPlayer = target;
+		this.moveStatus = Status.DISPATCHER;
+		currentPlayer = game.getCurrentPlayer ();
+		if (target.Equals (currentPlayer.getRoleKind ().ToString ())) {
+			changePlayerToMove (target);
+			showMove ();
+			setActivePpc ();
+		} else {
+			//game.AskPermissionDispatcher(string name,"want you to move");
+		}
+	}
+	public void roleSelectForPawn(string target){
+		targetPlayer = target;
+		this.moveStatus = Status.DISPATCHERPAWN;
+		currentPlayer = game.getCurrentPlayer ();
+		if (target.Equals (currentPlayer.getRoleKind ().ToString ())) {
+			changePlayerToMove (target);
+			selectCityWithPawn ();
+			setActivePpc ();
+		} else {
+			//game.AskPermissionDispatcher(string name,"want to move you to next city");
+		}
+	}
+
+	public void informResult(bool t){
+		if (t) {
+			result.SetActive (true);
+			result.transform.GetChild (0).GetComponent<Text> ().text = "He accepts!";
+			if (this.moveStatus == Status.DISPATCHER) {
+				changePlayerToMove (targetPlayer);
+				showMove ();
+				setActivePpc ();
+			} else if (this.moveStatus == Status.DISPATCHERPAWN) {
+				changePlayerToMove (targetPlayer);
+				selectCityWithPawn ();
+				setActivePpc ();
+			}
+		} else {
+			result.SetActive (true);
+			result.transform.GetChild(0).GetComponent<Text>().text="He rejects!";
+		}
+	}
+
+	public void acceptTheRequest(){
+		//game.InformDispatcher (true);
+	}
+
+	public void declineTheRequest(){
+		//game.InformDispatcher (false);
+	}
+
 	public void setActivePpc(){
 		ppc.gameObject.SetActive (true);
 	}
@@ -215,7 +270,10 @@ public class MoveOperation : MonoBehaviour {
 
     public void dispatcherMove()
     {
-        //TO-DO a function call to player selection
+		playerSelect.selectStatus = playerSelectionPanel.Status.DISPATCHERMOVEPAWN;
+		ppc.gameObject.SetActive (false);
+		playerSelect.displayAllPlayerForEventCard ();
+		playerSelect.gameObject.SetActive(true);
     }
 
     public void selectCityWithPawn()

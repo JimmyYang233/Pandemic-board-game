@@ -5,8 +5,9 @@ using UnityEngine;
 public class agreePanelController : MonoBehaviour {
 	public GameObject agreePanel;
 	public eventCardController eventController;
+	public MoveOperation move;
 	public Game game;
-	public enum Status {SHARE,REEXAMINEDRESEARCH,NEWASSIGNMENT};
+	public enum Status {SHARE,REEXAMINEDRESEARCH,NEWASSIGNMENT,DISPATCHER};
 	public Status status=Status.SHARE;
 
 	//
@@ -19,11 +20,15 @@ public class agreePanelController : MonoBehaviour {
 			eventController.acceptTheRequest ();
 		} else if (status == Status.REEXAMINEDRESEARCH) {
 			eventController.acceptTheRequest ();
+		} else if (status == Status.DISPATCHER) {
+			move.acceptTheRequest ();
 		}
 	}
 	public void clickNo(){
 		if (status == Status.SHARE) {
 			share.declineRequest ();
+		} else if (status == Status.DISPATCHER) {
+			move.declineTheRequest ();
 		} else {
 			eventController.rejectTheRequest ();
 		}

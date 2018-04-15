@@ -10,7 +10,7 @@ public class playerSelectionPanel : MonoBehaviour {
 	public Game game;
 	private City currentCity;
 	private Player currentPlayer;
-	public enum Status {SHARE,EPIDEMIOLOGIST,REEXAMINEDRESEARCH,NEWASSIGNMENT,DISPATCHER};
+	public enum Status {SHARE,EPIDEMIOLOGIST,REEXAMINEDRESEARCH,NEWASSIGNMENT,DISPATCHER,DISPATCHERMOVEPAWN};
 	public ShareOperation share;
 	public MoveOperation move;
 	public EpidemiologistOperation epidemiologist;
@@ -107,9 +107,17 @@ public class playerSelectionPanel : MonoBehaviour {
 		} else if (selectStatus == Status.NEWASSIGNMENT) {
 			eventController.selectNewAssignmentPlayer (name);
 		} else if (selectStatus == Status.DISPATCHER) {
+			/*
 			move.changePlayerToMove (name);
 			move.showMove ();
-			move.setActivePpc ();
+			move.setActivePpc ();*/
+			move.roleSelectForMove ();
+		} else if (selectStatus == Status.DISPATCHERMOVEPAWN) {
+			/*
+			move.changePlayerToMove (name);
+			move.selectCityWithPawn();
+			move.setActivePpc ();*/
+			move.roleSelectForPawn ();
 		}
 	}
 	public void cancelButtonClick(){
@@ -178,7 +186,7 @@ public class playerSelectionPanel : MonoBehaviour {
 			}
 
 		}
-		if (selectStatus == Status.NEWASSIGNMENT || selectStatus == Status.REEXAMINEDRESEARCH || selectStatus==Status.DISPATCHER) {
+		if (selectStatus == Status.NEWASSIGNMENT || selectStatus == Status.REEXAMINEDRESEARCH || selectStatus==Status.DISPATCHER || selectStatus==Status.DISPATCHERMOVEPAWN) {
 			selfButton.gameObject.SetActive (true);
 		}
 	}
