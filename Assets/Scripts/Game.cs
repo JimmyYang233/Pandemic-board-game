@@ -1807,7 +1807,6 @@ public class Game : MonoBehaviour {
 	}
 
 
-
     private void placeInfectionDiscardPileOnTop()
     {
         foreach(InfectionCard card in infectionDiscardPile)
@@ -2056,6 +2055,21 @@ public class Game : MonoBehaviour {
             record.build(currentCity);
         }
         currentPlayer.decreaseRemainingAction();
+    }
+
+    public List<InfectionCard> troubleShooter()
+    {
+        List<InfectionCard> cardsToView = new List<InfectionCard>();
+        for (int i=0;i<infectionRate; i++)
+        {
+            if (infectionDeck.Count > i)
+            {
+                cardsToView.Add(infectionDeck[i]);
+            }
+            
+        }
+
+        return cardsToView;
     }
 
     private void colonelFlip()
