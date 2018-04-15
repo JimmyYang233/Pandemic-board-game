@@ -22,7 +22,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 		FileInfo[] fileInfo = levelDirectoryPath.GetFiles("*.*", SearchOption.AllDirectories);
 		foreach (FileInfo file in fileInfo) {
 			if (file.Extension == ".pandemic") {
-				Debug.Log (file.Name);
+				//Debug.Log (file.Name);
 				listOfSavedGame.Add (Path.GetFileNameWithoutExtension(file.Name));
 			}
 		}
