@@ -189,6 +189,15 @@ public class City : MonoBehaviour {
         displayCube();
     }
 
+    public bool hasCubesOfSpecificColor(Color aColor)
+    {
+        if (numberOfCubes[aColor] > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public bool hasCubes()
     {
         foreach(int i in numberOfCubes.Values)

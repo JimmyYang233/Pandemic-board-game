@@ -1292,7 +1292,7 @@ public class Game : MonoBehaviour {
 	public void askForRapidVaccineDeployment(){
 		Player cardHolder = findEventCardHolder (EventKind.RapidVaccineDeployment);
 		if (cardHolder == me) {
-			//TODO : call front end method
+            eventController.askForRapidVaccineDeployment();
 		}
 	}
 

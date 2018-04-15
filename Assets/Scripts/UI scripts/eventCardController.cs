@@ -447,18 +447,33 @@ public class eventCardController : MonoBehaviour {
     }
     #endregion
     #region RapidVaccineDeployment
+    private Color deployColor;
     List<City> citiesToDeploye = new List<City>();
+    List<City> cityWithCalls = new List<City>();
     List<UnityEngine.Events.UnityAction> deployCalls = new List<UnityEngine.Events.UnityAction>();
+
+    public void askForRapidVaccineDeployment(Color aColor)
+    {
+        
+        this.gameObject.SetActive(true);
+        this.transform.GetChild(1).GetComponent<Text>().text = "RapidVaccineDeployment";
+        deployColor = aColor;
+    }
+
+   
     public void rapidVaccineDeployment()
     {
         deploymentButton.gameObject.SetActive(true);
         List<City> allCities = game.getCities();
         foreach(City city in allCities)
         {
-            city.displayButton();
-            UnityEngine.Events.UnityAction call = () => deployCity(city);
-            city.gameObject.GetComponent<Button>().onClick.AddListener(call);
-            deployCalls.Add(call);
+            if (city.hasCubesOfSpecificColor(deployColor))
+            {
+                city.displayButton();
+                UnityEngine.Events.UnityAction call = () => deployCity(city);
+                city.gameObject.GetComponent<Button>().onClick.AddListener(call);
+                deployCalls.Add(call);
+            }
         }
     }
 
@@ -471,10 +486,9 @@ public class eventCardController : MonoBehaviour {
         }
         if (citiesToDeploye.Count >= 5)
         {
-            List<City> allCities = game.getCities();
-            for(int i= 0; i< allCities.Count; i++)
+            for(int i= 0; i< cityWithCalls.Count; i++)
             {
-                allCities[i].gameObject.GetComponent<Button>().onClick.RemoveListener(deployCalls[i]);
+                cityWithCalls[i].gameObject.GetComponent<Button>().onClick.RemoveListener(deployCalls[i]);
             }
         }
         else
@@ -482,7 +496,10 @@ public class eventCardController : MonoBehaviour {
             city.displayButton();
             foreach(City otherCity in city.getNeighbors())
             {
-                otherCity.displayButton();
+                if (otherCity.hasCubesOfSpecificColor(deployColor))
+                {
+                    otherCity.displayButton();
+                }
             }
         }
     }
@@ -491,12 +508,11 @@ public class eventCardController : MonoBehaviour {
     {
         Debug.Log("Calling functions rapidVaccineDeployment");
         deploymentButton.gameObject.SetActive(false);
-        game.RapidVaccineDeployment();//TO-DO
-        List<City> allCities = game.getCities();
-        for (int i = 0; i < allCities.Count; i++)
+        game.RapidVaccineDeployment(deployColor, citiesToDeploye);//TO-DO
+        for (int i = 0; i < cityWithCalls.Count; i++)
         {
-            allCities[i].undisplayButton();
-            allCities[i].gameObject.GetComponent<Button>().onClick.RemoveListener(deployCalls[i]);
+            cityWithCalls[i].undisplayButton();
+            cityWithCalls[i].gameObject.GetComponent<Button>().onClick.RemoveListener(deployCalls[i]);
         }
     }
     #endregion
