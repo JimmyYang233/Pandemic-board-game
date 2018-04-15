@@ -300,7 +300,6 @@ public class MoveOperation : MonoBehaviour {
 
 
     List<UnityEngine.Events.UnityAction> operationExpertCalls = new List<UnityEngine.Events.UnityAction>();
-    City operationDestinationCity;
     List<GameObject> children = new List<GameObject>();
     public void operationsExpertchooseCity()
     {
@@ -322,7 +321,6 @@ public class MoveOperation : MonoBehaviour {
 
     public void operationExpertChoosePlayerCard(City city)
     {
-        operationDestinationCity = city;
         List<City> cities = game.getCities();
         for (int i = 0; i < cities.Count; i++)
         {
@@ -336,12 +334,12 @@ public class MoveOperation : MonoBehaviour {
             GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
             string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
             child.GetComponent<Button>().interactable = true;
-            child.GetComponent<Button>().onClick.AddListener(() => operationsExpertChooseMove(name));
+            child.GetComponent<Button>().onClick.AddListener(() => operationsExpertChooseMove(city, name));
             child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<Button>().interactable = false);
         }
     }
 
-    public void operationsExpertChooseMove(string cardName)
+    public void operationsExpertChooseMove(City destinationCity, string cardName)
     {
         int num = playerCardPanel.transform.GetChild(1).childCount;
         for (int i = 0; i < num; i++)
@@ -351,7 +349,8 @@ public class MoveOperation : MonoBehaviour {
             child.GetComponent<Button>().interactable = false;
             child.GetComponent<Button>().onClick.RemoveAllListeners();
         }
-        Debug.Log("Operations Expert use " + cardName + " to move to " + operationDestinationCity.getCityName().ToString());
+        Debug.Log("Operations Expert use " + cardName + " to move to " + destinationCity.getCityName().ToString());
+        game.OperationsExpertMove(destinationCity.getCityName().ToString(), cardName);
     }
     //bio-Terrorist Operations
     public void bioMoveButtonClicked()
