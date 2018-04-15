@@ -615,18 +615,20 @@ public class Game : MonoBehaviour {
 		}
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
 
-        Player bioTerrorist = null;
+        
 
-        if(/*challenge == Challenge.BioTerroist*/true)
+        if(challenge == Challenge.BioTerroist)
         {
-			bioTerrorist = (BioTerroristVolunteer==null) ? players[UnityEngine.Random.Range(0, players.Count+1)] : BioTerroristVolunteer;
-            BioTerroristVolunteer = bioTerrorist;
+            if (BioTerroristVolunteer == null)
+            {
+                BioTerroristVolunteer =  players[0];
+            }
             bioTerroristRole = new BioTerrorist();
         }
 
         foreach (Player p in players) 
 		{
-			Role r = (p != bioTerrorist) ? new Role(selectRole()) : bioTerroristRole;
+			Role r = (p != players[0]) ? new Role(selectRole()) : bioTerroristRole;
             Pawn pawn;
             if (r.getRoleKind() == RoleKind.BioTerrorist)
             {
