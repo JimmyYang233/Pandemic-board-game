@@ -2026,6 +2026,11 @@ public class Game : MonoBehaviour {
         return true;
     }
 
+    public int numOfPurpleCubesOnTheBoard()
+    {
+        return 12 - diseases[Color.magenta].getNumOfDiseaseCubeLeft();
+    }
+
     public bool bioTerroristCanDraw()
     {
         return false;
@@ -2425,10 +2430,17 @@ public class Game : MonoBehaviour {
     // to do: inform the player that they lose the game
     private void notifyGameLost(GameLostKind lostKind)
     {
+        if(Challenge.BioTerroist == challenge && numOfPurpleCubesOnTheBoard()>0)
+        {
+            notifyBioterroristWin();
+        }
         setGamePhase(GamePhase.Completed);
     }
 
-    
+    private void notifyBioterroristWin()
+    {
+        //BOWEN TODO
+    }
 
     // to do: inform the player that they win the game
     private void notifyGameWin()
