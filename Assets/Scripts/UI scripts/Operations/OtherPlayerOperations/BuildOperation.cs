@@ -4,31 +4,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildOperation : MonoBehaviour {
-	public Game game;
+public class BuildOperation : MonoBehaviour
+{
+    public Game game;
     public BasicOperation basicOperation;
-	Player currentPlayer;
-	City currentCity;
-    City stationToRemove; 
+    Player currentPlayer;
+    City currentCity;
+    City stationToRemove;
     List<City> citiesWithResearch;
-	//Button build;
-	// Use this for initialization
-	void Start () {
+    List<City> citiesWithMarker;
+    public Button buildResearchButton;
+    public Button buildQuarantineButton;
+    public Button cancelButton;
+    //Button build;
+    // Use this for initialization
+    void Start()
+    {
         stationToRemove = null;
         citiesWithResearch = new List<City>();
+        citiesWithMarker = new List<City>();
     }
 
     private void Update()
     {
         currentPlayer = game.getCurrentPlayer();
         currentCity = currentPlayer.getPlayerPawn().getCity();
-        
+
     }
 
     public void buildButtonClicked()
     {
+        if (currentCity.getMarker() == 0)
+        {
+            buildQuarantineButton.gameObject.GetComponent<Button>().interactable = true;
+        }
+        if (!(currentCity.getHasResearch()))
+        {
+            buildResearchButton.gameObject.GetComponent<Button>().interactable = true;
+        }
+        cancelButton.gameObject.GetComponent<Button>().interactable = true;
+    }
 
-        if(game.getRemainingResearch() == 0)
+    public void buildResearchButtonClicked()
+    {
+
+        if (game.getRemainingResearch() == 0)
         {
             foreach (City city in game.getCities())
             {
@@ -39,14 +59,14 @@ public class BuildOperation : MonoBehaviour {
             }
             foreach (City city in citiesWithResearch)
             {
-                foreach(Transform child in city.transform)
+                foreach (Transform child in city.transform)
                 {
                     if (child.tag == "researchStation")
                     {
                         Debug.Log("addListener in button");
                         Button button = child.gameObject.GetComponent<Button>();
                         button.onClick.RemoveAllListeners();
-                        button.onClick.AddListener(delegate { build(city); });
+                        button.onClick.AddListener(delegate { buildResearch(city); });
                         button.onClick.AddListener(delegate { basicOperation.resetAll(); });
                     }
                 }
@@ -57,10 +77,83 @@ public class BuildOperation : MonoBehaviour {
             game.Build(String.Empty, currentCity.getCityName().ToString());
         }
 
-	}
+    }
 
-    public void build(City removeCity)
+    public void buildQuarantineButtonClicked()
+    {
+        if (game.getMarkersLeft() == 0)
+        {
+            foreach (City city in game.getCities())
+            {
+                if (city.getMarker() > 0)
+                {
+                    citiesWithMarker.Add(city);
+                }
+            }
+            foreach (City city in citiesWithMarker)
+            {
+                foreach (Transform child in city.transform)
+                {
+                    if (child.tag == "marker")
+                    {
+                        Debug.Log("addListener in button");
+                        Button button = child.gameObject.GetComponent<Button>();
+                        button.onClick.RemoveAllListeners();
+                        button.onClick.AddListener(delegate { buildResearch(city); });
+                        button.onClick.AddListener(delegate { basicOperation.resetAll(); });
+                    }
+                }
+            }
+        }
+        else
+        {
+            //TO-DO game.Build(String.Empty, currentCity.getCityName().ToString());
+        }
+    }
+
+
+    public void cancelButtonClicked()
+    {
+        buildQuarantineButton.gameObject.GetComponent<Button>().interactable = false;
+        buildResearchButton.gameObject.GetComponent<Button>().interactable = false;
+        foreach (City city in citiesWithResearch)
+        {
+            foreach (Transform child in city.transform)
+            {
+                if (child.tag == "researchStation")
+                {
+                    Debug.Log("Removing Listener in research button");
+                    Button button = child.gameObject.GetComponent<Button>();
+                    button.onClick.RemoveAllListeners();
+                }
+            }
+        }
+
+        foreach (City city in citiesWithMarker)
+        {
+            foreach (Transform child in city.transform)
+            {
+                if (child.tag == "marker")
+                {
+                    Debug.Log("Removing Listener in marker Button");
+                    Button button = child.gameObject.GetComponent<Button>();
+                    button.onClick.RemoveAllListeners();
+                }
+            }
+        }
+        citiesWithResearch.Clear();
+        citiesWithMarker.Clear();
+    }
+
+    public void buildResearch(City removeCity)
     {
         game.Build(removeCity.getCityName().ToString(), currentCity.getCityName().ToString());
+        citiesWithResearch.Clear();
+    }
+
+    public void buildQuarantine(City removeCity)
+    {
+        //TO-DO game.////
+        citiesWithMarker.Clear();
     }
 }
