@@ -540,12 +540,12 @@ public class Game : MonoBehaviour {
     }
 
 	public void AskPermissionDispatcher (string targetRoleKind, string request){
-		Player targetPlayer = findPlayer (targetRoleKind);
+		PhotonPlayer targetPlayer = findPlayer (targetRoleKind).PhotonPlayer;
 		PhotonView.RPC ("RPC_askPermissionDispatcher", targetPlayer, request );
 	}
 
 	public void InformDispatcher(bool request){
-		Player targetPlayer = currentPlayer;
+		PhotonPlayer targetPlayer = currentPlayer.PhotonPlayer;
 		PhotonView.RPC ("RPC_informDispatcher", targetPlayer, request);
 	}
     #endregion
