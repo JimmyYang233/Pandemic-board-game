@@ -48,7 +48,7 @@ public class BasicOperation : MonoBehaviour {
             movePanel.gameObject.SetActive(true);
             BioTerrorist bioTerrorist = game.getBioTerrorist();
             
-            if (bioTerrorist != null)
+            if (game.getChallenge() == Challenge.BioTerroist)
             {
                 Pawn bioPawn = bioTerrorist.getPawn(); 
                 if (bioTerrorist.getIsSpotted())
