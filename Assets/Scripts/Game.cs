@@ -161,7 +161,7 @@ public class Game : MonoBehaviour {
 	public void RPC_exchangeCard (string targetPlayerRoleKindName, string cardName){
 		RoleKind targetPlayerRoleKind = findRoleKind (targetPlayerRoleKindName);
 		CityCard card = (CityCard)findPlayerCard (cardName);
-		exchangeCard (targetPlayerRoleKind, card);	
+		exchangeCard (targetPlayerRoleKind, card,false);	
 	}
 
 	[PunRPC]
@@ -1052,7 +1052,7 @@ public class Game : MonoBehaviour {
 
 
 	//share
-	private void exchangeCard(RoleKind roleKind, CityCard cityCard)
+	private void exchangeCard(RoleKind roleKind, CityCard cityCard, bool actionFree)
 	{
 		Player cardHolder = null;
 		Player target = findPlayer(roleKind);
@@ -1088,7 +1088,12 @@ public class Game : MonoBehaviour {
 		{
 			Debug.Log("CardHolder not found. Class: Game.cs : exchangeCard(RoleKind,CityCard)");
 		}
-		currentPlayer.decreaseRemainingAction ();
+
+        if (!actionFree)
+        {
+            currentPlayer.decreaseRemainingAction ();
+        }
+		
 	}
 
 	//treat
@@ -2446,7 +2451,7 @@ public class Game : MonoBehaviour {
 	TODO: for EPIDEMIOLOGIST, once per turn
 	 */
 	private void epidemiologistShare(CityCard card){
-        exchangeCard(RoleKind.Epidemiologist, card);
+        exchangeCard(RoleKind.Epidemiologist, card,true);
         currentPlayer.removeOneAction();
     }
 
