@@ -370,6 +370,13 @@ public class Game : MonoBehaviour {
     {
         bioTerroristDraw(players[BioTerroristVolunteer], 1);
     }
+
+	[PunRPC]
+	public void RPC_airlift(string playerRoleKind, string cityName){
+		Player player = findPlayer (playerRoleKind);
+		City city = findCity (cityName);
+		airlift (player, city);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -560,6 +567,10 @@ public class Game : MonoBehaviour {
 	public void InformDispatcher(bool request){
 		PhotonPlayer targetPlayer = currentPlayer.PhotonPlayer;
 		PhotonView.RPC ("RPC_informDispatcher", targetPlayer, request);
+	}
+
+	public void Airlift(string playerRoleKind, string cityName){
+		PhotonView.RPC ("RPC_airlift",PhotonTargets.All, playerRoleKind, cityName);
 	}
     #endregion
 
