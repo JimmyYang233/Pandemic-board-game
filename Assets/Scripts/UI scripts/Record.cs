@@ -15,7 +15,7 @@ public class Record : MonoBehaviour {
         scrollBar.GetComponent<Scrollbar>().value = 0;
     }
 
-    public void display(String s){
+    public void display(string s){
         displayRecord(s);
     }
 
