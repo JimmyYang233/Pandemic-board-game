@@ -14,7 +14,7 @@ public class handLimitChecker : MonoBehaviour
     void Update()
     {
         me = game.FindPlayer(PhotonNetwork.player);
-        if (me.getHandSize() > me.getHandLimit())
+        if (me.getHandSize() >= me.getHandLimit())
         {
             waitForDiscardPanel.gameObject.SetActive(true);
             int num = playerCardPanel.transform.GetChild(1).childCount;
@@ -30,7 +30,7 @@ public class handLimitChecker : MonoBehaviour
         }
         else
         {
-            waitForDiscardPanel.gameObject.SetActive(true);
+            waitForDiscardPanel.gameObject.SetActive(false);
             int num = playerCardPanel.transform.GetChild(1).childCount;
             for (int i = 0; i < num; i++)
             {
