@@ -363,6 +363,12 @@ public class Game : MonoBehaviour {
 	public void RPC_informDispatcher(bool result){
 		informDispatcher (result);
 	}
+
+    [PunRPC]
+    public void RPC_bioterroristDraw()
+    {
+        bioTerroristDraw(players[BioTerroristVolunteer], 1);
+    }
     #endregion
 
     //called by chatbox to send chat message
@@ -701,7 +707,7 @@ public class Game : MonoBehaviour {
 		setUp();
         if (challenge == Challenge.BioTerroist)
         {
-            BioTerroristDraw(players[BioTerroristVolunteer],2);
+            bioTerroristDraw(players[BioTerroristVolunteer],2);
         }
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log("Everything Complete");
@@ -2014,7 +2020,7 @@ public class Game : MonoBehaviour {
         return false;
     }
 
-    public void BioTerroristDraw(Player pl, int amount)
+    private void bioTerroristDraw(Player pl, int amount)
     {
         for (int i=0; i<amount; i++)
         {
