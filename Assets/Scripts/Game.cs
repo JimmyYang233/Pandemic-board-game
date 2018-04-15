@@ -1276,6 +1276,11 @@ public class Game : MonoBehaviour {
         {
             getBioTerrorist().spot();
         }
+
+        if(pl1.getRoleKind() == RoleKind.Colonel)
+        {
+            colonelFlip();
+        }
     }
 
 	private void resolveMedic(City destinationCity){
@@ -2126,8 +2131,10 @@ public class Game : MonoBehaviour {
 
     private void colonelFlip()
     {
-        currentPlayer.getPlayerPawn().getCity().flipMarkerTo(2);
-        currentPlayer.decreaseRemainingAction();
+        City city = currentPlayer.getPlayerPawn().getCity();
+        if (city.getMarker() == 1) {
+            city.flipMarkerTo(2);
+        }
     }
 
     private void localInitiative(City city)
