@@ -1940,6 +1940,11 @@ public class Game : MonoBehaviour {
         outbreakedCities.Add(city);
         int cubeNumber = city.getCubeNumber(color);
         int remainingCubes = disease.getNumOfDiseaseCubeLeft();
+        int purpleCubeNumber = city.getCubeNumber(Color.magenta);
+        if (purpleCubeNumber > 0) 
+        {
+            infect(city, Color.magenta, 1);
+        }
         //if not exceeding 3 cubes, put cubes to that city
         if (cubeNumber < 3)
         {
