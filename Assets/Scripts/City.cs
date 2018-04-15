@@ -20,7 +20,7 @@ public class City : MonoBehaviour {
     private string blackCube;
     private string blueCube;
     private string yellowCube;
-    private int quarantineMarker; // Todo new field
+    private int quarantineMarker = 0; // Todo new field
 
     public int getNumPlayers()
     {
@@ -32,6 +32,15 @@ public class City : MonoBehaviour {
         quarantineMarker = num;
     }
 
+    public int getMarker()
+    {
+        return quarantineMarker;
+    }
+
+    public void putMarker()
+    {
+        quarantineMarker = 1;
+    }
 	private void Awake()
 	{
 		colors = new List<Color>(); 	//zhening: maybe unnecessary, but it'll make things easier, might be deleted in the future

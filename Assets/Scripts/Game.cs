@@ -15,6 +15,7 @@ public class Game : MonoBehaviour {
 	private GameData savedGame;
     private readonly int MAX = 24;
     private readonly int purpleMax = 12;
+    private int markersAvailable = 6; // TODO new field
     private Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
@@ -2032,6 +2033,26 @@ public class Game : MonoBehaviour {
             
         }
         
+    }
+
+    private void colonelFlip()
+    {
+        currentPlayer.getPlayerPawn().getCity().flipMarkerTo(2);
+        currentPlayer.decreaseRemainingAction();
+    }
+
+    private void colonelPlaceMarker(CityCard card, City city)
+    {
+        if (markersAvailable > 0)
+        {
+            markersAvailable--;
+            city.putMarker();
+            currentPlayer.decreaseRemainingAction();
+        }
+        else
+        {
+            Debug.Log("No more marker");
+        }
     }
 
     public void bioTerroristCapture()
