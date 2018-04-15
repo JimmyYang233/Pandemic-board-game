@@ -257,7 +257,7 @@ public class Maps{
 	public List<Color> getDiseaseColor(Challenge challenge)
     {
 		if ((challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain || challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain)
-		    && (diseaseColor.Contains (Color.magenta))) {
+		    && (!diseaseColor.Contains (Color.magenta))) {
 			diseaseColor.Add (Color.magenta);
 		} else {
 			if (diseaseColor.Contains (Color.magenta)) {
