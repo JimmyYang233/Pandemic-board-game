@@ -133,7 +133,9 @@ public class CureOperation : MonoBehaviour {
             string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
             if (child.GetComponent<Image>().color == color)
             {
+                Debug.Log("Checking the " + i + " th card");
                 child.GetComponent<Button>().interactable = true;
+                Debug.Log("Checking the " + i + " th card second place");
                 child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
                 child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseClick());
                 child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<Button>().interactable = false);

@@ -5931,7 +5931,7 @@ MonoBehaviour:
   eventCardPanel: {fileID: 1900971756}
   radius: 70
   totalDegree: 90
-  maxSpace: 20
+  maxSpace: 40
 --- !u!1 &178455724
 GameObject:
   m_ObjectHideFlags: 0
