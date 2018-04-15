@@ -2018,7 +2018,7 @@ public class Game : MonoBehaviour {
     {
         for (int i=0; i<amount; i++)
         {
-            if (infectionDiscardPile.Count > 0)
+            if (infectionDeck.Count > 0)
             {
                 InfectionCard card = infectionDeck[0];
                 infectionDeck.Remove(card);
