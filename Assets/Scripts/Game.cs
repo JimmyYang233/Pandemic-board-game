@@ -1093,6 +1093,7 @@ public class Game : MonoBehaviour {
 	{
 		if(cardsToRemove.Count==3 && currentPlayer.getRoleKind() == RoleKind.FieldOperative){// field operative
 			currentPlayer.returnCubes(d, 3);
+			gameInfoController.changeDiseaseNumber(d.getColor(), d.getNumOfDiseaseCubeLeft());
 		}
 		foreach (CityCard card in cardsToRemove)
 		{
@@ -2278,7 +2279,7 @@ public class Game : MonoBehaviour {
     {
         Disease d = diseases[c];
         pl.returnCubes(d,1);
-        d.incrementNumOfDiseaseCubeLeft();  
+		gameInfoController.changeDiseaseNumber(d.getColor(), d.getNumOfDiseaseCubeLeft());
     }
 
     #region notify methods
