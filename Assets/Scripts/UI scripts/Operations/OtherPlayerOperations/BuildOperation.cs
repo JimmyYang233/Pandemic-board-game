@@ -107,7 +107,7 @@ public class BuildOperation : MonoBehaviour
         }
         else
         {
-            //TO-DO game.Build(String.Empty, currentCity.getCityName().ToString());
+            game.PlaceMarker("");
         }
     }
 
@@ -153,7 +153,7 @@ public class BuildOperation : MonoBehaviour
 
     public void buildQuarantine(City removeCity)
     {
-        //TO-DO game.////
+        game.PlaceMarker(removeCity.getCityName().ToString());
         citiesWithMarker.Clear();
     }
 }

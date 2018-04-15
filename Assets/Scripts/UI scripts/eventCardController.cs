@@ -303,15 +303,15 @@ public class eventCardController : MonoBehaviour {
         game.MobileHospital(me.getRoleKind().ToString());
     }
     #endregion
-	//---------------------------------Special Orders------------------------------------
-	#region Special Orders
-	public void SpecialOrders(){
+    #region Special Orders
+    //---------------------------------Special Orders------------------------------------
+
+    public void SpecialOrders(){
 		move.movePanel.gameObject.SetActive (true);
 		move.basicOperationPanel.SetActive (false);
 		move.forDispatcherShow ();
 	}
 	#endregion
-
     #region Airlift
     //---------------------------------airLift zone----------------------------------------
     List<UnityEngine.Events.UnityAction> airLiftCalls = new List<UnityEngine.Events.UnityAction>();
@@ -599,9 +599,6 @@ public class eventCardController : MonoBehaviour {
         cityCubeNumber.Clear();
         citiesToDeploye.Clear();
     }
-    #endregion
-    #region special Order
-
     #endregion
     //--------------------------
     public void useEvent(){
