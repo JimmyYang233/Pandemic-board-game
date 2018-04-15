@@ -1367,6 +1367,7 @@ public class Game : MonoBehaviour {
 		foreach (City city in cities){
 			city.removeCubes(diseases[c], 1);
         	diseases[c].incrementNumOfDiseaseCubeLeft();
+			gameInfoController.changeDiseaseNumber(d.getColor(), d.getNumOfDiseaseCubeLeft());
 			ctr++;
 			if(ctr>5){
 				return 1;

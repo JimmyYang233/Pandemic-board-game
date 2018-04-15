@@ -15,6 +15,10 @@ public class Record : MonoBehaviour {
         scrollBar.GetComponent<Scrollbar>().value = 0;
     }
 
+    public void display(String s){
+        displayRecord(s);
+    }
+
     public void drive(Player player, City city){
         displayRecord(player.getRoleKind().ToString() + " drove to " + city.getCityName().ToString());
     }
