@@ -101,9 +101,9 @@ public class CureOperation : MonoBehaviour {
 
     public void startCure()
     {
-        if (cardsToCure.Count == currentPlayer.getNumberOfCardNeededToCure())
+        if (cardsToCure.Count == currentPlayer.getNumberOfCardNeededToCure(colorToCure))
         {
-            game.Cure(currentPlayer.getRoleKind().ToString(), cardsToCure, "Color." + colorToCure.ToString());
+            game.Cure(currentPlayer.getRoleKind().ToString(), cardsToCure, colorToCure);
             cancelButtonClicked();
         }
         else

@@ -392,13 +392,13 @@ public class Game : MonoBehaviour {
         PhotonView.RPC("RPC_build", PhotonTargets.All, initialCityName, cityCardName);
     }
 
-    public void Cure(string playerRoleKind, List<string> cardsToRemove, string diseaseColor){
+    public void Cure(string playerRoleKind, List<string> cardsToRemove, Color color){
         string[] cards = new string[cardsToRemove.Count];
         for(int i = 0; i<cardsToRemove.Count; i++)
         {
             cards[i] = cardsToRemove[i];
         }
-        
+        string diseaseColor = colorToString(color);
         PhotonView.RPC ("RPC_cure", PhotonTargets.All, playerRoleKind, diseaseColor, cards);
 	}
 
@@ -1528,13 +1528,12 @@ public class Game : MonoBehaviour {
             num = 14;
         }
         //Testing only
-        /*
-		RoleKind testRole = RoleKind.BioTerrorist;
+   
+		RoleKind testRole = RoleKind.FieldOperative;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
         }
-        */
 
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 
