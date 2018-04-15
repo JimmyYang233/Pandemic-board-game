@@ -742,6 +742,23 @@ public class Game : MonoBehaviour {
 		currentPlayer = players[0];
 		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
 
+
+		//wining saved game
+		foreach(City c in cities)
+		{
+			playerCardDeck.Add(new CityCard(c));
+			infectionDeck.Add(new InfectionCard(c));
+		}
+
+		List<EventKind> eventKinds = mapInstance.getEventNames();
+		foreach (EventKind k in eventKinds)
+		{
+			playerCardDeck.Add(EventCard.getEventCard(k));
+		}
+
+
+		//eventcardsavedgame
+		/*
 		List<EventKind> eventKinds = mapInstance.getEventNames();
 		foreach (EventKind k in eventKinds)
 		{
@@ -752,7 +769,7 @@ public class Game : MonoBehaviour {
 		{
 			playerCardDeck.Add(new CityCard(c));
 			infectionDeck.Add(new InfectionCard(c));
-		}
+		}*/
 
 		if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
 			for(int i = 0; i<2; i++){
@@ -825,6 +842,18 @@ public class Game : MonoBehaviour {
 			Disease d = new Disease(c);
 			diseases.Add(c, d);
 		}
+
+
+		//diseases [Color.black].setCured (true);
+		diseases [Color.yellow].setCured (true);
+		gameInfoController.cure (Color.yellow);
+		diseases [Color.black].setCured (true);
+		gameInfoController.cure (Color.black);
+		diseases [Color.red].setCured (true);
+		gameInfoController.cure (Color.red);
+
+
+
 
 		gameInfoController.displayOutbreak();
 		gameInfoController.displayInfectionRate();
@@ -1820,7 +1849,7 @@ public class Game : MonoBehaviour {
     private void setInitialHand()
     {
 		//eventcardsavedgame, comment this line
-        Collection.Shuffle<PlayerCard>(playerCardDeck);
+        //Collection.Shuffle<PlayerCard>(playerCardDeck);
         int numOfPlayers = players.Count;
         int cardNeeded = numOfPlayers;
         if (numOfPlayers != 3)
@@ -1832,7 +1861,8 @@ public class Game : MonoBehaviour {
             if (p != players[BioTerroristVolunteer] || Challenge.BioTerroist != challenge)
             {
 				//eventcardsavedgame, change card needed to 5
-                draw(p, cardNeeded);
+				draw(p, 5);
+                //draw(p, cardNeeded);
             }
         }
     }
