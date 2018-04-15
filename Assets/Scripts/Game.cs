@@ -427,6 +427,19 @@ public class Game : MonoBehaviour {
 		bioTerroristDirectFlight (ic);
 	}
 
+	[PunRPC]
+	public void RPC_bioTerroristCharterFlight(string icName, string cityName){
+		InfectionCard ic = findInfectionCard (icName);
+		City c = findCity (cityName);
+		bioTerroristCharterFlight (ic,c);
+	}
+
+
+	[PunRPC]
+	public void RPC_bioTerroristEscape(string icName){
+		InfectionCard ic = findInfectionCard (icName);
+		bioTerroristEscape (ic);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -658,6 +671,14 @@ public class Game : MonoBehaviour {
 
 	public void BioTerroristDirectFlight(string infectionCardName){
 		PhotonView.RPC ("RPC_bioTerroristDirectFlight", PhotonTargets.All, infectionCardName);
+	}
+
+	public void BioTerroristCharterFlight(string cardName, string cityName){
+		PhotonView.RPC ("RPC_bioTerroristCharterFlight", PhotonTargets.All, cardName, cityName);
+	}
+
+	public void BioTerroristEscape(string icName){
+		PhotonView.RPC ("RPC_bioTerroristEscape", PhotonTargets.All, icName);
 	}
     #endregion
 
