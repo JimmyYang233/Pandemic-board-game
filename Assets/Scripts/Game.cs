@@ -56,7 +56,7 @@ public class Game : MonoBehaviour {
 	private bool switchPlayer = false;
 	private int numOfInfection = 0;
 	private Player BioTerroristVolunteer = null;
-    private BioTerrorist bioTerroristRole; //TODO new field
+    private BioTerrorist bioTerroristRole = new BioTerrorist(); //TODO new field
     #endregion
     //FOR GUI
     public PlayerPanelController playerPanel;
@@ -631,7 +631,7 @@ public class Game : MonoBehaviour {
 		}
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
 
-        bioTerroristRole = new BioTerrorist();
+        
 
         if (challenge == Challenge.BioTerroist)
         {
@@ -2030,12 +2030,7 @@ public class Game : MonoBehaviour {
 
     public BioTerrorist getBioTerrorist()
     {
-        if (BioTerroristVolunteer == null)
-        {
-            return null;
-        }
         return bioTerroristRole;
-
     }
 
     public void BioTerroristSabotage(InfectionCard card)
