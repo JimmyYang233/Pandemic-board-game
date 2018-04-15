@@ -2175,6 +2175,12 @@ public class Game : MonoBehaviour {
         return markersAvailable;
     }
 
+    private void placeMarker()
+    {
+        currentPlayer.getPlayerPawn().getCity().putMarker();
+        currentPlayer.decreaseRemainingAction();
+    }
+
     private void colonelPlaceMarker(CityCard card, City city)
     {
         if (markersAvailable > 0)

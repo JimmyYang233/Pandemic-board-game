@@ -39,7 +39,7 @@ public class City : MonoBehaviour {
 
     public void putMarker()
     {
-        quarantineMarker = 1;
+        quarantineMarker = 2;
     }
 	private void Awake()
 	{
