@@ -352,6 +352,11 @@ public class Game : MonoBehaviour {
 		}
 		rapidVaccineDeployment (color, cities);
 	}
+
+	[PunRPC]
+	public void RPC_askPermissionDispatcher(string request){
+		askPermissionDispatcher (request);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -536,7 +541,7 @@ public class Game : MonoBehaviour {
 
 	public void AskPermissionDispatcher (string targetRoleKind, string request){
 		Player targetPlayer = findPlayer (targetRoleKind);
-		Photon.RPC ();
+		PhotonView.RPC ("RPC_askPermissionDispatcher", targetPlayer, request );
 	}
     #endregion
 
@@ -1138,7 +1143,7 @@ public class Game : MonoBehaviour {
 	}
 
 	private void askPermissionDispatcher(string request){
-		
+		moveOperation.askPermission (request);
 	}
 	#endregion
 
