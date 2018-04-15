@@ -105,8 +105,7 @@ public class Record : MonoBehaviour {
             default:
                 displayRecord(player.getRoleKind().ToString() + " discarded a card");
                 break;
-        }
-       
+        }  
     }
 
 
@@ -125,5 +124,8 @@ public class Record : MonoBehaviour {
         displayRecord("Outbreak in "+ city.getCityName().ToString());
     }
 
+    public void bioTerroristSighted(City city){
+        displayRecord("Bio Terrorist was sighted in "+ city.getCityName().ToString());
+    }
     
 }

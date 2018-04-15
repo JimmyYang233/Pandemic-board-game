@@ -26,6 +26,7 @@ public class Game : MonoBehaviour {
 	private bool complexMolecularStructure = false;
 	private bool governmentInterference = false;
 	private bool usedTreated = false;
+	private bool slipperySlope = false;
 	// Virulent Strain end
 	[SerializeField]
     private int infectionRate=2;
@@ -751,7 +752,7 @@ public class Game : MonoBehaviour {
         foreach (Player p in players) 
         {
             Role r;
-            if (challenge == Challenge.BioTerroist)
+            if (challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain)
             {
                 r = (p != players[BioTerroristVolunteer]) ? new Role(selectRole()) : bioTerroristRole;
             }
@@ -1011,7 +1012,6 @@ public class Game : MonoBehaviour {
 				//for gui
 				if (!player.Equals(me))
 				{
-
 					playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), pc);
 				}
 				else
@@ -1212,6 +1212,7 @@ public class Game : MonoBehaviour {
 				mainPlayerPanel.deletePlayerCard(card);
 			}
 			playerDiscardPile.Add(card);
+			record.discard(player, card);
 		}
 
 		d.cure();
@@ -1935,6 +1936,20 @@ public class Game : MonoBehaviour {
 					}
 				}
 				break;
+			case VirulentStrainEpidemicEffects.SlipperySlope:
+				slipperySlope = true;
+				break;
+			case VirulentStrainEpidemicEffects.UnacceptableLoss:
+				int nCubes = VirulentStrainDisease.getNumOfDiseaseCubeLeft();
+				VirulentStrainDisease.removeCubes(nCubes >= 4 ? 4 : nCubes);
+				break;
+			case VirulentStrainEpidemicEffects.UncountedPopulatIons:
+				foreach(City c in cities){
+					if(c.getCubeNumber(VirulentStrainDisease) == 1){
+						c.addCubes(VirulentStrainDisease,1);
+					}
+				}
+				break;
 			default:
 				Debug.Log("no Virulent Strain Epidemic Effects");
 				break;
@@ -2047,6 +2062,9 @@ public class Game : MonoBehaviour {
 			Debug.Log ("An outbreak happens in " + city.ToString());
 			record.outbreak(city);
             outbreaksValue++;
+			if(slipperySlope){
+				outbreaksValue++;
+			}
             gameInfoController.displayOutbreak();
             if (outbreaksValue == maxOutbreaksValue)
             {
@@ -2422,6 +2440,7 @@ public class Game : MonoBehaviour {
         bioTerroristMove(players[BioTerroristVolunteer], card.getCity());
         announceAirportSighting();
         players[BioTerroristVolunteer].decreaseRemainingAction();
+		record.bioTerroristSighted(card.getCity());
     }
 
     private void bioTerroristCharterFlight(InfectionCard card, City city)
@@ -2431,6 +2450,7 @@ public class Game : MonoBehaviour {
         bioTerroristMove(players[BioTerroristVolunteer], city);
         announceAirportSighting();
         players[BioTerroristVolunteer].decreaseRemainingAction();
+		record.bioTerroristSighted(city);
     }
 
     private void bioTerroristEscape(InfectionCard card)
@@ -2440,7 +2460,7 @@ public class Game : MonoBehaviour {
 
     private void announceAirportSighting()
     {
-        //TBW TODO
+        //TBW TODO . zsh: done by call record.bioTerroristSighted(city);
     }
 
     public PlayerCard AckCardToDrop(List<PlayerCard> cards)
@@ -2676,6 +2696,7 @@ public class Game : MonoBehaviour {
                 mainPlayerPanel.deletePlayerCard(card);
             }
             playerDiscardPile.Add(card);
+			record.discard(currentPlayer, card);
         }
 		
         currentCity.setHasResearch(true);

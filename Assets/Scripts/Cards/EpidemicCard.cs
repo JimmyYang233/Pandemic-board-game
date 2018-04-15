@@ -8,7 +8,7 @@ public class EpidemicCard : PlayerCard {
     private static EpidemicCard INSTANCE = new EpidemicCard();
 	private string name = "Epidemic";
 
-    private List<int> intList = new List<int>(){0,1,2,3};
+    private List<int> intList = new List<int>(){0,1,2,3,5,6,7};
 
     private EpidemicCard() : base(CardType.EpidemicCard)
     {
