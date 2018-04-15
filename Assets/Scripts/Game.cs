@@ -385,6 +385,12 @@ public class Game : MonoBehaviour {
         CityCard theCard = (CityCard)findPlayerCard(cardName);
         operationsExpertMove(theCard, theCity);
     }
+
+	[PunRPC]
+	public void RPC_placeMarker(string cityName){
+		City targetCity = findCity (cityName);
+		placeMarker (targetCity);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -586,6 +592,9 @@ public class Game : MonoBehaviour {
         PhotonView.RPC("RPC_operationsExpertMove", PhotonTargets.All, cityName, cardName);
     }
 
+	public void PlaceMarker(string cityName){
+		PhotonView.RPC("RPC_placeMarker", PhotonTargets.All, cityName);
+	}
     #endregion
 
     #region initialization
@@ -1221,6 +1230,8 @@ public class Game : MonoBehaviour {
 	private void informDispatcher(bool result){
 		moveOperation.informResult (result);
 	}
+
+
 	#endregion
 
 	#region endTurnOperation
@@ -1272,6 +1283,18 @@ public class Game : MonoBehaviour {
 
 	private void notifyResolveEpidemic(){
 		passOperation.notifyResolveEpidemic ();
+	}
+
+	private void placeMarker(City city)
+	{
+		if ( markersAvailable == 0) {
+			city.removeMarker();
+			markersAvailable++;
+		}
+		currentPlayer.getPlayerPawn().getCity().putMarker();
+		markersAvailable--;
+		currentPlayer.decreaseRemainingAction();
+
 	}
 	#endregion
 
@@ -2175,12 +2198,15 @@ public class Game : MonoBehaviour {
         return markersAvailable;
     }
 
+<<<<<<< HEAD
+=======
     private void placeMarker()
     {
         currentPlayer.getPlayerPawn().getCity().putMarker();
         currentPlayer.decreaseRemainingAction();
     }
 
+>>>>>>> origin/master
     private void colonelPlaceMarker(CityCard card, City city)
     {
         if (markersAvailable > 0)
