@@ -20,6 +20,7 @@ public class BasicOperation : MonoBehaviour {
     public Button fieldOperativeSkillButton;
 	public Button epidemiologistSkillButton;
     public Button dispatcherSkillButton;
+    public Button operationsExpertSkillButton;
 
     Button roleOnlyButton = null;
     Game game;
@@ -85,6 +86,11 @@ public class BasicOperation : MonoBehaviour {
                 dispatcherSkillButton.gameObject.SetActive(true);
                 roleOnlyButton = dispatcherSkillButton;
             }
+            else if(me.getRoleKind() == RoleKind.OperationsExpert)
+            {
+                operationsExpertSkillButton.gameObject.SetActive(true);
+                roleOnlyButton = operationsExpertSkillButton;
+            }
             if ((currentPlayer == me) && (game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
             {
                 currentCity = me.getPlayerPawn().getCity();
@@ -127,11 +133,11 @@ public class BasicOperation : MonoBehaviour {
                     {
                         contingencyPlannerSkillButton.GetComponent<Button>().interactable = true;
                     }
-                    else if (game.containsSpecificCityCardInDiscardPile(currentCity) && (!me.getOncePerTurnAction()))
+                    if (game.containsSpecificCityCardInDiscardPile(currentCity) && (!me.getOncePerTurnAction()))
                     {
                         archivistSkillButton.GetComponent<Button>().interactable = true;
                     }
-                    else if (currentCity.hasCubes()&&(!me.getOncePerTurnAction()))
+                    if (currentCity.hasCubes()&&(!me.getOncePerTurnAction()))
                     {
                         fieldOperativeSkillButton.GetComponent<Button>().interactable = true;
                     }
@@ -142,6 +148,10 @@ public class BasicOperation : MonoBehaviour {
                             dispatcherSkillButton.GetComponent<Button>().interactable = true;
                             break;
                         }
+                    }
+                    if (currentCity.getHasResearch() && me.containsCityCard())
+                    {
+                        operationsExpertSkillButton.GetComponent<Button>().interactable = true;
                     }
 
                 }
