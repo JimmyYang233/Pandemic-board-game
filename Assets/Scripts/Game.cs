@@ -1298,9 +1298,7 @@ public class Game : MonoBehaviour {
             PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
             return;
         }
-		while (currentPlayer.getHandSize() > currentPlayer.getHandLimit()){
-			continue;
-		}
+		yield return new WaitUntil(() => currentPlayer.getHandLimit() >= currentPlayer.getHandSize());
 		//Debug.Log ("start infect city");
 		passOperation.startInfection ();
 		//nextPlayer();
