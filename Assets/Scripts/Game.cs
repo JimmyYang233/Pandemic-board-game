@@ -55,7 +55,7 @@ public class Game : MonoBehaviour {
 	private Player playerToShare;
 	private bool switchPlayer = false;
 	private int numOfInfection = 0;
-	private Player BioTerroristVolunteer = null;
+	private int BioTerroristVolunteer = 0;
     private BioTerrorist bioTerroristRole = new BioTerrorist(); //TODO new field
     #endregion
     //FOR GUI
@@ -640,15 +640,14 @@ public class Game : MonoBehaviour {
 
         if (challenge == Challenge.BioTerroist)
         {
-            if (BioTerroristVolunteer == null)
-            {
-                BioTerroristVolunteer =  players[0];
-            }
+            
+            BioTerroristVolunteer = UnityEngine.Random.Range(0, players.Count + 1);
+            
         }
 
         foreach (Player p in players) 
-		{
-			Role r = (p != players[0]) ? new Role(selectRole()) : bioTerroristRole;
+        {
+            Role r = (p != players[BioTerroristVolunteer]) ? new Role(selectRole()) : bioTerroristRole;
             Pawn pawn;
             if (r.getRoleKind() == RoleKind.BioTerrorist)
             {
@@ -1124,7 +1123,7 @@ public class Game : MonoBehaviour {
 		if (currentPhase != GamePhase.PlayerTakeTurn)
 			return;
 		currentPhase = GamePhase.PlayerDrawCard;
-        if(currentPlayer == BioTerroristVolunteer)
+        if(currentPlayer == players[BioTerroristVolunteer])
         {
             getBioTerrorist().refillDriveAction();
         }
@@ -2018,12 +2017,12 @@ public class Game : MonoBehaviour {
 
     public void capture()
     {
-        if (currentPlayer.getPlayerPawn().getCity() != BioTerroristVolunteer.getPlayerPawn().getCity())
+        if (currentPlayer.getPlayerPawn().getCity() != players[BioTerroristVolunteer].getPlayerPawn().getCity())
         {
             Debug.Log("Not in the same city, cannot capture: Game.cs capture()");
         }
         getBioTerrorist().setCaptured();
-        foreach(PlayerCard card in BioTerroristVolunteer.getHand())
+        foreach(PlayerCard card in players[BioTerroristVolunteer].getHand())
         {
             if(card.getType() != CardType.InfectionCard)
             {
@@ -2033,7 +2032,7 @@ public class Game : MonoBehaviour {
             infectionDiscardPile.Add((InfectionCard)card);
         }
 
-        BioTerroristVolunteer.dropAllCards();
+        players[BioTerroristVolunteer].dropAllCards();
         currentPlayer.decreaseRemainingAction();
     }
 
@@ -2044,7 +2043,7 @@ public class Game : MonoBehaviour {
 
     public void BioTerroristSabotage(InfectionCard card)
     {
-        City city = BioTerroristVolunteer.getPlayerPawn().getCity();
+        City city = players[BioTerroristVolunteer].getPlayerPawn().getCity();
         if (!city.getHasResearch())
         {
             Debug.Log("No reseach in that city: Game.cs BioTerrorist Sabotage");
@@ -2053,9 +2052,9 @@ public class Game : MonoBehaviour {
         {
             Debug.Log("Color does not match: Game.cs BioTerrorist Sabotage");
         }
-        BioTerroristVolunteer.removeCard(card);
+        players[BioTerroristVolunteer].removeCard(card);
         infectionDiscardPile.Add(card);
-        BioTerroristVolunteer.getPlayerPawn().getCity().setHasResearch(false);
+        players[BioTerroristVolunteer].getPlayerPawn().getCity().setHasResearch(false);
         researchStationRemain++;
 
     }
@@ -2072,9 +2071,9 @@ public class Game : MonoBehaviour {
             bioTerrorist.useInfectLocally();
         }
 
-        BioTerroristVolunteer.getPlayerPawn().getCity().addCubes(diseases[Color.magenta],1);
+        players[BioTerroristVolunteer].getPlayerPawn().getCity().addCubes(diseases[Color.magenta],1);
 
-        BioTerroristVolunteer.decreaseRemainingAction();
+        players[BioTerroristVolunteer].decreaseRemainingAction();
 
     }
 
@@ -2091,9 +2090,9 @@ public class Game : MonoBehaviour {
         }
 
         card.getCity().addCubes(diseases[Color.magenta], 1);
-        BioTerroristVolunteer.removeCard(card);
+        players[BioTerroristVolunteer].removeCard(card);
         infectionDiscardPile.Add(card);
-        BioTerroristVolunteer.decreaseRemainingAction();
+        players[BioTerroristVolunteer].decreaseRemainingAction();
 
     }
 
@@ -2175,12 +2174,6 @@ public class Game : MonoBehaviour {
         currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
-
-	public void setBioTerroristVolunteer(Player pl){
-		BioTerroristVolunteer = pl;
-	}
-
-    
 
     public void giveCard(Player p1, Player p2, CityCard card)
     {
