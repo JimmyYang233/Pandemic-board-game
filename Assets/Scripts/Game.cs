@@ -2099,7 +2099,7 @@ public class Game : MonoBehaviour {
         
     }
 
-    private void operativeExpertMove(CityCard card, City c)
+    private void operationsExpertMove(CityCard card, City c)
     {
         currentPlayer.removeCard(card);
         playerDiscardPile.Add(card);
