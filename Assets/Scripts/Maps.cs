@@ -27,6 +27,7 @@ public class Maps{
         playerDescriptions.Add(RoleKind.Generalist, "The Generalist may do up to 5 actions each turn.");
         playerDescriptions.Add(RoleKind.Troubleshooter, "The Troubleshooter, at the start of her turn, looks at as many Infection cards as the current infection rate (by taking them from the top of the Infection Deck, looking at them, and putting them back in the same order).");
         playerDescriptions.Add(RoleKind.BioTerrorist, "The Bio-Terrorist wins if the other players lose and there is at least 1 purple disease cube on the board. On his turn, the Bio-Terrorist may take up to 2 actions, plus 1 Drive/Ferry action.");
+        playerDescriptions.Add(RoleKind.Colonel, "As an action, Colonel may discard a City Card to place a quarantine marker in any city. When he enters a city with '1' qurantine marker, flip it to '2'.");
         
 
         diseaseColor.Add(Color.black);
@@ -49,7 +50,7 @@ public class Maps{
         roleColors.Add(RoleKind.Generalist, Color.gray);
         roleColors.Add(RoleKind.Troubleshooter, Color.red);
         roleColors.Add(RoleKind.BioTerrorist, Color.black);
-    
+        roleColors.Add(RoleKind.Colonel, Color.magenta);
 
 // origin 5 eventcard
         eventCardDescription.Add(EventKind.Airlift, "Move a pawn to any city. If played on another player's pawn you must have permission to move it.");
