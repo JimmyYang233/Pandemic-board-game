@@ -14,6 +14,7 @@ public class Game : MonoBehaviour {
 	#region private variables
 	private GameData savedGame;
     private readonly int MAX = 24;
+    private readonly int purpleMax = 12;
     private Challenge challenge;
     private GamePhase currentPhase;
     private bool hasDLC;
@@ -55,7 +56,7 @@ public class Game : MonoBehaviour {
 	private Player playerToShare;
 	private bool switchPlayer = false;
 	private int numOfInfection = 0;
-	private int BioTerroristVolunteer = 0;
+	private int BioTerroristVolunteer = -1;
     private BioTerrorist bioTerroristRole = new BioTerrorist(); //TODO new field
     #endregion
     //FOR GUI
@@ -635,19 +636,20 @@ public class Game : MonoBehaviour {
 			AllHandCards.Add(p);
 		}
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
-
         
-
         UnityEngine.Random.seed = (int)PhotonNetwork.room.CustomProperties["seed"];
-        BioTerroristVolunteer = UnityEngine.Random.Range(0, players.Count);
-         
-
+        if (BioTerroristVolunteer == -1)
+        {
+            BioTerroristVolunteer =  UnityEngine.Random.Range(0, players.Count);
+        }
+        
+        
         foreach (Player p in players) 
         {
             Role r;
             if (challenge == Challenge.BioTerroist)
             {
-                 r = (p != players[BioTerroristVolunteer]) ? new Role(selectRole()) : bioTerroristRole;
+                r = (p != players[BioTerroristVolunteer]) ? new Role(selectRole()) : bioTerroristRole;
             }
             else
             {
@@ -690,12 +692,17 @@ public class Game : MonoBehaviour {
 		playerPanel.addMainPlayer(me.getRoleKind());
 		playerSelect.gameObject.SetActive (false);
 
-		setInitialHand();
+		
 		if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
 			shuffleMutatonEventCards();
 		}
-		shuffleAndAddEpidemic();
+        setInitialHand();
+        shuffleAndAddEpidemic();
 		setUp();
+        if (challenge == Challenge.BioTerroist)
+        {
+            BioTerroristDraw(players[BioTerroristVolunteer],2);
+        }
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log("Everything Complete");
 		//Debug.Log("the role is" + me.getRoleKind().ToString());
@@ -943,12 +950,9 @@ public class Game : MonoBehaviour {
 	//take direct flight
 	private void takeDirectFlight(Player player, CityCard card)
 	{
-		Pawn p = player.getPlayerPawn();
-		City initialCity = p.getCity();
-		City destinationCity = card.getCity();
-		p.setCity(destinationCity);
-		initialCity.removePawn(p);
-		destinationCity.addPawn(p);
+        City destinationCity = card.getCity();
+        move(player, destinationCity);
+        
 		RoleKind rolekind = player.getRoleKind();
 		if(rolekind != RoleKind.Troubleshooter)
 		{
@@ -964,14 +968,6 @@ public class Game : MonoBehaviour {
 			}
 			playerDiscardPile.Add(card);
 
-		}
-		if(rolekind == RoleKind.Medic)
-		{
-			resolveMedic (destinationCity);
-		}
-		else if(rolekind == RoleKind.ContainmentSpecialist)
-		{
-			resolveContainmentSpecialist (destinationCity);
 		}
 		currentPlayer.decreaseRemainingAction();
 		record.directFlight(player, destinationCity);
@@ -1144,12 +1140,11 @@ public class Game : MonoBehaviour {
             currentPlayer.setMobileHospitalActivated(false);
         }
 
-		int playerCardDeckSize = playerCardDeck.Count;
 		record.pass(currentPlayer);
 		//Note that epidemic card is resolved in "draw" method
 		//if there is no enough player cards in the deck, players lose the game
 		
-		if (!draw(currentPlayer, 2))
+		if (currentPlayer!= players[BioTerroristVolunteer] && !draw(currentPlayer, 2))
 		{
 			return;
 		}
@@ -1616,7 +1611,10 @@ public class Game : MonoBehaviour {
         }
         foreach (Player p in players)
         {
-            draw(p, cardNeeded);
+            if (p != players[BioTerroristVolunteer])
+            {
+                draw(p, cardNeeded);
+            }
         }
     }
 
@@ -2014,11 +2012,24 @@ public class Game : MonoBehaviour {
         return false;
     }
 
-    public void BioTerroristDraw(Player pl)
+    public void BioTerroristDraw(Player pl, int amount)
     {
-        InfectionCard card = infectionDeck[0];
-        infectionDeck.Remove(card);
-        record.draw(pl, card);
+        for (int i=0; i<amount; i++)
+        {
+            if (infectionDiscardPile.Count > 0)
+            {
+                InfectionCard card = infectionDeck[0];
+                infectionDeck.Remove(card);
+                record.draw(pl, card);
+            }
+            else
+            {
+                Debug.Log("no card to draw for bio");
+                break;
+            }
+            
+        }
+        
     }
 
     public void capture()
@@ -2100,6 +2111,42 @@ public class Game : MonoBehaviour {
         infectionDiscardPile.Add(card);
         players[BioTerroristVolunteer].decreaseRemainingAction();
 
+    }
+
+    private void bioTerroristMove(Player pl, City destinationCity)
+    {
+        Pawn p = pl.getPlayerPawn();
+        p.setCity(destinationCity);
+        p.getCity().removePawn(p);
+        destinationCity.addPawn(p);
+        if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers() > 1)
+        {
+            getBioTerrorist().spot();
+        }
+    }
+
+    private void bioterroristDirectFlight(InfectionCard card)
+    {
+        
+        players[BioTerroristVolunteer].removeCard(card);
+        infectionDiscardPile.Add(card);
+        bioTerroristMove(players[BioTerroristVolunteer], card.getCity());
+        announceAirportSighting();
+        players[BioTerroristVolunteer].decreaseRemainingAction();
+    }
+
+    private void bioterroristCharterFlight(InfectionCard card, City city)
+    {
+        players[BioTerroristVolunteer].removeCard(card);
+        infectionDiscardPile.Add(card);
+        bioTerroristMove(players[BioTerroristVolunteer], city);
+        announceAirportSighting();
+        players[BioTerroristVolunteer].decreaseRemainingAction();
+    }
+
+    private void announceAirportSighting()
+    {
+        //TBW TODO
     }
 
     public PlayerCard AckCardToDrop(List<PlayerCard> cards)
