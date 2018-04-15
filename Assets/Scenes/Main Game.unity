@@ -2123,6 +2123,7 @@ MonoBehaviour:
   playerSelect: {fileID: 346002627}
   shareOperation: {fileID: 1340808470}
   passOperation: {fileID: 1069413776}
+  moveOperation: {fileID: 125200431}
   chatBox: {fileID: 124084468}
   record: {fileID: 1438105360}
   infectionDiscardUI: {fileID: 788425839}
@@ -4073,6 +4074,8 @@ MonoBehaviour:
   bioCancelButton: {fileID: 1482065979}
   playerSelect: {fileID: 346002627}
   ppc: {fileID: 1923207385}
+  agreeController: {fileID: 215428524}
+  result: {fileID: 315254070}
 --- !u!224 &125200432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7131,6 +7134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agreePanel: {fileID: 250146712}
   eventController: {fileID: 1900971760}
+  move: {fileID: 125200431}
   game: {fileID: 73084184}
   status: 0
   share: {fileID: 1340808470}

@@ -145,8 +145,6 @@ public class playerDiscardPileUI : MonoBehaviour {
 			if (t.gameObject.GetComponent<Button> () != null) {
 				Destroy (t.gameObject.GetComponent<Button> ());
 			}
-
-
 		}
 		this.gameObject.SetActive (false);
 	}
