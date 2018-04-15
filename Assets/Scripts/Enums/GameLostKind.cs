@@ -6,5 +6,5 @@ using UnityEngine;
 [Serializable]
 public enum GameLostKind
 {
-    RunOutOfPlayerCard,RunOutOfDiseaseCube, MaxOutbreakAmountReached
+    RunOutOfPlayerCard,RunOutOfDiseaseCube, MaxOutbreakAmountReached, PurpleDiseaseEradicated
 }

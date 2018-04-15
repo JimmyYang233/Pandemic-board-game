@@ -1126,16 +1126,40 @@ public class Game : MonoBehaviour {
 		d.cure();
 		gameInfoController.cure(d.getColor());
 		int num = d.getNumOfDiseaseCubeLeft();
-		if(num == MAX)
+        if (getNumStandardDiseasesCured() == 4 && (numOfPurpleCubesOnTheBoard() == 0 || diseases[Color.magenta].isCured()))
+        {
+            notifyGameWin();
+        }
+        
+		if(num == MAX && d.getColor()!= Color.magenta)
 		{
 			d.isEradicated();
 			gameInfoController.eradicate(d.getColor());
 		}
+        if (num == purpleMax && d.getColor() == Color.magenta)
+        {
+            d.isEradicated();
+            notifyBioterroristLost(GameLostKind.PurpleDiseaseEradicated);
+            gameInfoController.eradicate(d.getColor());
+        }
 
-		//UI TODO: set disease’s cure marker
+        //UI TODO: set disease’s cure marker
 
-		currentPlayer.decreaseRemainingAction();
+        currentPlayer.decreaseRemainingAction();
         askForRapidVaccineDeployment(d.getColor());
+    }
+
+    private int getNumStandardDiseasesCured()
+    {
+        int total = 0;
+        foreach(Disease d in diseases.Values)
+        {
+            if(d.getColor()!=Color.magenta && d.isCured())
+            {
+                total++;
+            }
+        }
+        return total;
     }
 
 	//pass
@@ -2438,6 +2462,11 @@ public class Game : MonoBehaviour {
     }
 
     private void notifyBioterroristWin()
+    {
+        //BOWEN TODO
+    }
+
+    private void notifyBioterroristLost(GameLostKind lostKind)
     {
         //BOWEN TODO
     }
