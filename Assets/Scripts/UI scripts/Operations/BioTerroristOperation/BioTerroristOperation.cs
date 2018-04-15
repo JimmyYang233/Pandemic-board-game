@@ -62,6 +62,7 @@ public class BioTerroristOperation : MonoBehaviour {
         resetAll();
     }
 
+    
 
 
     public void resetAll()
