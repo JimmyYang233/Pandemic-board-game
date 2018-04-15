@@ -7,5 +7,5 @@ using UnityEngine;
 public enum EventKind
 {
     ResilientPopulation, Airlift, OneQuietNight, Forecast, GovernmentGrant, BorrowedTime, CommercialTravelBan, MobileHospital, NewAssignment, RapidVaccineDeployment,
-    ReExaminedResearch, RemoteTreatment, SpecialOrders
+    ReExaminedResearch, RemoteTreatment, SpecialOrders, LocalInitiative
 }

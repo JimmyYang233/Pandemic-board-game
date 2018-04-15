@@ -2093,6 +2093,20 @@ public class Game : MonoBehaviour {
         currentPlayer.decreaseRemainingAction();
     }
 
+    private void localInitiative(City city)
+    {
+        if (markersAvailable > 0)
+        {
+            markersAvailable--;
+            city.putMarker();
+            dropEventCard(EventKind.LocalInitiative);
+        }
+        else
+        {
+            Debug.Log("No more marker");
+        }
+    }
+
     private void colonelPlaceMarker(CityCard card, City city)
     {
         if (markersAvailable > 0)
