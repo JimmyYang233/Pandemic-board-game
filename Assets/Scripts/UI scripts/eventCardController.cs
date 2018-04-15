@@ -450,6 +450,7 @@ public class eventCardController : MonoBehaviour {
     private Color deployColor;
     List<City> citiesToDeploye = new List<City>();
     List<City> cityWithCalls = new List<City>();
+    Dictionary<City, int> cityCubeNumber = new Dictionary<City, int>();
     List<UnityEngine.Events.UnityAction> deployCalls = new List<UnityEngine.Events.UnityAction>();
 
     public void testRapidVaccine()
@@ -476,6 +477,8 @@ public class eventCardController : MonoBehaviour {
                 city.displayButton();
                 UnityEngine.Events.UnityAction call = () => deployCity(city);
                 city.gameObject.GetComponent<Button>().onClick.AddListener(call);
+                cityWithCalls.Add(city);
+                cityCubeNumber.Add(city, city.getCubeNumber(deployColor));
                 deployCalls.Add(call);
             }
         }
@@ -484,6 +487,9 @@ public class eventCardController : MonoBehaviour {
     public void deployCity(City city)
     {
         citiesToDeploye.Add(city);
+        int count = cityCubeNumber[city];
+        cityCubeNumber.Remove(city);
+        cityCubeNumber.Add(city, count - 1);
         foreach(City otherCity in game.getCities())
         {
             city.undisplayButton();
@@ -497,12 +503,18 @@ public class eventCardController : MonoBehaviour {
         }
         else
         {
-            city.displayButton();
+            if (cityCubeNumber[city]>0)
+            {
+                city.displayButton();
+            }
             foreach(City otherCity in city.getNeighbors())
             {
                 if (otherCity.hasCubesOfSpecificColor(deployColor))
                 {
-                    otherCity.displayButton();
+                    if (cityCubeNumber[otherCity] > 0)
+                    {
+                        otherCity.displayButton();
+                    }
                 }
             }
         }
@@ -516,12 +528,15 @@ public class eventCardController : MonoBehaviour {
             Debug.Log(city.getCityName().ToString() + " deployed");
         }
         deploymentButton.gameObject.SetActive(false);
-        game.RapidVaccineDeployment(deployColor, citiesToDeploye);//TO-DO
+        game.RapidVaccineDeployment(deployColor, citiesToDeploye);
         for (int i = 0; i < cityWithCalls.Count; i++)
         {
             cityWithCalls[i].undisplayButton();
             cityWithCalls[i].gameObject.GetComponent<Button>().onClick.RemoveListener(deployCalls[i]);
         }
+        cityWithCalls.Clear();
+        cityCubeNumber.Clear();
+        citiesToDeploye.Clear();
     }
     #endregion
     //--------------------------
