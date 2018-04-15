@@ -391,6 +391,12 @@ public class Game : MonoBehaviour {
 		City targetCity = findCity (cityName);
 		placeMarker (targetCity);
 	}
+
+	[PunRPC]
+	public void RPC_discard(string cardNmae){
+		Card card = findPlayerCard (cardNmae);
+		discard (card);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -594,6 +600,10 @@ public class Game : MonoBehaviour {
 
 	public void PlaceMarker(string cityName){
 		PhotonView.RPC("RPC_placeMarker", PhotonTargets.All, cityName);
+	}
+
+	public void Discard(string cardName){
+		PhotonView.RPC ("RPC_discard", PhotonTargets.All, cardName);
 	}
     #endregion
 
@@ -1231,6 +1241,10 @@ public class Game : MonoBehaviour {
 		moveOperation.informResult (result);
 	}
 
+	private void discard(PlayerCard card){
+		currentPlayer.removeCard (card);
+		playerDiscardPile.Add (card);
+	}
 
 	#endregion
 
@@ -1276,6 +1290,9 @@ public class Game : MonoBehaviour {
             PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
             return;
         }
+		while (currentPlayer.getHandSize() > currentPlayer.getHandLimit()){
+			continue;
+		}
 		//Debug.Log ("start infect city");
 		passOperation.startInfection ();
 		//nextPlayer();
