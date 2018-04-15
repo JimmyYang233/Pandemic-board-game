@@ -93,4 +93,5 @@ MonoBehaviour:
   - RPC_airlift
   - RPC_operationsExpertMove
   - RPC_placeMarker
+  - RPC_discard
   DisableAutoOpenWizard: 1
