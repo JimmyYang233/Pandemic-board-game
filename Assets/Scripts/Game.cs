@@ -2897,6 +2897,9 @@ public class Game : MonoBehaviour {
 				//Debug.Log ("Found a city card");
 				output.Add (new CityCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
 			}
+			else if (Enum.IsDefined(typeof(MutationEvent),s)){
+				output.Add (new MutationEventCard((MutationEvent)Enum.Parse (typeof(MutationEvent), s)));
+			}
 			else{
 				Debug.Log("Unknown Card in PlayerCard pile");
 			}
@@ -2910,7 +2913,10 @@ public class Game : MonoBehaviour {
 			if (Enum.IsDefined (typeof(CityName), s)) {
 				//Debug.Log ("Found an infection card");
 				output.Add (new InfectionCard (findCity((CityName)Enum.Parse (typeof(CityName), s))));
-			} else {
+			} 
+			else if (s.Equals("MuatationCard")){
+				output.Add (MutationCard.getMutationCard());
+			}else {
 				Debug.Log ("Unknown card in InfectionCard pile");
 			}
 		}
