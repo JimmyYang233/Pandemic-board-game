@@ -91,4 +91,5 @@ MonoBehaviour:
   - RPC_informDispatcher
   - RPC_bioterroristDraw
   - RPC_airlift
+  - RPC_operationsExpertMove
   DisableAutoOpenWizard: 1

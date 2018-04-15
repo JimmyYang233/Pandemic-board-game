@@ -312,7 +312,6 @@ public class eventCardController : MonoBehaviour {
     #region Airlift
     //---------------------------------airLift zone----------------------------------------
     List<UnityEngine.Events.UnityAction> airLiftCalls = new List<UnityEngine.Events.UnityAction>();
-    List<City> cityAddCalls = new List<City>();
     public void airLift()
     {
 		this.status = Status.AIRLIFT;
@@ -338,16 +337,18 @@ public class eventCardController : MonoBehaviour {
     {
 		Debug.Log ("choose direction");
         Player player = game.findPlayer(roleKind);
+        City currentCity = player.getPlayerPawn().getCity();
         List<Player> players = game.getPlayers();
-        foreach(Player otherPlayer in players)
+        foreach(City city in game.getCities())
         {
-            if (otherPlayer != player)
+            UnityEngine.Events.UnityAction thisCall = () => movePawn(player, city);
+            city.gameObject.GetComponent<Button>().onClick.AddListener(thisCall);
+            airLiftCalls.Add(thisCall);
+            if (currentCity!=city)
             {
-                City otherCity = otherPlayer.getPlayerPawn().getCity();
-                otherCity.displayButton();
-                UnityEngine.Events.UnityAction thisCall = ()=>movePawn(player, otherCity);
-                otherCity.gameObject.GetComponent<Button>().onClick.AddListener(thisCall);
-                airLiftCalls.Add(thisCall);
+                
+                city.displayButton();
+                
             }
         }
     }
@@ -355,9 +356,11 @@ public class eventCardController : MonoBehaviour {
     public void movePawn(Player player, City city)
     {
         game.Airlift(player.getRoleKind().ToString(), city.getCityName().ToString());
-        for(int i = 0; i<cityAddCalls.Count; i++)
+        List<City> allCities = game.getCities();
+        for(int i = 0; i<allCities.Count; i++)
         {
-            cityAddCalls[i].gameObject.GetComponent<Button>().onClick.RemoveListener(airLiftCalls[i]);
+            allCities[i].gameObject.GetComponent<Button>().onClick.RemoveListener(airLiftCalls[i]);
+            allCities[i].undisplayButton();
         }
     }
     #endregion 
