@@ -162,14 +162,16 @@ public class playerSelectionPanel : MonoBehaviour {
     }
 	//only display player who is in the same city
 	public void displayPlayerNecessary(){
+		Debug.Log ("I am here");
 		foreach (Transform t in transform) {
-			if (!t.name.Equals("noUse"))
-			{
+			if (!t.name.Equals ("noUse")){
+				Debug.Log ("in here");
 				string role = t.GetChild (0).GetComponent<Text> ().text;
 				Player p = game.findPlayer (role);
                 currentPlayer = game.getCurrentPlayer();
                 currentCity = currentPlayer.getPlayerPawn().getCity();
                 Debug.Log(currentCity);
+				Debug.Log (p.getPlayerPawn ().getCity ());
 				if (p.getPlayerPawn ().getCity () == currentCity) {
 					t.gameObject.SetActive (true);
 

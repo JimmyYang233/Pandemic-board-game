@@ -17702,7 +17702,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 513973569}
   m_OnClick:
     m_PersistentCalls:
@@ -20163,6 +20163,7 @@ MonoBehaviour:
   playerSelect: {fileID: 346002627}
   playerPanel: {fileID: 1923207381}
   cardSelection: {fileID: 990919270}
+  waitingForResponse: {fileID: 0}
 --- !u!1 &592131450
 GameObject:
   m_ObjectHideFlags: 0
@@ -24790,7 +24791,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 713791351}
   m_OnClick:
     m_PersistentCalls:
