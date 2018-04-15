@@ -17,6 +17,7 @@ public class MoveOperation : MonoBehaviour {
 
     public playerSelectionPanel playerSelect;
 	public PlayerPanelController ppc;
+	public agreePanelController agreeController;
 	public GameObject result;
     Game game;
 
@@ -33,6 +34,9 @@ public class MoveOperation : MonoBehaviour {
 		game = Game.Instance;
     }
 	//---------------------------------Request Handle-----------------------------------//
+	public void askPermission(string request){
+		
+	}
 	string targetPlayer;
 	public void roleSelectForMove(string target){
 		targetPlayer = target;

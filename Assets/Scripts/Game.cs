@@ -64,6 +64,7 @@ public class Game : MonoBehaviour {
 	public playerSelectionPanel playerSelect;
 	public ShareOperation shareOperation;
     public PassOperation passOperation;
+	public MoveOperation moveOperation;
     public ChatBox chatBox;
     public Record record;
 	public infectionDiscardPileUI infectionDiscardUI;
@@ -351,6 +352,11 @@ public class Game : MonoBehaviour {
 		}
 		rapidVaccineDeployment (color, cities);
 	}
+
+	[PunRPC]
+	public void RPC_askPermissionDispatcher(string request){
+		askPermissionDispatcher (request);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -532,6 +538,11 @@ public class Game : MonoBehaviour {
 
 		PhotonView.RPC ("RPC_rapidVaccineDeployment", PhotonTargets.All, colorString, cityNamesArray);
     }
+
+	public void AskPermissionDispatcher (string targetRoleKind, string request){
+		Player targetPlayer = findPlayer (targetRoleKind);
+		PhotonView.RPC ("RPC_askPermissionDispatcher", targetPlayer, request );
+	}
     #endregion
 
     #region initialization
@@ -1129,6 +1140,10 @@ public class Game : MonoBehaviour {
 		}
 		currentPhase = GamePhase.InfectCities;
 		numOfInfection = 0;
+	}
+
+	private void askPermissionDispatcher(string request){
+		moveOperation.askPermission (request);
 	}
 	#endregion
 
