@@ -397,6 +397,11 @@ public class Game : MonoBehaviour {
 		PlayerCard card = findPlayerCard (cardNmae);
 		discard (card);
 	}
+
+	[PunRPC]
+	public void RPC_bioTerroristCapture(){
+		bioTerroristCapture ();
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -608,6 +613,10 @@ public class Game : MonoBehaviour {
 
 	public void BioterroristDraw(){
 		PhotonView.RPC ("RPC_bioterroristDraw", PhotonTargets.All);
+	}
+
+	public void BioTerroristCapture(){
+		PhotonView.RPC ("RPC_bioTerroristCapture", PhotonTargets.All);
 	}
     #endregion
 
