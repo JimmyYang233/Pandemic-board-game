@@ -95,4 +95,10 @@ MonoBehaviour:
   - RPC_placeMarker
   - RPC_discard
   - RPC_bioTerroristCapture
+  - RPC_bioTerroristCharterFlight
+  - RPC_bioTerroristDirectFlight
+  - RPC_bioTerroristEscape
+  - RPC_bioTerroristInfectLocally
+  - RPC_bioTerroristInfectRemotely
+  - RPC_bioTerroristSabotage
   DisableAutoOpenWizard: 1
