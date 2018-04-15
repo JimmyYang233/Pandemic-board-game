@@ -19,7 +19,7 @@ public class TroubleShooterOperationController : MonoBehaviour {
 			target.transform.GetChild (0).GetComponent<Text> ().text = infections [i];
 		}
 		for (int i = rate; i < 4; i++) {
-			troublePanel.transform.GetChild (0).gameObject.SetActive (false);
+			troublePanel.transform.GetChild (i).gameObject.SetActive (false);
 		}
 	}
 }
