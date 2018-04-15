@@ -6,6 +6,7 @@ public class EpidemiologistOperation : MonoBehaviour {
 	public GameObject epidemiologistOnlyPanel;
 	public Game game;
 	public playerSelectionPanel playerSelect;
+	public GameObject playerPanel;
 	public otherPlayerCardSelection cardSelection;
 	string characterName;
 	string cardName;
@@ -19,10 +20,10 @@ public class EpidemiologistOperation : MonoBehaviour {
 		
 	}
 	public void useSkill(){
+		playerPanel.SetActive (false);
 		playerSelect.displayPlayerNecessary ();
+		playerSelect.selectStatus = playerSelectionPanel.Status.EPIDEMIOLOGIST;
 	}	
-
-
 	public void characterSelect(string name){
 		epidemiologistOnlyPanel.SetActive (true);
 		playerSelect.gameObject.SetActive (false);
