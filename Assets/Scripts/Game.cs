@@ -2271,6 +2271,7 @@ public class Game : MonoBehaviour {
 		}
 
 		player.setOncePerturnAction(true);
+		player.decreaseRemainingAction();
 	}
 	
     private void fieldOperativePutBack(Player pl, Color c)

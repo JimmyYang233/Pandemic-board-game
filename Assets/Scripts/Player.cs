@@ -91,7 +91,7 @@ public class Player {
     public void putCube(Disease d, int amount)
     {
         Color c = d.getColor();
-        
+        d.addCubes(amount);
         if (c == Color.blue)
                 putCube(0,amount);
                 
@@ -113,6 +113,7 @@ public class Player {
         if (cubes[index]>=amount)
         {
             cubes[index] -= amount;
+
         }
         else
         {
