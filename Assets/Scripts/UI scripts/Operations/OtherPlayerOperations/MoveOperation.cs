@@ -35,7 +35,9 @@ public class MoveOperation : MonoBehaviour {
     }
 	//---------------------------------Request Handle-----------------------------------//
 	public void askPermission(string request){
-		
+		agreeController.agreePanel.transform.GetChild (0).GetComponent<Text> ().text = request;
+		agreeController.status = agreePanelController.Status.DISPATCHER;
+		agreeController.gameObject.SetActive (true);
 	}
 	string targetPlayer;
 	public void roleSelectForMove(string target){
@@ -47,7 +49,7 @@ public class MoveOperation : MonoBehaviour {
 			showMove ();
 			setActivePpc ();
 		} else {
-			//game.AskPermissionDispatcher(string name,"want you to move");
+			game.AskPermissionDispatcher(target,"Dispatcher wants to move instead of you.");
 		}
 	}
 	public void roleSelectForPawn(string target){
@@ -59,7 +61,7 @@ public class MoveOperation : MonoBehaviour {
 			selectCityWithPawn ();
 			setActivePpc ();
 		} else {
-			//game.AskPermissionDispatcher(string name,"want to move you to next city");
+			game.AskPermissionDispatcher(target,"Dispatcher wants to move your pawn to another city with another pawn.");
 		}
 	}
 
