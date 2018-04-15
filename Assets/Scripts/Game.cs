@@ -68,6 +68,7 @@ public class Game : MonoBehaviour {
 	public ShareOperation shareOperation;
     public PassOperation passOperation;
 	public MoveOperation moveOperation;
+	public TroubleShooterOperationController troubleShooterOperation;
     public ChatBox chatBox;
     public Record record;
 	public infectionDiscardPileUI infectionDiscardUI;
