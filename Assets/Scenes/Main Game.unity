@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1115,7 +1115,7 @@ RectTransform:
   - {fileID: 1245568978}
   - {fileID: 838768533}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3145,6 +3145,17 @@ MonoBehaviour:
       - m_Target: {fileID: 215428524}
         m_MethodName: clickYes
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 250146712}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8717,7 +8728,7 @@ RectTransform:
   - {fileID: 97509884}
   - {fileID: 1358360795}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 16
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9922,7 +9933,7 @@ RectTransform:
   - {fileID: 1284399549}
   - {fileID: 1866817744}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16657,7 +16668,7 @@ RectTransform:
   m_Children:
   - {fileID: 1210266664}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -20412,7 +20423,7 @@ RectTransform:
   - {fileID: 1628225187}
   - {fileID: 634853758}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -21139,7 +21150,6 @@ RectTransform:
   - {fileID: 1717221360}
   - {fileID: 918857223}
   - {fileID: 1312684474}
-  - {fileID: 250146713}
   - {fileID: 1967448416}
   - {fileID: 1764929719}
   - {fileID: 841527324}
@@ -21154,6 +21164,7 @@ RectTransform:
   - {fileID: 1663666087}
   - {fileID: 1929989038}
   - {fileID: 1573300318}
+  - {fileID: 250146713}
   m_Father: {fileID: 1163441874}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30120,7 +30131,7 @@ RectTransform:
   - {fileID: 876426628}
   - {fileID: 78800620}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -35579,7 +35590,7 @@ RectTransform:
   - {fileID: 743599131}
   - {fileID: 332554012}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -42868,7 +42879,7 @@ RectTransform:
   - {fileID: 1330711375}
   - {fileID: 1798738607}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -47782,6 +47793,17 @@ MonoBehaviour:
       - m_Target: {fileID: 215428524}
         m_MethodName: clickNo
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 250146712}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -54558,7 +54580,7 @@ RectTransform:
   - {fileID: 513973567}
   - {fileID: 713791349}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -56986,7 +57008,7 @@ RectTransform:
   m_Children:
   - {fileID: 562183123}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -60707,7 +60729,7 @@ RectTransform:
   - {fileID: 1003977319}
   - {fileID: 1479100565}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -65066,7 +65088,7 @@ RectTransform:
   - {fileID: 1854096650}
   - {fileID: 505122071}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -66134,7 +66156,7 @@ RectTransform:
   m_Children:
   - {fileID: 410627194}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -67026,7 +67048,7 @@ RectTransform:
   - {fileID: 47072193}
   - {fileID: 225564276}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -67635,7 +67657,7 @@ RectTransform:
   - {fileID: 672788796}
   - {fileID: 1229745185}
   m_Father: {fileID: 623620805}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
