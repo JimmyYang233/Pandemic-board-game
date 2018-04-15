@@ -402,6 +402,30 @@ public class Game : MonoBehaviour {
 	public void RPC_bioTerroristCapture(){
 		bioTerroristCapture ();
 	}
+
+	[PunRPC]
+	public void RPC_bioTerroristSabotage(string infectionCardName){
+		InfectionCard ic = findInfectionCard (infectionCardName);
+		bioTerroristSabotage (ic);
+	}
+
+	[PunRPC]
+	public void RPC_bioTerroristInfectLocally(){
+		bioTerroristInfectLocally ();
+	}
+
+	[PunRPC]
+	public void RPC_bioTerroristInfectRemotely(string icName){
+		InfectionCard ic = findInfectionCard (icName);
+		bioTerroristInfectRemotely (ic);
+	}
+
+	[PunRPC]
+	public void RPC_bioTerroristDirectFlight(string icName){
+		InfectionCard ic = findInfectionCard (icName);
+		bioTerroristDirectFlight (ic);
+	}
+
     #endregion
 
     //called by chatbox to send chat message
@@ -617,6 +641,22 @@ public class Game : MonoBehaviour {
 
 	public void BioTerroristCapture(){
 		PhotonView.RPC ("RPC_bioTerroristCapture", PhotonTargets.All);
+	}
+
+	public void BioTerroristSabotage(string infectionCardName){
+		PhotonView.RPC ("RPC_bioTerroristSabotage", PhotonTargets.All, infectionCardName );
+	}
+
+	public void BioTerroristInfectLocally(){
+		PhotonView.RPC ("RPC_bioTerroristInfectLocally", PhotonTargets.All);
+	}
+
+	public void BioTerroristInfectRemotely(string infectionCardName){
+		PhotonView.RPC ("RPC_bioTerroristInfectRemotely", PhotonTargets.All, infectionCardName);
+	}
+
+	public void BioTerroristDirectFlight(string infectionCardName){
+		PhotonView.RPC ("RPC_bioTerroristDirectFlight", PhotonTargets.All, infectionCardName);
 	}
     #endregion
 
