@@ -688,7 +688,7 @@ public class Game : MonoBehaviour {
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
 		}
 
-		List<Color> dc = mapInstance.getDiseaseColor();
+		List<Color> dc = mapInstance.getDiseaseColor(challenge);
 		foreach (Color c in dc)
 		{
 			Disease d = new Disease(c);
@@ -865,7 +865,7 @@ public class Game : MonoBehaviour {
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
 		}
 
-		List<Color> dc = mapInstance.getDiseaseColor();
+		List<Color> dc = mapInstance.getDiseaseColor(challenge);
 		foreach (Color c in dc)
 		{
 			Disease d = new Disease(c);
@@ -2886,6 +2886,7 @@ public class Game : MonoBehaviour {
 		quit ();
 	}
 	public void quit(){
+		Debug.Log ("Some one left the room, game over");
 		PhotonNetwork.LeaveRoom ();
 		SceneManager.LoadScene ("Lobby");
 	}

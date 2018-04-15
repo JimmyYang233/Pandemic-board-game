@@ -253,9 +253,11 @@ public class Maps{
     }
 
 
-    public List<Color> getDiseaseColor()
+	public List<Color> getDiseaseColor(Challenge challenge)
     {
-        
+		if (challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain || challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain) {
+			diseaseColor.Add(Color.magenta);
+		}
         return diseaseColor;
     }
 }

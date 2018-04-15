@@ -13,6 +13,9 @@ public class Disease : MonoBehaviour {
     public Disease(Color aColor)
     {
         color = aColor;
+		if (aColor == Color.magenta) {
+			numberOfDiseaseCubesLeft = 12;
+		}
     }
 
     public bool isCured()
