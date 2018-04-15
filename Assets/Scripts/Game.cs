@@ -347,6 +347,7 @@ public class Game : MonoBehaviour {
 
 	[PunRPC]
 	public void RPC_rapidVaccineDeployment(string colorString, string[] cityNamesArray){
+		Debug.Log ("RPC sends: " + cityNamesArray);
 		Color color = stringToColor (colorString);
 		List<City> cities = new List<City> ();
 		for (int i = 0; i < cityNamesArray.Length; i++) {
