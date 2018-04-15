@@ -405,7 +405,7 @@ public class Game : MonoBehaviour {
         {
             card5 = cardsToRemove[4];
         }
-		askForRapidVaccineDeployment ();
+
         
         PhotonView.RPC ("RPC_cure", PhotonTargets.All, playerRoleKind, diseaseColor, card1, card2, card3, card4, card5);
 	}
@@ -1099,7 +1099,8 @@ public class Game : MonoBehaviour {
 		//UI TODO: set disease’s cure marker
 
 		currentPlayer.decreaseRemainingAction();
-	}
+        askForRapidVaccineDeployment(d.getColor());
+    }
 
 	//pass
 	private void endTurn()
@@ -1289,10 +1290,10 @@ public class Game : MonoBehaviour {
 		eventController.informResult (result);
 	}
 
-	public void askForRapidVaccineDeployment(){
+	public void askForRapidVaccineDeployment(Color color){
 		Player cardHolder = findEventCardHolder (EventKind.RapidVaccineDeployment);
 		if (cardHolder == me) {
-            eventController.askForRapidVaccineDeployment();
+            eventController.askForRapidVaccineDeployment(color);
 		}
 	}
 
