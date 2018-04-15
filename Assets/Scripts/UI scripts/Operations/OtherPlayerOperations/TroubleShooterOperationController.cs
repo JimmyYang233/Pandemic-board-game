@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TroubleShooterOperationController : MonoBehaviour {
-
+	public GameObject troublePanel;
 	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public void useSkill(){
+		troublePanel.SetActive (true);
 	}
 }

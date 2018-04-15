@@ -1243,6 +1243,14 @@ public class Game : MonoBehaviour {
 
 	private void discard(PlayerCard card){
 		currentPlayer.removeCard (card);
+		if (!currentPlayer.Equals(me))
+		{
+			playerPanel.deletePlayerCardFromOtherPlayer(currentPlayer.getRoleKind(), card);
+		}
+		else
+		{
+			mainPlayerPanel.deletePlayerCard(card);
+		}
 		playerDiscardPile.Add (card);
 	}
 
