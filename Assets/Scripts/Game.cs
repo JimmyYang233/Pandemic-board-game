@@ -2034,7 +2034,7 @@ public class Game : MonoBehaviour {
         
     }
 
-    public void capture()
+    public void bioTerroristCapture()
     {
         if (currentPlayer.getPlayerPawn().getCity() != players[BioTerroristVolunteer].getPlayerPawn().getCity())
         {
@@ -2060,7 +2060,7 @@ public class Game : MonoBehaviour {
         return bioTerroristRole;
     }
 
-    public void BioTerroristSabotage(InfectionCard card)
+    public void bioTerroristSabotage(InfectionCard card)
     {
         City city = players[BioTerroristVolunteer].getPlayerPawn().getCity();
         if (!city.getHasResearch())
@@ -2078,7 +2078,7 @@ public class Game : MonoBehaviour {
 
     }
     
-    public void BioTerroristInfectLocally()
+    public void bioTerroristInfectLocally()
     {
         BioTerrorist bioTerrorist = getBioTerrorist();
         if (bioTerrorist.getinfectLocallyUsed())
@@ -2096,7 +2096,7 @@ public class Game : MonoBehaviour {
 
     }
 
-    public void BioTerroristInfectRemotely(InfectionCard card)
+    public void bioTerroristInfectRemotely(InfectionCard card)
     {
         BioTerrorist bioTerrorist = getBioTerrorist();
         if (bioTerrorist.getInfectRemotelyUsed())
@@ -2127,9 +2127,8 @@ public class Game : MonoBehaviour {
         }
     }
 
-    private void bioterroristDirectFlight(InfectionCard card)
+    private void bioTerroristDirectFlight(InfectionCard card)
     {
-        
         players[BioTerroristVolunteer].removeCard(card);
         infectionDiscardPile.Add(card);
         bioTerroristMove(players[BioTerroristVolunteer], card.getCity());
@@ -2137,13 +2136,18 @@ public class Game : MonoBehaviour {
         players[BioTerroristVolunteer].decreaseRemainingAction();
     }
 
-    private void bioterroristCharterFlight(InfectionCard card, City city)
+    private void bioTerroristCharterFlight(InfectionCard card, City city)
     {
         players[BioTerroristVolunteer].removeCard(card);
         infectionDiscardPile.Add(card);
         bioTerroristMove(players[BioTerroristVolunteer], city);
         announceAirportSighting();
         players[BioTerroristVolunteer].decreaseRemainingAction();
+    }
+
+    private void bioTerroristEscape(InfectionCard card)
+    {
+        bioTerroristDirectFlight(card);
     }
 
     private void announceAirportSighting()
