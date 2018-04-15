@@ -567,6 +567,9 @@ public class eventCardController : MonoBehaviour {
         citiesToDeploye.Clear();
     }
     #endregion
+    #region special Order
+
+    #endregion
     //--------------------------
     public void useEvent(){
 		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;

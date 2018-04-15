@@ -1579,7 +1579,7 @@ public class Game : MonoBehaviour {
         }
         //Testing only
    
-		RoleKind testRole = RoleKind.FieldOperative;
+		RoleKind testRole = RoleKind.Dispatcher;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
