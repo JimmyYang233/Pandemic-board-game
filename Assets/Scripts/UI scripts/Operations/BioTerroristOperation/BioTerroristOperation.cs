@@ -14,25 +14,32 @@ public class BioTerroristOperation : MonoBehaviour {
     public Button passButton;
     Player me;
     Player currentPlayer;
+    City currentCity;
 
-	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update() {
         me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
-        if(me.getRoleKind() == RoleKind.BioTerrorist&&(me == currentPlayer)&&(game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
+        currentCity = currentPlayer.getPlayerPawn().getCity();
+        if (me.getRoleKind() == RoleKind.BioTerrorist && (me == currentPlayer) && (game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
             BioTerrorist bio = game.getBioTerrorist();
+            if ((me.getRemainingAction() != 0 || !(bio.getBioTerroristExtraDriveUsed()))&&!bio.getIsCaptured())
+            {
+                moveButton.GetComponent<Button>().interactable = true;
+            }
             if (me.getRemainingAction() != 0)
             {
                 drawButton.GetComponent<Button>().interactable = true;
-                if (!bio.getIsCaptured())
-                {
-                    moveButton.GetComponent<Button>().interactable = true;
-                }
                 infectButton.GetComponent<Button>().interactable = true;
-                sabotageButton.GetComponent<Button>().interactable = true;
-                escapeButton.GetComponent<Button>().interactable = true;
+                if (currentCity.getHasResearch())
+                {
+                    sabotageButton.GetComponent<Button>().interactable = true;
+                }
+                if (bio.getIsCaptured() && me.containsInfectionCard())
+                {
+                    escapeButton.GetComponent<Button>().interactable = true;
+                }
                 passButton.GetComponent<Button>().interactable = true;
             }
         }
@@ -41,6 +48,12 @@ public class BioTerroristOperation : MonoBehaviour {
             resetAll();
         }
 	}
+
+    public void drawButtonClicked()
+    {
+
+        resetAll();
+    }
 
     public void resetAll()
     {
