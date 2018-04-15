@@ -344,6 +344,16 @@ public class Game : MonoBehaviour {
 		Color color = stringToColor (colorString);
 		fieldOperativePutBack (targetPlayer,color);
 	}
+
+	[PunRPC]
+	public void RPC_rapidVaccineDeployment(string colorString, string[] cityNamesArray){
+		Color color = stringToColor (colorString);
+		List<City> cities = new List<City> ();
+		for (int i = 0; i < cityNamesArray.Length; i++) {
+			cities.Add (findCity(cityNamesArray[i]));
+		}
+		rapidVaccineDeployment (color, cities);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -517,9 +527,15 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_fieldOperativePutBack", PhotonTargets.All, playerRoleKind, colorString);
 	}
 
-    public void RapidVaccineDeployment()
+	public void RapidVaccineDeployment(Color color, List<City> cities)
     {
-        //RPC-TO-DO
+		string colorString = colorToString (color);
+		string[] cityNamesArray = new string[cities.Count];
+		int i = 0;
+		foreach (City city in cities) {
+			cityNamesArray [i] = city.getCityName().ToString();
+		}
+		PhotonView.RPC ("RPC_rapidVaccineDeployment", PhotonTargets.All, colorString, cityNamesArray);
     }
     #endregion
 
