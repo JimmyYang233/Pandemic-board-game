@@ -2445,7 +2445,10 @@ public class Game : MonoBehaviour {
 	/*
 	TODO: for EPIDEMIOLOGIST, once per turn
 	 */
-	private void epidemiologistShare(){}
+	private void epidemiologistShare(CityCard card){
+        exchangeCard(RoleKind.Epidemiologist, card);
+        currentPlayer.removeOneAction();
+    }
 
 
 	/*
