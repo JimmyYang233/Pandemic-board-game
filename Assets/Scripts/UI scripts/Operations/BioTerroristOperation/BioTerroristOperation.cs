@@ -23,12 +23,13 @@ public class BioTerroristOperation : MonoBehaviour {
         if(me.getRoleKind() == RoleKind.BioTerrorist&&(me == currentPlayer)&&(game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
             BioTerrorist bio = game.getBioTerrorist();
+            if(
             if (me.getRemainingAction() != 0)
             {
                 drawButton.GetComponent<Button>().interactable = true;
                 if (!bio.getIsCaptured())
                 {
-                    moveButton.GetComponent<Button>().interactable = true;
+                    
                 }
                 infectButton.GetComponent<Button>().interactable = true;
                 sabotageButton.GetComponent<Button>().interactable = true;
