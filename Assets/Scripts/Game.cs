@@ -532,6 +532,11 @@ public class Game : MonoBehaviour {
 
 		PhotonView.RPC ("RPC_rapidVaccineDeployment", PhotonTargets.All, colorString, cityNamesArray);
     }
+
+	public void AskPermissionDispatcher (string targetRoleKind, string request){
+		Player targetPlayer = findPlayer (targetRoleKind);
+		Photon.RPC ();
+	}
     #endregion
 
     #region initialization
@@ -1130,6 +1135,10 @@ public class Game : MonoBehaviour {
 		}
 		currentPhase = GamePhase.InfectCities;
 		numOfInfection = 0;
+	}
+
+	private void askPermissionDispatcher(string request){
+		
 	}
 	#endregion
 
