@@ -153,6 +153,13 @@ public class BasicOperation : MonoBehaviour {
                     {
                         operationsExpertSkillButton.GetComponent<Button>().interactable = true;
                     }
+                    foreach(Player otherPlayer in game.getPlayers())
+                    {
+                        if (otherPlayer != me && otherPlayer.getPlayerPawn().getCity() == currentCity && otherPlayer.containsCityCard())
+                        {
+                            epidemiologistSkillButton.GetComponent<Button>().interactable = true;
+                        }
+                    }
 
                 }
                 else if (me.getRemainingAction() == 0)
