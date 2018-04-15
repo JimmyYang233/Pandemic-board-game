@@ -397,6 +397,11 @@ public class Game : MonoBehaviour {
 		PlayerCard card = findPlayerCard (cardNmae);
 		discard (card);
 	}
+
+	[PunRPC]
+	public void RPC_bioTerroristCapture(){
+		bioTerroristCapture ();
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -608,6 +613,10 @@ public class Game : MonoBehaviour {
 
 	public void BioterroristDraw(){
 		PhotonView.RPC ("RPC_bioterroristDraw", PhotonTargets.All);
+	}
+
+	public void BioTerroristCapture(){
+		PhotonView.RPC ("RPC_bioTerroristCapture", PhotonTargets.All);
 	}
     #endregion
 
@@ -1971,6 +1980,11 @@ public class Game : MonoBehaviour {
         outbreakedCities.Add(city);
         int cubeNumber = city.getCubeNumber(color);
         int remainingCubes = disease.getNumOfDiseaseCubeLeft();
+        int purpleCubeNumber = city.getCubeNumber(Color.magenta);
+        if (purpleCubeNumber > 0) 
+        {
+            infect(city, Color.magenta, 1);
+        }
         //if not exceeding 3 cubes, put cubes to that city
         if (cubeNumber < 3)
         {
