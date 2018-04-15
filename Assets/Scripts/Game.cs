@@ -1296,12 +1296,16 @@ public class Game : MonoBehaviour {
 		if(oneQuietNightUsed){
 			oneQuietNightUsed = false;
             PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
-            return;
+			return;
         }
-		yield return new WaitUntil(() => currentPlayer.getHandLimit() >= currentPlayer.getHandSize());
+		StartCoroutine (checkHand());
 		//Debug.Log ("start infect city");
-		passOperation.startInfection ();
 		//nextPlayer();
+	}
+
+	IEnumerator checkHand(){
+		yield return new WaitUntil(() => currentPlayer.getHandLimit() >= currentPlayer.getHandSize());
+		passOperation.startInfection ();
 	}
 
 	private void notifyResolveEpidemic(){
