@@ -1038,7 +1038,7 @@ public class Game : MonoBehaviour {
 			foreach (KeyValuePair<Color, Disease> entry in diseases) {
 				Disease curDisease = entry.Value;
 				curDisease.setCured(e.Current.cured);
-				if (curDisease.isCured) {
+				if (curDisease.isCured()) {
 					gameInfoController.cure (entry.Key);
 				}
 
