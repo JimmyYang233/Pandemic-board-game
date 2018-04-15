@@ -1145,7 +1145,7 @@ public class Game : MonoBehaviour {
 		//Note that epidemic card is resolved in "draw" method
 		//if there is no enough player cards in the deck, players lose the game
 		
-		if (currentPlayer!= players[BioTerroristVolunteer] && !draw(currentPlayer, 2))
+		if ((currentPlayer!= players[BioTerroristVolunteer] || Challenge.BioTerroist != challenge) && !draw(currentPlayer, 2))
 		{
 			return;
 		}
@@ -1613,7 +1613,7 @@ public class Game : MonoBehaviour {
         }
         foreach (Player p in players)
         {
-            if (p != players[BioTerroristVolunteer])
+            if (p != players[BioTerroristVolunteer] || Challenge.BioTerroist != challenge)
             {
                 draw(p, cardNeeded);
             }
