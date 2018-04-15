@@ -1038,6 +1038,10 @@ public class Game : MonoBehaviour {
 			foreach (KeyValuePair<Color, Disease> entry in diseases) {
 				Disease curDisease = entry.Value;
 				curDisease.setCured(e.Current.cured);
+				if (curDisease.isCured) {
+					gameInfoController.cure (entry.Key);
+				}
+
 				curDisease.setEradicated(e.Current.eradicated);
 				curDisease.setNumOfDiseaseCubeLeft(e.Current.numberOfDiseaseCubesLeft);
 				//for gui
