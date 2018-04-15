@@ -55,11 +55,14 @@ public class BioTerroristOperation : MonoBehaviour {
         resetAll();
     }
 
+
     public void capture()
     {
         game.BioTerroristCapture();
         resetAll();
     }
+
+
 
     public void resetAll()
     {
