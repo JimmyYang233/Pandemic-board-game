@@ -3918,7 +3918,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 122945860}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 479609793}
+        m_MethodName: useSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &122945860
@@ -9444,7 +9455,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1563410207794540, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
         type: 2}
@@ -22937,7 +22948,7 @@ MonoBehaviour:
   passButton: {fileID: 1690017431}
   contingencyPlannerSkillButton: {fileID: 1933850050}
   archivistSkillButton: {fileID: 2093747171}
-  troubleShooterSkillButton: {fileID: 0}
+  troubleShooterSkillButton: {fileID: 122945859}
   fieldOperativeSkillButton: {fileID: 1204905168}
   epidemiologistSkillButton: {fileID: 1435711907}
   dispatcherSkillButton: {fileID: 624561548}
@@ -27136,7 +27147,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1799472504588708, guid: 1853fc53655cb44f4a4763199019c06e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114368711171161602, guid: 1853fc53655cb44f4a4763199019c06e,
         type: 2}
@@ -64014,7 +64025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1563410207794540, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
         type: 2}
@@ -72734,7 +72745,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1563410207794540, guid: f68bc34d0a3a94d2e8b878e89b746785, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114390380894163376, guid: f68bc34d0a3a94d2e8b878e89b746785,
         type: 2}

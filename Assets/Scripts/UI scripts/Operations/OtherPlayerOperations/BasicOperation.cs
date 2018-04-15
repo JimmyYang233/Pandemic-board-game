@@ -66,7 +66,7 @@ public class BasicOperation : MonoBehaviour {
 				contingencyPlannerSkillButton.gameObject.SetActive (true);
 				roleOnlyButton = contingencyPlannerSkillButton;
 			} else if (me.getRoleKind () == RoleKind.Troubleshooter) {
-				contingencyPlannerSkillButton.gameObject.SetActive (true);
+				troubleShooterSkillButton.gameObject.SetActive (true);
 				roleOnlyButton = contingencyPlannerSkillButton;
 			}
             else if (me.getRoleKind() == RoleKind.Archivist)
@@ -144,6 +144,11 @@ public class BasicOperation : MonoBehaviour {
                     {
                         fieldOperativeSkillButton.GetComponent<Button>().interactable = true;
                     }
+
+					if(game.getInfectionRate()<=4 && game.getInfectionRate()>=1 && (!me.getOncePerTurnAction())){
+						troubleShooterSkillButton.GetComponent<Button> ().interactable = true;
+					}
+
                     foreach (Player otherPlayer in game.getPlayers())
                     {
                         if (me.getPlayerPawn().getCity() != otherPlayer.getPlayerPawn().getCity())
