@@ -452,9 +452,13 @@ public class eventCardController : MonoBehaviour {
     List<City> cityWithCalls = new List<City>();
     List<UnityEngine.Events.UnityAction> deployCalls = new List<UnityEngine.Events.UnityAction>();
 
+    public void testRapidVaccine()
+    {
+        askForRapidVaccineDeployment(Color.blue);
+    }
+
     public void askForRapidVaccineDeployment(Color aColor)
     {
-        
         this.gameObject.SetActive(true);
         this.transform.GetChild(1).GetComponent<Text>().text = "RapidVaccineDeployment";
         deployColor = aColor;
