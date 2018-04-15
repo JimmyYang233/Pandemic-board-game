@@ -111,13 +111,13 @@ public class playerSelectionPanel : MonoBehaviour {
 			move.changePlayerToMove (name);
 			move.showMove ();
 			move.setActivePpc ();*/
-			move.roleSelectForMove ();
+			move.roleSelectForMove (name);
 		} else if (selectStatus == Status.DISPATCHERMOVEPAWN) {
 			/*
 			move.changePlayerToMove (name);
 			move.selectCityWithPawn();
 			move.setActivePpc ();*/
-			move.roleSelectForPawn ();
+			move.roleSelectForPawn (name);
 		}
 	}
 	public void cancelButtonClick(){
