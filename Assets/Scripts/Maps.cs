@@ -255,7 +255,7 @@ public class Maps{
     }
 
 
-	public List<Color> getDiseaseColor(Challenge challenge)
+	public List<Color> getDiseaseColor()
     {
 		/*
 		if ((challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain || challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain)
