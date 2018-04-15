@@ -198,6 +198,7 @@ public class BasicOperation : MonoBehaviour {
         buildButton.GetComponent<Button>().interactable = false;
         if (roleOnlyButton != null)
         {
+            roleOnlyButton.gameObject.SetActive(false);
             roleOnlyButton.GetComponent<Button>().interactable = false;
         }
         passButton.GetComponent<Button>().interactable = false;

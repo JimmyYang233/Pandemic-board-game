@@ -38,9 +38,17 @@ public class BuildOperation : MonoBehaviour
         {
             buildQuarantineButton.gameObject.GetComponent<Button>().interactable = true;
         }
+        else
+        {
+            buildQuarantineButton.gameObject.GetComponent<Button>().interactable = false;
+        }
         if (!(currentCity.getHasResearch()))
         {
             buildResearchButton.gameObject.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            buildResearchButton.gameObject.GetComponent<Button>().interactable = false;
         }
         cancelButton.gameObject.GetComponent<Button>().interactable = true;
     }

@@ -391,7 +391,8 @@ public class City : MonoBehaviour {
             GameObject marker1 = (GameObject)Instantiate(Resources.Load("Markers/Marker1"), new Vector3(0, 0, 0), gameObject.transform.rotation);
             marker1.transform.parent = gameObject.transform;
             Vector3 aPosition = transform.position;
-            aPosition.y = aPosition.y - 5;
+
+            aPosition.y = aPosition.y + 8;
             marker1.transform.position = aPosition;
         }
         else if(quarantineMarker == 2)
@@ -399,7 +400,8 @@ public class City : MonoBehaviour {
             GameObject marker2 = (GameObject)Instantiate(Resources.Load("Markers/Marker2"), new Vector3(0, 0, 0), gameObject.transform.rotation);
             marker2.transform.parent = gameObject.transform;
             Vector3 aPosition = transform.position;
-            aPosition.y = aPosition.y - 5;
+
+            aPosition.y = aPosition.y + 8;
             marker2.transform.position = aPosition;
         }
     }
