@@ -543,6 +543,11 @@ public class Game : MonoBehaviour {
 		Player targetPlayer = findPlayer (targetRoleKind);
 		PhotonView.RPC ("RPC_askPermissionDispatcher", targetPlayer, request );
 	}
+
+	public void InformDispatcher(bool request){
+		Player targetPlayer = currentPlayer;
+		PhotonView.RPC ("RPC_informDispatcher", targetPlayer, request);
+	}
     #endregion
 
     #region initialization
