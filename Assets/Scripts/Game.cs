@@ -2130,7 +2130,19 @@ public class Game : MonoBehaviour {
     private void operationsExpertMove(CityCard card, City c)
     {
         currentPlayer.removeCard(card);
+
+		if (!currentPlayer.Equals(me))
+		{
+
+			playerPanel.deletePlayerCardFromOtherPlayer(currentPlayer.getRoleKind(), card);
+		}
+		else
+		{
+			mainPlayerPanel.deletePlayerCard(card);
+		}
+
         playerDiscardPile.Add(card);
+
         move(currentPlayer, c);
         currentPlayer.decreaseRemainingAction();
     }
@@ -2205,6 +2217,17 @@ public class Game : MonoBehaviour {
             markersAvailable--;
             city.putMarker();
 			currentPlayer.removeCard(card);
+
+			if (!currentPlayer.Equals(me))
+			{
+
+				playerPanel.deletePlayerCardFromOtherPlayer(currentPlayer.getRoleKind(), card);
+			}
+			else
+			{
+				mainPlayerPanel.deletePlayerCard(card);
+			}
+
 			playerDiscardPile.Add(card);	
             currentPlayer.decreaseRemainingAction();
         }
