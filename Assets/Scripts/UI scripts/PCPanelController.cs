@@ -38,7 +38,7 @@ public class PCPanelController : MonoBehaviour {
 		
 		if (c is EventCard) {
 			addEventCard (((EventCard)c).getEventKind ());
-		} else if (c is EventCard) {
+		} else if (c is CityCard) {
 			addCityCard (((CityCard)c).getCity ().getCityName ());
 		} else {
 			addCityCard (((InfectionCard)c).getCity ().getCityName ());
