@@ -511,6 +511,10 @@ public class eventCardController : MonoBehaviour {
     public void deployVaccineButtonClicked()
     {
         Debug.Log("Calling functions rapidVaccineDeployment");
+        foreach(City city in citiesToDeploye)
+        {
+            Debug.Log(city.getCityName().ToString() + " deployed");
+        }
         deploymentButton.gameObject.SetActive(false);
         game.RapidVaccineDeployment(deployColor, citiesToDeploye);//TO-DO
         for (int i = 0; i < cityWithCalls.Count; i++)
