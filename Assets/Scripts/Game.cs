@@ -2100,12 +2100,18 @@ public class Game : MonoBehaviour {
                 //setGamePhase (GamePhase.Completed);
                 return false;
             }
-
-            city.addCubes(disease, 3 - cubeNumber);
-            disease.removeCubes(3 - cubeNumber);
+            if (color != Color.magenta)
+            {
+                city.addCubes(disease, 3 - cubeNumber);
+                disease.removeCubes(3 - cubeNumber);
+            }
+            else
+            {
+                city.removeCubes(diseases[Color.magenta], 2);
+                disease.addCubes(2);
+            }
             gameInfoController.changeDiseaseNumber(disease.getColor(), disease.getNumOfDiseaseCubeLeft());
             Debug.Log(disease.getNumOfDiseaseCubeLeft());
-
             foreach (City neighbor in neighbors) {
                 if (outbreakedCities.Contains(neighbor))
                     continue;
