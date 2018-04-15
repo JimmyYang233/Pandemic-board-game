@@ -327,8 +327,11 @@ public class eventCardController : MonoBehaviour {
 
     public void movePawn(Player player, City city)
     {
-        game.Airlift(player, city);
-        //for(int i = 0; i<)
+        game.Airlift(player.getRoleKind().ToString(), city.getCityName().ToString());
+        for(int i = 0; i<cityAddCalls.Count; i++)
+        {
+            cityAddCalls[i].gameObject.GetComponent<Button>().onClick.RemoveListener(airLiftCalls[i]);
+        }
     }
     #endregion 
     #region Government Grant
