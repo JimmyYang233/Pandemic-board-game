@@ -641,7 +641,7 @@ public class Game : MonoBehaviour {
         if (challenge == Challenge.BioTerroist)
         {
             
-            BioTerroristVolunteer = UnityEngine.Random.Range(0, players.Count + 1);
+            BioTerroristVolunteer = UnityEngine.Random.Range(0, players.Count);
             
         }
 
