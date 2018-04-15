@@ -617,7 +617,7 @@ public class Game : MonoBehaviour {
 
         Player bioTerrorist = null;
 
-        if(challenge == Challenge.BioTerroist)
+        if(/*challenge == Challenge.BioTerroist*/true)
         {
 			bioTerrorist = (BioTerroristVolunteer==null) ? players[UnityEngine.Random.Range(0, players.Count+1)] : BioTerroristVolunteer;
             BioTerroristVolunteer = bioTerrorist;
