@@ -1340,13 +1340,11 @@ public class Game : MonoBehaviour {
 		dropEventCard (EventKind.RapidVaccineDeployment);
 		record.eventCard(currentPlayer,EventKind.RapidVaccineDeployment);
 		foreach (City city in cities){
-			while (city.getCubeNumber(c)>0){
-				city.removeCubes(diseases[c], 1);
-        		diseases[c].incrementNumOfDiseaseCubeLeft();
-				ctr++;
-				if(ctr>5){
-					return 1;
-				}
+			city.removeCubes(diseases[c], 1);
+        	diseases[c].incrementNumOfDiseaseCubeLeft();
+			ctr++;
+			if(ctr>5){
+				return 1;
 			}
 		}
 		return 0;
