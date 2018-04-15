@@ -1288,6 +1288,12 @@ public class Game : MonoBehaviour {
 		eventController.informResult (result);
 	}
 
+	public void askForRapidVaccineDeployment(){
+		Player cardHolder = findEventCardHolder (EventKind.RapidVaccineDeployment);
+		if (cardHolder == me) {
+			//TODO : call front end method
+		}
+	}
 
     public void oneQuietNight(){
 		oneQuietNightUsed = true;
@@ -1408,22 +1414,7 @@ public class Game : MonoBehaviour {
 	}
 
 	#endregion
-    public Player findEventCardHolder(EventKind eCard){
-		Player holder = null;
-
-		foreach(Player pl in players){
-			foreach(PlayerCard p in pl.getHand()){
-				if(p.getType() == CardType.EventCard){
-					if (((EventCard)p).getEventKind() == eCard) {
-						holder = pl;
-						break;
-					}
-				}
-			}
-		}
-
-		return holder;
-	}
+   
 
 	private bool checkForRoleExistence(RoleKind roleKind){
 		foreach(Player pl in players){
@@ -2387,6 +2378,23 @@ public class Game : MonoBehaviour {
 
     
 	#region findMethod
+	public Player findEventCardHolder(EventKind eCard){
+		Player holder = null;
+
+		foreach(Player pl in players){
+			foreach(PlayerCard p in pl.getHand()){
+				if(p.getType() == CardType.EventCard){
+					if (((EventCard)p).getEventKind() == eCard) {
+						holder = pl;
+						break;
+					}
+				}
+			}
+		}
+
+		return holder;
+	}
+
 	public City findCity(string name){
 
 		foreach (City c in cities) {
