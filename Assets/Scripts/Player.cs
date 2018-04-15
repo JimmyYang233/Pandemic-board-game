@@ -113,6 +113,7 @@ public class Player {
         if (cubes[index]>=amount)
         {
             cubes[index] -= amount;
+
         }
         else
         {
@@ -123,7 +124,7 @@ public class Player {
     public void returnCubes(Disease d, int amount)
     {
         Color c = d.getColor();
-
+        d.addCubes(amount);
         if (c == Color.blue)
             returnCubes(0, amount);
 

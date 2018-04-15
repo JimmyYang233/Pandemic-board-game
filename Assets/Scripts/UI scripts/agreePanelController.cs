@@ -23,6 +23,7 @@ public class agreePanelController : MonoBehaviour {
 		} else if (status == Status.DISPATCHER) {
 			move.acceptTheRequest ();
 		}
+		this.gameObject.SetActive (false);
 	}
 	public void clickNo(){
 		if (status == Status.SHARE) {
@@ -32,5 +33,6 @@ public class agreePanelController : MonoBehaviour {
 		} else {
 			eventController.rejectTheRequest ();
 		}
+		this.gameObject.SetActive (false);
 	}
 }

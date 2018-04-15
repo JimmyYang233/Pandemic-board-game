@@ -37,7 +37,7 @@ public class MoveOperation : MonoBehaviour {
 	public void askPermission(string request){
 		agreeController.agreePanel.transform.GetChild (0).GetComponent<Text> ().text = request;
 		agreeController.status = agreePanelController.Status.DISPATCHER;
-		agreeController.gameObject.SetActive (true);
+		agreeController.agreePanel.gameObject.SetActive (true);
 	}
 	string targetPlayer;
 	public void roleSelectForMove(string target){
@@ -85,11 +85,11 @@ public class MoveOperation : MonoBehaviour {
 	}
 
 	public void acceptTheRequest(){
-		//game.InformDispatcher (true);
+		game.InformDispatcher (true);
 	}
 
 	public void declineTheRequest(){
-		//game.InformDispatcher (false);
+		game.InformDispatcher (false);
 	}
 
 	public void setActivePpc(){
