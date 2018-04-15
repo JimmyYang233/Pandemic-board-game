@@ -2170,6 +2170,11 @@ public class Game : MonoBehaviour {
         }
     }
 
+    public int getMarkersLeft()
+    {
+        return markersAvailable;
+    }
+
     private void colonelPlaceMarker(CityCard card, City city)
     {
         if (markersAvailable > 0)
