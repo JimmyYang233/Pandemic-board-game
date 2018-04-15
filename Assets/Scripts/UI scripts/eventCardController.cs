@@ -15,7 +15,7 @@ public class eventCardController : MonoBehaviour {
     public playerSelectionPanel playerSelect;
 	public agreePanelController agreeController;
 	public GameObject informResultPanel;
-	public enum Status {REEXAMINEDRESEARCH,NEWASSIGNMENT};
+	public enum Status {REEXAMINEDRESEARCH,NEWASSIGNMENT,AIRLIFT,SPECIALORDERS};
 	public Status status=Status.NEWASSIGNMENT;
 	public string requestSource;
     public Button deploymentButton;
@@ -53,6 +53,9 @@ public class eventCardController : MonoBehaviour {
 				game.DisplayNewAssignment (selectNAPlayer);
 			} else if (status == Status.REEXAMINEDRESEARCH) {
 				game.DisplayReExaminedResearch (selectRERPlayer);
+			} else if (status == Status.AIRLIFT) {
+				Debug.Log ("here");
+				chooseDirection ((selectALPlayer));
 			}
 		}
 		else{
@@ -299,14 +302,36 @@ public class eventCardController : MonoBehaviour {
         game.MobileHospital(me.getRoleKind().ToString());
     }
     #endregion
+	//---------------------------------Special Orders------------------------------------
+	#region Special Orders
+	public void SpecialOrders(){
+		
+	}
+	#endregion
+
     #region Airlift
-    //---------------------------------airLift zone-----------------------------
+    //---------------------------------airLift zone----------------------------------------
     List<UnityEngine.Events.UnityAction> airLiftCalls = new List<UnityEngine.Events.UnityAction>();
     List<City> cityAddCalls = new List<City>();
     public void airLift()
     {
-        //TO-DO maybe later
+		this.status = Status.AIRLIFT;
+		otherPlayers.SetActive (false);
+		playerSelect.gameObject.SetActive(true);
+		playerSelect.selectStatus=playerSelectionPanel.Status.AIRLIFT;
+		playerSelect.displayAllPlayerForEventCard();
     }
+	string selectALPlayer;
+	public void selectAirLiftPlayer(string n) {
+		selectALPlayer = n;
+		playerSelect.gameObject.SetActive (false);
+		otherPlayers.SetActive (true);
+		if (n.Equals (game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ())) {
+			chooseDirection (selectALPlayer);
+		} else {
+			game.AskForEventCardPermission ("Do you want to accept event card airLift?", selectALPlayer, game.FindPlayer (PhotonNetwork.player).getRoleKind ().ToString ());
+		}
+	}
 
     public void chooseDirection(string roleKind)
     {
@@ -612,6 +637,9 @@ public class eventCardController : MonoBehaviour {
             case "RapidVaccineDeployment":
                 rapidVaccineDeployment();
                 break;
+			case "SpecialOrders":
+				SpecialOrders();
+				break;
 		    default:
 			    break;
 		}

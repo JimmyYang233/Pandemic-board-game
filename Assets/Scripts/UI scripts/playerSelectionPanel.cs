@@ -10,7 +10,7 @@ public class playerSelectionPanel : MonoBehaviour {
 	public Game game;
 	private City currentCity;
 	private Player currentPlayer;
-	public enum Status {SHARE,EPIDEMIOLOGIST,REEXAMINEDRESEARCH,NEWASSIGNMENT,DISPATCHER,DISPATCHERMOVEPAWN};
+	public enum Status {SHARE,EPIDEMIOLOGIST,REEXAMINEDRESEARCH,NEWASSIGNMENT,DISPATCHER,DISPATCHERMOVEPAWN,SPECIALORDERS,AIRLIFT};
 	public ShareOperation share;
 	public MoveOperation move;
 	public EpidemiologistOperation epidemiologist;
@@ -119,6 +119,9 @@ public class playerSelectionPanel : MonoBehaviour {
 			move.setActivePpc ();*/
 			move.roleSelectForPawn (name);
 		}
+		else if(selectStatus==Status.AIRLIFT){
+			eventController.selectAirLiftPlayer (name);
+		}
 	}
 	public void cancelButtonClick(){
 		if (selectStatus == Status.SHARE) {
@@ -186,7 +189,7 @@ public class playerSelectionPanel : MonoBehaviour {
 			}
 
 		}
-		if (selectStatus == Status.NEWASSIGNMENT || selectStatus == Status.REEXAMINEDRESEARCH || selectStatus==Status.DISPATCHER || selectStatus==Status.DISPATCHERMOVEPAWN) {
+		if (selectStatus == Status.NEWASSIGNMENT || selectStatus == Status.REEXAMINEDRESEARCH || selectStatus==Status.DISPATCHER || selectStatus==Status.DISPATCHERMOVEPAWN || selectStatus==Status.AIRLIFT) {
 			selfButton.gameObject.SetActive (true);
 		}
 	}
