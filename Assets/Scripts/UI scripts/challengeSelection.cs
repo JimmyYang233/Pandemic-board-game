@@ -104,7 +104,7 @@ public class challengeSelection : MonoBehaviour {
 		ExitGames.Client.Photon.Hashtable roomProperty = new ExitGames.Client.Photon.Hashtable ();
 		roomProperty.Add ("Challenge", getChallenge().ToString() );
 		PhotonNetwork.room.SetCustomProperties (roomProperty);
-		Debug.Log (PhotonNetwork.room.CustomProperties);
+		//Debug.Log (PhotonNetwork.room.CustomProperties);
 	}
 
     public Challenge getChallenge()
