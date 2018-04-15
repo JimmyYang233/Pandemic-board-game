@@ -19,6 +19,7 @@ public class MoveOperation : MonoBehaviour {
 	public PlayerPanelController ppc;
 	public agreePanelController agreeController;
 	public GameObject result;
+    public GameObject playerCardPanel;
     Game game;
 
     Player currentPlayer;
@@ -297,6 +298,61 @@ public class MoveOperation : MonoBehaviour {
         }
     }
 
+
+    List<UnityEngine.Events.UnityAction> operationExpertCalls = new List<UnityEngine.Events.UnityAction>();
+    City operationDestinationCity;
+    List<GameObject> children = new List<GameObject>();
+    public void operationsExpertchooseCity()
+    {
+        Player currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        List<City> cities = game.getCities();
+        for (int i = 0; i < cities.Count; i++)
+        {
+            City thisCity = cities[i];
+            UnityEngine.Events.UnityAction thisCall = () => operationExpertChoosePlayerCard(thisCity);
+            thisCity.gameObject.GetComponent<Button>().onClick.AddListener(thisCall);
+            operationExpertCalls.Add(thisCall);
+            if (thisCity != currentCity)
+            {
+                thisCity.gameObject.GetComponent<Button>().interactable = true;
+            }
+        }
+    }
+
+    public void operationExpertChoosePlayerCard(City city)
+    {
+        operationDestinationCity = city;
+        List<City> cities = game.getCities();
+        for (int i = 0; i < cities.Count; i++)
+        {
+            cities[i].gameObject.GetComponent<Button>().onClick.RemoveListener(operationExpertCalls[i]);
+        }
+        operationExpertCalls.Clear();
+        int num = playerCardPanel.transform.GetChild(1).childCount;
+        for (int i = 0; i < num; i++)
+        {
+            Debug.Log(i);
+            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
+            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
+            child.GetComponent<Button>().interactable = true;
+            child.GetComponent<Button>().onClick.AddListener(() => operationsExpertChooseMove(name));
+            child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<Button>().interactable = false);
+        }
+    }
+
+    public void operationsExpertChooseMove(string cardName)
+    {
+        int num = playerCardPanel.transform.GetChild(1).childCount;
+        for (int i = 0; i < num; i++)
+        {
+            //Debug.Log(i);
+            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
+            child.GetComponent<Button>().interactable = false;
+            child.GetComponent<Button>().onClick.RemoveAllListeners();
+        }
+        Debug.Log("Operations Expert use " + cardName + " to move to " + operationDestinationCity.getCityName().ToString());
+    }
     //bio-Terrorist Operations
     public void bioMoveButtonClicked()
     {
