@@ -7,7 +7,7 @@ public class agreePanelController : MonoBehaviour {
 	public eventCardController eventController;
 	public MoveOperation move;
 	public Game game;
-	public enum Status {SHARE,REEXAMINEDRESEARCH,NEWASSIGNMENT,DISPATCHER};
+	public enum Status {SHARE,REEXAMINEDRESEARCH,NEWASSIGNMENT,DISPATCHER,AIRLIFT};
 	public Status status=Status.SHARE;
 
 	//
@@ -22,6 +22,8 @@ public class agreePanelController : MonoBehaviour {
 			eventController.acceptTheRequest ();
 		} else if (status == Status.DISPATCHER) {
 			move.acceptTheRequest ();
+		} else if (status == Status.AIRLIFT) {
+			eventController.acceptTheRequest();
 		}
 		this.gameObject.SetActive (false);
 	}
