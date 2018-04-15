@@ -155,7 +155,7 @@ public class BasicOperation : MonoBehaviour {
                     }
                     foreach(Player otherPlayer in game.getPlayers())
                     {
-                        if (otherPlayer != me && otherPlayer.getPlayerPawn().getCity() == currentCity && otherPlayer.containsCityCard())
+                        if (otherPlayer != me && otherPlayer.getPlayerPawn().getCity() == currentCity && otherPlayer.containsCityCard()&& (!me.getOncePerTurnAction()))
                         {
                             epidemiologistSkillButton.GetComponent<Button>().interactable = true;
                         }
