@@ -74,6 +74,7 @@ public class Game : MonoBehaviour {
 	public infectionDiscardPileUI infectionDiscardUI;
 	public playerDiscardPileUI playerDiscardUI;
 	public eventCardController eventController;
+    public WinLoseController winLoseController;
 
     GameObject backGround;
 
@@ -2686,22 +2687,36 @@ public class Game : MonoBehaviour {
         {
             notifyBioterroristWin();
         }
+        if (me.getRoleKind() != RoleKind.BioTerrorist)
+        {
+            winLoseController.notifyLose();
+        }
         setGamePhase(GamePhase.Completed);
     }
 
     private void notifyBioterroristWin()
     {
-        //BOWEN TODO
+        if (me.getRoleKind() == RoleKind.BioTerrorist)
+        {
+            winLoseController.notifyWin();
+        }
     }
 
     private void notifyBioterroristLost(GameLostKind lostKind)
     {
-        //BOWEN TODO
+        if (me.getRoleKind() == RoleKind.BioTerrorist)
+        {
+            winLoseController.notifyLose();
+        }
     }
 
     // to do: inform the player that they win the game
     private void notifyGameWin()
     {
+        if (me.getRoleKind() != RoleKind.BioTerrorist)
+        {
+            winLoseController.notifyLose();
+        }
     }
 
     //to do: inform the player that handcards exceed the limit

@@ -20,6 +20,7 @@ public class City : MonoBehaviour {
     private string blackCube;
     private string blueCube;
     private string yellowCube;
+    private string purpleCube;
     private int quarantineMarker = 0; // Todo new field
 
     public int getNumPlayers()
@@ -63,6 +64,7 @@ public class City : MonoBehaviour {
         blackCube = "Cubes/blackCube";
         blueCube = "Cubes/blueCube";
         yellowCube = "Cubes/yellowCube";
+        purpleCube = "Cubes/purpleCube";
 		gameInfo = GameObject.FindGameObjectWithTag ("gameInfoDisplay").GetComponent<GameInfoDisplay> ();
     }
     public City(CityName name)
@@ -316,9 +318,13 @@ public class City : MonoBehaviour {
                 {
                     cubes.Add(blueCube);
                 }
-                else
+                else if(color == Color.yellow)
                 {
                     cubes.Add(yellowCube);
+                }
+                else if(color == Color.magenta)
+                {
+                    cubes.Add(purpleCube);
                 }
             }
         } 
