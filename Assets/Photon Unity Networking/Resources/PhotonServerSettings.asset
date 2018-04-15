@@ -94,4 +94,5 @@ MonoBehaviour:
   - RPC_operationsExpertMove
   - RPC_placeMarker
   - RPC_discard
+  - RPC_bioTerroristCapture
   DisableAutoOpenWizard: 1
