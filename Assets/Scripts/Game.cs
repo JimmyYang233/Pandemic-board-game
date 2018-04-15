@@ -2430,7 +2430,7 @@ public class Game : MonoBehaviour {
     // to do: inform the player that they lose the game
     private void notifyGameLost(GameLostKind lostKind)
     {
-        if(Challenge.BioTerroist == challenge && numOfPurpleCubesOnTheBoard()>0)
+        if(Challenge.BioTerroist == challenge && numOfPurpleCubesOnTheBoard()>0 && !diseases[Color.magenta].isEradicated())
         {
             notifyBioterroristWin();
         }
