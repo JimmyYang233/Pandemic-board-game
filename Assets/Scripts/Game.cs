@@ -368,7 +368,7 @@ public class Game : MonoBehaviour {
     [PunRPC]
     public void RPC_bioterroristDraw()
     {
-        bioTerroristDraw(players[BioTerroristVolunteer], 1);
+        bioTerroristDraw(players[BioTerroristVolunteer], 1, true);
     }
 
 	[PunRPC]
@@ -756,7 +756,7 @@ public class Game : MonoBehaviour {
 		setUp();
         if (challenge == Challenge.BioTerroist)
         {
-            bioTerroristDraw(players[BioTerroristVolunteer],2);
+            bioTerroristDraw(players[BioTerroristVolunteer],2, false);
         }
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log("Everything Complete");
@@ -2143,7 +2143,7 @@ public class Game : MonoBehaviour {
         return false;
     }
 
-    private void bioTerroristDraw(Player pl, int amount)
+    private void bioTerroristDraw(Player pl, int amount, bool termAction)
     {
         for (int i=0; i<amount; i++)
         {
@@ -2159,6 +2159,11 @@ public class Game : MonoBehaviour {
                 break;
             }
             
+        }
+
+        if (termAction)
+        {
+            currentPlayer.decreaseRemainingAction();
         }
         
     }
