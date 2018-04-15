@@ -2080,6 +2080,14 @@ public class Game : MonoBehaviour {
         
     }
 
+    private void operativeExpertMove(CityCard card, City c)
+    {
+        currentPlayer.removeCard(card);
+        playerDiscardPile.Add(card);
+        move(currentPlayer, c);
+        currentPlayer.decreaseRemainingAction();
+    }
+
     private void operativeExpertBuild(City initialCity)
     {
         if (researchStationRemain == 0)
