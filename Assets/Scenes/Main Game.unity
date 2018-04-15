@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4236,6 +4236,8 @@ MonoBehaviour:
   agreeController: {fileID: 215428524}
   result: {fileID: 315254070}
   playerCardPanel: {fileID: 177066085}
+  movePanel: {fileID: 1631695904}
+  basicOperationPanel: {fileID: 1629845511}
 --- !u!224 &125200432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -57402,7 +57404,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1900971760}
-        m_MethodName: airLift
+        m_MethodName: SpecialOrders
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65491,6 +65493,7 @@ MonoBehaviour:
   otherPlayers: {fileID: 1923207381}
   playerSelect: {fileID: 346002627}
   agreeController: {fileID: 215428524}
+  move: {fileID: 125200431}
   informResultPanel: {fileID: 315254070}
   status: 1
   requestSource: 

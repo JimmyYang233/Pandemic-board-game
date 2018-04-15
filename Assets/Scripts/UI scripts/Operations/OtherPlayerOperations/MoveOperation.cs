@@ -20,6 +20,8 @@ public class MoveOperation : MonoBehaviour {
 	public agreePanelController agreeController;
 	public GameObject result;
     public GameObject playerCardPanel;
+	public GameObject movePanel;
+	public GameObject basicOperationPanel;
     Game game;
 
     Player currentPlayer;
@@ -50,7 +52,7 @@ public class MoveOperation : MonoBehaviour {
 			showMove ();
 			setActivePpc ();
 		} else {
-			game.AskPermissionDispatcher(target,"Dispatcher wants to move instead of you.");
+			game.AskPermissionDispatcher(target,currentPlayer.getRoleKind().ToString()+" wants to move instead of you.");
 		}
 	}
 	public void roleSelectForPawn(string target){
@@ -107,10 +109,7 @@ public class MoveOperation : MonoBehaviour {
         playerToMove = currentPlayer;
         if (currentPlayer.getRoleKind() == RoleKind.Dispatcher)
         {
-            playerSelect.selectStatus = playerSelectionPanel.Status.DISPATCHER;
-			ppc.gameObject.SetActive (false);
-			playerSelect.displayAllPlayerForEventCard ();
-			playerSelect.gameObject.SetActive(true);
+			forDispatcherShow ();
         }
         else
         {
@@ -118,6 +117,12 @@ public class MoveOperation : MonoBehaviour {
         }
     }
 
+	public void forDispatcherShow(){
+		playerSelect.selectStatus = playerSelectionPanel.Status.DISPATCHER;
+		ppc.gameObject.SetActive (false);
+		playerSelect.displayAllPlayerForEventCard ();
+		playerSelect.gameObject.SetActive(true);
+	}
     public void showMove()
     {   
         driveButton.GetComponent<Button>().interactable = true;

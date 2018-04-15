@@ -14,6 +14,7 @@ public class eventCardController : MonoBehaviour {
 	public GameObject otherPlayers;
     public playerSelectionPanel playerSelect;
 	public agreePanelController agreeController;
+	public MoveOperation move;
 	public GameObject informResultPanel;
 	public enum Status {REEXAMINEDRESEARCH,NEWASSIGNMENT,AIRLIFT,SPECIALORDERS};
 	public Status status=Status.NEWASSIGNMENT;
@@ -305,7 +306,9 @@ public class eventCardController : MonoBehaviour {
 	//---------------------------------Special Orders------------------------------------
 	#region Special Orders
 	public void SpecialOrders(){
-		
+		move.movePanel.gameObject.SetActive (true);
+		move.basicOperationPanel.SetActive (false);
+		move.forDispatcherShow ();
 	}
 	#endregion
 
