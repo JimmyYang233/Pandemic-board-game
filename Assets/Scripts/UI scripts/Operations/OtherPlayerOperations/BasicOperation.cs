@@ -7,6 +7,8 @@ public class BasicOperation : MonoBehaviour {
 
     public GameObject basicOperationPanel;
     public GameObject bioTerroristPanel;
+    public GameObject movePanel;
+    public GameObject bioMovePanel;
     public Button moveButton;
     public Button treatButton;
     public Button cureButton;
@@ -37,11 +39,13 @@ public class BasicOperation : MonoBehaviour {
         if (me.getRoleKind() == RoleKind.BioTerrorist)
         {
             bioTerroristPanel.gameObject.SetActive(true);
+            bioMovePanel.gameObject.SetActive(true);
             me.getPlayerPawn().gameObject.SetActive(true);
         }
         else
         {
             basicOperationPanel.gameObject.SetActive(true);
+            movePanel.gameObject.SetActive(true);
             BioTerrorist bioTerrorist = game.getBioTerrorist();
             
             if (bioTerrorist != null)

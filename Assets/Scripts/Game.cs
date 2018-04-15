@@ -1527,11 +1527,13 @@ public class Game : MonoBehaviour {
             num = 14;
         }
         //Testing only
+        /*
 		RoleKind testRole = RoleKind.BioTerrorist;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
         }
+        */
 
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 

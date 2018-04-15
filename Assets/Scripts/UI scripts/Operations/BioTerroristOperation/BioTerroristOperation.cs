@@ -12,7 +12,6 @@ public class BioTerroristOperation : MonoBehaviour {
     public Button sabotageButton;
     public Button escapeButton;
     public Button passButton;
-    public MoveOperation moveOperation;
     Player me;
     Player currentPlayer;
 

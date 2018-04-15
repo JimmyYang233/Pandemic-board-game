@@ -229,6 +229,8 @@ public class MoveOperation : MonoBehaviour {
     {
         BioTerrorist bioterrorist = game.getBioTerrorist();
         currentPlayer = game.getCurrentPlayer();
+        playerToMove = currentPlayer;
+        Debug.Log(playerToMove.getRoleKind());
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         bioDriveButton.gameObject.GetComponent<Button>().interactable = true;
         if (currentPlayer.containsInfectionCard())
