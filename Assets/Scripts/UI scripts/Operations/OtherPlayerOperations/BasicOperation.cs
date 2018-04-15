@@ -17,6 +17,7 @@ public class BasicOperation : MonoBehaviour {
     public Button passButton;
     public Button contingencyPlannerSkillButton;
     public Button archivistSkillButton;
+	public Button troubleShooterSkillButton;
     public Button fieldOperativeSkillButton;
 	public Button epidemiologistSkillButton;
     public Button dispatcherSkillButton;
@@ -61,11 +62,13 @@ public class BasicOperation : MonoBehaviour {
                     bioPawn.gameObject.SetActive(false);
                 }
             }
-            if (me.getRoleKind() == RoleKind.ContingencyPlanner)
-            {
-                contingencyPlannerSkillButton.gameObject.SetActive(true);
-                roleOnlyButton = contingencyPlannerSkillButton;
-            }
+			if (me.getRoleKind () == RoleKind.ContingencyPlanner) {
+				contingencyPlannerSkillButton.gameObject.SetActive (true);
+				roleOnlyButton = contingencyPlannerSkillButton;
+			} else if (me.getRoleKind () == RoleKind.Troubleshooter) {
+				contingencyPlannerSkillButton.gameObject.SetActive (true);
+				roleOnlyButton = contingencyPlannerSkillButton;
+			}
             else if (me.getRoleKind() == RoleKind.Archivist)
             {
                 archivistSkillButton.gameObject.SetActive(true);

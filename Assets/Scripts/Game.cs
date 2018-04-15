@@ -391,6 +391,12 @@ public class Game : MonoBehaviour {
 		City targetCity = findCity (cityName);
 		placeMarker (targetCity);
 	}
+
+	[PunRPC]
+	public void RPC_discard(string cardNmae){
+		PlayerCard card = findPlayerCard (cardNmae);
+		discard (card);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -594,6 +600,14 @@ public class Game : MonoBehaviour {
 
 	public void PlaceMarker(string cityName){
 		PhotonView.RPC("RPC_placeMarker", PhotonTargets.All, cityName);
+	}
+
+	public void Discard(string cardName){
+		PhotonView.RPC ("RPC_discard", PhotonTargets.All, cardName);
+	}
+
+	public void BioterroristDraw(){
+		PhotonView.RPC ("RPC_bioterroristDraw", PhotonTargets.All);
 	}
     #endregion
 
@@ -1231,6 +1245,18 @@ public class Game : MonoBehaviour {
 		moveOperation.informResult (result);
 	}
 
+	private void discard(PlayerCard card){
+		currentPlayer.removeCard (card);
+		if (!currentPlayer.Equals(me))
+		{
+			playerPanel.deletePlayerCardFromOtherPlayer(currentPlayer.getRoleKind(), card);
+		}
+		else
+		{
+			mainPlayerPanel.deletePlayerCard(card);
+		}
+		playerDiscardPile.Add (card);
+	}
 
 	#endregion
 
@@ -1274,11 +1300,16 @@ public class Game : MonoBehaviour {
 		if(oneQuietNightUsed){
 			oneQuietNightUsed = false;
             PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
-            return;
+			return;
         }
+		StartCoroutine (checkHand());
 		//Debug.Log ("start infect city");
-		passOperation.startInfection ();
 		//nextPlayer();
+	}
+
+	IEnumerator checkHand(){
+		yield return new WaitUntil(() => currentPlayer.getHandLimit() >= currentPlayer.getHandSize());
+		passOperation.startInfection ();
 	}
 
 	private void notifyResolveEpidemic(){
