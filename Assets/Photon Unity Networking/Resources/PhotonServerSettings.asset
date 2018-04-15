@@ -86,4 +86,5 @@ MonoBehaviour:
   - RPC_displayReExaminedResearch
   - RPC_quitAll
   - RPC_fieldOperativePutBack
+  - RPC_rapidVaccineDeployment
   DisableAutoOpenWizard: 1
