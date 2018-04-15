@@ -405,6 +405,7 @@ public class Game : MonoBehaviour {
         {
             card5 = cardsToRemove[4];
         }
+		askForRapidVaccineDeployment ();
         
         PhotonView.RPC ("RPC_cure", PhotonTargets.All, playerRoleKind, diseaseColor, card1, card2, card3, card4, card5);
 	}
