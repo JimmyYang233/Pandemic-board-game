@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2198,6 +2198,7 @@ MonoBehaviour:
   shareOperation: {fileID: 1340808470}
   passOperation: {fileID: 1069413776}
   moveOperation: {fileID: 125200431}
+  troubleShooterOperation: {fileID: 479609793}
   chatBox: {fileID: 124084468}
   record: {fileID: 1438105360}
   infectionDiscardUI: {fileID: 788425839}
@@ -22814,7 +22815,6 @@ MonoBehaviour:
   passButton: {fileID: 1690017431}
   contingencyPlannerSkillButton: {fileID: 1933850050}
   archivistSkillButton: {fileID: 2093747171}
-  troubleShooterSkillButton: {fileID: 0}
   fieldOperativeSkillButton: {fileID: 1204905168}
   epidemiologistSkillButton: {fileID: 1435711907}
   dispatcherSkillButton: {fileID: 624561548}

@@ -17,7 +17,6 @@ public class BasicOperation : MonoBehaviour {
     public Button passButton;
     public Button contingencyPlannerSkillButton;
     public Button archivistSkillButton;
-	public Button troubleShooterSkillButton;
     public Button fieldOperativeSkillButton;
 	public Button epidemiologistSkillButton;
     public Button dispatcherSkillButton;
@@ -65,10 +64,7 @@ public class BasicOperation : MonoBehaviour {
 			if (me.getRoleKind () == RoleKind.ContingencyPlanner) {
 				contingencyPlannerSkillButton.gameObject.SetActive (true);
 				roleOnlyButton = contingencyPlannerSkillButton;
-			} else if (me.getRoleKind () == RoleKind.Troubleshooter) {
-				troubleShooterSkillButton.gameObject.SetActive (true);
-				roleOnlyButton = contingencyPlannerSkillButton;
-			}
+			} 
             else if (me.getRoleKind() == RoleKind.Archivist)
             {
                 archivistSkillButton.gameObject.SetActive(true);
@@ -145,10 +141,6 @@ public class BasicOperation : MonoBehaviour {
                     {
                         fieldOperativeSkillButton.GetComponent<Button>().interactable = true;
                     }
-
-					if(game.getInfectionRate()<=4 && game.getInfectionRate()>=1 && (!me.getOncePerTurnAction())){
-						troubleShooterSkillButton.GetComponent<Button> ().interactable = true;
-					}
 
                     foreach (Player otherPlayer in game.getPlayers())
                     {
