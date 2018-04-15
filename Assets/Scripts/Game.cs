@@ -640,7 +640,7 @@ public class Game : MonoBehaviour {
 
         if (challenge == Challenge.BioTerroist)
         {
-            
+            UnityEngine.Random.seed = (int)PhotonNetwork.room.CustomProperties["seed"];
             BioTerroristVolunteer = UnityEngine.Random.Range(0, players.Count);
             
         }
