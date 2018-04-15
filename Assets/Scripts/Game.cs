@@ -2791,7 +2791,7 @@ public class Game : MonoBehaviour {
 				return p;
 			}
 		}
-		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(RoleKind)");
+		Debug.Log("Corresponding Player not found of the given role kind. Class: Game.cs : findPlayer(RoleKind) " + roleKind.ToString() );
 		return null;
 	}
 
