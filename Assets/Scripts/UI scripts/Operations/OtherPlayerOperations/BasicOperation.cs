@@ -100,7 +100,7 @@ public class BasicOperation : MonoBehaviour {
                     {
                         moveButton.GetComponent<Button>().interactable = true;
                     }
-                    if (!currentCity.getHasResearch() && (currentPlayer.containsSpecificCityCard(currentCity) || (currentPlayer.getRoleKind() == RoleKind.OperationsExpert)||currentCity.getMarker()==0))
+                    if ((!currentCity.getHasResearch() && (currentPlayer.containsSpecificCityCard(currentCity) || (currentPlayer.getRoleKind() == RoleKind.OperationsExpert))||(currentCity.getMarker()==0)))
                     {
                         buildButton.GetComponent<Button>().interactable = true;
                     }

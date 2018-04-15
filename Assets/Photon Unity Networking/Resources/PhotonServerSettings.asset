@@ -92,4 +92,5 @@ MonoBehaviour:
   - RPC_bioterroristDraw
   - RPC_airlift
   - RPC_operationsExpertMove
+  - RPC_placeMarker
   DisableAutoOpenWizard: 1
