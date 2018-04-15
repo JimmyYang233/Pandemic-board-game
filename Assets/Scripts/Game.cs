@@ -377,6 +377,14 @@ public class Game : MonoBehaviour {
 		City city = findCity (cityName);
 		airlift (player, city);
 	}
+
+    [PunRPC]
+    public void RPC_operationsExpertMove(string cityName, string cardName)
+    {
+        City theCity = findCity(cityName);
+        CityCard theCard = (CityCard)findPlayerCard(cardName);
+        operationsExpertMove(theCard, theCity);
+    }
     #endregion
 
     //called by chatbox to send chat message
@@ -572,6 +580,12 @@ public class Game : MonoBehaviour {
 	public void Airlift(string playerRoleKind, string cityName){
 		PhotonView.RPC ("RPC_airlift",PhotonTargets.All, playerRoleKind, cityName);
 	}
+
+    public void OperationsExpertMove(string cityName, string cardName)
+    {
+        PhotonView.RPC("RPC_operationsExpertMove", PhotonTargets.All, cityName, cardName);
+    }
+
     #endregion
 
     #region initialization
