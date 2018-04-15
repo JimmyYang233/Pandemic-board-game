@@ -1622,7 +1622,7 @@ public class Game : MonoBehaviour {
         }
         //Testing only
    
-		RoleKind testRole = RoleKind.OperationsExpert;
+		RoleKind testRole = RoleKind.Epidemiologist;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
