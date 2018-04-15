@@ -2177,6 +2177,7 @@ public class Game : MonoBehaviour {
 
     private void placeMarker()
     {
+        markersAvailable--;
         currentPlayer.getPlayerPawn().getCity().putMarker();
         currentPlayer.decreaseRemainingAction();
     }
@@ -2187,6 +2188,8 @@ public class Game : MonoBehaviour {
         {
             markersAvailable--;
             city.putMarker();
+            currentPlayer.removeCard(card);
+            playerDiscardPile.Add(card);
             currentPlayer.decreaseRemainingAction();
         }
         else
