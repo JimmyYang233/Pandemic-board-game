@@ -35,14 +35,14 @@ public class PCPanelController : MonoBehaviour {
     }
     public void addPlayerCard(Card c)
     {
-        if(c is EventCard)
-        {
-            addEventCard(((EventCard)c).getEventKind());
-        }
-        else
-        {
-            addCityCard(((CityCard)c).getCity().getCityName());
-        }
+		
+		if (c is EventCard) {
+			addEventCard (((EventCard)c).getEventKind ());
+		} else if (c is EventCard) {
+			addCityCard (((CityCard)c).getCity ().getCityName ());
+		} else {
+			addCityCard (((InfectionCard)c).getCity ().getCityName ());
+		}
     }
 
     public void deletePlayerCard(Card c)
