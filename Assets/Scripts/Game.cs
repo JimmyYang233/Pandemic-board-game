@@ -2041,6 +2041,23 @@ public class Game : MonoBehaviour {
         
     }
 
+    private void operativeExpertBuild()
+    {
+        if (researchStationRemain == 0)
+        {
+            //Bowen TODO
+        }
+        else
+        {
+            researchStationRemain--;
+            gameInfoController.changeResearchNumber(researchStationRemain);
+            City currentCity = currentPlayer.getPlayerPawn().getCity();
+            currentCity.setHasResearch(true);
+            record.build(currentCity);
+        }
+        currentPlayer.decreaseRemainingAction();
+    }
+
     private void colonelFlip()
     {
         currentPlayer.getPlayerPawn().getCity().flipMarkerTo(2);
