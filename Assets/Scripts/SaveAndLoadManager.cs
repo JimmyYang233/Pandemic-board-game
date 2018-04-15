@@ -169,7 +169,7 @@ public class CityInfo{
 		foreach (KeyValuePair<Color,int> entry in city.getNumOfCubes()) {
 			cubesColor.Add (Game.colorToString(entry.Key));
 			cubesNumber.Add (entry.Value);
-			Debug.Log ("CityName: " + cityName + "color: "+ entry.Key.ToString() + "value: " + entry.Value);
+			//Debug.Log ("CityName: " + cityName + "color: "+ entry.Key.ToString() + "value: " + entry.Value);
 		}
 		foreach(Pawn pawn in city.getPawns()){
 			playerRoleKindInCity.Add (pawn.getRoleKind());

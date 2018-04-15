@@ -89,4 +89,5 @@ MonoBehaviour:
   - RPC_rapidVaccineDeployment
   - RPC_askPermissionDispatcher
   - RPC_informDispatcher
+  - RPC_bioterroristDraw
   DisableAutoOpenWizard: 1

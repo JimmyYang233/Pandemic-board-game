@@ -305,6 +305,13 @@ public class eventCardController : MonoBehaviour {
     {
         //TO-DO maybe later
     }
+
+    public void movePawn(string roleKind)
+    {
+        Player player = game.findPlayer(roleKind);
+
+    }
+    public void 
     #endregion 
     #region Government Grant
     //---------------------------------Government Grant zone-----------------------------

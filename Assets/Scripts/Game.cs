@@ -2040,20 +2040,24 @@ public class Game : MonoBehaviour {
         
     }
 
-    private void operativeExpertBuild()
+    private void operativeExpertBuild(City initialCity)
     {
         if (researchStationRemain == 0)
         {
-            //Bowen TODO
+            if (initialCity != null)
+            {
+                initialCity.setHasResearch(false);
+            }
         }
         else
         {
             researchStationRemain--;
             gameInfoController.changeResearchNumber(researchStationRemain);
-            City currentCity = currentPlayer.getPlayerPawn().getCity();
-            currentCity.setHasResearch(true);
-            record.build(currentCity);
+
         }
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        currentCity.setHasResearch(true);
+        record.build(currentCity);
         currentPlayer.decreaseRemainingAction();
     }
 
