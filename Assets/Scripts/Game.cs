@@ -899,12 +899,17 @@ public class Game : MonoBehaviour {
 		playerPanel.addMainPlayer(me.getRoleKind());
 		playerSelect.gameObject.SetActive (false);
 
-		
+		// @Zhening
+		// original: 
+		// if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
+		// 	shuffleMutatonEventCards();
+		// }
+        // setInitialHand();
+
+        setInitialHand();
 		if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
 			shuffleMutatonEventCards();
 		}
-
-        setInitialHand();
         shuffleAndAddEpidemic();
 		setUp();
         if (challenge == Challenge.BioTerroist)
@@ -2297,7 +2302,6 @@ public class Game : MonoBehaviour {
 					Debug.Log("Error: no mutation event kind");
 					break; 
 				}
-                record.mutationEventCard(MuEveKind);
             }
             else
             {
