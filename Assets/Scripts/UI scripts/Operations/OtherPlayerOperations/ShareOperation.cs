@@ -145,8 +145,9 @@ public class ShareOperation : MonoBehaviour {
 			} 
 			else
 			{
-				game.share (name, currentCity.getCityName ().ToString ());
                 basicOperationPanel.SetActive(true);
+                basicOperation.resetAll();
+                game.share (name, currentCity.getCityName ().ToString ());
                 waitingPanel.SetActive (true);
 				cancel ();
 			}
@@ -157,8 +158,9 @@ public class ShareOperation : MonoBehaviour {
 				otherPlayerSelction.gameObject.SetActive (true);
 
 			} else {
-				game.share (name, currentCity.getCityName ().ToString ());
-				waitingPanel.SetActive (true);
+                basicOperation.resetAll();
+                waitingPanel.SetActive(true);
+                game.share (name, currentCity.getCityName ().ToString ());
                 basicOperationPanel.SetActive(true);
                 cancel ();
 			}
@@ -189,11 +191,14 @@ public class ShareOperation : MonoBehaviour {
             child.GetComponent<Button>().onClick.RemoveAllListeners();
         }
         basicOperationPanel.SetActive(true);
+        basicOperation.resetAll();
         game.share(roleKind, cardName);
     }
 
 	public void takeFromResearcher(string cityName){
-		game.share("Researcher",cityName);
+        basicOperationPanel.SetActive(true);
+        basicOperation.resetAll();
+        game.share("Researcher",cityName);
 		waitingPanel.SetActive(true);
 		cancel();		
 	}

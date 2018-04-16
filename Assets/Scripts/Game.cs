@@ -2777,6 +2777,10 @@ public class Game : MonoBehaviour {
 		}
         //Debug.Log("gamePhase has changed");
         currentPhase = GamePhase.PlayerTakeTurn;
+        if (currentPlayer.getRoleKind() == RoleKind.Troubleshooter&&me == currentPlayer)
+        {
+            troubleShooterOperation.useSkill();
+        }
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
