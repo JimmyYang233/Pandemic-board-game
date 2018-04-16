@@ -10,7 +10,7 @@ public class PCPanelController : MonoBehaviour {
 	public GameObject eventCardPrefab;
     public GameObject playerCardStart;
     public Transform eventCardStart;
-	public Transform reserve;
+	public Vector3 reserve;
 
 	public GameObject eventCardPanel;
 
@@ -32,7 +32,7 @@ public class PCPanelController : MonoBehaviour {
     */
     //add city card to gui
 	void Start(){
-		reserve.position = playerCardStart.transform.position;
+		reserve = playerCardStart.transform.position;
 	}
     private void Awake()
     {
@@ -112,7 +112,7 @@ public class PCPanelController : MonoBehaviour {
 		}
 
 		cityCardNum = 0;
-		playerCardStart.transform.position = reserve.position;
+		playerCardStart.transform.position = reserve;
 
 	}
     //delete city card from gui
