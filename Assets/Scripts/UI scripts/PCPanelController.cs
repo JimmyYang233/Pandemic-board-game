@@ -18,6 +18,7 @@ public class PCPanelController : MonoBehaviour {
     public float maxSpace;
 
     Maps mapInstance;
+	bool isinfection;
     //only for test use, plase don't delete it
     /*
     private void Start()
@@ -37,10 +38,13 @@ public class PCPanelController : MonoBehaviour {
     {
 		
 		if (c is EventCard) {
+			isinfection = false;
 			addEventCard (((EventCard)c).getEventKind ());
 		} else if (c is CityCard) {
+			isinfection = false;
 			addCityCard (((CityCard)c).getCity ().getCityName ());
 		} else {
+			isinfection = true;
 			addCityCard (((InfectionCard)c).getCity ().getCityName ());
 		}
     }
@@ -76,7 +80,11 @@ public class PCPanelController : MonoBehaviour {
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
 
         t.text = c.ToString();
-        g.GetComponent<Image>().color = mapInstance.getCityColor(c);
+		if (!isinfection) {
+			g.GetComponent<Image> ().color = mapInstance.getCityColor (c);
+		} else {
+			g.GetComponent<Image> ().color = Color.white;
+		}
 
         if (cityCardNum != 1)
         {

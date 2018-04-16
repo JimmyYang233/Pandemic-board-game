@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PassOperation : MonoBehaviour {
 
+	public GameObject MutationEventPanel;
     public GameObject informResultPanel;
     public GameObject informEpidemicPanel;
     public Game game;
@@ -33,7 +34,10 @@ public class PassOperation : MonoBehaviour {
         informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Start Infection";
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startInfectNextCity);
     }
-
+	public void showMutationEvent(string mutation){
+		this.MutationEventPanel.SetActive (true);
+		MutationEventPanel.transform.GetChild (0).GetComponent<Text> ().text = mutation;
+	}
     private void startInfectNextCity()
     {
         //Debug.Log("StartInfectNextCity got called");
