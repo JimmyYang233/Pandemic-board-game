@@ -51,6 +51,12 @@ public class MoveOperation : MonoBehaviour {
 			changePlayerToMove (target);
 			showMove ();
 			setActivePpc ();
+
+			playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
+			ppc.gameObject.SetActive (true);
+			playerSelect.clear();
+			playerSelect.gameObject.SetActive(false);
+			Debug.Log ("here");
 		} else {
 			game.AskPermissionDispatcher(target,currentPlayer.getRoleKind().ToString()+" wants to move instead of you.");
 		}
@@ -63,9 +69,17 @@ public class MoveOperation : MonoBehaviour {
 			changePlayerToMove (target);
 			selectCityWithPawn ();
 			setActivePpc ();
+
+			playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
+			ppc.gameObject.SetActive (true);
+			playerSelect.clear();
+			playerSelect.gameObject.SetActive(false);
+			Debug.Log ("here");
+
 		} else {
 			game.AskPermissionDispatcher(target,"Dispatcher wants to move your pawn to another city with another pawn.");
 		}
+
 	}
 
 	public void informResult(bool t){
