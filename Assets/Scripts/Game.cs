@@ -2641,6 +2641,7 @@ public class Game : MonoBehaviour {
     private void bioTerroristEscape(InfectionCard card)
     {
         bioTerroristDirectFlight(card);
+        getBioTerrorist().setCaptured(players[BioTerroristVolunteer]);
     }
 
     private void announceAirportSighting()
