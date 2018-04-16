@@ -46,7 +46,9 @@ public class GameInfoDisplay : MonoBehaviour
 			t = cubeLeft.transform.GetChild (1);
 		} else if (c == Color.blue) {
 			t = cubeLeft.transform.GetChild (2);
-		} else if(c==Color.red){
+		} else if (c == Color.red) {
+			t = cubeLeft.transform.GetChild (3);
+		} else if (c == Color.magenta) {
 			t = cubeLeft.transform.GetChild (3);
 		}
 		t.GetChild (1).gameObject.SetActive (true);
@@ -58,7 +60,9 @@ public class GameInfoDisplay : MonoBehaviour
 			t = cubeLeft.transform.GetChild (1);
 		} else if (c == Color.blue) {
 			t = cubeLeft.transform.GetChild (2);
-		} else if(c==Color.red){
+		} else if (c == Color.red) {
+			t = cubeLeft.transform.GetChild (3);
+		} else if (c == Color.magenta) {
 			t = cubeLeft.transform.GetChild (3);
 		}
 		t.GetChild (0).GetComponent<Text> ().text=num.ToString();
