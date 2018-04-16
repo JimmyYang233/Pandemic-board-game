@@ -3028,14 +3028,31 @@ public class Game : MonoBehaviour {
 	}
 
 	public InfectionCard findInfectionCard(String cardName){
-        foreach(InfectionCard ic in Collection.getAllInfectionCards())
+        foreach (InfectionCard ic in infectionDeck)
         {
             if (ic.getName() == cardName)
             {
                 return ic;
             }
         }
-		Debug.Log("InfectionCard not found. Class: Game.cs : findInfectionCard");
+        foreach (InfectionCard ic in infectionDiscardPile)
+        {
+            if (ic.getName() == cardName)
+            {
+                return ic;
+            }
+        }
+        if (Challenge.BioTerroist == challenge)
+        {
+            foreach (PlayerCard pc in players[BioTerroristVolunteer].getHand())
+            {
+                if (pc.getType() == CardType.InfectionCard && pc.getName() == cardName)
+                {
+                    return (InfectionCard) pc;
+                }
+            }
+        }
+        Debug.Log("InfectionCard not found. Class: Game.cs : findInfectionCard");
 		return null;
 	}
 

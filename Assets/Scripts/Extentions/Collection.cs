@@ -3,20 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Collection{
-
-    private static List<InfectionCard> allInfectionCards = new List<InfectionCard>();
-    static Collection()
-    {
-        foreach (Transform t in GameObject.FindGameObjectWithTag("background").transform)
-        {
-            if (t.GetComponent<City>() != null)
-            {
-                allInfectionCards.Add(new InfectionCard(t.GetComponent<City>()));
-            }
-
-        }
-    }
-
 	public static void Shuffle<T>(this IList<T> ts)
     {
 		UnityEngine.Random.seed = (int)PhotonNetwork.room.CustomProperties ["seed"];
@@ -30,9 +16,5 @@ public static class Collection{
             ts[r] = tmp;
         }
     }
-
-    public static List<InfectionCard> getAllInfectionCards()
-    {
-        return allInfectionCards;
-    }
+    
 }
