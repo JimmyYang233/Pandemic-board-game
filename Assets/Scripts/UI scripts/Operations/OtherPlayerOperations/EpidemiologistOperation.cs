@@ -9,6 +9,7 @@ public class EpidemiologistOperation : MonoBehaviour {
 	public GameObject playerPanel;
 	public otherPlayerCardSelection cardSelection;
 	public GameObject waitingForResponse;
+	public GameObject basicOperation;
 	string characterName;
 	string cardName;
 	// Use this for initialization
@@ -27,6 +28,7 @@ public class EpidemiologistOperation : MonoBehaviour {
 		playerSelect.selectStatus = playerSelectionPanel.Status.EPIDEMIOLOGIST;
 	}	
 	public void characterSelect(string name){
+		basicOperation.SetActive (false);
 		epidemiologistOnlyPanel.SetActive (true);
 		playerSelect.gameObject.SetActive (false);
 		playerSelect.setShareStatus ();

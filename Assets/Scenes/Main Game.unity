@@ -20659,6 +20659,7 @@ MonoBehaviour:
   playerPanel: {fileID: 1923207381}
   cardSelection: {fileID: 990919270}
   waitingForResponse: {fileID: 0}
+  basicOperation: {fileID: 1629845511}
 --- !u!1 &592131450
 GameObject:
   m_ObjectHideFlags: 0

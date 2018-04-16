@@ -147,8 +147,9 @@ public class ShareOperation : MonoBehaviour {
 			{
                 basicOperationPanel.SetActive(true);
                 basicOperation.resetAll();
+				waitingPanel.SetActive (true);
                 game.share (name, currentCity.getCityName ().ToString ());
-                waitingPanel.SetActive (true);
+
 				cancel ();
 			}
 		} else if (shareStatus ==Status.TAKE) {
@@ -160,8 +161,9 @@ public class ShareOperation : MonoBehaviour {
 			} else {
                 basicOperation.resetAll();
                 waitingPanel.SetActive(true);
+				basicOperationPanel.SetActive(true);
                 game.share (name, currentCity.getCityName ().ToString ());
-                basicOperationPanel.SetActive(true);
+                
                 cancel ();
 			}
 		}
@@ -192,14 +194,16 @@ public class ShareOperation : MonoBehaviour {
         }
         basicOperationPanel.SetActive(true);
         basicOperation.resetAll();
+		waitingPanel.SetActive(true);
         game.share(roleKind, cardName);
     }
 
 	public void takeFromResearcher(string cityName){
         basicOperationPanel.SetActive(true);
         basicOperation.resetAll();
-        game.share("Researcher",cityName);
 		waitingPanel.SetActive(true);
+        game.share("Researcher",cityName);
+
 		cancel();		
 	}
 
@@ -242,9 +246,12 @@ public class ShareOperation : MonoBehaviour {
         }
 		else{
             informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "He reject, maybe you can try again";
-            cardToShare.GetComponent<Button>().onClick.RemoveAllListeners();
+			if (cardToShare != null && cardToShare.GetComponent<Button> () != null) {
+				cardToShare.GetComponent<Button> ().onClick.RemoveAllListeners ();
+			}
         }
         cancel();
+		Debug.Log ("I am hrere");
         waitingPanel.SetActive(false);
         basicOperationPanel.SetActive(true);
         basicOperation.resetAll();
