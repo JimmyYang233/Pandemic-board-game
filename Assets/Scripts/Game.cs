@@ -2622,6 +2622,7 @@ public class Game : MonoBehaviour {
         infectionDiscardPile.Add(card);
         players[BioTerroristVolunteer].getPlayerPawn().getCity().setHasResearch(false);
         researchStationRemain++;
+		players [BioTerroristVolunteer].decreaseRemainingAction ();
 
     }
     
