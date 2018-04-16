@@ -55,9 +55,16 @@ public class BioTerrorist : Role {
 		return isCaptured;
 	}
 
-    public void setCaptured()
+    public void setCaptured(Player pl)
     {
+        pl.setBioTerroristCaptured();
         isCaptured = true;
+    }
+
+    public void escape(Player pl)
+    {
+        pl.setBioTerroristEscaped();
+        isCaptured = false;
     }
 
     public void spot()

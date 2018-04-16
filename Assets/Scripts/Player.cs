@@ -15,6 +15,17 @@ public class Player {
     private EventCard eventCardOnTopOfRoleCard = null;
     private bool hasCommercialTravelBanInfrontOfPlayer = false;//TODO new field
     private int[] cubes = new int[5]; //TODO new field //0 blue 1 red 2 yellow 3 black 4 magenta
+    private bool bioTerroristCaptured = false;
+
+    public void setBioTerroristCaptured()
+    {
+        bioTerroristCaptured = true;
+    }
+
+    public void setBioTerroristEscaped()
+    {
+        bioTerroristCaptured = false;
+    }
 
     public bool hasThreeCubesOfSameColor()
     {

@@ -2450,13 +2450,13 @@ public class Game : MonoBehaviour {
         }
     }
 
-    public void bioTerroristCapture()
+    public void bioTerroristCapture(Player pl)
     {
         if (currentPlayer.getPlayerPawn().getCity() != players[BioTerroristVolunteer].getPlayerPawn().getCity())
         {
             Debug.Log("Not in the same city, cannot capture: Game.cs capture()");
         }
-        getBioTerrorist().setCaptured();
+        getBioTerrorist().setCaptured(pl);
         foreach(PlayerCard card in players[BioTerroristVolunteer].getHand())
         {
             if(card.getType() != CardType.InfectionCard)
