@@ -20,7 +20,7 @@ public class challengeSelection : MonoBehaviour {
 	}
 
     private void Update()
-    {
+    {	
         if (PhotonNetwork.isMasterClient)
         {
             StartGame.interactable = true;
@@ -72,6 +72,26 @@ public class challengeSelection : MonoBehaviour {
 			}
 			//if(PhotonNetwork.room.CustomProperties["Challenge"]
         }
+		if (!PlayerNetwork.Instance.isNewGame){
+			StartGame.interactable = false;
+			HideRoom.interactable = false;
+			VirulentStrainChallenge.interactable = false;
+			MutationChallenge.interactable = false;
+			BioTerroristChallenge.interactable = false;
+			if (PhotonNetwork.room != null) {
+				Challenge challenge = (Challenge)Enum.Parse (typeof(Challenge), (string)PhotonNetwork.room.CustomProperties["Challenge"]);
+				if (challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain) {
+					BioTerroristChallenge.isOn = true;
+				}
+				if (challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain) {
+					MutationChallenge.isOn = true;
+				}
+				if (challenge == Challenge.VirulentStrain || challenge == Challenge.MutationAndVirulentStrain) {
+					VirulentStrainChallenge.isOn = true;
+				}
+			}
+
+		}
     }
 
     public void MutationChallengeToggled()
