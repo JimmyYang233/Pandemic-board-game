@@ -110,6 +110,7 @@ public class MoveOperation : MonoBehaviour {
 			playerSelect.clear();
 			playerSelect.gameObject.SetActive(false);
 			basicOperationPanel.SetActive (true);
+			movePanel.SetActive (false);
 		}
 
 	}
