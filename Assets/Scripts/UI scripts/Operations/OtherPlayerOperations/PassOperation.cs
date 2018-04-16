@@ -14,9 +14,17 @@ public class PassOperation : MonoBehaviour {
     public void passButtonClicked()
     {
         //Debug.Log("Pass button clicked");
-        informResultPanel.SetActive(true);
-        informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Start draw Card";
-        informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startDrawCard);
+        Player currentPlayer = game.getCurrentPlayer();
+        if (currentPlayer.getRoleKind() == RoleKind.BioTerrorist)
+        {
+            game.EndTurn();
+        }
+        else
+        {
+            informResultPanel.SetActive(true);
+            informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Start draw Card";
+            informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startDrawCard);
+        }
     }
     
     public void startDrawCard()
