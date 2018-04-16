@@ -384,6 +384,7 @@ public class Player {
     }
 
 	public void decreaseRemainingAction(){
+		Debug.Log ("decreased");
 		remainingAction--;
 	}
 

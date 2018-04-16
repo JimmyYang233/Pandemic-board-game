@@ -17,7 +17,10 @@ public class BioTerroristOperation : MonoBehaviour {
     public GameObject basicOperationPanel;
     public GameObject movePanel;
     Player me;
+	Pawn bioPawn;
+	BioTerrorist bioTerrorist;
     Player currentPlayer;
+	bool Added = false;
     City currentCity;
 
     // Update is called once per frame
@@ -30,8 +33,8 @@ public class BioTerroristOperation : MonoBehaviour {
         
         if (game.getChallenge() == Challenge.BioTerroist || game.getChallenge() == Challenge.BioTerroistAndVirulentStrain)
         {
-            BioTerrorist bioTerrorist = game.getBioTerrorist();
-            Pawn bioPawn = bioTerrorist.getPawn();
+			bioTerrorist = game.getBioTerrorist();
+			bioPawn = bioTerrorist.getPawn();
             
             if (me.getRoleKind() == RoleKind.BioTerrorist)
             {
@@ -48,11 +51,15 @@ public class BioTerroristOperation : MonoBehaviour {
                     bioPawn.gameObject.SetActive(true);
                     if (currentPlayer == me)
                     {
-                        bioPawn.gameObject.GetComponent<Button>().onClick.AddListener(() => capture());
+						if (!Added) {
+							bioPawn.gameObject.GetComponent<Button> ().onClick.AddListener (() => capture ());
+							Added = true;
+						}
                     }
                     else
                     {
-                        bioPawn.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+						bioPawn.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+						Added = false;
                     }
                 }
                 else
