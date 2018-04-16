@@ -28,6 +28,10 @@ public class BioTerroristOperation : MonoBehaviour {
             {
                 moveButton.GetComponent<Button>().interactable = true;
             }
+            else
+            {
+                moveButton.GetComponent<Button>().interactable = false;
+            }
             if (me.getRemainingAction() > 0)
             {
                 drawButton.GetComponent<Button>().interactable = true;

@@ -43,5 +43,22 @@ public class ColonelOperation : MonoBehaviour {
             thisCity.undisplayButton();
         }
 
+        int num = playerCardPanel.transform.GetChild(1).childCount;
+        for (int i = 0; i < num; i++)
+        {
+            Debug.Log(i);
+            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
+            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
+            child.GetComponent<Button>().interactable = true;
+            child.GetComponent<Button>().onClick.AddListener(() => addCardToList(name));
+            child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<playerCardUI>().mouseClick());
+            child.GetComponent<Button>().onClick.AddListener(() => child.GetComponent<Button>().interactable = false);
+            child.GetComponent<Button>().onClick.AddListener(() => children.Add(child));
+        }
+    }
+
+    public void markACity()
+    {
+        mark
     }
 }
