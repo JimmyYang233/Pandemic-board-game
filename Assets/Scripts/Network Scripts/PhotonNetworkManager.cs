@@ -166,7 +166,7 @@ public class PhotonNetworkManager : MonoBehaviour {
     public void onClick(string loadName)
     {
 		GameData data = SaveAndLoadManager.LoadGameData (loadName);
-		Debug.Log (loadName);
+		//Debug.Log (loadName);
 		PlayerNetwork.Instance.isNewGame = false;
 		PlayerNetwork.Instance.savedGameJson =  JsonUtility.ToJson(data);
 		Debug.Log (PlayerNetwork.Instance.savedGameJson);

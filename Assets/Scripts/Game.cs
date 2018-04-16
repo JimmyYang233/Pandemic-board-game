@@ -10,6 +10,7 @@ using System.Linq;
 public class Game : MonoBehaviour {
 	public static Game Instance;
 	public PhotonView PhotonView;
+	public int seed;
 
 	#region private variables
 	private GameData savedGame;
@@ -58,7 +59,7 @@ public class Game : MonoBehaviour {
 	private Player playerToShare;
 	private bool switchPlayer = false;
 	private int numOfInfection = 0;
-	private int BioTerroristVolunteer = -1;
+	public int BioTerroristVolunteer = -1;
     private BioTerrorist bioTerroristRole = new BioTerrorist(); //TODO new field
     #endregion
     //FOR GUI
@@ -442,6 +443,13 @@ public class Game : MonoBehaviour {
 		InfectionCard ic = findInfectionCard (icName);
 		bioTerroristEscape (ic);
 	}
+
+	[PunRPC]
+	public void RPC_colonelPlaceMarker(string citycardstring, string citystring){
+		CityCard cityCard = (CityCard)findPlayerCard (citycardstring);
+		City city = findCity (citystring);
+		colonelPlaceMarker (cityCard,city);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -682,6 +690,10 @@ public class Game : MonoBehaviour {
 	public void BioTerroristEscape(string icName){
 		PhotonView.RPC ("RPC_bioTerroristEscape", PhotonTargets.All, icName);
 	}
+
+	public void ColonelPlaceMarker(string cityCardString, string cityString){
+		PhotonView.RPC ("RPC_colonelPlaceMarker", PhotonTargets.All, cityCardString, cityString);
+	}
     #endregion
 
     #region initialization
@@ -784,6 +796,7 @@ public class Game : MonoBehaviour {
 		AllHandCards.Add(EpidemicCard.getEpidemicCard());
         
         UnityEngine.Random.seed = (int)PhotonNetwork.room.CustomProperties["seed"];
+		seed = (int)PhotonNetwork.room.CustomProperties["seed"];
         if (BioTerroristVolunteer == -1)
         {
             BioTerroristVolunteer =  UnityEngine.Random.Range(0, players.Count);
@@ -899,6 +912,7 @@ public class Game : MonoBehaviour {
 	RoleKind for each player has been loaded in LoadPlayer, TODO: player position and pawn
 	*/
 	private void LoadGame(){
+		UnityEngine.Random.seed = savedGame.seed;
 		challenge = savedGame.challenge;
 		researchStationRemain = savedGame.remainingResearch;
 		index = savedGame.infectionRateIndex;
@@ -975,6 +989,7 @@ public class Game : MonoBehaviour {
 			}
 		}
 
+		BioTerroristVolunteer = savedGame.BioTerroristVolunteer;
 		Maps mapInstance = Maps.getInstance();
 		//initialize infectionArray
 		infectionArray = new int[]{2,2,2,3,3,4,4};
@@ -1797,8 +1812,6 @@ public class Game : MonoBehaviour {
 
     public RoleKind selectRole()
     {	
-		//set random seed
-		UnityEngine.Random.seed = (int)PhotonNetwork.room.CustomProperties["seed"];
 
         
         int num = 8;
