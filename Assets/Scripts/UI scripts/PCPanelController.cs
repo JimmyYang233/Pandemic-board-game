@@ -83,6 +83,7 @@ public class PCPanelController : MonoBehaviour {
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
 		g.GetComponent<Image> ().color = mapInstance.getCityColor (c);
 		t.text = c.ToString();
+		/*
         if (cityCardNum != 1)
         {
 
@@ -91,12 +92,13 @@ public class PCPanelController : MonoBehaviour {
                 child.position = child.position - new Vector3(maxSpace / 2, 0, 0);
             }
         }
-
+		*/
         g.transform.parent = this.gameObject.transform;
 		g.transform.position = playerCardStart.transform.position + new Vector3 (0, 100, 0);
-		g.GetComponent<playerCardUI> ().setDestination (playerCardStart.transform.position);
+		//g.GetComponent<playerCardUI> ().setDestination (playerCardStart.transform.position);
+		g.GetComponent<playerCardUI> ().setDestination (playerCardStart.transform.position+new Vector3(maxSpace*(cityCardNum-1),0,0));
         //g.transform.position = playerCardStart.transform.position;
-        playerCardStart.transform.position += new Vector3(maxSpace/2, 0, 0);
+        //playerCardStart.transform.position += new Vector3(maxSpace/2, 0, 0);
 
         
 
@@ -128,16 +130,18 @@ public class PCPanelController : MonoBehaviour {
                 Destroy(child.gameObject);
 
             }
-            else if (!find)
+            /*else if (!find)
             {
                 child.position = child.position + new Vector3(maxSpace / 2, 0, 0);
-            }
-            else
+            }*/
+			else if(find)
             {
-                child.position = child.position -new Vector3(maxSpace / 2, 0, 0);
+                //child.position = child.position -new Vector3(maxSpace / 2, 0, 0);
+				child.GetComponent<playerCardUI> ().setDestination (child.transform.position-new Vector3(maxSpace,0,0));
             }
         }
-        playerCardStart.transform.position -= new Vector3(maxSpace / 2, 0, 0);
+        //playerCardStart.transform.position -= new Vector3(maxSpace / 2, 0, 0);
+		
         cityCardNum--;
     }
 
@@ -151,7 +155,7 @@ public class PCPanelController : MonoBehaviour {
 
         t.text = e.ToString();
         g.GetComponent<Image>().color = Color.green;
-
+		/*
         if (eventCardNum != 1)
         {
 
@@ -160,13 +164,13 @@ public class PCPanelController : MonoBehaviour {
                 child.position = child.position - new Vector3(maxSpace / 2, 0, 0);
             }
         }
-
+		*/
         g.transform.parent = this.gameObject.transform;
         //g.transform.position = eventCardStart.transform.position;
 
 		g.transform.position = eventCardStart.transform.position + new Vector3 (0, 100, 0);
-		g.GetComponent<playerCardUI> ().setDestination (eventCardStart.transform.position);
-        eventCardStart.transform.position += new Vector3(maxSpace / 2, 0, 0);
+		g.GetComponent<playerCardUI> ().setDestination (eventCardStart.transform.position+new Vector3(maxSpace*(eventCardNum-1),0,0));
+        //eventCardStart.transform.position += new Vector3(maxSpace / 2, 0, 0);
 
 
 
@@ -185,16 +189,16 @@ public class PCPanelController : MonoBehaviour {
                 Destroy(child.gameObject);
 
             }
-            else if (!find)
+            /*else if (!find)
             {
                 child.position = child.position + new Vector3(maxSpace / 2, 0, 0);
-            }
-            else
+            }*/
+			else if(find)
             {
-                child.position = child.position - new Vector3(maxSpace / 2, 0, 0);
+                child.position = child.position - new Vector3(maxSpace, 0, 0);
             }
         }
-        eventCardStart.transform.position -= new Vector3(maxSpace / 2, 0, 0);
+        //eventCardStart.transform.position -= new Vector3(maxSpace / 2, 0, 0);
         eventCardNum--;
     }
 
