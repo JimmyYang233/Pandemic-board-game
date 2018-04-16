@@ -2317,6 +2317,7 @@ public class Game : MonoBehaviour {
             if (infectionDeck.Count > 0)
             {
                 InfectionCard card = infectionDeck[0];
+                pl.addCard(card);
                 infectionDeck.Remove(card);
                 record.draw(pl, card);
             }
