@@ -135,9 +135,10 @@ public class GameData{
 					playerHand.playerHand.Add (eventCard.getName());
 					//Debug.Log ("Event Card: " + eventCard.getEventKind());
 				}
-				else if (pc.GetType().Equals(CardType.InfectionCard)){
+				else{
 					InfectionCard infectionCard = (InfectionCard)pc;
 					playerHand.playerHand.Add ((infectionCard.getName()));
+					//Debug.Log ("Event Card: " + infectionCard.getName());
 				}
 			}
 			playerCardList.Add (playerHand);
