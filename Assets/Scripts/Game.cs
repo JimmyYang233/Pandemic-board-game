@@ -2508,7 +2508,10 @@ public class Game : MonoBehaviour {
         }
 
         players[BioTerroristVolunteer].dropAllCards();
-		mainPlayerPanel.dropAllCards ();
+		if (me.getRoleKind () == RoleKind.BioTerrorist) {
+			mainPlayerPanel.dropAllCards ();
+		}
+
 
         currentPlayer.decreaseRemainingAction();
     }
