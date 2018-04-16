@@ -1435,9 +1435,7 @@ public class Game : MonoBehaviour {
 	//infectNextCity
 	private void infectNextCity()
 	{
-
-        if (currentPlayer != players[BioTerroristVolunteer])
-        {
+		
             numOfInfection++;
             //Debug.Log ("Danning kan zhe li");
             InfectionCard card = getInfectionCard();
@@ -1451,7 +1449,6 @@ public class Game : MonoBehaviour {
 				City city = card.getCity();
 				Color color = card.getColor();
 				Disease disease = diseases[color];
-				
 				outbreakedCities.Clear();
 				if(isChronicEffect()){
 					infect(city, color, 2);
@@ -1471,14 +1468,10 @@ public class Game : MonoBehaviour {
 
             if (currentPlayer == me && numOfInfection < infectionRate)
             {
-                //Debug.Log ("num of infection is + " + numOfInfection.ToString());
+                Debug.Log ("num of infection is + " + numOfInfection.ToString());
                 passOperation.startInfection();
             }
-        }
-        else
-        {
-            numOfInfection = infectionRate;
-        }
+       
 		if (numOfInfection == infectionRate && PhotonNetwork.isMasterClient)
 			PhotonView.RPC ("RPC_nextPlayer", PhotonTargets.All);
 	}
@@ -1487,7 +1480,8 @@ public class Game : MonoBehaviour {
 	{
 		if(oneQuietNightUsed){
 			oneQuietNightUsed = false;
-            PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
+			if (PhotonNetwork.isMasterClient)
+            	PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
 			return;
         }
 		StartCoroutine (checkHand());
