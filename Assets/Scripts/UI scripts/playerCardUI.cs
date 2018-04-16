@@ -25,6 +25,7 @@ public class playerCardUI : MonoBehaviour {
 			transform.position = Vector3.MoveTowards(transform.position, target, step);
 			if (target == transform.position) {
 				start = false;
+				transform.position = target;
 			}
 		}
 	}
