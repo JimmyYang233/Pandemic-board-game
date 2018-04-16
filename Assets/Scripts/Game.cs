@@ -916,6 +916,7 @@ public class Game : MonoBehaviour {
         {
             bioTerroristDraw(players[BioTerroristVolunteer],2, false);
         }
+        Debug.Log("GamePhase has changed");
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log("Everything Complete");
 		//Debug.Log("the role is" + me.getRoleKind().ToString());
