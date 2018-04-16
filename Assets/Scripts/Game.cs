@@ -451,6 +451,13 @@ public class Game : MonoBehaviour {
 		City city = findCity (citystring);
 		colonelPlaceMarker (cityCard,city);
 	}
+
+    [PunRPC]
+    public void RPC_epidemiologistShare(string cardName)
+    {
+        CityCard cityCard = (CityCard)findPlayerCard(cardName);
+        epidemiologistShare(cityCard);
+    }
     #endregion
 
     //called by chatbox to send chat message
@@ -567,9 +574,9 @@ public class Game : MonoBehaviour {
 		PhotonView.RPC ("RPC_ContingencyPlannerPutCardOnTopOfRoleCard",PhotonTargets.All, eventCardName);
     }
 
-    public void EpidemiologistShare()
+    public void EpidemiologistShare(string cardName)
     {
-        //TO-DO
+        PhotonView.RPC("RPC_epidemiologistShare", PhotonTargets.All, cardName);
     }
 
 	//ATTENTION: THIS HAS BEEND CHANGED
