@@ -2599,6 +2599,10 @@ public class Game : MonoBehaviour {
 
         card.getCity().addCubes(diseases[Color.magenta], 1);
         players[BioTerroristVolunteer].removeCard(card);
+		if (players[BioTerroristVolunteer].Equals(me))
+		{
+			mainPlayerPanel.deletePlayerCard(card);
+		}
         infectionDiscardPile.Add(card);
         players[BioTerroristVolunteer].decreaseRemainingAction();
 
