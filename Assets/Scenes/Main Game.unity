@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -40186,7 +40186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b2430ddc94d0f4b921a9e679e6677c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MutationEventPanel: {fileID: 0}
+  MutationEventPanel: {fileID: 363552698}
   informResultPanel: {fileID: 315254070}
   informEpidemicPanel: {fileID: 1952993444}
   game: {fileID: 73084184}
