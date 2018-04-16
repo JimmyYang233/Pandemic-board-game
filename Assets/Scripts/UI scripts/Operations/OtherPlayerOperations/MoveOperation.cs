@@ -374,12 +374,12 @@ public class MoveOperation : MonoBehaviour {
         Debug.Log(playerToMove.getRoleKind());
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         bioDriveButton.gameObject.GetComponent<Button>().interactable = true;
-        if (currentPlayer.containsInfectionCard())
+        if (currentPlayer.containsInfectionCard()&&(currentPlayer.getRemainingAction()>0))
         {
             bioDirectFlightButton.gameObject.GetComponent<Button>().interactable = true;
         }
 
-        if (currentPlayer.containsSpecificInfectionCard(currentCity))
+        if (currentPlayer.containsSpecificInfectionCard(currentCity)&&(currentPlayer.getRemainingAction() > 0))
         {
             bioCharterFlightButton.gameObject.GetComponent<Button>().interactable = true;
         }
