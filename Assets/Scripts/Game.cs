@@ -1518,12 +1518,16 @@ public class Game : MonoBehaviour {
         RoleKind rolekind = pl1.getRoleKind();
         Pawn p = pl1.getPlayerPawn();
 		City initialCity = p.getCity();
-		if (Challenge.BioTerroist == challenge && destinationCity.contains(RoleKind.BioTerrorist)) {
+		if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && destinationCity.contains(RoleKind.BioTerrorist) && rolekind!= RoleKind.BioTerrorist) {
 			getBioTerrorist ().spot ();
-		} else if (Challenge.BioTerroist == challenge && pl1.getPlayerPawn().getCity().getNumPlayers () == 2 && 
-			pl1.getPlayerPawn().getCity().contains(RoleKind.BioTerrorist)) {
+		} else if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && pl1.getPlayerPawn().getCity().getNumPlayers () == 2 && 
+			pl1.getPlayerPawn().getCity().contains(RoleKind.BioTerrorist) && rolekind!= RoleKind.BioTerrorist) {
 			getBioTerrorist ().unSpot ();
 		}
+
+		if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && destinationCity.getNumPlayers() > 0 && rolekind == RoleKind.BioTerrorist) {
+			getBioTerrorist ().spot ();
+		} 
 		p.setCity(destinationCity);
 		initialCity.removePawn(p);
 		destinationCity.addPawn(p);
@@ -2593,9 +2597,10 @@ public class Game : MonoBehaviour {
         p.setCity(destinationCity);
         p.getCity().removePawn(p);
         destinationCity.addPawn(p);
-		if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers () > 1) {
+		if ( (Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain)  && destinationCity.getNumPlayers () > 1) {
+			
 			getBioTerrorist ().spot ();
-		} else if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers () == 1) {
+		} else if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && destinationCity.getNumPlayers () == 1) {
 			getBioTerrorist ().unSpot ();
 		}
     }
