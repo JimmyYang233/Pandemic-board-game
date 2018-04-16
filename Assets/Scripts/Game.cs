@@ -2720,7 +2720,7 @@ public class Game : MonoBehaviour {
 				currentPlayer = findPlayer (RoleKind.BioTerrorist.ToString());
 			}
 		}
-
+        Debug.Log("gamePhase has changed");
         currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
