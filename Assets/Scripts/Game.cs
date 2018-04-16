@@ -2113,8 +2113,8 @@ public class Game : MonoBehaviour {
 
 	public bool isGovernmentInterference(){
 		return (challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain)
-			&& VirulentStrainDisease.getColor() == getCurrentColor()
 			&& governmentInterference == true
+			&& VirulentStrainDisease.getColor() == getCurrentColor()
 			&& usedTreated == false;
 	}
 
