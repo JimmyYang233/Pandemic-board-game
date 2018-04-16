@@ -817,6 +817,10 @@ public class Game : MonoBehaviour {
 			currentPlayer = players [1];
 			currentPlayerIndex = 1;
 		}
+
+		Role r1 = new Role (RoleKind.Archivist);
+		Role r2 = new Role (RoleKind.ContainmentSpecialist);
+		Role r3 = new Role (RoleKind.ContingencyPlanner);
         /*
 		Role r1 = new Role (RoleKind.Archivist);
 		Role r2 = new Role (RoleKind.ContainmentSpecialist);
@@ -1931,7 +1935,7 @@ public class Game : MonoBehaviour {
     private void setInitialHand()
     {
 		//eventcardsavedgame, comment this line
-        Collection.Shuffle<PlayerCard>(playerCardDeck);
+        //Collection.Shuffle<PlayerCard>(playerCardDeck);
         int numOfPlayers = players.Count;
         int cardNeeded = numOfPlayers;
         if (numOfPlayers != 3)
@@ -1943,8 +1947,8 @@ public class Game : MonoBehaviour {
             if (p != players[BioTerroristVolunteer] || Challenge.BioTerroist != challenge)
             {
 				//eventcardsavedgame, change card needed to 5
-				//draw(p, 5);
-                draw(p, cardNeeded);
+				draw(p, 5);
+                //draw(p, cardNeeded);
             }
         }
     }
