@@ -874,12 +874,13 @@ public class Game : MonoBehaviour {
 
 
 		//diseases [Color.black].setCured (true);
+		/*
 		diseases [Color.yellow].setCured (true);
 		gameInfoController.cure (Color.yellow);
 		diseases [Color.black].setCured (true);
 		gameInfoController.cure (Color.black);
 		diseases [Color.red].setCured (true);
-		gameInfoController.cure (Color.red);
+		gameInfoController.cure (Color.red);*/
 
 
 
@@ -1452,6 +1453,9 @@ public class Game : MonoBehaviour {
 			else{
 				City city = card.getCity();
 				Color color = card.getColor();
+			Debug.Log ("color is ");
+			Debug.Log (colorToString(color));
+			Debug.Log (color.ToString ());
 				Disease disease = diseases[color];
 				outbreakedCities.Clear();
 				if(isChronicEffect()){
@@ -1883,11 +1887,11 @@ public class Game : MonoBehaviour {
         }
         //Testing only
    
-		RoleKind testRole = RoleKind.Researcher;
+		/*RoleKind testRole = RoleKind.Researcher;
         if (!roleKindTaken.Contains(testRole)){
             roleKindTaken.Add(testRole);
             return testRole;
-        }
+        }*/
 
         RoleKind rkRandom = (RoleKind)(UnityEngine.Random.Range(0, num));
 
@@ -1927,7 +1931,7 @@ public class Game : MonoBehaviour {
     private void setInitialHand()
     {
 		//eventcardsavedgame, comment this line
-        //Collection.Shuffle<PlayerCard>(playerCardDeck);
+        Collection.Shuffle<PlayerCard>(playerCardDeck);
         int numOfPlayers = players.Count;
         int cardNeeded = numOfPlayers;
         if (numOfPlayers != 3)
@@ -1939,8 +1943,8 @@ public class Game : MonoBehaviour {
             if (p != players[BioTerroristVolunteer] || Challenge.BioTerroist != challenge)
             {
 				//eventcardsavedgame, change card needed to 5
-				draw(p, 5);
-                //draw(p, cardNeeded);
+				//draw(p, 5);
+                draw(p, cardNeeded);
             }
         }
     }
