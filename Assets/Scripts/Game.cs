@@ -899,12 +899,17 @@ public class Game : MonoBehaviour {
 		playerPanel.addMainPlayer(me.getRoleKind());
 		playerSelect.gameObject.SetActive (false);
 
-		
+		// @Zhening
+		// original: 
+		// if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
+		// 	shuffleMutatonEventCards();
+		// }
+        // setInitialHand();
+
+        setInitialHand();
 		if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
 			shuffleMutatonEventCards();
 		}
-
-        setInitialHand();
         shuffleAndAddEpidemic();
 		setUp();
         if (challenge == Challenge.BioTerroist)
@@ -933,6 +938,7 @@ public class Game : MonoBehaviour {
 		researchStationRemain = savedGame.remainingResearch;
 		index = savedGame.infectionRateIndex;
 		outbreaksValue = savedGame.outBreakRate;
+		currentPlayerIndex = savedGame.currentPlayerIndex;
 		cities = new List<City>();
 		EpidemicCard.getEpidemicCard ().setIntList (savedGame.EpidemicCardIntList);
 		backGround = GameObject.FindGameObjectWithTag("background");
@@ -2297,7 +2303,6 @@ public class Game : MonoBehaviour {
 					Debug.Log("Error: no mutation event kind");
 					break; 
 				}
-                record.mutationEventCard(MuEveKind);
             }
             else
             {
@@ -2504,7 +2509,7 @@ public class Game : MonoBehaviour {
             {
                 Debug.Log("Has invalid card: Game.cs capture()");
             }
-
+            
             infectionDiscardPile.Add((InfectionCard)card);
         }
 

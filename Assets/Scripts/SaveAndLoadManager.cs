@@ -84,6 +84,7 @@ public class GameData{
 	public List<int> EpidemicCardIntList = new List<int>();
 	public int seed;
 	public int BioTerroristVolunteer;
+	public int currentPlayerIndex;
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
@@ -94,6 +95,7 @@ public class GameData{
 		remainingResearch = game.getRemainingResearch ();
 		seed = game.seed;
 		BioTerroristVolunteer = game.BioTerroristVolunteer;
+		currentPlayerIndex = game.currentPlayerIndex;
 
 		difficulity = game.nEpidemicCard;
 

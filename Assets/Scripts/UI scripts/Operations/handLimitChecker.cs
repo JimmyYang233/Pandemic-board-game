@@ -22,7 +22,7 @@ public class handLimitChecker : MonoBehaviour
             int num = playerCardPanel.transform.GetChild(1).childCount;
             for (int i = 0; i < num; i++)
             {
-                Debug.Log(i);
+                //Debug.Log(i);
                 GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
                 string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
                 child.GetComponent<Button>().onClick.RemoveAllListeners();
