@@ -819,9 +819,9 @@ public class Game : MonoBehaviour {
 			currentPlayerIndex = 1;
 		}
 
-		Role r1 = new Role (RoleKind.Archivist);
-		Role r2 = new Role (RoleKind.ContainmentSpecialist);
-		Role r3 = new Role (RoleKind.ContingencyPlanner);
+		Role r1 = new Role (RoleKind.Colonel);
+		Role r2 = new Role (RoleKind.FieldOperative);
+		Role r3 = new Role (RoleKind.Generalist);
         /*
 		Role r1 = new Role (RoleKind.Archivist);
 		Role r2 = new Role (RoleKind.ContainmentSpecialist);
