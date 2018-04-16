@@ -78,6 +78,7 @@ public class PCPanelController : MonoBehaviour {
         GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0,0,0), Quaternion.identity);
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
 		g.GetComponent<Image> ().color = mapInstance.getCityColor (c);
+		t.text = c.ToString();
         if (cityCardNum != 1)
         {
 
