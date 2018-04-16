@@ -1177,7 +1177,7 @@ public class Game : MonoBehaviour {
 				{
 					playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), pc);
 				}
-				else
+				else if(player.Equals(me))
 				{
 					//Debug.Log("add card to main player" + card.ToString());
 					mainPlayerPanel.addPlayerCard(pc);
