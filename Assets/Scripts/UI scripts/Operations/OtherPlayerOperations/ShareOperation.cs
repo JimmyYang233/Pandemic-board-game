@@ -133,7 +133,6 @@ public class ShareOperation : MonoBehaviour {
 		currentCity = currentPlayer.getPlayerPawn ().getCity ();
 		if (shareStatus == Status.GIVE) {
 			if (currentPlayer.getRoleKind () == RoleKind.Researcher) {
-				//todo
 				int num = playerCardPanel.transform.GetChild(1).childCount;
 				for (int i = 0; i < num; i++) {
 					Debug.Log (i);
@@ -147,12 +146,12 @@ public class ShareOperation : MonoBehaviour {
 			else
 			{
 				game.share (name, currentCity.getCityName ().ToString ());
-				waitingPanel.SetActive (true);
+                basicOperationPanel.SetActive(true);
+                waitingPanel.SetActive (true);
 				cancel ();
 			}
 		} else if (shareStatus ==Status.TAKE) {
 			if (name.Equals ("Researcher")) {
-				//todo
 				otherPlayerSelction.selectStatus=otherPlayerCardSelection.Status.RESEARCHER;
 				otherPlayerSelction.loadOtherPlayerCard ("Researcher");
 				otherPlayerSelction.gameObject.SetActive (true);
@@ -160,7 +159,8 @@ public class ShareOperation : MonoBehaviour {
 			} else {
 				game.share (name, currentCity.getCityName ().ToString ());
 				waitingPanel.SetActive (true);
-				cancel ();
+                basicOperationPanel.SetActive(true);
+                cancel ();
 			}
 		}
 		/*
@@ -188,6 +188,7 @@ public class ShareOperation : MonoBehaviour {
             child.GetComponent<Button>().interactable = false;
             child.GetComponent<Button>().onClick.RemoveAllListeners();
         }
+        basicOperationPanel.SetActive(true);
         game.share(roleKind, cardName);
     }
 
