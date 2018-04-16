@@ -7,10 +7,10 @@ using UnityEngine.EventSystems;
 public class otherPlayerCardSelection : MonoBehaviour {
 	public Game game;
 	private City currentCity;
-	private enum Status {RESEARCHER,EPIDEMIOLOGIST};
+	public enum Status {RESEARCHER,EPIDEMIOLOGIST};
 	public ShareOperation share;
 	public EpidemiologistOperation epidemiologist;
-	private Status selectStatus = Status.RESEARCHER; 
+	public Status selectStatus = Status.RESEARCHER; 
 
 	// Use this for initialization
 	void Start () {
@@ -46,7 +46,7 @@ public class otherPlayerCardSelection : MonoBehaviour {
 	public void cardSelect(){
 		string name = EventSystem.current.currentSelectedGameObject.name;
 		if (selectStatus == Status.RESEARCHER) {
-			share.takeFromResearcher (name);
+			share.takeFromResearcher(name);
 			clear ();
 		} else if (selectStatus == Status.EPIDEMIOLOGIST) {
 			epidemiologist.takeCard(name);

@@ -40,8 +40,8 @@ public class BioTerroristOperation : MonoBehaviour {
                 {
                     escapeButton.GetComponent<Button>().interactable = true;
                 }
-                passButton.GetComponent<Button>().interactable = true;
             }
+            passButton.GetComponent<Button>().interactable = true;
         }
         else
         {
