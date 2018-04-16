@@ -71,6 +71,11 @@ public class BioTerroristOperation : MonoBehaviour {
                 bioPawn.transform.GetChild(0).gameObject.SetActive(false);
             }
         }
+        else
+        {
+            basicOperationPanel.gameObject.SetActive(true);
+            movePanel.gameObject.SetActive(true);
+        }
         if (me.getRoleKind() == RoleKind.BioTerrorist && (me == currentPlayer) && (game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
             BioTerrorist bio = game.getBioTerrorist();
