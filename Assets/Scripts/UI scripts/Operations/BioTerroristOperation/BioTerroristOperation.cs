@@ -27,27 +27,22 @@ public class BioTerroristOperation : MonoBehaviour {
         currentCity = currentPlayer.getPlayerPawn().getCity();
         me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
-        BioTerrorist bioTerrorist = game.getBioTerrorist();
-        Pawn bioPawn = bioTerrorist.getPawn();
-        if (bioTerrorist.getIsCaptured())
+        
+        if (game.getChallenge() == Challenge.BioTerroist || game.getChallenge() == Challenge.BioTerroistAndVirulentStrain)
         {
-            Debug.Log("Captured bioterrorist");
-            bioPawn.gameObject.SetActive(true);
-            bioPawn.transform.GetChild(0).gameObject.SetActive(true);
-        }
-        if (me.getRoleKind() == RoleKind.BioTerrorist)
-        {
-            bioTerroristPanel.gameObject.SetActive(true);
-            bioMovePanel.gameObject.SetActive(true);
-            me.getPlayerPawn().gameObject.SetActive(true);
-        }
-        else
-        {
-            basicOperationPanel.gameObject.SetActive(true);
-            movePanel.gameObject.SetActive(true);
-            if (game.getChallenge() == Challenge.BioTerroist)
+            BioTerrorist bioTerrorist = game.getBioTerrorist();
+            Pawn bioPawn = bioTerrorist.getPawn();
+            
+            if (me.getRoleKind() == RoleKind.BioTerrorist)
             {
-                
+                bioTerroristPanel.gameObject.SetActive(true);
+                bioMovePanel.gameObject.SetActive(true);
+                me.getPlayerPawn().gameObject.SetActive(true);
+            }
+            else
+            {
+                basicOperationPanel.gameObject.SetActive(true);
+                movePanel.gameObject.SetActive(true);
                 if (bioTerrorist.getIsSpotted())
                 {
                     bioPawn.gameObject.SetActive(true);
@@ -64,6 +59,16 @@ public class BioTerroristOperation : MonoBehaviour {
                 {
                     bioPawn.gameObject.SetActive(false);
                 }
+            }
+            if (bioTerrorist.getIsCaptured())
+            {
+                Debug.Log("Captured bioterrorist");
+                bioPawn.gameObject.SetActive(true);
+                bioPawn.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                bioPawn.transform.GetChild(0).gameObject.SetActive(false);
             }
         }
         if (me.getRoleKind() == RoleKind.BioTerrorist && (me == currentPlayer) && (game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
