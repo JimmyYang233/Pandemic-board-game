@@ -885,13 +885,13 @@ public class Game : MonoBehaviour {
 
 
 		//diseases [Color.black].setCured (true);
-		/*
+
 		diseases [Color.yellow].setCured (true);
 		gameInfoController.cure (Color.yellow);
 		diseases [Color.black].setCured (true);
 		gameInfoController.cure (Color.black);
 		diseases [Color.red].setCured (true);
-		gameInfoController.cure (Color.red);*/
+		gameInfoController.cure (Color.red);
 
 
 
