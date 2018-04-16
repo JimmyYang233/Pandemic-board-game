@@ -842,6 +842,11 @@ public class Game : MonoBehaviour {
 		Role r2 = new Role (RoleKind.Scientist);
 		Role r3 = new Role (RoleKind.Troubleshooter);
 		*/
+		int x = 0;
+		List<Role> roleList = new List<Role> ();
+		roleList.Add (r1);
+		roleList.Add (r2);
+		roleList.Add (r3);
         foreach (Player p in players) 
         {
             Role r;
@@ -853,6 +858,8 @@ public class Game : MonoBehaviour {
             else
             {
                 //r = new Role(selectRole());
+				r = roleList[x];
+				x++;
             }
             
             Pawn pawn;
