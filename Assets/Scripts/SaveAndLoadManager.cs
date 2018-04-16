@@ -82,6 +82,8 @@ public class GameData{
 	public List<CityInfo> CityInfoList = new List<CityInfo> ();
 	public int[] FOcubes;
 	public List<int> EpidemicCardIntList = new List<int>();
+	public int seed;
+	public int BioTerroristVolunteer;
 
 	public GameData(Game game){
 		challenge = game.getChallenge();
@@ -90,6 +92,8 @@ public class GameData{
 		infectionRateIndex = game.getInfectionIndex ();
 		outBreakRate = game.getOutbreakRate ();
 		remainingResearch = game.getRemainingResearch ();
+		seed = game.seed;
+		BioTerroristVolunteer = game.BioTerroristVolunteer;
 
 		difficulity = game.nEpidemicCard;
 
