@@ -81,6 +81,10 @@ public class MoveOperation : MonoBehaviour {
 				selectCityWithPawn ();
 				setActivePpc ();
 			}
+			playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
+			ppc.gameObject.SetActive (true);
+			playerSelect.clear();
+			playerSelect.gameObject.SetActive(false);
 		} else {
 			result.SetActive (true);
 			result.transform.GetChild(0).GetComponent<Text>().text="He rejects!";

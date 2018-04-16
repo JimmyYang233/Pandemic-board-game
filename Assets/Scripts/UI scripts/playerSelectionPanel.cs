@@ -151,6 +151,9 @@ public class playerSelectionPanel : MonoBehaviour {
                     t.gameObject.SetActive(false);
                 }
             }
+			else {
+				t.gameObject.SetActive (false);
+			}
 
         }
     }
@@ -173,6 +176,9 @@ public class playerSelectionPanel : MonoBehaviour {
 					t.gameObject.SetActive (false);
 				}
 			}
+			else {
+				t.gameObject.SetActive (false);
+			}
 
 		}
 	}
@@ -180,9 +186,12 @@ public class playerSelectionPanel : MonoBehaviour {
 
 	public void displayAllPlayerForEventCard(){
 		foreach (Transform t in transform) {
-			if (!t.name.Equals("noUse") && !t.name.Equals("BioTerrorist"))
-			{
+			string role = t.GetChild (0).GetComponent<Text> ().text;
+			if (!t.name.Equals ("noUse") && !t.name.Equals ("BioTerrorist")) {
+				Debug.Log (t.name);
 				t.gameObject.SetActive (true);
+			} else {
+				t.gameObject.SetActive (false);
 			}
 
 		}
@@ -193,11 +202,7 @@ public class playerSelectionPanel : MonoBehaviour {
 
 	public void clear(){
 		foreach (Transform t in transform) {
-			if (!t.name.Equals("noUse") && !t.name.Equals("BioTerrorist"))
-			{
 				t.gameObject.SetActive (false);
-			}
-
 		}
 		selfButton.gameObject.SetActive (false);
 	}
