@@ -3098,7 +3098,7 @@ public class Game : MonoBehaviour {
 		foreach (PlayerCard card in AllHandCards)
 		{
 			CardType type = card.getType();
-			String universalName;
+			String universalName  ="";
 			if (type == CardType.EventCard)
 			{
 				universalName = ((EventCard)card).getEventKind().ToString();
