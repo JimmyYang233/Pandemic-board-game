@@ -80,13 +80,19 @@ public class BioTerroristOperation : MonoBehaviour {
             if (me.getRemainingAction() > 0)
             {
                 drawButton.GetComponent<Button>().interactable = true;
-                infectButton.GetComponent<Button>().interactable = true;
-                if (currentCity.getHasResearch())
+                if (!bio.getIsCaptured())
                 {
-                    sabotageButton.GetComponent<Button>().interactable = true;
+                    infectButton.GetComponent<Button>().interactable = true;
+                    if (currentCity.getHasResearch())
+                    {
+                        sabotageButton.GetComponent<Button>().interactable = true;
+                    }
+                    escapeButton.GetComponent<Button>().interactable = false;
                 }
-                if (bio.getIsCaptured() && me.containsInfectionCard())
+                else if (bio.getIsCaptured())
                 {
+                    infectButton.GetComponent<Button>().interactable = false;
+                    sabotageButton.GetComponent<Button>().interactable = false;
                     escapeButton.GetComponent<Button>().interactable = true;
                 }
             }
