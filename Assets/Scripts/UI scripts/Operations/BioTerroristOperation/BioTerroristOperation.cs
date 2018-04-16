@@ -12,6 +12,10 @@ public class BioTerroristOperation : MonoBehaviour {
     public Button sabotageButton;
     public Button escapeButton;
     public Button passButton;
+    public GameObject bioTerroristPanel;
+    public GameObject bioMovePanel;
+    public GameObject basicOperationPanel;
+    public GameObject movePanel;
     Player me;
     Player currentPlayer;
     City currentCity;
@@ -21,6 +25,41 @@ public class BioTerroristOperation : MonoBehaviour {
         me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
         currentCity = currentPlayer.getPlayerPawn().getCity();
+        me = game.FindPlayer(PhotonNetwork.player);
+        currentPlayer = game.getCurrentPlayer();
+        if (me.getRoleKind() == RoleKind.BioTerrorist)
+        {
+            bioTerroristPanel.gameObject.SetActive(true);
+            bioMovePanel.gameObject.SetActive(true);
+            me.getPlayerPawn().gameObject.SetActive(true);
+        }
+        else
+        {
+            basicOperationPanel.gameObject.SetActive(true);
+            movePanel.gameObject.SetActive(true);
+            BioTerrorist bioTerrorist = game.getBioTerrorist();
+
+            if (game.getChallenge() == Challenge.BioTerroist)
+            {
+                Pawn bioPawn = bioTerrorist.getPawn();
+                if (bioTerrorist.getIsSpotted())
+                {
+                    bioPawn.gameObject.SetActive(true);
+                    if (currentPlayer == me)
+                    {
+                        bioPawn.gameObject.GetComponent<Button>().onClick.AddListener(() => capture());
+                    }
+                    else
+                    {
+                        bioPawn.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+                    }
+                }
+                else
+                {
+                    bioPawn.gameObject.SetActive(false);
+                }
+            }
+        }
         if (me.getRoleKind() == RoleKind.BioTerrorist && (me == currentPlayer) && (game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
             BioTerrorist bio = game.getBioTerrorist();

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -23478,10 +23478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9104ed287f3e145bed4b573ca8d27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicOperationPanel: {fileID: 182712636}
-  bioTerroristPanel: {fileID: 681583566}
-  movePanel: {fileID: 114878884}
-  bioMovePanel: {fileID: 983204583}
   moveButton: {fileID: 2000924703}
   treatButton: {fileID: 1949369147}
   cureButton: {fileID: 1732076110}
@@ -46347,6 +46343,10 @@ MonoBehaviour:
   sabotageButton: {fileID: 986527864}
   escapeButton: {fileID: 1787521805}
   passButton: {fileID: 1712606086}
+  bioTerroristPanel: {fileID: 681583566}
+  bioMovePanel: {fileID: 983204583}
+  basicOperationPanel: {fileID: 182712636}
+  movePanel: {fileID: 114878884}
 --- !u!1 &1239431085
 GameObject:
   m_ObjectHideFlags: 0
