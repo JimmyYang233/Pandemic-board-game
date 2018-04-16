@@ -458,6 +458,18 @@ public class Game : MonoBehaviour {
         CityCard cityCard = (CityCard)findPlayerCard(cardName);
         epidemiologistShare(cityCard);
     }
+
+	[PunRPC]
+	public void RPC_localInitiative(string buildCityString, string removeCityString){
+		City buildCity = findCity (buildCityString);
+		City removeCity;
+		if (removeCityString.Equals ("")) {
+			removeCity = null;
+		} else {
+			removeCity = findCity (removeCityString);
+		}
+		localInitiative (buildCity, removeCity);
+	}
     #endregion
 
     //called by chatbox to send chat message
@@ -708,6 +720,10 @@ public class Game : MonoBehaviour {
 
 	public void ColonelPlaceMarker(string cityCardString, string cityString){
 		PhotonView.RPC ("RPC_colonelPlaceMarker", PhotonTargets.All, cityCardString, cityString);
+	}
+
+	public void LocalInitiative(string buildCity, string removeCity){
+		PhotonView.RPC ("RPC_localInitiative", PhotonTargets.All, buildCity, removeCity);
 	}
     #endregion
 
@@ -2501,17 +2517,21 @@ public class Game : MonoBehaviour {
         }
     }
 
-    private void localInitiative(City city)
+	private void localInitiative(City buildCity, City RemoveCity)
     {
         if (markersAvailable > 0)
         {
             markersAvailable--;
-            city.putMarker();
+			buildCity.putMarker();
             dropEventCard(EventKind.LocalInitiative);
         }
         else
         {
-            Debug.Log("No more marker");
+			if (RemoveCity != null) {
+				RemoveCity.removeMarker ();
+				buildCity.putMarker ();
+				dropEventCard(EventKind.LocalInitiative);
+			}
         }
     }
 
