@@ -39,6 +39,7 @@ public class handLimitChecker : MonoBehaviour
             {
                 GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
                 child.GetComponent<Button>().interactable = false;
+                child.GetComponent<Button>().onClick.RemoveAllListeners();
             }
             isDiscardingCard = false;
         }
