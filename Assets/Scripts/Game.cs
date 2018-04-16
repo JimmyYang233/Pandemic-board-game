@@ -1210,8 +1210,10 @@ public class Game : MonoBehaviour {
         {
             currentPlayer.decreaseRemainingAction();
         }
-		
-		record.drive(currentPlayer, destinationCity);
+		if (currentPlayer.getRole () != bioTerroristRole) {
+			record.drive(currentPlayer, destinationCity);
+		}
+
 		//Debug.Log ("move succeed");
 	}
 
