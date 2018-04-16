@@ -2568,6 +2568,10 @@ public class Game : MonoBehaviour {
             Debug.Log("Color does not match: Game.cs BioTerrorist Sabotage");
         }
         players[BioTerroristVolunteer].removeCard(card);
+		if (players[BioTerroristVolunteer].Equals(me))
+		{
+			mainPlayerPanel.deletePlayerCard(card);
+		}
         infectionDiscardPile.Add(card);
         players[BioTerroristVolunteer].getPlayerPawn().getCity().setHasResearch(false);
         researchStationRemain++;
