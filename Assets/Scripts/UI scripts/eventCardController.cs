@@ -598,6 +598,75 @@ public class eventCardController : MonoBehaviour {
         citiesToDeploye.Clear();
     }
     #endregion
+    #region localInitiative
+    List<UnityEngine.Events.UnityAction> localInitiativeCalls = new List<UnityEngine.Events.UnityAction>();
+    public void localInitiative()
+    {
+        List<City> cities = game.getCities();
+        foreach(City city in cities)
+        {
+            UnityEngine.Events.UnityAction thisCall = () => checkOtherResearch(city);
+            localInitiativeCalls.Add(thisCall);
+            city.GetComponent<Button>().onClick.AddListener(thisCall);
+            if (city != currentCity && (city.getMarker() == 0))
+            {
+                city.displayButton();
+            }
+        }
+    }
+
+    public void checkOtherResearch(City city)
+    {
+        List<City> cities = game.getCities();
+        for(int i = 0; i<cities.Count; i++)
+        {
+            cities[i].GetComponent<Button>().onClick.RemoveListener(localInitiativeCalls[i]);
+            cities[i].undisplayButton();
+        }
+        if (game.getMarkersLeft() > 0)
+        {
+            game.LocalInitiative(city.getCityName().ToString(), "");
+        }
+        else
+        {
+            foreach(City markerCity in game.getCities())
+            {
+                if (markerCity.getMarker() > 0)
+                {
+                    foreach (Transform child in markerCity.transform)
+                    {
+                        if (child.tag == "marker")
+                        {
+                            Button button = child.gameObject.GetComponent<Button>();
+                            button.onClick.AddListener(() => finallyMark(city, markerCity));
+                            button.interactable = true;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+
+    public void finallyMark(City buildCity, City removeCity)
+    {
+        foreach (City markerCity in game.getCities())
+        {
+            if (markerCity.getMarker() > 0)
+            {
+                foreach (Transform child in markerCity.transform)
+                {
+                    if (child.tag == "marker")
+                    {
+                        Button button = child.gameObject.GetComponent<Button>();
+                        button.onClick.RemoveAllListeners();
+                        button.interactable = false;
+                    }
+                }
+            }
+        }
+        game.LocalInitiative(buildCity.getCityName().ToString(), removeCity.getCityName().ToString());
+    }
+    #endregion
     //--------------------------
     public void useEvent(){
 		eventCardName = this.transform.GetChild (1).GetComponent<Text> ().text;
@@ -640,6 +709,8 @@ public class eventCardController : MonoBehaviour {
 			case "SpecialOrders":
 				SpecialOrders();
 				break;
+            case "LocalInitiative";
+                localInitiative();
 		    default:
 			    break;
 		}
