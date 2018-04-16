@@ -10,6 +10,7 @@ public class TreatOperation : MonoBehaviour {
     public Button yellowButton;
     public Button blackButton;
     public Button redButton;
+    public Button purpleButton;
     public Button cancelButton;
 
     void Start()
@@ -43,6 +44,15 @@ public class TreatOperation : MonoBehaviour {
         {
             redButton.GetComponent<Button>().interactable = true;
         }
+        if (game.getChallenge() != Challenge.Nochallenge && game.getChallenge() != Challenge.VirulentStrain)
+        {
+            purpleButton.gameObject.SetActive(true);
+            if (currentCity.getCubeNumber(Color.magenta) > 0)
+            {
+                purpleButton.GetComponent<Button>().interactable = true;
+            }
+        }
+        
         cancelButton.GetComponent<Button>().interactable = true;
 
     }
@@ -55,6 +65,7 @@ public class TreatOperation : MonoBehaviour {
         blueButton.GetComponent<Button>().interactable = false;
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
+        purpleButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
 		game.TreatDisease("blue", currentCity.getCityName().ToString());
     }
@@ -67,6 +78,7 @@ public class TreatOperation : MonoBehaviour {
         blueButton.GetComponent<Button>().interactable = false;
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
+        purpleButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
 		game.TreatDisease("yellow", currentCity.getCityName().ToString());
     }
@@ -79,6 +91,7 @@ public class TreatOperation : MonoBehaviour {
         blueButton.GetComponent<Button>().interactable = false;
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
+        purpleButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
 		game.TreatDisease("black", currentCity.getCityName().ToString());
     }
@@ -91,8 +104,22 @@ public class TreatOperation : MonoBehaviour {
         blueButton.GetComponent<Button>().interactable = false;
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
+        purpleButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = true;
 		game.TreatDisease("red", currentCity.getCityName().ToString());
+    }
+
+    public void TreatPurpleClicked()
+    {
+        currentPlayer = game.getCurrentPlayer();
+        City currentCity = currentPlayer.getPlayerPawn().getCity();
+        redButton.GetComponent<Button>().interactable = false;
+        blueButton.GetComponent<Button>().interactable = false;
+        blackButton.GetComponent<Button>().interactable = false;
+        yellowButton.GetComponent<Button>().interactable = false;
+        purpleButton.GetComponent<Button>().interactable = false;
+        cancelButton.GetComponent<Button>().interactable = true;
+        game.TreatDisease("purple", currentCity.getCityName().ToString());
     }
 
     public void cancelButtonClicked()
@@ -101,6 +128,7 @@ public class TreatOperation : MonoBehaviour {
         blueButton.GetComponent<Button>().interactable = false;
         blackButton.GetComponent<Button>().interactable = false;
         yellowButton.GetComponent<Button>().interactable = false;
+        purpleButton.GetComponent<Button>().interactable = false;
         cancelButton.GetComponent<Button>().interactable = false;
     }
 }
