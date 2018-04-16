@@ -98,6 +98,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 		switch (EVENT) {
 		case "CreateRoom":
 			if (PhotonNetwork.JoinLobby ()) {
+				PlayerNetwork.Instance.isNewGame = true;
 				RoomOptions RO = new RoomOptions ();
 				RO.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable (){ { "Challenge",Challenge.Nochallenge.ToString() }, {"seed",(int)System.DateTime.Now.Ticks } };
 				RO.MaxPlayers = 5;
