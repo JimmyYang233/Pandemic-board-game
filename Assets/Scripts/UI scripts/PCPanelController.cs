@@ -10,6 +10,7 @@ public class PCPanelController : MonoBehaviour {
 	public GameObject eventCardPrefab;
     public GameObject playerCardStart;
     public Transform eventCardStart;
+	public Transform reserve;
 
 	public GameObject eventCardPanel;
 
@@ -30,6 +31,9 @@ public class PCPanelController : MonoBehaviour {
     }
     */
     //add city card to gui
+	void Start(){
+		reserve.position = playerCardStart.transform.position;
+	}
     private void Awake()
     {
         mapInstance = Maps.getInstance();
@@ -101,6 +105,16 @@ public class PCPanelController : MonoBehaviour {
 
 
     }
+	public void dropAllCards(){
+		foreach (Transform child in transform.GetChild(1))
+		{
+			Destroy (child.gameObject);
+		}
+
+		cityCardNum = 0;
+		playerCardStart.transform.position = reserve.position;
+
+	}
     //delete city card from gui
     public void deleteCityCard(CityName c)
     {

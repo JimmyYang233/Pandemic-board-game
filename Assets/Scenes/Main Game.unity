@@ -2202,6 +2202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PhotonView: {fileID: 0}
   seed: 0
+  currentPlayerIndex: 0
   infectionRate: 2
   outbreaksValue: 0
   BioTerroristVolunteer: -1
@@ -12015,7 +12016,7 @@ RectTransform:
   m_Father: {fileID: 1169284204}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.4999999}
+  m_AnchorMin: {x: 0, y: 0.57894725}
   m_AnchorMax: {x: 1, y: 0.9999999}
   m_AnchoredPosition: {x: -0.000020980835, y: -0.0014953613}
   m_SizeDelta: {x: -0.000016212, y: -0.003006}
@@ -49023,7 +49024,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1325774424}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5
+  m_Size: 0.44444445
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -49561,7 +49562,7 @@ RectTransform:
   m_Father: {fileID: 1554751813}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5555556}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000020980835, y: -0.0014953613}
   m_SizeDelta: {x: -0.000016212, y: -0.003006}
@@ -52733,8 +52734,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1691081154}
   m_HandleRect: {fileID: 1691081153}
   m_Direction: 2
-  m_Value: 0.99999964
-  m_Size: 0.5
+  m_Value: 0.9999997
+  m_Size: 0.44444445
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -60909,7 +60910,7 @@ RectTransform:
   m_Father: {fileID: 1095967907}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.49999982}
+  m_AnchorMin: {x: 0, y: 0.55555534}
   m_AnchorMax: {x: 1, y: 0.9999998}
   m_AnchoredPosition: {x: -0.000020980835, y: -0.0014953613}
   m_SizeDelta: {x: -0.000016212, y: -0.003006}
@@ -72040,8 +72041,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 349536263}
   m_HandleRect: {fileID: 349536262}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.5
+  m_Value: 0.9999999
+  m_Size: 0.42105263
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

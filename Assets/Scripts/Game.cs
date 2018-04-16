@@ -2509,6 +2509,8 @@ public class Game : MonoBehaviour {
         }
 
         players[BioTerroristVolunteer].dropAllCards();
+		mainPlayerPanel.dropAllCards ();
+
         currentPlayer.decreaseRemainingAction();
     }
 
