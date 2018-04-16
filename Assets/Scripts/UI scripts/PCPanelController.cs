@@ -51,14 +51,13 @@ public class PCPanelController : MonoBehaviour {
 
     public void deletePlayerCard(Card c)
     {
-        if (c is EventCard)
-        {
-            deleteEventCard(((EventCard)c).getEventKind());
-        }
-        else
-        {
-            deleteCityCard(((CityCard)c).getCity().getCityName());
-        }
+		if (c is EventCard) {
+			deleteEventCard (((EventCard)c).getEventKind ());
+		} else if (c is CityCard) {
+			deleteCityCard (((CityCard)c).getCity ().getCityName ());
+		} else {
+			deleteCityCard (((InfectionCard)c).getCity ().getCityName ());
+		}
     }
     //for test use only
     public void addAtalantic()
@@ -78,14 +77,7 @@ public class PCPanelController : MonoBehaviour {
         cityCardNum++;
         GameObject g = Instantiate(PlayerCardPrefab, new Vector3(0,0,0), Quaternion.identity);
         Text t = g.transform.GetChild(0).gameObject.GetComponent<Text>();
-
-        t.text = c.ToString();
-		if (!isinfection) {
-			g.GetComponent<Image> ().color = mapInstance.getCityColor (c);
-		} else {
-			g.GetComponent<Image> ().color = Color.white;
-		}
-
+		g.GetComponent<Image> ().color = mapInstance.getCityColor (c);
         if (cityCardNum != 1)
         {
 

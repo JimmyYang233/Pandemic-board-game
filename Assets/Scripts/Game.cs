@@ -977,10 +977,8 @@ public class Game : MonoBehaviour {
 						}
 					}
 					else{
-						if (Enum.IsDefined (typeof(InfectionCard), s)) {
-							curPlayer.addCard (new InfectionCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
-							Debug.Log ("Bio-t has infection card: " + s);
-						}
+						curPlayer.addCard (new InfectionCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
+						Debug.Log ("Bio-t has infection card: " + s);
 					}
 
 
@@ -2226,7 +2224,9 @@ public class Game : MonoBehaviour {
             }
             else if (card.getType() == CardType.MutationEventCard)
             {
-				switch (((MutationEventCard)card).getMutationEvent()) {
+				MutationEvent MuEveKind = ((MutationEventCard)card).getMutationEvent();
+				passOperation.showMutationEvent(MuEveKind.ToString());
+				switch (MuEveKind) {
 				case MutationEvent.Threatens:
 					if(!diseases[Color.magenta].isEradicated()){
 						InfectionCard mCard = drawBottomInfectionDeck();
@@ -2256,7 +2256,7 @@ public class Game : MonoBehaviour {
 					Debug.Log("Error: no mutation event kind");
 					break; 
 				}
-                
+                record.mutationEventCard(MuEveKind);
             }
             else
             {
