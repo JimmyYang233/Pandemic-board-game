@@ -997,6 +997,7 @@ public class Game : MonoBehaviour {
 						if (Enum.IsDefined (typeof(CityName), s)) {
 							curPlayer.addCard (new CityCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
 							Debug.Log ("City card " + s);
+							Debug.Log (findCity((CityName)Enum.Parse(typeof(CityName),s)).getCityName().ToString());
 						}
 					}
 					else{
@@ -1041,7 +1042,8 @@ public class Game : MonoBehaviour {
 
 		foreach(Player p in players){
 			foreach (PlayerCard pc in p.getHand()) {
-				AllHandCards.Add (pc);
+				if ( p.getRoleKind() != RoleKind.BioTerrorist)
+					AllHandCards.Add (pc);
 			}
 		}
 
