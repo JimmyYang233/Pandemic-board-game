@@ -1199,8 +1199,9 @@ public class Game : MonoBehaviour {
 		RoleKind rolekind = player.getRoleKind();
 		if(rolekind != RoleKind.Troubleshooter)
 		{
-			player.removeCard(card);
-			if (!player.Equals(me))
+            Player discardPlayer = findPlayerWithCard(card.getCity().getCityName().ToString());
+			discardPlayer.removeCard(card);
+			if (!discardPlayer.Equals(me))
 			{
 
 				playerPanel.deletePlayerCardFromOtherPlayer(player.getRoleKind(), card);
@@ -1225,8 +1226,9 @@ public class Game : MonoBehaviour {
 		foreach(PlayerCard p in pl1.getHand()){
 			if(p.getType() == CardType.CityCard && ((CityCard)p).getCity()== curCity){
 				card = (CityCard) p;
-				pl1.removeCard(card);
-                if (!pl1.Equals(me))
+                Player discardPlayer = findPlayerWithCard(card.getCity().getCityName().ToString());
+                discardPlayer.removeCard(card);
+                if (!discardPlayer.Equals(me))
                 {
 
                     playerPanel.deletePlayerCardFromOtherPlayer(pl1.getRoleKind(), card);
