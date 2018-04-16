@@ -1059,7 +1059,7 @@ public class Game : MonoBehaviour {
 			Pawn pawn;
 			if (r.getRoleKind() == RoleKind.BioTerrorist)
 			{
-				r = new BioTerrorist ();
+				r = bioTerroristRole;
 				pawn = Instantiate(bioterroristPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			}
 			else
