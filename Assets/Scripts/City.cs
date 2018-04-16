@@ -179,6 +179,7 @@ public class City : MonoBehaviour {
         if (quarantineMarker > 0)
         {
             quarantineMarker--;
+            displayMarker();
             return;
         }
         Color pColor = disease.getColor();
