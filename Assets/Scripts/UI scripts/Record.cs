@@ -102,6 +102,9 @@ public class Record : MonoBehaviour {
             case CardType.EpidemicCard:
                 displayRecord(player.getRoleKind().ToString() + " discarded an Epidemic Card");
                 break;
+            case CardType.MutationEventCard:
+                displayRecord(player.getRoleKind().ToString() + " discarded an Mutation Event Card: " + ((MutationEventCard)card).getMutationEvent().ToString());
+                break;
             default:
                 displayRecord(player.getRoleKind().ToString() + " discarded a card");
                 break;
@@ -126,10 +129,6 @@ public class Record : MonoBehaviour {
 
     public void bioTerroristSighted(City city){
         displayRecord("Bio Terrorist was sighted in "+ city.getCityName().ToString());
-    }
-
-    public void mutationEventCard(MutationEvent MuEveKind) {
-        displayRecord("Mutation Event Card: " + MuEveKind.ToString() +" has been triggered.");
     }
     
 }
