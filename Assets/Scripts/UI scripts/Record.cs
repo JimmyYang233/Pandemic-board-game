@@ -130,5 +130,9 @@ public class Record : MonoBehaviour {
     public void bioTerroristSighted(City city){
         displayRecord("Bio Terrorist was sighted in "+ city.getCityName().ToString());
     }
+
+    public void VSEffect(VirulentStrainEpidemicEffects vse){
+        displayRecord("Virulent Strain Epidemic Effects has been triggered"+ vse.ToString());
+    }
     
 }

@@ -2048,6 +2048,7 @@ public class Game : MonoBehaviour {
 				}
 			}
 
+			record.VSEffect(currentVirulentStrainEpidemicEffects);
 			// apply Virulent Strain Epidemic Effects
 			switch(currentVirulentStrainEpidemicEffects){
 			case VirulentStrainEpidemicEffects.ChronicEffect:
@@ -2114,6 +2115,10 @@ public class Game : MonoBehaviour {
 			&& VirulentStrainDisease.getColor() == getCurrentColor()
 			&& governmentInterference == true
 			&& usedTreated == false;
+	}
+
+	public string getCurrentVirulentStrainEpidemicEffects(){
+		return currentVirulentStrainEpidemicEffects.ToString();
 	}
 
 
