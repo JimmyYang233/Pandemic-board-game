@@ -111,6 +111,7 @@ public class TreatOperation : MonoBehaviour {
 
     public void TreatPurpleClicked()
     {
+        Debug.Log("Treat Purple used");
         currentPlayer = game.getCurrentPlayer();
         City currentCity = currentPlayer.getPlayerPawn().getCity();
         redButton.GetComponent<Button>().interactable = false;
