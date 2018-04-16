@@ -104,6 +104,7 @@ public class PlayerPanelController : MonoBehaviour
                 
                 if (t.gameObject.activeSelf && t.childCount>=3 && t.GetChild(2).GetComponent<Text>().text.Equals(k.ToString()))
                 {
+                    Debug.Log("Card type " + c.getType());
                     t.GetComponent<otherPlayerController>().addCityCard(((CityCard)c).getCity().getCityName());
                     //Debug.Log("find"+k.ToString()+" "+ ((CityCard)c).getCity().getCityName().ToString());
                     find = true;

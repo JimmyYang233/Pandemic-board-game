@@ -62,7 +62,7 @@ public class BioTerroristOperation : MonoBehaviour {
             }
             if (bioTerrorist.getIsCaptured())
             {
-                Debug.Log("Captured bioterrorist");
+                //Debug.Log("Captured bioterrorist");
                 bioPawn.gameObject.SetActive(true);
                 bioPawn.transform.GetChild(0).gameObject.SetActive(true);
             }

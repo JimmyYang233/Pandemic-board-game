@@ -516,10 +516,6 @@ public class eventCardController : MonoBehaviour {
     Dictionary<City, int> cityCubeNumber = new Dictionary<City, int>();
     List<UnityEngine.Events.UnityAction> deployCalls = new List<UnityEngine.Events.UnityAction>();
 
-    public void testRapidVaccine()
-    {
-        askForRapidVaccineDeployment(Color.blue);
-    }
 
     public void askForRapidVaccineDeployment(Color aColor)
     {
@@ -640,9 +636,6 @@ public class eventCardController : MonoBehaviour {
                 break;
             case "CommercialTravelBan":
                 commercialTravelBan();
-                break;
-            case "RapidVaccineDeployment":
-                rapidVaccineDeployment();
                 break;
 			case "SpecialOrders":
 				SpecialOrders();
