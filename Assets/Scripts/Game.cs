@@ -3115,7 +3115,6 @@ public class Game : MonoBehaviour {
 			else
 			{
 				Debug.Log("Invalid card type exists in AllHandCards. Class: Game.cs : findPlayerCard");
-				return null;
 			}
 
 			if (universalName.Equals(cardName))
