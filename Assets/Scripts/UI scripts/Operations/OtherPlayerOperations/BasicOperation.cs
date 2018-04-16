@@ -21,6 +21,7 @@ public class BasicOperation : MonoBehaviour {
 	public Button epidemiologistSkillButton;
     public Button dispatcherSkillButton;
     public Button operationsExpertSkillButton;
+    public Button colonelSkillButton;
 
     Button roleOnlyButton = null;
     Game game;
@@ -90,6 +91,11 @@ public class BasicOperation : MonoBehaviour {
                 operationsExpertSkillButton.gameObject.SetActive(true);
                 roleOnlyButton = operationsExpertSkillButton;
             }
+            else if(me.getRoleKind() == RoleKind.Colonel)
+            {
+                colonelSkillButton.gameObject.SetActive(true);
+                roleOnlyButton = colonelSkillButton;
+            }
             if ((currentPlayer == me) && (game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
             {
                 currentCity = me.getPlayerPawn().getCity();
@@ -141,7 +147,6 @@ public class BasicOperation : MonoBehaviour {
                     {
                         fieldOperativeSkillButton.GetComponent<Button>().interactable = true;
                     }
-
                     foreach (Player otherPlayer in game.getPlayers())
                     {
                         if (me.getPlayerPawn().getCity() != otherPlayer.getPlayerPawn().getCity())
@@ -161,7 +166,10 @@ public class BasicOperation : MonoBehaviour {
                             epidemiologistSkillButton.GetComponent<Button>().interactable = true;
                         }
                     }
-
+                    if (me.containsCityCard())
+                    {
+                        colonelSkillButton.GetComponent<Button>().interactable = true;
+                    }
                 }
                 else if (me.getRemainingAction() == 0)
                 {
