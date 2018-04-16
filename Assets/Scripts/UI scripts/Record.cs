@@ -127,5 +127,9 @@ public class Record : MonoBehaviour {
     public void bioTerroristSighted(City city){
         displayRecord("Bio Terrorist was sighted in "+ city.getCityName().ToString());
     }
+
+    public void mutationEventCard(MutationEvent MuEveKind) {
+        displayRecord("Mutation Event Card: " + MuEveKind.ToString() +" has been triggered.");
+    }
     
 }
