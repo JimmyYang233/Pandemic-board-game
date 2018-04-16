@@ -1481,9 +1481,10 @@ public class Game : MonoBehaviour {
 	{
 		
             numOfInfection++;
-            //Debug.Log ("Danning kan zhe li");
             InfectionCard card = getInfectionCard();
-            if(card.getType() == CardType.MutationCard){
+			Debug.Log(card.getType().ToString());
+		if(card.getType() == CardType.MutationCard || card.getCity() == null){
+			Debug.Log ("found mutation card");
 				InfectionCard iCard = drawBottomInfectionDeck();
 				City city = iCard.getCity();
 				infect(city, Color.magenta, 1);
@@ -1491,7 +1492,10 @@ public class Game : MonoBehaviour {
 			}
 			else{
 				City city = card.getCity();
-				Color color = card.getColor();
+
+			Debug.Log ("city is");
+			Debug.Log (city.getCityName().ToString());
+				Color color = city.getColor();
 			Debug.Log ("color is ");
 			Debug.Log (colorToString(color));
 			Debug.Log (color.ToString ());
