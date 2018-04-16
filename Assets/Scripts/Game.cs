@@ -1518,6 +1518,12 @@ public class Game : MonoBehaviour {
         RoleKind rolekind = pl1.getRoleKind();
         Pawn p = pl1.getPlayerPawn();
 		City initialCity = p.getCity();
+		if (Challenge.BioTerroist == challenge && destinationCity.contains(RoleKind.BioTerrorist)) {
+			getBioTerrorist ().spot ();
+		} else if (Challenge.BioTerroist == challenge && pl1.getPlayerPawn().getCity().getNumPlayers () == 2 && 
+			pl1.getPlayerPawn().getCity().contains(RoleKind.BioTerrorist)) {
+			getBioTerrorist ().unSpot ();
+		}
 		p.setCity(destinationCity);
 		initialCity.removePawn(p);
 		destinationCity.addPawn(p);
@@ -1527,11 +1533,8 @@ public class Game : MonoBehaviour {
 		} else if (rolekind == RoleKind.ContainmentSpecialist) {
 			resolveContainmentSpecialist (destinationCity);
 		} 
+			
 
-        if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers() > 1)
-        {
-            getBioTerrorist().spot();
-        }
 
         if(pl1.getRoleKind() == RoleKind.Colonel)
         {
@@ -2590,10 +2593,11 @@ public class Game : MonoBehaviour {
         p.setCity(destinationCity);
         p.getCity().removePawn(p);
         destinationCity.addPawn(p);
-        if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers() > 1)
-        {
-            getBioTerrorist().spot();
-        }
+		if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers () > 1) {
+			getBioTerrorist ().spot ();
+		} else if (Challenge.BioTerroist == challenge && destinationCity.getNumPlayers () == 1) {
+			getBioTerrorist ().unSpot ();
+		}
     }
 
     private void bioTerroristDirectFlight(InfectionCard card)
