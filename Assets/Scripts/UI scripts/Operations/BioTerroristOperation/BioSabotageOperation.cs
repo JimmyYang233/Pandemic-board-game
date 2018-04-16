@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class BioSabotageOperation : MonoBehaviour {
 
     public Game game;
-    public Button useSabotageButton;
     public GameObject playerCardPanel;
     Player currentPlayer;
     City currentCity;
@@ -42,6 +41,7 @@ public class BioSabotageOperation : MonoBehaviour {
 
     public void sabotage(string cardName)
     {
+  
         int num = playerCardPanel.transform.GetChild(1).childCount;
         for (int i = 0; i < num; i++)
         {
@@ -51,5 +51,6 @@ public class BioSabotageOperation : MonoBehaviour {
             child.GetComponent<Button>().interactable = false;
             child.GetComponent<Button>().onClick.RemoveAllListeners();
         }
+        game.BioTerroristSabotage(cardName);
     }
 }
