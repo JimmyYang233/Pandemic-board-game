@@ -90,14 +90,7 @@ public class playerSelectionPanel : MonoBehaviour {
 	public void characterSelect(){
 		string name = EventSystem.current.currentSelectedGameObject.name;
 		if (selectStatus == Status.SHARE) {
-			
-			if (!name.Equals ("Researcher")) {
-				share.selectRole (name);
-			} else {
-				selectCard.gameObject.SetActive (true);
-				selectCard.setResearcherStatus ();
-				selectCard.loadOtherPlayerCard ("Researcher");
-			}
+			share.roleSelected (name);
 		}
 		//remember to turn into status.share
 		else if (selectStatus == Status.EPIDEMIOLOGIST) {
@@ -128,7 +121,7 @@ public class playerSelectionPanel : MonoBehaviour {
 			share.cancel ();
 		}
 	}
-    public void displayPlayerWithCard()
+    public void displayPlayerWithCardOrResearcher()
     {
         
         foreach (Transform t in transform)
@@ -182,6 +175,7 @@ public class playerSelectionPanel : MonoBehaviour {
 
 		}
 	}
+		
 
 	public void displayAllPlayerForEventCard(){
 		foreach (Transform t in transform) {

@@ -22,17 +22,16 @@ public class ShareOperation : MonoBehaviour {
     Game game;
     Player currentPlayer;
     City currentCity;
-    bool isTake;
+	Status shareStatus = Status.NULL;
     PCPanelController pc;
 	string roleSlected;
     GameObject cardToShare;
 
+	private enum Status {GIVE, TAKE, NULL};
 
     void Start()
     {
         pc= GameObject.FindGameObjectWithTag("PlayerCardController").GetComponent<PCPanelController>();
-
-        isTake = true;
         //game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
 		game = Game.Instance;
     }
@@ -40,15 +39,16 @@ public class ShareOperation : MonoBehaviour {
 	void Update (){
 		currentPlayer = game.getCurrentPlayer();
 		currentCity = currentPlayer.getPlayerPawn().getCity();
+
 	}
 
     public void giveButtonClicked()
     {
-
+		/*
         //agreePanel.SetActive(false);
         giveButton.GetComponent<Button>().interactable = false;
         int num = playerCardPanel.transform.GetChild(1).childCount;
-        for(int i = 0; i< num; i++)
+        /*for(int i = 0; i< num; i++)
         {
             Debug.Log(i);
             GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
@@ -74,11 +74,21 @@ public class ShareOperation : MonoBehaviour {
             }
             
         }
+		playerSelect.selectStatus = playerSelect.share;
+		playerSelect.displayPlayerNecessary ();
         basicOperationPanel.SetActive(false);
 		otherPlayers.SetActive (false);
         //load all players current in the city
         //load card for the current city
-        isTake = false;
+        isTake = false;*/
+		giveButton.GetComponent<Button>().interactable = false;
+		playerCardPanel.SetActive(false);
+		basicOperationPanel.SetActive(false);
+
+		playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
+		playerSelect.displayPlayerNecessary ();
+		playerSelect.gameObject.SetActive (true);
+		shareStatus = Status.GIVE;
     }
 
     protected void btn_Click(object sender, EventArgs e)
@@ -96,36 +106,74 @@ public class ShareOperation : MonoBehaviour {
     {
         //agreePanel.SetActive(false);
         takeButton.GetComponent<Button>().interactable = false;
+		/*
         playerCardPanel.SetActive(false);
         basicOperationPanel.SetActive(false);
         otherPlayers.SetActive(false);
         check();
-        playerSelect.displayPlayerWithCard();
-        isTake = true;
+        playerSelect.displayPlayerWithCard();*/
+
+		playerCardPanel.SetActive(false);
+		basicOperationPanel.SetActive(false);
+		playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
+
+
+		playerSelect.displayPlayerWithCardOrResearcher();
+		playerSelect.gameObject.SetActive (true);
+		shareStatus = Status.TAKE;
     }
     //player confirm to take the card
     public void check()
 	{
-		playerSelect.setShareStatus ();
-		playerSelect.gameObject.SetActive (true);
-		
-        int num = playerCardPanel.transform.GetChild(1).childCount;
-        for (int i = 0; i < num; i++)
-        {
-            Debug.Log(i);
-            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
-            string name = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
-            child.GetComponent<Button>().interactable = false;
-        }
 
     }
     //player cancel the operation
-	public void selectRole(string name){
+	public void roleSelected(string name){
+		currentPlayer = game.getCurrentPlayer ();
+		currentCity = currentPlayer.getPlayerPawn ().getCity ();
+		if (shareStatus == Status.GIVE) {
+			if (currentPlayer.getRoleKind () == RoleKind.Researcher) {
+				//todo
+				int num = playerCardPanel.transform.GetChild(1).childCount;
+				for (int i = 0; i < num; i++) {
+					Debug.Log (i);
+					GameObject child = playerCardPanel.transform.GetChild (1).GetChild (i).gameObject;
+					string tname = playerCardPanel.transform.GetChild (1).GetChild (i).GetChild (0).gameObject.GetComponent<Text> ().text;
+					child.GetComponent<Button> ().interactable = true;
+					child.GetComponent<Button> ().onClick.AddListener (() => addCardToShare (child));
+					child.GetComponent<Button> ().onClick.AddListener (check);
+				}
+
+			} 
+			else
+			{
+				game.share (name, currentCity.getCityName ().ToString ());
+				waitingPanel.SetActive (true);
+				cancel ();
+			}
+		} else if (shareStatus ==Status.TAKE) {
+			if (name.Equals ("Researcher")) {
+				//todo
+				otherPlayers.GetComponent<otherPlayerCardSelection> ().loadOtherPlayerCard ("Researcher");
+
+			} else {
+				game.share (name, currentCity.getCityName ().ToString ());
+				waitingPanel.SetActive (true);
+				cancel ();
+			}
+		}
+		/*
 		roleSlected=name;
-		//pc.deleteCityCard(currentCity.cityName);
-		game.share(name,cardToShare.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+		if (name.Equals ("Researcher")) {
+			if (isTake) {
+				takeFromResearcher;
+			}
+		} else {
+			game.share (name, cardToShare.transform.GetChild (0).gameObject.GetComponent<Text> ().text);
+		}
         waitingPanel.SetActive(true);
-		cancel();
+		cancel();*/
+
 	}
 
 	public void takeFromResearcher(string cityName){
@@ -185,6 +233,9 @@ public class ShareOperation : MonoBehaviour {
 		Player target = game.findPlayerWithCard (cardname);
 		return target.getRoleKind ().ToString ();
 	}
+
+
+	//for interactable or not
     public void shareButtonClicked()
     {
         if((currentPlayer.getRoleKind() == RoleKind.Researcher&&currentPlayer.containsCityCard()) || currentPlayer.containsSpecificCityCard(currentCity))
