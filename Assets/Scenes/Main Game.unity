@@ -23156,7 +23156,7 @@ MonoBehaviour:
   epidemiologistSkillButton: {fileID: 1435711907}
   dispatcherSkillButton: {fileID: 624561548}
   operationsExpertSkillButton: {fileID: 1084775572}
-  colonelSkillButton: {fileID: 0}
+  colonelSkillButton: {fileID: 1029869733}
 --- !u!224 &660150424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36639,6 +36639,7 @@ MonoBehaviour:
   game: {fileID: 73084184}
   share: {fileID: 1340808470}
   epidemiologist: {fileID: 590150772}
+  selectStatus: 0
 --- !u!222 &990919272
 CanvasRenderer:
   m_ObjectHideFlags: 0
