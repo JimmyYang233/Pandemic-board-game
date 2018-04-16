@@ -22,6 +22,7 @@ public class MoveOperation : MonoBehaviour {
     public GameObject playerCardPanel;
 	public GameObject movePanel;
 	public GameObject basicOperationPanel;
+	public GameObject waitingForResponse;
     Game game;
 
     Player currentPlayer;
@@ -56,8 +57,8 @@ public class MoveOperation : MonoBehaviour {
 			ppc.gameObject.SetActive (true);
 			playerSelect.clear();
 			playerSelect.gameObject.SetActive(false);
-			Debug.Log ("here");
 		} else {
+			waitingForResponse.SetActive (true);
 			game.AskPermissionDispatcher(target,currentPlayer.getRoleKind().ToString()+" wants to move instead of you.");
 		}
 	}
@@ -74,15 +75,17 @@ public class MoveOperation : MonoBehaviour {
 			ppc.gameObject.SetActive (true);
 			playerSelect.clear();
 			playerSelect.gameObject.SetActive(false);
-			Debug.Log ("here");
 
 		} else {
+			waitingForResponse.SetActive (true);
 			game.AskPermissionDispatcher(target,"Dispatcher wants to move your pawn to another city with another pawn.");
+
 		}
 
 	}
 
 	public void informResult(bool t){
+		waitingForResponse.SetActive (false);
 		if (t) {
 			result.SetActive (true);
 			result.transform.GetChild (0).GetComponent<Text> ().text = "He accepts!";
