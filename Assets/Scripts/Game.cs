@@ -720,7 +720,7 @@ public class Game : MonoBehaviour {
 		});
 		foreach (PhotonPlayer player in photonplayers){
 			Player newPlayer = new Player (player);
-			players.Add (new Player(player));
+			players.Add (newPlayer);
 		}
 
 
@@ -756,6 +756,7 @@ public class Game : MonoBehaviour {
 
 
 		//wining saved game
+		/*
 		foreach(City c in cities)
 		{
 			playerCardDeck.Add(new CityCard(c));
@@ -766,11 +767,11 @@ public class Game : MonoBehaviour {
 		foreach (EventKind k in eventKinds)
 		{
 			playerCardDeck.Add(EventCard.getEventCard(k));
-		}
+		}*/
 
 
 		//eventcardsavedgame
-		/*
+
 		List<EventKind> eventKinds = mapInstance.getEventNames();
 		foreach (EventKind k in eventKinds)
 		{
@@ -781,7 +782,7 @@ public class Game : MonoBehaviour {
 		{
 			playerCardDeck.Add(new CityCard(c));
 			infectionDeck.Add(new InfectionCard(c));
-		}*/
+		}
 
 		if(challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain){
 			for(int i = 0; i<2; i++){
