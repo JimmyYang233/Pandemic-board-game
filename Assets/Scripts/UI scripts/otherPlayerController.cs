@@ -16,6 +16,9 @@ public class otherPlayerController : MonoBehaviour
         map = Maps.getInstance();
         content = this.transform.GetChild(3).GetChild(0).GetChild(0);
     }
+	void Update(){
+		setBar ();
+	}
     private void Start()
     {
 
@@ -47,6 +50,7 @@ public class otherPlayerController : MonoBehaviour
     //add city card to gui of other player
     public void setBar()
     {
+		//Debug.Log (cityCardNum+eventCardNum);
         if (cityCardNum + eventCardNum > 4)
         {
             this.transform.GetChild(3).gameObject.GetComponent<ScrollRect>().vertical = true;
