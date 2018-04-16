@@ -3034,6 +3034,8 @@ public class Game : MonoBehaviour {
 			return Color.black;
 		case "yellow":
 			return Color.yellow;
+		case "purple":
+			return Color.magenta;
 		}
 		return Color.yellow;
 	}
