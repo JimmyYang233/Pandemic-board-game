@@ -54,6 +54,12 @@ public class BioTerroristOperation : MonoBehaviour {
                         bioPawn.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
                     }
                 }
+                else if (bioTerrorist.getIsCaptured())
+                {
+                    Debug.Log("Captured bioterrorist");
+                    bioPawn.gameObject.SetActive(true);
+                    bioPawn.transform.GetChild(0).gameObject.SetActive(true);
+                }
                 else
                 {
                     bioPawn.gameObject.SetActive(false);

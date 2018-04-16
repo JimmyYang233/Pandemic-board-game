@@ -2504,7 +2504,7 @@ public class Game : MonoBehaviour {
             {
                 Debug.Log("Has invalid card: Game.cs capture()");
             }
-
+            
             infectionDiscardPile.Add((InfectionCard)card);
         }
 
