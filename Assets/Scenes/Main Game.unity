@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2190,8 +2190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PhotonView: {fileID: 0}
+  seed: 0
   infectionRate: 2
   outbreaksValue: 0
+  BioTerroristVolunteer: -1
   playerPanel: {fileID: 1923207385}
   mainPlayerPanel: {fileID: 177066089}
   playerSelect: {fileID: 346002627}
@@ -43330,6 +43332,7 @@ MonoBehaviour:
   game: {fileID: 73084184}
   playerCardPanel: {fileID: 177066085}
   waitForDiscardPanel: {fileID: 1307264798}
+  isDiscardingCard: 0
 --- !u!1 &1184774070
 GameObject:
   m_ObjectHideFlags: 0
@@ -49179,6 +49182,7 @@ MonoBehaviour:
   basicOperationPanel: {fileID: 182712636}
   playerSelect: {fileID: 346002627}
   otherPlayers: {fileID: 1923207381}
+  selectOtherCard: {fileID: 990919270}
   giveButton: {fileID: 148751997}
   takeButton: {fileID: 383723591}
   cancelButton: {fileID: 1217991699}

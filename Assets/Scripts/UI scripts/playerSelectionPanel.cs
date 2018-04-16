@@ -90,6 +90,7 @@ public class playerSelectionPanel : MonoBehaviour {
 	public void characterSelect(){
 		string name = EventSystem.current.currentSelectedGameObject.name;
 		if (selectStatus == Status.SHARE) {
+			Debug.Log ("select role");
 			share.roleSelected (name);
 		}
 		//remember to turn into status.share

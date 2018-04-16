@@ -14,6 +14,7 @@ public class ShareOperation : MonoBehaviour {
     public GameObject basicOperationPanel;
 	public playerSelectionPanel playerSelect;
 	public GameObject otherPlayers;
+	public otherPlayerCardSelection otherPlayerSelction;
     public Button giveButton;
     public Button takeButton;
     public Button cancelButton;
@@ -82,7 +83,7 @@ public class ShareOperation : MonoBehaviour {
         //load card for the current city
         isTake = false;*/
 		giveButton.GetComponent<Button>().interactable = false;
-		playerCardPanel.SetActive(false);
+		otherPlayers.SetActive (false);
 		basicOperationPanel.SetActive(false);
 
 		playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
@@ -112,8 +113,7 @@ public class ShareOperation : MonoBehaviour {
         otherPlayers.SetActive(false);
         check();
         playerSelect.displayPlayerWithCard();*/
-
-		playerCardPanel.SetActive(false);
+		otherPlayers.SetActive (false);
 		basicOperationPanel.SetActive(false);
 		playerSelect.selectStatus = playerSelectionPanel.Status.SHARE;
 
