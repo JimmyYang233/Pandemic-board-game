@@ -38,6 +38,11 @@ public class PassOperation : MonoBehaviour {
 		this.MutationEventPanel.SetActive (true);
 		MutationEventPanel.transform.GetChild (0).GetComponent<Text> ().text = mutation;
 	}
+		
+	public void showMutationInfection(string mutation){
+		this.MutationEventPanel.SetActive (true);
+		MutationEventPanel.transform.GetChild (0).GetComponent<Text> ().text = mutation;
+	}
     private void startInfectNextCity()
     {
         //Debug.Log("StartInfectNextCity got called");
