@@ -101,4 +101,5 @@ MonoBehaviour:
   - RPC_bioTerroristInfectLocally
   - RPC_bioTerroristInfectRemotely
   - RPC_bioTerroristSabotage
+  - RPC_colonelPlaceMarker
   DisableAutoOpenWizard: 1

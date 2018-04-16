@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6084,6 +6084,7 @@ RectTransform:
   - {fileID: 1204905167}
   - {fileID: 624561549}
   - {fileID: 1084775575}
+  - {fileID: 1029869732}
   m_Father: {fileID: 1629845512}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6288,6 +6289,7 @@ MonoBehaviour:
   - {fileID: 1521600202}
   - {fileID: 214404735}
   - {fileID: 784909844}
+  quarantineMarker: 0
 --- !u!222 &195733778
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6884,6 +6886,7 @@ MonoBehaviour:
   - {fileID: 195733777}
   - {fileID: 784909844}
   - {fileID: 784909845}
+  quarantineMarker: 0
 --- !u!222 &214404736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22038,6 +22041,7 @@ MonoBehaviour:
   - {fileID: 784909810}
   - {fileID: 784909809}
   - {fileID: 784909817}
+  quarantineMarker: 0
 --- !u!1001 &637417056
 Prefab:
   m_ObjectHideFlags: 0
@@ -23152,6 +23156,7 @@ MonoBehaviour:
   epidemiologistSkillButton: {fileID: 1435711907}
   dispatcherSkillButton: {fileID: 624561548}
   operationsExpertSkillButton: {fileID: 1084775572}
+  colonelSkillButton: {fileID: 0}
 --- !u!224 &660150424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29004,6 +29009,7 @@ MonoBehaviour:
   - {fileID: 635151403}
   - {fileID: 784909810}
   - {fileID: 784909818}
+  quarantineMarker: 0
 --- !u!114 &784909810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29024,6 +29030,7 @@ MonoBehaviour:
   - {fileID: 1917851605}
   - {fileID: 784909821}
   - {fileID: 784909819}
+  quarantineMarker: 0
 --- !u!114 &784909811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29043,6 +29050,7 @@ MonoBehaviour:
   - {fileID: 1018759369}
   - {fileID: 784909834}
   - {fileID: 784909823}
+  quarantineMarker: 0
 --- !u!114 &784909813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29063,6 +29071,7 @@ MonoBehaviour:
   - {fileID: 784909843}
   - {fileID: 784909842}
   - {fileID: 784909814}
+  quarantineMarker: 0
 --- !u!114 &784909814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29084,6 +29093,7 @@ MonoBehaviour:
   - {fileID: 784909841}
   - {fileID: 784909840}
   - {fileID: 784909815}
+  quarantineMarker: 0
 --- !u!114 &784909815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29104,6 +29114,7 @@ MonoBehaviour:
   - {fileID: 784909816}
   - {fileID: 784909840}
   - {fileID: 784909814}
+  quarantineMarker: 0
 --- !u!114 &784909816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29123,6 +29134,7 @@ MonoBehaviour:
   - {fileID: 784909815}
   - {fileID: 784909837}
   - {fileID: 784909817}
+  quarantineMarker: 0
 --- !u!114 &784909817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29142,6 +29154,7 @@ MonoBehaviour:
   - {fileID: 784909809}
   - {fileID: 784909816}
   - {fileID: 784909841}
+  quarantineMarker: 0
 --- !u!114 &784909818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29160,6 +29173,7 @@ MonoBehaviour:
   - {fileID: 784909841}
   - {fileID: 784909843}
   - {fileID: 784909809}
+  quarantineMarker: 0
 --- !u!114 &784909819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29178,6 +29192,7 @@ MonoBehaviour:
   - {fileID: 784909810}
   - {fileID: 784909821}
   - {fileID: 784909820}
+  quarantineMarker: 0
 --- !u!114 &784909820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29194,6 +29209,7 @@ MonoBehaviour:
   cityName: 38
   neighbors:
   - {fileID: 784909819}
+  quarantineMarker: 0
 --- !u!114 &784909821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29214,6 +29230,7 @@ MonoBehaviour:
   - {fileID: 784909836}
   - {fileID: 784909822}
   - {fileID: 1917851605}
+  quarantineMarker: 0
 --- !u!114 &784909822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29233,6 +29250,7 @@ MonoBehaviour:
   - {fileID: 784909836}
   - {fileID: 784909835}
   - {fileID: 784909823}
+  quarantineMarker: 0
 --- !u!114 &784909823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29253,6 +29271,7 @@ MonoBehaviour:
   - {fileID: 784909833}
   - {fileID: 784909824}
   - {fileID: 784909822}
+  quarantineMarker: 0
 --- !u!114 &784909824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29272,6 +29291,7 @@ MonoBehaviour:
   - {fileID: 784909833}
   - {fileID: 784909832}
   - {fileID: 2109818244}
+  quarantineMarker: 0
 --- !u!114 &784909825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29291,6 +29311,7 @@ MonoBehaviour:
   - {fileID: 784909827}
   - {fileID: 784909826}
   - {fileID: 2109818244}
+  quarantineMarker: 0
 --- !u!114 &784909826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29308,6 +29329,7 @@ MonoBehaviour:
   neighbors:
   - {fileID: 784909827}
   - {fileID: 784909825}
+  quarantineMarker: 0
 --- !u!114 &784909827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29326,6 +29348,7 @@ MonoBehaviour:
   - {fileID: 784909835}
   - {fileID: 784909825}
   - {fileID: 784909826}
+  quarantineMarker: 0
 --- !u!114 &784909828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29344,6 +29367,7 @@ MonoBehaviour:
   - {fileID: 784909829}
   - {fileID: 784909832}
   - {fileID: 1201592486}
+  quarantineMarker: 0
 --- !u!114 &784909829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29362,6 +29386,7 @@ MonoBehaviour:
   - {fileID: 784909830}
   - {fileID: 784909832}
   - {fileID: 784909828}
+  quarantineMarker: 0
 --- !u!114 &784909830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29381,6 +29406,7 @@ MonoBehaviour:
   - {fileID: 784909833}
   - {fileID: 784909831}
   - {fileID: 784909829}
+  quarantineMarker: 0
 --- !u!114 &784909831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29399,6 +29425,7 @@ MonoBehaviour:
   - {fileID: 784909830}
   - {fileID: 784909833}
   - {fileID: 784909832}
+  quarantineMarker: 0
 --- !u!114 &784909832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29420,6 +29447,7 @@ MonoBehaviour:
   - {fileID: 2109818244}
   - {fileID: 784909824}
   - {fileID: 784909831}
+  quarantineMarker: 0
 --- !u!114 &784909833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29440,6 +29468,7 @@ MonoBehaviour:
   - {fileID: 784909831}
   - {fileID: 784909824}
   - {fileID: 784909823}
+  quarantineMarker: 0
 --- !u!114 &784909834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29459,6 +29488,7 @@ MonoBehaviour:
   - {fileID: 784909823}
   - {fileID: 784909833}
   - {fileID: 784909830}
+  quarantineMarker: 0
 --- !u!114 &784909835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29477,6 +29507,7 @@ MonoBehaviour:
   - {fileID: 784909822}
   - {fileID: 784909827}
   - {fileID: 784909825}
+  quarantineMarker: 0
 --- !u!114 &784909836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29494,6 +29525,7 @@ MonoBehaviour:
   neighbors:
   - {fileID: 784909821}
   - {fileID: 784909822}
+  quarantineMarker: 0
 --- !u!114 &784909837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29511,6 +29543,7 @@ MonoBehaviour:
   neighbors:
   - {fileID: 784909840}
   - {fileID: 784909816}
+  quarantineMarker: 0
 --- !u!114 &784909838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29529,6 +29562,7 @@ MonoBehaviour:
   - {fileID: 784909839}
   - {fileID: 784909815}
   - {fileID: 784909816}
+  quarantineMarker: 0
 --- !u!114 &784909839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29546,6 +29580,7 @@ MonoBehaviour:
   neighbors:
   - {fileID: 784909815}
   - {fileID: 784909838}
+  quarantineMarker: 0
 --- !u!114 &784909840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29565,6 +29600,7 @@ MonoBehaviour:
   - {fileID: 784909815}
   - {fileID: 784909814}
   - {fileID: 784909841}
+  quarantineMarker: 0
 --- !u!114 &784909841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29585,6 +29621,7 @@ MonoBehaviour:
   - {fileID: 784909814}
   - {fileID: 784909842}
   - {fileID: 784909818}
+  quarantineMarker: 0
 --- !u!114 &784909842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29603,6 +29640,7 @@ MonoBehaviour:
   - {fileID: 784909813}
   - {fileID: 784909843}
   - {fileID: 784909841}
+  quarantineMarker: 0
 --- !u!114 &784909843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29622,6 +29660,7 @@ MonoBehaviour:
   - {fileID: 784909813}
   - {fileID: 784909842}
   - {fileID: 784909818}
+  quarantineMarker: 0
 --- !u!114 &784909844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29642,6 +29681,7 @@ MonoBehaviour:
   - {fileID: 784909845}
   - {fileID: 784909813}
   - {fileID: 784909843}
+  quarantineMarker: 0
 --- !u!114 &784909845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29661,6 +29701,7 @@ MonoBehaviour:
   - {fileID: 784909844}
   - {fileID: 784909813}
   - {fileID: 784909814}
+  quarantineMarker: 0
 --- !u!1 &785789590
 GameObject:
   m_ObjectHideFlags: 0
@@ -37432,6 +37473,7 @@ MonoBehaviour:
   - {fileID: 1972338544}
   - {fileID: 1024837862}
   - {fileID: 1917851605}
+  quarantineMarker: 0
 --- !u!1 &1018981774
 GameObject:
   m_ObjectHideFlags: 0
@@ -37679,6 +37721,7 @@ MonoBehaviour:
   - {fileID: 635151403}
   - {fileID: 1018759369}
   - {fileID: 1917851605}
+  quarantineMarker: 0
 --- !u!1 &1024848839 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1519134435638626, guid: b911c18d0f18e66488fafae5448df6e1,
@@ -37961,6 +38004,128 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1028480610}
+--- !u!1 &1029869731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1029869732}
+  - component: {fileID: 1029869735}
+  - component: {fileID: 1029869734}
+  - component: {fileID: 1029869733}
+  m_Layer: 9
+  m_Name: ColonelSkill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1029869732
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029869731}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000145, y: 1.0000145, z: 1.0000145}
+  m_Children:
+  - {fileID: 1301984991}
+  m_Father: {fileID: 182712637}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 257.20004, y: 72.300064}
+  m_SizeDelta: {x: 131.5, y: 123.8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1029869733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029869731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1029869734}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 125200431}
+        m_MethodName: operationsExpertchooseCity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1029869734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029869731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 7dc6dd5ca2ef9462b81c07e1e9d84ec0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1029869735
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029869731}
 --- !u!1 &1032997124
 GameObject:
   m_ObjectHideFlags: 0
@@ -43849,6 +44014,7 @@ MonoBehaviour:
   - {fileID: 1277945684}
   - {fileID: 1521600202}
   - {fileID: 214404735}
+  quarantineMarker: 0
 --- !u!222 &1201592487
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -46893,6 +47059,7 @@ MonoBehaviour:
   - {fileID: 2143648673}
   - {fileID: 1521600202}
   - {fileID: 1201592486}
+  quarantineMarker: 0
 --- !u!222 &1277945685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -47531,6 +47698,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1300778688}
+--- !u!1 &1301984990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1301984991}
+  - component: {fileID: 1301984993}
+  - component: {fileID: 1301984992}
+  m_Layer: 9
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1301984991
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301984990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1029869732}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 3.8, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1301984992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301984990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Place Marker
+--- !u!222 &1301984993
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301984990}
 --- !u!1 &1304288021
 GameObject:
   m_ObjectHideFlags: 0
@@ -49182,7 +49423,7 @@ MonoBehaviour:
   basicOperationPanel: {fileID: 182712636}
   playerSelect: {fileID: 346002627}
   otherPlayers: {fileID: 1923207381}
-  selectOtherCard: {fileID: 990919270}
+  otherPlayerSelction: {fileID: 0}
   giveButton: {fileID: 148751997}
   takeButton: {fileID: 383723591}
   cancelButton: {fileID: 1217991699}
@@ -55039,6 +55280,7 @@ MonoBehaviour:
   - {fileID: 214404735}
   - {fileID: 195733777}
   - {fileID: 2143648673}
+  quarantineMarker: 0
 --- !u!222 &1521600203
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68329,6 +68571,7 @@ MonoBehaviour:
   - {fileID: 1018759369}
   - {fileID: 784909810}
   - {fileID: 784909821}
+  quarantineMarker: 0
 --- !u!1 &1922055353
 GameObject:
   m_ObjectHideFlags: 0
@@ -70207,6 +70450,7 @@ MonoBehaviour:
   - {fileID: 784909811}
   - {fileID: 1018759369}
   - {fileID: 635151403}
+  quarantineMarker: 0
 --- !u!114 &1972338545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76729,6 +76973,7 @@ MonoBehaviour:
   - {fileID: 1277945684}
   - {fileID: 2143648673}
   - {fileID: 784909825}
+  quarantineMarker: 0
 --- !u!222 &2109818245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -78141,6 +78386,7 @@ MonoBehaviour:
   - {fileID: 2109818244}
   - {fileID: 1277945684}
   - {fileID: 1521600202}
+  quarantineMarker: 0
 --- !u!222 &2143648674
 CanvasRenderer:
   m_ObjectHideFlags: 0
