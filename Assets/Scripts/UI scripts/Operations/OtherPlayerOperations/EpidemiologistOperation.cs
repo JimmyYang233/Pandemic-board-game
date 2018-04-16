@@ -44,8 +44,7 @@ public class EpidemiologistOperation : MonoBehaviour {
 		cardName = name;
 	}
 	public void takeClick(){
-		//game.share (characterName, cardName);
-		game.EpidemiologistShare(cardName);
+        game.share(characterName, cardName);
 		cardSelection.clear ();
 	}
 
