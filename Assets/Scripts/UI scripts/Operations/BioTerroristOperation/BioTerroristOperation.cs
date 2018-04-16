@@ -97,9 +97,9 @@ public class BioTerroristOperation : MonoBehaviour {
                     {
                         foreach(PlayerCard card in currentPlayer.getHand())
                         {
-                            if(card.getType() == CardType.CityCard)
+                            if(card.getType() == CardType.InfectionCard)
                             {
-                                CityCard cityCard = (CityCard)card;
+                                InfectionCard cityCard = (InfectionCard)card;
                                 if (cityCard.getColor() == currentCity.getColor())
                                 {
                                     sabotageButton.GetComponent<Button>().interactable = true;
