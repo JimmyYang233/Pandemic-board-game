@@ -1133,7 +1133,7 @@ public class Game : MonoBehaviour {
 			foreach (PlayerCard pc in player.getHand()) {
 				Debug.Log (pc.GetType());
 				//for gui
-				if (!player.Equals(me))
+				if (!player.Equals(me) && player.getRoleKind()!=RoleKind.BioTerrorist)
 				{
 					playerPanel.addPlayerCardToOtherPlayer(player.getRoleKind(), pc);
 				}
