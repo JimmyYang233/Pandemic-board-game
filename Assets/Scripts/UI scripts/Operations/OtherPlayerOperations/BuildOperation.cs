@@ -42,7 +42,7 @@ public class BuildOperation : MonoBehaviour
         {
             buildQuarantineButton.gameObject.GetComponent<Button>().interactable = false;
         }
-        if (!(currentCity.getHasResearch()))
+        if (!(currentCity.getHasResearch())&&currentPlayer.containsSpecificCityCard(currentCity))
         {
             buildResearchButton.gameObject.GetComponent<Button>().interactable = true;
         }
