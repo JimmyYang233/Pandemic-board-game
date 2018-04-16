@@ -101,6 +101,7 @@ public class BioTerroristOperation : MonoBehaviour {
 
     public void capture()
     {
+        Debug.Log("Bioterrorist is captured!");
         game.BioTerroristCapture();
         resetAll();
     }
