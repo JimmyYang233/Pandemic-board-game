@@ -2746,11 +2746,10 @@ public class Game : MonoBehaviour {
 		if (challenge != Challenge.BioTerroist && challenge != Challenge.BioTerroistAndVirulentStrain) {
 			currentPlayer = players [(players.IndexOf (currentPlayer) + 1) % (players.Count)];
 			if (currentPlayer.hasEventCardInFront ()) {
-				if (currentPlayer.hasEventCardInFront ()) {
-					infectionRate = infectionArray [index]; 
-					currentPlayer.terminateCommercialTravelBanTurn ();
-				}
-			}
+				infectionRate = infectionArray [index];
+                currentPlayer.terminateCommercialTravelBanTurn ();
+                gameInfoController.displayInfectionRate();
+            }
 		} else {
 			if (currentPlayer.getRoleKind() == RoleKind.BioTerrorist) {
 				getBioTerrorist().refillDriveAction();
