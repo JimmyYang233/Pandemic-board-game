@@ -1518,16 +1518,27 @@ public class Game : MonoBehaviour {
         RoleKind rolekind = pl1.getRoleKind();
         Pawn p = pl1.getPlayerPawn();
 		City initialCity = p.getCity();
-		if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && destinationCity.contains(RoleKind.BioTerrorist) && rolekind!= RoleKind.BioTerrorist) {
+		if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain)
+			&& destinationCity.contains(RoleKind.BioTerrorist) && rolekind!= RoleKind.BioTerrorist) {
 			getBioTerrorist ().spot ();
-		} else if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && pl1.getPlayerPawn().getCity().getNumPlayers () == 2 && 
+		} 
+		if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) 
+			&& pl1.getPlayerPawn().getCity().getNumPlayers () == 2 && 
 			pl1.getPlayerPawn().getCity().contains(RoleKind.BioTerrorist) && rolekind!= RoleKind.BioTerrorist) {
 			getBioTerrorist ().unSpot ();
 		}
 
-		if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && destinationCity.getNumPlayers() > 0 && rolekind == RoleKind.BioTerrorist) {
+		if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && 
+			pl1.getPlayerPawn().getCity().getNumPlayers() > 1 && rolekind == RoleKind.BioTerrorist) {
+			getBioTerrorist ().unSpot ();
+		}
+
+		if ((Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain) && 
+			destinationCity.getNumPlayers() > 0 && rolekind == RoleKind.BioTerrorist) {
 			getBioTerrorist ().spot ();
-		} 
+		}
+
+
 		p.setCity(destinationCity);
 		initialCity.removePawn(p);
 		destinationCity.addPawn(p);
