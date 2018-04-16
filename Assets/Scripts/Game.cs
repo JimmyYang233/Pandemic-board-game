@@ -1432,7 +1432,6 @@ public class Game : MonoBehaviour {
 		currentPlayer.refillAction();
 		currentPlayer.setOncePerturnAction(false);
         currentPlayer.setMobileHospitalActivated(false);
-
 		usedTreated = false;
 
         if (currentPlayer.getMobileHospitalActivated())
@@ -1525,12 +1524,7 @@ public class Game : MonoBehaviour {
 
 	private void infectCity()
 	{
-		if(oneQuietNightUsed){
-			oneQuietNightUsed = false;
-			if (PhotonNetwork.isMasterClient)
-            	PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
-			return;
-        }
+		
 		StartCoroutine (checkHand());
 		//Debug.Log ("start infect city");
 		//nextPlayer();
@@ -1538,7 +1532,16 @@ public class Game : MonoBehaviour {
 
 	IEnumerator checkHand(){
 		yield return new WaitUntil(() => currentPlayer.getHandLimit() >= currentPlayer.getHandSize());
-		passOperation.startInfection ();
+        if (oneQuietNightUsed)
+        {
+            oneQuietNightUsed = false;
+            if (PhotonNetwork.isMasterClient)
+                PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
+        }
+        else
+        {
+            passOperation.startInfection();
+        }
 	}
 
 	private void notifyResolveEpidemic(){
