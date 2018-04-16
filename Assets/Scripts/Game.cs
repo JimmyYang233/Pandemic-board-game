@@ -2047,6 +2047,7 @@ public class Game : MonoBehaviour {
 						VirulentStrainDisease = d;
 					}
 				}
+				gameInfoController.setSpecialDisease(VirulentStrainDisease.getColor());
 			}
 
 			record.VSEffect(currentVirulentStrainEpidemicEffects);

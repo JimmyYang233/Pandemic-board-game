@@ -8,7 +8,7 @@ public class EpidemicCard : PlayerCard {
     private static EpidemicCard INSTANCE = new EpidemicCard();
 	private string name = "Epidemic";
 
-    private List<int> intList = new List<int>(){0,1,2,3,5,6,7};
+    private List<int> intList = new List<int>(){5,6,7,3,0,1,2};
 
     private EpidemicCard() : base(CardType.EpidemicCard)
     {
@@ -25,7 +25,8 @@ public class EpidemicCard : PlayerCard {
 
     public VirulentStrainEpidemicEffects getVirulentStrainEpidemicEffects(){
         if(intList.Count>0){
-            int index = UnityEngine.Random.Range(0, intList.Count);
+            // int index = UnityEngine.Random.Range(0, intList.Count);
+            int index = 0;
             VirulentStrainEpidemicEffects vse =  (VirulentStrainEpidemicEffects)(intList[index]);
             intList.RemoveAt(index);
             return vse;
