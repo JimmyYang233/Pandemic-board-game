@@ -1469,7 +1469,7 @@ public class Game : MonoBehaviour {
 
             if (currentPlayer == me && numOfInfection < infectionRate)
             {
-                Debug.Log ("num of infection is + " + numOfInfection.ToString());
+                //Debug.Log ("num of infection is + " + numOfInfection.ToString());
                 passOperation.startInfection();
             }
        
@@ -2724,7 +2724,7 @@ public class Game : MonoBehaviour {
 		}
         //Debug.Log("gamePhase has changed");
         currentPhase = GamePhase.PlayerTakeTurn;
-		Debug.Log (players.IndexOf(currentPlayer));
+		//Debug.Log (players.IndexOf(currentPlayer));
     }
 
     public void giveCard(Player p1, Player p2, CityCard card)

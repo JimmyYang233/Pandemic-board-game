@@ -95,6 +95,7 @@ public class BuildOperation : MonoBehaviour
             {
                 if (city.getMarker() > 0)
                 {
+                    Debug.Log("Add this marker in City");
                     citiesWithMarker.Add(city);
                 }
             }
@@ -106,6 +107,7 @@ public class BuildOperation : MonoBehaviour
                     {
                         Debug.Log("addListener in button");
                         Button button = child.gameObject.GetComponent<Button>();
+                        button.interactable = true;
                         button.onClick.RemoveAllListeners();
                         button.onClick.AddListener(delegate { buildQuarantine(city); });
                         button.onClick.AddListener(delegate { basicOperation.resetAll(); });
@@ -133,6 +135,7 @@ public class BuildOperation : MonoBehaviour
                     Debug.Log("Removing Listener in research button");
                     Button button = child.gameObject.GetComponent<Button>();
                     button.onClick.RemoveAllListeners();
+
                 }
             }
         }
@@ -146,6 +149,7 @@ public class BuildOperation : MonoBehaviour
                     Debug.Log("Removing Listener in marker Button");
                     Button button = child.gameObject.GetComponent<Button>();
                     button.onClick.RemoveAllListeners();
+                    button.interactable = false;
                 }
             }
         }
@@ -156,12 +160,38 @@ public class BuildOperation : MonoBehaviour
     public void buildResearch(City removeCity)
     {
         game.Build(removeCity.getCityName().ToString(), currentCity.getCityName().ToString());
+        foreach (City city in citiesWithResearch)
+        {
+            foreach (Transform child in city.transform)
+            {
+                if (child.tag == "researchStation")
+                {
+                    Debug.Log("Removing Listener in research button");
+                    Button button = child.gameObject.GetComponent<Button>();
+                    button.onClick.RemoveAllListeners();
+                }
+            }
+        }
         citiesWithResearch.Clear();
     }
 
     public void buildQuarantine(City removeCity)
     {
         game.PlaceMarker(removeCity.getCityName().ToString());
+        
+        foreach (City city in citiesWithMarker)
+        {
+            foreach (Transform child in city.transform)
+            {
+                if (child.tag == "marker")
+                {
+                    Debug.Log("Removing Listener in marker Button");
+                    Button button = child.gameObject.GetComponent<Button>();
+                    button.onClick.RemoveAllListeners();
+                    button.interactable = false;
+                }
+            }
+        }
         citiesWithMarker.Clear();
     }
 }
