@@ -41,17 +41,23 @@ public class GameInfoDisplay : MonoBehaviour
 
 	}
 	public void setSpecialDisease(Color c){
+		Debug.Log ("I a here");
 		Transform t = cubeLeft.transform.GetChild (0);
 		if (c == Color.black) {
+			Debug.Log ("black");
 			t = cubeLeft.transform.GetChild (1);
 		} else if (c == Color.blue) {
 			t = cubeLeft.transform.GetChild (2);
+			Debug.Log ("black");
 		} else if (c == Color.red) {
 			t = cubeLeft.transform.GetChild (3);
+			Debug.Log ("black");
 		} else if (c == Color.magenta) {
-			t = cubeLeft.transform.GetChild (3);
+			t = cubeLeft.transform.GetChild (4);
+			Debug.Log ("black");
 		}
-		t.GetChild (4).gameObject.SetActive (true);
+		t.GetChild (3).gameObject.SetActive (true);
+		Debug.Log ("black");
 	}
 	public void cure(Color c){
 		Transform t = cubeLeft.transform.GetChild (0);
