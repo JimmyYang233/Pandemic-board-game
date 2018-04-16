@@ -9,7 +9,7 @@ public class BioSabotageOperation : MonoBehaviour {
     public GameObject playerCardPanel;
     Player currentPlayer;
     City currentCity;
-
+    public BasicOperation basicOperation;
 
 	
 	// Update is called once per frame
@@ -31,6 +31,7 @@ public class BioSabotageOperation : MonoBehaviour {
             {
                 child.GetComponent<Button>().interactable = true;
                 child.GetComponent<Button>().onClick.AddListener(() => sabotage(name));
+                child.GetComponent<Button>().onClick.AddListener(() => basicOperation.resetAll());
             }
             else
             {
