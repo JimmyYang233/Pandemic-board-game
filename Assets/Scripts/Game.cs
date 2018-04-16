@@ -11,6 +11,7 @@ public class Game : MonoBehaviour {
 	public static Game Instance;
 	public PhotonView PhotonView;
 	public int seed;
+	public int currentPlayerIndex;
 
 	#region private variables
 	private GameData savedGame;
@@ -720,7 +721,7 @@ public class Game : MonoBehaviour {
 		});
 		foreach (PhotonPlayer player in photonplayers){
 			Player newPlayer = new Player (player);
-			players.Add (new Player(player));
+			players.Add (new Player(player)); 
 		}
 
 
@@ -752,6 +753,8 @@ public class Game : MonoBehaviour {
 		difficulty = nEpidemicCard;
 		me = FindPlayer(PhotonNetwork.player);
 		currentPlayer = players[0];
+		currentPlayerIndex = 0;
+
 		//Debug.Log ("current player is player" + currentPlayer.PhotonPlayer.NickName);
 
 
@@ -801,6 +804,12 @@ public class Game : MonoBehaviour {
         {
             BioTerroristVolunteer =  UnityEngine.Random.Range(0, players.Count);
         }
+
+		if ( (challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain) 
+			&& (BioTerroristVolunteer == 0)){
+			currentPlayer = players [1];
+			currentPlayerIndex = 1;
+		}
         /*
 		Role r1 = new Role (RoleKind.Archivist);
 		Role r2 = new Role (RoleKind.ContainmentSpecialist);
@@ -2664,15 +2673,34 @@ public class Game : MonoBehaviour {
 
     public void nextPlayer()
     {
-		currentPlayer =(challenge == Challenge.BioTerroist) ? findPlayer (RoleKind.BioTerrorist):players[(players.IndexOf(currentPlayer) + 1) % (players.Count)];
-        if (currentPlayer.hasEventCardInFront())
-        {
-            if(currentPlayer.hasEventCardInFront())
-            {
-                infectionRate = infectionArray[index]; 
-                currentPlayer.terminateCommercialTravelBanTurn();
-            }
-        }
+		if (challenge != Challenge.BioTerroist && challenge != Challenge.BioTerroistAndVirulentStrain) {
+			currentPlayer = players [(players.IndexOf (currentPlayer) + 1) % (players.Count)];
+			if (currentPlayer.hasEventCardInFront ()) {
+				if (currentPlayer.hasEventCardInFront ()) {
+					infectionRate = infectionArray [index]; 
+					currentPlayer.terminateCommercialTravelBanTurn ();
+				}
+			}
+		} else {
+			if (currentPlayer.getRoleKind() == RoleKind.BioTerrorist) {
+				currentPlayer = players [(currentPlayerIndex + 1) % (players.Count)];
+				currentPlayerIndex++;
+				if (currentPlayer.getRoleKind() == RoleKind.BioTerrorist) {
+					currentPlayer = players [(currentPlayerIndex + 1) % (players.Count)];
+				}
+				currentPlayerIndex++;
+				if (currentPlayer.hasEventCardInFront ()) {
+					if (currentPlayer.hasEventCardInFront ()) {
+						infectionRate = infectionArray [index]; 
+						currentPlayer.terminateCommercialTravelBanTurn ();
+					}
+				}
+
+			} else {
+				currentPlayer = findPlayer (RoleKind.BioTerrorist.ToString());
+			}
+		}
+
         currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log (players.IndexOf(currentPlayer));
     }
