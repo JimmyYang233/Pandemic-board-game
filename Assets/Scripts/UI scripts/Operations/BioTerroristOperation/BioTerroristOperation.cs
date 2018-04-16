@@ -27,6 +27,14 @@ public class BioTerroristOperation : MonoBehaviour {
         currentCity = currentPlayer.getPlayerPawn().getCity();
         me = game.FindPlayer(PhotonNetwork.player);
         currentPlayer = game.getCurrentPlayer();
+        BioTerrorist bioTerrorist = game.getBioTerrorist();
+        Pawn bioPawn = bioTerrorist.getPawn();
+        if (bioTerrorist.getIsCaptured())
+        {
+            Debug.Log("Captured bioterrorist");
+            bioPawn.gameObject.SetActive(true);
+            bioPawn.transform.GetChild(0).gameObject.SetActive(true);
+        }
         if (me.getRoleKind() == RoleKind.BioTerrorist)
         {
             bioTerroristPanel.gameObject.SetActive(true);
@@ -37,11 +45,9 @@ public class BioTerroristOperation : MonoBehaviour {
         {
             basicOperationPanel.gameObject.SetActive(true);
             movePanel.gameObject.SetActive(true);
-            BioTerrorist bioTerrorist = game.getBioTerrorist();
-
             if (game.getChallenge() == Challenge.BioTerroist)
             {
-                Pawn bioPawn = bioTerrorist.getPawn();
+                
                 if (bioTerrorist.getIsSpotted())
                 {
                     bioPawn.gameObject.SetActive(true);
@@ -53,12 +59,6 @@ public class BioTerroristOperation : MonoBehaviour {
                     {
                         bioPawn.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
                     }
-                }
-                else if (bioTerrorist.getIsCaptured())
-                {
-                    Debug.Log("Captured bioterrorist");
-                    bioPawn.gameObject.SetActive(true);
-                    bioPawn.transform.GetChild(0).gameObject.SetActive(true);
                 }
                 else
                 {

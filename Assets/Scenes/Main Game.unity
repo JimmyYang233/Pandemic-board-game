@@ -5986,6 +5986,7 @@ MonoBehaviour:
     type: 2}
   playerCardStart: {fileID: 532244875}
   eventCardStart: {fileID: 752810892}
+  reserve: {x: 0, y: 0, z: 0}
   eventCardPanel: {fileID: 1900971756}
   radius: 70
   totalDegree: 90
@@ -21933,7 +21934,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182712636}
+      - m_Target: {fileID: 1629845511}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -39527,7 +39528,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 182712636}
+      - m_Target: {fileID: 1629845511}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -45065,7 +45066,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182712636}
+      - m_Target: {fileID: 1629845511}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -62655,7 +62656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182712636}
+      - m_Target: {fileID: 1629845511}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -70115,7 +70116,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182712636}
+      - m_Target: {fileID: 1629845511}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
