@@ -852,7 +852,7 @@ public class Game : MonoBehaviour {
             }
             else
             {
-                r = new Role(selectRole());
+                //r = new Role(selectRole());
             }
             
             Pawn pawn;
