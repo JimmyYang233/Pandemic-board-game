@@ -3021,16 +3021,13 @@ public class Game : MonoBehaviour {
 	}
 
 	public InfectionCard findInfectionCard(String cardName){
-		foreach (InfectionCard ic in infectionDeck){
-			if(ic.getName() == cardName){
-				return ic;
-			}
-		}
-		foreach (InfectionCard ic in infectionDiscardPile){
-			if(ic.getName() == cardName){
-				return ic;
-			}
-		}
+        foreach(InfectionCard ic in Collection.getAllInfectionCards())
+        {
+            if (ic.getName() == cardName)
+            {
+                return ic;
+            }
+        }
 		Debug.Log("InfectionCard not found. Class: Game.cs : findInfectionCard");
 		return null;
 	}
