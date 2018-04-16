@@ -837,7 +837,7 @@ public class Game : MonoBehaviour {
         }
 
 		if ( (challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain) 
-			&& (BioTerroristVolunteer == 0)){
+			&& (BioTerroristVolunteer == 0) && players.Count > 1){
 			currentPlayer = players [1];
 			currentPlayerIndex = 1;
 		}
@@ -949,7 +949,7 @@ public class Game : MonoBehaviour {
 		}
         shuffleAndAddEpidemic();
 		setUp();
-        if (challenge == Challenge.BioTerroist)
+		if (challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain)
         {
             bioTerroristDraw(players[BioTerroristVolunteer],2, false);
         }
@@ -1444,7 +1444,7 @@ public class Game : MonoBehaviour {
 		//Note that epidemic card is resolved in "draw" method
 		//if there is no enough player cards in the deck, players lose the game
 		
-		if ((currentPlayer!= players[BioTerroristVolunteer] || Challenge.BioTerroist != challenge) && !draw(currentPlayer, 2))
+		if ((currentPlayer!= players[BioTerroristVolunteer] || (Challenge.BioTerroist != challenge&& challenge != Challenge.BioTerroistAndVirulentStrain)) && !draw(currentPlayer, 2))
 		{
 			return;
 		}
@@ -1461,7 +1461,12 @@ public class Game : MonoBehaviour {
 	}
 
 	private void discard(PlayerCard card){
-		currentPlayer.removeCard (card);
+		if ((challenge== Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain) && currentPlayer == players [BioTerroristVolunteer]) {
+			currentPlayer.removeForBio (card);
+		} else {
+			currentPlayer.removeCard (card);
+		}
+
 		if (!currentPlayer.Equals(me))
 		{
 			playerPanel.deletePlayerCardFromOtherPlayer(currentPlayer.getRoleKind(), card);
@@ -1987,7 +1992,7 @@ public class Game : MonoBehaviour {
         }
         foreach (Player p in players)
         {
-            if (p != players[BioTerroristVolunteer] || Challenge.BioTerroist != challenge)
+			if (p != players[BioTerroristVolunteer] || (Challenge.BioTerroist != challenge&& Challenge.BioTerroistAndVirulentStrain != challenge))
             {
 				//eventcardsavedgame, change card needed to 5
 				//draw(p, 5);
@@ -2282,14 +2287,15 @@ public class Game : MonoBehaviour {
                 return false;
             }
 
-            if (remainingCubes - (3 - cubeNumber) < 0)
-            {
-                notifyGameLost(GameLostKind.RunOutOfDiseaseCube);
-                //setGamePhase (GamePhase.Completed);
-                return false;
-            }
+            
             if (color != Color.magenta)
             {
+				if (remainingCubes - (3 - cubeNumber) < 0)
+				{
+					notifyGameLost(GameLostKind.RunOutOfDiseaseCube);
+					//setGamePhase (GamePhase.Completed);
+					return false;
+				}
                 city.addCubes(disease, 3 - cubeNumber);
                 disease.removeCubes(3 - cubeNumber);
             }
@@ -2306,7 +2312,7 @@ public class Game : MonoBehaviour {
                 if (!infect(neighbor, color, 1)) {
                     return false;
                 };
-				if (purpleCubeNumber > 0) 
+				if (purpleCubeNumber > 0 && color != Color.magenta) 
 				{
 					if (!infect (neighbor, Color.magenta, 1)) {
 						return false;
@@ -2632,6 +2638,7 @@ public class Game : MonoBehaviour {
     
     public void bioTerroristInfectLocally()
     {
+		outbreakedCities.Clear ();
         BioTerrorist bioTerrorist = getBioTerrorist();
         if (bioTerrorist.getinfectLocallyUsed())
         {
@@ -2650,6 +2657,7 @@ public class Game : MonoBehaviour {
 
     public void bioTerroristInfectRemotely(InfectionCard card)
     {
+		outbreakedCities.Clear ();
         BioTerrorist bioTerrorist = getBioTerrorist();
         if (bioTerrorist.getInfectRemotelyUsed())
         {
@@ -2928,7 +2936,7 @@ public class Game : MonoBehaviour {
     // to do: inform the player that they lose the game
     private void notifyGameLost(GameLostKind lostKind)
     {
-        if(Challenge.BioTerroist == challenge && numOfPurpleCubesOnTheBoard()>0 && !diseases[Color.magenta].isEradicated())
+		if((Challenge.BioTerroist == challenge || Challenge.BioTerroistAndVirulentStrain == challenge )&& numOfPurpleCubesOnTheBoard()>0 && !diseases[Color.magenta].isEradicated())
         {
             notifyBioterroristWin();
         }
@@ -3205,7 +3213,7 @@ public class Game : MonoBehaviour {
                 return ic;
             }
         }
-        if (Challenge.BioTerroist == challenge)
+		if (Challenge.BioTerroist == challenge || Challenge.BioTerroistAndVirulentStrain == challenge)
         {
             foreach (PlayerCard pc in players[BioTerroristVolunteer].getHand())
             {

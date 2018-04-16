@@ -291,6 +291,15 @@ public class Player {
 		handCard.Remove(card);
 	}
 
+	public void removeForBio(PlayerCard card){
+		foreach(PlayerCard p in handCard){
+			if(card.getName() == p.getName()){
+				handCard.Remove(p);
+				break;
+			}
+		}
+	}
+
     public void dropAllCards()
     {
         handCard.Clear();
