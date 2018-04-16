@@ -73,8 +73,6 @@ public class challengeSelection : MonoBehaviour {
 			//if(PhotonNetwork.room.CustomProperties["Challenge"]
         }
 		if (!PlayerNetwork.Instance.isNewGame){
-			StartGame.interactable = false;
-			HideRoom.interactable = false;
 			VirulentStrainChallenge.interactable = false;
 			MutationChallenge.interactable = false;
 			BioTerroristChallenge.interactable = false;
