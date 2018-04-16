@@ -977,10 +977,8 @@ public class Game : MonoBehaviour {
 						}
 					}
 					else{
-						if (Enum.IsDefined (typeof(InfectionCard), s)) {
-							curPlayer.addCard (new InfectionCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
-							Debug.Log ("Bio-t has infection card: " + s);
-						}
+						curPlayer.addCard (new InfectionCard(findCity((CityName)Enum.Parse(typeof(CityName),s))));
+						Debug.Log ("Bio-t has infection card: " + s);
 					}
 
 
