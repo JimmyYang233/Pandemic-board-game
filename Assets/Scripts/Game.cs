@@ -2608,7 +2608,7 @@ public class Game : MonoBehaviour {
 		}
 
 
-        currentPlayer.decreaseRemainingAction();
+        // currentPlayer.decreaseRemainingAction();
     }
 
     public BioTerrorist getBioTerrorist()
