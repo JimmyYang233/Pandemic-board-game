@@ -2195,10 +2195,6 @@ public class Game : MonoBehaviour {
         int cubeNumber = city.getCubeNumber(color);
         int remainingCubes = disease.getNumOfDiseaseCubeLeft();
         int purpleCubeNumber = city.getCubeNumber(Color.magenta);
-        if (purpleCubeNumber > 0) 
-        {
-            infect(city, Color.magenta, 1);
-        }
         //if not exceeding 3 cubes, put cubes to that city
         if (cubeNumber < 3)
         {
@@ -2256,6 +2252,12 @@ public class Game : MonoBehaviour {
                 if (!infect(neighbor, color, 1)) {
                     return false;
                 };
+				if (purpleCubeNumber > 0) 
+				{
+					if (!infect (neighbor, Color.magenta, 1)) {
+						return false;
+					}
+				}
             }
 
             return true;
