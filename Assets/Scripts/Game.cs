@@ -502,15 +502,8 @@ public class Game : MonoBehaviour {
 	}
 
 	public void EndTurn(){
-        if (currentPlayer.getRoleKind() == RoleKind.BioTerrorist)
-        {
-            PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
-        }
-        else
-        {
-            PhotonView.RPC("RPC_endTurn", PhotonTargets.All);
-            PhotonView.RPC("RPC_infectCity", currentPlayer.PhotonPlayer);
-        }
+        PhotonView.RPC("RPC_endTurn", PhotonTargets.All);
+        PhotonView.RPC("RPC_infectCity", currentPlayer.PhotonPlayer);
 	}
 
 	//called by front end to make all clients infect next city
