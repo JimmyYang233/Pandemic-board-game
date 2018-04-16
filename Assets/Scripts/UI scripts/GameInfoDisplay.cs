@@ -12,6 +12,7 @@ public class GameInfoDisplay : MonoBehaviour
 	public GameObject cubeLeft;
 	public GameObject researchLabLeft;
 	public GameObject cardLeft;
+	public GameObject mark;
     public List<GameObject> outbreakrates;
     public List<GameObject> infectionrates;
 
@@ -21,9 +22,9 @@ public class GameInfoDisplay : MonoBehaviour
         {
             cubeLeft.transform.GetChild(4).gameObject.SetActive(true);
         }
-		int marker = Int32.Parse(this.transform.GetChild (5).GetChild (0).GetComponent<Text> ().text);
+		int marker = Int32.Parse(mark.transform.GetChild (0).GetComponent<Text> ().text);
 		if (marker != game.getMarkersLeft ()) {
-			this.transform.GetChild (5).GetChild (0).GetComponent<Text> ().text = game.getMarkersLeft ().ToString ();
+			mark.transform.GetChild (0).GetComponent<Text> ().text = game.getMarkersLeft ().ToString ();
 		}
     }
 

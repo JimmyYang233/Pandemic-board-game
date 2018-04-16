@@ -66261,6 +66261,7 @@ MonoBehaviour:
   cubeLeft: {fileID: 515891268}
   researchLabLeft: {fileID: 997094495}
   cardLeft: {fileID: 1482294529}
+  mark: {fileID: 1544442856}
   outbreakrates:
   - {fileID: 964995258}
   - {fileID: 35393515}
