@@ -33,7 +33,7 @@ public class PassOperation : MonoBehaviour {
         game.EndTurn();
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.RemoveListener(startDrawCard);
     }
-
+		
     public void startInfection()
     {
         //Debug.Log("StartInfection got called");
@@ -42,6 +42,7 @@ public class PassOperation : MonoBehaviour {
         informResultPanel.transform.GetChild(0).GetComponent<Text>().text = "Start Infection";
         informResultPanel.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(startInfectNextCity);
     }
+
 	public void showMutationEvent(string mutation){
 		this.MutationEventPanel.SetActive (true);
 		MutationEventPanel.transform.GetChild (0).GetComponent<Text> ().text = mutation+" EventCard!";
@@ -63,7 +64,13 @@ public class PassOperation : MonoBehaviour {
     public void notifyResolveEpidemic()
     {
         informEpidemicPanel.SetActive(true);
+		if (game.getChallenge () == Challenge.MutationAndVirulentStrain || game.getChallenge == Challenge.BioTerroistAndVirulentStrain || game.getChallenge () == Challenge.VirulentStrain) {
+			informEpidemicPanel.transform.GetChild (0).GetComponent<Text> ().text = game.getCurrentVirulentStrainEpidemicEffects ();
+		}
     }
+
+
+
 
     private void close()
     {
