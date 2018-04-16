@@ -1413,31 +1413,39 @@ public class Game : MonoBehaviour {
 	//infectNextCity
 	private void infectNextCity()
 	{
+
         if (currentPlayer != players[BioTerroristVolunteer])
         {
             numOfInfection++;
             //Debug.Log ("Danning kan zhe li");
             InfectionCard card = getInfectionCard();
-            City city = card.getCity();
-            Color color = card.getColor();
-            Disease disease = diseases[color];
+            if(card.getType() == CardType.MutationCard){
+				InfectionCard iCard = drawBottomInfectionDeck();
+				City city = iCard.getCity();
+				infect(city, Color.magenta, 1);
+				passOperation.showMutationInfection();
+			}
+			else{
+				City city = card.getCity();
+				Color color = card.getColor();
+				Disease disease = diseases[color];
+				
+				outbreakedCities.Clear();
+				if(isChronicEffect()){
+					infect(city, color, 2);
+				}
+				else if (!infect(city, color, 1))
+				{
+					return;
+				}
 
-            outbreakedCities.Clear();
-            if (isChronicEffect())
-            {
-                infect(city, color, 2);
-            }
-            else if (!infect(city, color, 1))
-            {
-                return;
-            }
-            // for mutation challenge
-            if ((challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain)
-            && !diseases[Color.magenta].isEradicated()
-            && city.getCubeNumber(diseases[Color.magenta]) > 0)
-            {
-                infect(city, Color.magenta, 1);
-            }
+				// for mutation challenge
+				if((challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain)
+				&& !diseases[Color.magenta].isEradicated()
+				&& city.getCubeNumber(diseases[Color.magenta])>0){
+					infect(city, Color.magenta, 1);
+				}
+			}
 
             if (currentPlayer == me && numOfInfection < infectionRate)
             {
