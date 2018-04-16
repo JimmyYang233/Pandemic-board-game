@@ -2577,8 +2577,8 @@ public class Game : MonoBehaviour {
             bioTerrorist.useInfectLocally();
         }
 
-        players[BioTerroristVolunteer].getPlayerPawn().getCity().addCubes(diseases[Color.magenta],1);
-
+        //players[BioTerroristVolunteer].getPlayerPawn().getCity().addCubes(diseases[Color.magenta],1);
+		infect(players[BioTerroristVolunteer].getPlayerPawn().getCity(),Color.magenta,1);
         players[BioTerroristVolunteer].decreaseRemainingAction();
 
     }
