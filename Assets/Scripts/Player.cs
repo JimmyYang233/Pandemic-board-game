@@ -392,7 +392,7 @@ public class Player {
     }
 
 	public void removeOneAction(){
-		oncePerTurnAction = false;
+		oncePerTurnAction = true;
 	}
 
 	public void setOncePerturnAction(bool toggle){

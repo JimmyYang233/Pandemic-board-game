@@ -135,13 +135,22 @@ public class BasicOperation : MonoBehaviour {
                 {
                     operationsExpertSkillButton.GetComponent<Button>().interactable = true;
                 }
-                foreach(Player otherPlayer in game.getPlayers())
+                if (!me.getOncePerTurnAction())
                 {
-                    if (otherPlayer != me && otherPlayer.getPlayerPawn().getCity() == currentCity && otherPlayer.containsCityCard()&& (!me.getOncePerTurnAction()))
+                    foreach (Player otherPlayer in game.getPlayers())
                     {
-                        epidemiologistSkillButton.GetComponent<Button>().interactable = true;
+                        if ((otherPlayer != me) && (otherPlayer.getPlayerPawn().getCity() == currentCity) && (otherPlayer.containsCityCard()))
+                        {
+                            epidemiologistSkillButton.GetComponent<Button>().interactable = true;
+                        }
                     }
                 }
+                else
+                {
+                    Debug.Log("It moves to else");
+                    epidemiologistSkillButton.GetComponent<Button>().interactable = false;
+                }
+                
                 if (me.containsCityCard())
                 {
                     colonelSkillButton.GetComponent<Button>().interactable = true;
@@ -181,7 +190,6 @@ public class BasicOperation : MonoBehaviour {
         buildButton.GetComponent<Button>().interactable = false;
         if (roleOnlyButton != null)
         {
-            roleOnlyButton.gameObject.SetActive(false);
             roleOnlyButton.GetComponent<Button>().interactable = false;
         }
         passButton.GetComponent<Button>().interactable = false;
