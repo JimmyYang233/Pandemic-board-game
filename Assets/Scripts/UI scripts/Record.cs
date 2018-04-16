@@ -83,6 +83,9 @@ public class Record : MonoBehaviour {
             case CardType.EpidemicCard:
                 displayRecord(player.getRoleKind().ToString() + " drew an Epidemic Card");
                 break;
+            case CardType.MutationEventCard:
+                displayRecord(player.getRoleKind().ToString() + " drew an Mutation Event Card: " + ((MutationEventCard)card).getMutationEvent().ToString());
+                break;
             default:
                 displayRecord(player.getRoleKind().ToString() + " drew a card");
                 break;
@@ -132,7 +135,7 @@ public class Record : MonoBehaviour {
     }
 
     public void VSEffect(VirulentStrainEpidemicEffects vse){
-        displayRecord("Virulent Strain Epidemic Effects has been triggered"+ vse.ToString());
+        displayRecord("Virulent Strain Epidemic Effects has been triggered: "+ vse.ToString());
     }
     
 }
