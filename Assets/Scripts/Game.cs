@@ -1535,7 +1535,7 @@ public class Game : MonoBehaviour {
         if (oneQuietNightUsed)
         {
             oneQuietNightUsed = false;
-            if (PhotonNetwork.isMasterClient)
+            
                 PhotonView.RPC("RPC_nextPlayer", PhotonTargets.All);
         }
         else
