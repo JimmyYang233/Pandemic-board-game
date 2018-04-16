@@ -1048,7 +1048,7 @@ public class Game : MonoBehaviour {
 		//TODO : IMPORTANT! add playr hand to allhandcard
 		Player bioTerrorist = null;
 
-		if(challenge == Challenge.BioTerroist)
+		if(challenge == Challenge.BioTerroist || challenge == Challenge.BioTerroistAndVirulentStrain)
 		{
 			bioTerrorist = findPlayer (RoleKind.BioTerrorist);
 		}
@@ -1059,6 +1059,7 @@ public class Game : MonoBehaviour {
 			Pawn pawn;
 			if (r.getRoleKind() == RoleKind.BioTerrorist)
 			{
+				r = new BioTerrorist ();
 				pawn = Instantiate(bioterroristPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
 			}
 			else
