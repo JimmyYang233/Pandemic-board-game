@@ -102,6 +102,7 @@ public class MoveOperation : MonoBehaviour {
 			ppc.gameObject.SetActive (true);
 			playerSelect.clear();
 			playerSelect.gameObject.SetActive(false);
+			basicOperationPanel.SetActive (true);
 		} else {
 			result.SetActive (true);
 			result.transform.GetChild(0).GetComponent<Text>().text="He rejects!";
@@ -109,6 +110,7 @@ public class MoveOperation : MonoBehaviour {
 			ppc.gameObject.SetActive (true);
 			playerSelect.clear();
 			playerSelect.gameObject.SetActive(false);
+			basicOperationPanel.SetActive (true);
 		}
 
 	}
