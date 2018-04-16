@@ -93,7 +93,14 @@ public class BioTerroristOperation : MonoBehaviour {
                 {
                     infectButton.GetComponent<Button>().interactable = false;
                     sabotageButton.GetComponent<Button>().interactable = false;
-                    escapeButton.GetComponent<Button>().interactable = true;
+                    if (currentPlayer.containsInfectionCard())
+                    {
+                        escapeButton.GetComponent<Button>().interactable = true;
+                    }
+                    else
+                    {
+                        escapeButton.GetComponent<Button>().interactable = false;
+                    }
                 }
             }
             passButton.GetComponent<Button>().interactable = true;
