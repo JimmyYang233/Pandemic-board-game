@@ -115,8 +115,22 @@ public class Record : MonoBehaviour {
     }
 
 
-    public void infect(City city, int number, bool hasMedic=false,bool hasQS=false,bool isCured=false,bool isEradicated=false){
-        displayRecord("Infection in "+ city.getCityName().ToString()+": "+number.ToString()+" cube added!");
+    public void infect(City city, int number, Color c, bool hasMedic=false,bool hasQS=false,bool isCured=false,bool isEradicated=false){
+        string color;
+        if (c == Color.black){
+            color = "black";
+        }else if(c == Color.blue){
+            color = "blue";        
+        }else if(c == Color.yellow){
+            color = "yellow";
+        }else if(c == Color.red){
+            color = "red";
+        }else if(c == Color.magenta){
+            color = "purple";
+        }else{
+            color = "";
+        }
+        displayRecord("Infection in "+ city.getCityName().ToString()+": "+number.ToString()+ " "+color+" cube added!");
         if(hasMedic&&isCured){
             displayRecord("Infection is prevented by Medic");
         }else if(hasQS){

@@ -1976,7 +1976,7 @@ public class Game : MonoBehaviour {
                 ic.getCity().addCubes(i);
                 diseases[ic.getColor()].removeCubes(i);
                 gameInfoController.changeDiseaseNumber(ic.getColor(), diseases[ic.getColor()].getNumOfDiseaseCubeLeft());
-				record.infect(ic.getCity(),i);
+				record.infect(ic.getCity(),i,ic.getColor());
 			}
         }
     }
@@ -2247,7 +2247,7 @@ public class Game : MonoBehaviour {
             }
         }
 
-		record.infect(city,number,hasMedic,hasQS,isCured,isEradicated);
+		record.infect(city,number,color,hasMedic,hasQS,isCured,isEradicated);
 
         if ((hasQS /*&&isCured*/) || hasMedic || isEradicated) return true;
 
