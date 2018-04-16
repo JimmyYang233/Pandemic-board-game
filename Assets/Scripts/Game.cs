@@ -1146,6 +1146,7 @@ public class Game : MonoBehaviour {
 
 		gameInfoController.displayOutbreak();
 		gameInfoController.displayInfectionRate();
+		gameInfoController.changeResearchNumber (researchStationRemain);
 
 		//FOR GUI
 
