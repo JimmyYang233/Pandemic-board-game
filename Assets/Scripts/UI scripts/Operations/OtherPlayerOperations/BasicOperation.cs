@@ -75,7 +75,7 @@ public class BasicOperation : MonoBehaviour {
         if ((currentPlayer == me) && (game.getCurrentPhase() == GamePhase.PlayerTakeTurn))
         {
             currentCity = me.getPlayerPawn().getCity();
-            if (me.getRemainingAction() != 0)
+            if (me.getRemainingAction() > 0)
             {
                 if (!game.isGovernmentInterference())
                 {

@@ -123,6 +123,13 @@ public class BioTerroristOperation : MonoBehaviour {
                     }
                 }
             }
+            else
+            {
+                drawButton.GetComponent<Button>().interactable = false;
+                infectButton.GetComponent<Button>().interactable = false;
+                sabotageButton.GetComponent<Button>().interactable = false;
+                escapeButton.GetComponent<Button>().interactable = false;
+            }
             passButton.GetComponent<Button>().interactable = true;
         }
         else
