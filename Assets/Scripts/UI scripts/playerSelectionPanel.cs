@@ -128,7 +128,7 @@ public class playerSelectionPanel : MonoBehaviour {
         foreach (Transform t in transform)
         {
             
-            if (!t.name.Equals("noUse"))
+			if (!t.name.Equals("noUse") && !t.name.Equals("BioTerrorist"))
             {
                 string role = t.GetChild(0).GetComponent<Text>().text;
                 Player p = game.findPlayer(role);
@@ -158,7 +158,7 @@ public class playerSelectionPanel : MonoBehaviour {
 	public void displayPlayerNecessary(){
 		Debug.Log ("I am here");
 		foreach (Transform t in transform) {
-			if (!t.name.Equals ("noUse")){
+			if (!t.name.Equals ("noUse") && !t.name.Equals("BioTerrorist")){
 				Debug.Log ("in here");
 				string role = t.GetChild (0).GetComponent<Text> ().text;
 				Player p = game.findPlayer (role);
@@ -180,7 +180,7 @@ public class playerSelectionPanel : MonoBehaviour {
 
 	public void displayAllPlayerForEventCard(){
 		foreach (Transform t in transform) {
-			if (!t.name.Equals("noUse"))
+			if (!t.name.Equals("noUse") && !t.name.Equals("BioTerrorist"))
 			{
 				t.gameObject.SetActive (true);
 			}
@@ -193,7 +193,7 @@ public class playerSelectionPanel : MonoBehaviour {
 
 	public void clear(){
 		foreach (Transform t in transform) {
-			if (!t.name.Equals("noUse"))
+			if (!t.name.Equals("noUse") && !t.name.Equals("BioTerrorist"))
 			{
 				t.gameObject.SetActive (false);
 			}
