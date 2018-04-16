@@ -2318,6 +2318,10 @@ public class Game : MonoBehaviour {
             {
                 InfectionCard card = infectionDeck[0];
                 pl.addCard(card);
+				if(pl.Equals(me)){
+					//Debug.Log("add card to main player" + card.ToString());
+					mainPlayerPanel.addPlayerCard(card);
+				}
                 infectionDeck.Remove(card);
                 record.draw(pl, card);
             }
