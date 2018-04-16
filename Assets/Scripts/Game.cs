@@ -1107,6 +1107,7 @@ public class Game : MonoBehaviour {
 			}
 			r.setPawn(pawn);
 			p.setRole(r);
+			p.refillAction ();
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;
 		}
 
