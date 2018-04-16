@@ -64876,8 +64876,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1237175282}
-        m_MethodName: 
+      - m_Target: {fileID: 2028136742}
+        m_MethodName: escapeButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -74153,7 +74153,7 @@ GameObject:
   - component: {fileID: 2028136741}
   - component: {fileID: 2028136742}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: BioEscapeOperation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
