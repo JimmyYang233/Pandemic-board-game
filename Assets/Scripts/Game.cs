@@ -2100,14 +2100,15 @@ public class Game : MonoBehaviour {
 	
 	public bool isChronicEffect(){
 		return (challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain)
-			&& VirulentStrainDisease.getColor() == getCurrentColor()
-			&& chronicEffect == true;
+			&& chronicEffect == true
+			&& VirulentStrainDisease.getColor() == getCurrentColor();
+			
 	}
 	
 	public bool isComplexMolecularStructure(){
 		return (challenge == Challenge.VirulentStrain || challenge == Challenge.BioTerroistAndVirulentStrain)
-			&& VirulentStrainDisease.getColor() == getCurrentColor()
 			&& complexMolecularStructure == true
+			&& VirulentStrainDisease.getColor() == getCurrentColor()
 			&& VirulentStrainDisease.isCured() == false;
 		}
 
