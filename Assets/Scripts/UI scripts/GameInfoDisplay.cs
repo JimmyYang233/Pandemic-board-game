@@ -68,7 +68,7 @@ public class GameInfoDisplay : MonoBehaviour
 		} else if (c == Color.red) {
 			t = cubeLeft.transform.GetChild (3);
 		} else if (c == Color.magenta) {
-			t = cubeLeft.transform.GetChild (3);
+			t = cubeLeft.transform.GetChild (4);
 		}
 		t.GetChild (1).gameObject.SetActive (true);
 
@@ -82,7 +82,7 @@ public class GameInfoDisplay : MonoBehaviour
 		} else if (c == Color.red) {
 			t = cubeLeft.transform.GetChild (3);
 		} else if (c == Color.magenta) {
-			t = cubeLeft.transform.GetChild (3);
+			t = cubeLeft.transform.GetChild (4);
 		}
 		t.GetChild (0).GetComponent<Text> ().text=num.ToString();
 
