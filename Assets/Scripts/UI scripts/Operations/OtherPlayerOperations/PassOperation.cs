@@ -47,9 +47,9 @@ public class PassOperation : MonoBehaviour {
 		MutationEventPanel.transform.GetChild (0).GetComponent<Text> ().text = mutation+" EventCard!";
 	}
 		
-	public void showMutationInfection(string mutation){
+	public void showMutationInfection(){
 		this.MutationEventPanel.SetActive (true);
-		MutationEventPanel.transform.GetChild (0).GetComponent<Text> ().text = mutation+" InfectionCard!";
+		MutationEventPanel.transform.GetChild (0).GetComponent<Text> ().text = "Mutation InfectionCard!";
 	}
     private void startInfectNextCity()
     {
