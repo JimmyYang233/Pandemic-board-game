@@ -916,10 +916,10 @@ public class Game : MonoBehaviour {
         {
             bioTerroristDraw(players[BioTerroristVolunteer],2, false);
         }
-        Debug.Log("GamePhase has changed");
+        //Debug.Log("GamePhase has changed");
 		currentPhase = GamePhase.PlayerTakeTurn;
 		//Debug.Log("Everything Complete");
-		//Debug.Log("the role is" + me.getRoleKind().ToString());
+		Debug.Log("the role is" + me.getRoleKind().ToString());
 	}
 
 	/*
@@ -2721,9 +2721,9 @@ public class Game : MonoBehaviour {
 				currentPlayer = findPlayer (RoleKind.BioTerrorist.ToString());
 			}
 		}
-        Debug.Log("gamePhase has changed");
+        //Debug.Log("gamePhase has changed");
         currentPhase = GamePhase.PlayerTakeTurn;
-		//Debug.Log (players.IndexOf(currentPlayer));
+		Debug.Log (players.IndexOf(currentPlayer));
     }
 
     public void giveCard(Player p1, Player p2, CityCard card)
