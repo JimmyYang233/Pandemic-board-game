@@ -938,6 +938,7 @@ public class Game : MonoBehaviour {
 		researchStationRemain = savedGame.remainingResearch;
 		index = savedGame.infectionRateIndex;
 		outbreaksValue = savedGame.outBreakRate;
+		currentPlayerIndex = savedGame.currentPlayerIndex;
 		cities = new List<City>();
 		EpidemicCard.getEpidemicCard ().setIntList (savedGame.EpidemicCardIntList);
 		backGround = GameObject.FindGameObjectWithTag("background");
