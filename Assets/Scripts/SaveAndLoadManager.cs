@@ -166,10 +166,12 @@ public class CityInfo{
 	public string cityName;
 	public bool hasResearch;
 	public List<RoleKind> playerRoleKindInCity = new List<RoleKind> ();
+	public int quarantineMarker;
 
 	public CityInfo(City city){
 		cityName = city.getCityName ().ToString ();
 		hasResearch = city.getHasResearch ();
+		quarantineMarker = city.quarantineMarker;
 		foreach (KeyValuePair<Color,int> entry in city.getNumOfCubes()) {
 			cubesColor.Add (Game.colorToString(entry.Key));
 			cubesNumber.Add (entry.Value);

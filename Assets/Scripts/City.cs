@@ -21,7 +21,7 @@ public class City : MonoBehaviour {
     private string blueCube;
     private string yellowCube;
     private string purpleCube;
-    private int quarantineMarker = 0; // Todo new field
+    public int quarantineMarker = 0; // Todo new field
 
     public int getNumPlayers()
     {
@@ -86,6 +86,8 @@ public class City : MonoBehaviour {
 			hasResearch = true;
 			displayResearch ();
 		}
+		this.quarantineMarker = cityInfo.quarantineMarker;
+		displayMarker();
 		using (var e1 = cityInfo.cubesColor.GetEnumerator ())
 		using (var e2 = cityInfo.cubesNumber.GetEnumerator ()) {
 			while (e1.MoveNext () && e2.MoveNext ()) {
