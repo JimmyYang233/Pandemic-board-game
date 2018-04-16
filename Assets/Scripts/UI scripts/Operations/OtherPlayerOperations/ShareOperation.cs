@@ -140,8 +140,7 @@ public class ShareOperation : MonoBehaviour {
 					GameObject child = playerCardPanel.transform.GetChild (1).GetChild (i).gameObject;
 					string tname = playerCardPanel.transform.GetChild (1).GetChild (i).GetChild (0).gameObject.GetComponent<Text> ().text;
 					child.GetComponent<Button> ().interactable = true;
-					child.GetComponent<Button> ().onClick.AddListener (() => addCardToShare (child));
-					child.GetComponent<Button> ().onClick.AddListener (check);
+					child.GetComponent<Button> ().onClick.AddListener (() => share(name, tname));
 				}
 
 			} 
@@ -175,6 +174,20 @@ public class ShareOperation : MonoBehaviour {
 		cancel();*/
 
 	}
+
+    public void share(string roleKind, string cardName)
+    {
+        int num = playerCardPanel.transform.GetChild(1).childCount;
+        for (int i = 0; i < num; i++)
+        {
+            Debug.Log(i);
+            GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
+            string tname = playerCardPanel.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.GetComponent<Text>().text;
+            child.GetComponent<Button>().interactable = false;
+            child.GetComponent<Button>().onClick.RemoveAllListeners();
+        }
+        game.share(roleKind, cardName);
+    }
 
 	public void takeFromResearcher(string cityName){
 		game.share("Researcher",cityName);
