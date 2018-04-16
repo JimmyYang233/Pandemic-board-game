@@ -709,8 +709,9 @@ public class eventCardController : MonoBehaviour {
 			case "SpecialOrders":
 				SpecialOrders();
 				break;
-            case "LocalInitiative";
+            case "LocalInitiative":
                 localInitiative();
+                break;
 		    default:
 			    break;
 		}
