@@ -64,7 +64,7 @@ public class PassOperation : MonoBehaviour {
     public void notifyResolveEpidemic()
     {
         informEpidemicPanel.SetActive(true);
-		if (game.getChallenge () == Challenge.MutationAndVirulentStrain || game.getChallenge == Challenge.BioTerroistAndVirulentStrain || game.getChallenge () == Challenge.VirulentStrain) {
+		if (game.getChallenge () == Challenge.MutationAndVirulentStrain || game.getChallenge() == Challenge.BioTerroistAndVirulentStrain || game.getChallenge () == Challenge.VirulentStrain) {
 			informEpidemicPanel.transform.GetChild (0).GetComponent<Text> ().text = game.getCurrentVirulentStrainEpidemicEffects ();
 		}
     }
