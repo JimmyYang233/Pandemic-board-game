@@ -2699,6 +2699,10 @@ public class Game : MonoBehaviour {
 			}
 		} else {
 			if (currentPlayer.getRoleKind() == RoleKind.BioTerrorist) {
+				getBioTerrorist().refillDriveAction();
+				currentPlayer.refillAction();
+				currentPlayer.setOncePerturnAction(false);
+				currentPlayer.setMobileHospitalActivated(false);
 				currentPlayer = players [(currentPlayerIndex + 1) % (players.Count)];
 				currentPlayerIndex++;
 				if (currentPlayer.getRoleKind() == RoleKind.BioTerrorist) {
