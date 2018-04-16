@@ -2613,7 +2613,7 @@ public class Game : MonoBehaviour {
         bioTerroristMove(players[BioTerroristVolunteer], city);
         announceAirportSighting();
         players[BioTerroristVolunteer].decreaseRemainingAction();
-		record.bioTerroristSighted(city);
+		record.bioTerroristSighted(card.getCity());
     }
 
     private void bioTerroristEscape(InfectionCard card)
