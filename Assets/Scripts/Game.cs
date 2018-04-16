@@ -2605,8 +2605,8 @@ public class Game : MonoBehaviour {
     private void bioTerroristMove(Player pl, City destinationCity)
     {
         Pawn p = pl.getPlayerPawn();
+		p.getCity().removePawn(p);
         p.setCity(destinationCity);
-        p.getCity().removePawn(p);
         destinationCity.addPawn(p);
 		if ( (Challenge.BioTerroist == challenge || challenge == Challenge.BioTerroistAndVirulentStrain)  && destinationCity.getNumPlayers () > 1) {
 			
