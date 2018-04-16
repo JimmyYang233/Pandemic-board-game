@@ -1413,33 +1413,42 @@ public class Game : MonoBehaviour {
 	//infectNextCity
 	private void infectNextCity()
 	{
-		numOfInfection++;
-		//Debug.Log ("Danning kan zhe li");
-		InfectionCard card = getInfectionCard();
-		City city = card.getCity();
-		Color color = card.getColor();
-		Disease disease = diseases[color];
-		
-		outbreakedCities.Clear();
-		if(isChronicEffect()){
-				infect(city, color, 2);
-			}
-		else if (!infect(city, color, 1))
-		{
-			return;
-		}
-		// for mutation challenge
-		if((challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain)
-		&& !diseases[Color.magenta].isEradicated()
-		&& city.getCubeNumber(diseases[Color.magenta])>0){
-			infect(city, Color.magenta, 1);
-		}
+        if (currentPlayer != players[BioTerroristVolunteer])
+        {
+            numOfInfection++;
+            //Debug.Log ("Danning kan zhe li");
+            InfectionCard card = getInfectionCard();
+            City city = card.getCity();
+            Color color = card.getColor();
+            Disease disease = diseases[color];
 
-		if (currentPlayer == me && numOfInfection < infectionRate) {
-			//Debug.Log ("num of infection is + " + numOfInfection.ToString());
-			passOperation.startInfection ();
-		}
+            outbreakedCities.Clear();
+            if (isChronicEffect())
+            {
+                infect(city, color, 2);
+            }
+            else if (!infect(city, color, 1))
+            {
+                return;
+            }
+            // for mutation challenge
+            if ((challenge == Challenge.Mutation || challenge == Challenge.MutationAndVirulentStrain)
+            && !diseases[Color.magenta].isEradicated()
+            && city.getCubeNumber(diseases[Color.magenta]) > 0)
+            {
+                infect(city, Color.magenta, 1);
+            }
 
+            if (currentPlayer == me && numOfInfection < infectionRate)
+            {
+                //Debug.Log ("num of infection is + " + numOfInfection.ToString());
+                passOperation.startInfection();
+            }
+        }
+        else
+        {
+            numOfInfection = infectionRate;
+        }
 		if (numOfInfection == infectionRate && PhotonNetwork.isMasterClient)
 			PhotonView.RPC ("RPC_nextPlayer", PhotonTargets.All);
 	}
