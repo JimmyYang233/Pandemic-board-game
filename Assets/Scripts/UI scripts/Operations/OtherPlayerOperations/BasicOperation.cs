@@ -131,7 +131,7 @@ public class BasicOperation : MonoBehaviour {
                         break;
                     }
                 }
-                if (currentCity.getHasResearch() && me.containsCityCard())
+                if (currentCity.getHasResearch() && me.containsCityCard()&&(!me.getOncePerTurnAction()))
                 {
                     operationsExpertSkillButton.GetComponent<Button>().interactable = true;
                 }
