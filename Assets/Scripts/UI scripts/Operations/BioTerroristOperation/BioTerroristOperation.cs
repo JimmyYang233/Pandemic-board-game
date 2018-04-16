@@ -95,7 +95,17 @@ public class BioTerroristOperation : MonoBehaviour {
                     infectButton.GetComponent<Button>().interactable = true;
                     if (currentCity.getHasResearch())
                     {
-                        sabotageButton.GetComponent<Button>().interactable = true;
+                        foreach(PlayerCard card in currentPlayer.getHand())
+                        {
+                            if(card.getType() == CardType.CityCard)
+                            {
+                                CityCard cityCard = (CityCard)card;
+                                if (cityCard.getColor() == currentCity.getColor())
+                                {
+                                    sabotageButton.GetComponent<Button>().interactable = true;
+                                }
+                            }
+                        }
                     }
                     escapeButton.GetComponent<Button>().interactable = false;
                 }
