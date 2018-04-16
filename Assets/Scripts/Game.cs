@@ -1493,6 +1493,7 @@ public class Game : MonoBehaviour {
 				InfectionCard iCard = drawBottomInfectionDeck();
 				City city = iCard.getCity();
 				infect(city, Color.magenta, 1);
+				infectionDiscardPile.Add(iCard);
 				passOperation.showMutationInfection();
 			}
 			else{
