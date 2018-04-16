@@ -10,6 +10,8 @@ public class handLimitChecker : MonoBehaviour
     Player me;
     public GameObject playerCardPanel;
     public GameObject waitForDiscardPanel;
+    public bool isDiscardingCard;
+
 
     void Update()
     {
@@ -27,13 +29,9 @@ public class handLimitChecker : MonoBehaviour
                 child.GetComponent<Button>().interactable = true;
                 child.GetComponent<Button>().onClick.AddListener(() => discardCard(name));
             }
+            isDiscardingCard = true;
         }
-    }
-
-    public void discardCard(string cardName)
-    {
-        game.Discard(cardName);
-        if (me.getHandSize() <= me.getHandLimit())
+        else if(isDiscardingCard)
         {
             waitForDiscardPanel.gameObject.SetActive(false);
             int num = playerCardPanel.transform.GetChild(1).childCount;
@@ -42,7 +40,14 @@ public class handLimitChecker : MonoBehaviour
                 GameObject child = playerCardPanel.transform.GetChild(1).GetChild(i).gameObject;
                 child.GetComponent<Button>().interactable = false;
             }
+            isDiscardingCard = false;
         }
+    }
+
+    public void discardCard(string cardName)
+    {
+        game.Discard(cardName);
+        
         
     }
 }
