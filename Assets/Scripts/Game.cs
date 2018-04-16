@@ -1040,7 +1040,15 @@ public class Game : MonoBehaviour {
 		foreach (Player p in players) 
 		{
 			Role r = p.getRole ();
-			Pawn pawn = Instantiate(playerPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			Pawn pawn;
+			if (r.getRoleKind() == RoleKind.BioTerrorist)
+			{
+				pawn = Instantiate(bioterroristPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			}
+			else
+			{
+				pawn = Instantiate(playerPawn, new Vector3(0, 0, 100), gameObject.transform.rotation);
+			}
 			r.setPawn(pawn);
 			p.setRole(r);
 			pawn.transform.parent = GameObject.FindGameObjectWithTag("background").transform;

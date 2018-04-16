@@ -92,9 +92,9 @@ public class City : MonoBehaviour {
 		using (var e2 = cityInfo.cubesNumber.GetEnumerator ()) {
 			while (e1.MoveNext () && e2.MoveNext ()) {
 				numberOfCubes[Game.stringToColor(e1.Current)] =  e2.Current;
-				Debug.Log ("There are cubes in city " + cityInfo.cityName);
-				Debug.Log (e1.Current);
-				Debug.Log ("Number " + e2.Current);
+				//Debug.Log ("There are cubes in city " + cityInfo.cityName);
+				//Debug.Log (e1.Current);
+				//Debug.Log ("Number " + e2.Current);
 			}
 		}
 		foreach(RoleKind roleKind in cityInfo.playerRoleKindInCity){
