@@ -153,7 +153,9 @@ public class ShareOperation : MonoBehaviour {
 		} else if (shareStatus ==Status.TAKE) {
 			if (name.Equals ("Researcher")) {
 				//todo
-				otherPlayers.GetComponent<otherPlayerCardSelection> ().loadOtherPlayerCard ("Researcher");
+				otherPlayerSelction.selectStatus=otherPlayerCardSelection.Status.RESEARCHER;
+				otherPlayerSelction.loadOtherPlayerCard ("Researcher");
+				otherPlayerSelction.gameObject.SetActive (true);
 
 			} else {
 				game.share (name, currentCity.getCityName ().ToString ());
