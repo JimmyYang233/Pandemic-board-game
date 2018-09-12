@@ -1,4 +1,7 @@
 # Pandemic 
+An online multiplayer game made by JimmyYang233, FaithfulZhening, Bowen8888, nickszhu and sszheng
+To play the game, run Pandemic/Pandemic.exe
+This is not a profitable product, no one has the right to use or copy any part of the code as a profitable resource. 
 
 ## Game Rule
 
